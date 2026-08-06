@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Service
@@ -35,6 +36,31 @@ public class PuzzleService {
         }
         return generateAndSave(gameId, today);
     }
+    
+    public GuessResult checkGuess(String puzzleId, int row, int col, String itemId) {
+        Puzzle puzzle = puzzleRepository.findById(puzzleId)
+            .orElseThrow(() -> new NoSuchElementException("No puzzle found with id " + puzzleId));
+
+        String cellKey = row + "-" + col;
+        List<String> validAnswers = puzzle.getCellSolutions().get(cellKey);
+        if (validAnswers == null) {
+            throw new IllegalArgumentException("Invalid cell position: " + cellKey);
+        }
+
+        String normalizedItemId = itemId.toLowerCase();
+        boolean correct = validAnswers.contains(normalizedItemId);
+
+        GridItem item = gridItemRepository.findById(normalizedItemId).orElse(null);
+
+        return new GuessResult(
+            correct,
+            normalizedItemId,
+            item != null ? item.getDisplayName() : normalizedItemId,
+            item != null ? item.getImageUrl() : null
+        );
+    }
+
+    public record GuessResult(boolean correct, String itemId, String displayName, String imageUrl) {}
 
     private Puzzle generateAndSave(String gameId, LocalDate date) {
         List<GridItem> entities = gridItemRepository.findByGameId(gameId);

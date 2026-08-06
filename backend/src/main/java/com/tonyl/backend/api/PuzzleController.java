@@ -2,13 +2,19 @@ package com.tonyl.backend.api;
 
 import com.tonyl.backend.domain.Puzzle;
 import com.tonyl.backend.puzzle.PuzzleService;
+
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/puzzle")
+@CrossOrigin(origins = "http://localhost:5173")
 public class PuzzleController {
 
     private final PuzzleService puzzleService;
@@ -21,5 +27,11 @@ public class PuzzleController {
     public PuzzleResponse today(@RequestParam(defaultValue = "genshin") String game) {
         Puzzle puzzle = puzzleService.getOrCreateTodaysPuzzle(game);
         return PuzzleResponse.from(puzzle);
+    }
+
+    @PostMapping("/{puzzleId}/guess")
+    public GuessResponse guess(@PathVariable String puzzleId, @RequestBody GuessRequest request) {
+        var result = puzzleService.checkGuess(puzzleId, request.row(), request.col(), request.itemId());
+        return new GuessResponse(result.correct(), result.itemId(), result.displayName(), result.imageUrl());
     }
 }
