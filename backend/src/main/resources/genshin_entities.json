@@ -663,10 +663,10 @@
     }
   },
   {
-    "id": "Mualani",
+    "id": "mualani",
     "game_id": "genshin",
     "display_name": "Mualani",
-    "image_url": "https://genshin.jmp.blue/characters/Mualani/card",
+    "image_url": "https://genshin.jmp.blue/characters/mualani/card",
     "attributes": {
       "element": "Hydro",
       "weapon": "Catalyst",
