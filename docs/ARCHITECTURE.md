@@ -111,7 +111,7 @@ versions. Concrete traps hit so far, kept here so they aren't re-derived:
 - `cellSolutions`: `Map<String, List<String>>`, keyed `"row-col"` (e.g.
   `"0-0"`), valued with the list of valid `GridItem` ids for that cell.
   **Never serialized into any API response** — see Security below.
-## Data sourcing
+## Data sourcing - Genshin
  
 - **No official Genshin API exists.** Using `genshindev/api`, hosted at
   `https://genshin.jmp.blue` (community-maintained, OSL-3.0 licensed).
@@ -133,6 +133,84 @@ versions. Concrete traps hit so far, kept here so they aren't re-derived:
   the API exposes multiple image types per character (`card`, `icon`,
   `portrait`, etc.) but current usage is `card` only; no `icon` type is
   available from this source (see Backlog).
+
+## Multi-game validation (Phase 2)
+
+A second GameModule (Brawl Stars) was added specifically to test whether
+the game-agnostic claim held up in practice, not just on paper. Result:
+adding it required exactly two new files (`BrawlStarsGameModule.java`,
+`ingestion/brawlstars/fetch_brawlstars.py` + `normalize.py`) and one line
+each in two still-hardcoded lookup points (`GameDataLoader.GAME_SEED_FILES`,
+`PuzzleService.resolveModule()`). Zero changes to `domain`, `repository`,
+`api`, `GridGenerator`, or any frontend component beyond adding a game
+selector — the puzzle grid, guess validation, and category-generation logic
+are unmodified and shared across both games.
+
+### Data loading was also generalized, not just game logic
+
+The original `GenshinDataLoader` was deleted and replaced with a single
+`GameDataLoader` that loads any number of games from a
+`Map<String, String>` of `gameId -> seed filename`. This matters because
+it proves the *loading mechanism*, not just the domain model, is
+game-agnostic — a subtlety easy to miss if only the `GameModule` layer
+gets abstracted while data loading stays copy-pasted per game.
+
+### Real bug found: GridGenerator's dimension-collision defect
+
+Brawl Stars only has 2 category dimensions (`rarity`, `brawler_class`),
+versus Genshin's 4 (`element`, `weapon`, `rarity`, `region`). The original
+`GridGenerator` shuffled all categories together and split the first 3 as
+rows, the rest as columns, with no awareness of which attribute a category
+came from. This is structurally broken: if a row category and a column
+category are drawn from the same dimension (e.g. row = `rarity==Legendary`,
+col = `rarity==Epic`), that cell is mathematically unsatisfiable — no
+entity can have two different rarities. With Genshin's 4 dimensions, 500
+random shuffle attempts were likely to avoid this by chance; with Brawl
+Stars' 2 dimensions, it failed close to every time.
+
+**This was a latent bug affecting both games**, not a Brawl-Stars-specific
+issue — Genshin was just unlikely to trigger it, not immune to it. This is
+the concrete payoff of doing Phase 2's cross-game validation: it surfaced
+a real correctness defect that a single-game test suite would not have
+reliably caught.
+
+**Fix**: `CategoryDefinition` gained a `getDimension()` method (the
+attribute key a category is drawn from, e.g. `"rarity"`). `GridGenerator`
+now partitions all available categories by dimension, randomly splits the
+*dimensions* (not individual categories) into two disjoint groups, and
+draws rows from one group's categories and columns from the other. This
+guarantees no row/column pair can ever share a dimension, eliminating the
+structurally-impossible-cell case entirely rather than just making it less
+likely. Requires at least 2 distinct dimensions to run at all (returns
+`Optional.empty()` otherwise).
+
+## Data sourcing — Brawl Stars
+
+- **BrawlAPI** (`api.brawlapi.com`), a free, no-auth, community-run static
+  JSON reference API — not the official `developer.brawlstars.com` API,
+  which requires a key + IP allowlisting and is oriented around
+  player/club stats rather than roster reference data. Same "build-time
+  source only, snapshot to committed JSON, never called live" treatment as
+  Genshin's data source.
+- Response shape differs meaningfully from Genshin's: `rarity` and `class`
+  arrive as nested objects (`{id, name, color}`), not flat strings —
+  flattened to plain strings (`rarity.name`, `class.name`) at
+  normalization time. `AttributeEqualsCategory`'s generic
+  `attributeKey`/`expectedValue` design handled this with no changes,
+  which was itself part of what Phase 2 was testing.
+- **Known data gaps**, both non-blocking:
+  - `unlock: null` / `released: false` brawlers are filtered out entirely
+    at ingestion — not real, obtainable puzzle answers yet.
+  - Some real, released, current brawlers have `class: {"id": 0, "name":
+    "Unknown"}` in this dataset — modeled as `brawler_class: null` and
+    excluded from class-based categories. This is a distinct issue from
+    Genshin's staleness (missing characters entirely): here the brawler
+    itself is present and correct, only the class attribute lags behind
+    for some newer entries. Not blocking; revisit when backfilling data.
+  - Only 2 usable category dimensions currently (rarity, class) vs.
+    Genshin's 4 — expected, not a defect; not every `GameModule` needs the
+    same number of dimensions, though more dimensions generally means
+    richer/more varied puzzles.
 ## Grid generation algorithm
  
 Implemented in `GridGenerator` (backend `puzzle` package), operating only
@@ -218,7 +296,7 @@ com.tonyl.backend
 ├── api/              — REST controllers + request/response DTOs
 ├── domain/            — JPA entities (GridItem, Puzzle, CategorySnapshot)
 ├── repository/         — Spring Data JPA repositories
-├── game/               — CategoryDefinition, GameModule, GenshinGameModule
+├── game/               — CategoryDefinition, GameModule, GenshinGameModule, BrawlStarsGameModule
 ├── puzzle/             — GridGenerator, PuzzleService
 └── loader/             — one-time data loaders (CommandLineRunner, profile-gated)
 ```
@@ -260,3 +338,17 @@ intention.
   a display name but differing by a key attribute (e.g. Genshin's Traveler,
   one entity per element) must disambiguate display_name at normalize time,
   since raw source data often differentiates IDs/attributes but not names.
+- Real `GameModule` registry — `PuzzleService.resolveModule()` and
+  `GameDataLoader.GAME_SEED_FILES` are both still hardcoded lookups (a
+  switch statement and a static Map respectively). Two games proved the
+  abstraction; a proper registry (e.g. a Spring `Map<String, GameModule>`
+  bean, or filesystem/config-driven discovery) is still a reasonable next
+  step once a third game is added or this is deployed.
+- Expand Brawl Stars attribute set (e.g. Super/Star Power count) for
+  richer category variety — separate from, and not a substitute for, the
+  GridGenerator dimension-partitioning fix.
+- Brawl Stars rarity color mapping for CategoryChip — BrawlAPI returns a
+  `color` hex value per rarity that wasn't captured at ingestion; currently
+  falls back to the generic gray chip style.
+- BrawlAPI class-metadata gap (see Data sourcing above) — revisit when
+  backfilling.
