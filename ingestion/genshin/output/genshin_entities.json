@@ -938,7 +938,7 @@
   {
     "id": "traveler-anemo",
     "game_id": "genshin",
-    "display_name": "Traveler",
+    "display_name": "Traveler (Anemo)",
     "image_url": "https://genshin.jmp.blue/characters/traveler-anemo/card",
     "attributes": {
       "element": "Anemo",
@@ -951,7 +951,7 @@
   {
     "id": "traveler-dendro",
     "game_id": "genshin",
-    "display_name": "Traveler",
+    "display_name": "Traveler (Dendro)",
     "image_url": "https://genshin.jmp.blue/characters/traveler-dendro/card",
     "attributes": {
       "element": "Dendro",
@@ -964,7 +964,7 @@
   {
     "id": "traveler-electro",
     "game_id": "genshin",
-    "display_name": "Traveler",
+    "display_name": "Traveler (Electro)",
     "image_url": "https://genshin.jmp.blue/characters/traveler-electro/card",
     "attributes": {
       "element": "Electro",
@@ -977,7 +977,7 @@
   {
     "id": "traveler-geo",
     "game_id": "genshin",
-    "display_name": "Traveler",
+    "display_name": "Traveler (Geo)",
     "image_url": "https://genshin.jmp.blue/characters/traveler-geo/card",
     "attributes": {
       "element": "Geo",
@@ -990,7 +990,7 @@
   {
     "id": "traveler-hydro",
     "game_id": "genshin",
-    "display_name": "Traveler",
+    "display_name": "Traveler (Hydro)",
     "image_url": "https://genshin.jmp.blue/characters/traveler-hydro/card",
     "attributes": {
       "element": "Hydro",

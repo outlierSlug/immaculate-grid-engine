@@ -6,8 +6,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Profile;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Component;
-import tools.jackson.databind.json.JsonMapper;
 import tools.jackson.core.type.TypeReference;
+import tools.jackson.databind.json.JsonMapper;
 
 import java.io.InputStream;
 import java.util.List;
@@ -15,21 +15,34 @@ import java.util.Map;
 
 @Component
 @Profile("load-data")
-public class GenshinDataLoader implements CommandLineRunner {
+public class GameDataLoader implements CommandLineRunner {
+
+    private static final Map<String, String> GAME_SEED_FILES = Map.of(
+        "genshin", "genshin_entities.json",
+        "brawlstars", "brawlstars_entities.json"
+    );
 
     private final GridItemRepository repository;
     private final JsonMapper jsonMapper;
 
-    public GenshinDataLoader(GridItemRepository repository, JsonMapper jsonMapper) {
+    public GameDataLoader(GridItemRepository repository, JsonMapper jsonMapper) {
         this.repository = repository;
         this.jsonMapper = jsonMapper;
     }
 
     @Override
-    @SuppressWarnings("unchecked")
     public void run(String... args) throws Exception {
-        InputStream is = new ClassPathResource("genshin_entities.json").getInputStream();
-        List<Map<String, Object>> raw = jsonMapper.readValue(is, new TypeReference<List<Map<String, Object>>>() {});
+        for (Map.Entry<String, String> entry : GAME_SEED_FILES.entrySet()) {
+            loadGame(entry.getKey(), entry.getValue());
+        }
+    }
+
+    @SuppressWarnings("unchecked")
+    private void loadGame(String gameId, String fileName) throws Exception {
+        InputStream is = new ClassPathResource(fileName).getInputStream();
+        List<Map<String, Object>> raw = jsonMapper.readValue(
+            is, new TypeReference<List<Map<String, Object>>>() {}
+        );
 
         int count = 0;
         for (Map<String, Object> record : raw) {
@@ -43,6 +56,6 @@ public class GenshinDataLoader implements CommandLineRunner {
             repository.save(item);
             count++;
         }
-        System.out.println("Loaded " + count + " grid items into the database");
+        System.out.println("Loaded " + count + " grid items for " + gameId);
     }
 }

@@ -25,6 +25,11 @@ public class AttributeEqualsCategory implements CategoryDefinition {
     }
 
     @Override
+    public String getDimension() {
+        return attributeKey;
+    }
+
+    @Override
     public boolean matches(GridItem item) {
         Object actual = item.getAttributes().get(attributeKey);
         // compare as strings - JSONB numeric values can deserialize as

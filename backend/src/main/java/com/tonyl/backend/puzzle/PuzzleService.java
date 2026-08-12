@@ -3,6 +3,7 @@ package com.tonyl.backend.puzzle;
 import com.tonyl.backend.domain.CategorySnapshot;
 import com.tonyl.backend.domain.GridItem;
 import com.tonyl.backend.domain.Puzzle;
+import com.tonyl.backend.game.BrawlStarsGameModule;
 import com.tonyl.backend.game.CategoryDefinition;
 import com.tonyl.backend.game.GameModule;
 import com.tonyl.backend.game.GenshinGameModule;
@@ -84,10 +85,11 @@ public class PuzzleService {
 
     private GameModule resolveModule(String gameId) {
         // TODO: replace with a proper registry once a second GameModule exists (Phase 2)
-        if (gameId.equals("genshin")) {
-            return new GenshinGameModule();
-        }
-        throw new IllegalArgumentException("Unknown gameId: " + gameId);
+        return switch (gameId) {
+            case "genshin" -> new GenshinGameModule();
+            case "brawlstars" -> new BrawlStarsGameModule();
+            default -> throw new IllegalArgumentException("Unknown gameId: " + gameId);
+        };
     }
 
     private List<CategorySnapshot> toSnapshots(List<CategoryDefinition> categories) {

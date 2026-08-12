@@ -5,6 +5,7 @@ import com.tonyl.backend.game.CategoryDefinition;
 
 import java.time.LocalDate;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class GridGenerator {
 
@@ -14,30 +15,50 @@ public class GridGenerator {
     public record GeneratedPuzzle(
         List<CategoryDefinition> rowCategories,
         List<CategoryDefinition> colCategories,
-        Map<String, List<String>> cellSolutions // "row-col" -> matching GridItem ids
+        Map<String, List<String>> cellSolutions
     ) {}
 
-    /**
-     * Seeded by date so everyone gets the same puzzle on the same day
-     * without needing a server round-trip to hand it out.
-     */
     public Optional<GeneratedPuzzle> generate(
         List<GridItem> entities,
         List<CategoryDefinition> categories,
         LocalDate date
     ) {
-        if (categories.size() < GRID_SIZE * 2) {
-            return Optional.empty(); // not enough categories to even attempt a grid
+        Map<String, List<CategoryDefinition>> byDimension = categories.stream()
+            .collect(Collectors.groupingBy(CategoryDefinition::getDimension));
+
+        List<String> dimensions = new ArrayList<>(byDimension.keySet());
+        if (dimensions.size() < 2) {
+            return Optional.empty(); // need at least 2 dimensions to split rows/cols safely
         }
 
         Random random = new Random(date.toEpochDay());
 
         for (int attempt = 0; attempt < MAX_ATTEMPTS; attempt++) {
-            List<CategoryDefinition> shuffled = new ArrayList<>(categories);
-            Collections.shuffle(shuffled, random);
+            Collections.shuffle(dimensions, random);
 
-            List<CategoryDefinition> rows = shuffled.subList(0, GRID_SIZE);
-            List<CategoryDefinition> cols = shuffled.subList(GRID_SIZE, GRID_SIZE * 2);
+            // Split dimensions into two non-empty groups: one feeds rows, the other feeds
+            // columns. This guarantees no row category and column category ever share a
+            // dimension, which would otherwise make that cell impossible to fill (e.g.
+            // rarity==Legendary AND rarity==Epic can never both be true for one entity).
+            int splitPoint = 1 + random.nextInt(dimensions.size() - 1);
+            List<String> rowDimensions = dimensions.subList(0, splitPoint);
+            List<String> colDimensions = dimensions.subList(splitPoint, dimensions.size());
+
+            List<CategoryDefinition> rowPool = rowDimensions.stream()
+                .flatMap(d -> byDimension.get(d).stream())
+                .collect(Collectors.toList());
+            List<CategoryDefinition> colPool = colDimensions.stream()
+                .flatMap(d -> byDimension.get(d).stream())
+                .collect(Collectors.toList());
+
+            if (rowPool.size() < GRID_SIZE || colPool.size() < GRID_SIZE) {
+                continue; // this particular dimension split didn't leave enough categories, retry
+            }
+
+            Collections.shuffle(rowPool, random);
+            Collections.shuffle(colPool, random);
+            List<CategoryDefinition> rows = rowPool.subList(0, GRID_SIZE);
+            List<CategoryDefinition> cols = colPool.subList(0, GRID_SIZE);
 
             Map<String, List<String>> solutions = new LinkedHashMap<>();
             boolean valid = true;
@@ -66,6 +87,6 @@ public class GridGenerator {
             }
         }
 
-        return Optional.empty(); // exhausted attempts without finding a valid grid
+        return Optional.empty();
     }
 }

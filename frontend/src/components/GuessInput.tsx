@@ -3,20 +3,21 @@ import { fetchItems } from '../api/client';
 import type { GridItem } from '../types/puzzle';
 
 interface GuessInputProps {
+  game: string;
   onSelect: (item: GridItem) => void;
   onClose: () => void;
 }
 
-export default function GuessInput({ onSelect, onClose }: GuessInputProps) {
+export default function GuessInput({ game, onSelect, onClose }: GuessInputProps) {
   const [items, setItems] = useState<GridItem[]>([]);
   const [query, setQuery] = useState('');
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetchItems()
+    fetchItems(game)
       .then(setItems)
       .finally(() => setLoading(false));
-  }, []);
+  }, [game]);
 
   const filtered = items.filter((item) =>
     item.displayName.toLowerCase().includes(query.toLowerCase())

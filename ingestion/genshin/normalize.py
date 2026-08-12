@@ -14,13 +14,17 @@ BASE_URL = "https://genshin.jmp.blue"
 
 def map_character(raw: dict) -> dict:
     char_id = raw["id"].lower()
+    element = raw["vision"]
+    display_name = raw["name"]
+    if char_id.startswith("traveler"):
+        display_name = f"Traveler ({element})"
     return {
         "id": char_id,
         "game_id": "genshin",
-        "display_name": raw["name"],
+        "display_name": display_name,
         "image_url": f"{BASE_URL}/characters/{char_id}/card",
         "attributes": {
-            "element": raw["vision"],
+            "element": element,
             "weapon": raw["weapon"],
             "rarity": raw["rarity"],
             "region": raw["nation"],

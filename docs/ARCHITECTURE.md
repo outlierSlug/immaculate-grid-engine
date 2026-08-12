@@ -256,3 +256,7 @@ intention.
   before Phase 3 (real-time H2H), not urgent for single-player.
 - CORS origins should move to configuration rather than a hardcoded
   annotation value once a deployment target exists.
+  - Multi-variant entity disambiguation: any GameModule with entities sharing
+  a display name but differing by a key attribute (e.g. Genshin's Traveler,
+  one entity per element) must disambiguate display_name at normalize time,
+  since raw source data often differentiates IDs/attributes but not names.
