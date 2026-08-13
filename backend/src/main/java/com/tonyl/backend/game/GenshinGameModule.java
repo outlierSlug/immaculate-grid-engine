@@ -22,6 +22,8 @@ public class GenshinGameModule implements GameModule {
         categories.addAll(categoriesForAttribute(entities, "weapon"));
         categories.addAll(categoriesForAttribute(entities, "region"));
         categories.addAll(categoriesForAttribute(entities, "rarity"));
+        categories.addAll(categoriesForAttribute(entities, "model"));
+        categories.addAll(categoriesForAttribute(entities, "release_version"));
         return categories;
     }
 
@@ -29,6 +31,7 @@ public class GenshinGameModule implements GameModule {
         Set<Object> distinctValues = entities.stream()
             .map(e -> e.getAttributes().get(attributeKey))
             .filter(Objects::nonNull)
+            .filter(v -> !(v instanceof String s && s.isBlank()))
             .collect(Collectors.toSet());
 
         return distinctValues.stream()
