@@ -3,10 +3,22 @@ import { fetchTodaysPuzzle, submitGuess } from './api/client';
 import type { PuzzleResponse, GridItem } from './types/puzzle';
 import PuzzleGrid from './components/PuzzleGrid';
 import GuessInput from './components/GuessInput';
+import CategoryChip from './components/CategoryChip';
 
 const AVAILABLE_GAMES = [
   { id: 'genshin', label: 'Genshin Impact' },
   { id: 'brawlstars', label: 'Brawl Stars' },
+];
+
+const REGION_PREVIEW = [
+  'Mondstadt',
+  'Liyue',
+  'Inazuma',
+  'Sumeru',
+  'Fontaine',
+  'Natlan',
+  'Nod-Krai',
+  'Snezhnaya',
 ];
 
 function App() {
@@ -92,12 +104,37 @@ function App() {
           {activeCell && (
             <GuessInput
               game={game}
+              rowLabel={puzzle.rowLabels[activeCell.row]}
+              colLabel={puzzle.colLabels[activeCell.col]}
+              usedItemIds={new Set(Object.values(filledCells).map((item) => item.id))}
               onSelect={handleGuessSelect}
               onClose={() => setActiveCell(null)}
             />
           )}
         </>
       )}
+      {/* TEMPORARY REGION ICON PREVIEW */}
+      <section className="mt-12 w-full max-w-3xl px-4">
+        <h2 className="text-lg font-bold text-center mb-5">
+          Region Icon Preview
+        </h2>
+
+        <div className="flex flex-wrap justify-center items-center gap-3">
+          {REGION_PREVIEW.map((region) => (
+            <div
+              key={region}
+              className="flex flex-col items-center gap-2"
+            >
+              <CategoryChip label={region} />
+
+              {/* Temporary: lets you identify each emblem while previewing */}
+              <span className="text-xs text-gray-600">
+                {region}
+              </span>
+            </div>
+          ))}
+        </div>
+      </section>
     </div>
   );
 }
