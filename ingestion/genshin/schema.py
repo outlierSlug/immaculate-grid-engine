@@ -9,7 +9,9 @@ class GenshinAttributes(BaseModel):
     weapon: str
     rarity: int = Field(ge=4, le=5)
     region: str            # from "nation" in raw data
+    model: str
     release_date: str      # from "release" in raw data, e.g. "2020-12-23"
+    release_version: str
 
 
 class Entity(BaseModel):

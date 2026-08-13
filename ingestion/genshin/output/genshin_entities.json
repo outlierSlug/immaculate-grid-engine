@@ -1,1198 +1,1982 @@
 [
   {
+    "id": "aino",
+    "game_id": "genshin",
+    "display_name": "Aino",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Aino.png",
+    "attributes": {
+      "element": "Hydro",
+      "weapon": "Claymore",
+      "rarity": 4,
+      "region": "Nod-Krai",
+      "model": "Short Female",
+      "release_date": "2025-09-10",
+      "release_version": "Luna I"
+    }
+  },
+  {
     "id": "albedo",
     "game_id": "genshin",
     "display_name": "Albedo",
-    "image_url": "https://genshin.jmp.blue/characters/albedo/card",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Albedo.png",
     "attributes": {
       "element": "Geo",
       "weapon": "Sword",
       "rarity": 5,
       "region": "Mondstadt",
-      "release_date": "2020-12-23"
+      "model": "Medium Male",
+      "release_date": "2020-12-23",
+      "release_version": "1.2"
     }
   },
   {
     "id": "alhaitham",
     "game_id": "genshin",
     "display_name": "Alhaitham",
-    "image_url": "https://genshin.jmp.blue/characters/alhaitham/card",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Alhatham.png",
     "attributes": {
       "element": "Dendro",
       "weapon": "Sword",
       "rarity": 5,
       "region": "Sumeru",
-      "release_date": "2023-01-18"
+      "model": "Tall Male",
+      "release_date": "2023-01-18",
+      "release_version": "3.4"
     }
   },
   {
     "id": "aloy",
     "game_id": "genshin",
     "display_name": "Aloy",
-    "image_url": "https://genshin.jmp.blue/characters/aloy/card",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Aloy.png",
     "attributes": {
       "element": "Cryo",
       "weapon": "Bow",
       "rarity": 5,
-      "region": "Unknown",
-      "release_date": "2021-10-13"
+      "region": "",
+      "model": "Medium Female",
+      "release_date": "2021-09-01",
+      "release_version": "2.1"
+    }
+  },
+  {
+    "id": "alyosha",
+    "game_id": "genshin",
+    "display_name": "Alyosha",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Alyosha.png",
+    "attributes": {
+      "element": "Electro",
+      "weapon": "Polearm",
+      "rarity": 4,
+      "region": "Snezhnaya",
+      "model": "Medium Male",
+      "release_date": "2026-08-12",
+      "release_version": "7.0"
     }
   },
   {
     "id": "amber",
     "game_id": "genshin",
     "display_name": "Amber",
-    "image_url": "https://genshin.jmp.blue/characters/amber/card",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Ambor.png",
     "attributes": {
       "element": "Pyro",
       "weapon": "Bow",
       "rarity": 4,
       "region": "Mondstadt",
-      "release_date": "2020-09-28"
+      "model": "Medium Female",
+      "release_date": "2020-09-28",
+      "release_version": "1.0"
     }
   },
   {
     "id": "arataki-itto",
     "game_id": "genshin",
     "display_name": "Arataki Itto",
-    "image_url": "https://genshin.jmp.blue/characters/arataki-itto/card",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Itto.png",
     "attributes": {
       "element": "Geo",
       "weapon": "Claymore",
       "rarity": 5,
       "region": "Inazuma",
-      "release_date": "2021-12-14"
+      "model": "Tall Male",
+      "release_date": "2021-12-14",
+      "release_version": "2.3"
     }
   },
   {
     "id": "arlecchino",
     "game_id": "genshin",
     "display_name": "Arlecchino",
-    "image_url": "https://genshin.jmp.blue/characters/arlecchino/card",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Arlecchino.png",
     "attributes": {
       "element": "Pyro",
       "weapon": "Polearm",
       "rarity": 5,
       "region": "Snezhnaya",
-      "release_date": "2024-04-24"
-    }
-  },
-  {
-    "id": "ayaka",
-    "game_id": "genshin",
-    "display_name": "Kamisato Ayaka",
-    "image_url": "https://genshin.jmp.blue/characters/ayaka/card",
-    "attributes": {
-      "element": "Cryo",
-      "weapon": "Sword",
-      "rarity": 5,
-      "region": "Inazuma",
-      "release_date": "2021-07-21"
-    }
-  },
-  {
-    "id": "ayato",
-    "game_id": "genshin",
-    "display_name": "Kamisato Ayato",
-    "image_url": "https://genshin.jmp.blue/characters/ayato/card",
-    "attributes": {
-      "element": "Hydro",
-      "weapon": "Sword",
-      "rarity": 5,
-      "region": "Inazuma",
-      "release_date": "2022-03-30"
+      "model": "Tall Female",
+      "release_date": "2024-04-24",
+      "release_version": "4.6"
     }
   },
   {
     "id": "baizhu",
     "game_id": "genshin",
     "display_name": "Baizhu",
-    "image_url": "https://genshin.jmp.blue/characters/baizhu/card",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Baizhuer.png",
     "attributes": {
       "element": "Dendro",
       "weapon": "Catalyst",
       "rarity": 5,
       "region": "Liyue",
-      "release_date": "2023-05-02"
+      "model": "Tall Male",
+      "release_date": "2023-05-02",
+      "release_version": "3.6"
     }
   },
   {
     "id": "barbara",
     "game_id": "genshin",
     "display_name": "Barbara",
-    "image_url": "https://genshin.jmp.blue/characters/barbara/card",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Barbara.png",
     "attributes": {
       "element": "Hydro",
       "weapon": "Catalyst",
       "rarity": 4,
       "region": "Mondstadt",
-      "release_date": "2020-09-28"
+      "model": "Medium Female",
+      "release_date": "2020-09-28",
+      "release_version": "1.0"
     }
   },
   {
     "id": "beidou",
     "game_id": "genshin",
     "display_name": "Beidou",
-    "image_url": "https://genshin.jmp.blue/characters/beidou/card",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Beidou.png",
     "attributes": {
       "element": "Electro",
       "weapon": "Claymore",
       "rarity": 4,
       "region": "Liyue",
-      "release_date": "2020-09-28"
+      "model": "Tall Female",
+      "release_date": "2020-09-28",
+      "release_version": "1.0"
     }
   },
   {
     "id": "bennett",
     "game_id": "genshin",
     "display_name": "Bennett",
-    "image_url": "https://genshin.jmp.blue/characters/bennett/card",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Bennett.png",
     "attributes": {
       "element": "Pyro",
       "weapon": "Sword",
       "rarity": 4,
       "region": "Mondstadt",
-      "release_date": "2020-09-28"
+      "model": "Medium Male",
+      "release_date": "2020-09-28",
+      "release_version": "1.0"
     }
   },
   {
     "id": "candace",
     "game_id": "genshin",
     "display_name": "Candace",
-    "image_url": "https://genshin.jmp.blue/characters/candace/card",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Candace.png",
     "attributes": {
       "element": "Hydro",
       "weapon": "Polearm",
       "rarity": 4,
       "region": "Sumeru",
-      "release_date": "2022-09-28"
+      "model": "Tall Female",
+      "release_date": "2022-09-28",
+      "release_version": "3.1"
     }
   },
   {
     "id": "charlotte",
     "game_id": "genshin",
     "display_name": "Charlotte",
-    "image_url": "https://genshin.jmp.blue/characters/charlotte/card",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Charlotte.png",
     "attributes": {
       "element": "Cryo",
       "weapon": "Catalyst",
       "rarity": 4,
       "region": "Fontaine",
-      "release_date": "2023-11-08"
+      "model": "Medium Female",
+      "release_date": "2023-11-08",
+      "release_version": "4.2"
+    }
+  },
+  {
+    "id": "chasca",
+    "game_id": "genshin",
+    "display_name": "Chasca",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Chasca.png",
+    "attributes": {
+      "element": "Anemo",
+      "weapon": "Bow",
+      "rarity": 5,
+      "region": "Natlan",
+      "model": "Tall Female",
+      "release_date": "2024-11-20",
+      "release_version": "5.2"
     }
   },
   {
     "id": "chevreuse",
     "game_id": "genshin",
     "display_name": "Chevreuse",
-    "image_url": "https://genshin.jmp.blue/characters/chevreuse/card",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Chevreuse.png",
     "attributes": {
       "element": "Pyro",
       "weapon": "Polearm",
       "rarity": 4,
       "region": "Fontaine",
-      "release_date": "2024-01-09"
+      "model": "Medium Female",
+      "release_date": "2024-01-09",
+      "release_version": "4.3"
     }
   },
   {
     "id": "chiori",
     "game_id": "genshin",
     "display_name": "Chiori",
-    "image_url": "https://genshin.jmp.blue/characters/chiori/card",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Chiori.png",
     "attributes": {
       "element": "Geo",
       "weapon": "Sword",
       "rarity": 5,
       "region": "Inazuma",
-      "release_date": "2024-03-13"
+      "model": "Medium Female",
+      "release_date": "2024-03-13",
+      "release_version": "4.5"
     }
   },
   {
     "id": "chongyun",
     "game_id": "genshin",
     "display_name": "Chongyun",
-    "image_url": "https://genshin.jmp.blue/characters/chongyun/card",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Chongyun.png",
     "attributes": {
       "element": "Cryo",
       "weapon": "Claymore",
       "rarity": 4,
       "region": "Liyue",
-      "release_date": "2020-09-28"
+      "model": "Medium Male",
+      "release_date": "2020-09-28",
+      "release_version": "1.0"
+    }
+  },
+  {
+    "id": "citlali",
+    "game_id": "genshin",
+    "display_name": "Citlali",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Citlali.png",
+    "attributes": {
+      "element": "Cryo",
+      "weapon": "Catalyst",
+      "rarity": 5,
+      "region": "Natlan",
+      "model": "Medium Female",
+      "release_date": "2025-01-01",
+      "release_version": "5.3"
     }
   },
   {
     "id": "clorinde",
     "game_id": "genshin",
     "display_name": "Clorinde",
-    "image_url": "https://genshin.jmp.blue/characters/clorinde/card",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Clorinde.png",
     "attributes": {
       "element": "Electro",
       "weapon": "Sword",
       "rarity": 5,
       "region": "Fontaine",
-      "release_date": "2024-06-05"
+      "model": "Tall Female",
+      "release_date": "2024-06-05",
+      "release_version": "4.7"
     }
   },
   {
     "id": "collei",
     "game_id": "genshin",
     "display_name": "Collei",
-    "image_url": "https://genshin.jmp.blue/characters/collei/card",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Collei.png",
     "attributes": {
       "element": "Dendro",
       "weapon": "Bow",
       "rarity": 4,
       "region": "Sumeru",
-      "release_date": "2022-08-24"
+      "model": "Medium Female",
+      "release_date": "2022-08-24",
+      "release_version": "3.0"
+    }
+  },
+  {
+    "id": "columbina",
+    "game_id": "genshin",
+    "display_name": "Columbina",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Columbina.png",
+    "attributes": {
+      "element": "Hydro",
+      "weapon": "Catalyst",
+      "rarity": 5,
+      "region": "Nod-Krai",
+      "model": "Medium Female",
+      "release_date": "2026-01-14",
+      "release_version": "Luna IV"
     }
   },
   {
     "id": "cyno",
     "game_id": "genshin",
     "display_name": "Cyno",
-    "image_url": "https://genshin.jmp.blue/characters/cyno/card",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Cyno.png",
     "attributes": {
       "element": "Electro",
       "weapon": "Polearm",
       "rarity": 5,
       "region": "Sumeru",
-      "release_date": "2022-09-28"
+      "model": "Medium Male",
+      "release_date": "2022-09-28",
+      "release_version": "3.1"
+    }
+  },
+  {
+    "id": "dahlia",
+    "game_id": "genshin",
+    "display_name": "Dahlia",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Dahlia.png",
+    "attributes": {
+      "element": "Hydro",
+      "weapon": "Sword",
+      "rarity": 4,
+      "region": "Mondstadt",
+      "model": "Medium Male",
+      "release_date": "2025-06-18",
+      "release_version": "5.7"
     }
   },
   {
     "id": "dehya",
     "game_id": "genshin",
     "display_name": "Dehya",
-    "image_url": "https://genshin.jmp.blue/characters/dehya/card",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Dehya.png",
     "attributes": {
       "element": "Pyro",
       "weapon": "Claymore",
       "rarity": 5,
       "region": "Sumeru",
-      "release_date": "2023-03-01"
+      "model": "Tall Female",
+      "release_date": "2023-03-01",
+      "release_version": "3.5"
     }
   },
   {
     "id": "diluc",
     "game_id": "genshin",
     "display_name": "Diluc",
-    "image_url": "https://genshin.jmp.blue/characters/diluc/card",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Diluc.png",
     "attributes": {
       "element": "Pyro",
       "weapon": "Claymore",
       "rarity": 5,
       "region": "Mondstadt",
-      "release_date": "2020-09-28"
+      "model": "Tall Male",
+      "release_date": "2020-09-28",
+      "release_version": "1.0"
     }
   },
   {
     "id": "diona",
     "game_id": "genshin",
     "display_name": "Diona",
-    "image_url": "https://genshin.jmp.blue/characters/diona/card",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Diona.png",
     "attributes": {
       "element": "Cryo",
       "weapon": "Bow",
       "rarity": 4,
       "region": "Mondstadt",
-      "release_date": "2020-11-11"
+      "model": "Short Female",
+      "release_date": "2020-11-11",
+      "release_version": "1.1"
     }
   },
   {
     "id": "dori",
     "game_id": "genshin",
     "display_name": "Dori",
-    "image_url": "https://genshin.jmp.blue/characters/dori/card",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Dori.png",
     "attributes": {
       "element": "Electro",
       "weapon": "Claymore",
       "rarity": 4,
       "region": "Sumeru",
-      "release_date": "2022-09-09"
+      "model": "Short Female",
+      "release_date": "2022-09-09",
+      "release_version": "3.0"
+    }
+  },
+  {
+    "id": "durin",
+    "game_id": "genshin",
+    "display_name": "Durin",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Durin.png",
+    "attributes": {
+      "element": "Pyro",
+      "weapon": "Sword",
+      "rarity": 5,
+      "region": "Mondstadt",
+      "model": "Medium Male",
+      "release_date": "2025-12-03",
+      "release_version": "Luna III"
     }
   },
   {
     "id": "emilie",
     "game_id": "genshin",
     "display_name": "Emilie",
-    "image_url": "https://genshin.jmp.blue/characters/emilie/card",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Emilie.png",
     "attributes": {
       "element": "Dendro",
       "weapon": "Polearm",
       "rarity": 5,
       "region": "Fontaine",
-      "release_date": "2022-08-06"
+      "model": "Medium Female",
+      "release_date": "2024-08-06",
+      "release_version": "4.8"
+    }
+  },
+  {
+    "id": "escoffier",
+    "game_id": "genshin",
+    "display_name": "Escoffier",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Escoffier.png",
+    "attributes": {
+      "element": "Cryo",
+      "weapon": "Polearm",
+      "rarity": 5,
+      "region": "Fontaine",
+      "model": "Medium Female",
+      "release_date": "2025-05-07",
+      "release_version": "5.6"
     }
   },
   {
     "id": "eula",
     "game_id": "genshin",
     "display_name": "Eula",
-    "image_url": "https://genshin.jmp.blue/characters/eula/card",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Eula.png",
     "attributes": {
       "element": "Cryo",
       "weapon": "Claymore",
       "rarity": 5,
       "region": "Mondstadt",
-      "release_date": "2021-05-18"
+      "model": "Tall Female",
+      "release_date": "2021-05-18",
+      "release_version": "1.5"
     }
   },
   {
     "id": "faruzan",
     "game_id": "genshin",
     "display_name": "Faruzan",
-    "image_url": "https://genshin.jmp.blue/characters/faruzan/card",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Faruzan.png",
     "attributes": {
       "element": "Anemo",
       "weapon": "Bow",
       "rarity": 4,
       "region": "Sumeru",
-      "release_date": "2022-12-07"
+      "model": "Medium Female",
+      "release_date": "2022-12-07",
+      "release_version": "3.3"
     }
   },
   {
     "id": "fischl",
     "game_id": "genshin",
     "display_name": "Fischl",
-    "image_url": "https://genshin.jmp.blue/characters/fischl/card",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Fischl.png",
     "attributes": {
       "element": "Electro",
       "weapon": "Bow",
       "rarity": 4,
       "region": "Mondstadt",
-      "release_date": "2020-09-28"
+      "model": "Medium Female",
+      "release_date": "2020-09-28",
+      "release_version": "1.0"
+    }
+  },
+  {
+    "id": "flins",
+    "game_id": "genshin",
+    "display_name": "Flins",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Flins.png",
+    "attributes": {
+      "element": "Electro",
+      "weapon": "Polearm",
+      "rarity": 5,
+      "region": "Nod-Krai",
+      "model": "Tall Male",
+      "release_date": "2025-09-30",
+      "release_version": "Luna I"
     }
   },
   {
     "id": "freminet",
     "game_id": "genshin",
     "display_name": "Freminet",
-    "image_url": "https://genshin.jmp.blue/characters/freminet/card",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Freminet.png",
     "attributes": {
       "element": "Cryo",
       "weapon": "Claymore",
       "rarity": 4,
       "region": "Fontaine",
-      "release_date": "2023-09-06"
+      "model": "Medium Male",
+      "release_date": "2023-09-05",
+      "release_version": "4.0"
     }
   },
   {
     "id": "furina",
     "game_id": "genshin",
     "display_name": "Furina",
-    "image_url": "https://genshin.jmp.blue/characters/furina/card",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Furina.png",
     "attributes": {
       "element": "Hydro",
       "weapon": "Sword",
       "rarity": 5,
       "region": "Fontaine",
-      "release_date": "2023-11-08"
+      "model": "Medium Female",
+      "release_date": "2023-11-08",
+      "release_version": "4.2"
     }
   },
   {
     "id": "gaming",
     "game_id": "genshin",
     "display_name": "Gaming",
-    "image_url": "https://genshin.jmp.blue/characters/gaming/card",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Gaming.png",
     "attributes": {
       "element": "Pyro",
       "weapon": "Claymore",
       "rarity": 4,
       "region": "Liyue",
-      "release_date": "2024-01-31"
+      "model": "Medium Male",
+      "release_date": "2024-01-31",
+      "release_version": "4.4"
     }
   },
   {
     "id": "ganyu",
     "game_id": "genshin",
     "display_name": "Ganyu",
-    "image_url": "https://genshin.jmp.blue/characters/ganyu/card",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Ganyu.png",
     "attributes": {
       "element": "Cryo",
       "weapon": "Bow",
       "rarity": 5,
       "region": "Liyue",
-      "release_date": "2021-01-12"
+      "model": "Medium Female",
+      "release_date": "2021-01-12",
+      "release_version": "1.2"
     }
   },
   {
     "id": "gorou",
     "game_id": "genshin",
     "display_name": "Gorou",
-    "image_url": "https://genshin.jmp.blue/characters/gorou/card",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Gorou.png",
     "attributes": {
       "element": "Geo",
       "weapon": "Bow",
       "rarity": 4,
       "region": "Inazuma",
-      "release_date": "2021-12-14"
+      "model": "Medium Male",
+      "release_date": "2021-12-14",
+      "release_version": "2.3"
     }
   },
   {
     "id": "hu-tao",
     "game_id": "genshin",
     "display_name": "Hu Tao",
-    "image_url": "https://genshin.jmp.blue/characters/hu-tao/card",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Hutao.png",
     "attributes": {
       "element": "Pyro",
       "weapon": "Polearm",
       "rarity": 5,
       "region": "Liyue",
-      "release_date": "2021-03-02"
+      "model": "Medium Female",
+      "release_date": "2021-03-02",
+      "release_version": "1.3"
+    }
+  },
+  {
+    "id": "iansan",
+    "game_id": "genshin",
+    "display_name": "Iansan",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Iansan.png",
+    "attributes": {
+      "element": "Electro",
+      "weapon": "Polearm",
+      "rarity": 4,
+      "region": "Natlan",
+      "model": "Short Female",
+      "release_date": "2025-03-26",
+      "release_version": "5.5"
+    }
+  },
+  {
+    "id": "ifa",
+    "game_id": "genshin",
+    "display_name": "Ifa",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Ifa.png",
+    "attributes": {
+      "element": "Anemo",
+      "weapon": "Catalyst",
+      "rarity": 4,
+      "region": "Natlan",
+      "model": "Tall Male",
+      "release_date": "2025-05-07",
+      "release_version": "5.6"
+    }
+  },
+  {
+    "id": "illuga",
+    "game_id": "genshin",
+    "display_name": "Illuga",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Illuga.png",
+    "attributes": {
+      "element": "Geo",
+      "weapon": "Polearm",
+      "rarity": 4,
+      "region": "Nod-Krai",
+      "model": "Medium Male",
+      "release_date": "2026-02-03",
+      "release_version": "Luna IV"
+    }
+  },
+  {
+    "id": "ineffa",
+    "game_id": "genshin",
+    "display_name": "Ineffa",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Ineffa.png",
+    "attributes": {
+      "element": "Electro",
+      "weapon": "Polearm",
+      "rarity": 5,
+      "region": "Nod-Krai",
+      "model": "Medium Female",
+      "release_date": "2025-07-30",
+      "release_version": "5.8"
+    }
+  },
+  {
+    "id": "jahoda",
+    "game_id": "genshin",
+    "display_name": "Jahoda",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Jahoda.png",
+    "attributes": {
+      "element": "Anemo",
+      "weapon": "Bow",
+      "rarity": 4,
+      "region": "Nod-Krai",
+      "model": "Medium Female",
+      "release_date": "2025-12-03",
+      "release_version": "Luna III"
     }
   },
   {
     "id": "jean",
     "game_id": "genshin",
     "display_name": "Jean",
-    "image_url": "https://genshin.jmp.blue/characters/jean/card",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Qin.png",
     "attributes": {
       "element": "Anemo",
       "weapon": "Sword",
       "rarity": 5,
       "region": "Mondstadt",
-      "release_date": "2020-09-28"
+      "model": "Tall Female",
+      "release_date": "2020-09-28",
+      "release_version": "1.0"
     }
   },
   {
     "id": "kachina",
     "game_id": "genshin",
     "display_name": "Kachina",
-    "image_url": "https://genshin.jmp.blue/characters/kachina/card",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Kachina.png",
     "attributes": {
       "element": "Geo",
       "weapon": "Polearm",
       "rarity": 4,
       "region": "Natlan",
-      "release_date": "2024-08-28"
+      "model": "Short Female",
+      "release_date": "2024-08-28",
+      "release_version": "5.0"
+    }
+  },
+  {
+    "id": "kaedehara-kazuha",
+    "game_id": "genshin",
+    "display_name": "Kaedehara Kazuha",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Kazuha.png",
+    "attributes": {
+      "element": "Anemo",
+      "weapon": "Sword",
+      "rarity": 5,
+      "region": "Inazuma",
+      "model": "Medium Male",
+      "release_date": "2021-06-29",
+      "release_version": "1.6"
     }
   },
   {
     "id": "kaeya",
     "game_id": "genshin",
     "display_name": "Kaeya",
-    "image_url": "https://genshin.jmp.blue/characters/kaeya/card",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Kaeya.png",
     "attributes": {
       "element": "Cryo",
       "weapon": "Sword",
       "rarity": 4,
       "region": "Mondstadt",
-      "release_date": "2020-09-28"
+      "model": "Tall Male",
+      "release_date": "2020-09-28",
+      "release_version": "1.0"
+    }
+  },
+  {
+    "id": "kamisato-ayaka",
+    "game_id": "genshin",
+    "display_name": "Kamisato Ayaka",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Ayaka.png",
+    "attributes": {
+      "element": "Cryo",
+      "weapon": "Sword",
+      "rarity": 5,
+      "region": "Inazuma",
+      "model": "Medium Female",
+      "release_date": "2021-07-21",
+      "release_version": "2.0"
+    }
+  },
+  {
+    "id": "kamisato-ayato",
+    "game_id": "genshin",
+    "display_name": "Kamisato Ayato",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Ayato.png",
+    "attributes": {
+      "element": "Hydro",
+      "weapon": "Sword",
+      "rarity": 5,
+      "region": "Inazuma",
+      "model": "Tall Male",
+      "release_date": "2022-03-30",
+      "release_version": "2.6"
     }
   },
   {
     "id": "kaveh",
     "game_id": "genshin",
     "display_name": "Kaveh",
-    "image_url": "https://genshin.jmp.blue/characters/kaveh/card",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Kaveh.png",
     "attributes": {
       "element": "Dendro",
       "weapon": "Claymore",
       "rarity": 4,
       "region": "Sumeru",
-      "release_date": "2023-05-02"
-    }
-  },
-  {
-    "id": "kazuha",
-    "game_id": "genshin",
-    "display_name": "Kaedehara Kazuha",
-    "image_url": "https://genshin.jmp.blue/characters/kazuha/card",
-    "attributes": {
-      "element": "Anemo",
-      "weapon": "Sword",
-      "rarity": 5,
-      "region": "Inazuma",
-      "release_date": "2021-06-29"
+      "model": "Tall Male",
+      "release_date": "2023-05-02",
+      "release_version": "3.6"
     }
   },
   {
     "id": "keqing",
     "game_id": "genshin",
     "display_name": "Keqing",
-    "image_url": "https://genshin.jmp.blue/characters/keqing/card",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Keqing.png",
     "attributes": {
       "element": "Electro",
       "weapon": "Sword",
       "rarity": 5,
       "region": "Liyue",
-      "release_date": "2020-09-28"
+      "model": "Medium Female",
+      "release_date": "2020-09-28",
+      "release_version": "1.0"
     }
   },
   {
     "id": "kinich",
     "game_id": "genshin",
     "display_name": "Kinich",
-    "image_url": "https://genshin.jmp.blue/characters/kinich/card",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Kinich.png",
     "attributes": {
       "element": "Dendro",
       "weapon": "Claymore",
       "rarity": 5,
       "region": "Natlan",
-      "release_date": "2024-09-18"
+      "model": "Medium Male",
+      "release_date": "2024-09-17",
+      "release_version": "5.0"
     }
   },
   {
     "id": "kirara",
     "game_id": "genshin",
     "display_name": "Kirara",
-    "image_url": "https://genshin.jmp.blue/characters/kirara/card",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Momoka.png",
     "attributes": {
       "element": "Dendro",
       "weapon": "Sword",
       "rarity": 4,
       "region": "Inazuma",
-      "release_date": "2023-05-24"
+      "model": "Medium Female",
+      "release_date": "2023-05-24",
+      "release_version": "3.7"
     }
   },
   {
     "id": "klee",
     "game_id": "genshin",
     "display_name": "Klee",
-    "image_url": "https://genshin.jmp.blue/characters/klee/card",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Klee.png",
     "attributes": {
       "element": "Pyro",
       "weapon": "Catalyst",
       "rarity": 5,
       "region": "Mondstadt",
-      "release_date": "2020-10-20"
+      "model": "Short Female",
+      "release_date": "2020-10-20",
+      "release_version": "1.0"
     }
   },
   {
-    "id": "kokomi",
+    "id": "kujou-sara",
     "game_id": "genshin",
-    "display_name": "Sangonomiya Kokomi",
-    "image_url": "https://genshin.jmp.blue/characters/kokomi/card",
+    "display_name": "Kujou Sara",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Sara.png",
     "attributes": {
-      "element": "Hydro",
-      "weapon": "Catalyst",
-      "rarity": 5,
+      "element": "Electro",
+      "weapon": "Bow",
+      "rarity": 4,
       "region": "Inazuma",
-      "release_date": "2021-09-21"
+      "model": "Tall Female",
+      "release_date": "2021-09-01",
+      "release_version": "2.1"
     }
   },
   {
     "id": "kuki-shinobu",
     "game_id": "genshin",
     "display_name": "Kuki Shinobu",
-    "image_url": "https://genshin.jmp.blue/characters/kuki-shinobu/card",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Shinobu.png",
     "attributes": {
       "element": "Electro",
       "weapon": "Sword",
       "rarity": 4,
       "region": "Inazuma",
-      "release_date": "2022-06-21"
+      "model": "Medium Female",
+      "release_date": "2022-06-21",
+      "release_version": "2.7"
+    }
+  },
+  {
+    "id": "lan-yan",
+    "game_id": "genshin",
+    "display_name": "Lan Yan",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Lanyan.png",
+    "attributes": {
+      "element": "Anemo",
+      "weapon": "Catalyst",
+      "rarity": 4,
+      "region": "Liyue",
+      "model": "Medium Female",
+      "release_date": "2025-01-21",
+      "release_version": "5.3"
+    }
+  },
+  {
+    "id": "lauma",
+    "game_id": "genshin",
+    "display_name": "Lauma",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Lauma.png",
+    "attributes": {
+      "element": "Dendro",
+      "weapon": "Catalyst",
+      "rarity": 5,
+      "region": "Nod-Krai",
+      "model": "Tall Female",
+      "release_date": "2025-09-10",
+      "release_version": "Luna I"
     }
   },
   {
     "id": "layla",
     "game_id": "genshin",
     "display_name": "Layla",
-    "image_url": "https://genshin.jmp.blue/characters/layla/card",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Layla.png",
     "attributes": {
       "element": "Cryo",
       "weapon": "Sword",
       "rarity": 4,
       "region": "Sumeru",
-      "release_date": "2022-11-02"
+      "model": "Medium Female",
+      "release_date": "2022-11-18",
+      "release_version": "3.2"
+    }
+  },
+  {
+    "id": "linnea",
+    "game_id": "genshin",
+    "display_name": "Linnea",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Linnea.png",
+    "attributes": {
+      "element": "Geo",
+      "weapon": "Bow",
+      "rarity": 5,
+      "region": "Nod-Krai",
+      "model": "Medium Female",
+      "release_date": "2026-04-08",
+      "release_version": "Luna VI"
     }
   },
   {
     "id": "lisa",
     "game_id": "genshin",
     "display_name": "Lisa",
-    "image_url": "https://genshin.jmp.blue/characters/lisa/card",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Lisa.png",
     "attributes": {
       "element": "Electro",
       "weapon": "Catalyst",
       "rarity": 4,
       "region": "Mondstadt",
-      "release_date": "2020-09-28"
+      "model": "Tall Female",
+      "release_date": "2020-09-28",
+      "release_version": "1.0"
+    }
+  },
+  {
+    "id": "lohen",
+    "game_id": "genshin",
+    "display_name": "Lohen",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Lohen.png",
+    "attributes": {
+      "element": "Cryo",
+      "weapon": "Polearm",
+      "rarity": 5,
+      "region": "Mondstadt",
+      "model": "Medium Male",
+      "release_date": "2026-06-09",
+      "release_version": "Luna VII"
     }
   },
   {
     "id": "lynette",
     "game_id": "genshin",
     "display_name": "Lynette",
-    "image_url": "https://genshin.jmp.blue/characters/lynette/card",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Linette.png",
     "attributes": {
       "element": "Anemo",
       "weapon": "Sword",
       "rarity": 4,
       "region": "Fontaine",
-      "release_date": "2023-08-16"
+      "model": "Medium Female",
+      "release_date": "2023-08-16",
+      "release_version": "4.0"
     }
   },
   {
     "id": "lyney",
     "game_id": "genshin",
     "display_name": "Lyney",
-    "image_url": "https://genshin.jmp.blue/characters/lyney/card",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Liney.png",
     "attributes": {
       "element": "Pyro",
       "weapon": "Bow",
       "rarity": 5,
       "region": "Fontaine",
-      "release_date": "2023-08-16"
+      "model": "Medium Male",
+      "release_date": "2023-08-16",
+      "release_version": "4.0"
+    }
+  },
+  {
+    "id": "mavuika",
+    "game_id": "genshin",
+    "display_name": "Mavuika",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Mavuika.png",
+    "attributes": {
+      "element": "Pyro",
+      "weapon": "Claymore",
+      "rarity": 5,
+      "region": "Natlan",
+      "model": "Tall Female",
+      "release_date": "2025-01-01",
+      "release_version": "5.3"
     }
   },
   {
     "id": "mika",
     "game_id": "genshin",
     "display_name": "Mika",
-    "image_url": "https://genshin.jmp.blue/characters/mika/card",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Mika.png",
     "attributes": {
       "element": "Cryo",
       "weapon": "Polearm",
       "rarity": 4,
       "region": "Mondstadt",
-      "release_date": "2023-03-21"
+      "model": "Medium Male",
+      "release_date": "2023-03-21",
+      "release_version": "3.5"
     }
   },
   {
     "id": "mona",
     "game_id": "genshin",
     "display_name": "Mona",
-    "image_url": "https://genshin.jmp.blue/characters/mona/card",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Mona.png",
     "attributes": {
       "element": "Hydro",
       "weapon": "Catalyst",
       "rarity": 5,
       "region": "Mondstadt",
-      "release_date": "2020-09-28"
+      "model": "Medium Female",
+      "release_date": "2020-09-28",
+      "release_version": "1.0"
     }
   },
   {
     "id": "mualani",
     "game_id": "genshin",
     "display_name": "Mualani",
-    "image_url": "https://genshin.jmp.blue/characters/mualani/card",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Mualani.png",
     "attributes": {
       "element": "Hydro",
       "weapon": "Catalyst",
       "rarity": 5,
       "region": "Natlan",
-      "release_date": "2024-08-28"
+      "model": "Medium Female",
+      "release_date": "2024-08-28",
+      "release_version": "5.0"
     }
   },
   {
     "id": "nahida",
     "game_id": "genshin",
     "display_name": "Nahida",
-    "image_url": "https://genshin.jmp.blue/characters/nahida/card",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Nahida.png",
     "attributes": {
       "element": "Dendro",
       "weapon": "Catalyst",
       "rarity": 5,
       "region": "Sumeru",
-      "release_date": "2022-11-02"
+      "model": "Short Female",
+      "release_date": "2022-11-02",
+      "release_version": "3.2"
     }
   },
   {
     "id": "navia",
     "game_id": "genshin",
     "display_name": "Navia",
-    "image_url": "https://genshin.jmp.blue/characters/navia/card",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Navia.png",
     "attributes": {
       "element": "Geo",
       "weapon": "Claymore",
       "rarity": 5,
       "region": "Fontaine",
-      "release_date": "2023-12-20"
+      "model": "Tall Female",
+      "release_date": "2023-12-20",
+      "release_version": "4.3"
+    }
+  },
+  {
+    "id": "nefer",
+    "game_id": "genshin",
+    "display_name": "Nefer",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Nefer.png",
+    "attributes": {
+      "element": "Dendro",
+      "weapon": "Catalyst",
+      "rarity": 5,
+      "region": "Nod-Krai",
+      "model": "Tall Female",
+      "release_date": "2025-10-22",
+      "release_version": "Luna II"
     }
   },
   {
     "id": "neuvillette",
     "game_id": "genshin",
     "display_name": "Neuvillette",
-    "image_url": "https://genshin.jmp.blue/characters/neuvillette/card",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Neuvillette.png",
     "attributes": {
       "element": "Hydro",
       "weapon": "Catalyst",
       "rarity": 5,
       "region": "Fontaine",
-      "release_date": "2023-09-27"
+      "model": "Tall Male",
+      "release_date": "2023-09-27",
+      "release_version": "4.1"
+    }
+  },
+  {
+    "id": "nicole",
+    "game_id": "genshin",
+    "display_name": "Nicole",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Nicole.png",
+    "attributes": {
+      "element": "Pyro",
+      "weapon": "Catalyst",
+      "rarity": 5,
+      "region": "",
+      "model": "Tall Female",
+      "release_date": "2026-05-20",
+      "release_version": "Luna VII"
     }
   },
   {
     "id": "nilou",
     "game_id": "genshin",
     "display_name": "Nilou",
-    "image_url": "https://genshin.jmp.blue/characters/nilou/card",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Nilou.png",
     "attributes": {
       "element": "Hydro",
       "weapon": "Sword",
       "rarity": 5,
       "region": "Sumeru",
-      "release_date": "2022-10-14"
+      "model": "Medium Female",
+      "release_date": "2022-10-14",
+      "release_version": "3.1"
     }
   },
   {
     "id": "ningguang",
     "game_id": "genshin",
     "display_name": "Ningguang",
-    "image_url": "https://genshin.jmp.blue/characters/ningguang/card",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Ningguang.png",
     "attributes": {
       "element": "Geo",
       "weapon": "Catalyst",
       "rarity": 4,
       "region": "Liyue",
-      "release_date": "2020-09-28"
+      "model": "Tall Female",
+      "release_date": "2020-09-28",
+      "release_version": "1.0"
     }
   },
   {
     "id": "noelle",
     "game_id": "genshin",
     "display_name": "Noelle",
-    "image_url": "https://genshin.jmp.blue/characters/noelle/card",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Noel.png",
     "attributes": {
       "element": "Geo",
       "weapon": "Claymore",
       "rarity": 4,
       "region": "Mondstadt",
-      "release_date": "2020-09-28"
+      "model": "Medium Female",
+      "release_date": "2020-09-28",
+      "release_version": "1.0"
+    }
+  },
+  {
+    "id": "odette",
+    "game_id": "genshin",
+    "display_name": "Odette",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Odette.png",
+    "attributes": {
+      "element": "Cryo",
+      "weapon": "Sword",
+      "rarity": 5,
+      "region": "Snezhnaya",
+      "model": "Medium Female",
+      "release_date": "2026-08-12",
+      "release_version": "7.0"
+    }
+  },
+  {
+    "id": "ororon",
+    "game_id": "genshin",
+    "display_name": "Ororon",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Olorun.png",
+    "attributes": {
+      "element": "Electro",
+      "weapon": "Bow",
+      "rarity": 4,
+      "region": "Natlan",
+      "model": "Tall Male",
+      "release_date": "2024-11-20",
+      "release_version": "5.2"
+    }
+  },
+  {
+    "id": "prune",
+    "game_id": "genshin",
+    "display_name": "Prune",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Prune.png",
+    "attributes": {
+      "element": "Anemo",
+      "weapon": "Catalyst",
+      "rarity": 4,
+      "region": "Mondstadt",
+      "model": "Short Female",
+      "release_date": "2026-05-20",
+      "release_version": "Luna VII"
     }
   },
   {
     "id": "qiqi",
     "game_id": "genshin",
     "display_name": "Qiqi",
-    "image_url": "https://genshin.jmp.blue/characters/qiqi/card",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Qiqi.png",
     "attributes": {
       "element": "Cryo",
       "weapon": "Sword",
       "rarity": 5,
       "region": "Liyue",
-      "release_date": "2020-09-28"
+      "model": "Short Female",
+      "release_date": "2020-09-28",
+      "release_version": "1.0"
     }
   },
   {
-    "id": "raiden",
+    "id": "raiden-shogun",
     "game_id": "genshin",
     "display_name": "Raiden Shogun",
-    "image_url": "https://genshin.jmp.blue/characters/raiden/card",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Shougun.png",
     "attributes": {
       "element": "Electro",
       "weapon": "Polearm",
       "rarity": 5,
       "region": "Inazuma",
-      "release_date": "2021-09-01"
+      "model": "Tall Female",
+      "release_date": "2021-09-01",
+      "release_version": "2.1"
     }
   },
   {
     "id": "razor",
     "game_id": "genshin",
     "display_name": "Razor",
-    "image_url": "https://genshin.jmp.blue/characters/razor/card",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Razor.png",
     "attributes": {
       "element": "Electro",
       "weapon": "Claymore",
       "rarity": 4,
       "region": "Mondstadt",
-      "release_date": "2020-09-28"
+      "model": "Medium Male",
+      "release_date": "2020-09-28",
+      "release_version": "1.0"
     }
   },
   {
     "id": "rosaria",
     "game_id": "genshin",
     "display_name": "Rosaria",
-    "image_url": "https://genshin.jmp.blue/characters/rosaria/card",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Rosaria.png",
     "attributes": {
       "element": "Cryo",
       "weapon": "Polearm",
       "rarity": 4,
       "region": "Mondstadt",
-      "release_date": "2021-04-06"
+      "model": "Tall Female",
+      "release_date": "2021-04-06",
+      "release_version": "1.4"
     }
   },
   {
-    "id": "sara",
+    "id": "sandrone",
     "game_id": "genshin",
-    "display_name": "Kujou Sara",
-    "image_url": "https://genshin.jmp.blue/characters/sara/card",
+    "display_name": "Sandrone",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_MarionetteNew.png",
     "attributes": {
-      "element": "Electro",
-      "weapon": "Bow",
-      "rarity": 4,
+      "element": "Cryo",
+      "weapon": "Claymore",
+      "rarity": 5,
+      "region": "Snezhnaya",
+      "model": "Medium Female",
+      "release_date": "2026-07-01",
+      "release_version": "Luna VIII"
+    }
+  },
+  {
+    "id": "sangonomiya-kokomi",
+    "game_id": "genshin",
+    "display_name": "Sangonomiya Kokomi",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Kokomi.png",
+    "attributes": {
+      "element": "Hydro",
+      "weapon": "Catalyst",
+      "rarity": 5,
       "region": "Inazuma",
-      "release_date": "2021-09-01"
+      "model": "Medium Female",
+      "release_date": "2021-09-21",
+      "release_version": "2.1"
     }
   },
   {
     "id": "sayu",
     "game_id": "genshin",
     "display_name": "Sayu",
-    "image_url": "https://genshin.jmp.blue/characters/sayu/card",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Sayu.png",
     "attributes": {
       "element": "Anemo",
       "weapon": "Claymore",
       "rarity": 4,
       "region": "Inazuma",
-      "release_date": "2021-08-10"
+      "model": "Short Female",
+      "release_date": "2021-08-10",
+      "release_version": "2.0"
     }
   },
   {
     "id": "sethos",
     "game_id": "genshin",
     "display_name": "Sethos",
-    "image_url": "https://genshin.jmp.blue/characters/sethos/card",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Sethos.png",
     "attributes": {
       "element": "Electro",
       "weapon": "Bow",
       "rarity": 4,
       "region": "Sumeru",
-      "release_date": "2024-06-05"
+      "model": "Medium Male",
+      "release_date": "2024-06-05",
+      "release_version": "4.7"
     }
   },
   {
     "id": "shenhe",
     "game_id": "genshin",
     "display_name": "Shenhe",
-    "image_url": "https://genshin.jmp.blue/characters/shenhe/card",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Shenhe.png",
     "attributes": {
       "element": "Cryo",
       "weapon": "Polearm",
       "rarity": 5,
       "region": "Liyue",
-      "release_date": "2022-01-05"
+      "model": "Tall Female",
+      "release_date": "2022-01-05",
+      "release_version": "2.4"
     }
   },
   {
     "id": "shikanoin-heizou",
     "game_id": "genshin",
     "display_name": "Shikanoin Heizou",
-    "image_url": "https://genshin.jmp.blue/characters/shikanoin-heizou/card",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Heizo.png",
     "attributes": {
       "element": "Anemo",
       "weapon": "Catalyst",
       "rarity": 4,
       "region": "Inazuma",
-      "release_date": "2022-07-13"
+      "model": "Medium Male",
+      "release_date": "2022-07-13",
+      "release_version": "2.8"
     }
   },
   {
     "id": "sigewinne",
     "game_id": "genshin",
     "display_name": "Sigewinne",
-    "image_url": "https://genshin.jmp.blue/characters/sigewinne/card",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Sigewinne.png",
     "attributes": {
       "element": "Hydro",
       "weapon": "Bow",
       "rarity": 5,
       "region": "Fontaine",
-      "release_date": "2024-06-25"
+      "model": "Short Female",
+      "release_date": "2024-06-25",
+      "release_version": "4.7"
+    }
+  },
+  {
+    "id": "skirk",
+    "game_id": "genshin",
+    "display_name": "Skirk",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_SkirkNew.png",
+    "attributes": {
+      "element": "Cryo",
+      "weapon": "Sword",
+      "rarity": 5,
+      "region": "",
+      "model": "Medium Female",
+      "release_date": "2025-06-18",
+      "release_version": "5.7"
     }
   },
   {
     "id": "sucrose",
     "game_id": "genshin",
     "display_name": "Sucrose",
-    "image_url": "https://genshin.jmp.blue/characters/sucrose/card",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Sucrose.png",
     "attributes": {
       "element": "Anemo",
       "weapon": "Catalyst",
       "rarity": 4,
       "region": "Mondstadt",
-      "release_date": "2020-09-28"
+      "model": "Medium Female",
+      "release_date": "2020-09-28",
+      "release_version": "1.0"
     }
   },
   {
     "id": "tartaglia",
     "game_id": "genshin",
     "display_name": "Tartaglia",
-    "image_url": "https://genshin.jmp.blue/characters/tartaglia/card",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Tartaglia.png",
     "attributes": {
       "element": "Hydro",
       "weapon": "Bow",
       "rarity": 5,
       "region": "Snezhnaya",
-      "release_date": "2020-11-11"
+      "model": "Tall Male",
+      "release_date": "2020-11-11",
+      "release_version": "1.1"
     }
   },
   {
     "id": "thoma",
     "game_id": "genshin",
     "display_name": "Thoma",
-    "image_url": "https://genshin.jmp.blue/characters/thoma/card",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Tohma.png",
     "attributes": {
       "element": "Pyro",
       "weapon": "Polearm",
       "rarity": 4,
-      "region": "Mondstadt",
-      "release_date": "2021-11-02"
+      "region": "Inazuma",
+      "model": "Tall Male",
+      "release_date": "2021-11-02",
+      "release_version": "2.2"
     }
   },
   {
     "id": "tighnari",
     "game_id": "genshin",
     "display_name": "Tighnari",
-    "image_url": "https://genshin.jmp.blue/characters/tighnari/card",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Tighnari.png",
     "attributes": {
       "element": "Dendro",
       "weapon": "Bow",
       "rarity": 5,
       "region": "Sumeru",
-      "release_date": "2022-08-24"
+      "model": "Medium Male",
+      "release_date": "2022-08-24",
+      "release_version": "3.0"
     }
   },
   {
-    "id": "traveler-anemo",
+    "id": "traveler-aether-anemo",
     "game_id": "genshin",
-    "display_name": "Traveler (Anemo)",
-    "image_url": "https://genshin.jmp.blue/characters/traveler-anemo/card",
+    "display_name": "Traveler – Aether (Anemo) ",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_PlayerBoy.png",
     "attributes": {
       "element": "Anemo",
       "weapon": "Sword",
       "rarity": 5,
-      "region": "Outlander",
-      "release_date": "2020-09-28"
+      "region": "",
+      "model": "Medium Male",
+      "release_date": "2020-09-28",
+      "release_version": "1.0"
     }
   },
   {
-    "id": "traveler-dendro",
+    "id": "traveler-aether-geo",
     "game_id": "genshin",
-    "display_name": "Traveler (Dendro)",
-    "image_url": "https://genshin.jmp.blue/characters/traveler-dendro/card",
-    "attributes": {
-      "element": "Dendro",
-      "weapon": "Sword",
-      "rarity": 5,
-      "region": "Outlander",
-      "release_date": "2022-08-24"
-    }
-  },
-  {
-    "id": "traveler-electro",
-    "game_id": "genshin",
-    "display_name": "Traveler (Electro)",
-    "image_url": "https://genshin.jmp.blue/characters/traveler-electro/card",
-    "attributes": {
-      "element": "Electro",
-      "weapon": "Sword",
-      "rarity": 5,
-      "region": "Outlander",
-      "release_date": "2021-07-21"
-    }
-  },
-  {
-    "id": "traveler-geo",
-    "game_id": "genshin",
-    "display_name": "Traveler (Geo)",
-    "image_url": "https://genshin.jmp.blue/characters/traveler-geo/card",
+    "display_name": "Traveler – Aether (Geo) ",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_PlayerBoy.png",
     "attributes": {
       "element": "Geo",
       "weapon": "Sword",
       "rarity": 5,
-      "region": "Outlander",
-      "release_date": "2020-09-28"
+      "region": "",
+      "model": "Medium Male",
+      "release_date": "2020-09-28",
+      "release_version": "1.0"
     }
   },
   {
-    "id": "traveler-hydro",
+    "id": "traveler-aether-electro",
     "game_id": "genshin",
-    "display_name": "Traveler (Hydro)",
-    "image_url": "https://genshin.jmp.blue/characters/traveler-hydro/card",
+    "display_name": "Traveler – Aether (Electro) ",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_PlayerBoy.png",
+    "attributes": {
+      "element": "Electro",
+      "weapon": "Sword",
+      "rarity": 5,
+      "region": "",
+      "model": "Medium Male",
+      "release_date": "2020-09-28",
+      "release_version": "1.0"
+    }
+  },
+  {
+    "id": "traveler-aether-dendro",
+    "game_id": "genshin",
+    "display_name": "Traveler – Aether (Dendro) ",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_PlayerBoy.png",
+    "attributes": {
+      "element": "Dendro",
+      "weapon": "Sword",
+      "rarity": 5,
+      "region": "",
+      "model": "Medium Male",
+      "release_date": "2020-09-28",
+      "release_version": "1.0"
+    }
+  },
+  {
+    "id": "traveler-aether-hydro",
+    "game_id": "genshin",
+    "display_name": "Traveler – Aether (Hydro) ",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_PlayerBoy.png",
     "attributes": {
       "element": "Hydro",
       "weapon": "Sword",
       "rarity": 5,
-      "region": "Outlander",
-      "release_date": "2023-08-16"
+      "region": "",
+      "model": "Medium Male",
+      "release_date": "2020-09-28",
+      "release_version": "1.0"
+    }
+  },
+  {
+    "id": "traveler-aether-pyro",
+    "game_id": "genshin",
+    "display_name": "Traveler – Aether (Pyro) ",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_PlayerBoy.png",
+    "attributes": {
+      "element": "Pyro",
+      "weapon": "Sword",
+      "rarity": 5,
+      "region": "",
+      "model": "Medium Male",
+      "release_date": "2020-09-28",
+      "release_version": "1.0"
+    }
+  },
+  {
+    "id": "traveler-aether-cryo",
+    "game_id": "genshin",
+    "display_name": "Traveler – Aether (Cryo) ",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_PlayerBoy.png",
+    "attributes": {
+      "element": "Cryo",
+      "weapon": "Sword",
+      "rarity": 5,
+      "region": "",
+      "model": "Medium Male",
+      "release_date": "2020-09-28",
+      "release_version": "1.0"
+    }
+  },
+  {
+    "id": "traveler-lumine-anemo",
+    "game_id": "genshin",
+    "display_name": "Traveler – Lumine (Anemo) ",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_PlayerGirl.png",
+    "attributes": {
+      "element": "Anemo",
+      "weapon": "Sword",
+      "rarity": 5,
+      "region": "",
+      "model": "Medium Female",
+      "release_date": "2020-09-28",
+      "release_version": "1.0"
+    }
+  },
+  {
+    "id": "traveler-lumine-geo",
+    "game_id": "genshin",
+    "display_name": "Traveler – Lumine (Geo) ",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_PlayerGirl.png",
+    "attributes": {
+      "element": "Geo",
+      "weapon": "Sword",
+      "rarity": 5,
+      "region": "",
+      "model": "Medium Female",
+      "release_date": "2020-09-28",
+      "release_version": "1.0"
+    }
+  },
+  {
+    "id": "traveler-lumine-electro",
+    "game_id": "genshin",
+    "display_name": "Traveler – Lumine (Electro) ",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_PlayerGirl.png",
+    "attributes": {
+      "element": "Electro",
+      "weapon": "Sword",
+      "rarity": 5,
+      "region": "",
+      "model": "Medium Female",
+      "release_date": "2020-09-28",
+      "release_version": "1.0"
+    }
+  },
+  {
+    "id": "traveler-lumine-dendro",
+    "game_id": "genshin",
+    "display_name": "Traveler – Lumine (Dendro) ",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_PlayerGirl.png",
+    "attributes": {
+      "element": "Dendro",
+      "weapon": "Sword",
+      "rarity": 5,
+      "region": "",
+      "model": "Medium Female",
+      "release_date": "2020-09-28",
+      "release_version": "1.0"
+    }
+  },
+  {
+    "id": "traveler-lumine-hydro",
+    "game_id": "genshin",
+    "display_name": "Traveler – Lumine (Hydro) ",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_PlayerGirl.png",
+    "attributes": {
+      "element": "Hydro",
+      "weapon": "Sword",
+      "rarity": 5,
+      "region": "",
+      "model": "Medium Female",
+      "release_date": "2020-09-28",
+      "release_version": "1.0"
+    }
+  },
+  {
+    "id": "traveler-lumine-pyro",
+    "game_id": "genshin",
+    "display_name": "Traveler – Lumine (Pyro) ",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_PlayerGirl.png",
+    "attributes": {
+      "element": "Pyro",
+      "weapon": "Sword",
+      "rarity": 5,
+      "region": "",
+      "model": "Medium Female",
+      "release_date": "2020-09-28",
+      "release_version": "1.0"
+    }
+  },
+  {
+    "id": "traveler-lumine-cryo",
+    "game_id": "genshin",
+    "display_name": "Traveler – Lumine (Cryo) ",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_PlayerGirl.png",
+    "attributes": {
+      "element": "Cryo",
+      "weapon": "Sword",
+      "rarity": 5,
+      "region": "",
+      "model": "Medium Female",
+      "release_date": "2020-09-28",
+      "release_version": "1.0"
+    }
+  },
+  {
+    "id": "varesa",
+    "game_id": "genshin",
+    "display_name": "Varesa",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Varesa.png",
+    "attributes": {
+      "element": "Electro",
+      "weapon": "Catalyst",
+      "rarity": 5,
+      "region": "Natlan",
+      "model": "Medium Female",
+      "release_date": "2025-03-26",
+      "release_version": "5.5"
+    }
+  },
+  {
+    "id": "varka",
+    "game_id": "genshin",
+    "display_name": "Varka",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Varka.png",
+    "attributes": {
+      "element": "Anemo",
+      "weapon": "Claymore",
+      "rarity": 5,
+      "region": "Mondstadt",
+      "model": "Tall Male",
+      "release_date": "2026-02-25",
+      "release_version": "Luna V"
     }
   },
   {
     "id": "venti",
     "game_id": "genshin",
     "display_name": "Venti",
-    "image_url": "https://genshin.jmp.blue/characters/venti/card",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Venti.png",
     "attributes": {
       "element": "Anemo",
       "weapon": "Bow",
       "rarity": 5,
       "region": "Mondstadt",
-      "release_date": "2020-09-28"
+      "model": "Medium Male",
+      "release_date": "2020-09-28",
+      "release_version": "1.0"
     }
   },
   {
     "id": "wanderer",
     "game_id": "genshin",
     "display_name": "Wanderer",
-    "image_url": "https://genshin.jmp.blue/characters/wanderer/card",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Wanderer.png",
     "attributes": {
       "element": "Anemo",
       "weapon": "Catalyst",
       "rarity": 5,
       "region": "Sumeru",
-      "release_date": "2022-12-07"
+      "model": "Medium Male",
+      "release_date": "2022-12-07",
+      "release_version": "3.3"
     }
   },
   {
     "id": "wriothesley",
     "game_id": "genshin",
     "display_name": "Wriothesley",
-    "image_url": "https://genshin.jmp.blue/characters/wriothesley/card",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Wriothesley.png",
     "attributes": {
       "element": "Cryo",
       "weapon": "Catalyst",
       "rarity": 5,
       "region": "Fontaine",
-      "release_date": "2023-10-17"
+      "model": "Tall Male",
+      "release_date": "2023-10-17",
+      "release_version": "4.1"
     }
   },
   {
     "id": "xiangling",
     "game_id": "genshin",
     "display_name": "Xiangling",
-    "image_url": "https://genshin.jmp.blue/characters/xiangling/card",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Xiangling.png",
     "attributes": {
       "element": "Pyro",
       "weapon": "Polearm",
       "rarity": 4,
       "region": "Liyue",
-      "release_date": "2020-09-28"
+      "model": "Medium Female",
+      "release_date": "2020-09-28",
+      "release_version": "1.0"
     }
   },
   {
     "id": "xianyun",
     "game_id": "genshin",
     "display_name": "Xianyun",
-    "image_url": "https://genshin.jmp.blue/characters/xianyun/card",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Liuyun.png",
     "attributes": {
       "element": "Anemo",
       "weapon": "Catalyst",
       "rarity": 5,
       "region": "Liyue",
-      "release_date": "2024-01-31"
+      "model": "Tall Female",
+      "release_date": "2024-01-31",
+      "release_version": "4.4"
     }
   },
   {
     "id": "xiao",
     "game_id": "genshin",
     "display_name": "Xiao",
-    "image_url": "https://genshin.jmp.blue/characters/xiao/card",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Xiao.png",
     "attributes": {
       "element": "Anemo",
       "weapon": "Polearm",
       "rarity": 5,
       "region": "Liyue",
-      "release_date": "2021-02-03"
+      "model": "Medium Male",
+      "release_date": "2021-02-03",
+      "release_version": "1.3"
+    }
+  },
+  {
+    "id": "xilonen",
+    "game_id": "genshin",
+    "display_name": "Xilonen",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Xilonen.png",
+    "attributes": {
+      "element": "Geo",
+      "weapon": "Sword",
+      "rarity": 5,
+      "region": "Natlan",
+      "model": "Tall Female",
+      "release_date": "2024-10-09",
+      "release_version": "5.1"
     }
   },
   {
     "id": "xingqiu",
     "game_id": "genshin",
     "display_name": "Xingqiu",
-    "image_url": "https://genshin.jmp.blue/characters/xingqiu/card",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Xingqiu.png",
     "attributes": {
       "element": "Hydro",
       "weapon": "Sword",
       "rarity": 4,
       "region": "Liyue",
-      "release_date": "2020-09-28"
+      "model": "Medium Male",
+      "release_date": "2020-09-28",
+      "release_version": "1.0"
     }
   },
   {
     "id": "xinyan",
     "game_id": "genshin",
     "display_name": "Xinyan",
-    "image_url": "https://genshin.jmp.blue/characters/xinyan/card",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Xinyan.png",
     "attributes": {
       "element": "Pyro",
       "weapon": "Claymore",
       "rarity": 4,
       "region": "Liyue",
-      "release_date": "2020-12-01"
+      "model": "Medium Female",
+      "release_date": "2020-12-01",
+      "release_version": "1.1"
     }
   },
   {
     "id": "yae-miko",
     "game_id": "genshin",
     "display_name": "Yae Miko",
-    "image_url": "https://genshin.jmp.blue/characters/yae-miko/card",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Yae.png",
     "attributes": {
       "element": "Electro",
       "weapon": "Catalyst",
       "rarity": 5,
       "region": "Inazuma",
-      "release_date": "2022-02-16"
+      "model": "Tall Female",
+      "release_date": "2022-02-16",
+      "release_version": "2.5"
     }
   },
   {
     "id": "yanfei",
     "game_id": "genshin",
     "display_name": "Yanfei",
-    "image_url": "https://genshin.jmp.blue/characters/yanfei/card",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Feiyan.png",
     "attributes": {
       "element": "Pyro",
       "weapon": "Catalyst",
       "rarity": 4,
       "region": "Liyue",
-      "release_date": "2021-04-28"
+      "model": "Medium Female",
+      "release_date": "2021-04-28",
+      "release_version": "1.5"
     }
   },
   {
     "id": "yaoyao",
     "game_id": "genshin",
     "display_name": "Yaoyao",
-    "image_url": "https://genshin.jmp.blue/characters/yaoyao/card",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Yaoyao.png",
     "attributes": {
       "element": "Dendro",
       "weapon": "Polearm",
       "rarity": 4,
       "region": "Liyue",
-      "release_date": "2023-01-18"
+      "model": "Short Female",
+      "release_date": "2023-01-18",
+      "release_version": "3.4"
     }
   },
   {
     "id": "yelan",
     "game_id": "genshin",
     "display_name": "Yelan",
-    "image_url": "https://genshin.jmp.blue/characters/yelan/card",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Yelan.png",
     "attributes": {
       "element": "Hydro",
       "weapon": "Bow",
       "rarity": 5,
       "region": "Liyue",
-      "release_date": "2022-05-31"
+      "model": "Tall Female",
+      "release_date": "2022-05-31",
+      "release_version": "2.7"
     }
   },
   {
     "id": "yoimiya",
     "game_id": "genshin",
     "display_name": "Yoimiya",
-    "image_url": "https://genshin.jmp.blue/characters/yoimiya/card",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Yoimiya.png",
     "attributes": {
       "element": "Pyro",
       "weapon": "Bow",
       "rarity": 5,
       "region": "Inazuma",
-      "release_date": "2021-08-10"
+      "model": "Medium Female",
+      "release_date": "2021-08-10",
+      "release_version": "2.0"
+    }
+  },
+  {
+    "id": "yumemizuki-mizuki",
+    "game_id": "genshin",
+    "display_name": "Yumemizuki Mizuki",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Mizuki.png",
+    "attributes": {
+      "element": "Anemo",
+      "weapon": "Catalyst",
+      "rarity": 5,
+      "region": "Inazuma",
+      "model": "Medium Female",
+      "release_date": "2025-02-12",
+      "release_version": "5.4"
     }
   },
   {
     "id": "yun-jin",
     "game_id": "genshin",
     "display_name": "Yun Jin",
-    "image_url": "https://genshin.jmp.blue/characters/yun-jin/card",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Yunjin.png",
     "attributes": {
       "element": "Geo",
       "weapon": "Polearm",
       "rarity": 4,
       "region": "Liyue",
-      "release_date": "2022-01-05"
+      "model": "Medium Female",
+      "release_date": "2022-01-05",
+      "release_version": "2.4"
     }
   },
   {
     "id": "zhongli",
     "game_id": "genshin",
     "display_name": "Zhongli",
-    "image_url": "https://genshin.jmp.blue/characters/zhongli/card",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Zhongli.png",
     "attributes": {
       "element": "Geo",
       "weapon": "Polearm",
       "rarity": 5,
       "region": "Liyue",
-      "release_date": "2020-12-01"
+      "model": "Tall Male",
+      "release_date": "2020-12-01",
+      "release_version": "1.1"
+    }
+  },
+  {
+    "id": "zibai",
+    "game_id": "genshin",
+    "display_name": "Zibai",
+    "image_url": "https://enka.network/ui/UI_AvatarIcon_Zibai.png",
+    "attributes": {
+      "element": "Geo",
+      "weapon": "Sword",
+      "rarity": 5,
+      "region": "Liyue",
+      "model": "Tall Female",
+      "release_date": "2026-02-03",
+      "release_version": "Luna IV"
     }
   }
 ]

@@ -1,0 +1,1202 @@
+[
+  {
+    "name": "Aino",
+    "rarity": 4,
+    "element": "Hydro",
+    "weapon": "Claymore",
+    "region": "Nod-Krai",
+    "model": "Short Female",
+    "release_date": "2025-09-10",
+    "release_version": "Luna I"
+  },
+  {
+    "name": "Albedo",
+    "rarity": 5,
+    "element": "Geo",
+    "weapon": "Sword",
+    "region": "Mondstadt",
+    "model": "Medium Male",
+    "release_date": "2020-12-23",
+    "release_version": "1.2"
+  },
+  {
+    "name": "Alhaitham",
+    "rarity": 5,
+    "element": "Dendro",
+    "weapon": "Sword",
+    "region": "Sumeru",
+    "model": "Tall Male",
+    "release_date": "2023-01-18",
+    "release_version": "3.4"
+  },
+  {
+    "name": "Aloy",
+    "rarity": 5,
+    "element": "Cryo",
+    "weapon": "Bow",
+    "region": null,
+    "model": "Medium Female",
+    "release_date": "2021-09-01",
+    "release_version": "2.1"
+  },
+  {
+    "name": "Alyosha",
+    "rarity": 4,
+    "element": "Electro",
+    "weapon": "Polearm",
+    "region": "Snezhnaya",
+    "model": null,
+    "release_date": "2026-08-12",
+    "release_version": "7.0"
+  },
+  {
+    "name": "Amber",
+    "rarity": 4,
+    "element": "Pyro",
+    "weapon": "Bow",
+    "region": "Mondstadt",
+    "model": "Medium Female",
+    "release_date": "2020-09-28",
+    "release_version": "1.0"
+  },
+  {
+    "name": "Arataki Itto",
+    "rarity": 5,
+    "element": "Geo",
+    "weapon": "Claymore",
+    "region": "Inazuma",
+    "model": "Tall Male",
+    "release_date": "2021-12-14",
+    "release_version": "2.3"
+  },
+  {
+    "name": "Arlecchino",
+    "rarity": 5,
+    "element": "Pyro",
+    "weapon": "Polearm",
+    "region": "Snezhnaya",
+    "model": "Tall Female",
+    "release_date": "2024-04-24",
+    "release_version": "4.6"
+  },
+  {
+    "name": "Baizhu",
+    "rarity": 5,
+    "element": "Dendro",
+    "weapon": "Catalyst",
+    "region": "Liyue",
+    "model": "Tall Male",
+    "release_date": "2023-05-02",
+    "release_version": "3.6"
+  },
+  {
+    "name": "Barbara",
+    "rarity": 4,
+    "element": "Hydro",
+    "weapon": "Catalyst",
+    "region": "Mondstadt",
+    "model": "Medium Female",
+    "release_date": "2020-09-28",
+    "release_version": "1.0"
+  },
+  {
+    "name": "Beidou",
+    "rarity": 4,
+    "element": "Electro",
+    "weapon": "Claymore",
+    "region": "Liyue",
+    "model": "Tall Female",
+    "release_date": "2020-09-28",
+    "release_version": "1.0"
+  },
+  {
+    "name": "Bennett",
+    "rarity": 4,
+    "element": "Pyro",
+    "weapon": "Sword",
+    "region": "Mondstadt",
+    "model": "Medium Male",
+    "release_date": "2020-09-28",
+    "release_version": "1.0"
+  },
+  {
+    "name": "Candace",
+    "rarity": 4,
+    "element": "Hydro",
+    "weapon": "Polearm",
+    "region": "Sumeru",
+    "model": "Tall Female",
+    "release_date": "2022-09-28",
+    "release_version": "3.1"
+  },
+  {
+    "name": "Charlotte",
+    "rarity": 4,
+    "element": "Cryo",
+    "weapon": "Catalyst",
+    "region": "Fontaine",
+    "model": "Medium Female",
+    "release_date": "2023-11-08",
+    "release_version": "4.2"
+  },
+  {
+    "name": "Chasca",
+    "rarity": 5,
+    "element": "Anemo",
+    "weapon": "Bow",
+    "region": "Natlan",
+    "model": "Tall Female",
+    "release_date": "2024-11-20",
+    "release_version": "5.2"
+  },
+  {
+    "name": "Chevreuse",
+    "rarity": 4,
+    "element": "Pyro",
+    "weapon": "Polearm",
+    "region": "Fontaine",
+    "model": "Medium Female",
+    "release_date": "2024-01-09",
+    "release_version": "4.3"
+  },
+  {
+    "name": "Chiori",
+    "rarity": 5,
+    "element": "Geo",
+    "weapon": "Sword",
+    "region": "Inazuma",
+    "model": "Medium Female",
+    "release_date": "2024-03-13",
+    "release_version": "4.5"
+  },
+  {
+    "name": "Chongyun",
+    "rarity": 4,
+    "element": "Cryo",
+    "weapon": "Claymore",
+    "region": "Liyue",
+    "model": "Medium Male",
+    "release_date": "2020-09-28",
+    "release_version": "1.0"
+  },
+  {
+    "name": "Citlali",
+    "rarity": 5,
+    "element": "Cryo",
+    "weapon": "Catalyst",
+    "region": "Natlan",
+    "model": "Medium Female",
+    "release_date": "2025-01-01",
+    "release_version": "5.3"
+  },
+  {
+    "name": "Clorinde",
+    "rarity": 5,
+    "element": "Electro",
+    "weapon": "Sword",
+    "region": "Fontaine",
+    "model": "Tall Female",
+    "release_date": "2024-06-05",
+    "release_version": "4.7"
+  },
+  {
+    "name": "Collei",
+    "rarity": 4,
+    "element": "Dendro",
+    "weapon": "Bow",
+    "region": "Sumeru",
+    "model": "Medium Female",
+    "release_date": "2022-08-24",
+    "release_version": "3.0"
+  },
+  {
+    "name": "Columbina",
+    "rarity": 5,
+    "element": "Hydro",
+    "weapon": "Catalyst",
+    "region": "Nod-Krai",
+    "model": "Medium Female",
+    "release_date": "2026-01-14",
+    "release_version": "Luna IV"
+  },
+  {
+    "name": "Cyno",
+    "rarity": 5,
+    "element": "Electro",
+    "weapon": "Polearm",
+    "region": "Sumeru",
+    "model": "Medium Male",
+    "release_date": "2022-09-28",
+    "release_version": "3.1"
+  },
+  {
+    "name": "Dahlia",
+    "rarity": 4,
+    "element": "Hydro",
+    "weapon": "Sword",
+    "region": "Mondstadt",
+    "model": "Medium Male",
+    "release_date": "2025-06-18",
+    "release_version": "5.7"
+  },
+  {
+    "name": "Dehya",
+    "rarity": 5,
+    "element": "Pyro",
+    "weapon": "Claymore",
+    "region": "Sumeru",
+    "model": "Tall Female",
+    "release_date": "2023-03-01",
+    "release_version": "3.5"
+  },
+  {
+    "name": "Diluc",
+    "rarity": 5,
+    "element": "Pyro",
+    "weapon": "Claymore",
+    "region": "Mondstadt",
+    "model": "Tall Male",
+    "release_date": "2020-09-28",
+    "release_version": "1.0"
+  },
+  {
+    "name": "Diona",
+    "rarity": 4,
+    "element": "Cryo",
+    "weapon": "Bow",
+    "region": "Mondstadt",
+    "model": "Short Female",
+    "release_date": "2020-11-11",
+    "release_version": "1.1"
+  },
+  {
+    "name": "Dori",
+    "rarity": 4,
+    "element": "Electro",
+    "weapon": "Claymore",
+    "region": "Sumeru",
+    "model": "Short Female",
+    "release_date": "2022-09-09",
+    "release_version": "3.0"
+  },
+  {
+    "name": "Durin",
+    "rarity": 5,
+    "element": "Pyro",
+    "weapon": "Sword",
+    "region": "Mondstadt",
+    "model": "Medium Male",
+    "release_date": "2025-12-03",
+    "release_version": "Luna III"
+  },
+  {
+    "name": "Emilie",
+    "rarity": 5,
+    "element": "Dendro",
+    "weapon": "Polearm",
+    "region": "Fontaine",
+    "model": "Medium Female",
+    "release_date": "2024-08-06",
+    "release_version": "4.8"
+  },
+  {
+    "name": "Escoffier",
+    "rarity": 5,
+    "element": "Cryo",
+    "weapon": "Polearm",
+    "region": "Fontaine",
+    "model": "Medium Female",
+    "release_date": "2025-05-07",
+    "release_version": "5.6"
+  },
+  {
+    "name": "Eula",
+    "rarity": 5,
+    "element": "Cryo",
+    "weapon": "Claymore",
+    "region": "Mondstadt",
+    "model": "Tall Female",
+    "release_date": "2021-05-18",
+    "release_version": "1.5"
+  },
+  {
+    "name": "Faruzan",
+    "rarity": 4,
+    "element": "Anemo",
+    "weapon": "Bow",
+    "region": "Sumeru",
+    "model": "Medium Female",
+    "release_date": "2022-12-07",
+    "release_version": "3.3"
+  },
+  {
+    "name": "Fischl",
+    "rarity": 4,
+    "element": "Electro",
+    "weapon": "Bow",
+    "region": "Mondstadt",
+    "model": "Medium Female",
+    "release_date": "2020-09-28",
+    "release_version": "1.0"
+  },
+  {
+    "name": "Flins",
+    "rarity": 5,
+    "element": "Electro",
+    "weapon": "Polearm",
+    "region": "Nod-Krai",
+    "model": "Tall Male",
+    "release_date": "2025-09-30",
+    "release_version": "Luna I"
+  },
+  {
+    "name": "Freminet",
+    "rarity": 4,
+    "element": "Cryo",
+    "weapon": "Claymore",
+    "region": "Fontaine",
+    "model": "Medium Male",
+    "release_date": "2023-09-05",
+    "release_version": "4.0"
+  },
+  {
+    "name": "Furina",
+    "rarity": 5,
+    "element": "Hydro",
+    "weapon": "Sword",
+    "region": "Fontaine",
+    "model": "Medium Female",
+    "release_date": "2023-11-08",
+    "release_version": "4.2"
+  },
+  {
+    "name": "Gaming",
+    "rarity": 4,
+    "element": "Pyro",
+    "weapon": "Claymore",
+    "region": "Liyue",
+    "model": "Medium Male",
+    "release_date": "2024-01-31",
+    "release_version": "4.4"
+  },
+  {
+    "name": "Ganyu",
+    "rarity": 5,
+    "element": "Cryo",
+    "weapon": "Bow",
+    "region": "Liyue",
+    "model": "Medium Female",
+    "release_date": "2021-01-12",
+    "release_version": "1.2"
+  },
+  {
+    "name": "Gorou",
+    "rarity": 4,
+    "element": "Geo",
+    "weapon": "Bow",
+    "region": "Inazuma",
+    "model": "Medium Male",
+    "release_date": "2021-12-14",
+    "release_version": "2.3"
+  },
+  {
+    "name": "Hu Tao",
+    "rarity": 5,
+    "element": "Pyro",
+    "weapon": "Polearm",
+    "region": "Liyue",
+    "model": "Medium Female",
+    "release_date": "2021-03-02",
+    "release_version": "1.3"
+  },
+  {
+    "name": "Iansan",
+    "rarity": 4,
+    "element": "Electro",
+    "weapon": "Polearm",
+    "region": "Natlan",
+    "model": "Short Female",
+    "release_date": "2025-03-26",
+    "release_version": "5.5"
+  },
+  {
+    "name": "Ifa",
+    "rarity": 4,
+    "element": "Anemo",
+    "weapon": "Catalyst",
+    "region": "Natlan",
+    "model": "Tall Male",
+    "release_date": "2025-05-07",
+    "release_version": "5.6"
+  },
+  {
+    "name": "Illuga",
+    "rarity": 4,
+    "element": "Geo",
+    "weapon": "Polearm",
+    "region": "Nod-Krai",
+    "model": "Medium Male",
+    "release_date": "2026-02-03",
+    "release_version": "Luna IV"
+  },
+  {
+    "name": "Ineffa",
+    "rarity": 5,
+    "element": "Electro",
+    "weapon": "Polearm",
+    "region": "Nod-Krai",
+    "model": "Medium Female",
+    "release_date": "2025-07-30",
+    "release_version": "5.8"
+  },
+  {
+    "name": "Jahoda",
+    "rarity": 4,
+    "element": "Anemo",
+    "weapon": "Bow",
+    "region": "Nod-Krai",
+    "model": "Medium Female",
+    "release_date": "2025-12-03",
+    "release_version": "Luna III"
+  },
+  {
+    "name": "Jean",
+    "rarity": 5,
+    "element": "Anemo",
+    "weapon": "Sword",
+    "region": "Mondstadt",
+    "model": "Tall Female",
+    "release_date": "2020-09-28",
+    "release_version": "1.0"
+  },
+  {
+    "name": "Kachina",
+    "rarity": 4,
+    "element": "Geo",
+    "weapon": "Polearm",
+    "region": "Natlan",
+    "model": "Short Female",
+    "release_date": "2024-08-28",
+    "release_version": "5.0"
+  },
+  {
+    "name": "Kaedehara Kazuha",
+    "rarity": 5,
+    "element": "Anemo",
+    "weapon": "Sword",
+    "region": "Inazuma",
+    "model": "Medium Male",
+    "release_date": "2021-06-29",
+    "release_version": "1.6"
+  },
+  {
+    "name": "Kaeya",
+    "rarity": 4,
+    "element": "Cryo",
+    "weapon": "Sword",
+    "region": "Mondstadt",
+    "model": "Tall Male",
+    "release_date": "2020-09-28",
+    "release_version": "1.0"
+  },
+  {
+    "name": "Kamisato Ayaka",
+    "rarity": 5,
+    "element": "Cryo",
+    "weapon": "Sword",
+    "region": "Inazuma",
+    "model": "Medium Female",
+    "release_date": "2021-07-21",
+    "release_version": "2.0"
+  },
+  {
+    "name": "Kamisato Ayato",
+    "rarity": 5,
+    "element": "Hydro",
+    "weapon": "Sword",
+    "region": "Inazuma",
+    "model": "Tall Male",
+    "release_date": "2022-03-30",
+    "release_version": "2.6"
+  },
+  {
+    "name": "Kaveh",
+    "rarity": 4,
+    "element": "Dendro",
+    "weapon": "Claymore",
+    "region": "Sumeru",
+    "model": "Tall Male",
+    "release_date": "2023-05-02",
+    "release_version": "3.6"
+  },
+  {
+    "name": "Keqing",
+    "rarity": 5,
+    "element": "Electro",
+    "weapon": "Sword",
+    "region": "Liyue",
+    "model": "Medium Female",
+    "release_date": "2020-09-28",
+    "release_version": "1.0"
+  },
+  {
+    "name": "Kinich",
+    "rarity": 5,
+    "element": "Dendro",
+    "weapon": "Claymore",
+    "region": "Natlan",
+    "model": "Medium Male",
+    "release_date": "2024-09-17",
+    "release_version": "5.0"
+  },
+  {
+    "name": "Kirara",
+    "rarity": 4,
+    "element": "Dendro",
+    "weapon": "Sword",
+    "region": "Inazuma",
+    "model": "Medium Female",
+    "release_date": "2023-05-24",
+    "release_version": "3.7"
+  },
+  {
+    "name": "Klee",
+    "rarity": 5,
+    "element": "Pyro",
+    "weapon": "Catalyst",
+    "region": "Mondstadt",
+    "model": "Short Female",
+    "release_date": "2020-10-20",
+    "release_version": "1.0"
+  },
+  {
+    "name": "Kujou Sara",
+    "rarity": 4,
+    "element": "Electro",
+    "weapon": "Bow",
+    "region": "Inazuma",
+    "model": "Tall Female",
+    "release_date": "2021-09-01",
+    "release_version": "2.1"
+  },
+  {
+    "name": "Kuki Shinobu",
+    "rarity": 4,
+    "element": "Electro",
+    "weapon": "Sword",
+    "region": "Inazuma",
+    "model": "Medium Female",
+    "release_date": "2022-06-21",
+    "release_version": "2.7"
+  },
+  {
+    "name": "Lan Yan",
+    "rarity": 4,
+    "element": "Anemo",
+    "weapon": "Catalyst",
+    "region": "Liyue",
+    "model": "Medium Female",
+    "release_date": "2025-01-21",
+    "release_version": "5.3"
+  },
+  {
+    "name": "Lauma",
+    "rarity": 5,
+    "element": "Dendro",
+    "weapon": "Catalyst",
+    "region": "Nod-Krai",
+    "model": "Tall Female",
+    "release_date": "2025-09-10",
+    "release_version": "Luna I"
+  },
+  {
+    "name": "Layla",
+    "rarity": 4,
+    "element": "Cryo",
+    "weapon": "Sword",
+    "region": "Sumeru",
+    "model": "Medium Female",
+    "release_date": "2022-11-18",
+    "release_version": "3.2"
+  },
+  {
+    "name": "Linnea",
+    "rarity": 5,
+    "element": "Geo",
+    "weapon": "Bow",
+    "region": "Nod-Krai",
+    "model": "Medium Female",
+    "release_date": "2026-04-08",
+    "release_version": "Luna VI"
+  },
+  {
+    "name": "Lisa",
+    "rarity": 4,
+    "element": "Electro",
+    "weapon": "Catalyst",
+    "region": "Mondstadt",
+    "model": "Tall Female",
+    "release_date": "2020-09-28",
+    "release_version": "1.0"
+  },
+  {
+    "name": "Lohen",
+    "rarity": 5,
+    "element": "Cryo",
+    "weapon": "Polearm",
+    "region": "Mondstadt",
+    "model": "Medium Male",
+    "release_date": "2026-06-09",
+    "release_version": "Luna VII"
+  },
+  {
+    "name": "Lynette",
+    "rarity": 4,
+    "element": "Anemo",
+    "weapon": "Sword",
+    "region": "Fontaine",
+    "model": "Medium Female",
+    "release_date": "2023-08-16",
+    "release_version": "4.0"
+  },
+  {
+    "name": "Lyney",
+    "rarity": 5,
+    "element": "Pyro",
+    "weapon": "Bow",
+    "region": "Fontaine",
+    "model": "Medium Male",
+    "release_date": "2023-08-16",
+    "release_version": "4.0"
+  },
+  {
+    "name": "Mavuika",
+    "rarity": 5,
+    "element": "Pyro",
+    "weapon": "Claymore",
+    "region": "Natlan",
+    "model": "Tall Female",
+    "release_date": "2025-01-01",
+    "release_version": "5.3"
+  },
+  {
+    "name": "Mika",
+    "rarity": 4,
+    "element": "Cryo",
+    "weapon": "Polearm",
+    "region": "Mondstadt",
+    "model": "Medium Male",
+    "release_date": "2023-03-21",
+    "release_version": "3.5"
+  },
+  {
+    "name": "Mona",
+    "rarity": 5,
+    "element": "Hydro",
+    "weapon": "Catalyst",
+    "region": "Mondstadt",
+    "model": "Medium Female",
+    "release_date": "2020-09-28",
+    "release_version": "1.0"
+  },
+  {
+    "name": "Mualani",
+    "rarity": 5,
+    "element": "Hydro",
+    "weapon": "Catalyst",
+    "region": "Natlan",
+    "model": "Medium Female",
+    "release_date": "2024-08-28",
+    "release_version": "5.0"
+  },
+  {
+    "name": "Nahida",
+    "rarity": 5,
+    "element": "Dendro",
+    "weapon": "Catalyst",
+    "region": "Sumeru",
+    "model": "Short Female",
+    "release_date": "2022-11-02",
+    "release_version": "3.2"
+  },
+  {
+    "name": "Navia",
+    "rarity": 5,
+    "element": "Geo",
+    "weapon": "Claymore",
+    "region": "Fontaine",
+    "model": "Tall Female",
+    "release_date": "2023-12-20",
+    "release_version": "4.3"
+  },
+  {
+    "name": "Nefer",
+    "rarity": 5,
+    "element": "Dendro",
+    "weapon": "Catalyst",
+    "region": "Nod-Krai",
+    "model": "Tall Female",
+    "release_date": "2025-10-22",
+    "release_version": "Luna II"
+  },
+  {
+    "name": "Neuvillette",
+    "rarity": 5,
+    "element": "Hydro",
+    "weapon": "Catalyst",
+    "region": "Fontaine",
+    "model": "Tall Male",
+    "release_date": "2023-09-27",
+    "release_version": "4.1"
+  },
+  {
+    "name": "Nicole",
+    "rarity": 5,
+    "element": "Pyro",
+    "weapon": "Catalyst",
+    "region": null,
+    "model": "Tall Female",
+    "release_date": "2026-05-20",
+    "release_version": "Luna VII"
+  },
+  {
+    "name": "Nilou",
+    "rarity": 5,
+    "element": "Hydro",
+    "weapon": "Sword",
+    "region": "Sumeru",
+    "model": "Medium Female",
+    "release_date": "2022-10-14",
+    "release_version": "3.1"
+  },
+  {
+    "name": "Ningguang",
+    "rarity": 4,
+    "element": "Geo",
+    "weapon": "Catalyst",
+    "region": "Liyue",
+    "model": "Tall Female",
+    "release_date": "2020-09-28",
+    "release_version": "1.0"
+  },
+  {
+    "name": "Noelle",
+    "rarity": 4,
+    "element": "Geo",
+    "weapon": "Claymore",
+    "region": "Mondstadt",
+    "model": "Medium Female",
+    "release_date": "2020-09-28",
+    "release_version": "1.0"
+  },
+  {
+    "name": "Odette",
+    "rarity": 5,
+    "element": "Cryo",
+    "weapon": "Sword",
+    "region": "Snezhnaya",
+    "model": null,
+    "release_date": "2026-08-12",
+    "release_version": "7.0"
+  },
+  {
+    "name": "Ororon",
+    "rarity": 4,
+    "element": "Electro",
+    "weapon": "Bow",
+    "region": "Natlan",
+    "model": "Tall Male",
+    "release_date": "2024-11-20",
+    "release_version": "5.2"
+  },
+  {
+    "name": "Prune",
+    "rarity": 4,
+    "element": "Anemo",
+    "weapon": "Catalyst",
+    "region": "Mondstadt",
+    "model": "Short Female",
+    "release_date": "2026-05-20",
+    "release_version": "Luna VII"
+  },
+  {
+    "name": "Qiqi",
+    "rarity": 5,
+    "element": "Cryo",
+    "weapon": "Sword",
+    "region": "Liyue",
+    "model": "Short Female",
+    "release_date": "2020-09-28",
+    "release_version": "1.0"
+  },
+  {
+    "name": "Raiden Shogun",
+    "rarity": 5,
+    "element": "Electro",
+    "weapon": "Polearm",
+    "region": "Inazuma",
+    "model": "Tall Female",
+    "release_date": "2021-09-01",
+    "release_version": "2.1"
+  },
+  {
+    "name": "Razor",
+    "rarity": 4,
+    "element": "Electro",
+    "weapon": "Claymore",
+    "region": "Mondstadt",
+    "model": "Medium Male",
+    "release_date": "2020-09-28",
+    "release_version": "1.0"
+  },
+  {
+    "name": "Rosaria",
+    "rarity": 4,
+    "element": "Cryo",
+    "weapon": "Polearm",
+    "region": "Mondstadt",
+    "model": "Tall Female",
+    "release_date": "2021-04-06",
+    "release_version": "1.4"
+  },
+  {
+    "name": "Sandrone",
+    "rarity": 5,
+    "element": "Cryo",
+    "weapon": "Claymore",
+    "region": "Snezhnaya",
+    "model": "Medium Female",
+    "release_date": "2026-07-01",
+    "release_version": "Luna VIII"
+  },
+  {
+    "name": "Sangonomiya Kokomi",
+    "rarity": 5,
+    "element": "Hydro",
+    "weapon": "Catalyst",
+    "region": "Inazuma",
+    "model": "Medium Female",
+    "release_date": "2021-09-21",
+    "release_version": "2.1"
+  },
+  {
+    "name": "Sayu",
+    "rarity": 4,
+    "element": "Anemo",
+    "weapon": "Claymore",
+    "region": "Inazuma",
+    "model": "Short Female",
+    "release_date": "2021-08-10",
+    "release_version": "2.0"
+  },
+  {
+    "name": "Sethos",
+    "rarity": 4,
+    "element": "Electro",
+    "weapon": "Bow",
+    "region": "Sumeru",
+    "model": "Medium Male",
+    "release_date": "2024-06-05",
+    "release_version": "4.7"
+  },
+  {
+    "name": "Shenhe",
+    "rarity": 5,
+    "element": "Cryo",
+    "weapon": "Polearm",
+    "region": "Liyue",
+    "model": "Tall Female",
+    "release_date": "2022-01-05",
+    "release_version": "2.4"
+  },
+  {
+    "name": "Shikanoin Heizou",
+    "rarity": 4,
+    "element": "Anemo",
+    "weapon": "Catalyst",
+    "region": "Inazuma",
+    "model": "Medium Male",
+    "release_date": "2022-07-13",
+    "release_version": "2.8"
+  },
+  {
+    "name": "Sigewinne",
+    "rarity": 5,
+    "element": "Hydro",
+    "weapon": "Bow",
+    "region": "Fontaine",
+    "model": "Short Female",
+    "release_date": "2024-06-25",
+    "release_version": "4.7"
+  },
+  {
+    "name": "Skirk",
+    "rarity": 5,
+    "element": "Cryo",
+    "weapon": "Sword",
+    "region": null,
+    "model": "Medium Female",
+    "release_date": "2025-06-18",
+    "release_version": "5.7"
+  },
+  {
+    "name": "Sucrose",
+    "rarity": 4,
+    "element": "Anemo",
+    "weapon": "Catalyst",
+    "region": "Mondstadt",
+    "model": "Medium Female",
+    "release_date": "2020-09-28",
+    "release_version": "1.0"
+  },
+  {
+    "name": "Tartaglia",
+    "rarity": 5,
+    "element": "Hydro",
+    "weapon": "Bow",
+    "region": "Snezhnaya",
+    "model": "Tall Male",
+    "release_date": "2020-11-11",
+    "release_version": "1.1"
+  },
+  {
+    "name": "Thoma",
+    "rarity": 4,
+    "element": "Pyro",
+    "weapon": "Polearm",
+    "region": "Inazuma",
+    "model": "Tall Male",
+    "release_date": "2021-11-02",
+    "release_version": "2.2"
+  },
+  {
+    "name": "Tighnari",
+    "rarity": 5,
+    "element": "Dendro",
+    "weapon": "Bow",
+    "region": "Sumeru",
+    "model": "Medium Male",
+    "release_date": "2022-08-24",
+    "release_version": "3.0"
+  },
+  {
+    "name": "Traveler",
+    "rarity": 5,
+    "element": "Adaptive",
+    "weapon": "Sword",
+    "region": null,
+    "model": "Aether: Medium Male / Lumine: Medium Female",
+    "release_date": "2020-09-28",
+    "release_version": "1.0"
+  },
+  {
+    "name": "Varesa",
+    "rarity": 5,
+    "element": "Electro",
+    "weapon": "Catalyst",
+    "region": "Natlan",
+    "model": "Medium Female",
+    "release_date": "2025-03-26",
+    "release_version": "5.5"
+  },
+  {
+    "name": "Varka",
+    "rarity": 5,
+    "element": "Anemo",
+    "weapon": "Claymore",
+    "region": "Mondstadt",
+    "model": "Tall Male",
+    "release_date": "2026-02-25",
+    "release_version": "Luna V"
+  },
+  {
+    "name": "Venti",
+    "rarity": 5,
+    "element": "Anemo",
+    "weapon": "Bow",
+    "region": "Mondstadt",
+    "model": "Medium Male",
+    "release_date": "2020-09-28",
+    "release_version": "1.0"
+  },
+  {
+    "name": "Wanderer",
+    "rarity": 5,
+    "element": "Anemo",
+    "weapon": "Catalyst",
+    "region": "Sumeru",
+    "model": "Medium Male",
+    "release_date": "2022-12-07",
+    "release_version": "3.3"
+  },
+  {
+    "name": "Wonderland Manekin",
+    "rarity": 5,
+    "element": "Adaptive",
+    "weapon": "Sword",
+    "region": null,
+    "model": "Manekin: Medium Male / Manekina: Medium Female",
+    "release_date": "2025-10-22",
+    "release_version": "Luna II"
+  },
+  {
+    "name": "Wriothesley",
+    "rarity": 5,
+    "element": "Cryo",
+    "weapon": "Catalyst",
+    "region": "Fontaine",
+    "model": "Tall Male",
+    "release_date": "2023-10-17",
+    "release_version": "4.1"
+  },
+  {
+    "name": "Xiangling",
+    "rarity": 4,
+    "element": "Pyro",
+    "weapon": "Polearm",
+    "region": "Liyue",
+    "model": "Medium Female",
+    "release_date": "2020-09-28",
+    "release_version": "1.0"
+  },
+  {
+    "name": "Xianyun",
+    "rarity": 5,
+    "element": "Anemo",
+    "weapon": "Catalyst",
+    "region": "Liyue",
+    "model": "Tall Female",
+    "release_date": "2024-01-31",
+    "release_version": "4.4"
+  },
+  {
+    "name": "Xiao",
+    "rarity": 5,
+    "element": "Anemo",
+    "weapon": "Polearm",
+    "region": "Liyue",
+    "model": "Medium Male",
+    "release_date": "2021-02-03",
+    "release_version": "1.3"
+  },
+  {
+    "name": "Xilonen",
+    "rarity": 5,
+    "element": "Geo",
+    "weapon": "Sword",
+    "region": "Natlan",
+    "model": "Tall Female",
+    "release_date": "2024-10-09",
+    "release_version": "5.1"
+  },
+  {
+    "name": "Xingqiu",
+    "rarity": 4,
+    "element": "Hydro",
+    "weapon": "Sword",
+    "region": "Liyue",
+    "model": "Medium Male",
+    "release_date": "2020-09-28",
+    "release_version": "1.0"
+  },
+  {
+    "name": "Xinyan",
+    "rarity": 4,
+    "element": "Pyro",
+    "weapon": "Claymore",
+    "region": "Liyue",
+    "model": "Medium Female",
+    "release_date": "2020-12-01",
+    "release_version": "1.1"
+  },
+  {
+    "name": "Yae Miko",
+    "rarity": 5,
+    "element": "Electro",
+    "weapon": "Catalyst",
+    "region": "Inazuma",
+    "model": "Tall Female",
+    "release_date": "2022-02-16",
+    "release_version": "2.5"
+  },
+  {
+    "name": "Yanfei",
+    "rarity": 4,
+    "element": "Pyro",
+    "weapon": "Catalyst",
+    "region": "Liyue",
+    "model": "Medium Female",
+    "release_date": "2021-04-28",
+    "release_version": "1.5"
+  },
+  {
+    "name": "Yaoyao",
+    "rarity": 4,
+    "element": "Dendro",
+    "weapon": "Polearm",
+    "region": "Liyue",
+    "model": "Short Female",
+    "release_date": "2023-01-18",
+    "release_version": "3.4"
+  },
+  {
+    "name": "Yelan",
+    "rarity": 5,
+    "element": "Hydro",
+    "weapon": "Bow",
+    "region": "Liyue",
+    "model": "Tall Female",
+    "release_date": "2022-05-31",
+    "release_version": "2.7"
+  },
+  {
+    "name": "Yoimiya",
+    "rarity": 5,
+    "element": "Pyro",
+    "weapon": "Bow",
+    "region": "Inazuma",
+    "model": "Medium Female",
+    "release_date": "2021-08-10",
+    "release_version": "2.0"
+  },
+  {
+    "name": "Yumemizuki Mizuki",
+    "rarity": 5,
+    "element": "Anemo",
+    "weapon": "Catalyst",
+    "region": "Inazuma",
+    "model": "Medium Female",
+    "release_date": "2025-02-12",
+    "release_version": "5.4"
+  },
+  {
+    "name": "Yun Jin",
+    "rarity": 4,
+    "element": "Geo",
+    "weapon": "Polearm",
+    "region": "Liyue",
+    "model": "Medium Female",
+    "release_date": "2022-01-05",
+    "release_version": "2.4"
+  },
+  {
+    "name": "Zhongli",
+    "rarity": 5,
+    "element": "Geo",
+    "weapon": "Polearm",
+    "region": "Liyue",
+    "model": "Tall Male",
+    "release_date": "2020-12-01",
+    "release_version": "1.1"
+  },
+  {
+    "name": "Zibai",
+    "rarity": 5,
+    "element": "Geo",
+    "weapon": "Sword",
+    "region": "Liyue",
+    "model": "Tall Female",
+    "release_date": "2026-02-03",
+    "release_version": "Luna IV"
+  }
+]
