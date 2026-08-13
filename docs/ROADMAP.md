@@ -55,24 +55,61 @@
 - [x] Confirmed working end-to-end for both games: puzzle generation,
       guess validation (correct + incorrect cases), frontend rendering
 
-## Phase 3 — Real-time head-to-head (~2-3 weeks) [NEXT]
+## Phase 3 — Content depth & visual polish (~1-2 weeks) [NEXT]
+Goal: make the puzzles genuinely more interesting to solve, and make the
+game look/feel like a real product instead of a functional prototype.
+Deliberately sequenced before stats (Phase 4) — richer categories make
+rarity percentages meaningful instead of trivial.
+
+- [ ] Genshin: additional category dimensions (candidates: affiliation,
+      birthday month — both already present in raw ingested data, unused
+      so far; release_version via date lookup table)
+- [ ] Brawl Stars: additional category dimensions (candidates: Super
+      count, Star Power count, Gadget count)
+- [ ] Category icons instead of plain text (element symbols, region
+      emblems, Brawl Stars rarity colors using BrawlAPI's provided hex
+      values)
+- [ ] Filled-cell rendering: character/brawler icon (not full splash art)
+      in the grid cell, matching the reference game's compact style
+- [ ] General UI polish pass: replace alert()-based wrong-guess feedback
+      with inline shake/toast, win-state UI once all 9 cells are filled,
+      guess-counter sidebar
+
+## Phase 4 — Guess stats & deployment (~2 weeks)
+Goal: ship the daily puzzle as a real, live, playable product with the
+rarity/uniqueness mechanic that makes this genre engaging.
+
+- [ ] Anonymous session identifier (client-generated UUID, localStorage)
+      — no real auth needed for this
+- [ ] `puzzle_answers` table logging (puzzle_id, cell_key, item_id) per
+      correct guess
+- [ ] Aggregation endpoint: per-cell answer rarity ("X% of players chose
+      this")
+- [ ] Frontend: display rarity % on filled cells, matching reference UI
+- [ ] localStorage persistence for in-progress puzzle state (survive a
+      refresh)
+- [ ] Deploy backend (Fly.io/Railway) + frontend (Vercel/Netlify) +
+      managed Postgres
+- [ ] CORS origins moved to real config for the deployed domain
+
+## Phase 5 — Real-time head-to-head (~2-3 weeks)
+Deliberately after a deployed, polished single-player game exists —
+additive feature on a proven foundation, not a prerequisite for having a
+demoable product.
+
 - [ ] Spring WebSocket session/room model
 - [ ] Matchmaking queue
-- [ ] Server-authoritative guess validation (shared used-entity set per room)
+- [ ] Server-authoritative guess validation (shared used-entity set per
+      room)
 - [ ] Reconnect handling
-- [ ] Rate limiting + server-side used-answer tracking on /guess (currently
-      deferred as safe for single-player only — see architecture doc)
+- [ ] Rate limiting + server-side used-answer tracking on /guess (unsafe
+      to defer once an opponent is involved, unlike single-player)
 
-## Phase 4 — Polish / scale (~1-2 weeks)
-- [ ] Leaderboards / stats
-- [ ] Redis for active room state (if needed)
-- [ ] Deployment: backend on Fly.io/Railway, frontend on Vercel/Netlify
-- [ ] localStorage persistence for in-progress puzzle state
-- [ ] Replace alert()-based wrong-guess feedback with inline UI (shake/toast)
-- [ ] Win-state UI once all 9 cells are filled
-- [ ] Guess counter / stats sidebar (matching reference UI: attempts
-      remaining, points)
-
+## Phase 6 — Scale / advanced features
+- [ ] Leaderboards / streaks
+- [ ] Redis for active room state (if needed under real multiplayer load)
+- [ ] Third GameModule — real proof point for a GameModule registry
+      replacing the current hardcoded switch/map
 ## Backlog (non-blocking)
 - Backfill ~26 missing Genshin characters (patch 5.1+) not present in the
   current data source
