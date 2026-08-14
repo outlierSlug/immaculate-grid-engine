@@ -5,12 +5,16 @@ export interface UnlimitedSettings {
   excludedCategoryIds: string[];
   allowSingleAnswers: boolean;
   showTimer: boolean;
+  unlimitedGuesses: boolean;
+  softLockGuard: boolean;
 }
 
 export const DEFAULT_UNLIMITED_SETTINGS: UnlimitedSettings = {
   excludedCategoryIds: [],
   allowSingleAnswers: true,
   showTimer: false,
+  unlimitedGuesses: true,
+  softLockGuard: true,
 };
 
 interface UnlimitedSettingsPanelProps {
@@ -157,6 +161,20 @@ export default function UnlimitedSettingsPanel({
 
       <div className="overflow-y-auto flex-1">
         <div className="flex items-center justify-center gap-6 flex-wrap px-5 py-4 border-b border-gray-100">
+          <div className="flex items-center gap-2">
+            <span className="text-sm font-medium text-gray-700">Unlimited Guesses</span>
+            <ToggleSwitch
+              checked={settings.unlimitedGuesses}
+              onChange={(value) => onChange({ ...settings, unlimitedGuesses: value })}
+            />
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="text-sm font-medium text-gray-700">Soft Lock Guard</span>
+            <ToggleSwitch
+              checked={settings.softLockGuard}
+              onChange={(value) => onChange({ ...settings, softLockGuard: value })}
+            />
+          </div>
           <div className="flex items-center gap-2">
             <span className="text-sm font-medium text-gray-700">Allow Single Answers</span>
             <ToggleSwitch

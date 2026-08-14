@@ -12,9 +12,20 @@ interface PuzzleGridProps {
   // the row-label column — even when empty — so the 3x3 grid's center column
   // stays at the true center of the rendered block regardless of content.
   sideColumn?: ReactNode[];
+  // Disables every cell (filled or not) — used once a game-over state
+  // (out of guesses, gave up) is reached. The grid has no game-rule
+  // knowledge itself; callers decide when this applies.
+  locked?: boolean;
 }
 
-export default function PuzzleGrid({ rowLabels, colLabels, filledCells, onCellClick, sideColumn }: PuzzleGridProps) {
+export default function PuzzleGrid({
+  rowLabels,
+  colLabels,
+  filledCells,
+  onCellClick,
+  sideColumn,
+  locked,
+}: PuzzleGridProps) {
   return (
     <div
       className="grid"
@@ -47,7 +58,7 @@ export default function PuzzleGrid({ rowLabels, colLabels, filledCells, onCellCl
               <button
                 key={cellKey}
                 onClick={() => onCellClick(rowIndex, colIndex)}
-                disabled={!!filled}
+                disabled={!!filled || locked}
                 className="border border-gray-300 bg-white flex flex-col items-center justify-center hover:bg-gray-50 disabled:hover:bg-white cursor-pointer disabled:cursor-not-allowed"
               >
                 {filled ? (

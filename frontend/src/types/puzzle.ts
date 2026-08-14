@@ -46,4 +46,5 @@ export interface UnlimitedPuzzleRequest {
   dimensions?: string[];
   excludedCategoryIds?: string[];
   minAnswersPerCell?: number;
+  requireSoftLockGuard?: boolean;
 }

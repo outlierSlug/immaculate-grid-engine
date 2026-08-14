@@ -2,16 +2,28 @@ import { useEffect, useState } from 'react';
 import { useParams, Navigate } from 'react-router-dom';
 import { fetchGameCategories, generateUnlimitedPuzzle } from '../api/client';
 import type { GameCategoriesResponse, PuzzleResponse } from '../types/puzzle';
-import { isValidGameId } from '../config/games';
+import { isValidGameId, type GameId } from '../config/games';
 import PuzzleGrid from '../components/PuzzleGrid';
 import GuessInput from '../components/GuessInput';
 import Timer from '../components/Timer';
 import Score from '../components/Score';
+import GuessCounter from '../components/GuessCounter';
 import UnlimitedSettingsPanel, {
   DEFAULT_UNLIMITED_SETTINGS,
   type UnlimitedSettings,
 } from '../components/UnlimitedSettingsPanel';
 import { usePuzzleGuesses } from '../hooks/usePuzzleGuesses';
+import acquaintFateIcon from '../assets/genshin/Item_Acquaint_Fate.webp';
+
+const GUESS_LIMIT = 9;
+
+// Themed guess-counter icon, per game. Daily mode should use
+// Item_Intertwined_Fate.webp for Genshin once it gets this same treatment
+// (Phase 5) — Unlimited uses Acquaint Fate. Games without an entry here
+// fall back to GuessCounter's generic icon.
+const UNLIMITED_GUESS_ICON: Partial<Record<GameId, string>> = {
+  genshin: acquaintFateIcon,
+};
 
 function remainingDimensionCount(categories: GameCategoriesResponse | null, excludedCategoryIds: string[]): number {
   if (!categories) return 0;
@@ -29,6 +41,9 @@ export default function UnlimitedPage() {
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [generating, setGenerating] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  // Snapshotted from settings.unlimitedGuesses at generation time — toggling
+  // the setting mid-game never retroactively changes the puzzle in progress.
+  const [activeGuessLimit, setActiveGuessLimit] = useState<number | null>(null);
 
   const {
     filledCells,
@@ -38,8 +53,10 @@ export default function UnlimitedPage() {
     closeActiveCell,
     correctCount,
     totalCells,
-    isComplete,
-  } = usePuzzleGuesses(puzzle);
+    guessesRemaining,
+    isGameOver,
+    giveUp,
+  } = usePuzzleGuesses(puzzle, { guessLimit: activeGuessLimit });
 
   useEffect(() => {
     if (!validGame) return;
@@ -57,8 +74,10 @@ export default function UnlimitedPage() {
       const generated = await generateUnlimitedPuzzle(validGame as string, {
         excludedCategoryIds: settings.excludedCategoryIds,
         minAnswersPerCell: settings.allowSingleAnswers ? 1 : 2,
+        requireSoftLockGuard: settings.softLockGuard,
       });
       setPuzzle(generated);
+      setActiveGuessLimit(settings.unlimitedGuesses ? null : GUESS_LIMIT);
     } catch (err) {
       // A failed generation (e.g. filters too narrow) drops back to the
       // loadup/settings screen rather than leaving a stale grid on screen.
@@ -75,8 +94,6 @@ export default function UnlimitedPage() {
     return (
       <main className="flex flex-col items-center gap-5 py-8">
         <h1 className="text-2xl font-bold">Unlimited Mode</h1>
-
-        {error && <p className="text-red-600 text-sm text-center px-4">{error}</p>}
 
         <UnlimitedSettingsPanel
           variant="inline"
@@ -97,52 +114,73 @@ export default function UnlimitedPage() {
         >
           {generating ? 'Generating…' : 'Generate'}
         </button>
+        {error && <p className="text-red-600 text-sm text-center px-4">{error}</p>}
       </main>
     );
   }
 
   return (
     <main className="flex flex-col items-center gap-5 py-8">
-      <div className="flex items-center gap-3">
-        <h1 className="text-2xl font-bold">Unlimited Mode</h1>
-        <button
-          type="button"
-          onClick={() => setSettingsOpen(true)}
-          aria-label="Open settings"
-          className="p-2.5 rounded-full border border-gray-300 text-gray-600 hover:bg-gray-100 transition cursor-pointer"
-        >
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-        </button>
-      </div>
+      <h1 className="text-2xl font-bold">Unlimited Mode</h1>
 
       {error && <p className="text-red-600 text-sm text-center px-4">{error}</p>}
-      {/* {isComplete && (
-        <p className="text-green-600 text-sm font-semibold text-center px-4">
-          Solved! {correctCount}/{totalCells} correct.
-        </p>
-      )} */}
+      {/* End-state messaging (solved / gave up / out of guesses) intentionally
+          left unstyled for now — logic (locking, timer stop) is fully wired,
+          just no visible copy yet. Revisit once the messaging is designed. */}
 
       <PuzzleGrid
         rowLabels={puzzle.rowLabels}
         colLabels={puzzle.colLabels}
         filledCells={filledCells}
         onCellClick={handleCellClick}
+        locked={isGameOver}
         sideColumn={[
-          <Timer key="timer" startKey={puzzle.id} visible={settings.showTimer} running={!isComplete} />,
+          <Timer key="timer" startKey={puzzle.id} visible={settings.showTimer} running={!isGameOver} />,
           <Score key="score" correct={correctCount} total={totalCells} />,
+          <GuessCounter key="guesses" remaining={guessesRemaining} iconSrc={UNLIMITED_GUESS_ICON[validGame]} />,
         ]}
       />
 
-      <button
-        type="button"
-        onClick={handleGenerate}
-        disabled={generating}
-        className="px-6 py-2.5 rounded-full bg-red-600 text-white font-semibold hover:bg-red-700 disabled:bg-gray-300 transition cursor-pointer"
-      >
-        {generating ? 'Generating…' : 'Generate'}
-      </button>
+      {/* Mirrors PuzzleGrid's own column template (7rem, 8rem x3, 7rem) so
+          these three buttons land exactly centered under the bottom-left
+          cell, the bottom-middle cell, and the bottom-right cell. */}
+      <div className="grid items-center" style={{ gridTemplateColumns: '7rem repeat(3, 8rem) 7rem' }}>
+        <div />
+        <div className="flex justify-center">
+          {activeGuessLimit != null && !isGameOver && (
+            <button
+              type="button"
+              onClick={giveUp}
+              className="px-5 py-2.5 rounded-full border border-gray-300 text-gray-600 font-semibold hover:bg-gray-100 transition cursor-pointer"
+            >
+              Give Up
+            </button>
+          )}
+        </div>
+        <div className="flex justify-center">
+          <button
+            type="button"
+            onClick={handleGenerate}
+            disabled={generating}
+            className="px-6 py-2.5 rounded-full bg-red-600 text-white font-semibold hover:bg-red-700 disabled:bg-gray-300 transition cursor-pointer"
+          >
+            {generating ? 'Generating…' : 'Generate'}
+          </button>
+        </div>
+        <div className="flex justify-center">
+          <button
+            type="button"
+            onClick={() => setSettingsOpen(true)}
+            aria-label="Open settings"
+            className="p-2.5 rounded-full border border-gray-300 text-gray-600 hover:bg-gray-100 transition cursor-pointer"
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+        <div />
+      </div>
 
       {activeCell && (
         <GuessInput

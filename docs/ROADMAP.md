@@ -96,20 +96,45 @@ mode, not just a stub route.
       element, allowing impossible puzzles (e.g. "1.0 × Dendro"); fixed
       per-element in `normalize_genshin.py`, reloaded
 
-## Phase 4 — Finish Unlimited Mode [NEXT]
+## Phase 4 — Finish Unlimited Mode [COMPLETE]
 Goal: the two known, deliberately-scoped-out gaps from Phase 3.
 
-- [ ] 9-guess limit — Immaculate-Grid-genre convention: one shared pool
-      across all 9 cells (not per-cell, not wrong-guesses-only; every
-      submitted guess consumes one). Client-side only for now, consistent
-      with the existing single-player used-answer-tracking model. Needs a
-      design decision on the "out of guesses with cells still empty" end
-      state before implementation.
-- [ ] `GridGenerator` puzzle variety: currently correct but can produce
-      all-same-dimension rows/cols (e.g. all 3 columns being different
-      character models) since categories are pooled across a whole
-      dimension-group rather than preferring one dimension per row/col.
-      Needs a new `GridGeneratorTest` invariant alongside the fix.
+- [x] 9-guess limit — Immaculate-Grid-genre convention: one shared pool
+      across all 9 cells (every submitted guess consumes one, right or
+      wrong, not per-cell/not wrong-guesses-only). Client-side only
+      (`usePuzzleGuesses`'s `guessLimit` option), "Unlimited Guesses"
+      toggle in settings (default on), Give Up button, board locking on
+      game-over (`PuzzleGrid`'s `locked` prop). Themed `GuessCounter`
+      (Genshin's Acquaint Fate icon for Unlimited; Intertwined Fate
+      reserved for Daily in Phase 5). End-state messaging deliberately
+      left unstyled — locking/timer-stop logic is fully wired, no visible
+      copy yet.
+- [x] Soft lock guard — found a real generated puzzle that was unsolvable
+      (one entity was the only valid answer for two cells at once, so no
+      full 9-cell assignment existed even though every cell individually
+      had an answer). Added a bipartite maximum-matching check
+      (`GridGenerator.hasPerfectMatching`, Kuhn's algorithm) — mandatory
+      for Daily, optional toggle for Unlimited (default on).
+- [x] `GridGenerator` puzzle variety — empirically tuned rather than
+      hardcoded: measured the real baseline distribution first, tried and
+      rejected two variants that didn't hold up under statistical testing
+      (uniform dimension-sampling killed release_version's presence;
+      full-budget exploration didn't move the needle enough to justify
+      10x the cost), landed on a balanced dimension-split (weighted away
+      from splits that strand a side with only one dimension) plus
+      adaptive probabilistic rejection of monodimensional sides. Cut
+      "either side monodimensional" from 65.3% to 42.3% on Genshin's full
+      dimension set while keeping per-dimension shares close to baseline
+      and success rate above 97%.
+- [x] Narrow-filter generation failures — heavily filtered Unlimited
+      requests (e.g. 2 dimensions including release_version) could fail
+      generation outright. Root-caused to valid grids being real but
+      statistically rare for random sampling to land on (as few as 9
+      valid combinations out of 200K+ possible). Fixed with a seed-retry
+      loop plus `GridGenerator.findAllValidGrids`, a guaranteed-correct
+      exhaustive fallback (per-category match caching keeps it fast
+      enough to run synchronously) — generation now only fails when a
+      filter combination is truly impossible, not from bad luck.
 
 ## Phase 5 — Daily puzzle depth & polish
 Goal: Daily is the most important surface in this genre (the thing a
@@ -179,16 +204,29 @@ sync here at a glance:
 - Multi-variant entity disambiguation (Traveler-style: same display name,
   differing key attributes) is a general ingestion pattern to watch for
   in any future GameModule, not a one-off
-- Soft lock guard (Pokedoku concept: prevent a correct-but-greedy guess
-  from stranding another cell) — explicitly deferred, needs cross-cell
-  dependency analysis; not planned unless specifically requested
+- Daily vs. Unlimited should eventually have distinct generation *goals*
+  on top of the shared correctness engine, not just shared code: Daily
+  optimizes for freshness/interest (monodimensional grids allowed, even
+  desirable) with editorial curation in mind, Unlimited optimizes for
+  replayability/variety. `generateCandidates()` (Phase 4) is the
+  foundation — collects multiple valid grids instead of stopping at the
+  first one — but mode-specific *scoring* to choose among them (Unlimited
+  diversity scoring, Daily freshness scoring against recent puzzles
+  already in the `puzzles` table, a curation tool to preview/hand-pick an
+  upcoming Daily) is still unbuilt. Natural fit for Phase 5.
 
 ## Notes
 - Total estimate: ~8-10 weeks part-time, revised upward from the original
   estimate given Phase 3 grew into a full Unlimited-mode build rather than
   a lighter "polish pass."
-- Phases 0-3 complete. Phase 2 additionally validated the architecture
+- Phases 0-4 complete. Phase 2 additionally validated the architecture
   empirically (not just by design) and fixed a real latent bug in the
   process; Phase 3 did the same for the frontend (the `PuzzleGrid`
   centering bug and the `ddl-auto=update` schema gotchas were both only
   discovered by actually running the app end-to-end, not by code review).
+  Phase 4 leaned on the same discipline for `GridGenerator`: every tuning
+  change was measured against a real baseline before/after, including two
+  variants that looked reasonable in theory but were rejected once the
+  numbers came back — and the narrow-filter generation failures and the
+  soft-lock puzzle were both found by actually playing Unlimited mode,
+  not by reasoning about the algorithm in the abstract.

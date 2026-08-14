@@ -5,7 +5,7 @@ interface ScoreProps {
 
 export default function Score({ correct, total }: ScoreProps) {
   return (
-    <div className="font-mono text-lg font-semibold text-gray-700 tabular-nums">
+    <div title="Score" className="font-mono text-lg font-semibold text-gray-700 tabular-nums">
       {correct}/{total}
     </div>
   );
