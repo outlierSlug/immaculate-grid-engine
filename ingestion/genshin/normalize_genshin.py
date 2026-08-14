@@ -182,7 +182,7 @@ def map_character(raw: dict) -> list[dict]:
         for gender_id, gender_name, model, icon in TRAVELER_GENDERS:
             for element in TRAVELER_ELEMENTS:
                 entities.append({
-                    "id": f"traveler-{gender_id}-{element.lower()}",
+                    "id": f"genshin:traveler-{gender_id}-{element.lower()}",
                     "game_id": "genshin",
                     "display_name": f"Traveler – {gender_name} ({element}) ",
                     "image_url": f"https://enka.network/ui/{icon}.png",
@@ -200,7 +200,7 @@ def map_character(raw: dict) -> list[dict]:
 
     # ── Normal characters ────────────────────────────────
     return [{
-        "id": slugify(name),
+        "id": f"genshin:{slugify(name)}",
         "game_id": "genshin",
         "display_name": name,
         "image_url": get_image_url(name),

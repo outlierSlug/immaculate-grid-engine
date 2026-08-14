@@ -20,7 +20,7 @@ def map_brawler(raw: dict) -> dict | None:
         brawler_class = None  # excluded from class-based categories, not a real class
 
     return {
-        "id": raw["name"].lower(),
+        "id": f"brawlstars:{raw['name'].lower()}",
         "game_id": "brawlstars",
         "display_name": raw["name"],
         "image_url": raw["imageUrl"],
