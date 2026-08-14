@@ -29,7 +29,20 @@ public class GridGeneratorTestRunner implements CommandLineRunner {
         var module = new GenshinGameModule();
         List<CategoryDefinition> categories = module.getCategoryDefinitions(entities);
 
+        System.out.println("Module class: " + module.getClass().getName());
+        System.out.println("Total categories: " + categories.size());
+
+        // Print every category label
+        categories.forEach(c -> System.out.println(" - " + c.getLabel()));
+
         System.out.println("Generated " + categories.size() + " total categories");
+
+        GridItem sample = entities.stream()
+            .filter(e -> e.getId().equals("zhongli") || e.getDisplayName().equals("Zhongli"))
+            .findFirst()
+            .orElse(entities.get(0));
+
+        System.out.println("Sample attributes: " + sample.getAttributes());
 
         var generator = new GridGenerator();
         Optional<GridGenerator.GeneratedPuzzle> result =

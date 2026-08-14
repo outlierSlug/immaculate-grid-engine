@@ -29,6 +29,13 @@ public class PuzzleController {
         return PuzzleResponse.from(puzzle);
     }
 
+    @PostMapping("/unlimited")
+    public PuzzleResponse unlimited(@RequestParam(defaultValue = "genshin") String game,
+                                     @RequestBody(required = false) UnlimitedPuzzleRequest request) {
+        Puzzle puzzle = puzzleService.generateUnlimitedPuzzle(game, request != null ? request : UnlimitedPuzzleRequest.defaults());
+        return PuzzleResponse.from(puzzle);
+    }
+
     @PostMapping("/{puzzleId}/guess")
     public GuessResponse guess(@PathVariable String puzzleId, @RequestBody GuessRequest request) {
         var result = puzzleService.checkGuess(puzzleId, request.row(), request.col(), request.itemId());

@@ -5,12 +5,17 @@
       (no official API exists; community-maintained, OSL-3.0 licensed)
 - [x] `fetch_genshin.py` — pulls raw data via the bulk `/characters/all`
       endpoint, saves untouched to /ingestion/genshin/raw
-- [x] `normalize.py` — transforms into the generic Entity/GridItem schema,
-      writes to /ingestion/genshin/output/genshin_entities.json
+- [x] `normalize_genshin.py` — transforms into the generic Entity/GridItem
+      schema, writes to /ingestion/genshin/output/genshin_entities.json
 - [x] Validation pass (schema.py / pydantic): no null required fields, no
       duplicate IDs, thin-category warnings
 - [x] Seed JSON committed (92 of 118 actual characters — source data is
       stale past patch 5.0; backfill tracked in Backlog, non-blocking)
+- [x] Roster since hand-extended to 132 entries by manually curating
+      `raw/genshin_characters.json` from the Genshin wiki — the bulk-fetch
+      script is effectively superseded for day-to-day data fixes;
+      `normalize_genshin.py` is now the only ingestion file that should be
+      edited (see Architecture doc)
 
 ## Phase 1 — Single-player Genshin MVP [COMPLETE]
 - [x] Spring Boot 4 backend scaffolded (Java 21, Maven, Postgres via Docker)
@@ -55,27 +60,76 @@
 - [x] Confirmed working end-to-end for both games: puzzle generation,
       guess validation (correct + incorrect cases), frontend rendering
 
-## Phase 3 — Content depth & visual polish (~1-2 weeks) [NEXT]
-Goal: make the puzzles genuinely more interesting to solve, and make the
-game look/feel like a real product instead of a functional prototype.
-Deliberately sequenced before stats (Phase 4) — richer categories make
-rarity percentages meaningful instead of trivial.
+## Phase 3 — Multi-page frontend + Unlimited Mode [COMPLETE]
+Goal: turn the single-view prototype into a real multi-page app
+(`/`, `/:game`, `/:game/unlimited`) and ship a fully-featured Unlimited
+mode, not just a stub route.
 
-- [ ] Genshin: additional category dimensions (candidates: affiliation,
-      birthday month — both already present in raw ingested data, unused
-      so far; release_version via date lookup table)
-- [ ] Brawl Stars: additional category dimensions (candidates: Super
-      count, Star Power count, Gadget count)
-- [ ] Category icons instead of plain text (element symbols, region
-      emblems, Brawl Stars rarity colors using BrawlAPI's provided hex
-      values)
-- [ ] Filled-cell rendering: character/brawler icon (not full splash art)
-      in the grid cell, matching the reference game's compact style
-- [ ] General UI polish pass: replace alert()-based wrong-guess feedback
-      with inline shake/toast, win-state UI once all 9 cells are filled,
-      guess-counter sidebar
+- [x] `react-router-dom` v7 routing: `/` (game select) → `/:game` (Daily,
+      renamed from the old single-view `App.tsx`) → `/:game/unlimited`
+- [x] Shared `Layout` + `Header` (game switcher modal, Daily/Unlimited
+      toggle) — the toggle was UI-only/non-functional until this phase
+- [x] `usePuzzleGuesses` hook extracted from the old monolithic puzzle
+      view — shared grid-fill/guess-submission/completion-detection state
+      for both Daily and Unlimited, so they only differ in how the puzzle
+      is obtained
+- [x] Backend: `Puzzle.mode` (DAILY/UNLIMITED), seed+`minAnswersPerCell`
+      overload on `GridGenerator`, `POST /api/puzzle/unlimited`,
+      `GET /api/games/{game}/categories`, `GameModuleRegistry`,
+      `ApiExceptionHandler` for real HTTP status codes on the new
+      validation paths
+- [x] `UnlimitedSettingsPanel`: Pokedoku-inspired design — per-dimension
+      filter chips that open a detail overlay (All toggle + per-value
+      checkboxes, never toggle inclusion via the chip itself),
+      "Allow single-answer cells" and "Show Timer" toggles, fully
+      controlled/live-persisted settings (no discardable draft), identical
+      component used inline (first load) and as a hamburger-opened modal
+- [x] `Timer` (always running once a puzzle exists, toggle only controls
+      visibility, freezes on completion) + `Score` (`correct/total`,
+      live) in a `PuzzleGrid`-integrated info column
+- [x] `PuzzleGrid` rewritten to CSS Grid (from nested flex rows) so the
+      grid stays pixel-centered regardless of side-column content, plus
+      `CategoryChip` text-wrapping fix for long labels
+- [x] Graceful generation failure handling: reverts to the loadup screen
+      and surfaces the backend's real error text
+- [x] Data fix: Traveler `release_version` was uniformly "1.0" for every
+      element, allowing impossible puzzles (e.g. "1.0 × Dendro"); fixed
+      per-element in `normalize_genshin.py`, reloaded
 
-## Phase 4 — Guess stats & deployment (~2 weeks)
+## Phase 4 — Finish Unlimited Mode [NEXT]
+Goal: the two known, deliberately-scoped-out gaps from Phase 3.
+
+- [ ] 9-guess limit — Immaculate-Grid-genre convention: one shared pool
+      across all 9 cells (not per-cell, not wrong-guesses-only; every
+      submitted guess consumes one). Client-side only for now, consistent
+      with the existing single-player used-answer-tracking model. Needs a
+      design decision on the "out of guesses with cells still empty" end
+      state before implementation.
+- [ ] `GridGenerator` puzzle variety: currently correct but can produce
+      all-same-dimension rows/cols (e.g. all 3 columns being different
+      character models) since categories are pooled across a whole
+      dimension-group rather than preferring one dimension per row/col.
+      Needs a new `GridGeneratorTest` invariant alongside the fix.
+
+## Phase 5 — Daily puzzle depth & polish
+Goal: Daily is the most important surface in this genre (the thing a
+player returns to once a day) and it hasn't had a dedicated pass since
+Phase 1 — everything built for Unlimited in Phase 3 should land here too.
+
+- [ ] Wire `Timer`/`Score`/completion messaging into `PuzzlePage` — the
+      `usePuzzleGuesses` hook already exposes everything needed
+- [ ] Apply the Phase 4 guess-limit and generation-variety work to Daily
+- [ ] Additional category dimensions (candidates: affiliation, birthday
+      month — both already present in raw ingested data, unused so far)
+- [ ] General UI polish: replace `alert()`-based wrong-guess feedback with
+      inline shake/toast
+- [ ] Consider a Wordle-style shareable result summary — common genre
+      expectation for a once-a-day puzzle, not yet scoped in detail
+- [ ] localStorage persistence for in-progress puzzle state (survive a
+      refresh) and for Daily/Unlimited state across navigation (currently
+      switching modes discards in-progress state)
+
+## Phase 6 — Guess stats & deployment (~2 weeks)
 Goal: ship the daily puzzle as a real, live, playable product with the
 rarity/uniqueness mechanic that makes this genre engaging.
 
@@ -86,13 +140,11 @@ rarity/uniqueness mechanic that makes this genre engaging.
 - [ ] Aggregation endpoint: per-cell answer rarity ("X% of players chose
       this")
 - [ ] Frontend: display rarity % on filled cells, matching reference UI
-- [ ] localStorage persistence for in-progress puzzle state (survive a
-      refresh)
 - [ ] Deploy backend (Fly.io/Railway) + frontend (Vercel/Netlify) +
       managed Postgres
 - [ ] CORS origins moved to real config for the deployed domain
 
-## Phase 5 — Real-time head-to-head (~2-3 weeks)
+## Phase 7 — Real-time head-to-head (~2-3 weeks)
 Deliberately after a deployed, polished single-player game exists —
 additive feature on a proven foundation, not a prerequisite for having a
 demoable product.
@@ -105,42 +157,38 @@ demoable product.
 - [ ] Rate limiting + server-side used-answer tracking on /guess (unsafe
       to defer once an opponent is involved, unlike single-player)
 
-## Phase 6 — Scale / advanced features
+## Phase 8 — Scale / advanced features
 - [ ] Leaderboards / streaks
 - [ ] Redis for active room state (if needed under real multiplayer load)
 - [ ] Third GameModule — real proof point for a GameModule registry
-      replacing the current hardcoded switch/map
+      replacing the current hardcoded switch (`GameModuleRegistry`
+      centralized the duplication in Phase 3, but didn't remove the
+      hardcoding itself)
+
 ## Backlog (non-blocking)
-- Backfill ~26 missing Genshin characters (patch 5.1+) not present in the
-  current data source
-- Add `release_version` (e.g. "4.2") via a date -> patch-version lookup
-  table; not present in the current data source
-- Add character model/body type as an attribute — requires a second data
-  source (likely Fandom wiki)
-- Frontend: map category values (element, region, rarity, etc.) to icon
-  assets instead of plain text
-- Tighten grid generation to reject overly-easy (1-answer) or low-variety
-  combinations
-- CORS origins should move to configuration rather than a hardcoded
-  annotation value once a deployment target exists
-- Multi-variant entity disambiguation is a general pattern, not a one-off:
-  any GameModule with entities sharing a display name but differing by a
-  key attribute (Genshin's Traveler, one entity per element) must
-  disambiguate display_name at normalize time, since raw source data often
-  differentiates IDs/attributes but not names
-- Real `GameModule` registry — replace the hardcoded switch/map in
-  `PuzzleService.resolveModule()` and `GameDataLoader.GAME_SEED_FILES`
-  once a third game is added or this is deployed
-- Expand Brawl Stars attribute set for
-  richer category variety
-- Brawl Stars rarity color mapping for CategoryChip (BrawlAPI provides a
-  color hex per rarity, not yet captured at ingestion)
-- BrawlAPI class-metadata gap: some current, released brawlers have
-  unclassified/"Unknown" class data in this dataset
+Full detail lives in `docs/ARCHITECTURE.md`'s Backlog section — kept in
+sync here at a glance:
+- Brawl Stars: model/body-type attribute (needs a second data source),
+  expanded attribute set (Super/Star Power count) for richer categories,
+  rarity color mapping for CategoryChip, class-metadata gap
+- Real `GameModule` registry (config/filesystem-driven, not a hardcoded
+  switch) — once a third game exists or this is deployed
+- Rate limiting + server-side used-answer tracking on `/guess` — required
+  before Phase 7 (H2H), not urgent before then
+- CORS origins moved to configuration once a deployment target exists
+- Multi-variant entity disambiguation (Traveler-style: same display name,
+  differing key attributes) is a general ingestion pattern to watch for
+  in any future GameModule, not a one-off
+- Soft lock guard (Pokedoku concept: prevent a correct-but-greedy guess
+  from stranding another cell) — explicitly deferred, needs cross-cell
+  dependency analysis; not planned unless specifically requested
 
 ## Notes
-- Total estimate: ~8-10 weeks part-time.
-- Phases 0-2 complete. Phase 2 additionally validated the architecture
+- Total estimate: ~8-10 weeks part-time, revised upward from the original
+  estimate given Phase 3 grew into a full Unlimited-mode build rather than
+  a lighter "polish pass."
+- Phases 0-3 complete. Phase 2 additionally validated the architecture
   empirically (not just by design) and fixed a real latent bug in the
-  process — a better outcome than if it had "just worked" without
-  surfacing anything.
+  process; Phase 3 did the same for the frontend (the `PuzzleGrid`
+  centering bug and the `ddl-auto=update` schema gotchas were both only
+  discovered by actually running the app end-to-end, not by code review).

@@ -19,7 +19,7 @@ take a `gameId`, never against Genshin-specific types.
 | Database   | PostgreSQL 16 (Docker locally)           | JSONB columns for flexible per-game attributes |
 | ORM        | Hibernate 7.4 (via Spring Data JPA)      | `hypersistence-utils-hibernate-73` for JSONB mapping |
 | JSON       | Jackson 3 (`tools.jackson.*`)            | Ships with Spring Boot 4 by default |
-| Frontend   | React + TypeScript + Vite                | Not yet started |
+| Frontend   | React 19 + TypeScript + Vite + Tailwind  | `react-router-dom` v7 for routing, no data-fetching library (plain `fetch` + local state) |
  
 ### Version-specific gotchas (Spring Boot 4 / Hibernate 7 / Jackson 3)
  
@@ -44,6 +44,20 @@ versions. Concrete traps hit so far, kept here so they aren't re-derived:
   used inside a `@Type(JsonType.class)` field (e.g. `CategorySnapshot`) must
   explicitly `implements Serializable` or saves fail at runtime with
   `NonSerializableObjectException`, even though the class compiles fine.
+- **`spring.jpa.hibernate.ddl-auto=update` only ever ADDs — it never drops
+  constraints or backfills data.** This project has no Flyway/Liquibase, so
+  it's the only schema mechanism, and it bit twice adding `Puzzle.mode`
+  (DAILY/UNLIMITED) for Unlimited mode:
+  - Removing a `@UniqueConstraint` from the entity does nothing to an
+    already-existing DB index — the stale constraint keeps rejecting
+    inserts until manually dropped (`ALTER TABLE ... DROP CONSTRAINT ...`
+    via `docker exec grid-postgres psql ...`).
+  - A new `NOT NULL` column fails outright against a non-empty table
+    (`ddl-auto=update` can't backfill). Add it nullable, backfill existing
+    rows explicitly (`UPDATE ... SET col = 'X' WHERE col IS NULL`), and
+    make sure every code path that writes the entity sets it going forward.
+  Rule of thumb: never assume `ddl-auto=update` reconciled a schema
+  change — check the running dev Postgres directly before relying on it.
 ## Core abstractions (game-agnostic)
  
 - **GridItem** — the guessable thing (character, card, creature). Named
@@ -101,9 +115,16 @@ versions. Concrete traps hit so far, kept here so they aren't re-derived:
   by default. `normalize.py` now lowercases `id` explicitly.
 ### Puzzle (JPA entity, table `puzzles`)
  
-- `id`: `"{gameId}:{date}"`, e.g. `"genshin:2026-08-06"` — natural key,
-  makes "does today's puzzle already exist" a single lookup and prevents
-  ever generating two puzzles for the same game+date.
+- `id`: `"{gameId}:{date}"` for Daily puzzles (e.g. `"genshin:2026-08-06"`)
+  or `"{gameId}:unlimited:{uuid}"` for Unlimited puzzles — natural key,
+  makes "does today's puzzle already exist" a single lookup.
+- `mode`: `PuzzleMode` enum, `DAILY` or `UNLIMITED`. Nullable at the DB
+  level (see the `ddl-auto=update` gotcha above) — legacy pre-Unlimited-mode
+  rows are backfilled to `DAILY`; every row written by current code always
+  sets it explicitly. `PuzzleRepository.findByGameIdAndPuzzleDateAndMode`
+  is scoped by mode because Unlimited puzzles also carry today's date as
+  metadata (for display/debugging), so a lookup by `(gameId, puzzleDate)`
+  alone would return multiple rows once same-day Unlimited puzzles exist.
 - `rowCategories` / `colCategories`: `List<CategorySnapshot>` (id + label
   only — snapshots of the categories chosen at generation time, not live
   `CategoryDefinition` objects, since those are logic and can't be
@@ -111,6 +132,10 @@ versions. Concrete traps hit so far, kept here so they aren't re-derived:
 - `cellSolutions`: `Map<String, List<String>>`, keyed `"row-col"` (e.g.
   `"0-0"`), valued with the list of valid `GridItem` ids for that cell.
   **Never serialized into any API response** — see Security below.
+- No DB-level unique constraint on `(gameId, puzzleDate)` — removed when
+  Unlimited mode shipped, since it's redundant with the PK for Daily rows
+  (the id already encodes the date) and would otherwise block multiple
+  same-day Unlimited rows.
 ## Data sourcing - Genshin
  
 - **No official Genshin API exists.** Using `genshindev/api`, hosted at
@@ -133,6 +158,32 @@ versions. Concrete traps hit so far, kept here so they aren't re-derived:
   the API exposes multiple image types per character (`card`, `icon`,
   `portrait`, etc.) but current usage is `card` only; no `icon` type is
   available from this source (see Backlog).
+- **Genshin roster data is now manually curated, not scraped by
+  `fetch_genshin.py`** — `ingestion/genshin/raw/genshin_characters.json` was
+  hand-assembled from the Genshin wiki. Only `normalize_genshin.py` (raw →
+  `GridItem` schema) should be edited for data-shape/attribute fixes; the
+  raw file itself is out of band.
+- **Real bug found and fixed**: `normalize_genshin.py` generates one
+  `GridItem` per Traveler element/gender combination
+  (`traveler-{gender}-{element}`), but every element inherited the base
+  Traveler record's single `release_version` ("1.0"). This is wrong —
+  each element unlocked in a different patch, so `release_version` (a live
+  puzzle category dimension) could generate genuinely impossible puzzles,
+  e.g. "1.0 × Dendro" when Dendro didn't exist until 3.0. Fixed via a
+  hand-curated `TRAVELER_ELEMENT_RELEASE_VERSION` map in the script (Anemo/
+  Geo 1.0, Electro 2.0, Dendro 3.0, Hydro 4.0, Pyro 5.3 — quest-locked
+  behind the Natlan Archon Quest finale, not Natlan's 5.0 launch — Cryo
+  7.0), since the raw source only ever carried one `release_version` for
+  the base character. Same class of issue as the Mualani casing bug above:
+  a real-world data nuance the generic ingestion schema had no way to
+  represent until someone hit it in an actual puzzle.
+- **Reload procedure** after any `normalize_genshin.py` fix: `python
+  normalize_genshin.py` → copy `output/genshin_entities.json` over
+  `backend/src/main/resources/genshin_entities.json` → recompile → run the
+  backend once with `-Dspring-boot.run.profiles=load-data` (upserts
+  `grid_items` by id, safe to re-run, no wipe needed) → **also `TRUNCATE
+  TABLE puzzles`**, since existing puzzle rows snapshot `cellSolutions`
+  computed against the old attribute values and won't self-correct.
 
 ## Multi-game validation (Phase 2)
 
@@ -216,46 +267,88 @@ likely. Requires at least 2 distinct dimensions to run at all (returns
 Implemented in `GridGenerator` (backend `puzzle` package), operating only
 on `List<GridItem>` and `List<CategoryDefinition>` — no game-specific code.
  
-1. Pull all `CategoryDefinition`s for the game (from its `GameModule`).
-2. Seed RNG with `date.toEpochDay()` — deterministic, so the same date
-   always produces the same shuffle without needing to hand out a
-   server-generated puzzle over the network; "today's puzzle" is
-   reproducible from the date alone.
-3. Shuffle categories, take 3 as rows and 3 as columns.
+1. Pull all `CategoryDefinition`s for the game (from its `GameModule`),
+   optionally pre-filtered by dimension/category id (Unlimited mode's
+   settings panel — see below).
+2. Seed the RNG. Two overloads: `generate(entities, categories, date)`
+   seeds with `date.toEpochDay()` — deterministic, so the same date always
+   produces the same shuffle, which is what makes "today's puzzle"
+   reproducible from the date alone without persisting a seed. `generate(
+   entities, categories, long seed, int minAnswersPerCell)` takes an
+   arbitrary seed (Unlimited mode passes a random one per generation) and
+   a configurable per-cell answer-count floor (Unlimited's "Allow
+   single-answer cells" setting: 1 when allowed, 2 when not). The date
+   overload delegates to the seed overload with `minAnswersPerCell=1`, so
+   Daily's behavior and `GridGeneratorTest`'s invariants are byte-for-byte
+   unchanged.
+3. Group categories by dimension, shuffle the *dimensions* (not individual
+   categories), split at a random point into a row-dimension group and a
+   col-dimension group, then shuffle and take 3 categories from each
+   group's pooled categories.
 4. For each of the 9 row×col pairs, compute the valid-answer set by
    filtering `GridItem`s against both predicates.
-5. If any cell has zero matches, discard the combination and retry
-   (bounded retry loop, currently 500 attempts) rather than surfacing a
-   broken puzzle.
+5. If any cell has fewer than `minAnswersPerCell` matches, discard the
+   combination and retry (bounded retry loop, currently 500 attempts)
+   rather than surfacing a broken puzzle.
 6. Return `Optional<GeneratedPuzzle>` — empty if no valid combination was
    found within the attempt budget. Callers must handle this explicitly;
-   with only 92 characters across 4 attribute types, an unsolvable
-   combination is a real possibility, not a hypothetical edge case.
+   with a roster this size, an unsolvable combination (especially under
+   Unlimited mode's user-chosen filters) is a real possibility, not a
+   hypothetical edge case.
 7. On success, the caller (`PuzzleService`) snapshots the chosen categories
-   and persists the whole `Puzzle` once per `(gameId, date)`.
-Not yet implemented, flagged as a future refinement, not a bug: rejecting
-combinations that are technically valid but low-quality (e.g. a cell with
-only 1 possible answer, or one character satisfying 4+ cells and collapsing
-puzzle variety). Current puzzles are solvable but not yet tuned for
-difficulty/interest.
+   and persists the `Puzzle`.
+
+**Known quality gap, not a correctness bug**: step 3 pools *all* categories
+across every dimension assigned to a side and shuffles them together, so
+if a dimension-group happens to contain few dimensions (or the shuffle
+just favors one), all 3 row (or column) categories can legitimately end up
+drawn from the same single dimension — e.g. all 3 columns being different
+character models. Puzzles generated this way are still fully correct
+(every invariant `GridGeneratorTest` checks holds), just less varied than
+they could be. Fixing this means preferring distinct dimensions per side
+when enough are available (falling back to repeats only when there aren't)
+— see Backlog.
  
 ## API design and security
  
-Two controllers so far:
+Controllers:
  
 - `GET /api/puzzle/today?game=genshin` → today's puzzle, category labels
   only (`rowLabels`, `colLabels`). Backed by `PuzzleService.
-  getOrCreateTodaysPuzzle()`: look up by `(gameId, date)`, generate + persist
-  only if missing.
+  getOrCreateTodaysPuzzle()`: look up by `(gameId, date, mode=DAILY)`,
+  generate + persist only if missing.
+- `POST /api/puzzle/unlimited?game=genshin` → generates and persists a
+  fresh Unlimited-mode puzzle every call (never a lookup), body is
+  `UnlimitedPuzzleRequest { dimensions?, excludedCategoryIds?,
+  minAnswersPerCell? }`. `PuzzleService.generateUnlimitedPuzzle` filters
+  the module's category list by the request, 400s if fewer than 2
+  dimensions remain, and generates with a random seed. Same response
+  shape as `/today` (`PuzzleResponse`).
 - `POST /api/puzzle/{puzzleId}/guess` → `{ row, col, itemId }` in,
   `{ correct, itemId, displayName, imageUrl }` out. Validates by looking up
   the persisted `cellSolutions` for that cell; never returns the solution
   set itself, only whether the specific submitted guess was correct.
+  Mode-agnostic — works identically for Daily and Unlimited puzzle ids.
+- `GET /api/games/{game}/categories` → every category the game offers,
+  grouped by dimension (`{gameId, dimensions: [{dimension, categories:
+  [{id, label}]}]}`). Exists purely to drive Unlimited mode's settings
+  panel generically — the frontend never hardcodes a game's dimension
+  names.
 - `GET /api/items?game=genshin` → full character roster (id, name, image,
   attributes). Deliberately fully public — unlike puzzle solutions, the
   roster itself is meant to be public (the player is tested on recall
   against public data, same as the wider genre works: Pokedoku's Pokemon
   data is public too).
+
+`ApiExceptionHandler` (`@RestControllerAdvice`) maps `IllegalArgumentException`
+→ 400, `NoSuchElementException` → 404, `IllegalStateException` → 409 —
+added alongside the Unlimited endpoints so filter-validation and
+generation-failure errors return a real status + message instead of a raw
+500. `GameModuleRegistry` (`@Component`) centralizes the `gameId →
+GameModule` switch that used to be duplicated logic in `PuzzleService`
+only; `GameController` now shares it. It's still a hardcoded switch
+internally, not the registry pattern described in Backlog — this only
+removed the duplication, not the hardcoding.
 ### What's actually protected vs. not — stated explicitly
  
 **Protected:** the server never serializes `Puzzle.cellSolutions` (or any
@@ -275,28 +368,94 @@ the answer key over the network for a specific puzzle instance," not
 "prevent all possible client-side reconstruction."
  
 **Real, deferred gaps** (not urgent for single-player, become requirements
-in Phase 3 H2H where a client can't be trusted):
+once real-time H2H exists, where a client can't be trusted):
 - No rate limiting on `/guess` — a script could brute-force a cell's answer
   set via repeated correct/incorrect responses.
 - No server-side tracking of which answers a player has already used in a
   given puzzle session — currently fine to handle client-side for
   single-player (a player isn't adversarial against themselves), but must
-  move server-side once an opponent is involved.
+  move server-side once an opponent is involved. The planned 9-guess-limit
+  feature (see Roadmap) is intentionally scoped the same way: a
+  client-side-only counter for now, matching this exact reasoning, not a
+  server-authoritative rule yet.
 ### CORS
  
 `@CrossOrigin(origins = "http://localhost:5173")` on both controllers,
 matching Vite's default dev port. Will need a real allowed-origins
 configuration (not hardcoded per-controller) once deployed.
  
+## Frontend architecture
+
+Routes (`react-router-dom` v7, `<Routes>`/`<Route>`, not the data-router
+API): `/` (game select) → `/:game` (Daily) → `/:game/unlimited`
+(Unlimited). A shared `Layout` renders `Header` + `<Outlet/>`; `Header`
+reads `useParams()`/`useLocation()` to know the active game and mode for
+its Daily/Unlimited toggle and Settings (game-switch) modal.
+
+**Shared puzzle-play state**: `usePuzzleGuesses(puzzle)` (a hook, not a
+component) owns `filledCells`/`activeCell`/guess-submission for both
+Daily and Unlimited — resets when `puzzle.id` changes, and derives
+`correctCount`/`totalCells`/`isComplete` purely from `filledCells.length`
+vs. `rowLabels.length * colLabels.length`. This is what lets `PuzzlePage`
+and `UnlimitedPage` share one implementation of "fill a cell, validate a
+guess" while differing only in *how the puzzle was obtained* (fetch vs.
+generate).
+
+**`PuzzleGrid`** renders as a single CSS Grid (not nested flex rows) with
+an explicit `gridTemplateColumns`/`gridTemplateRows`, and always reserves
+a trailing column the same width as the row-label column via an optional
+`sideColumn?: ReactNode[]` prop (index-aligned to rows) — even when
+nothing is passed for it. This was a deliberate fix: an earlier version
+only reserved that column when it had content, so the 3x3 grid visibly
+drifted off-center depending on whether Unlimited's Timer was showing.
+Reserving it unconditionally makes the middle cell's horizontal center
+content-independent, verified to be pixel-identical across Daily,
+Unlimited-with-Timer, and Unlimited-without-Timer. `CategoryChip`'s
+plain-text pill wraps to two lines (`max-w-24`, no `whitespace-nowrap`)
+instead of overflowing into the grid for long labels like "Medium Female".
+
+**Unlimited mode** (`UnlimitedPage` + `UnlimitedSettingsPanel`):
+- Settings model is a single `{ excludedCategoryIds, allowSingleAnswers,
+  showTimer }` — no separate "included dimensions" list, since a
+  dimension with zero remaining checked values is already excluded by
+  construction. `UnlimitedPuzzleRequest.dimensions` is never sent from the
+  frontend; `excludedCategoryIds` alone does all the filtering.
+- Settings are **live, not staged** — `UnlimitedSettingsPanel` is fully
+  controlled (`settings`/`onChange` props, no internal draft), so editing
+  via the hamburger-opened modal writes straight into page state; closing
+  it never discards anything. The page-level Generate button is the only
+  way to (re)generate, and neither the inline nor modal settings card owns
+  one.
+- Dimension chips are trigger-only — clicking one opens a `DimensionOverlay`
+  (an "All" toggle + per-value checkboxes as a secondary modal); the chip
+  itself never includes/excludes anything.
+- `Timer` always mounts once a puzzle exists and keeps ticking regardless
+  of the "Show Timer" toggle (which only controls whether it renders) — a
+  `running={!isComplete}` prop freezes it on completion without resetting.
+  `Score` shows `correctCount/totalCells` in the same info column, via
+  `PuzzleGrid`'s `sideColumn`. Both are currently Unlimited-only; Daily
+  doesn't render either yet even though `usePuzzleGuesses` already exposes
+  everything needed to (see Backlog).
+- On generation failure (e.g. filters too narrow), the page always reverts
+  to the loadup/settings screen and shows the backend's actual error text
+  (`generateUnlimitedPuzzle` reads `res.text()` on failure) — never leaves
+  a stale grid on screen with an error floating above it.
+
+**Known gap**: switching Daily ↔ Unlimited via the header toggle discards
+in-progress state (a generated Unlimited puzzle, filled cells) — switching
+back always returns to Unlimited's loadup screen. Acceptable for now,
+flagged in Backlog as a real UX gap for later.
+
 ## Package structure (backend)
  
 ```
 com.tonyl.backend
 ├── BackendApplication.java
-├── api/              — REST controllers + request/response DTOs
-├── domain/            — JPA entities (GridItem, Puzzle, CategorySnapshot)
+├── api/              — REST controllers, request/response DTOs, ApiExceptionHandler
+├── domain/            — JPA entities (GridItem, Puzzle, PuzzleMode, CategorySnapshot)
 ├── repository/         — Spring Data JPA repositories
-├── game/               — CategoryDefinition, GameModule, GenshinGameModule, BrawlStarsGameModule
+├── game/               — CategoryDefinition, GameModule, GenshinGameModule,
+│                         BrawlStarsGameModule, GameModuleRegistry
 ├── puzzle/             — GridGenerator, PuzzleService
 └── loader/             — one-time data loaders (CommandLineRunner, profile-gated)
 ```
@@ -316,39 +475,60 @@ prove this claim empirically rather than leave it as an unverified design
 intention.
  
 ## Backlog (non-blocking)
- 
-- Backfill ~26 missing Genshin characters (patch 5.1+) not present in the
-  current data source.
-- Add `release_version` (e.g. "4.2") via a date → patch-version lookup
-  table; not present in the current data source.
-- Add character model/body type as an attribute — requires a second data
-  source (likely Fandom wiki), not available from the current API.
-- Frontend: map category values (element, region, etc.) to icon assets for
-  display rather than plain text.
-- Tighten grid generation to reject overly-easy (1-answer) or
-  low-variety (one character satisfying many cells) combinations.
-- Real `GameModule` registry (currently a hardcoded if-check in
-  `PuzzleService.resolveModule()`) — deferred until a second `GameModule`
-  actually exists (Phase 2), to avoid premature abstraction.
+
+**Next up** (see Roadmap for sequencing):
+- 9-guess limit (Immaculate-Grid-genre convention: a shared pool across all
+  9 cells, not per-cell, not wrong-guesses-only — every submitted guess
+  consumes one). Client-side only for now, consistent with the existing
+  used-answer-tracking gap noted above. Design question to settle before
+  implementing: what happens to Score/completion once the pool hits 0 with
+  cells still unfilled — is that a distinct "out of guesses" end state from
+  "solved," and does it need its own UI treatment?
+- `GridGenerator` dimension-variety: prefer distinct dimensions per side
+  (row/col) when enough are available, instead of pooling all categories
+  in a dimension-group together and letting the shuffle decide — currently
+  correct but can produce all-same-dimension rows/cols (e.g. 3 columns all
+  being different character models). Needs a new test invariant alongside
+  the fix, matching this project's existing rigor for `GridGenerator`.
+- Wire `Timer`/`Score`/completion messaging into Daily mode — the
+  `usePuzzleGuesses` hook already exposes `isComplete`/`correctCount`/
+  `totalCells` generically; Daily's `PuzzlePage` just doesn't render
+  anything with them yet.
+- Session-state persistence across Daily ↔ Unlimited navigation (see
+  Frontend architecture "Known gap" above) — and, separately, surviving a
+  page refresh (tracked below too).
+
+**Everything else**:
+- Tighten grid generation to reject overly-easy (1-answer) combinations —
+  now user-configurable in Unlimited mode via "Allow single-answer cells"
+  (`minAnswersPerCell`); Daily still always allows them.
+- Real `GameModule` registry — `GameModuleRegistry` now centralizes the
+  `gameId → GameModule` lookup (previously duplicated between
+  `PuzzleService` and the new `GameController`), but it's still a
+  hardcoded switch internally, not the config/filesystem-driven registry
+  originally envisioned. Worth revisiting once a third game is added.
 - Rate limiting and server-side used-answer tracking on `/guess` — required
-  before Phase 3 (real-time H2H), not urgent for single-player.
+  before real-time H2H, not urgent for single-player.
 - CORS origins should move to configuration rather than a hardcoded
   annotation value once a deployment target exists.
-  - Multi-variant entity disambiguation: any GameModule with entities sharing
-  a display name but differing by a key attribute (e.g. Genshin's Traveler,
-  one entity per element) must disambiguate display_name at normalize time,
-  since raw source data often differentiates IDs/attributes but not names.
-- Real `GameModule` registry — `PuzzleService.resolveModule()` and
-  `GameDataLoader.GAME_SEED_FILES` are both still hardcoded lookups (a
-  switch statement and a static Map respectively). Two games proved the
-  abstraction; a proper registry (e.g. a Spring `Map<String, GameModule>`
-  bean, or filesystem/config-driven discovery) is still a reasonable next
-  step once a third game is added or this is deployed.
+- Multi-variant entity disambiguation is a general pattern, not a one-off:
+  any GameModule with entities sharing a display name but differing by a
+  key attribute (e.g. Genshin's Traveler, one entity per element) must
+  disambiguate display_name (and now, as the release_version bug showed,
+  any per-variant attribute) at normalize time, since raw source data often
+  differentiates IDs/attributes but not names.
 - Expand Brawl Stars attribute set (e.g. Super/Star Power count) for
   richer category variety — separate from, and not a substitute for, the
-  GridGenerator dimension-partitioning fix.
+  GridGenerator dimension-variety fix above.
 - Brawl Stars rarity color mapping for CategoryChip — BrawlAPI returns a
   `color` hex value per rarity that wasn't captured at ingestion; currently
   falls back to the generic gray chip style.
 - BrawlAPI class-metadata gap (see Data sourcing above) — revisit when
   backfilling.
+- localStorage persistence for in-progress puzzle state (survive a page
+  refresh) — currently all grid-fill state is in-memory React state only.
+- Soft lock guard (Pokedoku concept: prevent a correct-but-greedy guess
+  from stranding another cell that shared its only valid answer) —
+  explicitly deferred when Unlimited mode's settings scope was decided;
+  needs cross-cell dependency analysis beyond `GridGenerator`'s current
+  per-cell check. Not planned unless specifically requested.

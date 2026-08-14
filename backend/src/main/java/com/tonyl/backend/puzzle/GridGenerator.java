@@ -23,6 +23,21 @@ public class GridGenerator {
         List<CategoryDefinition> categories,
         LocalDate date
     ) {
+        return generate(entities, categories, date.toEpochDay(), 1);
+    }
+
+    /**
+     * Seed- and threshold-based variant used by Unlimited mode: any long seed
+     * (not just a date) can drive generation, and minAnswersPerCell raises the
+     * per-cell floor above the default of 1 (e.g. to exclude cells with only a
+     * single valid answer).
+     */
+    public Optional<GeneratedPuzzle> generate(
+        List<GridItem> entities,
+        List<CategoryDefinition> categories,
+        long seed,
+        int minAnswersPerCell
+    ) {
         Map<String, List<CategoryDefinition>> byDimension = categories.stream()
             .collect(Collectors.groupingBy(CategoryDefinition::getDimension));
 
@@ -31,7 +46,7 @@ public class GridGenerator {
             return Optional.empty(); // need at least 2 dimensions to split rows/cols safely
         }
 
-        Random random = new Random(date.toEpochDay());
+        Random random = new Random(seed);
 
         for (int attempt = 0; attempt < MAX_ATTEMPTS; attempt++) {
             Collections.shuffle(dimensions, random);
@@ -74,7 +89,7 @@ public class GridGenerator {
                         .map(GridItem::getId)
                         .toList();
 
-                    if (matches.isEmpty()) {
+                    if (matches.size() < minAnswersPerCell) {
                         valid = false;
                         break outer;
                     }

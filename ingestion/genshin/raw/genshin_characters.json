@@ -45,7 +45,7 @@
     "element": "Electro",
     "weapon": "Polearm",
     "region": "Snezhnaya",
-    "model": null,
+    "model": "Medium Male",
     "release_date": "2026-08-12",
     "release_version": "7.0"
   },
@@ -795,7 +795,7 @@
     "element": "Cryo",
     "weapon": "Sword",
     "region": "Snezhnaya",
-    "model": null,
+    "model": "Medium Female",
     "release_date": "2026-08-12",
     "release_version": "7.0"
   },

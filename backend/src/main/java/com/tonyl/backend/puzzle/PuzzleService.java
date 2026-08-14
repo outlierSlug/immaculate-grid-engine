@@ -1,37 +1,45 @@
 package com.tonyl.backend.puzzle;
 
+import com.tonyl.backend.api.UnlimitedPuzzleRequest;
 import com.tonyl.backend.domain.CategorySnapshot;
 import com.tonyl.backend.domain.GridItem;
 import com.tonyl.backend.domain.Puzzle;
-import com.tonyl.backend.game.BrawlStarsGameModule;
+import com.tonyl.backend.domain.PuzzleMode;
 import com.tonyl.backend.game.CategoryDefinition;
 import com.tonyl.backend.game.GameModule;
-import com.tonyl.backend.game.GenshinGameModule;
+import com.tonyl.backend.game.GameModuleRegistry;
 import com.tonyl.backend.repository.GridItemRepository;
 import com.tonyl.backend.repository.PuzzleRepository;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
+import java.util.Set;
+import java.util.UUID;
+import java.util.concurrent.ThreadLocalRandom;
 
 @Service
 public class PuzzleService {
 
     private final GridItemRepository gridItemRepository;
     private final PuzzleRepository puzzleRepository;
+    private final GameModuleRegistry gameModuleRegistry;
     private final GridGenerator gridGenerator = new GridGenerator();
 
-    public PuzzleService(GridItemRepository gridItemRepository, PuzzleRepository puzzleRepository) {
+    public PuzzleService(GridItemRepository gridItemRepository, PuzzleRepository puzzleRepository,
+                          GameModuleRegistry gameModuleRegistry) {
         this.gridItemRepository = gridItemRepository;
         this.puzzleRepository = puzzleRepository;
+        this.gameModuleRegistry = gameModuleRegistry;
     }
 
     public Puzzle getOrCreateTodaysPuzzle(String gameId) {
         LocalDate today = LocalDate.now();
 
-        Optional<Puzzle> existing = puzzleRepository.findByGameIdAndPuzzleDate(gameId, today);
+        Optional<Puzzle> existing = puzzleRepository.findByGameIdAndPuzzleDateAndMode(gameId, today, PuzzleMode.DAILY);
         if (existing.isPresent()) {
             return existing.get();
         }
@@ -63,9 +71,52 @@ public class PuzzleService {
 
     public record GuessResult(boolean correct, String itemId, String displayName, String imageUrl) {}
 
+    public Puzzle generateUnlimitedPuzzle(String gameId, UnlimitedPuzzleRequest request) {
+        List<GridItem> entities = gridItemRepository.findByGameId(gameId);
+        GameModule module = gameModuleRegistry.resolve(gameId);
+        List<CategoryDefinition> categories = filterCategories(module.getCategoryDefinitions(entities), request);
+
+        long distinctDimensions = categories.stream().map(CategoryDefinition::getDimension).distinct().count();
+        if (distinctDimensions < 2) {
+            throw new IllegalArgumentException(
+                "At least 2 category dimensions must remain after filtering to generate a puzzle");
+        }
+
+        int minAnswersPerCell = request.minAnswersPerCell() != null ? request.minAnswersPerCell() : 1;
+        long seed = ThreadLocalRandom.current().nextLong();
+
+        GridGenerator.GeneratedPuzzle generated = gridGenerator.generate(entities, categories, seed, minAnswersPerCell)
+            .orElseThrow(() -> new IllegalStateException(
+                "Could not generate a valid unlimited puzzle for " + gameId + " with the selected filters"));
+
+        Puzzle puzzle = new Puzzle(
+            gameId + ":unlimited:" + UUID.randomUUID(),
+            gameId,
+            LocalDate.now(),
+            PuzzleMode.UNLIMITED,
+            toSnapshots(generated.rowCategories()),
+            toSnapshots(generated.colCategories()),
+            generated.cellSolutions()
+        );
+        return puzzleRepository.save(puzzle);
+    }
+
+    private List<CategoryDefinition> filterCategories(List<CategoryDefinition> categories, UnlimitedPuzzleRequest request) {
+        List<String> allowedDimensions = request.dimensions();
+        Set<String> excludedIds = request.excludedCategoryIds() != null
+            ? new HashSet<>(request.excludedCategoryIds())
+            : Set.of();
+
+        return categories.stream()
+            .filter(c -> allowedDimensions == null || allowedDimensions.isEmpty()
+                || allowedDimensions.contains(c.getDimension()))
+            .filter(c -> !excludedIds.contains(c.getId()))
+            .toList();
+    }
+
     private Puzzle generateAndSave(String gameId, LocalDate date) {
         List<GridItem> entities = gridItemRepository.findByGameId(gameId);
-        GameModule module = resolveModule(gameId);
+        GameModule module = gameModuleRegistry.resolve(gameId);
         List<CategoryDefinition> categories = module.getCategoryDefinitions(entities);
 
         GridGenerator.GeneratedPuzzle generated = gridGenerator.generate(entities, categories, date)
@@ -76,20 +127,12 @@ public class PuzzleService {
             gameId + ":" + date,
             gameId,
             date,
+            PuzzleMode.DAILY,
             toSnapshots(generated.rowCategories()),
             toSnapshots(generated.colCategories()),
             generated.cellSolutions()
         );
         return puzzleRepository.save(puzzle);
-    }
-
-    private GameModule resolveModule(String gameId) {
-        // TODO: replace with a proper registry once a second GameModule exists (Phase 2)
-        return switch (gameId) {
-            case "genshin" -> new GenshinGameModule();
-            case "brawlstars" -> new BrawlStarsGameModule();
-            default -> throw new IllegalArgumentException("Unknown gameId: " + gameId);
-        };
     }
 
     private List<CategorySnapshot> toSnapshots(List<CategoryDefinition> categories) {

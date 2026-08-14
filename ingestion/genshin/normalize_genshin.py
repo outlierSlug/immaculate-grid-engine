@@ -133,6 +133,22 @@ ENKA_ICON_MAP = {
 
 TRAVELER_ELEMENTS = ["Anemo", "Geo", "Electro", "Dendro", "Hydro", "Pyro", "Cryo"]
 
+# Each elemental Traveler form unlocked in a different patch, not at launch —
+# e.g. Dendro wasn't playable until 3.0 (Sumeru). The raw source only carries
+# one release_version for the base "Traveler" record, so this is hand-curated
+# domain knowledge, not derived from the scrape. Pyro was quest-locked behind
+# the Natlan Archon Quest finale, so it's dated to 5.3 rather than Natlan's
+# initial 5.0 release.
+TRAVELER_ELEMENT_RELEASE_VERSION = {
+    "Anemo": "1.0",
+    "Geo": "1.0",
+    "Electro": "2.0",
+    "Dendro": "3.0",
+    "Hydro": "4.0",
+    "Pyro": "5.3",
+    "Cryo": "7.0",
+}
+
 TRAVELER_GENDERS = [
     ("aether", "Aether", "Medium Male", "UI_AvatarIcon_PlayerBoy"),
     ("lumine", "Lumine", "Medium Female", "UI_AvatarIcon_PlayerGirl"),
@@ -177,7 +193,7 @@ def map_character(raw: dict) -> list[dict]:
                         "region": "",
                         "model": model,
                         "release_date": raw.get("release_date") or "2020-09-28",
-                        "release_version": raw.get("release_version") or "1.0",
+                        "release_version": TRAVELER_ELEMENT_RELEASE_VERSION[element],
                     },
                 })
         return entities

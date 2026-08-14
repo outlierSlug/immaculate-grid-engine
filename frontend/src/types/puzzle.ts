@@ -26,3 +26,24 @@ export interface GridItem {
   imageUrl: string;
   attributes: Record<string, unknown>;
 }
+
+export interface CategoryOption {
+  id: string;
+  label: string;
+}
+
+export interface DimensionCategories {
+  dimension: string;
+  categories: CategoryOption[];
+}
+
+export interface GameCategoriesResponse {
+  gameId: string;
+  dimensions: DimensionCategories[];
+}
+
+export interface UnlimitedPuzzleRequest {
+  dimensions?: string[];
+  excludedCategoryIds?: string[];
+  minAnswersPerCell?: number;
+}

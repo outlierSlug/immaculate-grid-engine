@@ -2,6 +2,7 @@ import { Routes, Route, Outlet } from 'react-router-dom';
 import Header from './components/Header';
 import HomePage from './pages/HomePage';
 import PuzzlePage from './pages/PuzzlePage';
+import UnlimitedPage from './pages/UnlimitedPage';
 
 function Layout() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <Route element={<Layout />}>
         <Route path="/" element={<HomePage />} />
         <Route path="/:game" element={<PuzzlePage />} />
+        <Route path="/:game/unlimited" element={<UnlimitedPage />} />
       </Route>
     </Routes>
   );

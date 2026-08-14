@@ -1,5 +1,5 @@
-import { Link, useNavigate, useParams } from 'react-router-dom';
-import { GAMES, isValidGameId } from '../config/games';
+import { Link, useNavigate, useParams, useLocation } from 'react-router-dom';
+import { isValidGameId } from '../config/games';
 import { useState } from 'react';
 import SettingsModal from './SettingsModal';
 
@@ -7,6 +7,9 @@ export default function Header() {
   const { game } = useParams();
   const activeGame = isValidGameId(game) ? game : undefined;
   const [settingsOpen, setSettingsOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const isUnlimited = location.pathname.endsWith('/unlimited');
 
   return (
     <header className="border-b border-gray-200 bg-white">
@@ -29,15 +32,21 @@ export default function Header() {
         <div className="flex justify-center">
           {activeGame && (
             <div className="flex items-center gap-1 bg-gray-100 p-1 rounded-full text-xs font-semibold">
-              <button 
-                className="px-3 py-1 rounded-full bg-white text-gray-900 shadow-sm transition"
+              <button
+                type="button"
+                onClick={() => navigate(`/${activeGame}`)}
+                className={`px-3 py-1 rounded-full transition cursor-pointer ${
+                  !isUnlimited ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-500 hover:text-gray-700'
+                }`}
               >
                 Daily
               </button>
-              <button 
-                disabled 
-                className="px-3 py-1 rounded-full text-gray-400 cursor-not-allowed hover:text-gray-400" 
-                title="Coming soon"
+              <button
+                type="button"
+                onClick={() => navigate(`/${activeGame}/unlimited`)}
+                className={`px-3 py-1 rounded-full transition cursor-pointer ${
+                  isUnlimited ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-500 hover:text-gray-700'
+                }`}
               >
                 Unlimited
               </button>

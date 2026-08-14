@@ -1,3 +1,4 @@
+import { Fragment, type ReactNode } from 'react';
 import CategoryChip from './CategoryChip';
 import type { GridItem } from '../types/puzzle';
 
@@ -6,24 +7,35 @@ interface PuzzleGridProps {
   colLabels: string[];
   filledCells: Record<string, GridItem>; // key: "row-col", e.g. "0-0"
   onCellClick: (row: number, col: number) => void;
+  // 4th column to the right of the grid, index-aligned with rowLabels (e.g.
+  // sideColumn[0] renders beside row 1). Always reserved at the same width as
+  // the row-label column — even when empty — so the 3x3 grid's center column
+  // stays at the true center of the rendered block regardless of content.
+  sideColumn?: ReactNode[];
 }
 
-export default function PuzzleGrid({ rowLabels, colLabels, filledCells, onCellClick }: PuzzleGridProps) {
+export default function PuzzleGrid({ rowLabels, colLabels, filledCells, onCellClick, sideColumn }: PuzzleGridProps) {
   return (
-    <div className="inline-block">
-      {/* column headers row, offset to leave room for row headers on the left */}
-      <div className="flex">
-        <div className="w-28" /> {/* spacer matching row header width */}
-        {colLabels.map((label) => (
-          <div key={label} className="w-32 flex items-center justify-center p-2">
-            <CategoryChip label={label} />
-          </div>
-        ))}
-      </div>
+    <div
+      className="grid"
+      style={{
+        gridTemplateColumns: `7rem repeat(${colLabels.length}, 8rem) 7rem`,
+        gridTemplateRows: `6rem repeat(${rowLabels.length}, 8rem)`,
+      }}
+    >
+      <div />
+
+      {colLabels.map((label) => (
+        <div key={label} className="flex items-center justify-center p-2">
+          <CategoryChip label={label} />
+        </div>
+      ))}
+
+      <div />
 
       {rowLabels.map((rowLabel, rowIndex) => (
-        <div key={rowLabel} className="flex">
-          <div className="w-28 flex items-center justify-center p-2">
+        <Fragment key={rowLabel}>
+          <div className="flex items-center justify-center p-2">
             <CategoryChip label={rowLabel} />
           </div>
 
@@ -36,7 +48,7 @@ export default function PuzzleGrid({ rowLabels, colLabels, filledCells, onCellCl
                 key={cellKey}
                 onClick={() => onCellClick(rowIndex, colIndex)}
                 disabled={!!filled}
-                className="w-32 h-32 border border-gray-300 bg-white flex flex-col items-center justify-center hover:bg-gray-50 disabled:hover:bg-white cursor-pointer disabled:cursor-not-allowed"
+                className="border border-gray-300 bg-white flex flex-col items-center justify-center hover:bg-gray-50 disabled:hover:bg-white cursor-pointer disabled:cursor-not-allowed"
               >
                 {filled ? (
                   <>
@@ -47,7 +59,9 @@ export default function PuzzleGrid({ rowLabels, colLabels, filledCells, onCellCl
               </button>
             );
           })}
-        </div>
+
+          <div className="flex items-center justify-center">{sideColumn?.[rowIndex] ?? null}</div>
+        </Fragment>
       ))}
     </div>
   );
