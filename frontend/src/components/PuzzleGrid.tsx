@@ -36,7 +36,7 @@ export default function PuzzleGrid({ rowLabels, colLabels, filledCells, onCellCl
                 key={cellKey}
                 onClick={() => onCellClick(rowIndex, colIndex)}
                 disabled={!!filled}
-                className="w-32 h-32 border border-gray-300 bg-white flex flex-col items-center justify-center hover:bg-gray-50 disabled:hover:bg-white"
+                className="w-32 h-32 border border-gray-300 bg-white flex flex-col items-center justify-center hover:bg-gray-50 disabled:hover:bg-white cursor-pointer disabled:cursor-not-allowed"
               >
                 {filled ? (
                   <>
