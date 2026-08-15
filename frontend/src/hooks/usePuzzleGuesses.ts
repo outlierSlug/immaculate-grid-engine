@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
-import { submitGuess } from '../api/client';
-import type { PuzzleResponse, GridItem } from '../types/puzzle';
+import { fetchPuzzleStats, submitGuess, submitPuzzleAttempt } from '../api/client';
+import { getSessionId } from '../utils/session';
+import type { PuzzleResponse, GridItem, PuzzleStatsResponse } from '../types/puzzle';
 
 export interface UsePuzzleGuessesOptions {
   // Total guesses allowed across the whole puzzle — every submission counts,
@@ -15,6 +16,13 @@ export interface UsePuzzleGuessesOptions {
   // build this itself, so it stays usable for any mode. null/undefined
   // means no persistence (in-memory only, today's Unlimited behavior).
   persistKey?: string | null;
+  // Daily-only: submits a PuzzleAttempt at game-over and fetches live
+  // community stats (rarity %, uniqueness score, etc.) on load and after
+  // every correct guess. Nothing about rarity is ever persisted to
+  // localStorage — it's always re-fetched, by design (see
+  // docs/ARCHITECTURE.md's Phase 6 notes): the same cell can show a
+  // different percentage on a later visit as more people play.
+  trackStats?: boolean;
 }
 
 interface StoredProgress {
@@ -61,7 +69,7 @@ function saveProgress(key: string, progress: StoredProgress) {
  * is set, restores from localStorage instead of resetting.
  */
 export function usePuzzleGuesses(puzzle: PuzzleResponse | null, options: UsePuzzleGuessesOptions = {}) {
-  const { guessLimit = null, persistKey = null } = options;
+  const { guessLimit = null, persistKey = null, trackStats = false } = options;
   const [filledCells, setFilledCells] = useState<Record<string, GridItem>>({});
   const [activeCell, setActiveCell] = useState<{ row: number; col: number } | null>(null);
   const [guessesUsed, setGuessesUsed] = useState(0);
@@ -75,6 +83,14 @@ export function usePuzzleGuesses(puzzle: PuzzleResponse | null, options: UsePuzz
   // ticking a counter that resets on every remount.
   const [startedAt, setStartedAt] = useState<number | null>(null);
   const [endedAt, setEndedAt] = useState<number | null>(null);
+  // Community stats snapshot as of the last fetch — never persisted, always
+  // re-requested (see trackStats doc comment above).
+  const [puzzleStats, setPuzzleStats] = useState<PuzzleStatsResponse | null>(null);
+
+  async function refreshStats(puzzleId: string) {
+    const stats = await fetchPuzzleStats(puzzleId, getSessionId());
+    setPuzzleStats(stats);
+  }
 
   useEffect(() => {
     const stored = persistKey ? loadProgress(persistKey) : null;
@@ -105,6 +121,19 @@ export function usePuzzleGuesses(puzzle: PuzzleResponse | null, options: UsePuzz
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [puzzle?.id, persistKey]);
 
+  // Refreshes rarity badges for whatever's already filled (restored from
+  // localStorage, or just an empty board on a fresh puzzle) as soon as the
+  // puzzle is known — independent of the hydration effect above, since
+  // stats don't depend on this session's own progress.
+  useEffect(() => {
+    if (!trackStats || !puzzle) {
+      setPuzzleStats(null);
+      return;
+    }
+    refreshStats(puzzle.id);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [puzzle?.id, trackStats]);
+
   const totalCells = puzzle ? puzzle.rowLabels.length * puzzle.colLabels.length : 0;
   const correctCount = Object.keys(filledCells).length;
   const isComplete = totalCells > 0 && correctCount === totalCells;
@@ -128,6 +157,20 @@ export function usePuzzleGuesses(puzzle: PuzzleResponse | null, options: UsePuzz
         startedAt: startedAt ?? ts,
         endedAt: ts,
       });
+    }
+    if (trackStats && puzzle) {
+      const cellAnswers = Object.fromEntries(
+        Object.entries(filledCells).map(([cellKey, item]) => [cellKey, item.id])
+      );
+      submitPuzzleAttempt(puzzle.id, {
+        sessionId: getSessionId(),
+        cellAnswers,
+        score: correctCount,
+        guessesUsed,
+        solved: isComplete,
+        gaveUp,
+        elapsedMs: ts - (startedAt ?? ts),
+      }).then(() => refreshStats(puzzle.id));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isGameOver]);
@@ -198,6 +241,10 @@ export function usePuzzleGuesses(puzzle: PuzzleResponse | null, options: UsePuzz
       });
     }
 
+    if (trackStats && result.correct) {
+      refreshStats(puzzle.id);
+    }
+
     setActiveCell(null);
   }
 
@@ -217,5 +264,6 @@ export function usePuzzleGuesses(puzzle: PuzzleResponse | null, options: UsePuzz
     feedback,
     startedAt,
     endedAt,
+    puzzleStats,
   };
 }

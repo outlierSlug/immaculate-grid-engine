@@ -82,7 +82,7 @@ function DimensionOverlay({
   return (
     <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-60" onClick={onClose}>
       <div
-        className="bg-white rounded-lg shadow-lg w-80 max-h-[70vh] flex flex-col"
+        className="bg-white rounded-lg shadow-lg w-[calc(100vw-2rem)] max-w-80 max-h-[70vh] flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex items-center justify-between px-4 pt-4 pb-3 border-b border-gray-100">

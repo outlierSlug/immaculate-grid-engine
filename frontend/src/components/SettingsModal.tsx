@@ -22,7 +22,7 @@ export default function SettingsModal({ activeGame, onClose }: SettingsModalProp
       onClick={onClose}
     >
       <div
-        className="bg-white rounded-lg shadow-lg w-96 max-h-[70vh] flex flex-col"
+        className="bg-white rounded-lg shadow-lg w-[calc(100vw-2rem)] max-w-96 max-h-[70vh] flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="relative px-4 pt-4 pb-3 border-b border-gray-100">

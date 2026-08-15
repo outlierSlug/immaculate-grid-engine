@@ -383,7 +383,167 @@ once real-time H2H exists, where a client can't be trusted):
 `@CrossOrigin(origins = "http://localhost:5173")` on both controllers,
 matching Vite's default dev port. Will need a real allowed-origins
 configuration (not hardcoded per-controller) once deployed.
- 
+
+## Community stats & rarity (Phase 6)
+
+Daily-only. Adds the first backend concept that remembers something across
+requests from the same anonymous player — everything before this was
+stateless per-guess.
+
+**Anonymous session identity**: the frontend generates a `crypto.randomUUID()`
+once (`utils/session.ts`) and stores it in localStorage under a fixed key,
+not tied to a specific puzzle or day - the same id every day for a given
+browser, forward-compatible with linking to a real account later. Sent as a
+plain body field / query param, deliberately not a custom header, to avoid
+taking on CORS preflight configuration for a feature that doesn't need it.
+
+**`PuzzleAttempt`** (table `puzzle_attempts`, `domain/PuzzleAttempt.java`) is
+the only thing actually stored: one row per `(puzzleId, sessionId)` -
+`cellAnswers` (`"row-col"` -> itemId, correctly-filled cells only), `score`,
+`guessesUsed`, `solved`, `gaveUp`, `elapsedMs`, `completedAt`. Written once,
+at game-over, via `PuzzleStatsService.submitAttempt` -
+`UNIQUE(puzzleId, sessionId)` plus a check-then-insert with a caught
+`DataIntegrityViolationException` makes a duplicate submission (double tab,
+fast refresh) a harmless no-op rather than something the frontend has to
+guard against. This is safe as a genuinely write-once row specifically
+because "Keep Playing" was removed from Daily in Phase 5 - the board is
+truly frozen at game-over, so the recorded answers can never go stale
+relative to what the player actually finished with. `submitAttempt` silently
+no-ops for non-`DAILY` puzzles (Unlimited's ephemeral UUID puzzle ids are
+never replayed by anyone else, so "stats for this puzzle" is meaningless
+there) - callers never need to special-case the mode themselves.
+
+**Everything else is computed live, never stored.** This is the core design
+principle for this feature: only `cellAnswers` is a frozen fact. Every
+rarity percentage, the aggregate uniqueness score, "Most Unique", and
+percentile rank are recomputed from scratch on every single `GET
+/api/puzzle/{puzzleId}/stats` call (`PuzzleStatsService.getStats`), by
+fetching all `PuzzleAttempt` rows for the puzzle and tallying in Java
+(consistent with this codebase's existing preference for logic-in-code over
+DB-side computation - `CategoryDefinition`, `GridGenerator`). No caching, no
+materialized table. Consequence, confirmed deliberate: the same cell's
+rarity badge, or a player's own uniqueness score, can show a different
+number on a later visit as more people play that day - not a bug, a
+`GET`-computed-live-every-time invariant. A cached/materialized version is a
+Backlog item only if traffic ever makes the live query slow enough to
+matter.
+
+**Uniqueness score formula** (original - Pokedoku's isn't public), lower is
+better:
+```
+UNIQ = 900 - Σ (100 - percentChosen_i) over correctly-filled cells
+```
+An unfilled cell contributes no deduction, which is equivalent to costing
+the full 100 implicitly - a complete grid with average picks can't be
+beaten by an incomplete grid that got lucky on a couple of rare cells.
+`"Most Unique"` = `MIN(live UNIQ)` across all attempts for the puzzle so
+far. Percentile ("better than X% of players") =
+`COUNT(attempts with a strictly higher/worse live score) / COUNT(total
+attempts) × 100` - ties count as neither better nor worse.
+
+**`GET /api/puzzle/{puzzleId}/stats?sessionId=...`** is callable at any
+time, not gated to post-game-over - it's the single source for both (a) live
+rarity badges during play and (b) the full Puzzle Stats panel once the game
+ends. Returns per-cell full answer distributions (not just the top pick), so
+future UI (Most/Least-Common board, Community Answers modal) needs no extra
+round trips beyond this one call. `you` (score/cellAnswers/live uniqueness
+score/percentile) is present only once the calling session has a submitted
+attempt for that puzzle.
+
+**Frontend wiring** (`usePuzzleGuesses`'s new `trackStats` option, Daily
+only): fetches `/stats` once when the puzzle is known (so badges populate
+for cells restored from localStorage on a refresh) and again after every
+correct guess (so the whole board's badges stay mutually consistent as of
+that moment); submits the attempt from the same `isGameOver`
+false→true-transition effect that already captures `endedAt`. Nothing
+rarity-related is persisted to localStorage - `puzzleStats` is plain
+in-memory hook state, intentionally lost and re-fetched on every mount.
+`PuzzleGrid`'s rarity badge (top-right of a filled cell) reads
+`cellStats[cellKey].answers` for the exact item the player filled that cell
+with; renders nothing if no other finished attempt has that cell filled yet.
+
+**Post-game-over UI** (`components/PuzzleStats*`, `CommunityAnswersModal`,
+`ScoreDistributionModal` - all consume the same `/stats` response
+`usePuzzleGuesses` already fetched, no new endpoints):
+- `PuzzleStatsPanel` renders below the grid only once `isGameOver` -
+  three plain stat numbers (games played, average score, "Most Unique" =
+  the lowest live uniqueness score anyone's achieved on this puzzle so far)
+  sized to `PuzzleStatsBoard`'s own width so the two read as one aligned
+  column, and a Most/Least-Common toggle over `PuzzleStatsBoard`, a
+  read-only, label-free 3x3 replica grid (deliberately no `CategoryChip`
+  row/col labels - this board already sits under "today's puzzle," so
+  repeating them just added width) that shows each cell's top (or bottom)
+  pick from `perCell[cellKey].answers` - already sorted by the backend, so
+  the frontend just reads index `0` or the last index depending on the
+  active tab.
+- `CommunityAnswersModal` (opened by clicking a `PuzzleStatsBoard` cell)
+  lists every answer for that cell, sorted, each with a share bar scaled
+  directly to that answer's own percent (not normalized to the top
+  answer) - a 50/50 split renders as two half-filled bars, matching what
+  the percent number beside it says. The viewer's own pick is marked with
+  a small generic-avatar icon rather than recoloring that row or its bar -
+  keeps the bar's color meaning "answer share" for every row uniformly,
+  with "this is yours" carried by a separate marker, not a repurposed hue.
+- `ScoreDistributionModal` is a small bar chart (0-9 buckets from
+  `scoreDistribution`): light-blue bars for everyone else, the viewer's own
+  bar a darker blue - no "You" text label needed once the two shades read
+  clearly as distinct, single-series-plus-one-highlight, so no legend box
+  either, per the dataviz skill's "a single series needs no legend" rule.
+- `UniquenessModal` (opened from the "Most Unique" stat card): a
+  plain-language explanation of the formula plus a distribution chart of
+  every finished attempt's live uniqueness score, bucketed into 100-wide
+  ranges (0-100, 100-200, ... 800-900) rather than one bar per value - the
+  0-900 range is too wide for a `ScoreDistributionModal`-style per-value
+  bar. Same light/dark-blue highlight convention as the Scores modal, for
+  visual consistency between the app's two distribution charts.
+- Verified with a 5-session dataset, not just 3: caught the "always live"
+  principle in action rather than just asserting it - the same finished
+  board's own uniqueness score visibly moved (842 → 855) between two
+  verification passes purely because a 5th session joined in between.
+
+**Live `UNIQ` stat during play** (`UniquenessScore`, `utils/uniqueness.ts`):
+originally the post-game-over uniqueness score/rank only appeared once
+`you` existed on `/stats` (i.e. after this session's attempt was
+submitted) via a `RankModal`. Both were replaced by a single always-visible
+side-column stat, in the slot `Timer` used to occupy for Daily (`Timer`
+itself is untouched - Unlimited still uses it; just dropped from Daily's
+`sideColumn` to make room). `computeLiveUniquenessScore` applies the exact
+same 900-minus-deductions formula `PuzzleStatsService` uses server-side,
+but client-side, against `filledCells` + the already-fetched
+`perCell` - which works identically whether the game is mid-play or
+finished, since an unfilled cell already contributes no deduction either
+way. `computeUniquenessPercentile` does the same for percentile, using the
+new `uniquenessScores` field on `PuzzleStatsResponse` (every finished
+attempt's live score, raw and unordered) as the comparison set - this is
+why `YourStats` no longer carries its own `uniquenessScore`/
+`uniquenessPercentile`: keeping one implementation of the formula
+(client-side) is simpler than two copies that only agreed by construction.
+Clicking the stat toggles a small dismissible tooltip (click-outside/
+Escape to close) rather than a modal, matching what was actually asked for
+- not every "show more detail" interaction needs the heavier modal
+pattern the rest of this app otherwise uses.
+
+**Mobile responsiveness** (`utils/gridSizing.ts`): every grid-shaped
+layout (`PuzzleGrid`, `PuzzleStatsBoard`, `PuzzleStatsPanel`'s stat card,
+`UnlimitedPage`'s button-row alignment) used fixed `7rem`/`8rem` cell
+sizes - a 3x3 grid totaled 38rem (608px), wider than any phone, and
+overflowed invisibly rather than wrapping: row category chips got pushed
+off-screen and the side-column stats sat clipped, only found by actually
+emulating a real device viewport (iPhone 15 Pro Max, 430px), not by
+reasoning about the CSS. Fixed with shared `clamp(min, vw%, max)`
+constants (`CELL_SIZE`, `LABEL_COL_SIZE`, `HEADER_ROW_SIZE`,
+`BOARD_WIDTH_CSS`) - the `max` in each clamp is the original fixed value,
+so every one of these layouts renders pixel-identical to before above
+~610px wide, and shrinks fluidly below it instead of overflowing. Every
+modal's fixed-width panel (`w-96`, `w-108`, `w-lg`, etc.) got the same
+treatment via a `w-[calc(100vw-2rem)] max-w-<original>` pattern, so none
+of them can exceed the viewport on a narrow phone either. `Header` still
+clips its title on narrow viewports (see Backlog) - a flex-based fix was
+tried and reverted mid-session because it stopped the Daily/Unlimited
+toggle from being truly centered, which was judged worse than the
+original clipping for a one-off tweak; it needs a deliberate pass, not
+another isolated fix.
+
 ## Frontend architecture
 
 Routes (`react-router-dom` v7, `<Routes>`/`<Route>`, not the data-router
@@ -501,11 +661,12 @@ in Backlog as a real UX gap for later.
 com.tonyl.backend
 ├── BackendApplication.java
 ├── api/              — REST controllers, request/response DTOs, ApiExceptionHandler
-├── domain/            — JPA entities (GridItem, Puzzle, PuzzleMode, CategorySnapshot)
+├── domain/            — JPA entities (GridItem, Puzzle, PuzzleMode, CategorySnapshot,
+│                         PuzzleAttempt)
 ├── repository/         — Spring Data JPA repositories
 ├── game/               — CategoryDefinition, GameModule, GenshinGameModule,
 │                         BrawlStarsGameModule, GameModuleRegistry
-├── puzzle/             — GridGenerator, PuzzleService
+├── puzzle/             — GridGenerator, PuzzleService, PuzzleStatsService
 └── loader/             — one-time data loaders (CommandLineRunner, profile-gated)
 ```
  
@@ -576,3 +737,31 @@ kept going stale faster than the items themselves resolved.
   always produces the same puzzle" guarantee `singleDeterministicPuzzleIsReproducible`
   depends on — a straight port of Unlimited's `ThreadLocalRandom`-based
   retry would break that.
+- Database management: nothing prunes ephemeral rows. Every Unlimited-mode
+  "Generate" click inserts a permanent `puzzles` row that's never cleaned
+  up (86+ accumulated from dev testing alone as of Phase 6); `puzzle_attempts`
+  will grow unbounded too once real traffic exists. Not urgent
+  pre-deployment (cheap to store, not user-visible), but needs a real
+  answer — a scheduled cleanup job or a TTL on Unlimited rows specifically,
+  since Daily/attempt rows are meant to be kept — before this matters at
+  production scale.
+- `Header` still clips "Immaculate Grid" on phone-width viewports — its
+  `grid-cols-3` layout gives the title column a hard 1/3 cap narrower than
+  the (deliberately `whitespace-nowrap`) title needs, and the centered
+  Daily/Unlimited pill's opaque background paints over the overflow rather
+  than the text visibly spilling out, which reads as a clipped/broken
+  title rather than an obvious overflow. A flex-based reflow (title and
+  settings icon shrink-to-content, toggle takes the remaining space) fixed
+  it but was reverted mid-session: it stopped the toggle from being truly
+  centered across the full header once the title/icon column widths
+  differ, which was judged worse than the original clipping for a
+  same-session tweak. Revisit as a deliberate pass - likely alongside
+  adding a footer (raised as a want, not yet scoped) - rather than
+  another isolated fix.
+- Daily's `Timer` was removed from display (Phase 6) to make room for the
+  live `UNIQ` stat in that same side-column slot — `Timer` the component is
+  untouched and still used by Unlimited. Revisit re-adding it to Daily
+  (e.g. behind a toggle like Unlimited already has) and/or turning solve
+  time into its own puzzle stat ("solved faster than X% of players"),
+  which was already flagged as a possible addition alongside the Scores
+  distribution modal.

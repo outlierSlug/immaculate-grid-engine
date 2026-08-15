@@ -13,6 +13,7 @@ import UnlimitedSettingsPanel, {
   type UnlimitedSettings,
 } from '../components/UnlimitedSettingsPanel';
 import { usePuzzleGuesses } from '../hooks/usePuzzleGuesses';
+import { CELL_SIZE, LABEL_COL_SIZE } from '../utils/gridSizing';
 import acquaintFateIcon from '../assets/genshin/Item_Acquaint_Fate.webp';
 
 const GUESS_LIMIT = 9;
@@ -145,10 +146,11 @@ export default function UnlimitedPage() {
         ]}
       />
 
-      {/* Mirrors PuzzleGrid's own column template (7rem, 8rem x3, 7rem) so
-          these three buttons land exactly centered under the bottom-left
-          cell, the bottom-middle cell, and the bottom-right cell. */}
-      <div className="grid items-center" style={{ gridTemplateColumns: '7rem repeat(3, 8rem) 7rem' }}>
+      {/* Mirrors PuzzleGrid's own column template (shared clamp() sizing in
+          utils/gridSizing) so these three buttons land exactly centered
+          under the bottom-left cell, the bottom-middle cell, and the
+          bottom-right cell, at every viewport width. */}
+      <div className="grid items-center" style={{ gridTemplateColumns: `${LABEL_COL_SIZE} repeat(3, ${CELL_SIZE}) ${LABEL_COL_SIZE}` }}>
         <div />
         <div className="flex justify-center">
           {activeGuessLimit != null && !isGameOver && (

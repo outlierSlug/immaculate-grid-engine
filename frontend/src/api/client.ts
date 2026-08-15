@@ -5,6 +5,8 @@ import type {
   GridItem,
   GameCategoriesResponse,
   UnlimitedPuzzleRequest,
+  SubmitAttemptRequest,
+  PuzzleStatsResponse,
 } from '../types/puzzle';
 
 const BASE_URL = 'http://localhost:8080/api';
@@ -59,4 +61,37 @@ export async function generateUnlimitedPuzzle(
     throw new Error(message || `Failed to generate puzzle: ${res.status}`);
   }
   return res.json();
+}
+
+// Fire-and-forget: stats tracking is a nice-to-have, never something that
+// should surface an error to the player or interrupt the game loop.
+export async function submitPuzzleAttempt(puzzleId: string, request: SubmitAttemptRequest): Promise<void> {
+  try {
+    const res = await fetch(`${BASE_URL}/puzzle/${puzzleId}/attempt`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(request),
+    });
+    if (!res.ok) {
+      console.error(`Failed to submit puzzle attempt: ${res.status}`);
+    }
+  } catch (err) {
+    console.error('Failed to submit puzzle attempt', err);
+  }
+}
+
+// Same fire-and-forget contract as submitPuzzleAttempt - a failed stats fetch
+// just means rarity badges/stats don't show, never a broken page.
+export async function fetchPuzzleStats(puzzleId: string, sessionId: string): Promise<PuzzleStatsResponse | null> {
+  try {
+    const res = await fetch(`${BASE_URL}/puzzle/${puzzleId}/stats?sessionId=${encodeURIComponent(sessionId)}`);
+    if (!res.ok) {
+      console.error(`Failed to fetch puzzle stats: ${res.status}`);
+      return null;
+    }
+    return res.json();
+  } catch (err) {
+    console.error('Failed to fetch puzzle stats', err);
+    return null;
+  }
 }

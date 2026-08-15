@@ -91,9 +91,9 @@ export default function CategoryChip({ label }: CategoryChipProps) {
     return (
       <div className="flex flex-col items-center gap-1.5">
         <div
-          className={`w-20 h-20 bg-gray-100 flex items-center justify-center`}
+          className={`w-13 h-13 sm:w-20 sm:h-20 bg-gray-100 flex items-center justify-center`}
         >
-          <img src={icon} alt={label} title={label} className="w-16 h-16 object-contain" />
+          <img src={icon} alt={label} title={label} className="w-10 h-10 sm:w-16 sm:h-16 object-contain" />
         </div>
         {/* <span className="text-xs font-medium text-gray-600">{label}</span> */}
       </div>
@@ -101,7 +101,7 @@ export default function CategoryChip({ label }: CategoryChipProps) {
   }
 
   return (
-    <div className="inline-flex items-center justify-center text-center px-3 py-2 rounded-xl border border-gray-300 bg-gray-100 text-gray-800 font-bold text-sm leading-tight max-w-24">
+    <div className="inline-flex items-center justify-center text-center px-2 py-1.5 sm:px-3 sm:py-2 rounded-lg sm:rounded-xl border border-gray-300 bg-gray-100 text-gray-800 font-bold text-xs sm:text-sm leading-tight max-w-full">
       {label}
     </div>
   );

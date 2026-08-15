@@ -36,7 +36,7 @@ export default function GuessCounter({ remaining, iconSrc, feedback }: GuessCoun
   }, [feedback]);
 
   return (
-    <div title={title} className={depleted ? 'text-gray-400' : 'text-gray-700'}>
+    <div title={title} className={depleted ? 'text-gray-500' : 'text-black'}>
       <div
         key={popKey}
         className={`flex items-center gap-1.5 font-mono text-lg font-semibold tabular-nums ${
@@ -48,7 +48,7 @@ export default function GuessCounter({ remaining, iconSrc, feedback }: GuessCoun
             src={iconSrc}
             alt=""
             aria-hidden="true"
-            className={`w-6 h-6 shrink-0 object-contain ${depleted ? 'opacity-40 grayscale' : ''}`}
+            className="w-6 h-6 shrink-0 object-contain"
           />
         ) : (
           <svg

@@ -71,7 +71,7 @@ export default function GuessInput({
       onClick={onClose}
     >
       <div
-        className="bg-white rounded-lg shadow-lg w-96 max-h-[60vh] flex flex-col"
+        className="bg-white rounded-lg shadow-lg w-[calc(100vw-2rem)] max-w-96 max-h-[60vh] flex flex-col"
         onClick={(e) => {
           e.stopPropagation();
           handleModalClick();

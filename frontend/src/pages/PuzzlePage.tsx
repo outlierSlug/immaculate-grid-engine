@@ -5,10 +5,12 @@ import type { PuzzleResponse } from '../types/puzzle';
 import { isValidGameId, type GameId } from '../config/games';
 import PuzzleGrid from '../components/PuzzleGrid';
 import GuessInput from '../components/GuessInput';
-import Timer from '../components/Timer';
 import Score from '../components/Score';
 import GuessCounter from '../components/GuessCounter';
+import UniquenessScore from '../components/UniquenessScore';
+import PuzzleStatsPanel from '../components/PuzzleStatsPanel';
 import { usePuzzleGuesses } from '../hooks/usePuzzleGuesses';
+import { computeLiveUniquenessScore, computeUniquenessPercentile } from '../utils/uniqueness';
 import intertwinedFateIcon from '../assets/genshin/Item_Intertwined_Fate.webp';
 
 // Daily's guess limit is a fixed genre convention (matches Pokedoku), not a
@@ -49,11 +51,11 @@ export default function PuzzlePage() {
     isGameOver,
     giveUp,
     feedback,
-    startedAt,
-    endedAt,
+    puzzleStats,
   } = usePuzzleGuesses(puzzle, {
     guessLimit: DAILY_GUESS_LIMIT,
     persistKey: puzzle ? `daily-progress:${puzzle.id}` : null,
+    trackStats: true,
   });
 
   if (!validGame) {
@@ -68,6 +70,11 @@ export default function PuzzlePage() {
     return <div className="p-8">Loading today's puzzle...</div>;
   }
 
+  const liveUniquenessScore = computeLiveUniquenessScore(filledCells, puzzleStats?.perCell);
+  const uniquenessPercentile = puzzleStats
+    ? computeUniquenessPercentile(liveUniquenessScore, puzzleStats.uniquenessScores)
+    : null;
+
   return (
     <main className="flex flex-col items-center gap-5 py-8">
       <h1 className="text-2xl font-bold">Today's Puzzle</h1>
@@ -79,8 +86,9 @@ export default function PuzzlePage() {
         onCellClick={handleCellClick}
         locked={isGameOver}
         feedback={feedback}
+        cellStats={puzzleStats?.perCell}
         sideColumn={[
-          <Timer key="timer" startedAt={startedAt} endedAt={endedAt} visible />,
+          <UniquenessScore key="uniq" score={liveUniquenessScore} percentile={uniquenessPercentile} />,
           <Score key="score" correct={correctCount} total={totalCells} feedback={feedback} />,
           <GuessCounter key="guesses" remaining={guessesRemaining} iconSrc={DAILY_GUESS_ICON[validGame]} feedback={feedback} />,
         ]}
@@ -104,6 +112,15 @@ export default function PuzzlePage() {
           usedItemIds={new Set(Object.values(filledCells).map((item) => item.id))}
           onSelect={handleGuessSelect}
           onClose={closeActiveCell}
+        />
+      )}
+
+      {isGameOver && puzzleStats && (
+        <PuzzleStatsPanel
+          puzzleStats={puzzleStats}
+          rowLabels={puzzle.rowLabels}
+          colLabels={puzzle.colLabels}
+          yourUniquenessScore={liveUniquenessScore}
         />
       )}
     </main>

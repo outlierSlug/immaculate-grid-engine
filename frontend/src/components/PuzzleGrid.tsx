@@ -1,6 +1,7 @@
 import { Fragment, type ReactNode } from 'react';
 import CategoryChip from './CategoryChip';
-import type { GridItem } from '../types/puzzle';
+import { CELL_SIZE, LABEL_COL_SIZE, HEADER_ROW_SIZE } from '../utils/gridSizing';
+import type { CellStats, GridItem } from '../types/puzzle';
 
 interface PuzzleGridProps {
   rowLabels: string[];
@@ -20,6 +21,11 @@ interface PuzzleGridProps {
   // (green border if correct, red if not) instead of a blocking alert().
   // Callers are responsible for clearing this after a short delay.
   feedback?: { row: number; col: number; correct: boolean } | null;
+  // Live per-cell answer distributions (Daily only). Never a frozen
+  // snapshot — callers re-fetch this on load and after every correct guess,
+  // so the same cell's badge can show a different percentage across visits
+  // as more players submit results for the puzzle.
+  cellStats?: Record<string, CellStats> | null;
 }
 
 export default function PuzzleGrid({
@@ -30,13 +36,18 @@ export default function PuzzleGrid({
   sideColumn,
   locked,
   feedback,
+  cellStats,
 }: PuzzleGridProps) {
   return (
     <div
       className="grid"
       style={{
-        gridTemplateColumns: `7rem repeat(${colLabels.length}, 8rem) 7rem`,
-        gridTemplateRows: `6rem repeat(${rowLabels.length}, 8rem)`,
+        // clamp() so this scales down on narrow viewports instead of
+        // overflowing at a fixed 7rem/8rem (38rem = 608px total, wider than
+        // any phone) — caps out at the original fixed values on desktop, so
+        // nothing changes above ~610px wide.
+        gridTemplateColumns: `${LABEL_COL_SIZE} repeat(${colLabels.length}, ${CELL_SIZE}) ${LABEL_COL_SIZE}`,
+        gridTemplateRows: `${HEADER_ROW_SIZE} repeat(${rowLabels.length}, ${CELL_SIZE})`,
       }}
     >
       <div />
@@ -58,6 +69,9 @@ export default function PuzzleGrid({
           {colLabels.map((_, colIndex) => {
             const cellKey = `${rowIndex}-${colIndex}`;
             const filled = filledCells[cellKey];
+            const rarityPercent = filled
+              ? cellStats?.[cellKey]?.answers.find((a) => a.itemId === filled.id)?.percent
+              : undefined;
             const isFeedbackCell = feedback?.row === rowIndex && feedback?.col === colIndex;
             // Border width stays at the original 1px in both states — only
             // the color changes during a flash — so the grid lines never
@@ -78,15 +92,17 @@ export default function PuzzleGrid({
               >
                 {filled ? (
                   <>
-                    {/* Reserved for a future per-cell answer-rarity badge
-                        (Phase 6) — no real data to show yet, so nothing
-                        renders here for now. */}
+                    {rarityPercent != null && (
+                      <span className="absolute top-1 right-1 inline-flex items-center justify-center px-1.5 py-0.5 rounded-lg bg-gray-100 text-gray-800 font-semibold text-xs leading-tight">
+                        {rarityPercent > 0 && rarityPercent < 1 ? '<1' : Math.round(rarityPercent)}%
+                      </span>
+                    )}
                     <img
                       src={filled.imageUrl}
                       alt={filled.displayName}
-                      className="w-16 h-16 rounded-full object-cover border border-gray-200 shadow-sm"
+                      className="w-11 h-11 sm:w-16 sm:h-16 rounded-full object-cover border border-gray-200 shadow-sm"
                     />
-                    <span className="inline-flex items-center justify-center text-center px-2 py-0.5 rounded-lg bg-gray-100 text-gray-800 font-semibold text-xs leading-tight max-w-[92%] wrap-break-word">
+                    <span className="inline-flex items-center justify-center text-center px-1.5 sm:px-2 py-0.5 rounded-lg bg-gray-100 text-gray-800 font-semibold text-[10px] sm:text-xs leading-tight max-w-[92%] wrap-break-word">
                       {filled.displayName}
                     </span>
                   </>

@@ -184,13 +184,67 @@ phase did.
 Goal: ship the daily puzzle as a real, live, playable product with the
 rarity/uniqueness mechanic that makes this genre engaging.
 
-- [ ] Anonymous session identifier (client-generated UUID, localStorage)
+- [x] Anonymous session identifier (client-generated UUID, localStorage)
       — no real auth needed for this
-- [ ] `puzzle_answers` table logging (puzzle_id, cell_key, item_id) per
-      correct guess
-- [ ] Aggregation endpoint: per-cell answer rarity ("X% of players chose
-      this")
-- [ ] Frontend: display rarity % on filled cells, matching reference UI
+- [x] `puzzle_attempts` table: one row per finished session per puzzle
+      (write-once at game-over), not a per-guess event log — every stat
+      needed is a GROUP BY over finished attempts. Daily only.
+- [x] `GET /api/puzzle/{id}/stats`: live per-cell answer distributions
+      (aggregation), games played, average score, and "Most Unique" —
+      all recomputed from scratch on every call, nothing cached.
+- [x] Live in-grid rarity % badge on filled cells during play (not gated
+      to post-game-over), sourced from the endpoint above — fetched on
+      load and again after every correct guess.
+- [x] Uniqueness score: an original formula (900 minus rarity-weighted
+      deductions per correctly-filled cell, lower = more unique — exact
+      formula not publicly documented by Pokedoku, so we defined our
+      own). See docs/ARCHITECTURE.md's Phase 6 section for the formula
+      and why it's recomputed live rather than stored.
+- [x] Percentile ranking: computed entirely client-side
+      (`utils/uniqueness.ts`), against a raw `uniquenessScores` list on
+      `PuzzleStatsResponse` (every finished attempt's live score, no
+      session ids) — not stored per-session server-side. This is what
+      lets the same percentile formula work for a live, still-in-progress
+      score and not just a submitted one; superseded an earlier version
+      that computed it server-side into `you.uniquenessPercentile`, which
+      only worked post-submission.
+- [x] Post-completion Puzzle Stats panel (`PuzzleStatsPanel`): games/avg
+      score/most unique cards, a Most/Least-Common replica board
+      (`PuzzleStatsBoard`), shown below the grid once a game ends. No new
+      endpoint — entirely powered by the `/stats` response already built.
+- [x] Community Answers modal (`CommunityAnswersModal`): click a cell in
+      the replica board → full breakdown of every answer and its share
+      (bar width scaled directly to that answer's own percent, so a
+      50/50 split renders as two half-filled bars), highlighting your own
+      pick with a marker icon (not a recolored row/bar — keeps the bar's
+      color meaning "share," not "yours").
+- [x] Scores distribution modal (`ScoreDistributionModal`, bar chart of
+      final scores across all attempts, your bar a darker blue against
+      light-blue others, no "You" label needed). Time-based stat ("solved
+      faster than X% of players") not built — deferred, no user ask yet.
+- [x] Uniqueness Score modal (`UniquenessModal`, opened from the "Most
+      Unique" stat card): plain-language explanation of the formula plus
+      a distribution chart bucketed into 100-wide score ranges (0-100,
+      100-200, ... 800-900) — the 0-900 range is too wide for a per-value
+      bar like the Scores modal's 0-9.
+- [x] Live `UNIQ` stat during play, not just post-completion: `PuzzlePage`'s
+      side column now shows `UniquenessScore` (click for a small dismissible
+      tooltip with your live score + percentile) in the slot `Timer` used to
+      occupy — `Timer` was dropped from Daily's display to make room (still
+      used by Unlimited, component untouched). Superseded a standalone
+      `RankModal`, since a modal was more than what "click for a tooltip"
+      called for. See Backlog for re-adding the Timer later (e.g. as a
+      toggle, or turning solve time into its own puzzle stat).
+- [x] Mobile responsiveness pass: the grid/stats-board/Unlimited button-row
+      sizing was fixed-`rem` (38rem total, wider than any phone) and
+      overflowed on narrow viewports — row category chips pushed
+      off-screen, side-column stats clipped. Fixed with `clamp()`-based
+      fluid sizing (`utils/gridSizing.ts`, shared by every grid-shaped
+      layout so they all stay aligned) that's pixel-identical to the old
+      fixed sizing above ~610px wide, plus capped every modal's width to
+      the viewport. Verified against a real iPhone 15 Pro Max viewport
+      (430px) and confirmed no regression at desktop widths. `Header`
+      still clips the title on narrow viewports — see Backlog.
 - [ ] Deploy backend (Fly.io/Railway) + frontend (Vercel/Netlify) +
       managed Postgres
 - [ ] CORS origins moved to real config for the deployed domain
@@ -249,12 +303,34 @@ sync here at a glance:
   header toggle) — Daily's own page-refresh persistence shipped in
   Phase 5, but switching modes and back still discards in-progress state
   on both sides
+- Daily's Timer was removed from display (Phase 6) to make room for the
+  live `UNIQ` stat in that slot — revisit re-adding it (e.g. behind a
+  toggle like Unlimited's) and/or turning solve time into its own puzzle
+  stat ("solved faster than X% of players"), same idea already noted for
+  the Scores distribution modal
+- Database management: no cleanup path for ephemeral rows. Unlimited-mode
+  puzzles accumulate forever (every "Generate" click inserts a new row,
+  never pruned — 86+ rows from dev testing alone as of Phase 6); nothing
+  else writes to the `puzzles`/`puzzle_attempts` tables yet either. Not
+  urgent pre-deployment, but worth a real answer (scheduled cleanup job,
+  TTL, or similar) before real traffic accumulates this at scale.
+- Header polish for narrow viewports: `Header`'s `grid-cols-3` layout
+  clips "Immaculate Grid" on phone-width screens (the Daily/Unlimited
+  pill's opaque background paints over the overflow). A flex-based fix
+  was tried and reverted — it stopped the toggle from being truly
+  centered when the title and settings-icon columns differ in width, and
+  that regression wasn't worth it for a mid-flight fix. Revisit as a
+  proper pass, likely alongside adding a footer (mentioned as a nice-to-
+  have, not yet scoped) rather than another one-off tweak.
 
 ## Notes
 - Total estimate: ~8-10 weeks part-time, revised upward from the original
   estimate given Phase 3 grew into a full Unlimited-mode build rather than
   a lighter "polish pass."
-- Phases 0-5 complete. See Backlog for three smaller Phase-5-adjacent
+- Phases 0-5 complete; Phase 6's core stats/rarity system is complete too
+  (session tracking, live rarity badges, the full Puzzle Stats panel and
+  its modals, the live `UNIQ` stat, and a mobile-responsive pass) — only
+  deployment remains on that phase. See Backlog for three smaller Phase-5-adjacent
   items (additional category dimensions, shareable result summary,
   cross-mode navigation persistence) deliberately moved out rather than
   left half-checked, since none of them block Phase 6. Phase 2
@@ -270,3 +346,25 @@ sync here at a glance:
   Unlimited mode, not by reasoning about the algorithm in the abstract.
   Phase 5 found another real bug the same way: the clipped-name rendering
   issue only surfaced from actually looking at a long name in the browser.
+  Phase 6's first slice (session tracking, `puzzle_attempts`, `/stats`, live
+  rarity badges) was verified the same way rather than by reasoning about
+  the aggregation logic in isolation: three separate real browser sessions
+  played the same live puzzle end to end (one full solve, one partial
+  give-up with a deliberately different pick, one mid-game session reading
+  the other two's results), and the live badge/percentile/uniqueness math
+  was cross-checked by hand against what the database actually recorded.
+  The second slice (Puzzle Stats panel, Community Answers/Scores/Rank
+  modals) got the same treatment with a larger 5-session dataset, and
+  incidentally produced a clean real-world demonstration of the "always
+  live, never cached" design principle: the exact same finished board's own
+  uniqueness score visibly changed (842 → 855) between two screenshots
+  taken minutes apart, purely because a 5th session joined and shifted the
+  community distribution in between — the intended behavior, caught in the
+  act rather than just claimed in the design doc. The mobile-responsiveness
+  pass at the end of Phase 6 followed the same discipline once more: the
+  fixed-`rem` grid overflow was only found by actually emulating a real
+  iPhone 15 Pro Max viewport (430px), not by reasoning about the CSS in the
+  abstract — and the fix was verified the same way, across the full Daily
+  flow (empty grid, guess input, finished game, every modal) plus a
+  desktop-width regression check to confirm nothing shifted above the
+  breakpoint.
