@@ -3,3 +3,23 @@
 html {
   scrollbar-gutter: stable;
 }
+
+/* One continuous scale-up-and-back-down motion (no held plateau at the
+   peak, unlike toggling between two transition states) — used for the
+   GuessCounter/Score "pop" on each guess result. Asymmetric on purpose:
+   a quick pop in, then a slower, gentler settle back down — the peak
+   sits early in the timeline (20%) rather than at the midpoint, so most
+   of the animation's total duration is spent on the pop-out. */
+@keyframes pop {
+  0% {
+    transform: scale(1);
+    animation-timing-function: ease-out;
+  }
+  20% {
+    transform: scale(1.5);
+    animation-timing-function: ease-in-out;
+  }
+  100% {
+    transform: scale(1);
+  }
+}

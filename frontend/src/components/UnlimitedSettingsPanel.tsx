@@ -162,10 +162,10 @@ export default function UnlimitedSettingsPanel({
       <div className="overflow-y-auto flex-1">
         <div className="flex items-center justify-center gap-6 flex-wrap px-5 py-4 border-b border-gray-100">
           <div className="flex items-center gap-2">
-            <span className="text-sm font-medium text-gray-700">Unlimited Guesses</span>
+            <span className="text-sm font-medium text-gray-700">Allow Single Answers</span>
             <ToggleSwitch
-              checked={settings.unlimitedGuesses}
-              onChange={(value) => onChange({ ...settings, unlimitedGuesses: value })}
+              checked={settings.allowSingleAnswers}
+              onChange={(value) => onChange({ ...settings, allowSingleAnswers: value })}
             />
           </div>
           <div className="flex items-center gap-2">
@@ -176,10 +176,10 @@ export default function UnlimitedSettingsPanel({
             />
           </div>
           <div className="flex items-center gap-2">
-            <span className="text-sm font-medium text-gray-700">Allow Single Answers</span>
+            <span className="text-sm font-medium text-gray-700">Unlimited Guesses</span>
             <ToggleSwitch
-              checked={settings.allowSingleAnswers}
-              onChange={(value) => onChange({ ...settings, allowSingleAnswers: value })}
+              checked={settings.unlimitedGuesses}
+              onChange={(value) => onChange({ ...settings, unlimitedGuesses: value })}
             />
           </div>
           <div className="flex items-center gap-2">

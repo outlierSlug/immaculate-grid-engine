@@ -136,23 +136,49 @@ Goal: the two known, deliberately-scoped-out gaps from Phase 3.
       enough to run synchronously) — generation now only fails when a
       filter combination is truly impossible, not from bad luck.
 
-## Phase 5 — Daily puzzle depth & polish
+## Phase 5 — Daily puzzle depth & polish [COMPLETE]
 Goal: Daily is the most important surface in this genre (the thing a
 player returns to once a day) and it hasn't had a dedicated pass since
 Phase 1 — everything built for Unlimited in Phase 3 should land here too.
 
-- [ ] Wire `Timer`/`Score`/completion messaging into `PuzzlePage` — the
-      `usePuzzleGuesses` hook already exposes everything needed
-- [ ] Apply the Phase 4 guess-limit and generation-variety work to Daily
-- [ ] Additional category dimensions (candidates: affiliation, birthday
-      month — both already present in raw ingested data, unused so far)
-- [ ] General UI polish: replace `alert()`-based wrong-guess feedback with
-      inline shake/toast
-- [ ] Consider a Wordle-style shareable result summary — common genre
-      expectation for a once-a-day puzzle, not yet scoped in detail
-- [ ] localStorage persistence for in-progress puzzle state (survive a
-      refresh) and for Daily/Unlimited state across navigation (currently
-      switching modes discards in-progress state)
+- [x] Wire `Timer`/`Score` into `PuzzlePage`, plus a mandatory (no toggle,
+      genre convention, matches Pokedoku) 9-guess limit, Give Up, and board
+      locking on game-over — same `usePuzzleGuesses` hook Unlimited uses.
+      Completion *messaging* deliberately stayed unstyled, matching
+      Unlimited's own still-unstyled end state (see Backlog) — this phase
+      wired the same invisible completion state, not new copy/UI.
+- [x] "Keep Playing" — once a non-solved game-over is reached (out of
+      guesses or gave up, cells still empty), an optional button unlocks
+      the board for further exploration without touching the frozen
+      official score or persisting anything from that exploration.
+- [x] Apply the Phase 4 generation-variety work to Daily — turned out to
+      already be automatic (`GridGenerator.generate()`'s date-seeded
+      overload shares the same algorithm Unlimited uses), no separate
+      change needed
+- [x] localStorage persistence for Daily's in-progress puzzle state
+      (survives a refresh) — keyed by `puzzle.id`, which already encodes
+      the date, so a stale yesterday entry is naturally orphaned rather
+      than needing manual invalidation. Persists `filledCells`,
+      `guessesUsed`, `gaveUp`, and wall-clock `startedAt`/`endedAt`
+      timestamps (not an accumulated counter) so the timer both survives a
+      refresh and freezes at the correct final time. Cross-mode (Daily ↔
+      Unlimited navigation) persistence explicitly NOT included — see
+      Backlog.
+- [x] General UI polish: replaced `alert()`-based wrong-guess feedback with
+      a non-blocking green/red cell-border flash, synced with a scale-pop
+      keyframe animation on `Score`/`GuessCounter` (pop-in fast, pop-out
+      slow, `useLayoutEffect`-timed to start in the same paint as the
+      border flash). Also fixed a real cell-rendering bug found along the
+      way: long names like "Sangonomiya Kokomi" were being clipped on
+      both ends (a `truncate`+`justify-center` combination clips
+      symmetrically rather than ellipsizing one end) — now wraps to two
+      lines instead, matching `CategoryChip`'s existing long-label pattern.
+
+Three smaller items originally scoped for this phase moved to Backlog
+instead of blocking it: additional category dimensions, a shareable
+result summary, and cross-mode navigation persistence — none affect
+Phase 6, and none needed the dedicated-pass urgency the rest of this
+phase did.
 
 ## Phase 6 — Guess stats & deployment (~2 weeks)
 Goal: ship the daily puzzle as a real, live, playable product with the
@@ -213,20 +239,34 @@ sync here at a glance:
   first one — but mode-specific *scoring* to choose among them (Unlimited
   diversity scoring, Daily freshness scoring against recent puzzles
   already in the `puzzles` table, a curation tool to preview/hand-pick an
-  upcoming Daily) is still unbuilt. Natural fit for Phase 5.
+  upcoming Daily) is still unbuilt. No fixed phase — revisit once Daily
+  curation is a real priority (Phase 6+).
+- Additional category dimensions (candidates: affiliation, birthday
+  month — both already present in raw ingested data, unused so far)
+- Wordle-style shareable result summary — common genre expectation for a
+  once-a-day puzzle, not yet scoped in detail
+- Cross-mode state persistence (Daily ↔ Unlimited navigation via the
+  header toggle) — Daily's own page-refresh persistence shipped in
+  Phase 5, but switching modes and back still discards in-progress state
+  on both sides
 
 ## Notes
 - Total estimate: ~8-10 weeks part-time, revised upward from the original
   estimate given Phase 3 grew into a full Unlimited-mode build rather than
   a lighter "polish pass."
-- Phases 0-4 complete. Phase 2 additionally validated the architecture
-  empirically (not just by design) and fixed a real latent bug in the
-  process; Phase 3 did the same for the frontend (the `PuzzleGrid`
-  centering bug and the `ddl-auto=update` schema gotchas were both only
-  discovered by actually running the app end-to-end, not by code review).
-  Phase 4 leaned on the same discipline for `GridGenerator`: every tuning
-  change was measured against a real baseline before/after, including two
-  variants that looked reasonable in theory but were rejected once the
-  numbers came back — and the narrow-filter generation failures and the
-  soft-lock puzzle were both found by actually playing Unlimited mode,
-  not by reasoning about the algorithm in the abstract.
+- Phases 0-5 complete. See Backlog for three smaller Phase-5-adjacent
+  items (additional category dimensions, shareable result summary,
+  cross-mode navigation persistence) deliberately moved out rather than
+  left half-checked, since none of them block Phase 6. Phase 2
+  additionally validated the architecture empirically (not just by design)
+  and fixed a real latent bug in the process; Phase 3 did the same for the frontend
+  (the `PuzzleGrid` centering bug and the `ddl-auto=update` schema gotchas
+  were both only discovered by actually running the app end-to-end, not by
+  code review). Phase 4 leaned on the same discipline for `GridGenerator`:
+  every tuning change was measured against a real baseline before/after,
+  including two variants that looked reasonable in theory but were
+  rejected once the numbers came back — and the narrow-filter generation
+  failures and the soft-lock puzzle were both found by actually playing
+  Unlimited mode, not by reasoning about the algorithm in the abstract.
+  Phase 5 found another real bug the same way: the clipped-name rendering
+  issue only surfaced from actually looking at a long name in the browser.

@@ -7,26 +7,111 @@ export interface UsePuzzleGuessesOptions {
   // right or wrong, matching the genre's shared-pool convention (not a
   // per-cell lock). null/undefined means unlimited.
   guessLimit?: number | null;
+  // When set, progress (filledCells/guessesUsed/gaveUp/startedAt/endedAt) is
+  // saved to localStorage under this exact key and restored on mount/puzzle
+  // change instead of starting empty. Caller is responsible for making the
+  // key unique per puzzle identity (e.g. including puzzle.id, which itself
+  // encodes the date for Daily) — the hook never inspects the puzzle to
+  // build this itself, so it stays usable for any mode. null/undefined
+  // means no persistence (in-memory only, today's Unlimited behavior).
+  persistKey?: string | null;
+}
+
+interface StoredProgress {
+  filledCells: Record<string, GridItem>;
+  guessesUsed: number;
+  gaveUp: boolean;
+  startedAt: number;
+  endedAt: number | null;
+}
+
+function loadProgress(key: string): StoredProgress | null {
+  try {
+    const raw = localStorage.getItem(key);
+    if (!raw) return null;
+    const parsed = JSON.parse(raw);
+    if (typeof parsed !== 'object' || parsed === null) return null;
+    return {
+      filledCells: parsed.filledCells ?? {},
+      guessesUsed: typeof parsed.guessesUsed === 'number' ? parsed.guessesUsed : 0,
+      gaveUp: !!parsed.gaveUp,
+      startedAt: typeof parsed.startedAt === 'number' ? parsed.startedAt : Date.now(),
+      endedAt: typeof parsed.endedAt === 'number' ? parsed.endedAt : null,
+    };
+  } catch {
+    // Corrupt/foreign data under this key shouldn't crash the page — just
+    // treat it as if there were no saved progress.
+    return null;
+  }
+}
+
+function saveProgress(key: string, progress: StoredProgress) {
+  try {
+    localStorage.setItem(key, JSON.stringify(progress));
+  } catch {
+    // Storage full/unavailable (e.g. private browsing) — progress just
+    // won't survive a refresh; not worth surfacing to the player.
+  }
 }
 
 /**
  * Owns the grid-filling/guess-submission state shared by Daily and Unlimited
  * mode. Grid state resets whenever the puzzle identity changes (a new daily
- * puzzle loads, or Unlimited mode generates a fresh one).
+ * puzzle loads, or Unlimited mode generates a fresh one) — or, if persistKey
+ * is set, restores from localStorage instead of resetting.
  */
 export function usePuzzleGuesses(puzzle: PuzzleResponse | null, options: UsePuzzleGuessesOptions = {}) {
-  const { guessLimit = null } = options;
+  const { guessLimit = null, persistKey = null } = options;
   const [filledCells, setFilledCells] = useState<Record<string, GridItem>>({});
   const [activeCell, setActiveCell] = useState<{ row: number; col: number } | null>(null);
   const [guessesUsed, setGuessesUsed] = useState(0);
   const [gaveUp, setGaveUp] = useState(false);
+  // Cells filled while "Keep Playing" after a real game-over — shown on the
+  // board for the player's own curiosity, but never persisted and never
+  // counted toward correctCount/Score, which stay frozen at the true
+  // end-of-game values.
+  const [freeplay, setFreeplay] = useState(false);
+  const [freeplayCells, setFreeplayCells] = useState<Record<string, GridItem>>({});
+  // Most recent guess result, consumed by PuzzleGrid for a brief non-blocking
+  // border flash instead of alert(). Cleared automatically after a beat.
+  const [feedback, setFeedback] = useState<{ row: number; col: number; correct: boolean } | null>(null);
+  // Wall-clock timestamps (epoch ms), not accumulated durations — surviving
+  // a refresh and freezing correctly at game-over both fall out naturally
+  // from deriving elapsed time as (endedAt ?? now) - startedAt rather than
+  // ticking a counter that resets on every remount.
+  const [startedAt, setStartedAt] = useState<number | null>(null);
+  const [endedAt, setEndedAt] = useState<number | null>(null);
 
   useEffect(() => {
-    setFilledCells({});
+    const stored = persistKey ? loadProgress(persistKey) : null;
+    const now = Date.now();
+    const nextStartedAt = stored?.startedAt ?? now;
+    const nextEndedAt = stored?.endedAt ?? null;
+
+    setFilledCells(stored?.filledCells ?? {});
+    setGuessesUsed(stored?.guessesUsed ?? 0);
+    setGaveUp(stored?.gaveUp ?? false);
     setActiveCell(null);
-    setGuessesUsed(0);
-    setGaveUp(false);
-  }, [puzzle?.id]);
+    setFreeplay(false);
+    setFreeplayCells({});
+    setFeedback(null);
+    setStartedAt(nextStartedAt);
+    setEndedAt(nextEndedAt);
+
+    // First-ever visit to this puzzle: persist the freshly-chosen startedAt
+    // right away, so a refresh moments later (before any guess) resumes
+    // from the same start instant instead of restarting the clock.
+    if (persistKey && !stored) {
+      saveProgress(persistKey, {
+        filledCells: {},
+        guessesUsed: 0,
+        gaveUp: false,
+        startedAt: nextStartedAt,
+        endedAt: nextEndedAt,
+      });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [puzzle?.id, persistKey]);
 
   const totalCells = puzzle ? puzzle.rowLabels.length * puzzle.colLabels.length : 0;
   const correctCount = Object.keys(filledCells).length;
@@ -34,9 +119,43 @@ export function usePuzzleGuesses(puzzle: PuzzleResponse | null, options: UsePuzz
   const guessesRemaining = guessLimit != null ? Math.max(guessLimit - guessesUsed, 0) : null;
   const outOfGuesses = guessLimit != null && guessesRemaining === 0 && !isComplete;
   const isGameOver = isComplete || outOfGuesses || gaveUp;
+  // What the board actually shows: real progress plus anything filled
+  // during freeplay. Score/correctCount deliberately do NOT include this.
+  const displayCells = freeplay ? { ...filledCells, ...freeplayCells } : filledCells;
+  const boardLocked = isGameOver && !freeplay;
+  // Only offer to keep playing if there's still something left to fill —
+  // a full solve has nothing left to explore.
+  const canKeepPlaying = isGameOver && !freeplay && correctCount < totalCells;
+
+  // Captures the exact instant the game ends (once), independent of which
+  // action caused it (solved, out of guesses, or gave up), and persists it —
+  // this is what lets the timer freeze at the true final time rather than
+  // recomputing "now - startedAt" forever on every future page load.
+  useEffect(() => {
+    if (!isGameOver || endedAt != null) return;
+    const ts = Date.now();
+    setEndedAt(ts);
+    if (persistKey) {
+      saveProgress(persistKey, {
+        filledCells,
+        guessesUsed,
+        gaveUp,
+        startedAt: startedAt ?? ts,
+        endedAt: ts,
+      });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isGameOver]);
+
+  // Clears the transient flash a moment after it's shown.
+  useEffect(() => {
+    if (!feedback) return;
+    const timeout = setTimeout(() => setFeedback(null), 400);
+    return () => clearTimeout(timeout);
+  }, [feedback]);
 
   function handleCellClick(row: number, col: number) {
-    if (isGameOver) return;
+    if (boardLocked) return;
     setActiveCell({ row, col });
   }
 
@@ -47,22 +166,57 @@ export function usePuzzleGuesses(puzzle: PuzzleResponse | null, options: UsePuzz
   function giveUp() {
     setGaveUp(true);
     setActiveCell(null);
+    if (persistKey) {
+      saveProgress(persistKey, {
+        filledCells,
+        guessesUsed,
+        gaveUp: true,
+        startedAt: startedAt ?? Date.now(),
+        endedAt,
+      });
+    }
+  }
+
+  function keepPlaying() {
+    setFreeplay(true);
+    setFreeplayCells({});
   }
 
   async function handleGuessSelect(item: GridItem) {
-    if (!puzzle || !activeCell || isGameOver) return;
+    if (!puzzle || !activeCell || boardLocked) return;
+    const { row, col } = activeCell;
 
-    const result = await submitGuess(puzzle.id, {
-      row: activeCell.row,
-      col: activeCell.col,
-      itemId: item.id,
-    });
-    setGuessesUsed((prev) => prev + 1);
+    const result = await submitGuess(puzzle.id, { row, col, itemId: item.id });
 
+    if (freeplay) {
+      // Exploration only — never touches guessesUsed, filledCells, or
+      // localStorage, so it can't affect the frozen official result.
+      if (result.correct) {
+        const cellKey = `${row}-${col}`;
+        setFreeplayCells((prev) => ({
+          ...prev,
+          [cellKey]: {
+            id: result.itemId,
+            gameId: puzzle.gameId,
+            displayName: result.displayName,
+            imageUrl: result.imageUrl ?? '',
+            attributes: {},
+          },
+        }));
+      }
+      setFeedback({ row, col, correct: result.correct });
+      setActiveCell(null);
+      return;
+    }
+
+    const nextGuessesUsed = guessesUsed + 1;
+    setGuessesUsed(nextGuessesUsed);
+
+    let nextFilledCells = filledCells;
     if (result.correct) {
-      const cellKey = `${activeCell.row}-${activeCell.col}`;
-      setFilledCells((prev) => ({
-        ...prev,
+      const cellKey = `${row}-${col}`;
+      nextFilledCells = {
+        ...filledCells,
         [cellKey]: {
           id: result.itemId,
           gameId: puzzle.gameId,
@@ -70,16 +224,26 @@ export function usePuzzleGuesses(puzzle: PuzzleResponse | null, options: UsePuzz
           imageUrl: result.imageUrl ?? '',
           attributes: {},
         },
-      }));
-    } else {
-      alert(`${item.displayName} is not correct for that cell — try again.`);
+      };
+      setFilledCells(nextFilledCells);
+    }
+    setFeedback({ row, col, correct: result.correct });
+
+    if (persistKey) {
+      saveProgress(persistKey, {
+        filledCells: nextFilledCells,
+        guessesUsed: nextGuessesUsed,
+        gaveUp,
+        startedAt: startedAt ?? Date.now(),
+        endedAt,
+      });
     }
 
     setActiveCell(null);
   }
 
   return {
-    filledCells,
+    filledCells: displayCells,
     activeCell,
     handleCellClick,
     handleGuessSelect,
@@ -89,7 +253,14 @@ export function usePuzzleGuesses(puzzle: PuzzleResponse | null, options: UsePuzz
     isComplete,
     guessesRemaining,
     isGameOver,
+    boardLocked,
     gaveUp,
     giveUp,
+    freeplay,
+    canKeepPlaying,
+    keepPlaying,
+    feedback,
+    startedAt,
+    endedAt,
   };
 }

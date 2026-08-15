@@ -392,14 +392,63 @@ API): `/` (game select) → `/:game` (Daily) → `/:game/unlimited`
 reads `useParams()`/`useLocation()` to know the active game and mode for
 its Daily/Unlimited toggle and Settings (game-switch) modal.
 
-**Shared puzzle-play state**: `usePuzzleGuesses(puzzle)` (a hook, not a
-component) owns `filledCells`/`activeCell`/guess-submission for both
-Daily and Unlimited — resets when `puzzle.id` changes, and derives
-`correctCount`/`totalCells`/`isComplete` purely from `filledCells.length`
-vs. `rowLabels.length * colLabels.length`. This is what lets `PuzzlePage`
-and `UnlimitedPage` share one implementation of "fill a cell, validate a
-guess" while differing only in *how the puzzle was obtained* (fetch vs.
-generate).
+**Shared puzzle-play state**: `usePuzzleGuesses(puzzle, options)` (a hook,
+not a component) owns `filledCells`/`activeCell`/guess-submission for both
+Daily and Unlimited — resets when `puzzle.id` changes (or restores from
+localStorage, see below), and derives `correctCount`/`totalCells`/
+`isComplete` purely from `filledCells.length` vs. `rowLabels.length *
+colLabels.length`. This is what lets `PuzzlePage` and `UnlimitedPage`
+share one implementation of "fill a cell, validate a guess" while
+differing only in *how the puzzle was obtained* (fetch vs. generate) and
+which options they pass:
+- `guessLimit` — Unlimited passes a runtime-toggleable value (or `null`
+  for unlimited guesses); Daily always passes a fixed `9`, no toggle, no
+  settings surface. Deliberate difference, not an oversight: Daily is the
+  same fixed challenge for every player (genre convention, matches
+  Pokedoku), Unlimited is a sandbox.
+- `persistKey` — only Daily passes one (see localStorage below); Unlimited
+  passes nothing and stays in-memory-only, unaffected by the option's
+  existence.
+
+**Non-blocking guess feedback**: every guess produces a
+`feedback: { row, col, correct }` value on the hook, cleared ~400ms later
+by the hook itself. This single value drives three simultaneous visual
+reactions from one source, deliberately not three independently-timed
+ones: `PuzzleGrid` flashes the guessed cell's border green/red instead of
+a blocking `alert()`, and `Score`/`GuessCounter` each play a one-shot
+scale "pop" (`GuessCounter` on any guess, since an attempt is consumed
+either way; `Score` only when `feedback.correct` is true, since score
+didn't actually change on a wrong guess). The pop is a real CSS
+`@keyframes` animation (`index.css`), not a two-state `transition` —
+toggling between two `scale-*` classes on a held boolean visibly paused
+at the peak scale for as long as `feedback` stayed truthy; a keyframe
+interpolates continuously through the peak with no plateau, and is
+triggered by bumping a remount-`key` inside `useLayoutEffect` (not
+`useEffect`) so it starts in the same paint as the border-flash class
+change rather than potentially trailing it by a frame.
+
+**Timer** is driven by wall-clock timestamps (`startedAt`/`endedAt` epoch
+ms, both owned by `usePuzzleGuesses`), not an accumulated counter —
+elapsed time is always computed as `(endedAt ?? Date.now()) - startedAt`.
+This is what makes it trivially refresh-safe and correctly frozen at the
+true end time: there's no internal ticking state to lose on remount, just
+two numbers to persist (or not, for Unlimited).
+
+**Daily's localStorage persistence** (`usePuzzleGuesses`'s `persistKey`
+option): when set, `filledCells`/`guessesUsed`/`gaveUp`/`startedAt`/
+`endedAt` are saved on every meaningful state change and restored on
+mount instead of resetting. Keyed by `puzzle.id`, which already encodes
+the date (e.g. `"genshin:2026-08-14"`) — a stale prior-day entry simply
+lives under a different, never-again-matched key, so no manual
+date-comparison/invalidation logic is needed.
+
+**"Keep Playing"**: after a non-solved game-over (out of guesses or gave
+up, with cells still empty — never offered after a full solve), an
+optional button unlocks the board for further exploration. Fills made
+this way go into a separate `freeplayCells` bucket, merged into what's
+*displayed* but never into `filledCells` itself — so `Score`/
+`correctCount` stay frozen at the true end-of-game value, and none of it
+gets persisted (a refresh reverts to the frozen official state).
 
 **`PuzzleGrid`** renders as a single CSS Grid (not nested flex rows) with
 an explicit `gridTemplateColumns`/`gridTemplateRows`, and always reserves
@@ -412,14 +461,20 @@ Reserving it unconditionally makes the middle cell's horizontal center
 content-independent, verified to be pixel-identical across Daily,
 Unlimited-with-Timer, and Unlimited-without-Timer. `CategoryChip`'s
 plain-text pill wraps to two lines (`max-w-24`, no `whitespace-nowrap`)
-instead of overflowing into the grid for long labels like "Medium Female".
+instead of overflowing into the grid for long labels like "Medium
+Female" — a filled cell's own name pill does the same for the same
+reason: a `truncate`+`justify-center` combination was found to clip long
+names like "Sangonomiya Kokomi" symmetrically from *both* ends rather
+than ellipsizing one end, since `text-overflow: ellipsis` doesn't behave
+as a simple one-sided cutoff once the overflowing content is centered.
 
 **Unlimited mode** (`UnlimitedPage` + `UnlimitedSettingsPanel`):
-- Settings model is a single `{ excludedCategoryIds, allowSingleAnswers,
-  showTimer }` — no separate "included dimensions" list, since a
-  dimension with zero remaining checked values is already excluded by
-  construction. `UnlimitedPuzzleRequest.dimensions` is never sent from the
-  frontend; `excludedCategoryIds` alone does all the filtering.
+- Settings model is `{ excludedCategoryIds, allowSingleAnswers,
+  showTimer, unlimitedGuesses, softLockGuard }` — no separate "included
+  dimensions" list, since a dimension with zero remaining checked values
+  is already excluded by construction. `UnlimitedPuzzleRequest.dimensions`
+  is never sent from the frontend; `excludedCategoryIds` alone does all
+  the filtering.
 - Settings are **live, not staged** — `UnlimitedSettingsPanel` is fully
   controlled (`settings`/`onChange` props, no internal draft), so editing
   via the hamburger-opened modal writes straight into page state; closing
@@ -429,22 +484,16 @@ instead of overflowing into the grid for long labels like "Medium Female".
 - Dimension chips are trigger-only — clicking one opens a `DimensionOverlay`
   (an "All" toggle + per-value checkboxes as a secondary modal); the chip
   itself never includes/excludes anything.
-- `Timer` always mounts once a puzzle exists and keeps ticking regardless
-  of the "Show Timer" toggle (which only controls whether it renders) — a
-  `running={!isComplete}` prop freezes it on completion without resetting.
-  `Score` shows `correctCount/totalCells` in the same info column, via
-  `PuzzleGrid`'s `sideColumn`. Both are currently Unlimited-only; Daily
-  doesn't render either yet even though `usePuzzleGuesses` already exposes
-  everything needed to (see Backlog).
 - On generation failure (e.g. filters too narrow), the page always reverts
   to the loadup/settings screen and shows the backend's actual error text
   (`generateUnlimitedPuzzle` reads `res.text()` on failure) — never leaves
   a stale grid on screen with an error floating above it.
 
 **Known gap**: switching Daily ↔ Unlimited via the header toggle discards
-in-progress state (a generated Unlimited puzzle, filled cells) — switching
-back always returns to Unlimited's loadup screen. Acceptable for now,
-flagged in Backlog as a real UX gap for later.
+in-progress state (a generated Unlimited puzzle, filled cells). Daily's
+own *refresh* survives via localStorage now, but a mode-switch-and-back
+still does not carry state either direction. Acceptable for now, flagged
+in Backlog as a real UX gap for later.
 
 ## Package structure (backend)
  
@@ -475,30 +524,14 @@ prove this claim empirically rather than leave it as an unverified design
 intention.
  
 ## Backlog (non-blocking)
+See Roadmap for phase sequencing — everything here is non-blocking,
+listed flat rather than pre-sorted into a "next up" since that ordering
+kept going stale faster than the items themselves resolved.
 
-**Next up** (see Roadmap for sequencing):
-- 9-guess limit (Immaculate-Grid-genre convention: a shared pool across all
-  9 cells, not per-cell, not wrong-guesses-only — every submitted guess
-  consumes one). Client-side only for now, consistent with the existing
-  used-answer-tracking gap noted above. Design question to settle before
-  implementing: what happens to Score/completion once the pool hits 0 with
-  cells still unfilled — is that a distinct "out of guesses" end state from
-  "solved," and does it need its own UI treatment?
-- `GridGenerator` dimension-variety: prefer distinct dimensions per side
-  (row/col) when enough are available, instead of pooling all categories
-  in a dimension-group together and letting the shuffle decide — currently
-  correct but can produce all-same-dimension rows/cols (e.g. 3 columns all
-  being different character models). Needs a new test invariant alongside
-  the fix, matching this project's existing rigor for `GridGenerator`.
-- Wire `Timer`/`Score`/completion messaging into Daily mode — the
-  `usePuzzleGuesses` hook already exposes `isComplete`/`correctCount`/
-  `totalCells` generically; Daily's `PuzzlePage` just doesn't render
-  anything with them yet.
-- Session-state persistence across Daily ↔ Unlimited navigation (see
-  Frontend architecture "Known gap" above) — and, separately, surviving a
-  page refresh (tracked below too).
-
-**Everything else**:
+- Additional category dimensions (candidates: affiliation, birthday
+  month — both already present in raw ingested data, unused so far).
+- Wordle-style shareable result summary — common genre expectation for a
+  once-a-day puzzle, not yet scoped in detail.
 - Tighten grid generation to reject overly-easy (1-answer) combinations —
   now user-configurable in Unlimited mode via "Allow single-answer cells"
   (`minAnswersPerCell`); Daily still always allows them.
@@ -525,10 +558,21 @@ intention.
   falls back to the generic gray chip style.
 - BrawlAPI class-metadata gap (see Data sourcing above) — revisit when
   backfilling.
-- localStorage persistence for in-progress puzzle state (survive a page
-  refresh) — currently all grid-fill state is in-memory React state only.
-- Soft lock guard (Pokedoku concept: prevent a correct-but-greedy guess
-  from stranding another cell that shared its only valid answer) —
-  explicitly deferred when Unlimited mode's settings scope was decided;
-  needs cross-cell dependency analysis beyond `GridGenerator`'s current
-  per-cell check. Not planned unless specifically requested.
+- Cross-mode state persistence (Daily ↔ Unlimited navigation via the
+  header toggle) — Daily's own page-refresh persistence shipped in
+  Phase 5 (`usePuzzleGuesses`'s `persistKey`), but switching modes and
+  back still discards in-progress state on both sides; Unlimited has no
+  persistence at all (by design, given its puzzles are ephemeral/
+  regenerable). See "Known gap" above.
+- Deterministic resilience for Daily generation — `generateAndSave` makes
+  one single date-seeded attempt with no retry/fallback, unlike Unlimited's
+  seed-retry + `findAllValidGrids` exhaustive fallback. Deliberately not
+  implemented: `GridGeneratorTest` already verifies >90% generation success
+  across 365 simulated dates for both games, and no actual failure has been
+  observed in practice — speculative hardening for a problem with no
+  observed occurrence. If ever revisited, any fallback must stay a pure
+  function of the date (e.g. deterministically-derived fallback seeds, a
+  date-seeded pick from `findAllValidGrids`) to preserve the "same date
+  always produces the same puzzle" guarantee `singleDeterministicPuzzleIsReproducible`
+  depends on — a straight port of Unlimited's `ThreadLocalRandom`-based
+  retry would break that.

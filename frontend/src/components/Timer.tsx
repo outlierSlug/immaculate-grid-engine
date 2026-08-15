@@ -1,30 +1,32 @@
 import { useEffect, useState } from 'react';
 
 interface TimerProps {
-  // Changing this value restarts the timer from zero (e.g. a new puzzle id).
-  startKey: string;
-  // Controls only the rendered output — the underlying clock keeps running
-  // even while hidden, so toggling this back on shows the true elapsed time.
+  // Epoch ms when this attempt began. null means the puzzle hasn't loaded
+  // yet, so there's nothing to display.
+  startedAt: number | null;
+  // Epoch ms when the game ended. null means still in progress (keeps
+  // ticking); once set, elapsed time freezes at endedAt - startedAt forever
+  // — including across a page refresh, since both are wall-clock instants,
+  // not an accumulated counter that resets when the component remounts.
+  endedAt: number | null;
   visible: boolean;
-  // Set false to freeze the displayed time (e.g. once the puzzle is solved).
-  running: boolean;
 }
 
-export default function Timer({ startKey, visible, running }: TimerProps) {
-  const [elapsedMs, setElapsedMs] = useState(0);
+export default function Timer({ startedAt, endedAt, visible }: TimerProps) {
+  // Forces a re-render every second while running so the displayed
+  // (endedAt ?? Date.now()) - startedAt keeps advancing; the tick counter's
+  // value itself is never read.
+  const [, setTick] = useState(0);
 
   useEffect(() => {
-    setElapsedMs(0);
-  }, [startKey]);
-
-  useEffect(() => {
-    if (!running) return;
-    const interval = setInterval(() => setElapsedMs((prev) => prev + 1000), 1000);
+    if (startedAt == null || endedAt != null) return;
+    const interval = setInterval(() => setTick((n) => n + 1), 1000);
     return () => clearInterval(interval);
-  }, [running, startKey]);
+  }, [startedAt, endedAt]);
 
-  if (!visible) return null;
+  if (!visible || startedAt == null) return null;
 
+  const elapsedMs = Math.max(0, (endedAt ?? Date.now()) - startedAt);
   const totalSeconds = Math.floor(elapsedMs / 1000);
   const minutes = String(Math.floor(totalSeconds / 60)).padStart(2, '0');
   const seconds = String(totalSeconds % 60).padStart(2, '0');

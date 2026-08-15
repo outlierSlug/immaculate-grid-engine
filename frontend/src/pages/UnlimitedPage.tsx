@@ -56,6 +56,9 @@ export default function UnlimitedPage() {
     guessesRemaining,
     isGameOver,
     giveUp,
+    feedback,
+    startedAt,
+    endedAt,
   } = usePuzzleGuesses(puzzle, { guessLimit: activeGuessLimit });
 
   useEffect(() => {
@@ -134,10 +137,11 @@ export default function UnlimitedPage() {
         filledCells={filledCells}
         onCellClick={handleCellClick}
         locked={isGameOver}
+        feedback={feedback}
         sideColumn={[
-          <Timer key="timer" startKey={puzzle.id} visible={settings.showTimer} running={!isGameOver} />,
-          <Score key="score" correct={correctCount} total={totalCells} />,
-          <GuessCounter key="guesses" remaining={guessesRemaining} iconSrc={UNLIMITED_GUESS_ICON[validGame]} />,
+          <Timer key="timer" startedAt={startedAt} endedAt={endedAt} visible={settings.showTimer} />,
+          <Score key="score" correct={correctCount} total={totalCells} feedback={feedback} />,
+          <GuessCounter key="guesses" remaining={guessesRemaining} iconSrc={UNLIMITED_GUESS_ICON[validGame]} feedback={feedback} />,
         ]}
       />
 
