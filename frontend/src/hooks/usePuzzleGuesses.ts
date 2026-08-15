@@ -66,12 +66,6 @@ export function usePuzzleGuesses(puzzle: PuzzleResponse | null, options: UsePuzz
   const [activeCell, setActiveCell] = useState<{ row: number; col: number } | null>(null);
   const [guessesUsed, setGuessesUsed] = useState(0);
   const [gaveUp, setGaveUp] = useState(false);
-  // Cells filled while "Keep Playing" after a real game-over — shown on the
-  // board for the player's own curiosity, but never persisted and never
-  // counted toward correctCount/Score, which stay frozen at the true
-  // end-of-game values.
-  const [freeplay, setFreeplay] = useState(false);
-  const [freeplayCells, setFreeplayCells] = useState<Record<string, GridItem>>({});
   // Most recent guess result, consumed by PuzzleGrid for a brief non-blocking
   // border flash instead of alert(). Cleared automatically after a beat.
   const [feedback, setFeedback] = useState<{ row: number; col: number; correct: boolean } | null>(null);
@@ -92,8 +86,6 @@ export function usePuzzleGuesses(puzzle: PuzzleResponse | null, options: UsePuzz
     setGuessesUsed(stored?.guessesUsed ?? 0);
     setGaveUp(stored?.gaveUp ?? false);
     setActiveCell(null);
-    setFreeplay(false);
-    setFreeplayCells({});
     setFeedback(null);
     setStartedAt(nextStartedAt);
     setEndedAt(nextEndedAt);
@@ -119,13 +111,6 @@ export function usePuzzleGuesses(puzzle: PuzzleResponse | null, options: UsePuzz
   const guessesRemaining = guessLimit != null ? Math.max(guessLimit - guessesUsed, 0) : null;
   const outOfGuesses = guessLimit != null && guessesRemaining === 0 && !isComplete;
   const isGameOver = isComplete || outOfGuesses || gaveUp;
-  // What the board actually shows: real progress plus anything filled
-  // during freeplay. Score/correctCount deliberately do NOT include this.
-  const displayCells = freeplay ? { ...filledCells, ...freeplayCells } : filledCells;
-  const boardLocked = isGameOver && !freeplay;
-  // Only offer to keep playing if there's still something left to fill —
-  // a full solve has nothing left to explore.
-  const canKeepPlaying = isGameOver && !freeplay && correctCount < totalCells;
 
   // Captures the exact instant the game ends (once), independent of which
   // action caused it (solved, out of guesses, or gave up), and persists it —
@@ -155,7 +140,7 @@ export function usePuzzleGuesses(puzzle: PuzzleResponse | null, options: UsePuzz
   }, [feedback]);
 
   function handleCellClick(row: number, col: number) {
-    if (boardLocked) return;
+    if (isGameOver) return;
     setActiveCell({ row, col });
   }
 
@@ -177,37 +162,11 @@ export function usePuzzleGuesses(puzzle: PuzzleResponse | null, options: UsePuzz
     }
   }
 
-  function keepPlaying() {
-    setFreeplay(true);
-    setFreeplayCells({});
-  }
-
   async function handleGuessSelect(item: GridItem) {
-    if (!puzzle || !activeCell || boardLocked) return;
+    if (!puzzle || !activeCell || isGameOver) return;
     const { row, col } = activeCell;
 
     const result = await submitGuess(puzzle.id, { row, col, itemId: item.id });
-
-    if (freeplay) {
-      // Exploration only — never touches guessesUsed, filledCells, or
-      // localStorage, so it can't affect the frozen official result.
-      if (result.correct) {
-        const cellKey = `${row}-${col}`;
-        setFreeplayCells((prev) => ({
-          ...prev,
-          [cellKey]: {
-            id: result.itemId,
-            gameId: puzzle.gameId,
-            displayName: result.displayName,
-            imageUrl: result.imageUrl ?? '',
-            attributes: {},
-          },
-        }));
-      }
-      setFeedback({ row, col, correct: result.correct });
-      setActiveCell(null);
-      return;
-    }
 
     const nextGuessesUsed = guessesUsed + 1;
     setGuessesUsed(nextGuessesUsed);
@@ -243,7 +202,7 @@ export function usePuzzleGuesses(puzzle: PuzzleResponse | null, options: UsePuzz
   }
 
   return {
-    filledCells: displayCells,
+    filledCells,
     activeCell,
     handleCellClick,
     handleGuessSelect,
@@ -253,12 +212,8 @@ export function usePuzzleGuesses(puzzle: PuzzleResponse | null, options: UsePuzz
     isComplete,
     guessesRemaining,
     isGameOver,
-    boardLocked,
     gaveUp,
     giveUp,
-    freeplay,
-    canKeepPlaying,
-    keepPlaying,
     feedback,
     startedAt,
     endedAt,

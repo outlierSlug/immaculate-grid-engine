@@ -47,10 +47,7 @@ export default function PuzzlePage() {
     totalCells,
     guessesRemaining,
     isGameOver,
-    boardLocked,
     giveUp,
-    canKeepPlaying,
-    keepPlaying,
     feedback,
     startedAt,
     endedAt,
@@ -80,7 +77,7 @@ export default function PuzzlePage() {
         colLabels={puzzle.colLabels}
         filledCells={filledCells}
         onCellClick={handleCellClick}
-        locked={boardLocked}
+        locked={isGameOver}
         feedback={feedback}
         sideColumn={[
           <Timer key="timer" startedAt={startedAt} endedAt={endedAt} visible />,
@@ -96,16 +93,6 @@ export default function PuzzlePage() {
           className="px-5 py-2.5 rounded-full border border-gray-300 text-gray-600 font-semibold hover:bg-gray-100 transition cursor-pointer"
         >
           Give Up
-        </button>
-      )}
-
-      {canKeepPlaying && (
-        <button
-          type="button"
-          onClick={keepPlaying}
-          className="px-5 py-2.5 rounded-full border border-gray-300 text-gray-600 font-semibold hover:bg-gray-100 transition cursor-pointer"
-        >
-          Keep Playing
         </button>
       )}
 
