@@ -70,14 +70,22 @@ export default function CommunityAnswersModal({ rowLabel, colLabel, cellStats, y
           {answers.map((answer) => {
             const isYours = yourItemId != null && answer.itemId === yourItemId;
             return (
-              <div key={answer.itemId} className="flex items-center gap-3 p-2 rounded-lg">
+              <div key={answer.itemId} className="flex items-start gap-3 p-2 rounded-lg">
                 <img
                   src={answer.imageUrl ?? undefined}
                   alt={answer.displayName}
                   className="w-9 h-9 rounded-full object-cover border border-gray-200 shrink-0"
                 />
                 <div className="flex-1 min-w-0">
-                  <span className="text-sm font-medium text-gray-800 truncate">{answer.displayName}</span>
+                  <div className="flex items-center gap-2">
+                    <span className="text-sm font-medium text-gray-800 truncate flex-1 min-w-0">
+                      {answer.displayName}
+                    </span>
+                    <span className="text-sm font-semibold text-gray-800 tabular-nums shrink-0 whitespace-nowrap">
+                      {answer.percent > 0 && answer.percent < 1 ? '<1' : Math.round(answer.percent)}% ({answer.count})
+                    </span>
+                    {isYours && <YourPickIcon />}
+                  </div>
                   <div className="h-1.5 rounded-full bg-gray-100 mt-1 overflow-hidden">
                     <div
                       className="h-full rounded-full bg-red-600"
@@ -89,10 +97,6 @@ export default function CommunityAnswersModal({ rowLabel, colLabel, cellStats, y
                     />
                   </div>
                 </div>
-                <div className="text-sm font-semibold text-gray-800 tabular-nums shrink-0 whitespace-nowrap">
-                  {answer.percent > 0 && answer.percent < 1 ? '<1' : Math.round(answer.percent)}% ({answer.count})
-                </div>
-                <div className="w-5 shrink-0">{isYours && <YourPickIcon />}</div>
               </div>
             );
           })}

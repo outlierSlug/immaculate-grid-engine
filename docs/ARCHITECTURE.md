@@ -131,7 +131,8 @@ versions. Concrete traps hit so far, kept here so they aren't re-derived:
   persisted directly).
 - `cellSolutions`: `Map<String, List<String>>`, keyed `"row-col"` (e.g.
   `"0-0"`), valued with the list of valid `GridItem` ids for that cell.
-  **Never serialized into any API response** — see Security below.
+  **Never serialized into any API response**, with one narrow, gated
+  exception in `/stats` — see Security below.
 - No DB-level unique constraint on `(gameId, puzzleDate)` — removed when
   Unlimited mode shipped, since it's redundant with the PK for Daily rows
   (the id already encodes the date) and would otherwise block multiple
@@ -352,10 +353,22 @@ removed the duplication, not the hardcoding.
 ### What's actually protected vs. not — stated explicitly
  
 **Protected:** the server never serializes `Puzzle.cellSolutions` (or any
-per-cell answer list) into any HTTP response. `PuzzleResponse` and
-`GuessResponse` are hand-built DTOs that only expose the fields that are
-safe by design, not the entity minus some blocklist — there is no code path
-where the answer key can leak as JSON.
+per-cell answer list) into any HTTP response — with one narrow, deliberate
+exception (Phase 6 polish): `GET /api/puzzle/{id}/stats` reveals a cell's
+full valid-answer set, including answers nobody has picked yet at count 0,
+but *only* to a caller whose `sessionId` has its own completed
+`PuzzleAttempt` for that exact puzzle (`PuzzleStatsService.getStats` checks
+this before ever touching `cellSolutions`). Everyone else — no `sessionId`,
+an unrecognized one, or one that hasn't finished yet — gets exactly the
+same attempts-derived-only view as before, unconditionally. This is a
+server-side guarantee, not the frontend merely hiding the Puzzle Stats
+panel until `isGameOver`: `/stats` itself has no other access control, so
+without this check anyone could fetch the complete answer key for every
+cell of today's puzzle before playing it at all, with one unauthenticated
+request. `PuzzleResponse` and `GuessResponse` remain hand-built DTOs that
+only expose fields safe by design, not the entity minus some blocklist —
+outside the one gated case above, there is no code path where the answer
+key can leak as JSON.
  
 **Not protected, by design, and not really protectable without breaking the
 game:** category labels (plain text, the player has to read them) and the
@@ -480,10 +493,20 @@ with; renders nothing if no other finished attempt has that cell filled yet.
   lists every answer for that cell, sorted, each with a share bar scaled
   directly to that answer's own percent (not normalized to the top
   answer) - a 50/50 split renders as two half-filled bars, matching what
-  the percent number beside it says. The viewer's own pick is marked with
-  a small generic-avatar icon rather than recoloring that row or its bar -
-  keeps the bar's color meaning "answer share" for every row uniformly,
-  with "this is yours" carried by a separate marker, not a repurposed hue.
+  the percent number beside it says. Each row is icon + one flexible
+  column: a header line (name left, percent+count right, the viewer's own
+  pick marked with a small generic-avatar icon inline after the count)
+  above a bar that spans that column's *full* width rather than stopping
+  where the percent text used to sit - so rows aren't strictly
+  column-aligned against each other (a row with the marker ends its
+  percent text slightly earlier than one without), matching the reference
+  layout this was styled after rather than a rigid table. The marker
+  itself is a separate icon, not a recolored row/bar, so the bar's color
+  keeps meaning "answer share" uniformly across every row regardless of
+  whose pick it is. When the viewer has completed the puzzle themselves,
+  every still-valid answer for the cell is shown even at 0 picks (ties
+  broken alphabetically) - see the security section above for the
+  server-side gate that makes this safe.
 - `ScoreDistributionModal` is a small bar chart (0-9 buckets from
   `scoreDistribution`): light-blue bars for everyone else, the viewer's own
   bar a darker blue - no "You" text label needed once the two shades read

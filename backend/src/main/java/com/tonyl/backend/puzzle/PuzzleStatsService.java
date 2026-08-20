@@ -91,7 +91,21 @@ public class PuzzleStatsService {
         long gamesPlayed = attempts.size();
         double avgScore = attempts.stream().mapToInt(PuzzleAttempt::getScore).average().orElse(0);
 
-        Map<String, CellStatsResponse> perCell = buildPerCellStats(attempts, gamesPlayed);
+        // Puzzle.cellSolutions is the actual answer key and is never handed to
+        // a caller who hasn't earned it: only once THIS sessionId has its own
+        // completed attempt for THIS puzzle do we reveal the full valid-answer
+        // set (including answers nobody has picked yet, at count 0). Anyone
+        // who hasn't finished the puzzle themselves gets exactly the same
+        // attempts-derived-only view as before - this is a server-side
+        // guarantee, not just the frontend hiding the stats panel until
+        // game-over, since /stats has no other access control.
+        boolean hasCompletedAttempt = sessionId != null && !sessionId.isBlank()
+            && attempts.stream().anyMatch(a -> a.getSessionId().equals(sessionId));
+        Map<String, List<String>> revealedCellSolutions = hasCompletedAttempt
+            ? puzzleRepository.findById(puzzleId).map(Puzzle::getCellSolutions).orElse(Map.of())
+            : Map.of();
+
+        Map<String, CellStatsResponse> perCell = buildPerCellStats(attempts, gamesPlayed, revealedCellSolutions);
         Map<Long, Integer> liveScoreByAttemptId = computeLiveUniquenessScores(attempts, perCell);
 
         Map<String, Long> scoreDistribution = buildScoreDistribution(attempts);
@@ -103,7 +117,8 @@ public class PuzzleStatsService {
             uniquenessScores, you);
     }
 
-    private Map<String, CellStatsResponse> buildPerCellStats(List<PuzzleAttempt> attempts, long gamesPlayed) {
+    private Map<String, CellStatsResponse> buildPerCellStats(List<PuzzleAttempt> attempts, long gamesPlayed,
+                                                               Map<String, List<String>> revealedCellSolutions) {
         // cellKey -> itemId -> how many attempts answered that cell with that item
         Map<String, Map<String, Long>> cellItemCounts = new HashMap<>();
         for (PuzzleAttempt attempt : attempts) {
@@ -113,6 +128,18 @@ public class PuzzleStatsService {
                     .merge(entry.getValue(), 1L, Long::sum);
             }
         }
+
+        // Backfills every still-valid answer nobody has picked yet at count 0
+        // (and any cell with zero attempts at all) - only reachable when
+        // revealedCellSolutions is non-empty, i.e. the caller already earned
+        // it above. Doesn't change correctAttempts (the sum of counts, used
+        // for "% guessed correctly") since a 0-count entry adds nothing to it.
+        revealedCellSolutions.forEach((cellKey, validItemIds) -> {
+            Map<String, Long> counts = cellItemCounts.computeIfAbsent(cellKey, k -> new HashMap<>());
+            for (String itemId : validItemIds) {
+                counts.putIfAbsent(itemId, 0L);
+            }
+        });
 
         Set<String> allItemIds = cellItemCounts.values().stream()
             .flatMap(counts -> counts.keySet().stream())
@@ -137,7 +164,12 @@ public class PuzzleStatsService {
                         percent
                     );
                 })
-                .sorted(Comparator.comparingLong(CellAnswerStat::count).reversed())
+                // Ties matter here more than before: every 0-count backfilled
+                // answer ties on count, so without a secondary key their
+                // relative order would depend on HashMap iteration and look
+                // like it reshuffles between requests.
+                .sorted(Comparator.comparingLong(CellAnswerStat::count).reversed()
+                    .thenComparing(CellAnswerStat::displayName))
                 .toList();
             perCell.put(cellKey, new CellStatsResponse(gamesPlayed, correctAttempts, answers));
         });

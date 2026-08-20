@@ -215,9 +215,15 @@ rarity/uniqueness mechanic that makes this genre engaging.
 - [x] Community Answers modal (`CommunityAnswersModal`): click a cell in
       the replica board → full breakdown of every answer and its share
       (bar width scaled directly to that answer's own percent, so a
-      50/50 split renders as two half-filled bars), highlighting your own
-      pick with a marker icon (not a recolored row/bar — keeps the bar's
-      color meaning "share," not "yours").
+      50/50 split renders as two half-filled bars, spanning the row's
+      full width beneath a name-left/percent-right header line),
+      highlighting your own pick with a marker icon (not a recolored
+      row/bar — keeps the bar's color meaning "share," not "yours"). Also
+      shows every still-valid answer for a cell even at 0 picks (not just
+      ones someone's actually chosen) once the viewer has completed the
+      puzzle themselves — gated server-side (not just the frontend hiding
+      the panel) so `Puzzle.cellSolutions` is never exposed to a caller
+      who hasn't earned it. See ARCHITECTURE.md's security section.
 - [x] Scores distribution modal (`ScoreDistributionModal`, bar chart of
       final scores across all attempts, your bar a darker blue against
       light-blue others, no "You" label needed). Time-based stat ("solved
