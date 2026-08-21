@@ -22,7 +22,7 @@ export default function Header() {
           That rigid-third layout is what clipped the brand text on narrow
           viewports previously - the outer columns can now shrink instead.
         */}
-        <div className="max-w-4xl mx-auto px-4 py-3 grid grid-cols-[1fr_auto_1fr] items-center gap-2">
+        <div className="max-w-4xl mx-auto px-4 py-4 grid grid-cols-[1fr_auto_1fr] items-center gap-2">
 
           {/* Column 1 (Left): Brand */}
           <div className="flex justify-start min-w-0">
