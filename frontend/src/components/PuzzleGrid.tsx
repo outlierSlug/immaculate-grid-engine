@@ -1,6 +1,6 @@
 import { Fragment, type ReactNode } from 'react';
 import CategoryChip from './CategoryChip';
-import { CELL_SIZE, LABEL_COL_SIZE, HEADER_ROW_SIZE } from '../utils/gridSizing';
+import { HEADER_ROW_SIZE } from '../utils/gridSizing';
 import type { CellStats, GridItem } from '../types/puzzle';
 
 interface PuzzleGridProps {
@@ -39,17 +39,36 @@ export default function PuzzleGrid({
   cellStats,
 }: PuzzleGridProps) {
   return (
-    <div
-      className="grid"
-      style={{
-        // clamp() so this scales down on narrow viewports instead of
-        // overflowing at a fixed 7rem/8rem (38rem = 608px total, wider than
-        // any phone) — caps out at the original fixed values on desktop, so
-        // nothing changes above ~610px wide.
-        gridTemplateColumns: `${LABEL_COL_SIZE} repeat(${colLabels.length}, ${CELL_SIZE}) ${LABEL_COL_SIZE}`,
-        gridTemplateRows: `${HEADER_ROW_SIZE} repeat(${rowLabels.length}, ${CELL_SIZE})`,
-      }}
-    >
+    <div className="flex flex-col items-center gap-2">
+      <div
+        // Below sm, the trailing stats column collapses to 0 width and the
+        // cell/label columns switch to the -solo sizing (bigger vw share,
+        // since there are only 4 columns splitting the width instead of 5) -
+        // see the --grid-*-solo comment in index.css. The side stats content
+        // itself moves to a separate row below the grid (rendered further
+        // down) instead of disappearing.
+        //
+        // -ml-(--col-label): centering this block naively (flex items-center
+        // on the parent) centers the whole label+cells span, but with no
+        // trailing column to balance the label, that puts the CELLS - the
+        // visually dominant part - off-center to the right by half the
+        // label's width. The fix isn't a -half-label margin, though: for a
+        // flex item centered via align-items, the margin box (content +
+        // margin) is what gets centered, so a negative margin only moves
+        // the content by HALF its own value - the other half is absorbed
+        // into where the centering math lands. A full -1x-label-width
+        // margin therefore produces the needed half-label-width shift.
+        // (0 on sm+, where the trailing column already balances things.)
+        className="grid -ml-(--col-label) sm:ml-0 [--col-cell:var(--grid-cell-solo)] [--col-label:var(--grid-label-solo)] [--col-stats:0px] sm:[--col-cell:var(--grid-cell)] sm:[--col-label:var(--grid-label)] sm:[--col-stats:var(--grid-label)]"
+        style={{
+          // clamp() so this scales down on narrow viewports instead of
+          // overflowing at a fixed 7rem/8rem (38rem = 608px total, wider than
+          // any phone) — caps out at the original fixed values on desktop, so
+          // nothing changes above ~610px wide.
+          gridTemplateColumns: `var(--col-label) repeat(${colLabels.length}, var(--col-cell)) var(--col-stats)`,
+          gridTemplateRows: `${HEADER_ROW_SIZE} repeat(${rowLabels.length}, var(--col-cell))`,
+        }}
+      >
       <div />
 
       {colLabels.map((label) => (
@@ -81,28 +100,28 @@ export default function PuzzleGrid({
               ? feedback!.correct
                 ? 'border-green-500'
                 : 'border-red-500'
-              : 'border-gray-300';
+              : 'border-gray-300 dark:border-gray-700';
 
             return (
               <button
                 key={cellKey}
                 onClick={() => onCellClick(rowIndex, colIndex)}
                 disabled={!!filled || locked}
-                className={`relative border ${borderColorClass} transition-colors duration-200 bg-white flex flex-col items-center justify-center gap-1.5 hover:bg-gray-50 disabled:hover:bg-white cursor-pointer disabled:cursor-not-allowed`}
+                className={`relative border ${borderColorClass} transition-colors duration-200 bg-white dark:bg-gray-900 flex flex-col items-center justify-center gap-1.5 hover:bg-gray-50 dark:hover:bg-gray-800 disabled:hover:bg-white dark:disabled:hover:bg-gray-900 cursor-pointer disabled:cursor-not-allowed`}
               >
                 {filled ? (
                   <>
                     {rarityPercent != null && (
-                      <span className="absolute top-1 right-1 inline-flex items-center justify-center px-1.5 py-0.5 rounded-lg bg-gray-100 text-gray-800 font-semibold text-xs leading-tight">
+                      <span className="absolute top-1 right-1 inline-flex items-center justify-center px-1.5 py-0.5 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-100 font-semibold text-xs leading-tight">
                         {rarityPercent > 0 && rarityPercent < 1 ? '<1' : Math.round(rarityPercent)}%
                       </span>
                     )}
                     <img
                       src={filled.imageUrl}
                       alt={filled.displayName}
-                      className="w-11 h-11 sm:w-16 sm:h-16 rounded-full object-cover border border-gray-200 shadow-sm"
+                      className="w-(--grid-avatar) h-(--grid-avatar) rounded-full object-cover border border-gray-200 dark:border-gray-700 shadow-sm"
                     />
-                    <span className="inline-flex items-center justify-center text-center px-1.5 sm:px-2 py-0.5 rounded-lg bg-gray-100 text-gray-800 font-semibold text-[10px] sm:text-xs leading-tight max-w-[92%] wrap-break-word">
+                    <span className="inline-flex items-center justify-center text-center px-1.5 sm:px-2 py-0.5 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-100 font-semibold text-(length:--grid-avatar-label) leading-tight max-w-[92%] wrap-break-word">
                       {filled.displayName}
                     </span>
                   </>
@@ -111,9 +130,35 @@ export default function PuzzleGrid({
             );
           })}
 
-          <div className="flex items-center justify-center">{sideColumn?.[rowIndex] ?? null}</div>
+          {/* invisible (not hidden/display:none) below sm - a display:none
+              grid item is removed from auto-placement entirely, which
+              shifted every following item's column by one and cascaded
+              through the rows. invisible keeps its (already 0px-wide)
+              grid cell in place without being visible; the same items
+              render again, actually visible, in the mobile-only row below
+              the grid instead. */}
+          <div className="flex invisible sm:visible items-center justify-center">{sideColumn?.[rowIndex] ?? null}</div>
         </Fragment>
       ))}
+    </div>
+
+    {sideColumn && (
+      // Same column template as the main grid above (minus its own trailing
+      // stats column, which doesn't apply here) so each stat lands centered
+      // directly under its matching cell column instead of just floating as
+      // a loose centered row.
+      <div
+        className="grid sm:hidden -ml-(--col-label) [--col-cell:var(--grid-cell-solo)] [--col-label:var(--grid-label-solo)]"
+        style={{ gridTemplateColumns: `var(--col-label) repeat(${colLabels.length}, var(--col-cell))` }}
+      >
+        <div />
+        {sideColumn.map((item, i) => (
+          <div key={i} className="flex items-center justify-center">
+            {item}
+          </div>
+        ))}
+      </div>
+    )}
     </div>
   );
 }

@@ -1,3 +1,8 @@
+// Mirrors the backend's API DTOs (see docs/ARCHITECTURE.md's "API design"
+// section) - when a response shape changes on the backend, this is the one
+// place to update on the frontend; every component/hook imports from here
+// rather than inlining its own shape.
+
 export interface PuzzleResponse {
   id: string;
   gameId: string;

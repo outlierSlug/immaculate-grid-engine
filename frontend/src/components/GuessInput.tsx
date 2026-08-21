@@ -71,27 +71,27 @@ export default function GuessInput({
       onClick={onClose}
     >
       <div
-        className="bg-white rounded-lg shadow-lg w-[calc(100vw-2rem)] max-w-96 max-h-[60vh] flex flex-col"
+        className="bg-white dark:bg-gray-900 rounded-lg shadow-lg w-[calc(100vw-2rem)] max-w-96 max-h-[60vh] flex flex-col"
         onClick={(e) => {
           e.stopPropagation();
           handleModalClick();
         }}
       >
         {/* Selected cell categories */}
-        <div className="relative px-4 pt-4 pb-2 border-b border-gray-100">
+        <div className="relative px-4 pt-4 pb-2 border-b border-gray-100 dark:border-gray-800">
         <button
           type="button"
           onClick={onClose}
           aria-label="Close"
-          className="absolute top-5 right-5 text-gray-400 hover:text-gray-600 cursor-pointer text-lg leading-none"
+          className="absolute top-5 right-5 text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300 cursor-pointer text-lg leading-none"
         >
           ✕
         </button>
 
-        <div className="flex items-center gap-2 text-sm font-semibold text-black mt-1 pr-6">
+        <div className="flex items-center gap-2 text-sm font-semibold text-black dark:text-gray-100 mt-1 pr-6">
           <span className="w-2 h-2 rounded-full bg-indigo-500" />
           <span className="uppercase tracking-wide">{rowLabel}</span>
-          <span className="text-black">/</span>
+          <span className="text-black dark:text-gray-100">/</span>
           <span className="uppercase tracking-wide">{colLabel}</span>
         </div>
       </div>
@@ -111,10 +111,13 @@ export default function GuessInput({
               className="
                 w-full
                 p-2 pr-8
-                border border-gray-200
+                border border-gray-200 dark:border-gray-700
+                bg-white dark:bg-gray-900
+                text-black dark:text-gray-100
+                placeholder:text-gray-400 dark:placeholder:text-gray-500
                 outline-none
                 focus:border-blue-500
-                focus:ring-1 focus:ring-blue-200
+                focus:ring-1 focus:ring-blue-200 dark:focus:ring-blue-500/30
                 rounded-md
                 transition
               "
@@ -128,7 +131,7 @@ export default function GuessInput({
                   setSelectedItem(null);
                 }}
                 aria-label="Clear search"
-                className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 cursor-pointer text-sm leading-none"
+                className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300 cursor-pointer text-sm leading-none"
               >
                 ✕
               </button>
@@ -141,7 +144,7 @@ export default function GuessInput({
           {!loading &&
             query.trim().length > 0 &&
             filtered.length === 0 && (
-              <div className="p-3 text-gray-500">
+              <div className="p-3 text-gray-500 dark:text-gray-400">
                 No matches
               </div>
             )}
@@ -158,7 +161,7 @@ export default function GuessInput({
                   flex items-center gap-3
                   px-3 py-2
                   transition
-                  ${isSelected ? 'bg-blue-50' : 'hover:bg-gray-50'}
+                  ${isSelected ? 'bg-blue-50 dark:bg-blue-500/10' : 'hover:bg-gray-50 dark:hover:bg-gray-800'}
                 `}
               >
                 <img
@@ -167,7 +170,7 @@ export default function GuessInput({
                   className="w-10 h-10 rounded object-cover shrink-0"
                 />
 
-                <span className="font-medium flex-1 min-w-0">
+                <span className="font-medium flex-1 min-w-0 text-black dark:text-gray-100">
                   {item.displayName}
                 </span>
 
@@ -189,10 +192,10 @@ export default function GuessInput({
                     transition
                     ${
                       isUsed
-                        ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
+                        ? 'bg-gray-100 text-gray-400 dark:bg-gray-800 dark:text-gray-600 cursor-not-allowed'
                         : isSelected
                         ? 'bg-blue-600 text-white hover:bg-blue-700 cursor-pointer'
-                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200 cursor-pointer'
+                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700 cursor-pointer'
                     }
                   `}
                 >

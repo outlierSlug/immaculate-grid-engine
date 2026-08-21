@@ -6,7 +6,7 @@ import UnlimitedPage from './pages/UnlimitedPage';
 
 function Layout() {
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="min-h-screen bg-gray-100 text-gray-900 dark:bg-gray-950 dark:text-gray-100">
       <Header />
       <Outlet />
     </div>

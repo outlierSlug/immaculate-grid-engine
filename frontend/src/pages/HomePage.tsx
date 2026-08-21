@@ -1,37 +1,30 @@
-import { Link } from 'react-router-dom';
 import { GAMES } from '../config/games';
+import GameCard from '../components/GameCard';
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center p-6">
-      <h1 className="text-4xl font-bold mb-3">
-        Immaculate Grid Engine
-      </h1>
+    <div className="min-h-screen bg-gray-100 dark:bg-gray-950 flex flex-col items-center px-6 py-16 sm:py-20">
+      <div className="text-center max-w-lg mb-10">
+        <h1 className="text-4xl sm:text-5xl font-bold tracking-tight mb-3">
+          Immaculate Grid
+        </h1>
+        <p className="text-gray-600 dark:text-gray-400 text-base sm:text-lg">
+          Fill a 3x3 grid where every pick has to satisfy both its row and column category. A new puzzle every day, or play unlimited.
+        </p>
+      </div>
 
-      <p className="text-gray-600 mb-8">
-        Choose a game
-      </p>
-
-      <div className="flex flex-col gap-4 w-full max-w-md">
-        {Object.values(GAMES).map((game) => (
-          <Link
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full max-w-3xl">
+        {Object.values(GAMES).map((game, index) => (
+          <GameCard
             key={game.id}
-            to={`/${game.id}`}
-            className="
-              bg-white
-              border border-gray-200
-              rounded-xl
-              p-6
-              text-center
-              font-semibold
-              shadow-sm
-              hover:bg-gray-50
-              hover:shadow
-              transition
-            "
-          >
-            {game.label}
-          </Link>
+            gameId={game.id}
+            index={index + 1}
+            logoImage={game.logoImage}
+            logoAlt={game.label}
+            logoAspectClass={game.logoAspectClass}
+            logoObjectPosition={game.logoObjectPosition}
+            accentRingClass={game.accentRingClass}
+          />
         ))}
       </div>
     </div>

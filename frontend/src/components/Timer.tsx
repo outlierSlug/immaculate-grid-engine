@@ -32,7 +32,7 @@ export default function Timer({ startedAt, endedAt, visible }: TimerProps) {
   const seconds = String(totalSeconds % 60).padStart(2, '0');
 
   return (
-    <div className="font-mono text-lg font-semibold text-gray-700 tabular-nums">
+    <div className="font-mono text-lg font-semibold text-gray-700 dark:text-gray-300 tabular-nums">
       {minutes}:{seconds}
     </div>
   );

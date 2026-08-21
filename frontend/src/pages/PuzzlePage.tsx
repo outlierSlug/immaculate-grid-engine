@@ -9,6 +9,7 @@ import Score from '../components/Score';
 import GuessCounter from '../components/GuessCounter';
 import UniquenessScore from '../components/UniquenessScore';
 import PuzzleStatsPanel from '../components/PuzzleStatsPanel';
+import ConfirmModal from '../components/ConfirmModal';
 import { usePuzzleGuesses } from '../hooks/usePuzzleGuesses';
 import { computeLiveUniquenessScore, computeUniquenessPercentile } from '../utils/uniqueness';
 import intertwinedFateIcon from '../assets/genshin/Item_Intertwined_Fate.webp';
@@ -26,6 +27,7 @@ export default function PuzzlePage() {
   const { game } = useParams();
   const [puzzle, setPuzzle] = useState<PuzzleResponse | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [confirmGiveUpOpen, setConfirmGiveUpOpen] = useState(false);
 
   const validGame = isValidGameId(game) ? game : undefined;
 
@@ -97,11 +99,24 @@ export default function PuzzlePage() {
       {!isGameOver && (
         <button
           type="button"
-          onClick={giveUp}
-          className="px-5 py-2.5 rounded-full border border-gray-300 text-gray-600 font-semibold hover:bg-gray-100 transition cursor-pointer"
+          onClick={() => setConfirmGiveUpOpen(true)}
+          className="px-5 py-2.5 rounded-full border border-gray-300 dark:border-gray-700 text-gray-600 dark:text-gray-400 font-semibold hover:bg-gray-100 dark:hover:bg-gray-800 transition cursor-pointer"
         >
           Give Up
         </button>
+      )}
+
+      {confirmGiveUpOpen && (
+        <ConfirmModal
+          title="Give up?"
+          message="Your current picks will be locked in and today's puzzle marked as done. This can't be undone."
+          confirmLabel="Give Up"
+          onConfirm={() => {
+            setConfirmGiveUpOpen(false);
+            giveUp();
+          }}
+          onCancel={() => setConfirmGiveUpOpen(false)}
+        />
       )}
 
       {activeCell && (

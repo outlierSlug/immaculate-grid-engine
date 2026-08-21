@@ -36,7 +36,7 @@ export default function GuessCounter({ remaining, iconSrc, feedback }: GuessCoun
   }, [feedback]);
 
   return (
-    <div title={title} className={depleted ? 'text-gray-500' : 'text-black'}>
+    <div title={title} className={depleted ? 'text-gray-500 dark:text-gray-500' : 'text-black dark:text-gray-100'}>
       <div
         key={popKey}
         className={`flex items-center gap-1.5 font-mono text-lg font-semibold tabular-nums ${

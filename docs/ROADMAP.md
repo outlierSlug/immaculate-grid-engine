@@ -249,8 +249,11 @@ rarity/uniqueness mechanic that makes this genre engaging.
       layout so they all stay aligned) that's pixel-identical to the old
       fixed sizing above ~610px wide, plus capped every modal's width to
       the viewport. Verified against a real iPhone 15 Pro Max viewport
-      (430px) and confirmed no regression at desktop widths. `Header`
-      still clips the title on narrow viewports — see Backlog.
+      (430px) and confirmed no regression at desktop widths. `Header`'s
+      own title-clipping, and a deeper mobile grid/dark-mode/brand-identity
+      pass, were done in a later post-Phase-6 session — see
+      docs/ARCHITECTURE.md's "Design system, dark mode, and the
+      header/grid rework".
 - [ ] Deploy backend (Fly.io/Railway) + frontend (Vercel/Netlify) +
       managed Postgres
 - [ ] CORS origins moved to real config for the deployed domain
@@ -320,14 +323,9 @@ sync here at a glance:
   else writes to the `puzzles`/`puzzle_attempts` tables yet either. Not
   urgent pre-deployment, but worth a real answer (scheduled cleanup job,
   TTL, or similar) before real traffic accumulates this at scale.
-- Header polish for narrow viewports: `Header`'s `grid-cols-3` layout
-  clips "Immaculate Grid" on phone-width screens (the Daily/Unlimited
-  pill's opaque background paints over the overflow). A flex-based fix
-  was tried and reverted — it stopped the toggle from being truly
-  centered when the title and settings-icon columns differ in width, and
-  that regression wasn't worth it for a mid-flight fix. Revisit as a
-  proper pass, likely alongside adding a footer (mentioned as a nice-to-
-  have, not yet scoped) rather than another one-off tweak.
+- ~~Header polish for narrow viewports~~ — fixed in a later session
+  alongside the site's dark mode and brand-identity pass; see
+  docs/ARCHITECTURE.md. A footer is still a nice-to-have, not yet scoped.
 
 ## Notes
 - Total estimate: ~8-10 weeks part-time, revised upward from the original

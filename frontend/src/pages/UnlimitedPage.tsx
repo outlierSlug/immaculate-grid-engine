@@ -13,7 +13,6 @@ import UnlimitedSettingsPanel, {
   type UnlimitedSettings,
 } from '../components/UnlimitedSettingsPanel';
 import { usePuzzleGuesses } from '../hooks/usePuzzleGuesses';
-import { CELL_SIZE, LABEL_COL_SIZE } from '../utils/gridSizing';
 import acquaintFateIcon from '../assets/genshin/Item_Acquaint_Fate.webp';
 
 const GUESS_LIMIT = 9;
@@ -114,7 +113,7 @@ export default function UnlimitedPage() {
           type="button"
           onClick={handleGenerate}
           disabled={!canGenerate || generating}
-          className="px-6 py-2.5 rounded-full bg-red-600 text-white font-semibold hover:bg-red-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition cursor-pointer"
+          className="px-6 py-2.5 rounded-full bg-red-600 text-white font-semibold hover:bg-red-700 disabled:bg-gray-300 dark:disabled:bg-gray-700 disabled:cursor-not-allowed transition cursor-pointer"
         >
           {generating ? 'Generating…' : 'Generate'}
         </button>
@@ -146,18 +145,22 @@ export default function UnlimitedPage() {
         ]}
       />
 
-      {/* Mirrors PuzzleGrid's own column template (shared clamp() sizing in
-          utils/gridSizing) so these three buttons land exactly centered
-          under the bottom-left cell, the bottom-middle cell, and the
-          bottom-right cell, at every viewport width. */}
-      <div className="grid items-center" style={{ gridTemplateColumns: `${LABEL_COL_SIZE} repeat(3, ${CELL_SIZE}) ${LABEL_COL_SIZE}` }}>
+      {/* Mirrors PuzzleGrid's own column template (including its responsive
+          -solo sizing and recentering ml-[...] below sm, where PuzzleGrid
+          also drops its reserved stats column) so these three buttons stay
+          centered under the bottom-left cell, the bottom-middle cell, and
+          the bottom-right cell, at every viewport width. */}
+      <div
+        className="grid items-center -ml-(--col-label) sm:ml-0 [--col-cell:var(--grid-cell-solo)] [--col-label:var(--grid-label-solo)] [--col-stats:0px] sm:[--col-cell:var(--grid-cell)] sm:[--col-label:var(--grid-label)] sm:[--col-stats:var(--grid-label)]"
+        style={{ gridTemplateColumns: `var(--col-label) repeat(3, var(--col-cell)) var(--col-stats)` }}
+      >
         <div />
         <div className="flex justify-center">
           {activeGuessLimit != null && !isGameOver && (
             <button
               type="button"
               onClick={giveUp}
-              className="px-5 py-2.5 rounded-full border border-gray-300 text-gray-600 font-semibold hover:bg-gray-100 transition cursor-pointer"
+              className="px-5 py-2.5 rounded-full border border-gray-300 dark:border-gray-700 text-gray-600 dark:text-gray-400 font-semibold hover:bg-gray-100 dark:hover:bg-gray-800 transition cursor-pointer"
             >
               Give Up
             </button>
@@ -168,7 +171,7 @@ export default function UnlimitedPage() {
             type="button"
             onClick={handleGenerate}
             disabled={generating}
-            className="px-6 py-2.5 rounded-full bg-red-600 text-white font-semibold hover:bg-red-700 disabled:bg-gray-300 transition cursor-pointer"
+            className="px-6 py-2.5 rounded-full bg-red-600 text-white font-semibold hover:bg-red-700 disabled:bg-gray-300 dark:disabled:bg-gray-700 transition cursor-pointer"
           >
             {generating ? 'Generating…' : 'Generate'}
           </button>
@@ -178,7 +181,7 @@ export default function UnlimitedPage() {
             type="button"
             onClick={() => setSettingsOpen(true)}
             aria-label="Open settings"
-            className="p-2.5 rounded-full border border-gray-300 text-gray-600 hover:bg-gray-100 transition cursor-pointer"
+            className="p-2.5 rounded-full border border-gray-300 dark:border-gray-700 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition cursor-pointer"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />

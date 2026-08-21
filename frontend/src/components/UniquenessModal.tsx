@@ -43,23 +43,23 @@ export default function UniquenessModal({ uniquenessScores, yourScore, mostUniqu
   return (
     <div className="fixed inset-0 bg-black/40 flex items-start justify-center pt-16 z-50" onClick={onClose}>
       <div
-        className="bg-white rounded-lg shadow-lg w-[calc(100vw-2rem)] max-w-lg flex flex-col"
+        className="bg-white dark:bg-gray-900 rounded-lg shadow-lg w-[calc(100vw-2rem)] max-w-lg flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="relative px-4 pt-4 pb-3 border-b border-gray-100">
+        <div className="relative px-4 pt-4 pb-3 border-b border-gray-100 dark:border-gray-800">
           <h2 className="font-bold text-center">Uniqueness Score</h2>
           <button
             type="button"
             onClick={onClose}
             aria-label="Close"
-            className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 cursor-pointer text-lg leading-none"
+            className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300 cursor-pointer text-lg leading-none"
           >
             ✕
           </button>
         </div>
 
         <div className="px-6 pt-4">
-          <p className="text-sm text-gray-600 text-center">
+          <p className="text-sm text-gray-600 dark:text-gray-400 text-center">
             Every grid starts at a uniqueness score of 900. Each correct pick lowers it. The rarer your pick
             was among everyone who played today, the bigger the drop. A lower score means a more unique grid
             overall.
@@ -68,11 +68,11 @@ export default function UniquenessModal({ uniquenessScores, yourScore, mostUniqu
 
         <div className="px-6 pt-4 flex justify-center gap-8 text-center">
           <div>
-            <div className="text-xs text-gray-500">Your score</div>
+            <div className="text-xs text-gray-500 dark:text-gray-400">Your score</div>
             <div className="text-lg font-bold tabular-nums">{yourScore}</div>
           </div>
           <div>
-            <div className="text-xs text-gray-500">Most unique today</div>
+            <div className="text-xs text-gray-500 dark:text-gray-400">Most unique today</div>
             <div className="text-lg font-bold tabular-nums">{mostUniqueScore ?? '—'}</div>
           </div>
         </div>
@@ -84,18 +84,18 @@ export default function UniquenessModal({ uniquenessScores, yourScore, mostUniqu
               const barHeight = count > 0 ? Math.max(3, (count / maxCount) * (CHART_HEIGHT - 18)) : 0;
               return (
                 <div key={i} className="flex-1 flex flex-col items-center justify-end gap-1 h-full">
-                  <span className="text-[10px] text-gray-500 tabular-nums leading-none">{count}</span>
+                  <span className="text-[10px] text-gray-500 dark:text-gray-400 tabular-nums leading-none">{count}</span>
                   <div
-                    className={`w-full max-w-6 rounded-t-sm ${isYours ? 'bg-blue-500' : 'bg-blue-300'}`}
+                    className={`w-full max-w-6 rounded-t-sm ${isYours ? 'bg-blue-500' : 'bg-blue-300 dark:bg-blue-500/30'}`}
                     style={{ height: barHeight }}
                   />
                 </div>
               );
             })}
           </div>
-          <div className="flex justify-between gap-1 mt-1.5 border-t border-gray-200 pt-1.5">
+          <div className="flex justify-between gap-1 mt-1.5 border-t border-gray-200 dark:border-gray-800 pt-1.5">
             {counts.map((_, i) => (
-              <div key={i} className="flex-1 text-center text-[9px] font-semibold text-gray-500 tabular-nums">
+              <div key={i} className="flex-1 text-center text-[9px] font-semibold text-gray-500 dark:text-gray-400 tabular-nums">
                 {bucketLabel(i)}
               </div>
             ))}

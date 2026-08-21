@@ -37,24 +37,24 @@ export default function PuzzleStatsBoard({ rowCount, colCount, perCell, mode, on
               type="button"
               onClick={() => onCellClick(cellKey)}
               disabled={!answer}
-              className="relative border border-gray-300 bg-white flex flex-col items-center justify-center gap-1.5 hover:bg-gray-50 disabled:hover:bg-white cursor-pointer disabled:cursor-default"
+              className="relative border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 flex flex-col items-center justify-center gap-1.5 hover:bg-gray-50 dark:hover:bg-gray-800 disabled:hover:bg-white dark:disabled:hover:bg-gray-900 cursor-pointer disabled:cursor-default"
             >
               {answer ? (
                 <>
-                  <span className="absolute top-1 right-1 inline-flex items-center justify-center px-1.5 py-0.5 rounded-lg bg-gray-100 text-gray-800 font-semibold text-xs leading-tight">
+                  <span className="absolute top-1 right-1 inline-flex items-center justify-center px-1.5 py-0.5 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-100 font-semibold text-xs leading-tight">
                     {answer.percent > 0 && answer.percent < 1 ? '<1' : Math.round(answer.percent)}%
                   </span>
                   <img
                     src={answer.imageUrl ?? undefined}
                     alt={answer.displayName}
-                    className="w-11 h-11 sm:w-16 sm:h-16 rounded-full object-cover border border-gray-200 shadow-sm"
+                    className="w-(--grid-avatar) h-(--grid-avatar) rounded-full object-cover border border-gray-200 dark:border-gray-700 shadow-sm"
                   />
-                  <span className="inline-flex items-center justify-center text-center px-1.5 sm:px-2 py-0.5 rounded-lg bg-gray-100 text-gray-800 font-semibold text-[10px] sm:text-xs leading-tight max-w-[92%] wrap-break-word">
+                  <span className="inline-flex items-center justify-center text-center px-1.5 sm:px-2 py-0.5 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-100 font-semibold text-(length:--grid-avatar-label) leading-tight max-w-[92%] wrap-break-word">
                     {answer.displayName}
                   </span>
                 </>
               ) : (
-                <span className="text-xs text-gray-300">No data yet</span>
+                <span className="text-xs text-gray-300 dark:text-gray-600">No data yet</span>
               )}
             </button>
           );

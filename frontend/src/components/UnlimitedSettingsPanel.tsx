@@ -37,7 +37,7 @@ function ToggleSwitch({ checked, onChange }: { checked: boolean; onChange: (valu
       aria-checked={checked}
       onClick={() => onChange(!checked)}
       className={`relative inline-flex h-6 w-11 shrink-0 items-center rounded-full transition cursor-pointer ${
-        checked ? 'bg-red-600' : 'bg-gray-300'
+        checked ? 'bg-red-600' : 'bg-gray-300 dark:bg-gray-700'
       }`}
     >
       <span
@@ -82,29 +82,29 @@ function DimensionOverlay({
   return (
     <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-60" onClick={onClose}>
       <div
-        className="bg-white rounded-lg shadow-lg w-[calc(100vw-2rem)] max-w-80 max-h-[70vh] flex flex-col"
+        className="bg-white dark:bg-gray-900 rounded-lg shadow-lg w-[calc(100vw-2rem)] max-w-80 max-h-[70vh] flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="flex items-center justify-between px-4 pt-4 pb-3 border-b border-gray-100">
+        <div className="flex items-center justify-between px-4 pt-4 pb-3 border-b border-gray-100 dark:border-gray-800">
           <h3 className="font-bold capitalize">{dimensionLabel}</h3>
           <button
             type="button"
             onClick={onClose}
             aria-label="Close"
-            className="text-gray-400 hover:text-gray-600 cursor-pointer text-lg leading-none"
+            className="text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300 cursor-pointer text-lg leading-none"
           >
             ✕
           </button>
         </div>
 
-        <div className="flex items-center justify-between px-4 py-3 border-b border-gray-100">
-          <span className="text-sm font-medium text-gray-700">All</span>
+        <div className="flex items-center justify-between px-4 py-3 border-b border-gray-100 dark:border-gray-800">
+          <span className="text-sm font-medium text-gray-700 dark:text-gray-300">All</span>
           <ToggleSwitch checked={allSelected} onChange={onToggleAll} />
         </div>
 
         <div className="overflow-y-auto flex-1 px-4 py-3 grid grid-cols-2 gap-x-3 gap-y-2">
           {categories.map((cat) => (
-            <label key={cat.id} className="flex items-center gap-2 text-sm text-gray-700">
+            <label key={cat.id} className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-300">
               <input
                 type="checkbox"
                 checked={!excludedCategoryIds.includes(cat.id)}
@@ -142,17 +142,17 @@ export default function UnlimitedSettingsPanel({
 
   const panel = (
     <div
-      className="bg-white rounded-xl shadow-lg w-full max-w-md flex flex-col max-h-[80vh]"
+      className="bg-white dark:bg-gray-900 rounded-xl shadow-lg w-full max-w-md flex flex-col max-h-[80vh]"
       onClick={(e) => e.stopPropagation()}
     >
-      <div className="relative px-5 pt-5 pb-3 border-b border-gray-100">
+      <div className="relative px-5 pt-5 pb-3 border-b border-gray-100 dark:border-gray-800">
         <h2 className="font-bold text-lg text-center">Settings</h2>
         {variant === 'modal' && (
           <button
             type="button"
             onClick={onClose}
             aria-label="Close"
-            className="absolute top-5 right-5 text-gray-400 hover:text-gray-600 cursor-pointer text-lg leading-none"
+            className="absolute top-5 right-5 text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300 cursor-pointer text-lg leading-none"
           >
             ✕
           </button>
@@ -160,30 +160,30 @@ export default function UnlimitedSettingsPanel({
       </div>
 
       <div className="overflow-y-auto flex-1">
-        <div className="flex items-center justify-center gap-6 flex-wrap px-5 py-4 border-b border-gray-100">
+        <div className="flex items-center justify-center gap-6 flex-wrap px-5 py-4 border-b border-gray-100 dark:border-gray-800">
           <div className="flex items-center gap-2">
-            <span className="text-sm font-medium text-gray-700">Allow Single Answers</span>
+            <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Allow Single Answers</span>
             <ToggleSwitch
               checked={settings.allowSingleAnswers}
               onChange={(value) => onChange({ ...settings, allowSingleAnswers: value })}
             />
           </div>
           <div className="flex items-center gap-2">
-            <span className="text-sm font-medium text-gray-700">Soft Lock Guard</span>
+            <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Soft Lock Guard</span>
             <ToggleSwitch
               checked={settings.softLockGuard}
               onChange={(value) => onChange({ ...settings, softLockGuard: value })}
             />
           </div>
           <div className="flex items-center gap-2">
-            <span className="text-sm font-medium text-gray-700">Unlimited Guesses</span>
+            <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Unlimited Guesses</span>
             <ToggleSwitch
               checked={settings.unlimitedGuesses}
               onChange={(value) => onChange({ ...settings, unlimitedGuesses: value })}
             />
           </div>
           <div className="flex items-center gap-2">
-            <span className="text-sm font-medium text-gray-700">Show Timer</span>
+            <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Show Timer</span>
             <ToggleSwitch
               checked={settings.showTimer}
               onChange={(value) => onChange({ ...settings, showTimer: value })}
@@ -192,7 +192,7 @@ export default function UnlimitedSettingsPanel({
         </div>
 
         <div className="px-5 py-4">
-          {!categories && <p className="text-sm text-gray-400 text-center">Loading categories...</p>}
+          {!categories && <p className="text-sm text-gray-400 dark:text-gray-500 text-center">Loading categories...</p>}
 
           <div className="flex flex-wrap justify-center gap-2">
             {categories?.dimensions.map((dim) => {
@@ -206,8 +206,8 @@ export default function UnlimitedSettingsPanel({
                   onClick={() => setExpandedDimension(dim.dimension)}
                   className={`flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm font-semibold transition cursor-pointer ${
                     remaining === 0
-                      ? 'border-gray-300 text-gray-400 hover:bg-gray-50'
-                      : 'border-red-400 text-red-600 hover:bg-red-50'
+                      ? 'border-gray-300 text-gray-400 hover:bg-gray-50 dark:border-gray-700 dark:text-gray-500 dark:hover:bg-gray-800'
+                      : 'border-red-400 text-red-600 hover:bg-red-50 dark:border-red-500/60 dark:text-red-400 dark:hover:bg-red-500/10'
                   }`}
                 >
                   <span className="capitalize">{dim.dimension.replace(/_/g, ' ')}</span>

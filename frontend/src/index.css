@@ -1,7 +1,60 @@
 @import "tailwindcss";
 
+/* Class-based dark mode (default Tailwind v4 dark: is OS-preference-only) so
+   the Settings modal's Light/Dark toggle can override the system setting -
+   see ThemeProvider, which toggles the .dark class on <html>. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+}
+
 html {
   scrollbar-gutter: stable;
+}
+
+:root {
+  /* Fluid puzzle-grid sizing - clamp(min, preferred, max) keeps the fixed
+     desktop size (max) while shrinking on narrow viewports instead of
+     overflowing. Single source of truth for gridSizing.ts's exports below.
+
+     Two variants of the cell/label size: the base pair assumes a 5-column
+     grid (row-label + 3 cells + a same-width column reserved for side
+     stats, as on desktop); the -solo pair assumes no reserved stats column
+     (4 columns only), so each column can claim a bigger vw share - used on
+     mobile, where PuzzleGrid/UnlimitedPage move the side stats below the
+     grid instead of reserving a column for them. Both cap at the same
+     desktop max, so above the sm breakpoint (where the reserved column
+     returns) the two are indistinguishable anyway. */
+  --grid-cell: clamp(4.25rem, 21vw, 8rem);
+  --grid-label: clamp(2.75rem, 13vw, 7rem);
+  --grid-header: clamp(3.5rem, 15vw, 6rem);
+  /* 22vw/13.5vw (not the naive 25vw/15vw first tried) - a bigger boost
+     looks right in isolation but leaves too little margin once the block
+     is re-centered on the cell area (see the -ml-(--col-label) comment
+     where this is consumed). That recentering also has to account for
+     `html { scrollbar-gutter: stable }` above: vw units are relative to
+     the full viewport, but the actual content area is ~15px narrower once
+     the reserved scrollbar gutter is subtracted - the true constraint at a
+     320px viewport, so these coefficients are tuned against that, not the
+     bare 320px figure. */
+  --grid-cell-solo: clamp(4.25rem, 22vw, 8rem);
+  --grid-label-solo: clamp(2.75rem, 13.5vw, 7rem);
+  /* CategoryChip's icon medallion (region/element/weapon). Was a hard
+     w-13/sm:w-20 breakpoint jump - fluid instead, so it scales continuously
+     with the rest of the grid rather than visibly resizing at 640px. Tuned
+     to fit inside the header row's 3.5rem-6rem range at every width. */
+  --grid-chip: clamp(3.25rem, 14vw, 5rem);
+  --grid-chip-img: clamp(2.5rem, 11vw, 4rem);
+  /* Filled-cell content (character portrait + name label), in PuzzleGrid
+     and PuzzleStatsBoard - same fix as --grid-chip above, was a hard
+     w-11/sm:w-16 (portrait) and text-[10px]/sm:text-xs (label) jump. */
+  --grid-avatar: clamp(2.75rem, 10.5vw, 4rem);
+  --grid-avatar-label: clamp(0.625rem, 2vw, 0.75rem);
+}
+
+body {
+  font-family: var(--font-sans);
 }
 
 /* One continuous scale-up-and-back-down motion (no held plateau at the
@@ -10,6 +63,19 @@ html {
    a quick pop in, then a slower, gentler settle back down — the peak
    sits early in the timeline (20%) rather than at the midpoint, so most
    of the animation's total duration is spent on the pop-out. */
+/* Small scale+fade entrance for modals (e.g. SettingsModal) - just enough
+   motion to read as intentional, not a full animation sequence. */
+@keyframes modal-in {
+  from {
+    opacity: 0;
+    transform: scale(0.97) translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
 @keyframes pop {
   0% {
     transform: scale(1);

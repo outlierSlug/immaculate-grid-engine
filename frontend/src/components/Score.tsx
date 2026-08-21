@@ -21,7 +21,7 @@ export default function Score({ correct, total, feedback }: ScoreProps) {
   }, [feedback]);
 
   return (
-    <div title="Score" className="text-gray-700">
+    <div title="Score" className="text-gray-700 dark:text-gray-300">
       <div
         key={popKey}
         className={`font-mono text-lg font-semibold tabular-nums ${

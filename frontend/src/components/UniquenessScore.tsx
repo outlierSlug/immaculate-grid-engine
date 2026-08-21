@@ -42,12 +42,12 @@ export default function UniquenessScore({ score, percentile }: UniquenessScorePr
         type="button"
         onClick={() => setOpen((o) => !o)}
         title="Uniqueness Score"
-        className="font-mono text-lg font-semibold text-gray-700 tabular-nums cursor-pointer hover:text-gray-900"
+        className="font-mono text-lg font-semibold text-gray-700 dark:text-gray-300 tabular-nums cursor-pointer hover:text-gray-900 dark:hover:text-gray-100"
       >
         UNIQ {score}
       </button>
       {open && (
-        <div className="absolute z-40 top-full mt-2 left-1/2 -translate-x-1/2 w-56 bg-white text-black text-xs rounded-lg shadow-lg px-3 py-2 text-center">
+        <div className="absolute z-40 top-full mt-2 left-1/2 -translate-x-1/2 w-56 bg-white dark:bg-gray-800 text-black dark:text-gray-100 text-xs rounded-lg shadow-lg px-3 py-2 text-center">
           {message}
         </div>
       )}

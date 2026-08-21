@@ -560,12 +560,12 @@ so every one of these layouts renders pixel-identical to before above
 ~610px wide, and shrinks fluidly below it instead of overflowing. Every
 modal's fixed-width panel (`w-96`, `w-108`, `w-lg`, etc.) got the same
 treatment via a `w-[calc(100vw-2rem)] max-w-<original>` pattern, so none
-of them can exceed the viewport on a narrow phone either. `Header` still
-clips its title on narrow viewports (see Backlog) - a flex-based fix was
-tried and reverted mid-session because it stopped the Daily/Unlimited
-toggle from being truly centered, which was judged worse than the
-original clipping for a one-off tweak; it needs a deliberate pass, not
-another isolated fix.
+of them can exceed the viewport on a narrow phone either. `Header`'s
+title-clipping was fixed properly in a later pass - see "Design system,
+dark mode, and the header/grid rework" below, which also replaced this
+whole clamp()-only approach with something more deliberate for the parts
+of the grid that needed more than a fixed max/min (avatar images, the
+mobile-only side-stats layout).
 
 ## Frontend architecture
 
@@ -678,6 +678,151 @@ own *refresh* survives via localStorage now, but a mode-switch-and-back
 still does not carry state either direction. Acceptable for now, flagged
 in Backlog as a real UX gap for later.
 
+## Design system, dark mode, and the header/grid rework
+
+A later pass (post-Phase 6) gave the site its own visual identity,
+separate from either game's own branding, and reworked the header/grid for
+mobile beyond what the Phase 6 `clamp()` pass covered. None of this is a
+new phase in the Roadmap — it's polish on top of the shipped feature set.
+
+**Brand identity**: `Space Grotesk` (Google Fonts, loaded in `index.html`,
+set as the site's `--font-sans` in `index.css`) is the one typeface used
+everywhere — chosen after a side-by-side comparison of several openly-
+licensed candidates against the site's own header/body copy (not against
+generic lorem ipsum). `BrandMark` (`components/BrandMark.tsx`) is a small
+original SVG glyph — a 3x3 grid with one filled cell, echoing the puzzle
+mechanic itself — on an indigo→violet gradient tile, deliberately neutral
+against both games' own accent colors (Genshin: sky, Brawl Stars: amber,
+both defined per-game in `config/games.ts`). Same glyph is duplicated as a
+static `public/favicon.svg` (can't share the React component's `useId()`-
+based gradient id with a plain SVG file, so it's hand-copied with a fixed
+id — fine since a favicon is never rendered twice on one page).
+
+**Dark mode** (`theme/ThemeProvider.tsx`): a `useTheme()` hook backed by
+React context, `localStorage` (key `"theme"`), and `window.matchMedia`
+for the first-visit default. Tailwind v4's `dark:` variant is
+OS-preference-only by default; `index.css` overrides it to class-based
+(`@custom-variant dark (&:where(.dark, .dark *));`) so the in-app toggle
+can override the system setting, not just follow it. `index.html` carries
+a small synchronous inline `<script>` that sets the `.dark` class on
+`<html>` *before* React mounts (reading the same `localStorage`/
+`matchMedia` logic `ThemeProvider` uses) — without it, a dark-preferring
+visitor would see a flash of the light theme while the bundle loads.
+Covers the whole app (Header, Home, Settings modal, the Daily/Unlimited
+puzzle pages and every one of their modals) — no known light-only gaps
+remaining as of this pass. Convention used throughout: surfaces get a
+`dark:bg-gray-900`/`dark:bg-gray-950` pairing (lighter for elevated cards,
+darker for the page underneath), borders `dark:border-gray-700/800`, and
+anything that was a light, near-white "badge" background (category-icon
+medallions, filled-cell name pills) either goes `dark:bg-gray-800` or, for
+the category-icon medallions specifically, `dark:bg-transparent` so it
+blends fully into the page rather than reading as a stray light square.
+
+**Hero image rotation** (`hooks/useRandomHeroImage.ts` +
+`config/games.ts`'s `heroImages` array): each game's home-page card and
+Settings-modal game-switch row picks one image at random from that game's
+`heroImages` array, once per mount (`useState(() => pick())`, not
+`useMemo`, since a mount-stable pick is wanted, not a value React is free
+to recompute). Today every game's array has exactly one entry, so this is
+presently a no-op visually — it starts actually rotating between multiple
+key-art images the moment a second entry is added to a game's array in
+`games.ts`, with no other code changes needed anywhere else.
+
+**Settings modal** (`components/SettingsModal.tsx`) was rebuilt around
+three sections: a **Game** switcher (`GameSwitchRow`, one per game — its
+own component rather than inlined in the `.map()`, because it needs its
+own `useRandomHeroImage` call and hooks can't run per-iteration inside a
+`.map()` callback), an **Appearance** Light/Dark segmented toggle wired to
+`useTheme()`, and a collapsible **How to Play** (`<details>`, closed by
+default — reference material, not a control, so it doesn't compete for
+space with the two sections above it). The header gear icon that opens
+this modal also gained a small hover tooltip (`role="tooltip"`, centered
+under the icon) since it previously had only an `aria-label`, invisible to
+sighted mouse users. One real layout bug surfaced and got fixed here:
+`backdrop-blur-sm` on `<header>` makes it the *containing block* for any
+`fixed`-position descendant (per the CSS spec, not just Safari-only
+behavior) — since the modal was originally a child of `<header>`, its
+`fixed inset-0` was resolving against the header's own small box instead
+of the viewport, squashing the modal into the header bar. Fixed by
+rendering the modal as a sibling of `<header>`, not a child.
+
+**`ConfirmModal`** (`components/ConfirmModal.tsx`): a small generic
+yes/no guard, not tied to any one page — first (and currently only) use is
+Daily's Give Up button, so an accidental click can't silently forfeit the
+puzzle. Reach for this instead of a bespoke inline confirm any time a
+button's action should require a second, deliberate step.
+
+### The mobile grid rework
+
+Phase 6's `clamp()`-based sizing (`utils/gridSizing.ts`) fixed *overflow*
+on narrow viewports but didn't address a separate ask: making the grid
+itself feel less cramped on a phone by moving `PuzzleGrid`'s side-column
+stats (UNIQ/Score/GuessCounter, or Timer/Score/GuessCounter on Unlimited)
+below the grid instead of reserving a column for them. This turned out to
+be considerably trickier than it looked, and it's worth recording exactly
+why, since every wrong turn taken here is a trap the next similar change
+could fall straight back into.
+
+All the real clamp() numbers now live as CSS custom properties in
+`index.css`'s `:root` block (`--grid-cell`, `--grid-label`,
+`--grid-header`, `--grid-chip`, `--grid-chip-img`, `--grid-avatar`,
+`--grid-avatar-label`), not as literal strings in `gridSizing.ts` anymore
+— that file's exports are now just `'var(--grid-cell)'` etc., so both
+plain inline-style consumers (`PuzzleStatsBoard`, `PuzzleStatsPanel`) and
+Tailwind's arbitrary-property syntax (`w-(--grid-avatar)`, used where a
+value needs to respond to a CSS breakpoint, which plain JS strings can't)
+share one source of truth.
+
+**Why a column can't just be removed on mobile.** `PuzzleGrid`'s columns
+are `label + 3×cell + stats` on desktop (`sm:` and up); below `sm`, the
+`stats` column's width collapses to `0px` via a **CSS custom property
+Tailwind switches per breakpoint** (`[--col-stats:0px] sm:[--col-stats:
+var(--grid-label)]` on the grid's own `className`) rather than by
+changing the grid structure itself — the same five grid slots exist at
+every width, only their sizes change. Two real bugs were hit building
+this, both worth knowing about before touching this code again:
+
+1. **`display:none` breaks CSS Grid auto-placement.** The first attempt
+   hid the (now zero-width) stats slot on mobile with `hidden sm:flex`.
+   `display:none` doesn't just make an element invisible — it removes it
+   from grid auto-placement *entirely*, so every item after it in DOM
+   order shifts one column left to fill the gap, cascading through every
+   subsequent row (row labels ended up rendered in the stats column,
+   cells shifted into the label column, etc.). Fixed with `invisible
+   sm:visible` instead — `visibility:hidden` keeps the (already
+   zero-width, so free) grid cell occupied without displaying it.
+2. **Centering an asymmetric block doesn't center its visually dominant
+   part.** With no stats column to balance the label column on the right,
+   naively flex-centering the whole `label + 3×cell` block leaves the
+   *cells* — not the label — off-center to the right, by half the
+   label's own width (nothing balances it on the left of the label). The
+   fix is a compensating `-ml-(--col-label)` on the grid — but the
+   correct value is the *full* label width, not half: `align-items:
+   center` centers a flex item's **margin box**, so a negative margin
+   only moves the rendered content by half its own value, the other half
+   is absorbed into where the centering math itself lands. Verified with
+   exact pixel measurements (bounding-box math against the true content
+   area, not `window.innerWidth` — see next point) until the offset was
+   `0` at every tested width, not just "looked right."
+3. **`vw` units don't know about `scrollbar-gutter: stable`** (set on
+   `html` since Phase 6, to prevent layout shift when content becomes
+   scrollable). `vw` is relative to the *full* viewport including the
+   reserved scrollbar gutter, but the actual content area is ~15px
+   narrower. The mobile-specific "solo" sizing (`--grid-cell-solo`,
+   `--grid-label-solo` — bigger `vw` coefficients than the desktop pair,
+   since 4 columns can each claim more than 5 columns could) has to be
+   tuned against that narrower real width, not the raw viewport width, or
+   the row-label chips clip a few px off the left edge at the narrowest
+   supported viewport (320px).
+
+**Filled-cell content** (the character portrait + name label, in both
+`PuzzleGrid` and `PuzzleStatsBoard`) had the same class of issue at a
+smaller scale: a hard `w-11 sm:w-16` breakpoint jump instead of a fluid
+size. Replaced with `--grid-avatar`/`--grid-avatar-label`, the same
+`clamp()`-via-CSS-variable pattern as everything else in this rework, so
+the portrait/label grow continuously with viewport width instead of
+visibly snapping in size at exactly 640px.
+
 ## Package structure (backend)
  
 ```
@@ -768,19 +913,14 @@ kept going stale faster than the items themselves resolved.
   answer — a scheduled cleanup job or a TTL on Unlimited rows specifically,
   since Daily/attempt rows are meant to be kept — before this matters at
   production scale.
-- `Header` still clips "Immaculate Grid" on phone-width viewports — its
-  `grid-cols-3` layout gives the title column a hard 1/3 cap narrower than
-  the (deliberately `whitespace-nowrap`) title needs, and the centered
-  Daily/Unlimited pill's opaque background paints over the overflow rather
-  than the text visibly spilling out, which reads as a clipped/broken
-  title rather than an obvious overflow. A flex-based reflow (title and
-  settings icon shrink-to-content, toggle takes the remaining space) fixed
-  it but was reverted mid-session: it stopped the toggle from being truly
-  centered across the full header once the title/icon column widths
-  differ, which was judged worse than the original clipping for a
-  same-session tweak. Revisit as a deliberate pass - likely alongside
-  adding a footer (raised as a want, not yet scoped) - rather than
-  another isolated fix.
+- ~~`Header` clips "Immaculate Grid" on phone-width viewports~~ — fixed in
+  the design-system pass (see "Design system, dark mode, and the
+  header/grid rework" above): `grid-cols-3` (rigid equal thirds) became
+  `grid-cols-[1fr_auto_1fr]` (center column sizes to its own content, the
+  two flanking columns share the rest and can shrink), plus the wordmark
+  collapses to just the brand mark below `sm` (`hidden sm:inline`) instead
+  of clipping or truncating. A footer is still an open want, not yet
+  scoped.
 - Daily's `Timer` was removed from display (Phase 6) to make room for the
   live `UNIQ` stat in that same side-column slot — `Timer` the component is
   untouched and still used by Unlimited. Revisit re-adding it to Daily
@@ -788,3 +928,85 @@ kept going stale faster than the items themselves resolved.
   time into its own puzzle stat ("solved faster than X% of players"),
   which was already flagged as a possible addition alongside the Scores
   distribution modal.
+
+## Extending the frontend — common changes
+
+Task-oriented recipes for the changes that come up most. Each one names
+the exact file(s) to touch; read the relevant section above first if
+something here references it.
+
+**Add a third game.** Backend first — a new `GameModule` + ingestion
+script (see "Why this scales to additional games" above) — the frontend
+has nothing to add until `/api/items?game=X` and `/api/games/X/categories`
+work against it. Then, on the frontend, it's exactly one file:
+`config/games.ts`. Copy an existing entry (`genshin` or `brawlstars`)
+rather than starting from the interface — several fields
+(`logoAspectClass`/`logoObjectPosition`) are derived by *measuring* the
+actual logo asset's transparent padding (see the derivation comments
+already in that file), not eyeballed, and the pattern for redoing that
+measurement is worth reusing rather than reinventing. `HomePage`, the
+Settings modal's game switcher, and both puzzle routes all read `GAMES`
+generically — nothing else needs a code change, which is the frontend
+half of the backend's own "adding a game costs ~2 files" claim.
+
+**Change the site's look.**
+- *Font*: one line, `index.css`'s `--font-sans`, plus the matching Google
+  Fonts `<link>` in `index.html`. Applies everywhere — no component in
+  this codebase sets its own font-family.
+- *Brand accent*: `BrandMark.tsx`'s gradient stops (currently indigo→
+  violet) — also update `public/favicon.svg` to match, since it can't
+  share the React component (a plain SVG file, hand-kept in sync). A
+  game's *own* accent color (the ring/dot colors on its home-page card and
+  Settings-modal row) is separate, set per-game in `config/games.ts`.
+- *Light/dark palette*: no central token file — `dark:` variants are
+  written per-component, following the convention in "Dark mode" above
+  (`bg-white` → `dark:bg-gray-900` for elevated surfaces, `border-gray-200`
+  → `dark:border-gray-800`, muted text one step lighter in dark than its
+  light equivalent). Match the existing pattern in a neighboring component
+  rather than inventing a new shade.
+
+**Add a new modal.** Every modal in this app is the same shape — copy
+`ConfirmModal.tsx` (shortest) or `SettingsModal.tsx` (fuller, with
+sections) rather than building one from scratch:
+```tsx
+<div className="fixed inset-0 bg-black/40 flex items-start justify-center pt-16 z-50" onClick={onClose}>
+  <div
+    className="bg-white dark:bg-gray-900 rounded-lg shadow-lg w-[calc(100vw-2rem)] max-w-96 ..."
+    onClick={(e) => e.stopPropagation()}
+  >
+    {/* content */}
+  </div>
+</div>
+```
+- The backdrop's `onClick={onClose}` plus the panel's `stopPropagation` is
+  the entire "click outside to close" implementation — no library.
+- An `Escape`-key `useEffect` is expected, not optional — every modal in
+  this app has one; copy it verbatim from any existing one.
+- `w-[calc(100vw-2rem)] max-w-<value>` (never a bare fixed `w-*`) so the
+  modal can't exceed a narrow phone's viewport.
+- Render it as a **sibling**, not a descendant, of anything carrying
+  `backdrop-blur`/`transform`/`filter` — see "Settings modal" above for
+  exactly why (such an ancestor becomes the containing block for `fixed`
+  children, breaking `inset-0`).
+
+**Add something to the puzzle grid's side column.** `PuzzleGrid`'s
+`sideColumn` prop takes up to 3 `ReactNode`s, index-aligned to rows
+(`sideColumn[0]` renders beside row 0, etc.) — see `PuzzlePage`/
+`UnlimitedPage` for current usage. `PuzzleGrid` renders each item twice
+under the hood (once in-grid for desktop, once in the mobile-only row
+below the grid, per "The mobile grid rework" above) — that duplication is
+handled internally, so pass the same array regardless of viewport.
+
+**Adjust grid/cell sizing.** All of it is CSS custom properties in
+`index.css`'s `:root` block (`--grid-cell`, `--grid-label`, `--grid-chip`,
+`--grid-avatar`, etc.), consumed via `gridSizing.ts`'s exports or directly
+via Tailwind's `w-(--var-name)` syntax. Read "The mobile grid rework"
+above in full before touching a `-solo` variant's `vw` coefficient — the
+centering math depends on the exact label:cell ratio staying safe at a
+320px viewport.
+
+**Add a category-icon medallion for a new dimension value.**
+`CategoryChip.tsx`'s `ICONS` lookup — add the image import plus a
+`Record` entry keyed by the exact label text the backend returns for that
+category. Purely additive: a label not present in the map already falls
+back to a plain text pill, so there's no path to break by adding one.

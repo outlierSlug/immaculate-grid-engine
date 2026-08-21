@@ -32,11 +32,11 @@ export default function PuzzleStatsPanel({ puzzleStats, rowLabels, colLabels, yo
     : null;
 
   return (
-    <div className="flex flex-col items-center gap-4 py-6 border-t border-gray-200 w-full">
+    <div className="flex flex-col items-center gap-4 py-6 border-t border-gray-200 dark:border-gray-800 w-full">
       <h2 className="text-2xl font-bold">Puzzle Stats</h2>
 
       <div
-        className="bg-white rounded-xl shadow-sm px-4 py-3 grid grid-cols-3"
+        className="bg-white dark:bg-gray-900 rounded-xl shadow-sm px-4 py-3 grid grid-cols-3"
         style={{ width: BOARD_WIDTH_CSS }}
       >
         {/* grid-cols-3 (not flex+justify-around) so all three stats sit in
@@ -45,33 +45,33 @@ export default function PuzzleStatsPanel({ puzzleStats, rowLabels, colLabels, yo
             visibly skewed "Score Avg"/"Most Unique" left of "Games" once
             they got hover padding and Games didn't. */}
         <div className="flex flex-col items-center justify-center gap-0.5">
-          <span className="text-sm text-black">Games</span>
+          <span className="text-sm text-black dark:text-gray-300">Games</span>
           <span className="text-lg font-bold tabular-nums">{gamesPlayed}</span>
         </div>
         <button
           type="button"
           onClick={() => setScoreModalOpen(true)}
-          className="flex flex-col items-center justify-center gap-0.5 cursor-pointer rounded-lg py-1 hover:bg-gray-100 transition"
+          className="flex flex-col items-center justify-center gap-0.5 cursor-pointer rounded-lg py-1 hover:bg-gray-100 dark:hover:bg-gray-800 transition"
         >
-          <span className="text-sm text-black">Score Avg</span>
+          <span className="text-sm text-black dark:text-gray-300">Score Avg</span>
           <span className="text-lg font-bold tabular-nums">{avgScore.toFixed(1)}</span>
         </button>
         <button
           type="button"
           onClick={() => setUniquenessModalOpen(true)}
-          className="flex flex-col items-center justify-center gap-0.5 cursor-pointer rounded-lg py-1 hover:bg-gray-100 transition"
+          className="flex flex-col items-center justify-center gap-0.5 cursor-pointer rounded-lg py-1 hover:bg-gray-100 dark:hover:bg-gray-800 transition"
         >
-          <span className="text-sm text-black">Most Unique</span>
+          <span className="text-sm text-black dark:text-gray-300">Most Unique</span>
           <span className="text-lg font-bold tabular-nums">{mostUniqueScore ?? '—'}</span>
         </button>
       </div>
 
-      <div className="inline-flex rounded-full bg-gray-100 p-1 text-sm font-semibold">
+      <div className="inline-flex rounded-full bg-gray-100 dark:bg-gray-800 p-1 text-sm font-semibold">
         <button
           type="button"
           onClick={() => setTab('most')}
           className={`px-4 py-1.5 rounded-full cursor-pointer transition ${
-            tab === 'most' ? 'bg-white text-black shadow-sm' : 'text-black'
+            tab === 'most' ? 'bg-white dark:bg-gray-700 text-black dark:text-gray-100 shadow-sm' : 'text-black dark:text-gray-300'
           }`}
         >
           Most Common
@@ -80,13 +80,13 @@ export default function PuzzleStatsPanel({ puzzleStats, rowLabels, colLabels, yo
           type="button"
           onClick={() => setTab('least')}
           className={`px-4 py-1.5 rounded-full cursor-pointer transition ${
-            tab === 'least' ? 'bg-white text-black shadow-sm' : 'text-black'
+            tab === 'least' ? 'bg-white dark:bg-gray-700 text-black dark:text-gray-100 shadow-sm' : 'text-black dark:text-gray-300'
           }`}
         >
           Least Common
         </button>
       </div>
-      <p className="text-xs text-gray-400 -mt-2">Click square for details</p>
+      <p className="text-xs text-gray-400 dark:text-gray-500 -mt-2">Click square for details</p>
 
       <PuzzleStatsBoard
         rowCount={rowLabels.length}
