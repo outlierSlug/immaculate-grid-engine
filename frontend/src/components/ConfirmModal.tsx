@@ -31,7 +31,7 @@ export default function ConfirmModal({
   return (
     <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50" onClick={onCancel}>
       <div
-        className="bg-white dark:bg-gray-900 rounded-xl shadow-lg w-[calc(100vw-2rem)] max-w-80 p-5"
+        className="bg-white dark:bg-gray-900 rounded-xl shadow-lg w-[calc(100vw-2rem)] max-w-80 p-5 animate-[modal-in_0.15s_ease-out]"
         onClick={(e) => e.stopPropagation()}
       >
         <h2 className="font-bold text-lg text-center">{title}</h2>

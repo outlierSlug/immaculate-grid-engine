@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import type { CategoryOption, GameCategoriesResponse } from '../types/puzzle';
+import LoadingSpinner from './LoadingSpinner';
+import ErrorState from './ErrorState';
 
 export interface UnlimitedSettings {
   excludedCategoryIds: string[];
@@ -22,6 +24,8 @@ interface UnlimitedSettingsPanelProps {
   settings: UnlimitedSettings;
   onChange: (settings: UnlimitedSettings) => void;
   categories: GameCategoriesResponse | null;
+  categoriesError?: boolean;
+  onRetryCategories?: () => void;
   onClose?: () => void; // required for the modal variant
 }
 
@@ -37,7 +41,7 @@ function ToggleSwitch({ checked, onChange }: { checked: boolean; onChange: (valu
       aria-checked={checked}
       onClick={() => onChange(!checked)}
       className={`relative inline-flex h-6 w-11 shrink-0 items-center rounded-full transition cursor-pointer ${
-        checked ? 'bg-red-600' : 'bg-gray-300 dark:bg-gray-700'
+        checked ? 'bg-indigo-600' : 'bg-gray-300 dark:bg-gray-700'
       }`}
     >
       <span
@@ -82,7 +86,7 @@ function DimensionOverlay({
   return (
     <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-60" onClick={onClose}>
       <div
-        className="bg-white dark:bg-gray-900 rounded-lg shadow-lg w-[calc(100vw-2rem)] max-w-80 max-h-[70vh] flex flex-col"
+        className="bg-white dark:bg-gray-900 rounded-lg shadow-lg w-[calc(100vw-2rem)] max-w-80 max-h-[70vh] flex flex-col animate-[modal-in_0.15s_ease-out]"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex items-center justify-between px-4 pt-4 pb-3 border-b border-gray-100 dark:border-gray-800">
@@ -124,6 +128,8 @@ export default function UnlimitedSettingsPanel({
   settings,
   onChange,
   categories,
+  categoriesError,
+  onRetryCategories,
   onClose,
 }: UnlimitedSettingsPanelProps) {
   const [expandedDimension, setExpandedDimension] = useState<string | null>(null);
@@ -142,7 +148,9 @@ export default function UnlimitedSettingsPanel({
 
   const panel = (
     <div
-      className="bg-white dark:bg-gray-900 rounded-xl shadow-lg w-full max-w-md flex flex-col max-h-[80vh]"
+      className={`bg-white dark:bg-gray-900 rounded-xl shadow-lg w-full max-w-md flex flex-col max-h-[80vh] ${
+        variant === 'modal' ? 'animate-[modal-in_0.15s_ease-out]' : ''
+      }`}
       onClick={(e) => e.stopPropagation()}
     >
       <div className="relative px-5 pt-5 pb-3 border-b border-gray-100 dark:border-gray-800">
@@ -192,7 +200,17 @@ export default function UnlimitedSettingsPanel({
         </div>
 
         <div className="px-5 py-4">
-          {!categories && <p className="text-sm text-gray-400 dark:text-gray-500 text-center">Loading categories...</p>}
+          {!categories && !categoriesError && (
+            <LoadingSpinner label="Loading categories..." size="sm" className="py-2" />
+          )}
+
+          {categoriesError && (
+            <ErrorState
+              message="Couldn't load categories for this game."
+              onRetry={onRetryCategories}
+              className="py-2"
+            />
+          )}
 
           <div className="flex flex-wrap justify-center gap-2">
             {categories?.dimensions.map((dim) => {
@@ -207,7 +225,7 @@ export default function UnlimitedSettingsPanel({
                   className={`flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm font-semibold transition cursor-pointer ${
                     remaining === 0
                       ? 'border-gray-300 text-gray-400 hover:bg-gray-50 dark:border-gray-700 dark:text-gray-500 dark:hover:bg-gray-800'
-                      : 'border-red-400 text-red-600 hover:bg-red-50 dark:border-red-500/60 dark:text-red-400 dark:hover:bg-red-500/10'
+                      : 'border-indigo-400 text-indigo-600 hover:bg-indigo-50 dark:border-indigo-500/60 dark:text-indigo-400 dark:hover:bg-indigo-500/10'
                   }`}
                 >
                   <span className="capitalize">{dim.dimension.replace(/_/g, ' ')}</span>

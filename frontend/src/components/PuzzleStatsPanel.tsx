@@ -14,9 +14,16 @@ interface PuzzleStatsPanelProps {
   // as the side-column UNIQ stat — passed down rather than recomputed here
   // so there's one place that owns filledCells + the formula inputs.
   yourUniquenessScore: number;
+  avatarShapeClass: string;
 }
 
-export default function PuzzleStatsPanel({ puzzleStats, rowLabels, colLabels, yourUniquenessScore }: PuzzleStatsPanelProps) {
+export default function PuzzleStatsPanel({
+  puzzleStats,
+  rowLabels,
+  colLabels,
+  yourUniquenessScore,
+  avatarShapeClass,
+}: PuzzleStatsPanelProps) {
   const [tab, setTab] = useState<'most' | 'least'>('most');
   const [selectedCellKey, setSelectedCellKey] = useState<string | null>(null);
   const [scoreModalOpen, setScoreModalOpen] = useState(false);
@@ -94,6 +101,7 @@ export default function PuzzleStatsPanel({ puzzleStats, rowLabels, colLabels, yo
         perCell={perCell}
         mode={tab}
         onCellClick={setSelectedCellKey}
+        avatarShapeClass={avatarShapeClass}
       />
 
       {selectedCell && perCell[selectedCell.cellKey] && (
@@ -103,6 +111,7 @@ export default function PuzzleStatsPanel({ puzzleStats, rowLabels, colLabels, yo
           cellStats={perCell[selectedCell.cellKey]}
           yourItemId={you?.cellAnswers[selectedCell.cellKey] ?? null}
           onClose={() => setSelectedCellKey(null)}
+          avatarShapeClass={avatarShapeClass}
         />
       )}
 

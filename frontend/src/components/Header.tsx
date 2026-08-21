@@ -32,7 +32,7 @@ export default function Header() {
             >
               <BrandMark className="w-7 h-7 shrink-0" />
               <span className="hidden sm:inline font-bold text-lg tracking-tight truncate">
-                Immaculate Grid
+                GachaGrid
               </span>
             </Link>
           </div>

@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { GAMES, type GameId } from '../config/games';
 import { useTheme } from '../theme/ThemeProvider';
@@ -20,6 +20,8 @@ interface GameSwitchRowProps {
 // .map() callback, only inside a component instance.
 function GameSwitchRow({ game, isActive, onClick }: GameSwitchRowProps) {
   const heroImage = useRandomHeroImage(game.id);
+  // Same slow-connection gap as GameCard's hero art - see its comment.
+  const [imageReady, setImageReady] = useState(false);
 
   return (
     <NavLink
@@ -31,13 +33,23 @@ function GameSwitchRow({ game, isActive, onClick }: GameSwitchRowProps) {
           : 'hover:bg-gray-50 dark:hover:bg-gray-800/60'
       }`}
     >
-      <img
-        src={heroImage.src}
-        alt=""
-        aria-hidden="true"
-        className="w-14 h-14 rounded-lg object-cover shrink-0"
-        style={{ objectPosition: heroImage.objectPosition }}
-      />
+      <div className="relative w-14 h-14 rounded-lg overflow-hidden shrink-0">
+        <div
+          aria-hidden="true"
+          className={`absolute inset-0 bg-gray-200 dark:bg-gray-700 ${imageReady ? '' : 'animate-pulse'}`}
+        />
+        <img
+          src={heroImage.src}
+          alt=""
+          aria-hidden="true"
+          onLoad={() => setImageReady(true)}
+          onError={() => setImageReady(true)}
+          className={`absolute inset-0 w-full h-full object-cover transition duration-300 ${
+            imageReady ? 'opacity-100' : 'opacity-0'
+          }`}
+          style={{ objectPosition: heroImage.objectPosition }}
+        />
+      </div>
       <span className="flex items-center gap-1.5 font-semibold text-sm flex-1 min-w-0">
         <span className={`w-2 h-2 rounded-full shrink-0 ${game.dotClass}`} aria-hidden="true" />
         <span className="truncate">{game.label}</span>

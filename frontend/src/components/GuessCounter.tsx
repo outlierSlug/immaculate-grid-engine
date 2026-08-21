@@ -53,7 +53,7 @@ export default function GuessCounter({ remaining, iconSrc, feedback }: GuessCoun
         ) : (
           <svg
             viewBox="0 0 24 24"
-            className={`w-4 h-4 shrink-0 ${depleted ? 'text-gray-300' : 'text-red-500'}`}
+            className={`w-4 h-4 shrink-0 ${depleted ? 'text-gray-300 dark:text-gray-600' : 'text-indigo-500 dark:text-indigo-400'}`}
             fill="currentColor"
             aria-hidden="true"
           >

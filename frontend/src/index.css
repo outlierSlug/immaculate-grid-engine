@@ -13,6 +13,47 @@ html {
   scrollbar-gutter: stable;
 }
 
+/* One focus style for every interactive element, site-wide - previously
+   only one input had a deliberate focus style at all, so keyboard
+   navigation had no reliable indicator anywhere else. :focus-visible (not
+   :focus) so mouse/touch clicks don't show it, only keyboard nav and other
+   non-pointer focus - browsers already apply this heuristic sensibly for
+   text inputs too, so this doesn't regress the "visible while typing"
+   case. Brand indigo, one shade lighter in dark mode for contrast against
+   a dark surface. */
+:root {
+  --focus-ring: #6366f1;
+}
+.dark {
+  --focus-ring: #818cf8;
+}
+:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+/* Escape hatches for the two cases where the bare rule above is wrong,
+   not a reason to abandon having one global system. Both use a class (not
+   :focus-visible alone) so they win on specificity, and stay unlayered
+   like the base rule so cascade-layer order can't reorder them under it. */
+
+/* For an element with its own sufficient focus treatment already (e.g.
+   GuessInput's search box changes border color on focus) - the outline
+   read as a redundant double ring stacked on top of it. */
+.focus-ring-none:focus-visible {
+  outline: none;
+}
+
+/* For elements packed edge-to-edge with no gap (PuzzleGrid/
+   PuzzleStatsBoard cells) - a positive offset draws outside the border
+   box, which a same-DOM-level sibling painting later covers wherever the
+   two boxes are adjacent, cutting the ring off on whichever side(s)
+   happen to have a later-painting neighbor. Pulling the outline inside
+   the cell's own box entirely avoids the overlap. */
+.focus-ring-inset:focus-visible {
+  outline-offset: -2px;
+}
+
 :root {
   /* Fluid puzzle-grid sizing - clamp(min, preferred, max) keeps the fixed
      desktop size (max) while shrinking on narrow viewports instead of
@@ -73,6 +114,24 @@ body {
   to {
     opacity: 1;
     transform: scale(1) translateY(0);
+  }
+}
+
+/* Page-mount entrance - HomePage/PuzzlePage/UnlimitedPage each apply this
+   to their own root element via motion-safe:animate-[page-in_...], so
+   switching between them (a real remount, since they're different
+   component types at the same Outlet position) reads as a deliberate
+   transition instead of an instant content swap. Subtler/slower than
+   modal-in above since a full page shouldn't call attention to itself the
+   way a modal opening should. */
+@keyframes page-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 

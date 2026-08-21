@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import mondstadtIcon from '../assets/genshin/regions/Mondstadt_Emblem_Night.webp';
 import liyueIcon from '../assets/genshin/regions/Liyue_Emblem_Night.webp';
 import inazumaIcon from '../assets/genshin/regions/Inazuma_Emblem_Night.webp';
@@ -86,14 +87,33 @@ const ICONS: Record<string, string> = {
 
 export default function CategoryChip({ label }: CategoryChipProps) {
   const icon = ICONS[label];
+  // On a slow connection these (up to 6 per puzzle, all requested at once)
+  // can take a moment - previously the box just stayed blank with no
+  // feedback. A pulsing placeholder fills the gap and unmounts once the
+  // icon actually loads, so the "blend into the page" dark-mode background
+  // above is still what's left behind afterward, not a permanent tile.
+  const [imageReady, setImageReady] = useState(false);
 
   if (icon) {
     return (
       <div className="flex flex-col items-center gap-1.5">
-        <div
-          className="w-(--grid-chip) h-(--grid-chip) bg-gray-100 dark:bg-transparent flex items-center justify-center"
-        >
-          <img src={icon} alt={label} title={label} className="w-(--grid-chip-img) h-(--grid-chip-img) object-contain" />
+        <div className="relative w-(--grid-chip) h-(--grid-chip) bg-gray-100 dark:bg-transparent flex items-center justify-center">
+          {!imageReady && (
+            <div
+              aria-hidden="true"
+              className="absolute inset-0 bg-gray-200 dark:bg-gray-800 animate-pulse"
+            />
+          )}
+          <img
+            src={icon}
+            alt={label}
+            title={label}
+            onLoad={() => setImageReady(true)}
+            onError={() => setImageReady(true)}
+            className={`w-(--grid-chip-img) h-(--grid-chip-img) object-contain transition-opacity duration-300 ${
+              imageReady ? 'opacity-100' : 'opacity-0'
+            }`}
+          />
         </div>
         {/* <span className="text-xs font-medium text-gray-600">{label}</span> */}
       </div>

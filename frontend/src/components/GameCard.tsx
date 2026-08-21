@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import type { GameId } from '../config/games';
 import { useRandomHeroImage } from '../hooks/useRandomHeroImage';
@@ -31,17 +32,31 @@ export default function GameCard({
   logoObjectPosition,
 }: GameCardProps) {
   const heroImage = useRandomHeroImage(gameId);
+  // Hero art is a large real photo/key-art file - on a slow connection it
+  // can take seconds, during which the card previously had nothing behind
+  // its text/logo but the page background (no bg-* on the Link itself),
+  // reading as broken rather than loading. A pulsing placeholder fills
+  // that gap; the image fades in over it once actually decoded.
+  const [imageReady, setImageReady] = useState(false);
 
   return (
     <Link
       to={`/${gameId}`}
       className={`group relative block aspect-4/3 rounded-2xl overflow-hidden shadow-md ring-1 ring-black/5 dark:ring-white/10 hover:ring-2 hover:shadow-xl hover:-translate-y-0.5 transition ${accentRingClass}`}
     >
+      <div
+        aria-hidden="true"
+        className={`absolute inset-0 bg-gray-200 dark:bg-gray-800 ${imageReady ? '' : 'animate-pulse'}`}
+      />
       <img
         src={heroImage.src}
         alt=""
         aria-hidden="true"
-        className="absolute inset-0 w-full h-full object-cover transition duration-300 group-hover:scale-105"
+        onLoad={() => setImageReady(true)}
+        onError={() => setImageReady(true)}
+        className={`absolute inset-0 w-full h-full object-cover transition duration-300 group-hover:scale-105 ${
+          imageReady ? 'opacity-100' : 'opacity-0'
+        }`}
         style={{ objectPosition: heroImage.objectPosition }}
       />
       {/* Scrim for logo/text legibility only - deliberately not tinted per

@@ -9,6 +9,18 @@ a new game requires a new data module and ingestion script, not engine
 changes — enforced in practice by keeping all core logic (grid generation,
 validation, persistence, API shape) written against generic interfaces that
 take a `gameId`, never against Genshin-specific types.
+
+**Naming**: "immaculate grid" above is the *genre* this project belongs to
+(the 3x3 row/column category-intersection format popularized by
+Immaculate Grid, now owned by Sports Reference) — not this project's own
+name. The repo/engine keep the genre-descriptive name
+(`immaculate-grid-engine`) since that's what the engine architecturally
+*is*; the public-facing product brand is **GachaGrid**, chosen for its
+actual origin (built first for Genshin Impact, gacha/character-collection
+games being the flagship use case) the same way Immaculate Grid itself
+was named after a baseball concept before expanding to other sports with
+no connection to it. The brand name is not a constraint on which games
+the engine can support (Brawl Stars already isn't a gacha game).
  
 ## Tech stack
  
@@ -913,7 +925,7 @@ kept going stale faster than the items themselves resolved.
   answer — a scheduled cleanup job or a TTL on Unlimited rows specifically,
   since Daily/attempt rows are meant to be kept — before this matters at
   production scale.
-- ~~`Header` clips "Immaculate Grid" on phone-width viewports~~ — fixed in
+- ~~`Header` clips the wordmark on phone-width viewports~~ — fixed in
   the design-system pass (see "Design system, dark mode, and the
   header/grid rework" above): `grid-cols-3` (rigid equal thirds) became
   `grid-cols-[1fr_auto_1fr]` (center column sizes to its own content, the

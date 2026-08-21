@@ -26,6 +26,10 @@ interface PuzzleGridProps {
   // so the same cell's badge can show a different percentage across visits
   // as more players submit results for the puzzle.
   cellStats?: Record<string, CellStats> | null;
+  // Per-game shape mask for the filled-cell portrait - see the
+  // avatarShapeClass comment in config/games.ts for why this varies
+  // per game instead of being a fixed rounded-full.
+  avatarShapeClass: string;
 }
 
 export default function PuzzleGrid({
@@ -37,6 +41,7 @@ export default function PuzzleGrid({
   locked,
   feedback,
   cellStats,
+  avatarShapeClass,
 }: PuzzleGridProps) {
   return (
     <div className="flex flex-col items-center gap-2">
@@ -107,7 +112,7 @@ export default function PuzzleGrid({
                 key={cellKey}
                 onClick={() => onCellClick(rowIndex, colIndex)}
                 disabled={!!filled || locked}
-                className={`relative border ${borderColorClass} transition-colors duration-200 bg-white dark:bg-gray-900 flex flex-col items-center justify-center gap-1.5 hover:bg-gray-50 dark:hover:bg-gray-800 disabled:hover:bg-white dark:disabled:hover:bg-gray-900 cursor-pointer disabled:cursor-not-allowed`}
+                className={`relative border ${borderColorClass} focus-ring-inset transition-colors duration-200 bg-white dark:bg-gray-900 flex flex-col items-center justify-center gap-1.5 hover:bg-gray-50 dark:hover:bg-gray-800 disabled:hover:bg-white dark:disabled:hover:bg-gray-900 cursor-pointer disabled:cursor-not-allowed`}
               >
                 {filled ? (
                   <>
@@ -119,7 +124,7 @@ export default function PuzzleGrid({
                     <img
                       src={filled.imageUrl}
                       alt={filled.displayName}
-                      className="w-(--grid-avatar) h-(--grid-avatar) rounded-full object-cover border border-gray-200 dark:border-gray-700 shadow-sm"
+                      className={`w-(--grid-avatar) h-(--grid-avatar) ${avatarShapeClass} object-cover border border-gray-200 dark:border-gray-700 shadow-sm`}
                     />
                     <span className="inline-flex items-center justify-center text-center px-1.5 sm:px-2 py-0.5 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-100 font-semibold text-(length:--grid-avatar-label) leading-tight max-w-[92%] wrap-break-word">
                       {filled.displayName}

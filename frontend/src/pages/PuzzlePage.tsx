@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams, Navigate } from 'react-router-dom';
 import { fetchTodaysPuzzle } from '../api/client';
 import type { PuzzleResponse } from '../types/puzzle';
-import { isValidGameId, type GameId } from '../config/games';
+import { GAMES, isValidGameId, type GameId } from '../config/games';
 import PuzzleGrid from '../components/PuzzleGrid';
 import GuessInput from '../components/GuessInput';
 import Score from '../components/Score';
@@ -10,6 +10,7 @@ import GuessCounter from '../components/GuessCounter';
 import UniquenessScore from '../components/UniquenessScore';
 import PuzzleStatsPanel from '../components/PuzzleStatsPanel';
 import ConfirmModal from '../components/ConfirmModal';
+import LoadingSpinner from '../components/LoadingSpinner';
 import { usePuzzleGuesses } from '../hooks/usePuzzleGuesses';
 import { computeLiveUniquenessScore, computeUniquenessPercentile } from '../utils/uniqueness';
 import intertwinedFateIcon from '../assets/genshin/Item_Intertwined_Fate.webp';
@@ -41,6 +42,39 @@ export default function PuzzlePage() {
       .catch((err) => setError(err.message));
   }, [validGame]);
 
+  // Daily's puzzle id encodes the date ("{gameId}:{date}"), so a puzzle
+  // loaded before midnight silently goes stale if the tab is just left
+  // open - refresh was the only way to notice. This re-asks the server
+  // whenever the tab regains attention and swaps in a new puzzle only if
+  // the id actually changed, rather than polling on a timer: no client-side
+  // guess at what timezone "today" resets in, no background work while the
+  // tab isn't being looked at, and a same-day recheck is a no-op that
+  // leaves in-progress state (filled cells, guesses used) untouched, since
+  // usePuzzleGuesses only resets on puzzle.id actually changing.
+  useEffect(() => {
+    if (!validGame) return;
+
+    function checkForNewPuzzle() {
+      if (document.visibilityState !== 'visible') return;
+      fetchTodaysPuzzle(validGame!)
+        .then((latest) => {
+          setPuzzle((current) => (current && current.id === latest.id ? current : latest));
+        })
+        .catch(() => {
+          // Silent - this is a background freshness check, not the primary
+          // load path. A transient failure here shouldn't disrupt an
+          // already-loaded puzzle; the next focus/visibility event retries.
+        });
+    }
+
+    document.addEventListener('visibilitychange', checkForNewPuzzle);
+    window.addEventListener('focus', checkForNewPuzzle);
+    return () => {
+      document.removeEventListener('visibilitychange', checkForNewPuzzle);
+      window.removeEventListener('focus', checkForNewPuzzle);
+    };
+  }, [validGame]);
+
   const {
     filledCells,
     activeCell,
@@ -65,20 +99,29 @@ export default function PuzzlePage() {
   }
 
   if (error) {
-    return <div className="p-8 text-red-600">Failed to load puzzle: {error}</div>;
+    return (
+      <main className="flex items-center justify-center min-h-[60vh] p-8">
+        <p className="text-red-600 dark:text-red-400">Failed to load puzzle: {error}</p>
+      </main>
+    );
   }
 
   if (!puzzle) {
-    return <div className="p-8">Loading today's puzzle...</div>;
+    return (
+      <main className="flex items-center justify-center min-h-[60vh]">
+        <LoadingSpinner label="Loading today's puzzle..." size="lg" />
+      </main>
+    );
   }
 
   const liveUniquenessScore = computeLiveUniquenessScore(filledCells, puzzleStats?.perCell);
   const uniquenessPercentile = puzzleStats
     ? computeUniquenessPercentile(liveUniquenessScore, puzzleStats.uniquenessScores)
     : null;
+  const avatarShapeClass = GAMES[validGame].avatarShapeClass;
 
   return (
-    <main className="flex flex-col items-center gap-5 py-8">
+    <main className="flex flex-col items-center gap-5 py-8 motion-safe:animate-[page-in_350ms_ease-out]">
       <h1 className="text-2xl font-bold">Today's Puzzle</h1>
 
       <PuzzleGrid
@@ -89,6 +132,7 @@ export default function PuzzlePage() {
         locked={isGameOver}
         feedback={feedback}
         cellStats={puzzleStats?.perCell}
+        avatarShapeClass={avatarShapeClass}
         sideColumn={[
           <UniquenessScore key="uniq" score={liveUniquenessScore} percentile={uniquenessPercentile} />,
           <Score key="score" correct={correctCount} total={totalCells} feedback={feedback} />,
@@ -100,7 +144,7 @@ export default function PuzzlePage() {
         <button
           type="button"
           onClick={() => setConfirmGiveUpOpen(true)}
-          className="px-5 py-2.5 rounded-full border border-gray-300 dark:border-gray-700 text-gray-600 dark:text-gray-400 font-semibold hover:bg-gray-100 dark:hover:bg-gray-800 transition cursor-pointer"
+          className="px-5 py-2.5 rounded-full border border-red-300 dark:border-red-800/70 text-gray-600 dark:text-gray-400 font-semibold hover:bg-red-50 dark:hover:bg-red-950/30 hover:border-red-400 dark:hover:border-red-700 transition cursor-pointer"
         >
           Give Up
         </button>
@@ -109,7 +153,7 @@ export default function PuzzlePage() {
       {confirmGiveUpOpen && (
         <ConfirmModal
           title="Give up?"
-          message="Your current picks will be locked in and today's puzzle marked as done. This can't be undone."
+          message="Your current picks will be locked in and today's puzzle marked as done. This cannot be undone."
           confirmLabel="Give Up"
           onConfirm={() => {
             setConfirmGiveUpOpen(false);
@@ -127,6 +171,7 @@ export default function PuzzlePage() {
           usedItemIds={new Set(Object.values(filledCells).map((item) => item.id))}
           onSelect={handleGuessSelect}
           onClose={closeActiveCell}
+          avatarShapeClass={avatarShapeClass}
         />
       )}
 
@@ -136,6 +181,7 @@ export default function PuzzlePage() {
           rowLabels={puzzle.rowLabels}
           colLabels={puzzle.colLabels}
           yourUniquenessScore={liveUniquenessScore}
+          avatarShapeClass={avatarShapeClass}
         />
       )}
     </main>

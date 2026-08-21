@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams, Navigate } from 'react-router-dom';
 import { fetchGameCategories, generateUnlimitedPuzzle } from '../api/client';
 import type { GameCategoriesResponse, PuzzleResponse } from '../types/puzzle';
-import { isValidGameId, type GameId } from '../config/games';
+import { GAMES, isValidGameId, type GameId } from '../config/games';
 import PuzzleGrid from '../components/PuzzleGrid';
 import GuessInput from '../components/GuessInput';
 import Timer from '../components/Timer';
@@ -12,6 +12,8 @@ import UnlimitedSettingsPanel, {
   DEFAULT_UNLIMITED_SETTINGS,
   type UnlimitedSettings,
 } from '../components/UnlimitedSettingsPanel';
+import ErrorState from '../components/ErrorState';
+import ConfirmModal from '../components/ConfirmModal';
 import { usePuzzleGuesses } from '../hooks/usePuzzleGuesses';
 import acquaintFateIcon from '../assets/genshin/Item_Acquaint_Fate.webp';
 
@@ -44,6 +46,9 @@ export default function UnlimitedPage() {
   // Snapshotted from settings.unlimitedGuesses at generation time — toggling
   // the setting mid-game never retroactively changes the puzzle in progress.
   const [activeGuessLimit, setActiveGuessLimit] = useState<number | null>(null);
+  const [categoriesError, setCategoriesError] = useState(false);
+  const [categoriesRetryCount, setCategoriesRetryCount] = useState(0);
+  const [confirmGiveUpOpen, setConfirmGiveUpOpen] = useState(false);
 
   const {
     filledCells,
@@ -63,12 +68,17 @@ export default function UnlimitedPage() {
 
   useEffect(() => {
     if (!validGame) return;
-    fetchGameCategories(validGame).then(setCategories);
-  }, [validGame]);
+    setCategoriesError(false);
+    fetchGameCategories(validGame)
+      .then(setCategories)
+      .catch(() => setCategoriesError(true));
+  }, [validGame, categoriesRetryCount]);
 
   if (!validGame) {
     return <Navigate to="/" replace />;
   }
+
+  const avatarShapeClass = GAMES[validGame].avatarShapeClass;
 
   async function handleGenerate() {
     setGenerating(true);
@@ -95,7 +105,7 @@ export default function UnlimitedPage() {
 
   if (!puzzle) {
     return (
-      <main className="flex flex-col items-center gap-5 py-8">
+      <main className="flex flex-col items-center gap-5 py-8 motion-safe:animate-[page-in_350ms_ease-out]">
         <h1 className="text-2xl font-bold">Unlimited Mode</h1>
 
         <UnlimitedSettingsPanel
@@ -103,6 +113,8 @@ export default function UnlimitedPage() {
           settings={settings}
           onChange={setSettings}
           categories={categories}
+          categoriesError={categoriesError}
+          onRetryCategories={() => setCategoriesRetryCount((n) => n + 1)}
         />
 
         {categories && !canGenerate && (
@@ -113,8 +125,11 @@ export default function UnlimitedPage() {
           type="button"
           onClick={handleGenerate}
           disabled={!canGenerate || generating}
-          className="px-6 py-2.5 rounded-full bg-red-600 text-white font-semibold hover:bg-red-700 disabled:bg-gray-300 dark:disabled:bg-gray-700 disabled:cursor-not-allowed transition cursor-pointer"
+          className="flex items-center gap-2 px-6 py-2.5 rounded-full bg-indigo-600 text-white font-semibold hover:bg-indigo-700 disabled:bg-gray-300 dark:disabled:bg-gray-700 disabled:cursor-not-allowed transition cursor-pointer"
         >
+          <svg className={`w-4 h-4 shrink-0 ${generating ? 'animate-spin' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2} aria-hidden="true">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
+          </svg>
           {generating ? 'Generating…' : 'Generate'}
         </button>
         {error && <p className="text-red-600 text-sm text-center px-4">{error}</p>}
@@ -138,6 +153,7 @@ export default function UnlimitedPage() {
         onCellClick={handleCellClick}
         locked={isGameOver}
         feedback={feedback}
+        avatarShapeClass={avatarShapeClass}
         sideColumn={[
           <Timer key="timer" startedAt={startedAt} endedAt={endedAt} visible={settings.showTimer} />,
           <Score key="score" correct={correctCount} total={totalCells} feedback={feedback} />,
@@ -159,8 +175,8 @@ export default function UnlimitedPage() {
           {activeGuessLimit != null && !isGameOver && (
             <button
               type="button"
-              onClick={giveUp}
-              className="px-5 py-2.5 rounded-full border border-gray-300 dark:border-gray-700 text-gray-600 dark:text-gray-400 font-semibold hover:bg-gray-100 dark:hover:bg-gray-800 transition cursor-pointer"
+              onClick={() => setConfirmGiveUpOpen(true)}
+              className="px-5 py-2.5 rounded-full border border-red-300 dark:border-red-800/70 text-gray-600 dark:text-gray-400 font-semibold hover:bg-red-50 dark:hover:bg-red-950/30 hover:border-red-400 dark:hover:border-red-700 transition cursor-pointer"
             >
               Give Up
             </button>
@@ -171,8 +187,11 @@ export default function UnlimitedPage() {
             type="button"
             onClick={handleGenerate}
             disabled={generating}
-            className="px-6 py-2.5 rounded-full bg-red-600 text-white font-semibold hover:bg-red-700 disabled:bg-gray-300 dark:disabled:bg-gray-700 transition cursor-pointer"
+            className="flex items-center gap-2 px-6 py-2.5 rounded-full bg-indigo-600 text-white font-semibold hover:bg-indigo-700 disabled:bg-gray-300 dark:disabled:bg-gray-700 transition cursor-pointer"
           >
+            <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2} aria-hidden="true">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
+            </svg>
             {generating ? 'Generating…' : 'Generate'}
           </button>
         </div>
@@ -199,6 +218,7 @@ export default function UnlimitedPage() {
           usedItemIds={new Set(Object.values(filledCells).map((item) => item.id))}
           onSelect={handleGuessSelect}
           onClose={closeActiveCell}
+          avatarShapeClass={avatarShapeClass}
         />
       )}
 
@@ -208,7 +228,22 @@ export default function UnlimitedPage() {
           settings={settings}
           onChange={setSettings}
           categories={categories}
+          categoriesError={categoriesError}
+          onRetryCategories={() => setCategoriesRetryCount((n) => n + 1)}
           onClose={() => setSettingsOpen(false)}
+        />
+      )}
+
+      {confirmGiveUpOpen && (
+        <ConfirmModal
+          title="Give up?"
+          message="Are you sure? This cannot be undone."
+          confirmLabel="Give Up"
+          onConfirm={() => {
+            setConfirmGiveUpOpen(false);
+            giveUp();
+          }}
+          onCancel={() => setConfirmGiveUpOpen(false)}
         />
       )}
     </main>

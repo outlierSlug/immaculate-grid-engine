@@ -25,7 +25,7 @@ export default function ScoreDistributionModal({ scoreDistribution, yourScore, o
   return (
     <div className="fixed inset-0 bg-black/40 flex items-start justify-center pt-20 z-50" onClick={onClose}>
       <div
-        className="bg-white dark:bg-gray-900 rounded-lg shadow-lg w-[calc(100vw-2rem)] max-w-104 flex flex-col"
+        className="bg-white dark:bg-gray-900 rounded-lg shadow-lg w-[calc(100vw-2rem)] max-w-104 flex flex-col animate-[modal-in_0.15s_ease-out]"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="relative px-4 pt-4 pb-3 border-b border-gray-100 dark:border-gray-800">
@@ -50,7 +50,7 @@ export default function ScoreDistributionModal({ scoreDistribution, yourScore, o
                 <div key={score} className="flex-1 flex flex-col items-center justify-end gap-1 h-full">
                   <span className="text-[10px] text-gray-500 dark:text-gray-400 tabular-nums leading-none">{count}</span>
                   <div
-                    className={`w-full max-w-5 rounded-t-sm ${isYours ? 'bg-blue-500' : 'bg-blue-300 dark:bg-blue-500/30'}`}
+                    className={`w-full max-w-5 rounded-t-sm ${isYours ? 'bg-indigo-500' : 'bg-indigo-300 dark:bg-indigo-500/30'}`}
                     style={{ height: barHeight }}
                   />
                 </div>

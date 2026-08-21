@@ -3,6 +3,7 @@ import Header from './components/Header';
 import HomePage from './pages/HomePage';
 import PuzzlePage from './pages/PuzzlePage';
 import UnlimitedPage from './pages/UnlimitedPage';
+import NotFoundPage from './pages/NotFoundPage';
 
 function Layout() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/:game" element={<PuzzlePage />} />
         <Route path="/:game/unlimited" element={<UnlimitedPage />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>
   );

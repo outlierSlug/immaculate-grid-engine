@@ -1,6 +1,6 @@
-import genshinHero from '../assets/genshin/Version4.7Wallpaper.jpg';
+import genshinHero from '../assets/genshin/wallpapers/Version4.7Wallpaper.jpg';
 import genshinLogo from '../assets/genshin/Logo_ENG.png';
-import brawlStarsHero from '../assets/brawlstars/loading_2020_arcade.png';
+import brawlStarsHero from '../assets/brawlstars/wallpapers/loading_2020_arcade.png';
 import brawlStarsLogo from '../assets/brawlstars/BS_EN.png';
 import type { HeroImage } from '../hooks/useRandomHeroImage';
 
@@ -33,6 +33,11 @@ export const GAMES = {
     // SettingsModal's game list (distinct from accentRingClass above, which
     // is hover-only and used on the home page GameCards).
     selectedRingClass: 'ring-sky-400',
+    // Shape mask for character-portrait thumbnails (PuzzleGrid filled
+    // cells, PuzzleStatsBoard, CommunityAnswersModal, GuessInput's result
+    // rows). Genshin's source images have no built-in frame, so a circular
+    // crop reads cleanly.
+    avatarShapeClass: 'rounded-full',
   },
   brawlstars: {
     id: 'brawlstars',
@@ -51,6 +56,11 @@ export const GAMES = {
     accentRingClass: 'hover:ring-amber-400',
     dotClass: 'bg-amber-400',
     selectedRingClass: 'ring-amber-400',
+    // Brawl Stars' brawler portraits already bake their own square frame
+    // into the source image - a circular mask on top clipped that frame's
+    // corners, so these stay unmasked squares instead (no rounding at all,
+    // not even a soft radius, so none of the baked-in border is cropped).
+    avatarShapeClass: 'rounded-none',
   },
 } as const;
 

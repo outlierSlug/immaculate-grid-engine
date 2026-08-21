@@ -11,7 +11,7 @@ export default function BrandMark({ className = 'w-8 h-8' }: BrandMarkProps) {
   const gradientId = useId();
 
   return (
-    <svg viewBox="0 0 32 32" className={className} role="img" aria-label="Immaculate Grid">
+    <svg viewBox="0 0 32 32" className={className} role="img" aria-label="GachaGrid">
       <defs>
         <linearGradient id={gradientId} x1="0" y1="0" x2="1" y2="1">
           <stop offset="0%" stopColor="#6366f1" />

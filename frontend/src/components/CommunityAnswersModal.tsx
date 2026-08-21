@@ -7,6 +7,7 @@ interface CommunityAnswersModalProps {
   cellStats: CellStats;
   yourItemId?: string | null;
   onClose: () => void;
+  avatarShapeClass: string;
 }
 
 // Generic gray avatar marking "this is what you picked" — deliberately not
@@ -22,7 +23,14 @@ function YourPickIcon() {
   );
 }
 
-export default function CommunityAnswersModal({ rowLabel, colLabel, cellStats, yourItemId, onClose }: CommunityAnswersModalProps) {
+export default function CommunityAnswersModal({
+  rowLabel,
+  colLabel,
+  cellStats,
+  yourItemId,
+  onClose,
+  avatarShapeClass,
+}: CommunityAnswersModalProps) {
   useEffect(() => {
     function handleEscape(e: KeyboardEvent) {
       if (e.key === 'Escape') onClose();
@@ -37,7 +45,7 @@ export default function CommunityAnswersModal({ rowLabel, colLabel, cellStats, y
   return (
     <div className="fixed inset-0 bg-black/40 flex items-start justify-center pt-16 z-50" onClick={onClose}>
       <div
-        className="bg-white dark:bg-gray-900 rounded-lg shadow-lg w-[calc(100vw-2rem)] max-w-108 max-h-[70vh] flex flex-col"
+        className="bg-white dark:bg-gray-900 rounded-lg shadow-lg w-[calc(100vw-2rem)] max-w-108 max-h-[70vh] flex flex-col animate-[modal-in_0.15s_ease-out]"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="relative px-4 pt-4 pb-3 border-b border-gray-100 dark:border-gray-800">
@@ -57,7 +65,7 @@ export default function CommunityAnswersModal({ rowLabel, colLabel, cellStats, y
             <span className="uppercase tracking-wide">{colLabel}</span>
           </div>
           <div className="flex justify-center mt-2">
-            <span className="inline-flex px-2 py-0.5 rounded-full bg-red-50 dark:bg-red-500/15 text-red-600 dark:text-red-400 text-xs font-semibold">
+            <span className="inline-flex px-2 py-0.5 rounded-full bg-indigo-50 dark:bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 text-xs font-semibold">
               {solveRate.toFixed(0)}% guessed correctly
             </span>
           </div>
@@ -74,7 +82,7 @@ export default function CommunityAnswersModal({ rowLabel, colLabel, cellStats, y
                 <img
                   src={answer.imageUrl ?? undefined}
                   alt={answer.displayName}
-                  className="w-9 h-9 rounded-full object-cover border border-gray-200 dark:border-gray-700 shrink-0"
+                  className={`w-9 h-9 ${avatarShapeClass} object-cover border border-gray-200 dark:border-gray-700 shrink-0`}
                 />
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2">
@@ -88,7 +96,7 @@ export default function CommunityAnswersModal({ rowLabel, colLabel, cellStats, y
                   </div>
                   <div className="h-1.5 rounded-full bg-gray-100 dark:bg-gray-800 mt-1 overflow-hidden">
                     <div
-                      className="h-full rounded-full bg-red-600"
+                      className="h-full rounded-full bg-indigo-600"
                       style={{
                         width: `${answer.percent}%`,
                         backgroundImage:

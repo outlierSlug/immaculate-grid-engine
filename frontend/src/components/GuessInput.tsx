@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { fetchItems } from '../api/client';
 import type { GridItem } from '../types/puzzle';
+import LoadingSpinner from './LoadingSpinner';
+import ErrorState from './ErrorState';
 
 interface GuessInputProps {
   game: string;
@@ -9,6 +11,7 @@ interface GuessInputProps {
   usedItemIds: Set<string>;
   onSelect: (item: GridItem) => void;
   onClose: () => void;
+  avatarShapeClass: string;
 }
 
 export default function GuessInput({
@@ -18,17 +21,23 @@ export default function GuessInput({
   usedItemIds,
   onSelect,
   onClose,
+  avatarShapeClass,
 }: GuessInputProps) {
   const [items, setItems] = useState<GridItem[]>([]);
   const [query, setQuery] = useState('');
   const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState(false);
+  const [retryCount, setRetryCount] = useState(0);
   const [selectedItem, setSelectedItem] = useState<GridItem | null>(null);
 
   useEffect(() => {
+    setLoading(true);
+    setLoadError(false);
     fetchItems(game)
       .then(setItems)
+      .catch(() => setLoadError(true))
       .finally(() => setLoading(false));
-  }, [game]);
+  }, [game, retryCount]);
 
   useEffect(() => {
     function handleEscape(e: KeyboardEvent) {
@@ -71,7 +80,7 @@ export default function GuessInput({
       onClick={onClose}
     >
       <div
-        className="bg-white dark:bg-gray-900 rounded-lg shadow-lg w-[calc(100vw-2rem)] max-w-96 max-h-[60vh] flex flex-col"
+        className="bg-white dark:bg-gray-900 rounded-lg shadow-lg w-[calc(100vw-2rem)] max-w-96 max-h-[60vh] flex flex-col animate-[modal-in_0.15s_ease-out]"
         onClick={(e) => {
           e.stopPropagation();
           handleModalClick();
@@ -115,9 +124,7 @@ export default function GuessInput({
                 bg-white dark:bg-gray-900
                 text-black dark:text-gray-100
                 placeholder:text-gray-400 dark:placeholder:text-gray-500
-                outline-none
-                focus:border-blue-500
-                focus:ring-1 focus:ring-blue-200 dark:focus:ring-blue-500/30
+                focus:border-indigo-500 focus-ring-none
                 rounded-md
                 transition
               "
@@ -141,7 +148,27 @@ export default function GuessInput({
 
         {/* Search results */}
         <div className="overflow-y-auto flex-1">
+          {/* Only shown once the user has actually typed something while the
+              roster is still loading - on a normal fast connection that
+              window is sub-frame, so showing this unconditionally on open
+              just meant the modal's size visibly jumped on every open
+              (loading -> empty) for no benefit. An empty query already
+              renders nothing below, so staying silent here keeps that
+              resting state stable. */}
+          {loading && query.trim().length > 0 && (
+            <LoadingSpinner label={`Searching for "${query.trim()}"...`} size="sm" className="py-6" />
+          )}
+
+          {!loading && loadError && (
+            <ErrorState
+              message="Couldn't load the character list."
+              onRetry={() => setRetryCount((n) => n + 1)}
+              className="py-6"
+            />
+          )}
+
           {!loading &&
+            !loadError &&
             query.trim().length > 0 &&
             filtered.length === 0 && (
               <div className="p-3 text-gray-500 dark:text-gray-400">
@@ -161,13 +188,13 @@ export default function GuessInput({
                   flex items-center gap-3
                   px-3 py-2
                   transition
-                  ${isSelected ? 'bg-blue-50 dark:bg-blue-500/10' : 'hover:bg-gray-50 dark:hover:bg-gray-800'}
+                  ${isSelected ? 'bg-indigo-50 dark:bg-indigo-500/10' : 'hover:bg-gray-50 dark:hover:bg-gray-800'}
                 `}
               >
                 <img
                   src={item.imageUrl}
                   alt={item.displayName}
-                  className="w-10 h-10 rounded object-cover shrink-0"
+                  className={`w-10 h-10 ${avatarShapeClass} object-cover shrink-0`}
                 />
 
                 <span className="font-medium flex-1 min-w-0 text-black dark:text-gray-100">
@@ -194,7 +221,7 @@ export default function GuessInput({
                       isUsed
                         ? 'bg-gray-100 text-gray-400 dark:bg-gray-800 dark:text-gray-600 cursor-not-allowed'
                         : isSelected
-                        ? 'bg-blue-600 text-white hover:bg-blue-700 cursor-pointer'
+                        ? 'bg-indigo-600 text-white hover:bg-indigo-700 cursor-pointer'
                         : 'bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700 cursor-pointer'
                     }
                   `}
