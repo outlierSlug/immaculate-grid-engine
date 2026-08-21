@@ -5,7 +5,6 @@ import com.tonyl.backend.puzzle.PuzzleService;
 import com.tonyl.backend.puzzle.PuzzleStatsService;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/puzzle")
-@CrossOrigin(origins = "http://localhost:5173")
 public class PuzzleController {
 
     private final PuzzleService puzzleService;

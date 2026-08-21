@@ -9,7 +9,9 @@ import type {
   PuzzleStatsResponse,
 } from '../types/puzzle';
 
-const BASE_URL = 'http://localhost:8080/api';
+// Falls back to the local dev backend so a fresh checkout works with no
+// extra setup; set VITE_API_BASE_URL (frontend/.env) to point elsewhere.
+const BASE_URL = import.meta.env.VITE_API_BASE_URL ?? 'http://localhost:8080/api';
 
 export async function fetchTodaysPuzzle(game: string = 'genshin'): Promise<PuzzleResponse> {
   const res = await fetch(`${BASE_URL}/puzzle/today?game=${game}`);

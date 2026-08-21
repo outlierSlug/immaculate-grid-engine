@@ -405,9 +405,44 @@ once real-time H2H exists, where a client can't be trusted):
   server-authoritative rule yet.
 ### CORS
  
-`@CrossOrigin(origins = "http://localhost:5173")` on both controllers,
-matching Vite's default dev port. Will need a real allowed-origins
-configuration (not hardcoded per-controller) once deployed.
+Centralized in `config/WebConfig.java` (a `WebMvcConfigurer` bean mapping
+`/api/**`), not per-controller `@CrossOrigin` annotations - there used to be
+three identical `@CrossOrigin(origins = "http://localhost:5173")` literals
+(one per controller), which meant every origin change required editing all
+three in lockstep. `WebConfig` reads a single `app.cors.allowed-origins`
+property (comma-separated), itself backed by `CORS_ALLOWED_ORIGINS` - add
+the real frontend domain there once deployed, no code change needed.
+
+## Local environment setup
+
+Required before the backend will start - Spring Boot reads these as real OS
+environment variables, **not** from a `.env` file (no dotenv library is
+used); see `backend/.env.example` for the reference list and a Windows
+`SetEnvironmentVariable` example. `frontend/.env.example` documents the
+one frontend-side variable the same way.
+
+- `DB_PASSWORD` - no default in `application.properties`, by design:
+  startup fails fast with a clear "could not resolve placeholder" error
+  instead of ever risking a real credential landing in a committed file.
+  Rotate via `ALTER ROLE grid WITH PASSWORD '...';` against the running
+  `grid-postgres` container, then update the env var and restart.
+- `DB_URL` / `DB_USERNAME` - have local-dev defaults matching the
+  conventional `grid-postgres` setup, only need overriding for a
+  non-standard local setup or a real deployment target.
+- `CORS_ALLOWED_ORIGINS` - see CORS above.
+
+**`pg_hba.conf` gotcha, worth knowing before touching Postgres auth again**:
+the `grid-postgres` container's `pg_hba.conf` originally had explicit
+`trust` rules for `127.0.0.1/32` and `::1/128` - meaning **no password was
+ever actually checked** for local TCP connections (which is how the backend
+connects), regardless of what was configured in `application.properties`.
+Rotating `DB_PASSWORD` alone would have been theater without also fixing
+this. Fixed by changing those two lines to `scram-sha-256` and reloading
+(`SELECT pg_reload_conf();`) - verified by confirming the *old* password was
+rejected and the new one accepted, over an actual TCP connection
+(`psql -h 127.0.0.1`), not the Unix socket (`local all all trust`
+remains - socket access already requires `docker exec`-level access to the
+container, a materially higher bar than reachability on `localhost:5432`).
 
 ## Community stats & rarity (Phase 6)
 

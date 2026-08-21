@@ -6,7 +6,6 @@ import com.tonyl.backend.game.GameModule;
 import com.tonyl.backend.game.GameModuleRegistry;
 import com.tonyl.backend.repository.GridItemRepository;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,7 +24,6 @@ import java.util.stream.Collectors;
  */
 @RestController
 @RequestMapping("/api/games")
-@CrossOrigin(origins = "http://localhost:5173")
 public class GameController {
 
     private final GridItemRepository gridItemRepository;
