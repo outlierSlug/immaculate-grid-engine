@@ -5,6 +5,7 @@ Entity schema and write the validated result to output/brawlstars_entities.json.
 import json
 from pathlib import Path
 
+from backfill_brawler_classes import KNOWN_CLASSES
 from schema import validate_entities
 
 RAW_PATH = Path(__file__).parent / "raw" / "brawlstars_brawlers_raw.json"
@@ -17,7 +18,7 @@ def map_brawler(raw: dict) -> dict | None:
 
     brawler_class = raw["class"]["name"]
     if brawler_class == "Unknown":
-        brawler_class = None  # excluded from class-based categories, not a real class
+        brawler_class = KNOWN_CLASSES.get(raw["name"])  # hand-curated, see backfill_brawler_classes.py
 
     return {
         "id": f"brawlstars:{raw['name'].lower()}",

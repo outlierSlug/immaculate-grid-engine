@@ -6,7 +6,7 @@
     "image_url": "https://cdn.brawlify.com/brawlers/borders/16000108.png",
     "attributes": {
       "rarity": "Mythic",
-      "brawler_class": null
+      "brawler_class": "Support"
     }
   },
   {
@@ -16,7 +16,7 @@
     "image_url": "https://cdn.brawlify.com/brawlers/borders/16000107.png",
     "attributes": {
       "rarity": "Legendary",
-      "brawler_class": null
+      "brawler_class": "Assassin"
     }
   },
   {
@@ -26,7 +26,7 @@
     "image_url": "https://cdn.brawlify.com/brawlers/borders/16000106.png",
     "attributes": {
       "rarity": "Epic",
-      "brawler_class": null
+      "brawler_class": "Tank"
     }
   },
   {
@@ -36,7 +36,7 @@
     "image_url": "https://cdn.brawlify.com/brawlers/borders/16000105.png",
     "attributes": {
       "rarity": "Mythic",
-      "brawler_class": null
+      "brawler_class": "Assassin"
     }
   },
   {
@@ -46,7 +46,7 @@
     "image_url": "https://cdn.brawlify.com/brawlers/borders/16000104.png",
     "attributes": {
       "rarity": "Mythic",
-      "brawler_class": null
+      "brawler_class": "Tank"
     }
   },
   {
@@ -56,7 +56,7 @@
     "image_url": "https://cdn.brawlify.com/brawlers/borders/16000103.png",
     "attributes": {
       "rarity": "Mythic",
-      "brawler_class": null
+      "brawler_class": "Damage Dealer"
     }
   },
   {
@@ -66,7 +66,7 @@
     "image_url": "https://cdn.brawlify.com/brawlers/borders/16000102.png",
     "attributes": {
       "rarity": "Ultra Legendary",
-      "brawler_class": null
+      "brawler_class": "Controller"
     }
   },
   {
@@ -76,7 +76,7 @@
     "image_url": "https://cdn.brawlify.com/brawlers/borders/16000101.png",
     "attributes": {
       "rarity": "Mythic",
-      "brawler_class": null
+      "brawler_class": "Support"
     }
   },
   {
@@ -86,7 +86,7 @@
     "image_url": "https://cdn.brawlify.com/brawlers/borders/16000100.png",
     "attributes": {
       "rarity": "Mythic",
-      "brawler_class": null
+      "brawler_class": "Assassin"
     }
   },
   {
@@ -96,7 +96,7 @@
     "image_url": "https://cdn.brawlify.com/brawlers/borders/16000099.png",
     "attributes": {
       "rarity": "Legendary",
-      "brawler_class": null
+      "brawler_class": "Marksman"
     }
   },
   {
@@ -106,7 +106,7 @@
     "image_url": "https://cdn.brawlify.com/brawlers/borders/16000098.png",
     "attributes": {
       "rarity": "Mythic",
-      "brawler_class": null
+      "brawler_class": "Controller"
     }
   },
   {
@@ -116,7 +116,7 @@
     "image_url": "https://cdn.brawlify.com/brawlers/borders/16000097.png",
     "attributes": {
       "rarity": "Mythic",
-      "brawler_class": null
+      "brawler_class": "Damage Dealer"
     }
   },
   {
@@ -126,7 +126,7 @@
     "image_url": "https://cdn.brawlify.com/brawlers/borders/16000096.png",
     "attributes": {
       "rarity": "Epic",
-      "brawler_class": null
+      "brawler_class": "Tank"
     }
   },
   {
@@ -136,7 +136,7 @@
     "image_url": "https://cdn.brawlify.com/brawlers/borders/16000095.png",
     "attributes": {
       "rarity": "Mythic",
-      "brawler_class": null
+      "brawler_class": "Assassin"
     }
   },
   {
@@ -146,7 +146,7 @@
     "image_url": "https://cdn.brawlify.com/brawlers/borders/16000094.png",
     "attributes": {
       "rarity": "Ultra Legendary",
-      "brawler_class": null
+      "brawler_class": "Assassin"
     }
   },
   {
@@ -156,7 +156,7 @@
     "image_url": "https://cdn.brawlify.com/brawlers/borders/16000093.png",
     "attributes": {
       "rarity": "Mythic",
-      "brawler_class": null
+      "brawler_class": "Support"
     }
   },
   {
@@ -166,7 +166,7 @@
     "image_url": "https://cdn.brawlify.com/brawlers/borders/16000092.png",
     "attributes": {
       "rarity": "Mythic",
-      "brawler_class": null
+      "brawler_class": "Controller"
     }
   },
   {
@@ -186,7 +186,7 @@
     "image_url": "https://cdn.brawlify.com/brawlers/borders/16000090.png",
     "attributes": {
       "rarity": "Mythic",
-      "brawler_class": null
+      "brawler_class": "Tank"
     }
   },
   {
@@ -196,7 +196,7 @@
     "image_url": "https://cdn.brawlify.com/brawlers/borders/16000089.png",
     "attributes": {
       "rarity": "Epic",
-      "brawler_class": null
+      "brawler_class": "Controller"
     }
   },
   {
