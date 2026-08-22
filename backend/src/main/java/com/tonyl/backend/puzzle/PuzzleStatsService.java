@@ -5,10 +5,12 @@ import com.tonyl.backend.api.CellStatsResponse;
 import com.tonyl.backend.api.PuzzleStatsResponse;
 import com.tonyl.backend.api.SubmitAttemptRequest;
 import com.tonyl.backend.api.YourStats;
+import com.tonyl.backend.auth.ForbiddenException;
 import com.tonyl.backend.domain.GridItem;
 import com.tonyl.backend.domain.Puzzle;
 import com.tonyl.backend.domain.PuzzleAttempt;
 import com.tonyl.backend.domain.PuzzleMode;
+import com.tonyl.backend.domain.User;
 import com.tonyl.backend.repository.GridItemRepository;
 import com.tonyl.backend.repository.PuzzleAttemptRepository;
 import com.tonyl.backend.repository.PuzzleRepository;
@@ -22,6 +24,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.NoSuchElementException;
+import java.util.Optional;
 import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -38,6 +41,11 @@ public class PuzzleStatsService {
     // anywhere else.
     private static final int MAX_SCORE = 9;
     private static final int UNIQUENESS_CEILING = 900;
+    // sessionId values for signed-in users are "user:{id}" (see
+    // utils/session.ts's getSessionId on the frontend) - unlike an
+    // anonymous UUID, a sequential id is guessable, so any caller claiming
+    // one of these must be verified against their own resolved identity.
+    private static final String USER_SESSION_PREFIX = "user:";
 
     private final PuzzleAttemptRepository puzzleAttemptRepository;
     private final PuzzleRepository puzzleRepository;
@@ -50,7 +58,9 @@ public class PuzzleStatsService {
         this.gridItemRepository = gridItemRepository;
     }
 
-    public void submitAttempt(String puzzleId, SubmitAttemptRequest request) {
+    public void submitAttempt(String puzzleId, SubmitAttemptRequest request, Optional<User> caller) {
+        verifySessionOwnership(request.sessionId(), caller);
+
         Puzzle puzzle = puzzleRepository.findById(puzzleId)
             .orElseThrow(() -> new NoSuchElementException("No puzzle found with id " + puzzleId));
 
@@ -74,7 +84,8 @@ public class PuzzleStatsService {
             request.solved(),
             request.gaveUp(),
             request.elapsedMs(),
-            Instant.now()
+            Instant.now(),
+            request.playedLive()
         );
         try {
             puzzleAttemptRepository.save(attempt);
@@ -86,7 +97,9 @@ public class PuzzleStatsService {
         }
     }
 
-    public PuzzleStatsResponse getStats(String puzzleId, String sessionId) {
+    public PuzzleStatsResponse getStats(String puzzleId, String sessionId, Optional<User> caller) {
+        verifySessionOwnership(sessionId, caller);
+
         List<PuzzleAttempt> attempts = puzzleAttemptRepository.findByPuzzleId(puzzleId);
         long gamesPlayed = attempts.size();
         double avgScore = attempts.stream().mapToInt(PuzzleAttempt::getScore).average().orElse(0);
@@ -115,6 +128,22 @@ public class PuzzleStatsService {
 
         return new PuzzleStatsResponse(gamesPlayed, avgScore, mostUniqueScore, scoreDistribution, perCell,
             uniquenessScores, you);
+    }
+
+    // A "user:{id}" sessionId is only acceptable from the caller whose own
+    // resolved identity it names - unlike the anonymous UUID form, this one
+    // is guessable, so without this check anyone could forge another
+    // signed-in user's attempts or read back their answers. Anonymous
+    // sessionIds (any value not starting with the prefix, including null)
+    // need no check, matching today's behavior exactly.
+    private void verifySessionOwnership(String sessionId, Optional<User> caller) {
+        if (sessionId == null || !sessionId.startsWith(USER_SESSION_PREFIX)) {
+            return;
+        }
+        String expected = caller.map(User::getId).map(id -> USER_SESSION_PREFIX + id).orElse(null);
+        if (!sessionId.equals(expected)) {
+            throw new ForbiddenException("sessionId does not match the authenticated caller");
+        }
     }
 
     private Map<String, CellStatsResponse> buildPerCellStats(List<PuzzleAttempt> attempts, long gamesPlayed,
@@ -176,22 +205,42 @@ public class PuzzleStatsService {
         return perCell;
     }
 
-    // UNIQ = 900 - sum((100 - percentChosen) over correctly-filled cells).
-    // Unfilled cells contribute no deduction, so they implicitly cost the
-    // full 100 - matches PuzzleAttempt's design note on why blanks aren't
-    // special-cased separately.
+    // UNIQ = 900 - sum((100 - percentChosen) over correctly-filled cells),
+    // where percentChosen is a leave-one-out share: of the OTHER attempts
+    // that solved this cell, how many picked the same answer - excluding
+    // this attempt's own vote from both the numerator and denominator.
+    // Plain (non-excluding) percent double-counts yourself into "how common
+    // is my own pick": with few attempts recorded, that biases every cell
+    // you're the only (or one of very few) solver of toward looking
+    // artificially common - your own answer trivially IS 100% of a sample
+    // of just yourself. Leave-one-out fixes that at any sample size:
+    // correctAttempts == 1 means this attempt is the sole solver of that
+    // cell, so percent is defined as 0 (no evidence anyone else would pick
+    // the same thing) - the full 100 deduction, the same ceiling a
+    // genuinely 0%-picked answer hits. This converges to the same values as
+    // the plain percent once enough people have played (the -1 becomes
+    // negligible), so it only changes behavior in the low-sample regime
+    // where it was previously wrong - e.g. two same-day players tying
+    // despite one completing 2 cells and the other completing all 9.
+    // Unfilled cells still contribute no deduction - matches PuzzleAttempt's
+    // design note on why blanks aren't special-cased separately.
     private Map<Long, Integer> computeLiveUniquenessScores(List<PuzzleAttempt> attempts,
                                                              Map<String, CellStatsResponse> perCell) {
-        Map<String, Double> percentByKey = new HashMap<>(); // "cellKey|itemId" -> percent
+        Map<String, Long> countByKey = new HashMap<>(); // "cellKey|itemId" -> count
         perCell.forEach((cellKey, stats) ->
-            stats.answers().forEach(answer -> percentByKey.put(cellKey + "|" + answer.itemId(), answer.percent())));
+            stats.answers().forEach(answer -> countByKey.put(cellKey + "|" + answer.itemId(), answer.count())));
 
         Map<Long, Integer> scores = new HashMap<>();
         for (PuzzleAttempt attempt : attempts) {
             double deduction = 0;
             for (Map.Entry<String, String> entry : attempt.getCellAnswers().entrySet()) {
-                Double percent = percentByKey.get(entry.getKey() + "|" + entry.getValue());
-                deduction += 100 - (percent != null ? percent : 0);
+                CellStatsResponse cellStats = perCell.get(entry.getKey());
+                long cellTotal = cellStats != null ? cellStats.correctAttempts() : 0;
+                Long itemCount = countByKey.get(entry.getKey() + "|" + entry.getValue());
+                double percent = cellTotal <= 1 || itemCount == null
+                    ? 0
+                    : (itemCount - 1) * 100.0 / (cellTotal - 1);
+                deduction += 100 - percent;
             }
             scores.put(attempt.getId(), (int) Math.max(0, Math.round(UNIQUENESS_CEILING - deduction)));
         }

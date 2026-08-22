@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import type { CellStats } from '../types/puzzle';
+import { useAuth } from '../auth/AuthProvider';
 
 interface CommunityAnswersModalProps {
   rowLabel: string;
@@ -10,9 +11,10 @@ interface CommunityAnswersModalProps {
   avatarShapeClass: string;
 }
 
-// Generic gray avatar marking "this is what you picked" — deliberately not
-// tied to any real player identity, just a same-shape stand-in used for
-// every viewer's own row.
+// Generic gray avatar marking "this is what you picked" for an anonymous
+// viewer - deliberately not tied to any real identity, just a same-shape
+// stand-in. A signed-in viewer gets their actual profile picture instead
+// (see YourPickAvatar below), since there's a real identity to show.
 function YourPickIcon() {
   return (
     <svg viewBox="0 0 24 24" className="w-5 h-5 shrink-0" aria-label="Your pick">
@@ -20,6 +22,23 @@ function YourPickIcon() {
       <circle cx="12" cy="9.5" r="3.5" fill="#9ca3af" />
       <path d="M4.5 20c1.1-3.7 4-5.8 7.5-5.8s6.4 2.1 7.5 5.8" fill="#9ca3af" />
     </svg>
+  );
+}
+
+// Signed-in viewer's own pick marker - their real Google profile picture,
+// or their display name's initial letter when Google gave no photo
+// (matching Header's own avatar-fallback convention).
+function YourPickAvatar({ displayName, avatarUrl }: { displayName: string; avatarUrl: string | null }) {
+  if (avatarUrl) {
+    return <img src={avatarUrl} alt="Your pick" className="w-5 h-5 rounded-full shrink-0" />;
+  }
+  return (
+    <span
+      className="flex items-center justify-center w-5 h-5 rounded-full bg-indigo-100 text-indigo-700 dark:bg-indigo-500/30 dark:text-indigo-200 font-semibold text-[10px] shrink-0"
+      aria-label="Your pick"
+    >
+      {displayName.charAt(0).toUpperCase()}
+    </span>
   );
 }
 
@@ -31,6 +50,8 @@ export default function CommunityAnswersModal({
   onClose,
   avatarShapeClass,
 }: CommunityAnswersModalProps) {
+  const { user } = useAuth();
+
   useEffect(() => {
     function handleEscape(e: KeyboardEvent) {
       if (e.key === 'Escape') onClose();
@@ -92,7 +113,11 @@ export default function CommunityAnswersModal({
                     <span className="text-sm font-semibold text-gray-800 dark:text-gray-100 tabular-nums shrink-0 whitespace-nowrap">
                       {answer.percent > 0 && answer.percent < 1 ? '<1' : Math.round(answer.percent)}% ({answer.count})
                     </span>
-                    {isYours && <YourPickIcon />}
+                    {isYours && (user ? (
+                      <YourPickAvatar displayName={user.displayName} avatarUrl={user.avatarUrl} />
+                    ) : (
+                      <YourPickIcon />
+                    ))}
                   </div>
                   <div className="h-1.5 rounded-full bg-gray-100 dark:bg-gray-800 mt-1 overflow-hidden">
                     <div

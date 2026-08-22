@@ -9,4 +9,6 @@ import java.util.Optional;
 public interface PuzzleAttemptRepository extends JpaRepository<PuzzleAttempt, Long> {
     Optional<PuzzleAttempt> findByPuzzleIdAndSessionId(String puzzleId, String sessionId);
     List<PuzzleAttempt> findByPuzzleId(String puzzleId);
+    // Cross-puzzle, for a signed-in user's own history (sessionId = "user:{id}").
+    List<PuzzleAttempt> findBySessionId(String sessionId);
 }

@@ -57,13 +57,22 @@ public class PuzzleService {
     }
 
     public Puzzle getOrCreateTodaysPuzzle(String gameId) {
-        LocalDate today = LocalDate.now();
+        return getOrCreateForDate(gameId, PuzzleClock.today());
+    }
 
-        Optional<Puzzle> existing = puzzleRepository.findByGameIdAndPuzzleDateAndMode(gameId, today, PuzzleMode.DAILY);
+    // Same lookup-or-generate shape as getOrCreateTodaysPuzzle, generalized
+    // to any date - used for Archived puzzles (see PuzzleController's
+    // /archive endpoint, which enforces the 30-day window; this method
+    // itself has no date restriction, since generateAndSave/GridGenerator's
+    // date-seeded generation is a pure, deterministic function of the date
+    // regardless of how far in the past it is). Daily and Archive access to
+    // the same date therefore always resolve to the exact same Puzzle row.
+    public Puzzle getOrCreateForDate(String gameId, LocalDate date) {
+        Optional<Puzzle> existing = puzzleRepository.findByGameIdAndPuzzleDateAndMode(gameId, date, PuzzleMode.DAILY);
         if (existing.isPresent()) {
             return existing.get();
         }
-        return generateAndSave(gameId, today);
+        return generateAndSave(gameId, date);
     }
     
     public GuessResult checkGuess(String puzzleId, int row, int col, String itemId) {
@@ -129,7 +138,7 @@ public class PuzzleService {
         Puzzle puzzle = new Puzzle(
             gameId + ":unlimited:" + UUID.randomUUID(),
             gameId,
-            LocalDate.now(),
+            PuzzleClock.today(),
             PuzzleMode.UNLIMITED,
             toSnapshots(result.rowCategories()),
             toSnapshots(result.colCategories()),

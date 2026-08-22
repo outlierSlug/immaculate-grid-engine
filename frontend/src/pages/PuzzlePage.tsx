@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { useParams, Navigate } from 'react-router-dom';
-import { fetchTodaysPuzzle } from '../api/client';
+import { useParams, Navigate, Link } from 'react-router-dom';
+import { fetchTodaysPuzzle, fetchArchivedPuzzle } from '../api/client';
 import type { PuzzleResponse } from '../types/puzzle';
 import { GAMES, isValidGameId, type GameId } from '../config/games';
 import PuzzleGrid from '../components/PuzzleGrid';
@@ -10,9 +10,12 @@ import GuessCounter from '../components/GuessCounter';
 import UniquenessScore from '../components/UniquenessScore';
 import PuzzleStatsPanel from '../components/PuzzleStatsPanel';
 import ConfirmModal from '../components/ConfirmModal';
+import HelpButton from '../components/HelpButton';
+import HelpModal from '../components/HelpModal';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { usePuzzleGuesses } from '../hooks/usePuzzleGuesses';
 import { computeLiveUniquenessScore, computeUniquenessPercentile } from '../utils/uniqueness';
+import { useAuth } from '../auth/AuthProvider';
 import intertwinedFateIcon from '../assets/genshin/Item_Intertwined_Fate.webp';
 
 // Daily's guess limit is a fixed genre convention (matches Pokedoku), not a
@@ -25,22 +28,45 @@ const DAILY_GUESS_ICON: Partial<Record<GameId, string>> = {
 };
 
 export default function PuzzlePage() {
-  const { game } = useParams();
+  const { game, date } = useParams();
+  const { user } = useAuth();
   const [puzzle, setPuzzle] = useState<PuzzleResponse | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [confirmGiveUpOpen, setConfirmGiveUpOpen] = useState(false);
+  const [helpOpen, setHelpOpen] = useState(false);
 
   const validGame = isValidGameId(game) ? game : undefined;
+  // Archive access is account-only - enforced here as a redirect rather
+  // than an error, since it's not really the visitor's fault (a stale
+  // bookmark, or clicking Archive before signing in). Whether `date` is
+  // actually a valid archived date (not today, not out of window) is
+  // deliberately NOT re-checked here with a client-computed "today" -
+  // that used to compare against `new Date().toISOString()` (always UTC)
+  // while the backend's LocalDate.now() is the server's local time, so
+  // for hours every day the two disagreed about what "today" was, and
+  // today's own puzzle could sail through as a seemingly-valid archived
+  // date. The backend is now the sole authority (PuzzleController.archive
+  // rejects it); a rejection here just means "not a valid archive date"
+  // and redirects rather than showing a raw error, since this route is
+  // never reached through the UI except by direct URL entry.
+  const isArchive = date !== undefined;
+  const archiveRedirect = isArchive && !user;
+  const [invalidArchiveDate, setInvalidArchiveDate] = useState(false);
 
   useEffect(() => {
-    if (!validGame) return;
+    if (!validGame || archiveRedirect) return;
     setPuzzle(null);
     setError(null);
+    setInvalidArchiveDate(false);
 
-    fetchTodaysPuzzle(validGame)
-      .then(setPuzzle)
-      .catch((err) => setError(err.message));
-  }, [validGame]);
+    if (isArchive) {
+      fetchArchivedPuzzle(validGame, date!)
+        .then(setPuzzle)
+        .catch(() => setInvalidArchiveDate(true));
+    } else {
+      fetchTodaysPuzzle(validGame).then(setPuzzle).catch((err) => setError(err.message));
+    }
+  }, [validGame, isArchive, date, archiveRedirect]);
 
   // Daily's puzzle id encodes the date ("{gameId}:{date}"), so a puzzle
   // loaded before midnight silently goes stale if the tab is just left
@@ -50,9 +76,10 @@ export default function PuzzlePage() {
   // guess at what timezone "today" resets in, no background work while the
   // tab isn't being looked at, and a same-day recheck is a no-op that
   // leaves in-progress state (filled cells, guesses used) untouched, since
-  // usePuzzleGuesses only resets on puzzle.id actually changing.
+  // usePuzzleGuesses only resets on puzzle.id actually changing. Archived
+  // dates are immutable once past, so this effect is Daily-only.
   useEffect(() => {
-    if (!validGame) return;
+    if (!validGame || isArchive) return;
 
     function checkForNewPuzzle() {
       if (document.visibilityState !== 'visible') return;
@@ -73,7 +100,7 @@ export default function PuzzlePage() {
       document.removeEventListener('visibilitychange', checkForNewPuzzle);
       window.removeEventListener('focus', checkForNewPuzzle);
     };
-  }, [validGame]);
+  }, [validGame, isArchive]);
 
   const {
     filledCells,
@@ -90,12 +117,53 @@ export default function PuzzlePage() {
     puzzleStats,
   } = usePuzzleGuesses(puzzle, {
     guessLimit: DAILY_GUESS_LIMIT,
-    persistKey: puzzle ? `daily-progress:${puzzle.id}` : null,
+    // Same key format for Daily and Archive - puzzle.id already encodes the
+    // date, so a puzzle played live and later revisited via Archive (or
+    // vice versa, once "today" becomes a past date) resolves to the same
+    // local progress rather than two independent copies. The identity
+    // suffix is what makes usePuzzleGuesses's own puzzle-changed reset
+    // logic also fire on a login/logout transition, even though puzzle.id
+    // itself hasn't changed - without it, guesses made under one identity
+    // would silently carry into a submission credited to a different one
+    // (e.g. anonymous progress getting attributed to an account on login,
+    // or vice versa on logout), which contradicts the "clean slate, no
+    // history merge" decision this whole feature was built around.
+    persistKey: puzzle ? `daily-progress:${puzzle.id}:${user ? `user-${user.id}` : 'anon'}` : null,
     trackStats: true,
+    // A signed-in user's personal /me/stats aggregate excludes archived
+    // completions (see backend UserStatsService) - "games played" should
+    // reflect genuine daily engagement, not binge-playing the archive.
+    // Community-level stats (this puzzle's own pick-rates/Games Played) are
+    // unaffected either way - those always count every attempt.
+    playedLive: !isArchive,
   });
+
+  // Once accounts exist, "have I already played this" can no longer be
+  // answered by localStorage alone - it's one browser, not the account.
+  // Finishing today's puzzle on one device and opening the site on another
+  // would otherwise show a blank, replayable board. If the server already
+  // has a completed attempt for this account (puzzleStats.you) and this
+  // device has no local progress of its own, trust the server over local
+  // state instead of rendering the normal interactive flow.
+  const hasLocalProgress = correctCount > 0 || isGameOver
+    || (guessesRemaining !== null && guessesRemaining < DAILY_GUESS_LIMIT);
+  const remoteCompletion = !!user && !hasLocalProgress && !!puzzleStats?.you;
 
   if (!validGame) {
     return <Navigate to="/" replace />;
+  }
+
+  if (archiveRedirect) {
+    return <Navigate to={`/${validGame}`} replace />;
+  }
+
+  if (invalidArchiveDate) {
+    // Sends them to the actual list of valid dates rather than the daily
+    // page - more useful than silently landing on today's puzzle with no
+    // explanation, for what's already an edge case only reachable by
+    // directly typing/bookmarking a URL (the generated Archive list never
+    // links to an invalid date).
+    return <Navigate to={`/${validGame}/archive`} replace />;
   }
 
   if (error) {
@@ -109,20 +177,133 @@ export default function PuzzlePage() {
   if (!puzzle) {
     return (
       <main className="flex items-center justify-center min-h-[60vh]">
-        <LoadingSpinner label="Loading today's puzzle..." size="lg" />
+        <LoadingSpinner label={isArchive ? 'Loading archived puzzle...' : "Loading today's puzzle..."} size="lg" />
       </main>
     );
   }
 
-  const liveUniquenessScore = computeLiveUniquenessScore(filledCells, puzzleStats?.perCell);
-  const uniquenessPercentile = puzzleStats
-    ? computeUniquenessPercentile(liveUniquenessScore, puzzleStats.uniquenessScores)
-    : null;
   const avatarShapeClass = GAMES[validGame].avatarShapeClass;
+
+  // Lets a visitor get back to the date list directly from the puzzle
+  // itself, rather than re-clicking the header's already-active Archive
+  // pill (which does work, but isn't where the eye lands when you're done
+  // with this particular date).
+  const backToArchiveLink = isArchive && (
+    <Link
+      to={`/${validGame}/archive`}
+      className="inline-flex items-center gap-1 text-sm font-medium text-gray-500 hover:text-indigo-600 dark:text-gray-400 dark:hover:text-indigo-400 transition"
+    >
+      <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2} aria-hidden="true">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+      </svg>
+      {/* Shortened below sm rather than hidden outright - "Back" still reads
+          clearly next to the arrow icon, at a fraction of the width
+          "Back to Archive" needed (that was the overflow risk at narrow
+          widths in the first place). */}
+      <span className="sm:hidden">Archive</span>
+      <span className="hidden sm:inline">Back to Archive</span>
+    </Link>
+  );
+
+  // Daily has nothing on the left at all (no Back to Archive link), so its
+  // side boxes only ever need to fit the HelpButton. Archive's mobile
+  // content is now just "‹ Back" (left) and the icon alone (right, the
+  // Archived badge is dropped below sm - see below) - both much narrower
+  // than the sm+ content ("Back to Archive" spelled out, badge shown), so
+  // the box itself can be much narrower below sm too.
+  const sideBoxWidthClass = isArchive ? 'w-16 sm:w-36' : 'w-9';
+
+  const heading = (
+    <div className="flex items-center gap-2 sm:gap-4">
+      {/* Fixed, equal-width boxes on both sides (not an invisible mirror of
+          each other's actual content) - each side's real content is
+          aligned toward the title, so any leftover width (the gap between
+          "Back to Archive" and the narrower badge+icon side) lands at the
+          outer edges instead of sitting right next to the date. Equal box
+          widths keep the title itself exactly centered without doubling
+          each side's reserved space the way mirroring the two different
+          content clusters against each other did. Narrower below sm to
+          match the icon-only Back to Archive link above - w-36 on both
+          sides overflowed a real phone viewport outright (verified via
+          Playwright at 390px: content 43px wider than the viewport). */}
+      <div className={`${sideBoxWidthClass} flex justify-end`}>{backToArchiveLink}</div>
+      <h1 className="text-2xl font-bold whitespace-nowrap">{isArchive ? puzzle.puzzleDate : "Today's Puzzle"}</h1>
+      <div className={`${sideBoxWidthClass} flex items-center justify-start gap-2`}>
+        {isArchive && (
+          // Dropped below sm - "‹ Back" already signals archived context at
+          // that width, and the badge was the widest single piece of mobile
+          // content this row carried.
+          <span className="hidden sm:inline text-xs font-semibold uppercase tracking-wide px-2 py-0.5 rounded-full bg-gray-200 text-gray-600 dark:bg-gray-800 dark:text-gray-400">
+            Archived
+          </span>
+        )}
+        <HelpButton onClick={() => setHelpOpen(true)} label={isArchive ? 'About archived puzzles' : "About today's puzzle"} />
+      </div>
+    </div>
+  );
+
+  // Content lives here, not in a shared copy file - edit these paragraphs
+  // directly to change what the (i) button next to the heading shows.
+  const helpModal = helpOpen && (
+    <HelpModal title={isArchive ? 'Archived Puzzle' : "Today's Puzzle"} onClose={() => setHelpOpen(false)}>
+      <p>
+        Fill all 9 cells with a character that fits both its row and column category.
+      </p>
+      <p>
+        A character may only be used <b>once</b> per board.
+      </p>
+      {isArchive ? (
+        <p>
+          This puzzle is archived. Your picks still count toward this puzzle's community pick-rate
+          data, but if it's not being played on its original day, it won't count toward your personal
+          games-played or average-score stats.
+        </p>
+      ) : (
+        <p>
+          The Daily Puzzle resets at midnight Pacific time. Sign in to revisit past days from the Archive.
+        </p>
+      )}
+    </HelpModal>
+  );
+
+  if (remoteCompletion && puzzleStats?.you) {
+    // true: this completion was already recorded server-side (that's how
+    // `you` exists at all) and puzzleStats.perCell reflects it.
+    const remoteUniquenessScore = computeLiveUniquenessScore(puzzleStats.you.cellAnswers, puzzleStats.perCell, true);
+    return (
+      <main className="flex flex-col items-center gap-5 py-8 motion-safe:animate-[page-in_350ms_ease-out]">
+        {heading}
+        <p className="text-gray-600 dark:text-gray-400 text-center max-w-sm">
+          You already completed this puzzle.
+        </p>
+        <PuzzleStatsPanel
+          puzzleStats={puzzleStats}
+          rowLabels={puzzle.rowLabels}
+          colLabels={puzzle.colLabels}
+          yourUniquenessScore={remoteUniquenessScore}
+          avatarShapeClass={avatarShapeClass}
+        />
+        {helpModal}
+      </main>
+    );
+  }
+
+  const filledCellIds = Object.fromEntries(Object.entries(filledCells).map(([key, item]) => [key, item.id]));
+  // This single value drives both the mid-game sideColumn number and (once
+  // isGameOver) the post-game-over stats panel below - selfAlreadyCounted
+  // tracks that transition: false while this attempt hasn't been submitted
+  // yet, true once it has (isGameOver flips in the same tick the game
+  // ends; puzzleStats itself catches up moments later via the post-submit
+  // refreshStats() call in usePuzzleGuesses - a brief, self-correcting gap
+  // consistent with UNIQ being live/dynamic everywhere else).
+  const liveUniquenessScore = computeLiveUniquenessScore(filledCellIds, puzzleStats?.perCell, isGameOver);
+  const uniquenessPercentile = puzzleStats
+    ? computeUniquenessPercentile(liveUniquenessScore, puzzleStats.uniquenessScores, isGameOver)
+    : null;
 
   return (
     <main className="flex flex-col items-center gap-5 py-8 motion-safe:animate-[page-in_350ms_ease-out]">
-      <h1 className="text-2xl font-bold">Today's Puzzle</h1>
+      {heading}
 
       <PuzzleGrid
         rowLabels={puzzle.rowLabels}
@@ -153,7 +334,7 @@ export default function PuzzlePage() {
       {confirmGiveUpOpen && (
         <ConfirmModal
           title="Give up?"
-          message="Your current picks will be locked in and today's puzzle marked as done. This cannot be undone."
+          message={`Your current picks will be locked in and ${isArchive ? 'this puzzle' : "today's puzzle"} marked as done. This cannot be undone.`}
           confirmLabel="Give Up"
           onConfirm={() => {
             setConfirmGiveUpOpen(false);
@@ -184,6 +365,8 @@ export default function PuzzlePage() {
           avatarShapeClass={avatarShapeClass}
         />
       )}
+
+      {helpModal}
     </main>
   );
 }

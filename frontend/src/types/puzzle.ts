@@ -62,6 +62,10 @@ export interface SubmitAttemptRequest {
   solved: boolean;
   gaveUp: boolean;
   elapsedMs: number;
+  // true for a live /today submission, false for /archive - see the
+  // backend SubmitAttemptRequest's doc comment for why this is set
+  // explicitly here rather than inferred server-side later.
+  playedLive: boolean;
 }
 
 export interface CellAnswerStat {
@@ -102,4 +106,55 @@ export interface PuzzleStatsResponse {
   perCell: Record<string, CellStats>;
   uniquenessScores: number[];
   you: YourStats | null;
+}
+
+export interface UserResponse {
+  id: number;
+  email: string;
+  displayName: string;
+  avatarUrl: string | null;
+}
+
+export interface AuthResponse {
+  token: string;
+  user: UserResponse;
+}
+
+// cellAnswers is included specifically so the frontend can run the existing
+// client-side uniqueness formula (utils/uniqueness.ts) against each of
+// these puzzles' own /stats response - see UserStatsResponse's doc comment.
+export interface UserPuzzleSummary {
+  puzzleId: string;
+  gameId: string;
+  puzzleDate: string;
+  score: number;
+  solved: boolean;
+  completedAt: string;
+  cellAnswers: Record<string, string>;
+}
+
+// One game's slice of a signed-in user's history. gamesPlayed/avgScore are
+// true all-time aggregates for that game specifically. puzzles is capped to
+// the most recent ~60 per game (see backend UserStatsService) - any
+// aggregate this list is used to derive client-side (e.g. average
+// uniqueness) should be labeled as scoped to that window, not a true
+// all-time figure.
+export interface UserGameStats {
+  gameId: string;
+  gamesPlayed: number;
+  avgScore: number;
+  puzzles: UserPuzzleSummary[];
+}
+
+// One entry per date this user has completed for a given game. playedLive
+// distinguishes a genuine same-day completion from one made later via
+// Archive - only the live ones count toward gamesPlayed/avgScore above.
+export interface CompletedDateInfo {
+  date: string;
+  playedLive: boolean;
+}
+
+// Organized by game, not combined - see UserGameStats.
+export interface UserStatsResponse {
+  games: UserGameStats[];
 }

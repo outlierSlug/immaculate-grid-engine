@@ -52,11 +52,23 @@ public class PuzzleAttempt {
     @Column(nullable = false)
     private Instant completedAt;
 
+    // Nullable at the DB level, same ddl-auto=update rationale as
+    // Puzzle.mode: a NOT NULL ADD COLUMN fails outright against this
+    // already-non-empty table. Existing pre-this-feature rows are backfilled
+    // to true (they all predate Archive existing at all, so were
+    // necessarily played live); every row written by current code always
+    // sets it explicitly - true for a live /today submission, false for
+    // /archive. True (not false) is deliberately never inferred as a
+    // default in new code - see SubmitAttemptRequest's doc comment on why
+    // this is explicit, not derived from completedAt vs puzzleDate.
+    private Boolean playedLive;
+
     protected PuzzleAttempt() {
     }
 
     public PuzzleAttempt(String puzzleId, String sessionId, Map<String, String> cellAnswers, int score,
-                          int guessesUsed, boolean solved, boolean gaveUp, long elapsedMs, Instant completedAt) {
+                          int guessesUsed, boolean solved, boolean gaveUp, long elapsedMs, Instant completedAt,
+                          boolean playedLive) {
         this.puzzleId = puzzleId;
         this.sessionId = sessionId;
         this.cellAnswers = cellAnswers;
@@ -66,6 +78,7 @@ public class PuzzleAttempt {
         this.gaveUp = gaveUp;
         this.elapsedMs = elapsedMs;
         this.completedAt = completedAt;
+        this.playedLive = playedLive;
     }
 
     public Long getId() { return id; }
@@ -78,4 +91,7 @@ public class PuzzleAttempt {
     public boolean isGaveUp() { return gaveUp; }
     public long getElapsedMs() { return elapsedMs; }
     public Instant getCompletedAt() { return completedAt; }
+    // Legacy pre-Archive rows have this null in the DB - treated as true
+    // (played live), matching the backfill described above.
+    public boolean isPlayedLive() { return playedLive == null || playedLive; }
 }

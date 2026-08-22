@@ -4,6 +4,9 @@ import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
 import PuzzlePage from './pages/PuzzlePage';
 import UnlimitedPage from './pages/UnlimitedPage';
+import ArchiveListPage from './pages/ArchiveListPage';
+import ProfilePage from './pages/ProfilePage';
+import AuthCallbackPage from './pages/AuthCallbackPage';
 import LegalPage from './pages/LegalPage';
 import NotFoundPage from './pages/NotFoundPage';
 
@@ -27,8 +30,14 @@ function App() {
     <Routes>
       <Route element={<Layout />}>
         <Route path="/" element={<HomePage />} />
+        <Route path="/auth/callback" element={<AuthCallbackPage />} />
+        <Route path="/profile" element={<ProfilePage />} />
         <Route path="/:game" element={<PuzzlePage />} />
         <Route path="/:game/unlimited" element={<UnlimitedPage />} />
+        <Route path="/:game/archive" element={<ArchiveListPage />} />
+        {/* Reuses PuzzlePage itself (via the optional :date param) rather
+            than a separate component - see PuzzlePage's isArchive branch. */}
+        <Route path="/:game/archive/:date" element={<PuzzlePage />} />
         <Route path="/legal" element={<LegalPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Route>

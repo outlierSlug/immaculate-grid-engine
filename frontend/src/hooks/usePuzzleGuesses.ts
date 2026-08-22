@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { fetchPuzzleStats, submitGuess, submitPuzzleAttempt } from '../api/client';
 import { getSessionId } from '../utils/session';
 import type { PuzzleResponse, GridItem, PuzzleStatsResponse } from '../types/puzzle';
@@ -23,6 +23,12 @@ export interface UsePuzzleGuessesOptions {
   // docs/ARCHITECTURE.md's Phase 6 notes): the same cell can show a
   // different percentage on a later visit as more people play.
   trackStats?: boolean;
+  // Tags the submitted PuzzleAttempt as live-day vs archive play (see
+  // SubmitAttemptRequest's doc comment) — only meaningful when trackStats
+  // is also true. Defaults true so every existing caller (just the
+  // canonical /today route) keeps behaving exactly as before without
+  // needing to pass it; PuzzlePage passes false explicitly for Archive.
+  playedLive?: boolean;
 }
 
 interface StoredProgress {
@@ -69,7 +75,7 @@ function saveProgress(key: string, progress: StoredProgress) {
  * is set, restores from localStorage instead of resetting.
  */
 export function usePuzzleGuesses(puzzle: PuzzleResponse | null, options: UsePuzzleGuessesOptions = {}) {
-  const { guessLimit = null, persistKey = null, trackStats = false } = options;
+  const { guessLimit = null, persistKey = null, trackStats = false, playedLive = true } = options;
   const [filledCells, setFilledCells] = useState<Record<string, GridItem>>({});
   const [activeCell, setActiveCell] = useState<{ row: number; col: number } | null>(null);
   const [guessesUsed, setGuessesUsed] = useState(0);
@@ -92,7 +98,54 @@ export function usePuzzleGuesses(puzzle: PuzzleResponse | null, options: UsePuzz
     setPuzzleStats(stats);
   }
 
+  // Tracks the outgoing puzzle's identity across a puzzle.id change, so the
+  // reset effect below can tell "a genuinely different puzzle just swapped
+  // in" (e.g. the midnight rollover, still-live-tab case) apart from the
+  // initial mount, and so it can still address the OLD persistKey after the
+  // new one has already replaced it in scope.
+  const previousIdentityRef = useRef<{ puzzleId: string; persistKey: string | null } | null>(null);
+
   useEffect(() => {
+    const previous = previousIdentityRef.current;
+    previousIdentityRef.current = puzzle ? { puzzleId: puzzle.id, persistKey } : null;
+
+    // Auto-finalizes the OUTGOING puzzle as a gave-up attempt if the day
+    // rolled over while this tab was still open on it, mid-play. Without
+    // this, an in-progress game (some guesses used, never reaching its own
+    // game-over) would just have its state silently reset and discarded the
+    // moment the new day's puzzle swaps in - never submitted, not even as
+    // incomplete. "The reset happened, so the player settles for what they
+    // had" is treated the same as clicking Give Up themselves. Only fires
+    // for genuine engagement (guessesUsed > 0) so a puzzle merely left open
+    // untouched doesn't inflate games-played with a hollow 0-score entry;
+    // only Daily (trackStats) can ever hit this at all, since Archive dates
+    // are immutable and never swap out from under the page on their own.
+    if (previous && previous.puzzleId !== puzzle?.id && trackStats && !isGameOver && guessesUsed > 0) {
+      const ts = Date.now();
+      const cellAnswers = Object.fromEntries(
+        Object.entries(filledCells).map(([cellKey, item]) => [cellKey, item.id])
+      );
+      submitPuzzleAttempt(previous.puzzleId, {
+        sessionId: getSessionId(),
+        cellAnswers,
+        score: correctCount,
+        guessesUsed,
+        solved: false,
+        gaveUp: true,
+        elapsedMs: ts - (startedAt ?? ts),
+        playedLive,
+      });
+      if (previous.persistKey) {
+        saveProgress(previous.persistKey, {
+          filledCells,
+          guessesUsed,
+          gaveUp: true,
+          startedAt: startedAt ?? ts,
+          endedAt: ts,
+        });
+      }
+    }
+
     const stored = persistKey ? loadProgress(persistKey) : null;
     const now = Date.now();
     const nextStartedAt = stored?.startedAt ?? now;
@@ -170,6 +223,7 @@ export function usePuzzleGuesses(puzzle: PuzzleResponse | null, options: UsePuzz
         solved: isComplete,
         gaveUp,
         elapsedMs: ts - (startedAt ?? ts),
+        playedLive,
       }).then(() => refreshStats(puzzle.id));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

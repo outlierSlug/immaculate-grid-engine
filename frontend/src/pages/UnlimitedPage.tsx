@@ -12,8 +12,9 @@ import UnlimitedSettingsPanel, {
   DEFAULT_UNLIMITED_SETTINGS,
   type UnlimitedSettings,
 } from '../components/UnlimitedSettingsPanel';
-import ErrorState from '../components/ErrorState';
 import ConfirmModal from '../components/ConfirmModal';
+import HelpButton from '../components/HelpButton';
+import HelpModal from '../components/HelpModal';
 import { usePuzzleGuesses } from '../hooks/usePuzzleGuesses';
 import acquaintFateIcon from '../assets/genshin/Item_Acquaint_Fate.webp';
 
@@ -49,6 +50,7 @@ export default function UnlimitedPage() {
   const [categoriesError, setCategoriesError] = useState(false);
   const [categoriesRetryCount, setCategoriesRetryCount] = useState(0);
   const [confirmGiveUpOpen, setConfirmGiveUpOpen] = useState(false);
+  const [helpOpen, setHelpOpen] = useState(false);
 
   const {
     filledCells,
@@ -80,6 +82,20 @@ export default function UnlimitedPage() {
 
   const avatarShapeClass = GAMES[validGame].avatarShapeClass;
 
+  // Content lives here, not in a shared copy file - edit these paragraphs
+  // directly to change what the (i) button next to "Unlimited Mode" shows.
+  const helpModal = helpOpen && (
+    <HelpModal title="Unlimited Mode" onClose={() => setHelpOpen(false)}>
+      <p>
+        Generate as many grids as you want with your preferred parameters.
+      </p>
+      <p>
+        Unlimited is a practice/sandbox mode. Puzzles are <b>not</b> saved and nothing here ever counts toward your personal stats or
+        community pick-rate data.
+      </p>
+    </HelpModal>
+  );
+
   async function handleGenerate() {
     setGenerating(true);
     setError(null);
@@ -106,7 +122,16 @@ export default function UnlimitedPage() {
   if (!puzzle) {
     return (
       <main className="flex flex-col items-center gap-5 py-8 motion-safe:animate-[page-in_350ms_ease-out]">
-        <h1 className="text-2xl font-bold">Unlimited Mode</h1>
+        <div className="flex items-center gap-2">
+          {/* Invisible mirror of the HelpButton below, same size - keeps the
+              centered flex row's midpoint under the h1 itself instead of
+              shifting left to make room for a right-only icon. */}
+          <div className="invisible" aria-hidden="true">
+            <HelpButton onClick={() => {}} label="" />
+          </div>
+          <h1 className="text-2xl font-bold">Unlimited Mode</h1>
+          <HelpButton onClick={() => setHelpOpen(true)} label="About Unlimited Mode" />
+        </div>
 
         <UnlimitedSettingsPanel
           variant="inline"
@@ -133,13 +158,20 @@ export default function UnlimitedPage() {
           {generating ? 'Generating…' : 'Generate'}
         </button>
         {error && <p className="text-red-600 text-sm text-center px-4">{error}</p>}
+        {helpModal}
       </main>
     );
   }
 
   return (
     <main className="flex flex-col items-center gap-5 py-8">
-      <h1 className="text-2xl font-bold">Unlimited Mode</h1>
+      <div className="flex items-center gap-2">
+        <div className="invisible" aria-hidden="true">
+          <HelpButton onClick={() => {}} label="" />
+        </div>
+        <h1 className="text-2xl font-bold">Unlimited Mode</h1>
+        <HelpButton onClick={() => setHelpOpen(true)} label="About Unlimited Mode" />
+      </div>
 
       {error && <p className="text-red-600 text-sm text-center px-4">{error}</p>}
       {/* End-state messaging (solved / gave up / out of guesses) intentionally
@@ -246,6 +278,8 @@ export default function UnlimitedPage() {
           onCancel={() => setConfirmGiveUpOpen(false)}
         />
       )}
+
+      {helpModal}
     </main>
   );
 }
