@@ -44,6 +44,15 @@ export async function fetchTodaysPuzzle(game: string = 'genshin'): Promise<Puzzl
   return res.json();
 }
 
+// Thrown only for a genuinely invalid date (PuzzleController's archive
+// endpoint 400s: malformed, today-or-future, or outside the archive
+// window) - PuzzlePage redirects to the archive list on this one, since
+// the URL itself was bad. Any other failure (network error, backend
+// down, an expired 401, a 500) throws a plain Error instead, so it
+// surfaces as a real message rather than silently bouncing the player
+// away for a reason that has nothing to do with the date.
+export class InvalidArchiveDateError extends Error {}
+
 // Requires login - the backend 401s without a valid Authorization header.
 export async function fetchArchivedPuzzle(game: string, date: string): Promise<PuzzleResponse> {
   const res = await fetch(`${BASE_URL}/puzzle/archive?game=${game}&date=${date}`, {
@@ -51,6 +60,9 @@ export async function fetchArchivedPuzzle(game: string, date: string): Promise<P
   });
   if (!res.ok) {
     const message = await res.text().catch(() => '');
+    if (res.status === 400) {
+      throw new InvalidArchiveDateError(message || 'Invalid archive date');
+    }
     throw new Error(message || `Failed to fetch archived puzzle: ${res.status}`);
   }
   return res.json();

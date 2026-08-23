@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useParams, Navigate, Link } from 'react-router-dom';
-import { fetchTodaysPuzzle, fetchArchivedPuzzle } from '../api/client';
+import { fetchTodaysPuzzle, fetchArchivedPuzzle, InvalidArchiveDateError } from '../api/client';
 import type { PuzzleResponse } from '../types/puzzle';
 import { GAMES, isValidGameId, type GameId } from '../config/games';
 import { GAME_HELP_NOTES } from '../config/gameHelpNotes';
@@ -96,7 +96,13 @@ export default function PuzzlePage() {
     if (isArchive) {
       fetchArchivedPuzzle(validGame, date!)
         .then(setPuzzle)
-        .catch(() => setInvalidArchiveDate(true));
+        .catch((err) => {
+          if (err instanceof InvalidArchiveDateError) {
+            setInvalidArchiveDate(true);
+          } else {
+            setError(err.message);
+          }
+        });
     } else {
       fetchTodaysPuzzle(validGame).then(setPuzzle).catch((err) => setError(err.message));
     }
