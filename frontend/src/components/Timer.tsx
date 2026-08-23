@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import ClickTooltip from './ClickTooltip';
 
 interface TimerProps {
   // Epoch ms when this attempt began. null means the puzzle hasn't loaded
@@ -32,8 +33,10 @@ export default function Timer({ startedAt, endedAt, visible }: TimerProps) {
   const seconds = String(totalSeconds % 60).padStart(2, '0');
 
   return (
-    <div className="font-mono text-lg font-semibold text-gray-700 dark:text-gray-300 tabular-nums">
-      {minutes}:{seconds}
-    </div>
+    <ClickTooltip heading="Timer" description="Time elapsed since you started this puzzle.">
+      <div className="font-mono text-lg font-semibold text-gray-700 dark:text-gray-300 tabular-nums">
+        {minutes}:{seconds}
+      </div>
+    </ClickTooltip>
   );
 }
