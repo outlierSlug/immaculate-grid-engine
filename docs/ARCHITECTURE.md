@@ -392,6 +392,12 @@ has this property. The actual guarantee this system provides is "don't hand
 the answer key over the network for a specific puzzle instance," not
 "prevent all possible client-side reconstruction."
  
+**Also protected, added in Phase 7**: a `"user:{id}"`-shaped `sessionId`
+(a signed-in account's identity, unlike an anonymous UUID) is only
+accepted from the caller it actually names — see "Accounts, OAuth &
+Archive" below for the full ownership-check design and the concrete
+forgery/read gap it closes.
+
 **Real, deferred gaps** (not urgent for single-player, become requirements
 once real-time H2H exists, where a client can't be trusted):
 - No rate limiting on `/guess` — a script could brute-force a cell's answer
@@ -430,6 +436,16 @@ one frontend-side variable the same way.
   conventional `grid-postgres` setup, only need overriding for a
   non-standard local setup or a real deployment target.
 - `CORS_ALLOWED_ORIGINS` - see CORS above.
+- `GOOGLE_CLIENT_ID` / `GOOGLE_CLIENT_SECRET` - Google Cloud Console
+  OAuth client credentials (see Accounts section above), no default -
+  same fail-fast-on-missing treatment as `DB_PASSWORD`.
+- `FRONTEND_BASE_URL` - defaults to `http://localhost:5173`; where
+  `GoogleAuthSuccessHandler` redirects after a successful Google login.
+- `AUTH_SESSION_TTL_DAYS` - defaults to `30`; how long a minted
+  `UserSession` bearer token stays valid.
+- `JPA_SHOW_SQL` - defaults to off (`spring.jpa.show-sql=false`). Was
+  on and logging raw SQL - including emails, once accounts existed - to
+  the console; toggle on only for local debugging.
 
 **`pg_hba.conf` gotcha, worth knowing before touching Postgres auth again**:
 the `grid-postgres` container's `pg_hba.conf` originally had explicit
@@ -614,13 +630,141 @@ whole clamp()-only approach with something more deliberate for the parts
 of the grid that needed more than a fixed max/min (avatar images, the
 mobile-only side-stats layout).
 
+## Accounts, OAuth & Archive (Phase 7)
+
+Turns the Phase 6 anonymous-`sessionId` design into one that also
+supports real accounts, without touching the stats/uniqueness engine
+that design was already built to be forward-compatible with. Google is
+the only provider (OAuth-only, no email/password — avoids building
+password hashing/reset/verification flows; avoids adding an external
+paid identity-provider dependency like Clerk/Auth0). There is
+deliberately **no anonymous-history merge on login** — an account's
+stats start counting from the first attempt made while logged in;
+pre-login localStorage history stays anonymous and separate.
+
+**Auth transport and storage**: `Authorization: Bearer <token>` header,
+not a cookie or query param — a cookie would need `SameSite=None;
+Secure`, which breaks on plain-HTTP local dev and requires
+`allowCredentials` everywhere; a query param leaks into server access
+logs and `Referer` headers. The token itself is an opaque, random
+string stored server-side in a new `UserSession` row (`token`, `userId`
+— a plain column, not a JPA relationship, matching `PuzzleAttempt.
+puzzleId`'s existing convention — `createdAt`, `expiresAt`), **not a
+JWT**: trivial revocation (delete the row), no signing-key management,
+consistent with this codebase's existing preference for plain DB-truth
+over cryptographic cleverness.
+
+**Login handoff avoids ever putting the real token in a URL.** After
+Google's own redirect completes, `GoogleAuthSuccessHandler`
+(`AuthenticationSuccessHandler`) looks up or creates a `User` row by
+`googleSub`, mints a short-lived (60s), single-use `LoginCode`, and
+redirects the browser to `{frontend}/auth/callback#code=...` — the URL
+**fragment**, so it never reaches any server access log. `
+AuthCallbackPage` immediately reads it, strips it via
+`history.replaceState`, and `POST`s it to `/api/auth/exchange`, which
+validates+consumes the code and returns the real bearer token in the
+JSON response body. A garbage/expired/already-used code is rejected
+outright — the code is a one-time exchange credential, never a
+standing session itself.
+
+**Spring Security is used minimally** — only for the actual Google
+OAuth2 code-exchange dance, which is genuinely worth not hand-rolling.
+`SecurityConfig`'s `SecurityFilterChain` just permits every request
+through (`anyRequest().permitAll()`), so every existing public endpoint
+keeps working unmodified; all real per-request authorization is
+independent, custom code. **Sequencing gotcha, worth remembering if
+this is ever touched again**: adding `spring-boot-starter-oauth2-client`
+pulls in Spring Security transitively, which locks every endpoint
+behind a login form the instant it's on the classpath — the dependency
+and the permit-all filter chain have to land in the same change.
+`CurrentUserArgumentResolver` (`HandlerMethodArgumentResolver`,
+registered via `WebConfig.addArgumentResolvers`) parses the
+`Authorization` header, looks up the `UserSession`, checks
+`expiresAt`, and resolves either a bare `@CurrentUser User` (401s via
+`UnauthorizedException` if absent/expired) or `@CurrentUser
+Optional<User>` (empty, no error) — keeps controller signatures
+declarative instead of every handler manually parsing the header.
+
+**Closing a real security hole**: routing a logged-in user's identity
+through the *same* `sessionId` string the Phase 6 stats engine already
+treats as opaque (`"user:{id}"`) means the entire stats/uniqueness
+engine needed **zero changes** to support accounts. But unlike an
+anonymous `crypto.randomUUID()`, a sequential user id is trivially
+guessable — without a check, any caller could pass `sessionId=user:1`
+to `POST /{puzzleId}/attempt` or `GET /{puzzleId}/stats` and forge or
+read another user's data. Fixed in `PuzzleStatsService`: any
+`sessionId` starting with `"user:"` must equal `"user:" +
+caller.getId()` for the resolved `@CurrentUser Optional<User>`, else a
+`ForbiddenException` (403). Anonymous ids (anything not starting with
+the prefix) are unaffected — this is the one place Phase 7 modified
+already-shipped Phase 6 code; everywhere else, archived-puzzle attempts
+flow through completely unmodified.
+
+**Archive mode**: `PuzzleService.getOrCreateTodaysPuzzle()` was
+generalized into `getOrCreateForDate(gameId, date)` — it was already a
+pure, deterministic function of `(gameId, date)`, so "today" is just
+the one caller that happens to pass `PuzzleClock.today()`. `GET
+/api/puzzle/archive?game=...&date=...` (`ArchiveListPage` /
+`PuzzlePage`'s optional `date` route param, which reuses `PuzzlePage`
+itself rather than a separate component) validates `date` falls within
+the last `ARCHIVE_WINDOW_DAYS = 30` days and rejects `date == today`
+(canonical route stays `/:game`), then resolves the exact same puzzle
+that date's live players saw — generated on-demand even if nobody
+visited that day live.
+
+**Personal stats exclude Archive completions from the engagement
+signal, but community stats don't.** `PuzzleAttempt` gained a
+`playedLive` boolean. `UserStatsService.getStats` (backing `/api/users/
+me/stats` and the Profile page) filters to `playedLive == true` before
+computing `gamesPlayed`/`avgScore` — "games played" should reflect
+genuine daily engagement, not something inflatable by binge-playing 30
+archived puzzles in one sitting. `PuzzleStatsService`'s per-puzzle
+*community* stats (rarity %, UNIQ percentile, "Most Unique") are
+unaffected and count every attempt regardless of `playedLive` — an
+archived completion is still a real data point for "how did everyone
+who played this puzzle do," just not for the individual's own streak.
+The frontend computes average uniqueness itself (re-running the one
+client-side `computeLiveUniquenessScore` formula per recent puzzle,
+capped to the 60 most recent per game) rather than duplicating that
+formula server-side, continuing the "one implementation of the
+formula" choice Phase 6 already made.
+
+**`PuzzleClock`** (`puzzle/PuzzleClock.java`) pins "today" to the named
+IANA zone `America/Los_Angeles` explicitly, replacing a bare
+`LocalDate.now()` that had been resolving against the JVM's default
+timezone — the same class of UTC-vs-local mismatch bug this project had
+already hit once between frontend and backend. A related edge case:
+`usePuzzleGuesses` tracks the previous puzzle identity across a
+`puzzle.id` change and, if the day rolls over while a tab is still open
+mid-play (`guessesUsed > 0`, not yet game-over), auto-submits the
+*outgoing* puzzle as a gave-up attempt before the new day's puzzle
+swaps in — otherwise that progress would just be silently discarded,
+never recorded even as incomplete.
+
+**Account deletion** (`DELETE /api/auth/me`, `@Transactional`) hard-
+deletes the `User` row and every `UserSession` it has (this device and
+any other) in one unit — a crash between the two steps would otherwise
+leave a userless orphaned session. Deliberately does **not** touch
+`puzzle_attempts`: those rows carry no identifying field beyond the
+`"user:{id}"` sessionId string, which becomes exactly as anonymous as a
+random UUID once the `users` row is gone, matching how anonymous play's
+history has always been treated. A later sign-in with the same Google
+account finds no matching `googleSub` and creates a brand-new account —
+deletion is permanent, not a suspend/restore.
+
 ## Frontend architecture
 
 Routes (`react-router-dom` v7, `<Routes>`/`<Route>`, not the data-router
 API): `/` (game select) → `/:game` (Daily) → `/:game/unlimited`
-(Unlimited). A shared `Layout` renders `Header` + `<Outlet/>`; `Header`
-reads `useParams()`/`useLocation()` to know the active game and mode for
-its Daily/Unlimited toggle and Settings (game-switch) modal.
+(Unlimited) → `/:game/archive`, `/:game/archive/:date` (signed-in only)
+→ `/profile` → `/auth/callback` → `/legal`. A shared `Layout` renders
+`Header` + `<Outlet/>` + `Footer`; `Header` reads `useParams()`/
+`useLocation()` to know the active game and mode for its Daily/
+Unlimited toggle and Settings (game-switch) modal, plus the signed-in/
+signed-out state from `useAuth()` (`auth/AuthProvider.tsx` — mirrors
+`ThemeProvider.tsx`'s shape: context + localStorage + a revalidating
+`GET /api/auth/me` call on mount, which is what makes a stale/revoked
+token on a second device fail safely instead of silently).
 
 **Shared puzzle-play state**: `usePuzzleGuesses(puzzle, options)` (a hook,
 not a component) owns `filledCells`/`activeCell`/guess-submission for both
@@ -727,10 +871,9 @@ in Backlog as a real UX gap for later.
 
 ## Design system, dark mode, and the header/grid rework
 
-A later pass (post-Phase 6) gave the site its own visual identity,
-separate from either game's own branding, and reworked the header/grid for
-mobile beyond what the Phase 6 `clamp()` pass covered. None of this is a
-new phase in the Roadmap — it's polish on top of the shipped feature set.
+A later pass (Phase 7) gave the site its own visual identity, separate
+from either game's own branding, and reworked the header/grid for
+mobile beyond what the Phase 6 `clamp()` pass covered.
 
 **Brand identity**: `Space Grotesk` (Google Fonts, loaded in `index.html`,
 set as the site's `--font-sans` in `index.css`) is the one typeface used
@@ -870,25 +1013,101 @@ size. Replaced with `--grid-avatar`/`--grid-avatar-label`, the same
 the portrait/label grow continuously with viewport width instead of
 visibly snapping in size at exactly 640px.
 
+### GachaGrid rebrand, footer & legal
+
+The user-facing product name became **GachaGrid** (see Overview above
+for why the repo/engine keeps its own genre-descriptive name). Alongside
+the rename: per-game avatar shape config in `config/games.ts` (circle
+for Genshin, square for Brawl Stars), confirm-guarded Give Up buttons
+(`ConfirmModal`, Daily and Unlimited), auto-refetch of the Daily puzzle
+on tab focus/visibility (catches the midnight rollover for a tab left
+open), reusable `LoadingSpinner`/`ErrorState` components, a branded 404
+page, loading skeletons for hero images/category icons, and modal
+entrance animations.
+
+`Footer.tsx` (array-driven `FOOTER_LINKS`, centered layout) is wired
+into `App.tsx`'s `Layout` as a standard sticky footer — the `Outlet` is
+wrapped in `flex-1` so the footer pins to the viewport bottom on short
+pages (the puzzle grid) and falls after content on tall ones (Home).
+`LegalPage.tsx` (`/legal`) carries a general fan-project disclaimer,
+Genshin/HoYoverse and Brawl Stars/Supercell notices, and a real Privacy
+section (no longer a placeholder). **The Supercell sentence is not
+paraphrasable** — Supercell's Fan Content Policy requires this exact
+wording, verbatim: "This material is unofficial and is not endorsed by
+Supercell. For more information see Supercell's Fan Content Policy:
+www.supercell.com/fan-content-policy." If this section is ever touched
+again, don't "improve" or rephrase it — it's a compliance requirement,
+not house copy. The footer's GitHub link uses the real repo URL; a
+Contact link is deliberately not built yet (see Backlog — wants a
+Formspree-style endpoint, not a bare `mailto:`, to avoid exposing a
+personal email to scrapers).
+
+### Brawl Stars Traits & the app-wide tooltip system
+
+**Multi-valued categories**: `AttributeContainsCategory` (list
+membership) joins the existing `AttributeEqualsCategory` (scalar
+equality) as a second `CategoryDefinition` implementation, since a
+brawler can have zero, one, or several Traits at once — the Brawl Stars
+API exposes no trait data at all, so all 14 traits are hand-curated
+(`ingestion/brawlstars/backfill_brawler_traits.py`, same pattern as the
+`brawler_class` "Unknown" backfill) for the 39 trait-bearing brawlers.
+
+**`ClickTooltip`** (`components/ClickTooltip.tsx`) is a generic,
+reusable `{heading, description, children}` component — extracted from
+what was originally a trait-only tooltip once it became clear the same
+click-to-reveal, edge-clamped, viewport-flip-above-when-cramped,
+portal-rendered (`createPortal`) behavior was wanted everywhere, not
+just for traits. Every icon-backed and plain-text-pill category chip
+across both games now uses it (Brawl Stars traits/classes/rarities;
+Genshin regions/elements/weapons/release versions/models/star ratings),
+plus the puzzle board's `Score` and `GuessCounter` stats. Every trigger
+also keeps a native `title={heading}` attribute, so a quick hover still
+works without a click — a deliberate choice to keep both interaction
+paths, not a redundant leftover. One real bug hit building this: a
+`display: contents` trigger button strips its own layout box, so
+`getBoundingClientRect()` returned all zeros and the tooltip rendered
+pinned to the page's top-left corner regardless of which icon was
+clicked — fixed by giving the trigger a real (if visually invisible)
+layout box instead.
+
+Release version tooltips have to handle two real label shapes present
+in the actual data, not just the numeric one: `"1.0"`-`"7.0"` and the
+post-6.0 `"Luna I"`-`"Luna VIII"` naming — `CategoryChip`'s
+`RELEASE_VERSION_PATTERNS` matches both.
+
+`formatCategoryLabel` (`CategoryChip.tsx`'s one exported label-
+formatting function) is where "does this label need disambiguation"
+logic lives — currently just appending `" Trait"` to a Brawl Stars trait
+label so a bare "Tough" doesn't read ambiguously as a row/column header.
+`GuessInput.tsx` imports and calls this rather than knowing about
+traits itself, keeping it fully game-agnostic — the intended pattern
+for any future label-disambiguation need, not a one-off.
+
 ## Package structure (backend)
  
 ```
 com.tonyl.backend
 ├── BackendApplication.java
 ├── api/              — REST controllers, request/response DTOs, ApiExceptionHandler
+├── auth/               — CurrentUser/CurrentUserArgumentResolver, GoogleAuthSuccessHandler,
+│                         UnauthorizedException, ForbiddenException
+├── config/             — WebConfig (CORS, argument resolvers), SecurityConfig
 ├── domain/            — JPA entities (GridItem, Puzzle, PuzzleMode, CategorySnapshot,
-│                         PuzzleAttempt)
+│                         PuzzleAttempt, User, UserSession, LoginCode)
 ├── repository/         — Spring Data JPA repositories
 ├── game/               — CategoryDefinition, GameModule, GenshinGameModule,
 │                         BrawlStarsGameModule, GameModuleRegistry
-├── puzzle/             — GridGenerator, PuzzleService, PuzzleStatsService
+├── puzzle/             — GridGenerator, PuzzleService, PuzzleClock, PuzzleStatsService,
+│                         UserStatsService
 └── loader/             — one-time data loaders (CommandLineRunner, profile-gated)
 ```
  
-`domain`/`repository`/`api` are fully game-agnostic. `game/GenshinGameModule`
-is the only class in the codebase with Genshin-specific knowledge — Phase 2
-(adding a second game) is specifically designed to prove that adding
-`game/SlayTheSpireGameModule` requires zero changes elsewhere.
+`domain`/`repository`/`api` are fully game-agnostic (`User`/`UserSession`/
+`LoginCode` included — accounts have no game-specific knowledge either).
+`game/GenshinGameModule` is the only class in the codebase with
+Genshin-specific knowledge — Phase 2 (adding a second game) is
+specifically designed to prove that adding `game/SlayTheSpireGameModule`
+requires zero changes elsewhere.
  
 ## Why this scales to additional games
  
@@ -918,8 +1137,11 @@ kept going stale faster than the items themselves resolved.
   originally envisioned. Worth revisiting once a third game is added.
 - Rate limiting and server-side used-answer tracking on `/guess` — required
   before real-time H2H, not urgent for single-player.
-- CORS origins should move to configuration rather than a hardcoded
-  annotation value once a deployment target exists.
+- ~~CORS origins should move to configuration rather than a hardcoded
+  annotation value once a deployment target exists~~ — done in Phase 7:
+  centralized in `config/WebConfig.java`, driven by
+  `CORS_ALLOWED_ORIGINS`. Only the real production origin still needs
+  adding once a domain exists.
 - Multi-variant entity disambiguation is a general pattern, not a one-off:
   any GameModule with entities sharing a display name but differing by a
   key attribute (e.g. Genshin's Traveler, one entity per element) must
@@ -940,18 +1162,23 @@ kept going stale faster than the items themselves resolved.
   back still discards in-progress state on both sides; Unlimited has no
   persistence at all (by design, given its puzzles are ephemeral/
   regenerable). See "Known gap" above.
-- Deterministic resilience for Daily generation — `generateAndSave` makes
-  one single date-seeded attempt with no retry/fallback, unlike Unlimited's
-  seed-retry + `findAllValidGrids` exhaustive fallback. Deliberately not
-  implemented: `GridGeneratorTest` already verifies >90% generation success
-  across 365 simulated dates for both games, and no actual failure has been
-  observed in practice — speculative hardening for a problem with no
-  observed occurrence. If ever revisited, any fallback must stay a pure
-  function of the date (e.g. deterministically-derived fallback seeds, a
-  date-seeded pick from `findAllValidGrids`) to preserve the "same date
-  always produces the same puzzle" guarantee `singleDeterministicPuzzleIsReproducible`
-  depends on — a straight port of Unlimited's `ThreadLocalRandom`-based
-  retry would break that.
+- ~~Deterministic resilience for Daily generation~~ — done in Phase 7,
+  and the speculation above turned out to be wrong: a 3650-simulated-day
+  fairness analysis (`GridGeneratorTest#characterFairnessReport`) found
+  Brawl Stars' single-seed success rate was actually only 58.2% (a ~42%
+  real failure rate), not the rare edge case assumed. Fixed by
+  `PuzzleService.generateDailyPuzzle` — the same seed-retry +
+  `findAllValidGrids` exhaustive-fallback pattern Unlimited already had,
+  but with every seed derived from `date` alone (never
+  `ThreadLocalRandom`) so the "same date always produces the same
+  puzzle" guarantee is preserved even when the fallback path is
+  exercised. Verified via the new `PuzzleServiceGenerationTest`: 0/1000
+  simulated-date failures for both games post-fix. The 3650-day
+  simulation also surfaced a smaller, separate finding worth revisiting:
+  two Brawl Stars characters (Kaze, Shelly) never appeared as a valid
+  Daily answer at all across the full sample — likely too thin on
+  category overlap with the rest of the roster; not a correctness bug,
+  just a roster-collectibility gap.
 - Database management: nothing prunes ephemeral rows. Every Unlimited-mode
   "Generate" click inserts a permanent `puzzles` row that's never cleaned
   up (86+ accumulated from dev testing alone as of Phase 6); `puzzle_attempts`
@@ -966,8 +1193,9 @@ kept going stale faster than the items themselves resolved.
   `grid-cols-[1fr_auto_1fr]` (center column sizes to its own content, the
   two flanking columns share the rest and can shrink), plus the wordmark
   collapses to just the brand mark below `sm` (`hidden sm:inline`) instead
-  of clipping or truncating. A footer is still an open want, not yet
-  scoped.
+  of clipping or truncating. ~~A footer is still an open want, not yet
+  scoped~~ — shipped in Phase 7, see "GachaGrid rebrand, footer & legal"
+  above.
 - Daily's `Timer` was removed from display (Phase 6) to make room for the
   live `UNIQ` stat in that same side-column slot — `Timer` the component is
   untouched and still used by Unlimited. Revisit re-adding it to Daily
@@ -975,6 +1203,33 @@ kept going stale faster than the items themselves resolved.
   time into its own puzzle stat ("solved faster than X% of players"),
   which was already flagged as a possible addition alongside the Scores
   distribution modal.
+- Footer's Contact link — deliberately not built yet (see "GachaGrid
+  rebrand, footer & legal" above); wants a Formspree-style form
+  endpoint rather than a bare `mailto:`, to avoid exposing a personal
+  email address to scrapers. Left as a `TODO` comment above
+  `FOOTER_LINKS` in `Footer.tsx`.
+- Animation polish, scoped 2026-08-21 but not yet built: distribution-
+  chart bars in `ScoreDistributionModal`/`UniquenessModal`/
+  `CommunityAnswersModal` currently snap to full height on open (inline
+  `style`, no transition) instead of animating in; stat numbers (games
+  played, average score in `PuzzleStatsPanel`) render their final value
+  with no count-up. `Score`/`GuessCounter`'s Phase 6 "pop" keyframe is
+  the only place this kind of motion currently exists.
+- Pre-deployment fresh start — before real launch, reset the Archive
+  (only puzzles generated after deployment should ever appear there)
+  and remove accumulated dev/test data (seeded test users/sessions/
+  attempts, anonymous test `puzzle_attempts` rows from manual QA). Must
+  wipe `puzzles` and `puzzle_attempts` together, not just one — there's
+  no FK between them (`Puzzle.id` / `PuzzleAttempt.puzzleId` are both
+  plain strings), so deleting only `puzzles` rows leaves
+  `puzzle_attempts` silently orphaned but still counted in a user's
+  `gamesPlayed`/`avgScore`/`avgUniqueness` aggregates.
+- A user-facing help/about page (`/help` — How to Play, Daily,
+  Unlimited, Archive, Uniqueness Score, Accounts & Stats, reachable via
+  a header icon + footer link) was built once, then reverted the same
+  day at the user's explicit request (no reason given — don't assume
+  the content itself was wrong). Not currently present; could resurface
+  as a fresh build or by restoring from git history.
 
 ## Extending the frontend — common changes
 

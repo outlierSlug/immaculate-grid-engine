@@ -26,21 +26,26 @@ public class PuzzleService {
 
     // A single seed's bounded (500-attempt) search can legitimately come up
     // empty even when valid puzzles exist — especially under stricter filters
-    // like minAnswersPerCell=2, which shrink the valid-combination space
-    // enough that this was measured at a ~14% single-seed failure rate, not
-    // rare noise. Retrying with a few independent fresh seeds turns that into
-    // a negligible rate without touching GridGenerator's algorithm or
+    // like minAnswersPerCell=2, or a thin category set (Brawl Stars' Daily
+    // puzzles measured at a ~42% single-seed failure rate — far from rare
+    // noise). Retrying with a few independent seeds turns that into a
+    // negligible rate without touching GridGenerator's algorithm or
     // weakening any correctness check — each retry still runs the full
-    // per-cell and soft-lock-guard validation.
-    private static final int UNLIMITED_SEED_RETRY_COUNT = 5;
+    // per-cell and soft-lock-guard validation. Shared by both Unlimited
+    // (fresh random seeds, see generateUnlimitedPuzzle) and Daily (seeds
+    // deterministically derived from the date, see generateDailyPuzzle) —
+    // same safety net, different seed strategy per each mode's own
+    // determinism requirement.
+    private static final int SEED_RETRY_COUNT = 5;
 
-    // Last-resort fallback when every randomized retry above fails - almost
-    // always a narrow Unlimited-mode filter (few dimensions left, especially
-    // with a thin dimension like release_version involved) where valid grids
-    // exist but are too statistically rare for random sampling to reliably
-    // land on. Exhaustively checking every combination guarantees finding one
-    // if it exists, so a player never sees "generation failed" for filters
-    // that do have a valid puzzle - only for filters where one truly doesn't.
+    // Last-resort fallback when every retry above fails - almost always a
+    // narrow category set (few dimensions left, especially with a thin
+    // dimension like release_version or Brawl Stars traits involved) where
+    // valid grids exist but are too statistically rare for random sampling
+    // to reliably land on. Exhaustively checking every combination
+    // guarantees finding one if it exists, so a player never sees
+    // "generation failed" for a category set that does have a valid
+    // puzzle - only for one that truly doesn't.
     private static final int EXHAUSTIVE_FALLBACK_MAX_CANDIDATES = 50;
     private static final long EXHAUSTIVE_FALLBACK_COMBO_BUDGET = 6_000_000L;
 
@@ -115,7 +120,7 @@ public class PuzzleService {
         boolean requireSoftLockGuard = request.requireSoftLockGuard() == null || request.requireSoftLockGuard();
 
         Optional<GridGenerator.GeneratedPuzzle> generated = Optional.empty();
-        for (int attempt = 0; attempt < UNLIMITED_SEED_RETRY_COUNT && generated.isEmpty(); attempt++) {
+        for (int attempt = 0; attempt < SEED_RETRY_COUNT && generated.isEmpty(); attempt++) {
             long seed = ThreadLocalRandom.current().nextLong();
             generated = gridGenerator.generate(entities, categories, seed, minAnswersPerCell, requireSoftLockGuard);
         }
@@ -165,9 +170,7 @@ public class PuzzleService {
         GameModule module = gameModuleRegistry.resolve(gameId);
         List<CategoryDefinition> categories = module.getCategoryDefinitions(entities);
 
-        GridGenerator.GeneratedPuzzle generated = gridGenerator.generate(entities, categories, date)
-            .orElseThrow(() -> new IllegalStateException(
-                "Could not generate a valid puzzle for " + gameId + " on " + date));
+        GridGenerator.GeneratedPuzzle generated = generateDailyPuzzle(gameId, entities, categories, date);
 
         Puzzle puzzle = new Puzzle(
             gameId + ":" + date,
@@ -179,6 +182,51 @@ public class PuzzleService {
             generated.cellSolutions()
         );
         return puzzleRepository.save(puzzle);
+    }
+
+    // Same retry + exhaustive-fallback safety net as generateUnlimitedPuzzle
+    // above (see SEED_RETRY_COUNT/EXHAUSTIVE_FALLBACK_* for why a single seed
+    // isn't enough on its own - measured at a ~42% failure rate for Brawl
+    // Stars' thinner category set), but every seed here is derived from
+    // `date` alone rather than real randomness. Daily's core guarantee is
+    // that the same date always produces the same puzzle for everyone,
+    // forever - closing the single-seed failure gap can never come at the
+    // cost of that determinism, so nothing in this method reads the clock or
+    // a random source.
+    // Package-private (not private) so PuzzleServiceGenerationTest can drive
+    // it directly with real entity data - it's a pure function of its
+    // arguments (no repository/DB access), so it needs no Spring wiring to
+    // test.
+    GridGenerator.GeneratedPuzzle generateDailyPuzzle(
+        String gameId, List<GridItem> entities, List<CategoryDefinition> categories, LocalDate date
+    ) {
+        long baseSeed = date.toEpochDay();
+        Optional<GridGenerator.GeneratedPuzzle> generated = Optional.empty();
+        for (int attempt = 0; attempt < SEED_RETRY_COUNT && generated.isEmpty(); attempt++) {
+            // Each retry needs a seed well clear of the base seed (and of
+            // nearby dates' own base seeds, which only differ by 1) - 104729
+            // is just a largeish prime used purely as a spacing constant, not
+            // a hash of anything meaningful.
+            long seed = baseSeed + attempt * 104_729L;
+            generated = gridGenerator.generate(entities, categories, seed, 1, true);
+        }
+
+        if (generated.isEmpty()) {
+            List<GridGenerator.GeneratedPuzzle> exhaustive = gridGenerator.findAllValidGrids(
+                entities, categories, 1, true,
+                EXHAUSTIVE_FALLBACK_MAX_CANDIDATES, EXHAUSTIVE_FALLBACK_COMBO_BUDGET);
+            if (!exhaustive.isEmpty()) {
+                // Deterministic tie-break among multiple valid grids, same
+                // reasoning as the seeds above - Math.floorMod (not %) so a
+                // negative epoch day (a date before 1970) still lands in
+                // range instead of going negative.
+                int index = Math.floorMod(date.toEpochDay(), exhaustive.size());
+                generated = Optional.of(exhaustive.get(index));
+            }
+        }
+
+        return generated.orElseThrow(() -> new IllegalStateException(
+            "Could not generate a valid puzzle for " + gameId + " on " + date));
     }
 
     private List<CategorySnapshot> toSnapshots(List<CategoryDefinition> categories) {

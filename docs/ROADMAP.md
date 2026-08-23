@@ -254,11 +254,106 @@ rarity/uniqueness mechanic that makes this genre engaging.
       pass, were done in a later post-Phase-6 session — see
       docs/ARCHITECTURE.md's "Design system, dark mode, and the
       header/grid rework".
+- [x] Config/secrets hygiene — DB credentials and CORS origins
+      externalized to env vars (`DB_PASSWORD` with no default so startup
+      fails fast, `CORS_ALLOWED_ORIGINS`), `config/WebConfig.java`
+      centralizes CORS instead of 3 duplicated `@CrossOrigin`
+      annotations, `pg_hba.conf` fixed from `trust` to `scram-sha-256`
+      (the DB password was never actually being checked locally).
+      Mechanism is deployment-ready; still needs the real prod origin
+      added once a domain exists.
 - [ ] Deploy backend (Fly.io/Railway) + frontend (Vercel/Netlify) +
       managed Postgres
-- [ ] CORS origins moved to real config for the deployed domain
 
-## Phase 7 — Real-time head-to-head (~2-3 weeks)
+## Phase 7 — Accounts, Archive & launch polish [COMPLETE]
+Goal: turn the anonymous-only single-player game into one with real
+accounts, replayable history, and a shipped visual identity — the last
+stretch of feature work before Phase 6's sole remaining item
+(deployment) is the only thing left.
+
+- [x] Google OAuth sign-in (`AuthController`, `auth/` package) — opaque
+      bearer session tokens (`UserSession`, not a JWT — trivial
+      revocation, no signing-key management), a short-lived single-use
+      exchange code handed back in the OAuth redirect's URL fragment
+      (never the real token, never a server access log) that the
+      frontend immediately trades for the real token via `POST
+      /api/auth/exchange`, and an account-chooser prompt so switching
+      Google accounts on the same device doesn't require signing out of
+      Google first. Spring Security is used minimally — only for the
+      actual Google code-exchange dance; a custom
+      `CurrentUserArgumentResolver` resolves `@CurrentUser User`/
+      `Optional<User>` controller params from the `Authorization: Bearer`
+      header for everything else.
+- [x] Ownership enforcement on the existing anonymous `sessionId` field —
+      a signed-in user's identity flows through the same opaque
+      `sessionId` string Phase 6's stats engine already treats as opaque
+      (`"user:{id}"`), so that engine needed zero changes. But unlike a
+      random anonymous UUID, a sequential user id is guessable — closed
+      by having `PuzzleStatsService` reject any `"user:"`-prefixed
+      `sessionId` that doesn't match the caller's own resolved identity.
+- [x] Archive mode (`ArchiveListPage`, `/:game/archive/:date`) —
+      signed-in players can replay any of the last 30 days' Daily
+      puzzles, reusing `PuzzleService.getOrCreateForDate` (a
+      generalization of the existing `getOrCreateTodaysPuzzle`).
+      Archived completions count toward community pick-rate stats (same
+      as any attempt) but are excluded from personal games-played/
+      avg-score via a new `PuzzleAttempt.playedLive` flag.
+- [x] Profile page (`ProfilePage`) — per-game stats (games played, avg
+      score, avg uniqueness computed client-side by re-running the one
+      `computeLiveUniquenessScore` formula per recent puzzle), links to
+      each game's archive, and a Delete Account flow (`DELETE
+      /api/auth/me` hard-deletes the user + every session; past
+      `puzzle_attempts` stay as anonymized community stats, same
+      treatment anonymous play always had).
+- [x] `PuzzleClock` pins "today" to `America/Los_Angeles` explicitly
+      (was an implicit JVM-default timezone); an in-progress Daily
+      puzzle left open across the midnight rollover now auto-finalizes
+      as a gave-up attempt (only if guesses were actually used) instead
+      of silently discarding it when the new day's puzzle swaps in.
+- [x] Fixed the UNIQ score/percentile formulas to use leave-one-out
+      sampling, so a player's own pick no longer counts toward "how
+      common is my own pick" — fixed a real skew/tie issue that showed
+      up with only a couple of attempts recorded on a puzzle.
+- [x] Contextual (i) help buttons on Daily/Unlimited/Archive explaining
+      each mode.
+- [x] Site footer (`Footer.tsx`) + Fan Content & Privacy page
+      (`/legal`) — verbatim Supercell Fan Content Policy wording (a
+      compliance requirement, not house copy — do not paraphrase it),
+      a real Privacy section, sticky-footer layout.
+- [x] Rebrand to **GachaGrid** (user-facing name only; repo/engine name
+      unchanged — see `docs/ARCHITECTURE.md`'s Overview) plus a UX
+      polish pass: confirm-guarded Give Up buttons, auto-refetch of the
+      Daily puzzle on tab focus/visibility (catches the midnight
+      rollover for a still-open tab), branded 404 page, loading
+      skeletons, modal entrance animations.
+- [x] Site-wide design pass — `BrandMark` (original SVG glyph), Space
+      Grotesk typeface, real dark mode (`ThemeProvider`: context +
+      localStorage + system-preference default + a no-flash inline boot
+      script), header/grid mobile rework (side stats move below the
+      grid on narrow viewports instead of reserving a column).
+- [x] Brawl Stars visual pass — brawler class icons, rarity-colored
+      chips matching Brawl Stars' own scheme, `brawler_class` backfilled
+      for 19 brawlers the API reports as `"Unknown"`.
+- [x] Brawl Stars Traits category — a new multi-valued category type
+      (`AttributeContainsCategory`, alongside the existing scalar
+      `AttributeEqualsCategory`) plus hand-curated trait data for all 39
+      trait-bearing brawlers.
+- [x] App-wide click-to-reveal tooltip coverage (`ClickTooltip`, shared
+      component) on every category chip and puzzle-board stat across
+      both games — traits, classes, rarities, regions, elements,
+      weapons, release versions, models, star ratings, Score, and
+      Guesses Remaining (which now distinguishes "gave up" from "still
+      going" in its message).
+- [x] Daily-generation reliability fix — `generateAndSave`'s single
+      date-seeded attempt with no fallback was measured at only a 58.2%
+      success rate for Brawl Stars (3650-day simulation), meaning ~42%
+      of days would 500-error. Fixed with the same deterministic
+      retry + exhaustive-fallback pattern Unlimited mode already had
+      (seeds derived from the date, not real randomness, preserving
+      "same date always produces the same puzzle forever"). Verified at
+      0/1000 failures for both games post-fix.
+
+## Phase 8 — Real-time head-to-head (~2-3 weeks)
 Deliberately after a deployed, polished single-player game exists —
 additive feature on a proven foundation, not a prerequisite for having a
 demoable product.
@@ -271,7 +366,7 @@ demoable product.
 - [ ] Rate limiting + server-side used-answer tracking on /guess (unsafe
       to defer once an opponent is involved, unlike single-player)
 
-## Phase 8 — Scale / advanced features
+## Phase 9 — Scale / advanced features
 - [ ] Leaderboards / streaks
 - [ ] Redis for active room state (if needed under real multiplayer load)
 - [ ] Third GameModule — real proof point for a GameModule registry
@@ -288,8 +383,39 @@ sync here at a glance:
 - Real `GameModule` registry (config/filesystem-driven, not a hardcoded
   switch) — once a third game exists or this is deployed
 - Rate limiting + server-side used-answer tracking on `/guess` — required
-  before Phase 7 (H2H), not urgent before then
-- CORS origins moved to configuration once a deployment target exists
+  before Phase 8 (H2H), not urgent before then
+- ~~CORS origins moved to configuration once a deployment target
+  exists~~ — mechanism shipped in Phase 7 (`config/WebConfig.java`,
+  `CORS_ALLOWED_ORIGINS`); only the real production origin still needs
+  adding once a domain exists.
+- ~~Deterministic resilience for Daily generation~~ — fixed in Phase 7:
+  `PuzzleService.generateDailyPuzzle` now retries with date-derived
+  seeds and falls back to an exhaustive search before giving up,
+  closing a measured ~42% single-seed failure rate for Brawl Stars.
+- Two Brawl Stars characters (Kaze, Shelly) never appeared as a valid
+  Daily answer at all across a 3650-simulated-day fairness check
+  (`GridGeneratorTest#characterFairnessReport`) — likely too thin on
+  category overlap with the rest of the roster. Worth a look if full
+  roster collectibility matters; not a correctness bug.
+- Animation polish (scoped 2026-08-21, not yet built): distribution-chart
+  bars in `ScoreDistributionModal`/`UniquenessModal`/
+  `CommunityAnswersModal` snap to full height on open instead of
+  animating in; stat numbers (games played, average score in
+  `PuzzleStatsPanel`) render final values with no count-up.
+- Footer's Contact link — deliberately not built yet; wants a
+  Formspree-style form endpoint, not a bare `mailto:` (would expose a
+  personal email to scrapers). Left as a `TODO` above `FOOTER_LINKS` in
+  `Footer.tsx`.
+- Pre-deployment fresh start — before real launch, reset the Archive
+  (only puzzles generated after deployment should appear there) and
+  remove accumulated dev/test data. Must wipe `puzzles` and
+  `puzzle_attempts` together — there's no FK between them (plain-string
+  `puzzleId`), so deleting only one leaves the other silently orphaned
+  but still counted in a user's aggregate stats.
+- A user-facing help/about page (`/help`) was built once, then reverted
+  the same day at the user's request (no reason recorded) — not
+  currently present. Could resurface fresh or by restoring from git
+  history if wanted again.
 - Multi-variant entity disambiguation (Traveler-style: same display name,
   differing key attributes) is a general ingestion pattern to watch for
   in any future GameModule, not a one-off
@@ -325,19 +451,28 @@ sync here at a glance:
   TTL, or similar) before real traffic accumulates this at scale.
 - ~~Header polish for narrow viewports~~ — fixed in a later session
   alongside the site's dark mode and brand-identity pass; see
-  docs/ARCHITECTURE.md. A footer is still a nice-to-have, not yet scoped.
+  docs/ARCHITECTURE.md. ~~A footer is still a nice-to-have, not yet
+  scoped~~ — shipped in Phase 7 (`Footer.tsx`, `/legal`).
 
 ## Notes
 - Total estimate: ~8-10 weeks part-time, revised upward from the original
   estimate given Phase 3 grew into a full Unlimited-mode build rather than
   a lighter "polish pass."
-- Phases 0-5 complete; Phase 6's core stats/rarity system is complete too
-  (session tracking, live rarity badges, the full Puzzle Stats panel and
-  its modals, the live `UNIQ` stat, and a mobile-responsive pass) — only
-  deployment remains on that phase. See Backlog for three smaller Phase-5-adjacent
-  items (additional category dimensions, shareable result summary,
-  cross-mode navigation persistence) deliberately moved out rather than
-  left half-checked, since none of them block Phase 6. Phase 2
+- Phases 0-7 complete; Phase 6's only unchecked item (deploy backend +
+  frontend + managed Postgres) is also the only unchecked item left in
+  the entire roadmap short of Phases 8-9 — Phase 7 shipped everything
+  else that had been planned or requested since (accounts, OAuth,
+  Archive, the GachaGrid rebrand, dark mode, footer/legal, account
+  deletion, Brawl Stars Traits, app-wide tooltips, and the Daily
+  generation reliability fix). This file and `docs/ARCHITECTURE.md` had
+  drifted out of sync with several sessions' worth of shipped work before
+  this pass reconciled them against actual git history (2026-08-22) —
+  worth re-checking both against `git log` periodically rather than
+  trusting them as current by default. See Backlog for three smaller
+  Phase-5-adjacent items (additional category dimensions, shareable
+  result summary, cross-mode navigation persistence) deliberately moved
+  out rather than left half-checked, since none of them block Phase 6.
+  Phase 2
   additionally validated the architecture empirically (not just by design)
   and fixed a real latent bug in the process; Phase 3 did the same for the frontend
   (the `PuzzleGrid` centering bug and the `ddl-auto=update` schema gotchas
