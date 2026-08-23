@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import type { CategoryOption, GameCategoriesResponse } from '../types/puzzle';
 import LoadingSpinner from './LoadingSpinner';
 import ErrorState from './ErrorState';
@@ -50,6 +50,50 @@ function ToggleSwitch({ checked, onChange }: { checked: boolean; onChange: (valu
         }`}
       />
     </button>
+  );
+}
+
+// Same click-to-reveal, click-outside/Escape-to-dismiss tooltip as
+// UniquenessScore's UNIQ button - lighter weight than HelpButton's full
+// modal, right-sized for one clarifying sentence next to a toggle.
+function InfoTooltip({ text }: { text: string }) {
+  const [open, setOpen] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!open) return;
+    function handlePointerDown(e: MouseEvent) {
+      if (containerRef.current && !containerRef.current.contains(e.target as Node)) setOpen(false);
+    }
+    function handleEscape(e: KeyboardEvent) {
+      if (e.key === 'Escape') setOpen(false);
+    }
+    window.addEventListener('mousedown', handlePointerDown);
+    window.addEventListener('keydown', handleEscape);
+    return () => {
+      window.removeEventListener('mousedown', handlePointerDown);
+      window.removeEventListener('keydown', handleEscape);
+    };
+  }, [open]);
+
+  return (
+    <div ref={containerRef} className="relative">
+      <button
+        type="button"
+        onClick={() => setOpen((o) => !o)}
+        aria-label="More info"
+        className="flex text-gray-400 hover:text-indigo-600 dark:text-gray-600 dark:hover:text-indigo-400 transition cursor-pointer"
+      >
+        <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2} aria-hidden="true">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
+        </svg>
+      </button>
+      {open && (
+        <div className="absolute z-40 top-full mt-2 left-1/2 -translate-x-1/2 w-40 bg-white dark:bg-gray-800 text-black dark:text-gray-100 text-xs rounded-lg shadow-lg px-3 py-2 text-center normal-case">
+          {text}
+        </div>
+      )}
+    </div>
   );
 }
 
@@ -176,8 +220,9 @@ export default function UnlimitedSettingsPanel({
               onChange={(value) => onChange({ ...settings, allowSingleAnswers: value })}
             />
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1.5">
             <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Soft Lock Guard</span>
+            <InfoTooltip text="Guarantees the puzzle has at least one full solution." />
             <ToggleSwitch
               checked={settings.softLockGuard}
               onChange={(value) => onChange({ ...settings, softLockGuard: value })}

@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import type { CellStats } from '../types/puzzle';
 import { useAuth } from '../auth/AuthProvider';
+import UserAvatar from './UserAvatar';
 
 interface CommunityAnswersModalProps {
   rowLabel: string;
@@ -29,16 +30,8 @@ function YourPickIcon() {
 // or their display name's initial letter when Google gave no photo
 // (matching Header's own avatar-fallback convention).
 function YourPickAvatar({ displayName, avatarUrl }: { displayName: string; avatarUrl: string | null }) {
-  if (avatarUrl) {
-    return <img src={avatarUrl} alt="Your pick" className="w-5 h-5 rounded-full shrink-0" />;
-  }
   return (
-    <span
-      className="flex items-center justify-center w-5 h-5 rounded-full bg-indigo-100 text-indigo-700 dark:bg-indigo-500/30 dark:text-indigo-200 font-semibold text-[10px] shrink-0"
-      aria-label="Your pick"
-    >
-      {displayName.charAt(0).toUpperCase()}
-    </span>
+    <UserAvatar avatarUrl={avatarUrl} displayName={displayName} sizeClass="w-5 h-5" textSizeClass="text-[10px]" alt="Your pick" />
   );
 }
 
@@ -121,11 +114,20 @@ export default function CommunityAnswersModal({
                   </div>
                   <div className="h-1.5 rounded-full bg-gray-100 dark:bg-gray-800 mt-1 overflow-hidden">
                     <div
-                      className="h-full rounded-full bg-indigo-600"
+                      // Two background-image layers, not a Tailwind bg-linear-to-r
+                      // utility - the diagonal stripe needs to sit on its own
+                      // layer above the gradient (the color stops alone would
+                      // otherwise get overwritten by a second backgroundImage).
+                      // The gradient's own colors stay theme-aware via CSS
+                      // custom properties set through dark: classes, same as
+                      // every other themed color in this codebase - only the
+                      // stripe pattern itself (identical in both themes) and
+                      // the computed width are inline.
+                      className="h-full rounded-full [--fill-from:var(--color-indigo-400)] [--fill-to:var(--color-indigo-600)] dark:[--fill-from:var(--color-indigo-700)] dark:[--fill-to:var(--color-indigo-400)]"
                       style={{
                         width: `${answer.percent}%`,
                         backgroundImage:
-                          'repeating-linear-gradient(135deg, rgba(255,255,255,0.45) 0px, rgba(255,255,255,0.45) 2px, transparent 2px, transparent 6px)',
+                          'repeating-linear-gradient(135deg, rgba(255,255,255,0.4) 0px, rgba(255,255,255,0.4) 2px, transparent 2px, transparent 6px), linear-gradient(to right, var(--fill-from), var(--fill-to))',
                       }}
                     />
                   </div>

@@ -10,6 +10,8 @@ import com.tonyl.backend.repository.UserSessionRepository;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -84,5 +86,27 @@ public class AuthController {
     @GetMapping("/me")
     public UserResponse me(@CurrentUser User user) {
         return UserResponse.from(user);
+    }
+
+    // Hard-deletes the account (users row) and every session it has (this
+    // device and any other - the one authorizing this very request
+    // included), so the token used to call this stops working immediately
+    // after. Deliberately does NOT touch puzzle_attempts: those rows carry
+    // no identifying field beyond the "user:{id}" sessionId string, which
+    // becomes exactly as anonymous as a random UUID once this users row is
+    // gone - same treatment anonymous play's history always had. A later
+    // sign-in with the same Google account finds no matching googleSub and
+    // creates a brand-new User row (see GoogleAuthSuccessHandler) - deletion
+    // is permanent, not a suspend/restore.
+    // @Transactional so the session wipe and the user delete commit as one
+    // unit - without it they're two independent transactions (each already
+    // wrapped on its own, see UserSessionRepository's deleteByToken comment),
+    // and a crash between them would leave a userless orphaned account.
+    @Transactional
+    @DeleteMapping("/me")
+    public ResponseEntity<Void> deleteAccount(@CurrentUser User user) {
+        userSessionRepository.deleteByUserId(user.getId());
+        userRepository.delete(user);
+        return ResponseEntity.noContent().build();
     }
 }

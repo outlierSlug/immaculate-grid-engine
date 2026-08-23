@@ -17,7 +17,7 @@ function GoogleLogo() {
 }
 
 const FEATURES = [
-  'Track your stats across every puzzle you play',
+  'Track your stats across Daily Puzzles',
   'Play archived puzzles from the last 30 days',
 ];
 

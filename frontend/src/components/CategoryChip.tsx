@@ -22,6 +22,14 @@ import claymoreIcon from '../assets/genshin/weapons/Weapon-class-claymore-icon.w
 import polearmIcon from '../assets/genshin/weapons/Weapon-class-polearm-icon.webp';
 import swordIcon from '../assets/genshin/weapons/Weapon-class-sword-icon.webp';
 
+import artilleryIcon from '../assets/brawlstars/classes/icon_class_artillery.png';
+import assassinIcon from '../assets/brawlstars/classes/icon_class_assassin.png';
+import controllerIcon from '../assets/brawlstars/classes/icon_class_controller.png';
+import damageDealerIcon from '../assets/brawlstars/classes/icon_class_damage.png';
+import marksmanIcon from '../assets/brawlstars/classes/icon_class_marksmen.png';
+import supportIcon from '../assets/brawlstars/classes/icon_class_support.png';
+import tankIcon from '../assets/brawlstars/classes/icon_class_tank.png';
+
 interface CategoryChipProps {
   label: string;
 }
@@ -54,36 +62,51 @@ const ICONS: Record<string, string> = {
   Claymore: claymoreIcon,
   Polearm: polearmIcon,
   Sword: swordIcon,
+
+  // Brawler classes
+  Artillery: artilleryIcon,
+  Assassin: assassinIcon,
+  Controller: controllerIcon,
+  'Damage Dealer': damageDealerIcon,
+  Marksman: marksmanIcon,
+  Support: supportIcon,
+  Tank: tankIcon,
 };
 
-// const REGION_NAMES = new Set([
-//   'Mondstadt', 'Liyue', 'Inazuma', 'Sumeru',
-//   'Fontaine', 'Natlan', 'Nod-Krai', 'Snezhnaya',
-// ]);
+// Unlike the Genshin icons above (each a self-contained badge with its own
+// baked-in circular backdrop, legible on any background), the brawler class
+// icons are plain black line art on a transparent background - invisible
+// against the chip's dark:bg-transparent wrapper. Inverting them in dark
+// mode only (black -> white) keeps the wrapper's existing background
+// classes untouched and works for every class icon without needing a
+// second badge image per icon.
+const INVERT_IN_DARK = new Set([
+  'Artillery', 'Assassin', 'Controller', 'Damage Dealer', 'Marksman', 'Support', 'Tank',
+]);
 
-// const WEAPON_NAMES = new Set([
-//   'Bow',
-//   'Catalyst',
-//   'Claymore',
-//   'Polearm',
-//   'Sword',
-// ]);
+// Brawl Stars' own rarity colors, applied to the plain-text fallback pill
+// below (no dedicated rarity icon asset exists, unlike class/element/weapon)
+// - same pill shape, just colored instead of generic gray. Common is left
+// out on purpose: the real game gives it no special color either, so it
+// keeps the default gray. Ultra Legendary isn't a flat color in-game and is
+// handled separately below.
+const RARITY_STYLES: Record<string, string> = {
+  Rare: 'border-green-300 dark:border-green-700 bg-green-50 dark:bg-green-500/15 text-green-700 dark:text-green-400',
+  'Super Rare': 'border-blue-300 dark:border-blue-700 bg-blue-50 dark:bg-blue-500/15 text-blue-700 dark:text-blue-400',
+  Epic: 'border-purple-300 dark:border-purple-700 bg-purple-50 dark:bg-purple-500/15 text-purple-700 dark:text-purple-400',
+  Mythic: 'border-red-300 dark:border-red-700 bg-red-50 dark:bg-red-500/15 text-red-700 dark:text-red-400',
+  Legendary: 'border-amber-300 dark:border-amber-700 bg-amber-50 dark:bg-amber-500/15 text-amber-700 dark:text-amber-400',
+};
 
-// const ELEMENT_RING: Record<string, string> = {
-//   Pyro: 'border-red-300',
-//   Hydro: 'border-blue-300',
-//   Anemo: 'border-teal-300',
-//   Electro: 'border-purple-300',
-//   Dendro: 'border-green-300',
-//   Cryo: 'border-cyan-300',
-//   Geo: 'border-amber-300',
-// };
-
-// function ringClassFor(label: string): string {
-//   // if (ELEMENT_RING[label]) return ELEMENT_RING[label];
-//   // if (REGION_NAMES.has(label)) return 'border-taupe-300';
-//   return 'border-taupe-300';
-// }
+// Chunky (not blended) color bands, echoing the diagonal texture stripe
+// used elsewhere in the app (see CommunityAnswersModal's pick-rate bar) -
+// "pixel" rainbow rather than a smooth gradient blur, closer to Brawl
+// Stars' own chunky Ultra Legendary treatment. Same Tailwind 500-step hues
+// used everywhere else in this file, just cycled instead of picked once.
+const ULTRA_LEGENDARY_BACKGROUND =
+  'repeating-linear-gradient(135deg, #ef4444 0px, #ef4444 6px, #f97316 6px, #f97316 12px, ' +
+  '#eab308 12px, #eab308 18px, #22c55e 18px, #22c55e 24px, #3b82f6 24px, #3b82f6 30px, ' +
+  '#a855f7 30px, #a855f7 36px)';
 
 export default function CategoryChip({ label }: CategoryChipProps) {
   const icon = ICONS[label];
@@ -111,8 +134,8 @@ export default function CategoryChip({ label }: CategoryChipProps) {
             onLoad={() => setImageReady(true)}
             onError={() => setImageReady(true)}
             className={`w-(--grid-chip-img) h-(--grid-chip-img) object-contain transition-opacity duration-300 ${
-              imageReady ? 'opacity-100' : 'opacity-0'
-            }`}
+              INVERT_IN_DARK.has(label) ? 'dark:invert' : ''
+            } ${imageReady ? 'opacity-100' : 'opacity-0'}`}
           />
         </div>
         {/* <span className="text-xs font-medium text-gray-600">{label}</span> */}
@@ -120,8 +143,25 @@ export default function CategoryChip({ label }: CategoryChipProps) {
     );
   }
 
+  if (label === 'Ultra Legendary') {
+    return (
+      <div
+        className="inline-flex items-center justify-center text-center px-2 py-1.5 sm:px-3 sm:py-2 rounded-lg sm:rounded-xl text-white font-bold text-xs sm:text-sm leading-tight max-w-full [text-shadow:0_1px_2px_rgba(0,0,0,0.6)]"
+        style={{ backgroundImage: ULTRA_LEGENDARY_BACKGROUND }}
+      >
+        {label}
+      </div>
+    );
+  }
+
+  const rarityClass = RARITY_STYLES[label];
+
   return (
-    <div className="inline-flex items-center justify-center text-center px-2 py-1.5 sm:px-3 sm:py-2 rounded-lg sm:rounded-xl border border-gray-300 dark:border-gray-700 bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-100 font-bold text-xs sm:text-sm leading-tight max-w-full">
+    <div
+      className={`inline-flex items-center justify-center text-center px-2 py-1.5 sm:px-3 sm:py-2 rounded-lg sm:rounded-xl border font-bold text-xs sm:text-sm leading-tight max-w-full ${
+        rarityClass ?? 'border-gray-300 dark:border-gray-700 bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-100'
+      }`}
+    >
       {label}
     </div>
   );

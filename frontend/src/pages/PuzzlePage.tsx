@@ -17,6 +17,7 @@ import { usePuzzleGuesses } from '../hooks/usePuzzleGuesses';
 import { computeLiveUniquenessScore, computeUniquenessPercentile } from '../utils/uniqueness';
 import { useAuth } from '../auth/AuthProvider';
 import intertwinedFateIcon from '../assets/genshin/Item_Intertwined_Fate.webp';
+import starrPinIcon from '../assets/brawlstars/starr_pin.png';
 
 // Daily's guess limit is a fixed genre convention (matches Pokedoku), not a
 // user-facing setting — unlike Unlimited, there is no toggle and no
@@ -25,11 +26,12 @@ const DAILY_GUESS_LIMIT = 9;
 
 const DAILY_GUESS_ICON: Partial<Record<GameId, string>> = {
   genshin: intertwinedFateIcon,
+  brawlstars: starrPinIcon,
 };
 
 export default function PuzzlePage() {
   const { game, date } = useParams();
-  const { user } = useAuth();
+  const { user, isLoading: authLoading } = useAuth();
   const [puzzle, setPuzzle] = useState<PuzzleResponse | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [confirmGiveUpOpen, setConfirmGiveUpOpen] = useState(false);
@@ -50,11 +52,18 @@ export default function PuzzlePage() {
   // and redirects rather than showing a raw error, since this route is
   // never reached through the UI except by direct URL entry.
   const isArchive = date !== undefined;
-  const archiveRedirect = isArchive && !user;
+  // Waits for AuthProvider's own /me revalidation before deciding to redirect
+  // - same reasoning as ArchiveListPage's authLoading gate. `user` is seeded
+  // optimistically from localStorage before that revalidation completes, so
+  // checking `!user` alone would either bounce a still-actually-logged-in
+  // visitor mid-flash on a page refresh, or (the riskier direction) briefly
+  // fetch and render another account's archived puzzle content on a stale
+  // token before the session turns out to be expired/revoked.
+  const archiveRedirect = isArchive && !authLoading && !user;
   const [invalidArchiveDate, setInvalidArchiveDate] = useState(false);
 
   useEffect(() => {
-    if (!validGame || archiveRedirect) return;
+    if (!validGame || (isArchive && authLoading) || archiveRedirect) return;
     setPuzzle(null);
     setError(null);
     setInvalidArchiveDate(false);
@@ -66,7 +75,7 @@ export default function PuzzlePage() {
     } else {
       fetchTodaysPuzzle(validGame).then(setPuzzle).catch((err) => setError(err.message));
     }
-  }, [validGame, isArchive, date, archiveRedirect]);
+  }, [validGame, isArchive, date, archiveRedirect, authLoading]);
 
   // Daily's puzzle id encodes the date ("{gameId}:{date}"), so a puzzle
   // loaded before midnight silently goes stale if the tab is just left
@@ -270,12 +279,46 @@ export default function PuzzlePage() {
     // true: this completion was already recorded server-side (that's how
     // `you` exists at all) and puzzleStats.perCell reflects it.
     const remoteUniquenessScore = computeLiveUniquenessScore(puzzleStats.you.cellAnswers, puzzleStats.perCell, true);
+    const remoteUniquenessPercentile = computeUniquenessPercentile(remoteUniquenessScore, puzzleStats.uniquenessScores, true);
+    // Rebuilds the same shape usePuzzleGuesses's own filledCells carries,
+    // from the server's cellAnswers (itemId strings only) - the matching
+    // displayName/imageUrl for each pick already live in puzzleStats.perCell
+    // (every correctly-answered item for a cell appears in that cell's
+    // answers list, this account's own pick included), so no extra fetch is
+    // needed just to render the board this account already completed.
+    const remoteFilledCells = Object.fromEntries(
+      Object.entries(puzzleStats.you.cellAnswers).map(([cellKey, itemId]) => {
+        const answer = puzzleStats.perCell[cellKey]?.answers.find((a) => a.itemId === itemId);
+        return [
+          cellKey,
+          {
+            id: itemId,
+            gameId: puzzle.gameId,
+            displayName: answer?.displayName ?? itemId,
+            imageUrl: answer?.imageUrl ?? '',
+            attributes: {},
+          },
+        ];
+      })
+    );
     return (
       <main className="flex flex-col items-center gap-5 py-8 motion-safe:animate-[page-in_350ms_ease-out]">
         {heading}
-        <p className="text-gray-600 dark:text-gray-400 text-center max-w-sm">
-          You already completed this puzzle.
-        </p>
+        <PuzzleGrid
+          rowLabels={puzzle.rowLabels}
+          colLabels={puzzle.colLabels}
+          filledCells={remoteFilledCells}
+          onCellClick={() => {}}
+          locked
+          cellStats={puzzleStats.perCell}
+          avatarShapeClass={avatarShapeClass}
+          sideColumn={[
+            <UniquenessScore key="uniq" score={remoteUniquenessScore} percentile={remoteUniquenessPercentile} youFinished />,
+            <Score key="score" correct={puzzleStats.you.score} total={totalCells} />,
+            <GuessCounter key="guesses" remaining={Math.max(DAILY_GUESS_LIMIT - puzzleStats.you.guessesUsed, 0)} iconSrc={DAILY_GUESS_ICON[validGame]} />,
+          ]}
+        />
+
         <PuzzleStatsPanel
           puzzleStats={puzzleStats}
           rowLabels={puzzle.rowLabels}
@@ -315,7 +358,7 @@ export default function PuzzlePage() {
         cellStats={puzzleStats?.perCell}
         avatarShapeClass={avatarShapeClass}
         sideColumn={[
-          <UniquenessScore key="uniq" score={liveUniquenessScore} percentile={uniquenessPercentile} />,
+          <UniquenessScore key="uniq" score={liveUniquenessScore} percentile={uniquenessPercentile} youFinished={isGameOver} />,
           <Score key="score" correct={correctCount} total={totalCells} feedback={feedback} />,
           <GuessCounter key="guesses" remaining={guessesRemaining} iconSrc={DAILY_GUESS_ICON[validGame]} feedback={feedback} />,
         ]}

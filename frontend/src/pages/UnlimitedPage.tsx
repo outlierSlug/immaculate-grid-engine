@@ -17,6 +17,7 @@ import HelpButton from '../components/HelpButton';
 import HelpModal from '../components/HelpModal';
 import { usePuzzleGuesses } from '../hooks/usePuzzleGuesses';
 import acquaintFateIcon from '../assets/genshin/Item_Acquaint_Fate.webp';
+import starrPinIcon from '../assets/brawlstars/starr_pin.png';
 
 const GUESS_LIMIT = 9;
 
@@ -26,6 +27,7 @@ const GUESS_LIMIT = 9;
 // fall back to GuessCounter's generic icon.
 const UNLIMITED_GUESS_ICON: Partial<Record<GameId, string>> = {
   genshin: acquaintFateIcon,
+  brawlstars: starrPinIcon,
 };
 
 function remainingDimensionCount(categories: GameCategoriesResponse | null, excludedCategoryIds: string[]): number {

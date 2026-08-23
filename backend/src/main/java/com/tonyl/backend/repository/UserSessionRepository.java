@@ -20,4 +20,11 @@ public interface UserSessionRepository extends JpaRepository<UserSession, Long> 
     // error anywhere until the backend log was actually checked.
     @Transactional
     void deleteByToken(String token);
+
+    // Same @Transactional requirement as deleteByToken above - used by
+    // account deletion to invalidate every session (this device and any
+    // other) in one call, including the very session authorizing the
+    // request itself.
+    @Transactional
+    void deleteByUserId(Long userId);
 }

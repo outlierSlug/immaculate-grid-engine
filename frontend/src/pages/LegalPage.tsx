@@ -9,7 +9,7 @@ export default function LegalPage() {
         <section>
           <h2 className="text-xl font-bold tracking-tight mb-2">General Disclaimer</h2>
           <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-            GachaGrid is an unofficial, fan-made puzzle project created for entertainment purposes. It is not
+            GachaGrid is an unofficial, fan-made project created for entertainment purposes. It is not
             affiliated with, endorsed by, or sponsored by any of the games, companies, or trademark holders
             referenced within it.
           </p>
@@ -41,13 +41,35 @@ export default function LegalPage() {
           </p>
         </section>
 
-        <section>
-          <h2 className="text-xl font-bold tracking-tight mb-2">Privacy</h2>
-          {/* EDIT ME: fill in for real once you confirm what (if anything) is
-              being tracked - analytics, accounts, cookies, etc. */}
+        <section className="flex flex-col gap-3">
+          <h2 className="text-xl font-bold tracking-tight">Privacy</h2>
           <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-            GachaGrid does not currently collect personal data beyond what's necessary to
-            serve puzzles and store gameplay stats. This section will be updated if that changes.
+            GachaGrid does not sell or share your data with third parties for advertising or use analytics
+            tracking scripts.
+          </p>
+          <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+            <b>Anonymous Play</b>. If you play anonymously (without signing in), GachaGrid generates a random ID in your browser to save
+            gameplay and calculate aggregate puzzle stats. No personal details are ever tracked.
+          </p>
+          <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+            <b>Google Sign-In</b>. Signing in is entirely optional, but if you do choose to sign in, Google shares your email address, display
+            name, profile picture, and Google ID with us, which we use to manage your account. We never see or store your Google
+            password.
+          </p>
+          <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+            <b>Account Deletion.</b> You have the right to permanently delete your account anytime from your
+            Profile page. Your profile data will be wiped immediately, and your past gameplay stats will be
+            permanently anonymized.
+          </p>
+          <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+            Policy updates will be posted here. Questions? Email us at{' '}
+            <a
+              href="mailto:gachagrid.dev@gmail.com"
+              className="text-indigo-600 dark:text-indigo-400 hover:underline"
+            >
+              gachagrid.dev@gmail.com
+            </a>
+            .
           </p>
         </section>
       </div>

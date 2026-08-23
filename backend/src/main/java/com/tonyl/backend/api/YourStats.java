@@ -11,5 +11,6 @@ import java.util.Map;
 // second server-side copy that only applied post-submission.
 public record YourStats(
     int score,
-    Map<String, String> cellAnswers
+    Map<String, String> cellAnswers,
+    int guessesUsed
 ) {}

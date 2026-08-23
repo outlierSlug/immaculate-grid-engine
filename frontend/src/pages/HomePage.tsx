@@ -9,7 +9,7 @@ export default function HomePage() {
           GachaGrid
         </h1>
         <p className="text-gray-600 dark:text-gray-400 text-base sm:text-lg">
-          Fill a 3x3 grid where every pick has to satisfy both its row and column category. A new puzzle every day, or play unlimited.
+          Fill a 3&times;3 grid where every pick has to satisfy both its row and column category. A new puzzle every day, or play unlimited.
         </p>
       </div>
 
@@ -31,16 +31,48 @@ export default function HomePage() {
       {/* EDIT ME: replace both placeholder paragraphs below with your own
           copy - headings can change too, these are just a starting shape. */}
       <div className="mt-16 sm:mt-20 max-w-2xl w-full border-t border-gray-200 dark:border-gray-800 pt-12 flex flex-col gap-10">
-        <section>
-          <h2 className="text-xl font-bold tracking-tight mb-2">What is GachaGrid?</h2>
+        <section className="flex flex-col gap-3">
+          <h2 className="text-xl font-bold tracking-tight">What is GachaGrid?</h2>
           <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-            [Write about what GachaGrid is here — the concept, how a puzzle works, what inspired it.]
+            <b>GachaGrid</b> is a fan-made project inspired by the{' '}
+            <b>
+              <a
+                href="https://www.sports-reference.com/immaculate-grid/"
+                target="_blank"
+                rel="noreferrer"
+                className="text-indigo-600 dark:text-indigo-400 hover:underline"
+              >
+                Immaculate Grid
+              </a>
+            </b>{' '}
+            genre, a daily trivia game where you have exactly 9 guesses
+            to fill in a 3&times;3 grid, with each cell satisfying its row and column condition.
+          </p>
+          <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+            <b>GachaGrid</b> supports multiple games by reusing a game-agnostic engine to create puzzles based on each game's characters and categories.
           </p>
         </section>
         <section>
-          <h2 className="text-xl font-bold tracking-tight mb-2">From the developer</h2>
+          <h2 className="text-xl font-bold tracking-tight mb-2">Developer Notes</h2>
           <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-            [Write your own context here — who you are, why you built this, anything you want players to know.]
+              This website's design is inspired by{' '}
+              <b>
+                <a
+                  href="https://pokedoku.com/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-indigo-600 dark:text-indigo-400 hover:underline"
+                >
+                  Pokedoku
+                </a>
+              </b>
+              . For bug reports, suggestions, and other feedback, contact us at{' '}
+              <a
+                href="mailto:gachagrid.dev@gmail.com"
+                className="text-indigo-600 dark:text-indigo-400 hover:underline"
+              >
+                gachagrid.dev@gmail.com
+              </a>.
           </p>
         </section>
       </div>

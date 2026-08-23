@@ -90,6 +90,7 @@ export interface CellStats {
 export interface YourStats {
   score: number;
   cellAnswers: Record<string, string>;
+  guessesUsed: number;
 }
 
 // Every field here is recomputed live on every request from the current

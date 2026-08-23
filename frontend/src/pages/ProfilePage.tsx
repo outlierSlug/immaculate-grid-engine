@@ -1,13 +1,15 @@
 import { useEffect, useState } from 'react';
-import { Navigate, Link } from 'react-router-dom';
+import { Navigate, Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../auth/AuthProvider';
-import { fetchUserStats, fetchPuzzleStats } from '../api/client';
+import { fetchUserStats, fetchPuzzleStats, deleteAccount } from '../api/client';
 import { getSessionId } from '../utils/session';
 import { computeLiveUniquenessScore } from '../utils/uniqueness';
 import { GAMES, isValidGameId } from '../config/games';
 import type { UserGameStats } from '../types/puzzle';
 import LoadingSpinner from '../components/LoadingSpinner';
 import ErrorState from '../components/ErrorState';
+import UserAvatar from '../components/UserAvatar';
+import ConfirmModal from '../components/ConfirmModal';
 
 interface GameStatsCardProps {
   gameStats: UserGameStats;
@@ -92,9 +94,13 @@ function GameStatsCard({ gameStats }: GameStatsCardProps) {
 }
 
 export default function ProfilePage() {
-  const { user, isLoading: authLoading } = useAuth();
+  const { user, isLoading: authLoading, logout } = useAuth();
+  const navigate = useNavigate();
   const [games, setGames] = useState<UserGameStats[] | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [confirmDeleteOpen, setConfirmDeleteOpen] = useState(false);
+  const [deleting, setDeleting] = useState(false);
+  const [deleteError, setDeleteError] = useState<string | null>(null);
 
   useEffect(() => {
     if (!user) return;
@@ -105,6 +111,20 @@ export default function ProfilePage() {
       .then((result) => setGames(result.games))
       .catch((err) => setError(err.message));
   }, [user]);
+
+  async function handleDeleteAccount() {
+    setConfirmDeleteOpen(false);
+    setDeleting(true);
+    setDeleteError(null);
+    try {
+      await deleteAccount();
+      logout();
+      navigate('/');
+    } catch (err) {
+      setDeleting(false);
+      setDeleteError(err instanceof Error ? err.message : 'Failed to delete account');
+    }
+  }
 
   if (authLoading) {
     return (
@@ -121,13 +141,7 @@ export default function ProfilePage() {
   return (
     <main className="flex flex-col items-center gap-6 py-8 px-4 motion-safe:animate-[page-in_350ms_ease-out]">
       <div className="flex flex-col items-center gap-3">
-        {user.avatarUrl ? (
-          <img src={user.avatarUrl} alt="" className="w-20 h-20 rounded-full" />
-        ) : (
-          <span className="flex items-center justify-center w-20 h-20 rounded-full bg-indigo-100 text-indigo-700 dark:bg-indigo-500/30 dark:text-indigo-200 font-bold text-3xl">
-            {user.displayName.charAt(0).toUpperCase()}
-          </span>
-        )}
+        <UserAvatar avatarUrl={user.avatarUrl} displayName={user.displayName} sizeClass="w-20 h-20" textSizeClass="text-3xl font-bold" />
         <div className="text-center">
           <h1 className="text-2xl font-bold">{user.displayName}</h1>
           <p className="text-sm text-gray-500 dark:text-gray-400">{user.email}</p>
@@ -150,6 +164,30 @@ export default function ProfilePage() {
             <GameStatsCard key={gameStats.gameId} gameStats={gameStats} />
           ))}
         </div>
+      )}
+
+      <div className="flex flex-col items-center gap-2 border-t border-gray-200 dark:border-gray-800 pt-6 w-full">
+        <button
+          type="button"
+          onClick={() => setConfirmDeleteOpen(true)}
+          disabled={deleting}
+          className="px-5 py-2.5 rounded-full border border-red-300 dark:border-red-800/70 text-red-600 dark:text-red-400 font-semibold hover:bg-red-50 dark:hover:bg-red-950/30 hover:border-red-400 dark:hover:border-red-700 transition cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+        >
+          {deleting ? 'Deleting account...' : 'Delete Account'}
+        </button>
+        {deleteError && (
+          <p className="text-sm text-red-600 dark:text-red-400 text-center max-w-sm">{deleteError}</p>
+        )}
+      </div>
+
+      {confirmDeleteOpen && (
+        <ConfirmModal
+          title="Delete your account?"
+          message="This permanently deletes your profile and cannot be undone. All personal profile stats will be lost."
+          confirmLabel="Delete Account"
+          onConfirm={handleDeleteAccount}
+          onCancel={() => setConfirmDeleteOpen(false)}
+        />
       )}
     </main>
   );

@@ -5,26 +5,45 @@ interface UniquenessModalProps {
   uniquenessScores: number[];
   yourScore: number;
   mostUniqueScore: number | null;
+  // Same value driving UniquenessScore's own tooltip ("better than X% of
+  // players today") - null only means "no one else to compare against yet"
+  // here, since this modal only ever opens post-completion (see
+  // PuzzleStatsPanel), so a null percentile always means #1, never "you
+  // haven't finished."
+  percentile: number | null;
   onClose: () => void;
 }
 
 // Uniqueness scores span 0-900, too wide a range for a per-value bar like
 // ScoreDistributionModal's 0-9 — bucketed into 100-wide intervals instead.
 const BUCKET_SIZE = 100;
-const BUCKET_COUNT = 9; // 0-100, 100-200, ..., 800-900
+const REGULAR_BUCKET_COUNT = 9; // 0-99, 100-199, ..., 800-899
+// 900 is the untouched starting ceiling - reachable only by giving up
+// without a single correct guess - and gets its own dedicated bucket
+// rather than blending into 800-899, since that would hide a "gave up
+// immediately" spike inside what should read as a genuinely great score.
+const BUCKET_COUNT = REGULAR_BUCKET_COUNT + 1;
 const CHART_HEIGHT = 120;
 
 function bucketIndex(score: number): number {
-  return Math.min(BUCKET_COUNT - 1, Math.max(0, Math.floor(score / BUCKET_SIZE)));
+  if (score >= 900) return REGULAR_BUCKET_COUNT;
+  return Math.min(REGULAR_BUCKET_COUNT - 1, Math.max(0, Math.floor(score / BUCKET_SIZE)));
 }
 
 function bucketLabel(index: number): string {
-  const start = index * BUCKET_SIZE;
-  const end = index === BUCKET_COUNT - 1 ? 900 : start + BUCKET_SIZE;
-  return `${start}-${end}`;
+  return index === REGULAR_BUCKET_COUNT ? '900' : `${index * BUCKET_SIZE}`;
 }
 
-export default function UniquenessModal({ uniquenessScores, yourScore, mostUniqueScore, onClose }: UniquenessModalProps) {
+// Mirrors the "better than X% of players today" wording in UniquenessScore's
+// own tooltip, expressed as a rank instead - same underlying percentile,
+// just framed the other way round (top X% rather than beating X%).
+function formatRank(percentile: number | null): string {
+  if (percentile == null) return '#1';
+  const topPercent = 100 - percentile;
+  return topPercent < 1 ? 'Top <1%' : `Top ${Math.round(topPercent)}%`;
+}
+
+export default function UniquenessModal({ uniquenessScores, yourScore, mostUniqueScore, percentile, onClose }: UniquenessModalProps) {
   useEffect(() => {
     function handleEscape(e: KeyboardEvent) {
       if (e.key === 'Escape') onClose();
@@ -70,6 +89,10 @@ export default function UniquenessModal({ uniquenessScores, yourScore, mostUniqu
           <div>
             <div className="text-xs text-gray-500 dark:text-gray-400">Your score</div>
             <div className="text-lg font-bold tabular-nums">{yourScore}</div>
+          </div>
+          <div>
+            <div className="text-xs text-gray-500 dark:text-gray-400">Your rank</div>
+            <div className="text-lg font-bold tabular-nums">{formatRank(percentile)}</div>
           </div>
           <div>
             <div className="text-xs text-gray-500 dark:text-gray-400">Most unique today</div>

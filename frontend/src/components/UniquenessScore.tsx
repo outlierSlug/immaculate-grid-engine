@@ -4,14 +4,18 @@ interface UniquenessScoreProps {
   // Live — recomputed on every render from currently-filled cells and the
   // latest community data, not frozen until the game genuinely ends.
   score: number;
-  // null when nobody has finished this puzzle yet (nothing to compare to).
+  // null when there's no one else finished to compare against yet - either
+  // nobody has finished at all, or (once youFinished) you're the only one
+  // so far. youFinished disambiguates which of those two null-percentile
+  // cases this is, since they read very differently to the player.
   percentile: number | null;
+  youFinished: boolean;
 }
 
 // Occupies the slot Timer used to hold in Daily mode - deliberately not a
 // modal, just a small dismissible tooltip, per the "click for a tooltip"
 // request (not "open a modal").
-export default function UniquenessScore({ score, percentile }: UniquenessScoreProps) {
+export default function UniquenessScore({ score, percentile, youFinished }: UniquenessScoreProps) {
   const [open, setOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -33,7 +37,9 @@ export default function UniquenessScore({ score, percentile }: UniquenessScorePr
 
   const message =
     percentile == null
-      ? "No one has finished today's puzzle yet. Check back soon for a comparison."
+      ? youFinished
+        ? "You're the first completion today!"
+        : "No one has finished today's puzzle yet. Check back soon for a comparison."
       : `You scored a uniqueness of ${score}, which is better than ${percentile.toFixed(1)}% of players today.`;
 
   return (

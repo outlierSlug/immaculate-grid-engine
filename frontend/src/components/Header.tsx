@@ -5,6 +5,7 @@ import SettingsModal from './SettingsModal';
 import BrandMark from './BrandMark';
 import ConfirmModal from './ConfirmModal';
 import SignInModal from './SignInModal';
+import UserAvatar from './UserAvatar';
 import { useAuth } from '../auth/AuthProvider';
 
 export default function Header() {
@@ -122,13 +123,7 @@ export default function Header() {
                   aria-label="Account"
                   className="block rounded-full ring-2 ring-transparent hover:ring-indigo-300 dark:hover:ring-indigo-500/50 transition cursor-pointer"
                 >
-                  {user.avatarUrl ? (
-                    <img src={user.avatarUrl} alt="" className="w-8 h-8 rounded-full" />
-                  ) : (
-                    <span className="flex items-center justify-center w-8 h-8 rounded-full bg-indigo-100 text-indigo-700 dark:bg-indigo-500/30 dark:text-indigo-200 font-semibold text-sm">
-                      {user.displayName.charAt(0).toUpperCase()}
-                    </span>
-                  )}
+                  <UserAvatar avatarUrl={user.avatarUrl} displayName={user.displayName} sizeClass="w-8 h-8" />
                 </button>
 
                 {userMenuOpen && (

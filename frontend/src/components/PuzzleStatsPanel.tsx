@@ -4,6 +4,7 @@ import CommunityAnswersModal from './CommunityAnswersModal';
 import ScoreDistributionModal from './ScoreDistributionModal';
 import UniquenessModal from './UniquenessModal';
 import { BOARD_WIDTH_CSS } from '../utils/gridSizing';
+import { computeUniquenessPercentile } from '../utils/uniqueness';
 import type { PuzzleStatsResponse } from '../types/puzzle';
 
 interface PuzzleStatsPanelProps {
@@ -128,6 +129,11 @@ export default function PuzzleStatsPanel({
           uniquenessScores={uniquenessScores}
           yourScore={yourUniquenessScore}
           mostUniqueScore={mostUniqueScore}
+          // This panel only ever renders once a puzzle attempt is already
+          // recorded (post-completion or a cross-device remote-completion
+          // view - see PuzzlePage), so `you` is always counted among
+          // uniquenessScores by this point.
+          percentile={computeUniquenessPercentile(yourUniquenessScore, uniquenessScores, true)}
           onClose={() => setUniquenessModalOpen(false)}
         />
       )}

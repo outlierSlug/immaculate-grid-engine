@@ -181,6 +181,17 @@ export async function logout(): Promise<void> {
   }
 }
 
+// Unlike logout, this genuinely needs to succeed or fail visibly - the
+// caller shouldn't clear local state and act like the account is gone if
+// the server-side delete never happened.
+export async function deleteAccount(): Promise<void> {
+  const res = await fetch(`${BASE_URL}/auth/me`, { method: 'DELETE', headers: authHeaders() });
+  if (!res.ok) {
+    const message = await res.text().catch(() => '');
+    throw new Error(message || `Failed to delete account: ${res.status}`);
+  }
+}
+
 export async function fetchUserStats(): Promise<UserStatsResponse> {
   const res = await fetch(`${BASE_URL}/users/me/stats`, { headers: authHeaders() });
   if (!res.ok) {

@@ -174,6 +174,45 @@ export function usePuzzleGuesses(puzzle: PuzzleResponse | null, options: UsePuzz
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [puzzle?.id, persistKey]);
 
+  // Keeps two tabs/windows on the same puzzle+identity from drifting apart.
+  // Without this, each tab only reads localStorage once (on mount/puzzle
+  // change) and then trusts its own in-memory guessesUsed/filledCells for
+  // the rest of its life - so a wrong guess spent in tab A is invisible to
+  // tab B until tab B happens to remount. That's more than a display
+  // nit: since guessesUsed only ever lives client-side (the backend's
+  // /guess endpoint validates a pick against the puzzle's answer key, not
+  // against how many guesses this session has already burned), a stale tab
+  // B would let a wrong guess in tab A become a "free" extra attempt in tab
+  // B instead of actually costing the shared guess pool. The `storage`
+  // event fires only in OTHER same-origin tabs when localStorage changes
+  // (never the tab that made the write), which is exactly the asymmetry
+  // needed here - this re-syncs the instant another tab writes under the
+  // same key, closing the window before a human could switch tabs and act
+  // on it. Closes any cell this tab had open, too, since it may now be
+  // stale (already filled, or the game may have just ended) the moment the
+  // sync lands.
+  useEffect(() => {
+    if (!persistKey) return;
+
+    function handleStorage(e: StorageEvent) {
+      if (e.key !== persistKey) return;
+      const stored = loadProgress(persistKey!);
+      setFilledCells(stored?.filledCells ?? {});
+      setGuessesUsed(stored?.guessesUsed ?? 0);
+      setGaveUp(stored?.gaveUp ?? false);
+      setEndedAt(stored?.endedAt ?? null);
+      setActiveCell(null);
+      setFeedback(null);
+      if (trackStats && puzzle) {
+        refreshStats(puzzle.id);
+      }
+    }
+
+    window.addEventListener('storage', handleStorage);
+    return () => window.removeEventListener('storage', handleStorage);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [persistKey]);
+
   // Refreshes rarity badges for whatever's already filled (restored from
   // localStorage, or just an empty board on a fresh puzzle) as soon as the
   // puzzle is known — independent of the hydration effect above, since
