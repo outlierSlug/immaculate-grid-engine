@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useParams, Navigate, Link } from 'react-router-dom';
 import { fetchTodaysPuzzle, fetchArchivedPuzzle } from '../api/client';
 import type { PuzzleResponse } from '../types/puzzle';
@@ -63,8 +63,32 @@ export default function PuzzlePage() {
   const archiveRedirect = isArchive && !authLoading && !user;
   const [invalidArchiveDate, setInvalidArchiveDate] = useState(false);
 
+  // `authLoading` has to stay a dependency below - it's what lets this
+  // effect wait to fetch an archived puzzle until AuthProvider's one-time
+  // token revalidation resolves (otherwise a signed-in visitor could get
+  // bounced by archiveRedirect on a stale pre-revalidation read). But that
+  // means this effect also re-runs on the LIVE Daily route the instant that
+  // same background revalidation finishes - even though authLoading has no
+  // bearing on which Daily puzzle to show. Without this guard, that spurious
+  // re-run's unconditional setPuzzle(null) blipped puzzle.id from a real
+  // value to undefined and back to the SAME value a moment later - which
+  // usePuzzleGuesses's midnight-rollover detector (see its own comment)
+  // can't distinguish from a genuine day change, so it auto-submitted
+  // whatever was in progress as a permanent "gave up" attempt. Reproduced
+  // as 100% deterministic for any signed-in user (not a rare race) - the
+  // puzzle fetch reliably resolves before the auth revalidation call, so
+  // this fired on effectively every load. Tracking the actual fetch target
+  // (not just "some dependency changed") skips the reset+refetch when
+  // nothing about *what puzzle to show* actually changed.
+  const fetchedForRef = useRef<string | null>(null);
+
   useEffect(() => {
     if (!validGame || (isArchive && authLoading) || archiveRedirect) return;
+
+    const fetchTarget = `${validGame}:${isArchive}:${date ?? ''}`;
+    if (fetchedForRef.current === fetchTarget) return;
+    fetchedForRef.current = fetchTarget;
+
     setPuzzle(null);
     setError(null);
     setInvalidArchiveDate(false);
