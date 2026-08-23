@@ -3,7 +3,7 @@
     "id": "genshin:aino",
     "game_id": "genshin",
     "display_name": "Aino",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Aino.png",
+    "image_url": "/genshin/icons/aino.png",
     "attributes": {
       "element": "Hydro",
       "weapon": "Claymore",
@@ -18,7 +18,7 @@
     "id": "genshin:albedo",
     "game_id": "genshin",
     "display_name": "Albedo",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Albedo.png",
+    "image_url": "/genshin/icons/albedo.png",
     "attributes": {
       "element": "Geo",
       "weapon": "Sword",
@@ -33,7 +33,7 @@
     "id": "genshin:alhaitham",
     "game_id": "genshin",
     "display_name": "Alhaitham",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Alhatham.png",
+    "image_url": "/genshin/icons/alhaitham.png",
     "attributes": {
       "element": "Dendro",
       "weapon": "Sword",
@@ -48,7 +48,7 @@
     "id": "genshin:aloy",
     "game_id": "genshin",
     "display_name": "Aloy",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Aloy.png",
+    "image_url": "/genshin/icons/aloy.png",
     "attributes": {
       "element": "Cryo",
       "weapon": "Bow",
@@ -63,7 +63,7 @@
     "id": "genshin:alyosha",
     "game_id": "genshin",
     "display_name": "Alyosha",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Alyosha.png",
+    "image_url": "/genshin/icons/alyosha.png",
     "attributes": {
       "element": "Electro",
       "weapon": "Polearm",
@@ -78,7 +78,7 @@
     "id": "genshin:amber",
     "game_id": "genshin",
     "display_name": "Amber",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Ambor.png",
+    "image_url": "/genshin/icons/amber.png",
     "attributes": {
       "element": "Pyro",
       "weapon": "Bow",
@@ -93,7 +93,7 @@
     "id": "genshin:arataki-itto",
     "game_id": "genshin",
     "display_name": "Arataki Itto",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Itto.png",
+    "image_url": "/genshin/icons/arataki-itto.png",
     "attributes": {
       "element": "Geo",
       "weapon": "Claymore",
@@ -108,7 +108,7 @@
     "id": "genshin:arlecchino",
     "game_id": "genshin",
     "display_name": "Arlecchino",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Arlecchino.png",
+    "image_url": "/genshin/icons/arlecchino.png",
     "attributes": {
       "element": "Pyro",
       "weapon": "Polearm",
@@ -123,7 +123,7 @@
     "id": "genshin:baizhu",
     "game_id": "genshin",
     "display_name": "Baizhu",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Baizhuer.png",
+    "image_url": "/genshin/icons/baizhu.png",
     "attributes": {
       "element": "Dendro",
       "weapon": "Catalyst",
@@ -138,7 +138,7 @@
     "id": "genshin:barbara",
     "game_id": "genshin",
     "display_name": "Barbara",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Barbara.png",
+    "image_url": "/genshin/icons/barbara.png",
     "attributes": {
       "element": "Hydro",
       "weapon": "Catalyst",
@@ -153,7 +153,7 @@
     "id": "genshin:beidou",
     "game_id": "genshin",
     "display_name": "Beidou",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Beidou.png",
+    "image_url": "/genshin/icons/beidou.png",
     "attributes": {
       "element": "Electro",
       "weapon": "Claymore",
@@ -168,7 +168,7 @@
     "id": "genshin:bennett",
     "game_id": "genshin",
     "display_name": "Bennett",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Bennett.png",
+    "image_url": "/genshin/icons/bennett.png",
     "attributes": {
       "element": "Pyro",
       "weapon": "Sword",
@@ -183,7 +183,7 @@
     "id": "genshin:candace",
     "game_id": "genshin",
     "display_name": "Candace",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Candace.png",
+    "image_url": "/genshin/icons/candace.png",
     "attributes": {
       "element": "Hydro",
       "weapon": "Polearm",
@@ -198,7 +198,7 @@
     "id": "genshin:charlotte",
     "game_id": "genshin",
     "display_name": "Charlotte",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Charlotte.png",
+    "image_url": "/genshin/icons/charlotte.png",
     "attributes": {
       "element": "Cryo",
       "weapon": "Catalyst",
@@ -213,7 +213,7 @@
     "id": "genshin:chasca",
     "game_id": "genshin",
     "display_name": "Chasca",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Chasca.png",
+    "image_url": "/genshin/icons/chasca.png",
     "attributes": {
       "element": "Anemo",
       "weapon": "Bow",
@@ -228,7 +228,7 @@
     "id": "genshin:chevreuse",
     "game_id": "genshin",
     "display_name": "Chevreuse",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Chevreuse.png",
+    "image_url": "/genshin/icons/chevreuse.png",
     "attributes": {
       "element": "Pyro",
       "weapon": "Polearm",
@@ -243,7 +243,7 @@
     "id": "genshin:chiori",
     "game_id": "genshin",
     "display_name": "Chiori",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Chiori.png",
+    "image_url": "/genshin/icons/chiori.png",
     "attributes": {
       "element": "Geo",
       "weapon": "Sword",
@@ -258,7 +258,7 @@
     "id": "genshin:chongyun",
     "game_id": "genshin",
     "display_name": "Chongyun",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Chongyun.png",
+    "image_url": "/genshin/icons/chongyun.png",
     "attributes": {
       "element": "Cryo",
       "weapon": "Claymore",
@@ -273,7 +273,7 @@
     "id": "genshin:citlali",
     "game_id": "genshin",
     "display_name": "Citlali",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Citlali.png",
+    "image_url": "/genshin/icons/citlali.png",
     "attributes": {
       "element": "Cryo",
       "weapon": "Catalyst",
@@ -288,7 +288,7 @@
     "id": "genshin:clorinde",
     "game_id": "genshin",
     "display_name": "Clorinde",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Clorinde.png",
+    "image_url": "/genshin/icons/clorinde.png",
     "attributes": {
       "element": "Electro",
       "weapon": "Sword",
@@ -303,7 +303,7 @@
     "id": "genshin:collei",
     "game_id": "genshin",
     "display_name": "Collei",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Collei.png",
+    "image_url": "/genshin/icons/collei.png",
     "attributes": {
       "element": "Dendro",
       "weapon": "Bow",
@@ -318,7 +318,7 @@
     "id": "genshin:columbina",
     "game_id": "genshin",
     "display_name": "Columbina",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Columbina.png",
+    "image_url": "/genshin/icons/columbina.png",
     "attributes": {
       "element": "Hydro",
       "weapon": "Catalyst",
@@ -333,7 +333,7 @@
     "id": "genshin:cyno",
     "game_id": "genshin",
     "display_name": "Cyno",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Cyno.png",
+    "image_url": "/genshin/icons/cyno.png",
     "attributes": {
       "element": "Electro",
       "weapon": "Polearm",
@@ -348,7 +348,7 @@
     "id": "genshin:dahlia",
     "game_id": "genshin",
     "display_name": "Dahlia",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Dahlia.png",
+    "image_url": "/genshin/icons/dahlia.png",
     "attributes": {
       "element": "Hydro",
       "weapon": "Sword",
@@ -363,7 +363,7 @@
     "id": "genshin:dehya",
     "game_id": "genshin",
     "display_name": "Dehya",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Dehya.png",
+    "image_url": "/genshin/icons/dehya.png",
     "attributes": {
       "element": "Pyro",
       "weapon": "Claymore",
@@ -378,7 +378,7 @@
     "id": "genshin:diluc",
     "game_id": "genshin",
     "display_name": "Diluc",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Diluc.png",
+    "image_url": "/genshin/icons/diluc.png",
     "attributes": {
       "element": "Pyro",
       "weapon": "Claymore",
@@ -393,7 +393,7 @@
     "id": "genshin:diona",
     "game_id": "genshin",
     "display_name": "Diona",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Diona.png",
+    "image_url": "/genshin/icons/diona.png",
     "attributes": {
       "element": "Cryo",
       "weapon": "Bow",
@@ -408,7 +408,7 @@
     "id": "genshin:dori",
     "game_id": "genshin",
     "display_name": "Dori",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Dori.png",
+    "image_url": "/genshin/icons/dori.png",
     "attributes": {
       "element": "Electro",
       "weapon": "Claymore",
@@ -423,7 +423,7 @@
     "id": "genshin:durin",
     "game_id": "genshin",
     "display_name": "Durin",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Durin.png",
+    "image_url": "/genshin/icons/durin.png",
     "attributes": {
       "element": "Pyro",
       "weapon": "Sword",
@@ -438,7 +438,7 @@
     "id": "genshin:emilie",
     "game_id": "genshin",
     "display_name": "Emilie",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Emilie.png",
+    "image_url": "/genshin/icons/emilie.png",
     "attributes": {
       "element": "Dendro",
       "weapon": "Polearm",
@@ -453,7 +453,7 @@
     "id": "genshin:escoffier",
     "game_id": "genshin",
     "display_name": "Escoffier",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Escoffier.png",
+    "image_url": "/genshin/icons/escoffier.png",
     "attributes": {
       "element": "Cryo",
       "weapon": "Polearm",
@@ -468,7 +468,7 @@
     "id": "genshin:eula",
     "game_id": "genshin",
     "display_name": "Eula",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Eula.png",
+    "image_url": "/genshin/icons/eula.png",
     "attributes": {
       "element": "Cryo",
       "weapon": "Claymore",
@@ -483,7 +483,7 @@
     "id": "genshin:faruzan",
     "game_id": "genshin",
     "display_name": "Faruzan",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Faruzan.png",
+    "image_url": "/genshin/icons/faruzan.png",
     "attributes": {
       "element": "Anemo",
       "weapon": "Bow",
@@ -498,7 +498,7 @@
     "id": "genshin:fischl",
     "game_id": "genshin",
     "display_name": "Fischl",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Fischl.png",
+    "image_url": "/genshin/icons/fischl.png",
     "attributes": {
       "element": "Electro",
       "weapon": "Bow",
@@ -513,7 +513,7 @@
     "id": "genshin:flins",
     "game_id": "genshin",
     "display_name": "Flins",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Flins.png",
+    "image_url": "/genshin/icons/flins.png",
     "attributes": {
       "element": "Electro",
       "weapon": "Polearm",
@@ -528,7 +528,7 @@
     "id": "genshin:freminet",
     "game_id": "genshin",
     "display_name": "Freminet",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Freminet.png",
+    "image_url": "/genshin/icons/freminet.png",
     "attributes": {
       "element": "Cryo",
       "weapon": "Claymore",
@@ -543,7 +543,7 @@
     "id": "genshin:furina",
     "game_id": "genshin",
     "display_name": "Furina",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Furina.png",
+    "image_url": "/genshin/icons/furina.png",
     "attributes": {
       "element": "Hydro",
       "weapon": "Sword",
@@ -558,7 +558,7 @@
     "id": "genshin:gaming",
     "game_id": "genshin",
     "display_name": "Gaming",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Gaming.png",
+    "image_url": "/genshin/icons/gaming.png",
     "attributes": {
       "element": "Pyro",
       "weapon": "Claymore",
@@ -573,7 +573,7 @@
     "id": "genshin:ganyu",
     "game_id": "genshin",
     "display_name": "Ganyu",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Ganyu.png",
+    "image_url": "/genshin/icons/ganyu.png",
     "attributes": {
       "element": "Cryo",
       "weapon": "Bow",
@@ -588,7 +588,7 @@
     "id": "genshin:gorou",
     "game_id": "genshin",
     "display_name": "Gorou",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Gorou.png",
+    "image_url": "/genshin/icons/gorou.png",
     "attributes": {
       "element": "Geo",
       "weapon": "Bow",
@@ -603,7 +603,7 @@
     "id": "genshin:hu-tao",
     "game_id": "genshin",
     "display_name": "Hu Tao",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Hutao.png",
+    "image_url": "/genshin/icons/hu-tao.png",
     "attributes": {
       "element": "Pyro",
       "weapon": "Polearm",
@@ -618,7 +618,7 @@
     "id": "genshin:iansan",
     "game_id": "genshin",
     "display_name": "Iansan",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Iansan.png",
+    "image_url": "/genshin/icons/iansan.png",
     "attributes": {
       "element": "Electro",
       "weapon": "Polearm",
@@ -633,7 +633,7 @@
     "id": "genshin:ifa",
     "game_id": "genshin",
     "display_name": "Ifa",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Ifa.png",
+    "image_url": "/genshin/icons/ifa.png",
     "attributes": {
       "element": "Anemo",
       "weapon": "Catalyst",
@@ -648,7 +648,7 @@
     "id": "genshin:illuga",
     "game_id": "genshin",
     "display_name": "Illuga",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Illuga.png",
+    "image_url": "/genshin/icons/illuga.png",
     "attributes": {
       "element": "Geo",
       "weapon": "Polearm",
@@ -663,7 +663,7 @@
     "id": "genshin:ineffa",
     "game_id": "genshin",
     "display_name": "Ineffa",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Ineffa.png",
+    "image_url": "/genshin/icons/ineffa.png",
     "attributes": {
       "element": "Electro",
       "weapon": "Polearm",
@@ -678,7 +678,7 @@
     "id": "genshin:jahoda",
     "game_id": "genshin",
     "display_name": "Jahoda",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Jahoda.png",
+    "image_url": "/genshin/icons/jahoda.png",
     "attributes": {
       "element": "Anemo",
       "weapon": "Bow",
@@ -693,7 +693,7 @@
     "id": "genshin:jean",
     "game_id": "genshin",
     "display_name": "Jean",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Qin.png",
+    "image_url": "/genshin/icons/jean.png",
     "attributes": {
       "element": "Anemo",
       "weapon": "Sword",
@@ -708,7 +708,7 @@
     "id": "genshin:kachina",
     "game_id": "genshin",
     "display_name": "Kachina",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Kachina.png",
+    "image_url": "/genshin/icons/kachina.png",
     "attributes": {
       "element": "Geo",
       "weapon": "Polearm",
@@ -723,7 +723,7 @@
     "id": "genshin:kaedehara-kazuha",
     "game_id": "genshin",
     "display_name": "Kaedehara Kazuha",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Kazuha.png",
+    "image_url": "/genshin/icons/kaedehara-kazuha.png",
     "attributes": {
       "element": "Anemo",
       "weapon": "Sword",
@@ -738,7 +738,7 @@
     "id": "genshin:kaeya",
     "game_id": "genshin",
     "display_name": "Kaeya",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Kaeya.png",
+    "image_url": "/genshin/icons/kaeya.png",
     "attributes": {
       "element": "Cryo",
       "weapon": "Sword",
@@ -753,7 +753,7 @@
     "id": "genshin:kamisato-ayaka",
     "game_id": "genshin",
     "display_name": "Kamisato Ayaka",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Ayaka.png",
+    "image_url": "/genshin/icons/kamisato-ayaka.png",
     "attributes": {
       "element": "Cryo",
       "weapon": "Sword",
@@ -768,7 +768,7 @@
     "id": "genshin:kamisato-ayato",
     "game_id": "genshin",
     "display_name": "Kamisato Ayato",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Ayato.png",
+    "image_url": "/genshin/icons/kamisato-ayato.png",
     "attributes": {
       "element": "Hydro",
       "weapon": "Sword",
@@ -783,7 +783,7 @@
     "id": "genshin:kaveh",
     "game_id": "genshin",
     "display_name": "Kaveh",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Kaveh.png",
+    "image_url": "/genshin/icons/kaveh.png",
     "attributes": {
       "element": "Dendro",
       "weapon": "Claymore",
@@ -798,7 +798,7 @@
     "id": "genshin:keqing",
     "game_id": "genshin",
     "display_name": "Keqing",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Keqing.png",
+    "image_url": "/genshin/icons/keqing.png",
     "attributes": {
       "element": "Electro",
       "weapon": "Sword",
@@ -813,7 +813,7 @@
     "id": "genshin:kinich",
     "game_id": "genshin",
     "display_name": "Kinich",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Kinich.png",
+    "image_url": "/genshin/icons/kinich.png",
     "attributes": {
       "element": "Dendro",
       "weapon": "Claymore",
@@ -828,7 +828,7 @@
     "id": "genshin:kirara",
     "game_id": "genshin",
     "display_name": "Kirara",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Momoka.png",
+    "image_url": "/genshin/icons/kirara.png",
     "attributes": {
       "element": "Dendro",
       "weapon": "Sword",
@@ -843,7 +843,7 @@
     "id": "genshin:klee",
     "game_id": "genshin",
     "display_name": "Klee",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Klee.png",
+    "image_url": "/genshin/icons/klee.png",
     "attributes": {
       "element": "Pyro",
       "weapon": "Catalyst",
@@ -858,7 +858,7 @@
     "id": "genshin:kujou-sara",
     "game_id": "genshin",
     "display_name": "Kujou Sara",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Sara.png",
+    "image_url": "/genshin/icons/kujou-sara.png",
     "attributes": {
       "element": "Electro",
       "weapon": "Bow",
@@ -873,7 +873,7 @@
     "id": "genshin:kuki-shinobu",
     "game_id": "genshin",
     "display_name": "Kuki Shinobu",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Shinobu.png",
+    "image_url": "/genshin/icons/kuki-shinobu.png",
     "attributes": {
       "element": "Electro",
       "weapon": "Sword",
@@ -888,7 +888,7 @@
     "id": "genshin:lan-yan",
     "game_id": "genshin",
     "display_name": "Lan Yan",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Lanyan.png",
+    "image_url": "/genshin/icons/lan-yan.png",
     "attributes": {
       "element": "Anemo",
       "weapon": "Catalyst",
@@ -903,7 +903,7 @@
     "id": "genshin:lauma",
     "game_id": "genshin",
     "display_name": "Lauma",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Lauma.png",
+    "image_url": "/genshin/icons/lauma.png",
     "attributes": {
       "element": "Dendro",
       "weapon": "Catalyst",
@@ -918,7 +918,7 @@
     "id": "genshin:layla",
     "game_id": "genshin",
     "display_name": "Layla",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Layla.png",
+    "image_url": "/genshin/icons/layla.png",
     "attributes": {
       "element": "Cryo",
       "weapon": "Sword",
@@ -933,7 +933,7 @@
     "id": "genshin:linnea",
     "game_id": "genshin",
     "display_name": "Linnea",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Linnea.png",
+    "image_url": "/genshin/icons/linnea.png",
     "attributes": {
       "element": "Geo",
       "weapon": "Bow",
@@ -948,7 +948,7 @@
     "id": "genshin:lisa",
     "game_id": "genshin",
     "display_name": "Lisa",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Lisa.png",
+    "image_url": "/genshin/icons/lisa.png",
     "attributes": {
       "element": "Electro",
       "weapon": "Catalyst",
@@ -963,7 +963,7 @@
     "id": "genshin:lohen",
     "game_id": "genshin",
     "display_name": "Lohen",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Lohen.png",
+    "image_url": "/genshin/icons/lohen.png",
     "attributes": {
       "element": "Cryo",
       "weapon": "Polearm",
@@ -978,7 +978,7 @@
     "id": "genshin:lynette",
     "game_id": "genshin",
     "display_name": "Lynette",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Linette.png",
+    "image_url": "/genshin/icons/lynette.png",
     "attributes": {
       "element": "Anemo",
       "weapon": "Sword",
@@ -993,7 +993,7 @@
     "id": "genshin:lyney",
     "game_id": "genshin",
     "display_name": "Lyney",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Liney.png",
+    "image_url": "/genshin/icons/lyney.png",
     "attributes": {
       "element": "Pyro",
       "weapon": "Bow",
@@ -1008,7 +1008,7 @@
     "id": "genshin:mavuika",
     "game_id": "genshin",
     "display_name": "Mavuika",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Mavuika.png",
+    "image_url": "/genshin/icons/mavuika.png",
     "attributes": {
       "element": "Pyro",
       "weapon": "Claymore",
@@ -1023,7 +1023,7 @@
     "id": "genshin:mika",
     "game_id": "genshin",
     "display_name": "Mika",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Mika.png",
+    "image_url": "/genshin/icons/mika.png",
     "attributes": {
       "element": "Cryo",
       "weapon": "Polearm",
@@ -1038,7 +1038,7 @@
     "id": "genshin:mona",
     "game_id": "genshin",
     "display_name": "Mona",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Mona.png",
+    "image_url": "/genshin/icons/mona.png",
     "attributes": {
       "element": "Hydro",
       "weapon": "Catalyst",
@@ -1053,7 +1053,7 @@
     "id": "genshin:mualani",
     "game_id": "genshin",
     "display_name": "Mualani",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Mualani.png",
+    "image_url": "/genshin/icons/mualani.png",
     "attributes": {
       "element": "Hydro",
       "weapon": "Catalyst",
@@ -1068,7 +1068,7 @@
     "id": "genshin:nahida",
     "game_id": "genshin",
     "display_name": "Nahida",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Nahida.png",
+    "image_url": "/genshin/icons/nahida.png",
     "attributes": {
       "element": "Dendro",
       "weapon": "Catalyst",
@@ -1083,7 +1083,7 @@
     "id": "genshin:navia",
     "game_id": "genshin",
     "display_name": "Navia",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Navia.png",
+    "image_url": "/genshin/icons/navia.png",
     "attributes": {
       "element": "Geo",
       "weapon": "Claymore",
@@ -1098,7 +1098,7 @@
     "id": "genshin:nefer",
     "game_id": "genshin",
     "display_name": "Nefer",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Nefer.png",
+    "image_url": "/genshin/icons/nefer.png",
     "attributes": {
       "element": "Dendro",
       "weapon": "Catalyst",
@@ -1113,7 +1113,7 @@
     "id": "genshin:neuvillette",
     "game_id": "genshin",
     "display_name": "Neuvillette",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Neuvillette.png",
+    "image_url": "/genshin/icons/neuvillette.png",
     "attributes": {
       "element": "Hydro",
       "weapon": "Catalyst",
@@ -1128,7 +1128,7 @@
     "id": "genshin:nicole",
     "game_id": "genshin",
     "display_name": "Nicole",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Nicole.png",
+    "image_url": "/genshin/icons/nicole.png",
     "attributes": {
       "element": "Pyro",
       "weapon": "Catalyst",
@@ -1143,7 +1143,7 @@
     "id": "genshin:nilou",
     "game_id": "genshin",
     "display_name": "Nilou",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Nilou.png",
+    "image_url": "/genshin/icons/nilou.png",
     "attributes": {
       "element": "Hydro",
       "weapon": "Sword",
@@ -1158,7 +1158,7 @@
     "id": "genshin:ningguang",
     "game_id": "genshin",
     "display_name": "Ningguang",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Ningguang.png",
+    "image_url": "/genshin/icons/ningguang.png",
     "attributes": {
       "element": "Geo",
       "weapon": "Catalyst",
@@ -1173,7 +1173,7 @@
     "id": "genshin:noelle",
     "game_id": "genshin",
     "display_name": "Noelle",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Noel.png",
+    "image_url": "/genshin/icons/noelle.png",
     "attributes": {
       "element": "Geo",
       "weapon": "Claymore",
@@ -1188,7 +1188,7 @@
     "id": "genshin:odette",
     "game_id": "genshin",
     "display_name": "Odette",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Odette.png",
+    "image_url": "/genshin/icons/odette.png",
     "attributes": {
       "element": "Cryo",
       "weapon": "Sword",
@@ -1203,7 +1203,7 @@
     "id": "genshin:ororon",
     "game_id": "genshin",
     "display_name": "Ororon",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Olorun.png",
+    "image_url": "/genshin/icons/ororon.png",
     "attributes": {
       "element": "Electro",
       "weapon": "Bow",
@@ -1218,7 +1218,7 @@
     "id": "genshin:prune",
     "game_id": "genshin",
     "display_name": "Prune",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Prune.png",
+    "image_url": "/genshin/icons/prune.png",
     "attributes": {
       "element": "Anemo",
       "weapon": "Catalyst",
@@ -1233,7 +1233,7 @@
     "id": "genshin:qiqi",
     "game_id": "genshin",
     "display_name": "Qiqi",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Qiqi.png",
+    "image_url": "/genshin/icons/qiqi.png",
     "attributes": {
       "element": "Cryo",
       "weapon": "Sword",
@@ -1248,7 +1248,7 @@
     "id": "genshin:raiden-shogun",
     "game_id": "genshin",
     "display_name": "Raiden Shogun",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Shougun.png",
+    "image_url": "/genshin/icons/raiden-shogun.png",
     "attributes": {
       "element": "Electro",
       "weapon": "Polearm",
@@ -1263,7 +1263,7 @@
     "id": "genshin:razor",
     "game_id": "genshin",
     "display_name": "Razor",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Razor.png",
+    "image_url": "/genshin/icons/razor.png",
     "attributes": {
       "element": "Electro",
       "weapon": "Claymore",
@@ -1278,7 +1278,7 @@
     "id": "genshin:rosaria",
     "game_id": "genshin",
     "display_name": "Rosaria",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Rosaria.png",
+    "image_url": "/genshin/icons/rosaria.png",
     "attributes": {
       "element": "Cryo",
       "weapon": "Polearm",
@@ -1293,7 +1293,7 @@
     "id": "genshin:sandrone",
     "game_id": "genshin",
     "display_name": "Sandrone",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_MarionetteNew.png",
+    "image_url": "/genshin/icons/sandrone.png",
     "attributes": {
       "element": "Cryo",
       "weapon": "Claymore",
@@ -1308,7 +1308,7 @@
     "id": "genshin:sangonomiya-kokomi",
     "game_id": "genshin",
     "display_name": "Sangonomiya Kokomi",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Kokomi.png",
+    "image_url": "/genshin/icons/sangonomiya-kokomi.png",
     "attributes": {
       "element": "Hydro",
       "weapon": "Catalyst",
@@ -1323,7 +1323,7 @@
     "id": "genshin:sayu",
     "game_id": "genshin",
     "display_name": "Sayu",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Sayu.png",
+    "image_url": "/genshin/icons/sayu.png",
     "attributes": {
       "element": "Anemo",
       "weapon": "Claymore",
@@ -1338,7 +1338,7 @@
     "id": "genshin:sethos",
     "game_id": "genshin",
     "display_name": "Sethos",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Sethos.png",
+    "image_url": "/genshin/icons/sethos.png",
     "attributes": {
       "element": "Electro",
       "weapon": "Bow",
@@ -1353,7 +1353,7 @@
     "id": "genshin:shenhe",
     "game_id": "genshin",
     "display_name": "Shenhe",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Shenhe.png",
+    "image_url": "/genshin/icons/shenhe.png",
     "attributes": {
       "element": "Cryo",
       "weapon": "Polearm",
@@ -1368,7 +1368,7 @@
     "id": "genshin:shikanoin-heizou",
     "game_id": "genshin",
     "display_name": "Shikanoin Heizou",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Heizo.png",
+    "image_url": "/genshin/icons/shikanoin-heizou.png",
     "attributes": {
       "element": "Anemo",
       "weapon": "Catalyst",
@@ -1383,7 +1383,7 @@
     "id": "genshin:sigewinne",
     "game_id": "genshin",
     "display_name": "Sigewinne",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Sigewinne.png",
+    "image_url": "/genshin/icons/sigewinne.png",
     "attributes": {
       "element": "Hydro",
       "weapon": "Bow",
@@ -1398,7 +1398,7 @@
     "id": "genshin:skirk",
     "game_id": "genshin",
     "display_name": "Skirk",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_SkirkNew.png",
+    "image_url": "/genshin/icons/skirk.png",
     "attributes": {
       "element": "Cryo",
       "weapon": "Sword",
@@ -1413,7 +1413,7 @@
     "id": "genshin:sucrose",
     "game_id": "genshin",
     "display_name": "Sucrose",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Sucrose.png",
+    "image_url": "/genshin/icons/sucrose.png",
     "attributes": {
       "element": "Anemo",
       "weapon": "Catalyst",
@@ -1428,7 +1428,7 @@
     "id": "genshin:tartaglia",
     "game_id": "genshin",
     "display_name": "Tartaglia",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Tartaglia.png",
+    "image_url": "/genshin/icons/tartaglia.png",
     "attributes": {
       "element": "Hydro",
       "weapon": "Bow",
@@ -1443,7 +1443,7 @@
     "id": "genshin:thoma",
     "game_id": "genshin",
     "display_name": "Thoma",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Tohma.png",
+    "image_url": "/genshin/icons/thoma.png",
     "attributes": {
       "element": "Pyro",
       "weapon": "Polearm",
@@ -1458,7 +1458,7 @@
     "id": "genshin:tighnari",
     "game_id": "genshin",
     "display_name": "Tighnari",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Tighnari.png",
+    "image_url": "/genshin/icons/tighnari.png",
     "attributes": {
       "element": "Dendro",
       "weapon": "Bow",
@@ -1473,7 +1473,7 @@
     "id": "genshin:traveler-aether-anemo",
     "game_id": "genshin",
     "display_name": "Traveler – Aether (Anemo) ",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_PlayerBoy.png",
+    "image_url": "/genshin/icons/traveler-aether.png",
     "attributes": {
       "element": "Anemo",
       "weapon": "Sword",
@@ -1488,7 +1488,7 @@
     "id": "genshin:traveler-aether-geo",
     "game_id": "genshin",
     "display_name": "Traveler – Aether (Geo) ",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_PlayerBoy.png",
+    "image_url": "/genshin/icons/traveler-aether.png",
     "attributes": {
       "element": "Geo",
       "weapon": "Sword",
@@ -1503,7 +1503,7 @@
     "id": "genshin:traveler-aether-electro",
     "game_id": "genshin",
     "display_name": "Traveler – Aether (Electro) ",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_PlayerBoy.png",
+    "image_url": "/genshin/icons/traveler-aether.png",
     "attributes": {
       "element": "Electro",
       "weapon": "Sword",
@@ -1518,7 +1518,7 @@
     "id": "genshin:traveler-aether-dendro",
     "game_id": "genshin",
     "display_name": "Traveler – Aether (Dendro) ",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_PlayerBoy.png",
+    "image_url": "/genshin/icons/traveler-aether.png",
     "attributes": {
       "element": "Dendro",
       "weapon": "Sword",
@@ -1533,7 +1533,7 @@
     "id": "genshin:traveler-aether-hydro",
     "game_id": "genshin",
     "display_name": "Traveler – Aether (Hydro) ",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_PlayerBoy.png",
+    "image_url": "/genshin/icons/traveler-aether.png",
     "attributes": {
       "element": "Hydro",
       "weapon": "Sword",
@@ -1548,7 +1548,7 @@
     "id": "genshin:traveler-aether-pyro",
     "game_id": "genshin",
     "display_name": "Traveler – Aether (Pyro) ",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_PlayerBoy.png",
+    "image_url": "/genshin/icons/traveler-aether.png",
     "attributes": {
       "element": "Pyro",
       "weapon": "Sword",
@@ -1563,7 +1563,7 @@
     "id": "genshin:traveler-aether-cryo",
     "game_id": "genshin",
     "display_name": "Traveler – Aether (Cryo) ",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_PlayerBoy.png",
+    "image_url": "/genshin/icons/traveler-aether.png",
     "attributes": {
       "element": "Cryo",
       "weapon": "Sword",
@@ -1578,7 +1578,7 @@
     "id": "genshin:traveler-lumine-anemo",
     "game_id": "genshin",
     "display_name": "Traveler – Lumine (Anemo) ",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_PlayerGirl.png",
+    "image_url": "/genshin/icons/traveler-lumine.png",
     "attributes": {
       "element": "Anemo",
       "weapon": "Sword",
@@ -1593,7 +1593,7 @@
     "id": "genshin:traveler-lumine-geo",
     "game_id": "genshin",
     "display_name": "Traveler – Lumine (Geo) ",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_PlayerGirl.png",
+    "image_url": "/genshin/icons/traveler-lumine.png",
     "attributes": {
       "element": "Geo",
       "weapon": "Sword",
@@ -1608,7 +1608,7 @@
     "id": "genshin:traveler-lumine-electro",
     "game_id": "genshin",
     "display_name": "Traveler – Lumine (Electro) ",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_PlayerGirl.png",
+    "image_url": "/genshin/icons/traveler-lumine.png",
     "attributes": {
       "element": "Electro",
       "weapon": "Sword",
@@ -1623,7 +1623,7 @@
     "id": "genshin:traveler-lumine-dendro",
     "game_id": "genshin",
     "display_name": "Traveler – Lumine (Dendro) ",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_PlayerGirl.png",
+    "image_url": "/genshin/icons/traveler-lumine.png",
     "attributes": {
       "element": "Dendro",
       "weapon": "Sword",
@@ -1638,7 +1638,7 @@
     "id": "genshin:traveler-lumine-hydro",
     "game_id": "genshin",
     "display_name": "Traveler – Lumine (Hydro) ",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_PlayerGirl.png",
+    "image_url": "/genshin/icons/traveler-lumine.png",
     "attributes": {
       "element": "Hydro",
       "weapon": "Sword",
@@ -1653,7 +1653,7 @@
     "id": "genshin:traveler-lumine-pyro",
     "game_id": "genshin",
     "display_name": "Traveler – Lumine (Pyro) ",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_PlayerGirl.png",
+    "image_url": "/genshin/icons/traveler-lumine.png",
     "attributes": {
       "element": "Pyro",
       "weapon": "Sword",
@@ -1668,7 +1668,7 @@
     "id": "genshin:traveler-lumine-cryo",
     "game_id": "genshin",
     "display_name": "Traveler – Lumine (Cryo) ",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_PlayerGirl.png",
+    "image_url": "/genshin/icons/traveler-lumine.png",
     "attributes": {
       "element": "Cryo",
       "weapon": "Sword",
@@ -1683,7 +1683,7 @@
     "id": "genshin:varesa",
     "game_id": "genshin",
     "display_name": "Varesa",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Varesa.png",
+    "image_url": "/genshin/icons/varesa.png",
     "attributes": {
       "element": "Electro",
       "weapon": "Catalyst",
@@ -1698,7 +1698,7 @@
     "id": "genshin:varka",
     "game_id": "genshin",
     "display_name": "Varka",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Varka.png",
+    "image_url": "/genshin/icons/varka.png",
     "attributes": {
       "element": "Anemo",
       "weapon": "Claymore",
@@ -1713,7 +1713,7 @@
     "id": "genshin:venti",
     "game_id": "genshin",
     "display_name": "Venti",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Venti.png",
+    "image_url": "/genshin/icons/venti.png",
     "attributes": {
       "element": "Anemo",
       "weapon": "Bow",
@@ -1728,7 +1728,7 @@
     "id": "genshin:wanderer",
     "game_id": "genshin",
     "display_name": "Wanderer",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Wanderer.png",
+    "image_url": "/genshin/icons/wanderer.png",
     "attributes": {
       "element": "Anemo",
       "weapon": "Catalyst",
@@ -1743,7 +1743,7 @@
     "id": "genshin:wriothesley",
     "game_id": "genshin",
     "display_name": "Wriothesley",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Wriothesley.png",
+    "image_url": "/genshin/icons/wriothesley.png",
     "attributes": {
       "element": "Cryo",
       "weapon": "Catalyst",
@@ -1758,7 +1758,7 @@
     "id": "genshin:xiangling",
     "game_id": "genshin",
     "display_name": "Xiangling",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Xiangling.png",
+    "image_url": "/genshin/icons/xiangling.png",
     "attributes": {
       "element": "Pyro",
       "weapon": "Polearm",
@@ -1773,7 +1773,7 @@
     "id": "genshin:xianyun",
     "game_id": "genshin",
     "display_name": "Xianyun",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Liuyun.png",
+    "image_url": "/genshin/icons/xianyun.png",
     "attributes": {
       "element": "Anemo",
       "weapon": "Catalyst",
@@ -1788,7 +1788,7 @@
     "id": "genshin:xiao",
     "game_id": "genshin",
     "display_name": "Xiao",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Xiao.png",
+    "image_url": "/genshin/icons/xiao.png",
     "attributes": {
       "element": "Anemo",
       "weapon": "Polearm",
@@ -1803,7 +1803,7 @@
     "id": "genshin:xilonen",
     "game_id": "genshin",
     "display_name": "Xilonen",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Xilonen.png",
+    "image_url": "/genshin/icons/xilonen.png",
     "attributes": {
       "element": "Geo",
       "weapon": "Sword",
@@ -1818,7 +1818,7 @@
     "id": "genshin:xingqiu",
     "game_id": "genshin",
     "display_name": "Xingqiu",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Xingqiu.png",
+    "image_url": "/genshin/icons/xingqiu.png",
     "attributes": {
       "element": "Hydro",
       "weapon": "Sword",
@@ -1833,7 +1833,7 @@
     "id": "genshin:xinyan",
     "game_id": "genshin",
     "display_name": "Xinyan",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Xinyan.png",
+    "image_url": "/genshin/icons/xinyan.png",
     "attributes": {
       "element": "Pyro",
       "weapon": "Claymore",
@@ -1848,7 +1848,7 @@
     "id": "genshin:yae-miko",
     "game_id": "genshin",
     "display_name": "Yae Miko",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Yae.png",
+    "image_url": "/genshin/icons/yae-miko.png",
     "attributes": {
       "element": "Electro",
       "weapon": "Catalyst",
@@ -1863,7 +1863,7 @@
     "id": "genshin:yanfei",
     "game_id": "genshin",
     "display_name": "Yanfei",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Feiyan.png",
+    "image_url": "/genshin/icons/yanfei.png",
     "attributes": {
       "element": "Pyro",
       "weapon": "Catalyst",
@@ -1878,7 +1878,7 @@
     "id": "genshin:yaoyao",
     "game_id": "genshin",
     "display_name": "Yaoyao",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Yaoyao.png",
+    "image_url": "/genshin/icons/yaoyao.png",
     "attributes": {
       "element": "Dendro",
       "weapon": "Polearm",
@@ -1893,7 +1893,7 @@
     "id": "genshin:yelan",
     "game_id": "genshin",
     "display_name": "Yelan",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Yelan.png",
+    "image_url": "/genshin/icons/yelan.png",
     "attributes": {
       "element": "Hydro",
       "weapon": "Bow",
@@ -1908,7 +1908,7 @@
     "id": "genshin:yoimiya",
     "game_id": "genshin",
     "display_name": "Yoimiya",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Yoimiya.png",
+    "image_url": "/genshin/icons/yoimiya.png",
     "attributes": {
       "element": "Pyro",
       "weapon": "Bow",
@@ -1923,7 +1923,7 @@
     "id": "genshin:yumemizuki-mizuki",
     "game_id": "genshin",
     "display_name": "Yumemizuki Mizuki",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Mizuki.png",
+    "image_url": "/genshin/icons/yumemizuki-mizuki.png",
     "attributes": {
       "element": "Anemo",
       "weapon": "Catalyst",
@@ -1938,7 +1938,7 @@
     "id": "genshin:yun-jin",
     "game_id": "genshin",
     "display_name": "Yun Jin",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Yunjin.png",
+    "image_url": "/genshin/icons/yun-jin.png",
     "attributes": {
       "element": "Geo",
       "weapon": "Polearm",
@@ -1953,7 +1953,7 @@
     "id": "genshin:zhongli",
     "game_id": "genshin",
     "display_name": "Zhongli",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Zhongli.png",
+    "image_url": "/genshin/icons/zhongli.png",
     "attributes": {
       "element": "Geo",
       "weapon": "Polearm",
@@ -1968,7 +1968,7 @@
     "id": "genshin:zibai",
     "game_id": "genshin",
     "display_name": "Zibai",
-    "image_url": "https://enka.network/ui/UI_AvatarIcon_Zibai.png",
+    "image_url": "/genshin/icons/zibai.png",
     "attributes": {
       "element": "Geo",
       "weapon": "Sword",

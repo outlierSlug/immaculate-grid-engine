@@ -6,7 +6,7 @@ export default function LegalPage() {
           <h1 className="text-3xl sm:text-4xl font-bold tracking-tight mb-2">Fan Content &amp; Privacy</h1>
         </div>
 
-        <section>
+        <section className="flex flex-col gap-3">
           <h2 className="text-xl font-bold tracking-tight mb-2">General Disclaimer</h2>
           <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
             GachaGrid is an unofficial, fan-made project created for entertainment purposes. It is not
@@ -15,17 +15,31 @@ export default function LegalPage() {
           </p>
         </section>
 
-        <section>
+        <section className="flex flex-col gap-3">
           <h2 className="text-xl font-bold tracking-tight mb-2">Genshin Impact</h2>
-          <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-            GachaGrid is not affiliated with,
-            endorsed, sponsored, or specifically approved by Cognosphere Pte. Ltd. or HoYoverse. Genshin Impact,
-            including its characters, names, and associated assets, is the property of Cognosphere Pte. Ltd. /
-            HoYoverse. All rights reserved to their respective owners.
-          </p>
+          <>
+            <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+              GachaGrid is not affiliated with,
+              endorsed, sponsored, or specifically approved by Cognosphere Pte. Ltd. or HoYoverse. Genshin Impact,
+              including its characters, names, and associated assets, is the property of Cognosphere Pte. Ltd. /
+              HoYoverse. All rights reserved to their respective owners.
+            </p>
+            <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+              Character icons are sourced from{' '}
+              <a
+                href="https://enka.network"
+                target="_blank"
+                rel="noreferrer"
+                className="text-indigo-600 dark:text-indigo-400 hover:underline"
+              >
+                Enka Network
+              </a>
+              .
+            </p>
+          </>
         </section>
 
-        <section>
+        <section className="flex flex-col gap-3">
           <h2 className="text-xl font-bold tracking-tight mb-2">Brawl Stars</h2>
           <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
             This material is unofficial and is not endorsed by Supercell. For more information see Supercell's{' '}
@@ -36,6 +50,18 @@ export default function LegalPage() {
               className="text-indigo-600 dark:text-indigo-400 hover:underline"
             >
               Fan Content Policy
+            </a>
+            .
+          </p>
+          <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+            Brawler icons are sourced from{' '}
+            <a
+              href="https://github.com/Brawlify/CDN"
+              target="_blank"
+              rel="noreferrer"
+              className="text-indigo-600 dark:text-indigo-400 hover:underline"
+            >
+              Brawlify CDN
             </a>
             .
           </p>

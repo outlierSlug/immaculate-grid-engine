@@ -3,7 +3,7 @@
     "id": "brawlstars:wendy",
     "game_id": "brawlstars",
     "display_name": "Wendy",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000108.png",
+    "image_url": "/brawlstars/icons/wendy.png",
     "attributes": {
       "rarity": "Mythic",
       "brawler_class": "Support",
@@ -17,7 +17,7 @@
     "id": "brawlstars:nori",
     "game_id": "brawlstars",
     "display_name": "Nori",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000107.png",
+    "image_url": "/brawlstars/icons/nori.png",
     "attributes": {
       "rarity": "Legendary",
       "brawler_class": "Assassin",
@@ -28,7 +28,7 @@
     "id": "brawlstars:bolt",
     "game_id": "brawlstars",
     "display_name": "Bolt",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000106.png",
+    "image_url": "/brawlstars/icons/bolt.png",
     "attributes": {
       "rarity": "Epic",
       "brawler_class": "Tank",
@@ -42,7 +42,7 @@
     "id": "brawlstars:starr nova",
     "game_id": "brawlstars",
     "display_name": "Starr Nova",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000105.png",
+    "image_url": "/brawlstars/icons/starr-nova.png",
     "attributes": {
       "rarity": "Mythic",
       "brawler_class": "Assassin",
@@ -53,7 +53,7 @@
     "id": "brawlstars:damian",
     "game_id": "brawlstars",
     "display_name": "Damian",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000104.png",
+    "image_url": "/brawlstars/icons/damian.png",
     "attributes": {
       "rarity": "Mythic",
       "brawler_class": "Tank",
@@ -66,7 +66,7 @@
     "id": "brawlstars:najia",
     "game_id": "brawlstars",
     "display_name": "Najia",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000103.png",
+    "image_url": "/brawlstars/icons/najia.png",
     "attributes": {
       "rarity": "Mythic",
       "brawler_class": "Damage Dealer",
@@ -77,7 +77,7 @@
     "id": "brawlstars:sirius",
     "game_id": "brawlstars",
     "display_name": "Sirius",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000102.png",
+    "image_url": "/brawlstars/icons/sirius.png",
     "attributes": {
       "rarity": "Ultra Legendary",
       "brawler_class": "Controller",
@@ -90,7 +90,7 @@
     "id": "brawlstars:glowy",
     "game_id": "brawlstars",
     "display_name": "Glowy",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000101.png",
+    "image_url": "/brawlstars/icons/glowy.png",
     "attributes": {
       "rarity": "Mythic",
       "brawler_class": "Support",
@@ -103,7 +103,7 @@
     "id": "brawlstars:gigi",
     "game_id": "brawlstars",
     "display_name": "Gigi",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000100.png",
+    "image_url": "/brawlstars/icons/gigi.png",
     "attributes": {
       "rarity": "Mythic",
       "brawler_class": "Assassin",
@@ -116,7 +116,7 @@
     "id": "brawlstars:pierce",
     "game_id": "brawlstars",
     "display_name": "Pierce",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000099.png",
+    "image_url": "/brawlstars/icons/pierce.png",
     "attributes": {
       "rarity": "Legendary",
       "brawler_class": "Marksman",
@@ -127,7 +127,7 @@
     "id": "brawlstars:ziggy",
     "game_id": "brawlstars",
     "display_name": "Ziggy",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000098.png",
+    "image_url": "/brawlstars/icons/ziggy.png",
     "attributes": {
       "rarity": "Mythic",
       "brawler_class": "Controller",
@@ -138,7 +138,7 @@
     "id": "brawlstars:mina",
     "game_id": "brawlstars",
     "display_name": "Mina",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000097.png",
+    "image_url": "/brawlstars/icons/mina.png",
     "attributes": {
       "rarity": "Mythic",
       "brawler_class": "Damage Dealer",
@@ -149,7 +149,7 @@
     "id": "brawlstars:trunk",
     "game_id": "brawlstars",
     "display_name": "Trunk",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000096.png",
+    "image_url": "/brawlstars/icons/trunk.png",
     "attributes": {
       "rarity": "Epic",
       "brawler_class": "Tank",
@@ -162,7 +162,7 @@
     "id": "brawlstars:alli",
     "game_id": "brawlstars",
     "display_name": "Alli",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000095.png",
+    "image_url": "/brawlstars/icons/alli.png",
     "attributes": {
       "rarity": "Mythic",
       "brawler_class": "Assassin",
@@ -176,7 +176,7 @@
     "id": "brawlstars:kaze",
     "game_id": "brawlstars",
     "display_name": "Kaze",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000094.png",
+    "image_url": "/brawlstars/icons/kaze.png",
     "attributes": {
       "rarity": "Ultra Legendary",
       "brawler_class": "Assassin",
@@ -187,7 +187,7 @@
     "id": "brawlstars:jae-yong",
     "game_id": "brawlstars",
     "display_name": "Jae-Yong",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000093.png",
+    "image_url": "/brawlstars/icons/jae-yong.png",
     "attributes": {
       "rarity": "Mythic",
       "brawler_class": "Support",
@@ -200,7 +200,7 @@
     "id": "brawlstars:finx",
     "game_id": "brawlstars",
     "display_name": "Finx",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000092.png",
+    "image_url": "/brawlstars/icons/finx.png",
     "attributes": {
       "rarity": "Mythic",
       "brawler_class": "Controller",
@@ -211,7 +211,7 @@
     "id": "brawlstars:lumi",
     "game_id": "brawlstars",
     "display_name": "Lumi",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000091.png",
+    "image_url": "/brawlstars/icons/lumi.png",
     "attributes": {
       "rarity": "Mythic",
       "brawler_class": "Damage Dealer",
@@ -222,7 +222,7 @@
     "id": "brawlstars:ollie",
     "game_id": "brawlstars",
     "display_name": "Ollie",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000090.png",
+    "image_url": "/brawlstars/icons/ollie.png",
     "attributes": {
       "rarity": "Mythic",
       "brawler_class": "Tank",
@@ -235,7 +235,7 @@
     "id": "brawlstars:meeple",
     "game_id": "brawlstars",
     "display_name": "Meeple",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000089.png",
+    "image_url": "/brawlstars/icons/meeple.png",
     "attributes": {
       "rarity": "Epic",
       "brawler_class": "Controller",
@@ -246,7 +246,7 @@
     "id": "brawlstars:juju",
     "game_id": "brawlstars",
     "display_name": "Juju",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000087.png",
+    "image_url": "/brawlstars/icons/juju.png",
     "attributes": {
       "rarity": "Mythic",
       "brawler_class": "Artillery",
@@ -259,7 +259,7 @@
     "id": "brawlstars:shade",
     "game_id": "brawlstars",
     "display_name": "Shade",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000086.png",
+    "image_url": "/brawlstars/icons/shade.png",
     "attributes": {
       "rarity": "Epic",
       "brawler_class": "Assassin",
@@ -273,7 +273,7 @@
     "id": "brawlstars:kenji",
     "game_id": "brawlstars",
     "display_name": "Kenji",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000085.png",
+    "image_url": "/brawlstars/icons/kenji.png",
     "attributes": {
       "rarity": "Legendary",
       "brawler_class": "Assassin",
@@ -286,7 +286,7 @@
     "id": "brawlstars:moe",
     "game_id": "brawlstars",
     "display_name": "Moe",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000084.png",
+    "image_url": "/brawlstars/icons/moe.png",
     "attributes": {
       "rarity": "Mythic",
       "brawler_class": "Damage Dealer",
@@ -297,7 +297,7 @@
     "id": "brawlstars:clancy",
     "game_id": "brawlstars",
     "display_name": "Clancy",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000083.png",
+    "image_url": "/brawlstars/icons/clancy.png",
     "attributes": {
       "rarity": "Mythic",
       "brawler_class": "Damage Dealer",
@@ -310,7 +310,7 @@
     "id": "brawlstars:berry",
     "game_id": "brawlstars",
     "display_name": "Berry",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000082.png",
+    "image_url": "/brawlstars/icons/berry.png",
     "attributes": {
       "rarity": "Epic",
       "brawler_class": "Support",
@@ -323,7 +323,7 @@
     "id": "brawlstars:lily",
     "game_id": "brawlstars",
     "display_name": "Lily",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000081.png",
+    "image_url": "/brawlstars/icons/lily.png",
     "attributes": {
       "rarity": "Mythic",
       "brawler_class": "Assassin",
@@ -336,7 +336,7 @@
     "id": "brawlstars:draco",
     "game_id": "brawlstars",
     "display_name": "Draco",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000080.png",
+    "image_url": "/brawlstars/icons/draco.png",
     "attributes": {
       "rarity": "Legendary",
       "brawler_class": "Tank",
@@ -349,7 +349,7 @@
     "id": "brawlstars:angelo",
     "game_id": "brawlstars",
     "display_name": "Angelo",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000079.png",
+    "image_url": "/brawlstars/icons/angelo.png",
     "attributes": {
       "rarity": "Epic",
       "brawler_class": "Marksman",
@@ -362,7 +362,7 @@
     "id": "brawlstars:melodie",
     "game_id": "brawlstars",
     "display_name": "Melodie",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000078.png",
+    "image_url": "/brawlstars/icons/melodie.png",
     "attributes": {
       "rarity": "Mythic",
       "brawler_class": "Assassin",
@@ -373,7 +373,7 @@
     "id": "brawlstars:larry & lawrie",
     "game_id": "brawlstars",
     "display_name": "Larry & Lawrie",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000077.png",
+    "image_url": "/brawlstars/icons/larry-lawrie.png",
     "attributes": {
       "rarity": "Epic",
       "brawler_class": "Artillery",
@@ -384,7 +384,7 @@
     "id": "brawlstars:kit",
     "game_id": "brawlstars",
     "display_name": "Kit",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000076.png",
+    "image_url": "/brawlstars/icons/kit.png",
     "attributes": {
       "rarity": "Legendary",
       "brawler_class": "Support",
@@ -397,7 +397,7 @@
     "id": "brawlstars:mico",
     "game_id": "brawlstars",
     "display_name": "Mico",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000075.png",
+    "image_url": "/brawlstars/icons/mico.png",
     "attributes": {
       "rarity": "Mythic",
       "brawler_class": "Assassin",
@@ -408,7 +408,7 @@
     "id": "brawlstars:charlie",
     "game_id": "brawlstars",
     "display_name": "Charlie",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000074.png",
+    "image_url": "/brawlstars/icons/charlie.png",
     "attributes": {
       "rarity": "Mythic",
       "brawler_class": "Controller",
@@ -419,7 +419,7 @@
     "id": "brawlstars:chuck",
     "game_id": "brawlstars",
     "display_name": "Chuck",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000073.png",
+    "image_url": "/brawlstars/icons/chuck.png",
     "attributes": {
       "rarity": "Mythic",
       "brawler_class": "Damage Dealer",
@@ -432,7 +432,7 @@
     "id": "brawlstars:pearl",
     "game_id": "brawlstars",
     "display_name": "Pearl",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000072.png",
+    "image_url": "/brawlstars/icons/pearl.png",
     "attributes": {
       "rarity": "Epic",
       "brawler_class": "Damage Dealer",
@@ -445,7 +445,7 @@
     "id": "brawlstars:doug",
     "game_id": "brawlstars",
     "display_name": "Doug",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000071.png",
+    "image_url": "/brawlstars/icons/doug.png",
     "attributes": {
       "rarity": "Mythic",
       "brawler_class": "Support",
@@ -458,7 +458,7 @@
     "id": "brawlstars:cordelius",
     "game_id": "brawlstars",
     "display_name": "Cordelius",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000070.png",
+    "image_url": "/brawlstars/icons/cordelius.png",
     "attributes": {
       "rarity": "Legendary",
       "brawler_class": "Assassin",
@@ -471,7 +471,7 @@
     "id": "brawlstars:hank",
     "game_id": "brawlstars",
     "display_name": "Hank",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000069.png",
+    "image_url": "/brawlstars/icons/hank.png",
     "attributes": {
       "rarity": "Epic",
       "brawler_class": "Tank",
@@ -484,7 +484,7 @@
     "id": "brawlstars:maisie",
     "game_id": "brawlstars",
     "display_name": "Maisie",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000068.png",
+    "image_url": "/brawlstars/icons/maisie.png",
     "attributes": {
       "rarity": "Epic",
       "brawler_class": "Marksman",
@@ -495,7 +495,7 @@
     "id": "brawlstars:willow",
     "game_id": "brawlstars",
     "display_name": "Willow",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000067.png",
+    "image_url": "/brawlstars/icons/willow.png",
     "attributes": {
       "rarity": "Mythic",
       "brawler_class": "Controller",
@@ -506,7 +506,7 @@
     "id": "brawlstars:r-t",
     "game_id": "brawlstars",
     "display_name": "R-T",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000066.png",
+    "image_url": "/brawlstars/icons/r-t.png",
     "attributes": {
       "rarity": "Mythic",
       "brawler_class": "Damage Dealer",
@@ -519,7 +519,7 @@
     "id": "brawlstars:mandy",
     "game_id": "brawlstars",
     "display_name": "Mandy",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000065.png",
+    "image_url": "/brawlstars/icons/mandy.png",
     "attributes": {
       "rarity": "Epic",
       "brawler_class": "Marksman",
@@ -530,7 +530,7 @@
     "id": "brawlstars:gray",
     "game_id": "brawlstars",
     "display_name": "Gray",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000064.png",
+    "image_url": "/brawlstars/icons/gray.png",
     "attributes": {
       "rarity": "Mythic",
       "brawler_class": "Support",
@@ -541,7 +541,7 @@
     "id": "brawlstars:chester",
     "game_id": "brawlstars",
     "display_name": "Chester",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000063.png",
+    "image_url": "/brawlstars/icons/chester.png",
     "attributes": {
       "rarity": "Legendary",
       "brawler_class": "Damage Dealer",
@@ -554,7 +554,7 @@
     "id": "brawlstars:buster",
     "game_id": "brawlstars",
     "display_name": "Buster",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000062.png",
+    "image_url": "/brawlstars/icons/buster.png",
     "attributes": {
       "rarity": "Mythic",
       "brawler_class": "Tank",
@@ -567,7 +567,7 @@
     "id": "brawlstars:gus",
     "game_id": "brawlstars",
     "display_name": "Gus",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000061.png",
+    "image_url": "/brawlstars/icons/gus.png",
     "attributes": {
       "rarity": "Super Rare",
       "brawler_class": "Support",
@@ -578,7 +578,7 @@
     "id": "brawlstars:sam",
     "game_id": "brawlstars",
     "display_name": "Sam",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000060.png",
+    "image_url": "/brawlstars/icons/sam.png",
     "attributes": {
       "rarity": "Epic",
       "brawler_class": "Assassin",
@@ -591,7 +591,7 @@
     "id": "brawlstars:otis",
     "game_id": "brawlstars",
     "display_name": "Otis",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000059.png",
+    "image_url": "/brawlstars/icons/otis.png",
     "attributes": {
       "rarity": "Mythic",
       "brawler_class": "Controller",
@@ -602,7 +602,7 @@
     "id": "brawlstars:bonnie",
     "game_id": "brawlstars",
     "display_name": "Bonnie",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000058.png",
+    "image_url": "/brawlstars/icons/bonnie.png",
     "attributes": {
       "rarity": "Epic",
       "brawler_class": "Marksman",
@@ -613,7 +613,7 @@
     "id": "brawlstars:janet",
     "game_id": "brawlstars",
     "display_name": "Janet",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000057.png",
+    "image_url": "/brawlstars/icons/janet.png",
     "attributes": {
       "rarity": "Mythic",
       "brawler_class": "Marksman",
@@ -624,7 +624,7 @@
     "id": "brawlstars:eve",
     "game_id": "brawlstars",
     "display_name": "Eve",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000056.png",
+    "image_url": "/brawlstars/icons/eve.png",
     "attributes": {
       "rarity": "Mythic",
       "brawler_class": "Damage Dealer",
@@ -637,7 +637,7 @@
     "id": "brawlstars:fang",
     "game_id": "brawlstars",
     "display_name": "Fang",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000054.png",
+    "image_url": "/brawlstars/icons/fang.png",
     "attributes": {
       "rarity": "Mythic",
       "brawler_class": "Assassin",
@@ -648,7 +648,7 @@
     "id": "brawlstars:lola",
     "game_id": "brawlstars",
     "display_name": "Lola",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000053.png",
+    "image_url": "/brawlstars/icons/lola.png",
     "attributes": {
       "rarity": "Epic",
       "brawler_class": "Damage Dealer",
@@ -659,7 +659,7 @@
     "id": "brawlstars:meg",
     "game_id": "brawlstars",
     "display_name": "Meg",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000052.png",
+    "image_url": "/brawlstars/icons/meg.png",
     "attributes": {
       "rarity": "Legendary",
       "brawler_class": "Tank",
@@ -670,7 +670,7 @@
     "id": "brawlstars:ash",
     "game_id": "brawlstars",
     "display_name": "Ash",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000051.png",
+    "image_url": "/brawlstars/icons/ash.png",
     "attributes": {
       "rarity": "Epic",
       "brawler_class": "Tank",
@@ -683,7 +683,7 @@
     "id": "brawlstars:griff",
     "game_id": "brawlstars",
     "display_name": "Griff",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000050.png",
+    "image_url": "/brawlstars/icons/griff.png",
     "attributes": {
       "rarity": "Epic",
       "brawler_class": "Controller",
@@ -694,7 +694,7 @@
     "id": "brawlstars:buzz",
     "game_id": "brawlstars",
     "display_name": "Buzz",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000049.png",
+    "image_url": "/brawlstars/icons/buzz.png",
     "attributes": {
       "rarity": "Mythic",
       "brawler_class": "Assassin",
@@ -707,7 +707,7 @@
     "id": "brawlstars:grom",
     "game_id": "brawlstars",
     "display_name": "Grom",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000048.png",
+    "image_url": "/brawlstars/icons/grom.png",
     "attributes": {
       "rarity": "Epic",
       "brawler_class": "Artillery",
@@ -718,7 +718,7 @@
     "id": "brawlstars:squeak",
     "game_id": "brawlstars",
     "display_name": "Squeak",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000047.png",
+    "image_url": "/brawlstars/icons/squeak.png",
     "attributes": {
       "rarity": "Mythic",
       "brawler_class": "Controller",
@@ -729,7 +729,7 @@
     "id": "brawlstars:belle",
     "game_id": "brawlstars",
     "display_name": "Belle",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000046.png",
+    "image_url": "/brawlstars/icons/belle.png",
     "attributes": {
       "rarity": "Epic",
       "brawler_class": "Marksman",
@@ -740,7 +740,7 @@
     "id": "brawlstars:stu",
     "game_id": "brawlstars",
     "display_name": "Stu",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000045.png",
+    "image_url": "/brawlstars/icons/stu.png",
     "attributes": {
       "rarity": "Epic",
       "brawler_class": "Assassin",
@@ -751,7 +751,7 @@
     "id": "brawlstars:ruffs",
     "game_id": "brawlstars",
     "display_name": "Ruffs",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000044.png",
+    "image_url": "/brawlstars/icons/ruffs.png",
     "attributes": {
       "rarity": "Mythic",
       "brawler_class": "Support",
@@ -762,7 +762,7 @@
     "id": "brawlstars:edgar",
     "game_id": "brawlstars",
     "display_name": "Edgar",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000043.png",
+    "image_url": "/brawlstars/icons/edgar.png",
     "attributes": {
       "rarity": "Epic",
       "brawler_class": "Assassin",
@@ -775,7 +775,7 @@
     "id": "brawlstars:byron",
     "game_id": "brawlstars",
     "display_name": "Byron",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000042.png",
+    "image_url": "/brawlstars/icons/byron.png",
     "attributes": {
       "rarity": "Mythic",
       "brawler_class": "Support",
@@ -786,7 +786,7 @@
     "id": "brawlstars:lou",
     "game_id": "brawlstars",
     "display_name": "Lou",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000041.png",
+    "image_url": "/brawlstars/icons/lou.png",
     "attributes": {
       "rarity": "Mythic",
       "brawler_class": "Controller",
@@ -797,7 +797,7 @@
     "id": "brawlstars:amber",
     "game_id": "brawlstars",
     "display_name": "Amber",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000040.png",
+    "image_url": "/brawlstars/icons/amber.png",
     "attributes": {
       "rarity": "Legendary",
       "brawler_class": "Controller",
@@ -808,7 +808,7 @@
     "id": "brawlstars:colette",
     "game_id": "brawlstars",
     "display_name": "Colette",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000039.png",
+    "image_url": "/brawlstars/icons/colette.png",
     "attributes": {
       "rarity": "Epic",
       "brawler_class": "Damage Dealer",
@@ -819,7 +819,7 @@
     "id": "brawlstars:surge",
     "game_id": "brawlstars",
     "display_name": "Surge",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000038.png",
+    "image_url": "/brawlstars/icons/surge.png",
     "attributes": {
       "rarity": "Legendary",
       "brawler_class": "Damage Dealer",
@@ -830,7 +830,7 @@
     "id": "brawlstars:sprout",
     "game_id": "brawlstars",
     "display_name": "Sprout",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000037.png",
+    "image_url": "/brawlstars/icons/sprout.png",
     "attributes": {
       "rarity": "Mythic",
       "brawler_class": "Artillery",
@@ -841,7 +841,7 @@
     "id": "brawlstars:nani",
     "game_id": "brawlstars",
     "display_name": "Nani",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000036.png",
+    "image_url": "/brawlstars/icons/nani.png",
     "attributes": {
       "rarity": "Epic",
       "brawler_class": "Marksman",
@@ -852,7 +852,7 @@
     "id": "brawlstars:gale",
     "game_id": "brawlstars",
     "display_name": "Gale",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000035.png",
+    "image_url": "/brawlstars/icons/gale.png",
     "attributes": {
       "rarity": "Epic",
       "brawler_class": "Controller",
@@ -863,7 +863,7 @@
     "id": "brawlstars:jacky",
     "game_id": "brawlstars",
     "display_name": "Jacky",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000034.png",
+    "image_url": "/brawlstars/icons/jacky.png",
     "attributes": {
       "rarity": "Super Rare",
       "brawler_class": "Tank",
@@ -876,7 +876,7 @@
     "id": "brawlstars:max",
     "game_id": "brawlstars",
     "display_name": "Max",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000032.png",
+    "image_url": "/brawlstars/icons/max.png",
     "attributes": {
       "rarity": "Mythic",
       "brawler_class": "Support",
@@ -889,7 +889,7 @@
     "id": "brawlstars:mr. p",
     "game_id": "brawlstars",
     "display_name": "Mr. P",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000031.png",
+    "image_url": "/brawlstars/icons/mr-p.png",
     "attributes": {
       "rarity": "Mythic",
       "brawler_class": "Controller",
@@ -900,7 +900,7 @@
     "id": "brawlstars:emz",
     "game_id": "brawlstars",
     "display_name": "Emz",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000030.png",
+    "image_url": "/brawlstars/icons/emz.png",
     "attributes": {
       "rarity": "Epic",
       "brawler_class": "Controller",
@@ -911,7 +911,7 @@
     "id": "brawlstars:bea",
     "game_id": "brawlstars",
     "display_name": "Bea",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000029.png",
+    "image_url": "/brawlstars/icons/bea.png",
     "attributes": {
       "rarity": "Epic",
       "brawler_class": "Marksman",
@@ -922,7 +922,7 @@
     "id": "brawlstars:sandy",
     "game_id": "brawlstars",
     "display_name": "Sandy",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000028.png",
+    "image_url": "/brawlstars/icons/sandy.png",
     "attributes": {
       "rarity": "Legendary",
       "brawler_class": "Controller",
@@ -933,7 +933,7 @@
     "id": "brawlstars:8-bit",
     "game_id": "brawlstars",
     "display_name": "8-Bit",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000027.png",
+    "image_url": "/brawlstars/icons/8-bit.png",
     "attributes": {
       "rarity": "Super Rare",
       "brawler_class": "Damage Dealer",
@@ -944,7 +944,7 @@
     "id": "brawlstars:bibi",
     "game_id": "brawlstars",
     "display_name": "Bibi",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000026.png",
+    "image_url": "/brawlstars/icons/bibi.png",
     "attributes": {
       "rarity": "Epic",
       "brawler_class": "Tank",
@@ -955,7 +955,7 @@
     "id": "brawlstars:carl",
     "game_id": "brawlstars",
     "display_name": "Carl",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000025.png",
+    "image_url": "/brawlstars/icons/carl.png",
     "attributes": {
       "rarity": "Super Rare",
       "brawler_class": "Damage Dealer",
@@ -966,7 +966,7 @@
     "id": "brawlstars:rosa",
     "game_id": "brawlstars",
     "display_name": "Rosa",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000024.png",
+    "image_url": "/brawlstars/icons/rosa.png",
     "attributes": {
       "rarity": "Rare",
       "brawler_class": "Tank",
@@ -979,7 +979,7 @@
     "id": "brawlstars:leon",
     "game_id": "brawlstars",
     "display_name": "Leon",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000023.png",
+    "image_url": "/brawlstars/icons/leon.png",
     "attributes": {
       "rarity": "Legendary",
       "brawler_class": "Assassin",
@@ -990,7 +990,7 @@
     "id": "brawlstars:tick",
     "game_id": "brawlstars",
     "display_name": "Tick",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000022.png",
+    "image_url": "/brawlstars/icons/tick.png",
     "attributes": {
       "rarity": "Super Rare",
       "brawler_class": "Artillery",
@@ -1001,7 +1001,7 @@
     "id": "brawlstars:gene",
     "game_id": "brawlstars",
     "display_name": "Gene",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000021.png",
+    "image_url": "/brawlstars/icons/gene.png",
     "attributes": {
       "rarity": "Mythic",
       "brawler_class": "Controller",
@@ -1012,7 +1012,7 @@
     "id": "brawlstars:frank",
     "game_id": "brawlstars",
     "display_name": "Frank",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000020.png",
+    "image_url": "/brawlstars/icons/frank.png",
     "attributes": {
       "rarity": "Epic",
       "brawler_class": "Tank",
@@ -1025,7 +1025,7 @@
     "id": "brawlstars:penny",
     "game_id": "brawlstars",
     "display_name": "Penny",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000019.png",
+    "image_url": "/brawlstars/icons/penny.png",
     "attributes": {
       "rarity": "Super Rare",
       "brawler_class": "Artillery",
@@ -1036,7 +1036,7 @@
     "id": "brawlstars:darryl",
     "game_id": "brawlstars",
     "display_name": "Darryl",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000018.png",
+    "image_url": "/brawlstars/icons/darryl.png",
     "attributes": {
       "rarity": "Super Rare",
       "brawler_class": "Tank",
@@ -1049,7 +1049,7 @@
     "id": "brawlstars:tara",
     "game_id": "brawlstars",
     "display_name": "Tara",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000017.png",
+    "image_url": "/brawlstars/icons/tara.png",
     "attributes": {
       "rarity": "Mythic",
       "brawler_class": "Damage Dealer",
@@ -1060,7 +1060,7 @@
     "id": "brawlstars:pam",
     "game_id": "brawlstars",
     "display_name": "Pam",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000016.png",
+    "image_url": "/brawlstars/icons/pam.png",
     "attributes": {
       "rarity": "Epic",
       "brawler_class": "Support",
@@ -1071,7 +1071,7 @@
     "id": "brawlstars:piper",
     "game_id": "brawlstars",
     "display_name": "Piper",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000015.png",
+    "image_url": "/brawlstars/icons/piper.png",
     "attributes": {
       "rarity": "Epic",
       "brawler_class": "Marksman",
@@ -1082,7 +1082,7 @@
     "id": "brawlstars:bo",
     "game_id": "brawlstars",
     "display_name": "Bo",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000014.png",
+    "image_url": "/brawlstars/icons/bo.png",
     "attributes": {
       "rarity": "Epic",
       "brawler_class": "Controller",
@@ -1093,7 +1093,7 @@
     "id": "brawlstars:poco",
     "game_id": "brawlstars",
     "display_name": "Poco",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000013.png",
+    "image_url": "/brawlstars/icons/poco.png",
     "attributes": {
       "rarity": "Rare",
       "brawler_class": "Support",
@@ -1104,7 +1104,7 @@
     "id": "brawlstars:crow",
     "game_id": "brawlstars",
     "display_name": "Crow",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000012.png",
+    "image_url": "/brawlstars/icons/crow.png",
     "attributes": {
       "rarity": "Legendary",
       "brawler_class": "Assassin",
@@ -1115,7 +1115,7 @@
     "id": "brawlstars:mortis",
     "game_id": "brawlstars",
     "display_name": "Mortis",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000011.png",
+    "image_url": "/brawlstars/icons/mortis.png",
     "attributes": {
       "rarity": "Mythic",
       "brawler_class": "Assassin",
@@ -1126,7 +1126,7 @@
     "id": "brawlstars:el primo",
     "game_id": "brawlstars",
     "display_name": "El Primo",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000010.png",
+    "image_url": "/brawlstars/icons/el-primo.png",
     "attributes": {
       "rarity": "Rare",
       "brawler_class": "Tank",
@@ -1139,7 +1139,7 @@
     "id": "brawlstars:dynamike",
     "game_id": "brawlstars",
     "display_name": "Dynamike",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000009.png",
+    "image_url": "/brawlstars/icons/dynamike.png",
     "attributes": {
       "rarity": "Super Rare",
       "brawler_class": "Artillery",
@@ -1150,7 +1150,7 @@
     "id": "brawlstars:nita",
     "game_id": "brawlstars",
     "display_name": "Nita",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000008.png",
+    "image_url": "/brawlstars/icons/nita.png",
     "attributes": {
       "rarity": "Rare",
       "brawler_class": "Damage Dealer",
@@ -1161,7 +1161,7 @@
     "id": "brawlstars:jessie",
     "game_id": "brawlstars",
     "display_name": "Jessie",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000007.png",
+    "image_url": "/brawlstars/icons/jessie.png",
     "attributes": {
       "rarity": "Super Rare",
       "brawler_class": "Controller",
@@ -1172,7 +1172,7 @@
     "id": "brawlstars:barley",
     "game_id": "brawlstars",
     "display_name": "Barley",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000006.png",
+    "image_url": "/brawlstars/icons/barley.png",
     "attributes": {
       "rarity": "Rare",
       "brawler_class": "Artillery",
@@ -1183,7 +1183,7 @@
     "id": "brawlstars:spike",
     "game_id": "brawlstars",
     "display_name": "Spike",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000005.png",
+    "image_url": "/brawlstars/icons/spike.png",
     "attributes": {
       "rarity": "Legendary",
       "brawler_class": "Damage Dealer",
@@ -1194,7 +1194,7 @@
     "id": "brawlstars:rico",
     "game_id": "brawlstars",
     "display_name": "Rico",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000004.png",
+    "image_url": "/brawlstars/icons/rico.png",
     "attributes": {
       "rarity": "Super Rare",
       "brawler_class": "Damage Dealer",
@@ -1205,7 +1205,7 @@
     "id": "brawlstars:brock",
     "game_id": "brawlstars",
     "display_name": "Brock",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000003.png",
+    "image_url": "/brawlstars/icons/brock.png",
     "attributes": {
       "rarity": "Rare",
       "brawler_class": "Marksman",
@@ -1216,7 +1216,7 @@
     "id": "brawlstars:bull",
     "game_id": "brawlstars",
     "display_name": "Bull",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000002.png",
+    "image_url": "/brawlstars/icons/bull.png",
     "attributes": {
       "rarity": "Rare",
       "brawler_class": "Tank",
@@ -1229,7 +1229,7 @@
     "id": "brawlstars:colt",
     "game_id": "brawlstars",
     "display_name": "Colt",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000001.png",
+    "image_url": "/brawlstars/icons/colt.png",
     "attributes": {
       "rarity": "Rare",
       "brawler_class": "Damage Dealer",
@@ -1240,7 +1240,7 @@
     "id": "brawlstars:shelly",
     "game_id": "brawlstars",
     "display_name": "Shelly",
-    "image_url": "https://cdn.brawlify.com/brawlers/borders/16000000.png",
+    "image_url": "/brawlstars/icons/shelly.png",
     "attributes": {
       "rarity": "Common",
       "brawler_class": "Damage Dealer",

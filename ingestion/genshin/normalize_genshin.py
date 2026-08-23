@@ -165,8 +165,14 @@ def slugify(name: str) -> str:
 def get_image_url(name: str) -> str:
     icon = ENKA_ICON_MAP.get(name)
     if icon:
-        return f"https://enka.network/ui/{icon}.png"
-    # Fallback for characters not yet in Enka
+        # Self-hosted (see ingestion/genshin/download_icons.py) - root-relative
+        # so it resolves against whatever origin serves the frontend, same as
+        # any other frontend/public asset. Filename is this character's own
+        # slug (matches the download script), not the Enka icon code, so a
+        # code change on Enka's side never silently breaks an already-
+        # downloaded image.
+        return f"/genshin/icons/{slugify(name)}.png"
+    # Fallback for characters not yet downloaded/self-hosted
     return f"https://genshin-impact.fandom.com/wiki/Special:FilePath/{name.replace(' ', '_')}_Icon.png"
 
 
@@ -179,13 +185,15 @@ def map_character(raw: dict) -> list[dict]:
     if name == "Traveler":
         entities = []
         
-        for gender_id, gender_name, model, icon in TRAVELER_GENDERS:
+        for gender_id, gender_name, model, _icon in TRAVELER_GENDERS:
             for element in TRAVELER_ELEMENTS:
                 entities.append({
                     "id": f"genshin:traveler-{gender_id}-{element.lower()}",
                     "game_id": "genshin",
                     "display_name": f"Traveler – {gender_name} ({element}) ",
-                    "image_url": f"https://enka.network/ui/{icon}.png",
+                    # Self-hosted, same as get_image_url() above - filename
+                    # matches download_icons.py's traveler-{gender_id}.png.
+                    "image_url": f"/genshin/icons/traveler-{gender_id}.png",
                     "attributes": {
                         "element": element,
                         "weapon": "Sword",
