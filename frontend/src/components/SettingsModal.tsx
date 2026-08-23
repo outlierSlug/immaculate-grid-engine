@@ -167,8 +167,7 @@ export default function SettingsModal({ activeGame, onClose }: SettingsModalProp
             <ul className="mt-3 space-y-2 text-sm text-gray-600 dark:text-gray-300 list-disc list-inside marker:text-gray-300 dark:marker:text-gray-600">
               <li>Each puzzle is a 3&times;3 grid. Click a cell, then guess something that satisfies <b>both its row and column conditions</b>.</li>
               <li>A character may only be used <b>once</b> per board.</li>
-              <li>Daily gives you one puzzle a day and <b>9</b> guesses. </li>
-              <li>Unlimited lets you generate as many puzzles as you like, with adjustable rules.</li>
+              <li>The Daily Puzzle resets at <b>midnight Pacific time</b>.</li>
             </ul>
           </details>
         </div>

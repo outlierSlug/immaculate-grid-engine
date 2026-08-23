@@ -264,7 +264,7 @@ public class PuzzleStatsService {
         return attempts.stream()
             .filter(a -> a.getSessionId().equals(sessionId))
             .findFirst()
-            .map(a -> new YourStats(a.getScore(), a.getCellAnswers(), a.getGuessesUsed()))
+            .map(a -> new YourStats(a.getScore(), a.getCellAnswers(), a.getGuessesUsed(), a.isGaveUp()))
             .orElse(null);
     }
 }

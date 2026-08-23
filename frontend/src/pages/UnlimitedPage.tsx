@@ -3,6 +3,7 @@ import { useParams, Navigate } from 'react-router-dom';
 import { fetchGameCategories, generateUnlimitedPuzzle } from '../api/client';
 import type { GameCategoriesResponse, PuzzleResponse } from '../types/puzzle';
 import { GAMES, isValidGameId, type GameId } from '../config/games';
+import { GAME_HELP_NOTES } from '../config/gameHelpNotes';
 import PuzzleGrid from '../components/PuzzleGrid';
 import GuessInput from '../components/GuessInput';
 import Timer from '../components/Timer';
@@ -65,6 +66,7 @@ export default function UnlimitedPage() {
     guessesRemaining,
     isGameOver,
     giveUp,
+    gaveUp,
     feedback,
     startedAt,
     endedAt,
@@ -84,8 +86,10 @@ export default function UnlimitedPage() {
 
   const avatarShapeClass = GAMES[validGame].avatarShapeClass;
 
-  // Content lives here, not in a shared copy file - edit these paragraphs
-  // directly to change what the (i) button next to "Unlimited Mode" shows.
+  // Page-specific rules live inline here (edit these paragraphs directly to
+  // change what the (i) button next to "Unlimited Mode" shows) - anything
+  // game-specific instead comes from GAME_HELP_NOTES (see PuzzlePage's own
+  // help modal, the other renderer of the same per-game notes).
   const helpModal = helpOpen && (
     <HelpModal title="Unlimited Mode" onClose={() => setHelpOpen(false)}>
       <p>
@@ -95,6 +99,7 @@ export default function UnlimitedPage() {
         Unlimited is a practice/sandbox mode. Puzzles are <b>not</b> saved and nothing here ever counts toward your personal stats or
         community pick-rate data.
       </p>
+      {GAME_HELP_NOTES[validGame]?.map((note, i) => <p key={i}>{note}</p>)}
     </HelpModal>
   );
 
@@ -191,7 +196,7 @@ export default function UnlimitedPage() {
         sideColumn={[
           <Timer key="timer" startedAt={startedAt} endedAt={endedAt} visible={settings.showTimer} />,
           <Score key="score" correct={correctCount} total={totalCells} feedback={feedback} />,
-          <GuessCounter key="guesses" remaining={guessesRemaining} iconSrc={UNLIMITED_GUESS_ICON[validGame]} feedback={feedback} />,
+          <GuessCounter key="guesses" remaining={guessesRemaining} iconSrc={UNLIMITED_GUESS_ICON[validGame]} feedback={feedback} gaveUp={gaveUp} />,
         ]}
       />
 

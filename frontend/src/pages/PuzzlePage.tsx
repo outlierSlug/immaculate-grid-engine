@@ -3,6 +3,7 @@ import { useParams, Navigate, Link } from 'react-router-dom';
 import { fetchTodaysPuzzle, fetchArchivedPuzzle } from '../api/client';
 import type { PuzzleResponse } from '../types/puzzle';
 import { GAMES, isValidGameId, type GameId } from '../config/games';
+import { GAME_HELP_NOTES } from '../config/gameHelpNotes';
 import PuzzleGrid from '../components/PuzzleGrid';
 import GuessInput from '../components/GuessInput';
 import Score from '../components/Score';
@@ -122,6 +123,7 @@ export default function PuzzlePage() {
     guessesRemaining,
     isGameOver,
     giveUp,
+    gaveUp,
     feedback,
     puzzleStats,
   } = usePuzzleGuesses(puzzle, {
@@ -251,16 +253,13 @@ export default function PuzzlePage() {
     </div>
   );
 
-  // Content lives here, not in a shared copy file - edit these paragraphs
-  // directly to change what the (i) button next to the heading shows.
+  // Page-specific rules live inline here (edit these paragraphs directly to
+  // change what the (i) button next to the heading shows) - anything
+  // game-specific instead comes from GAME_HELP_NOTES, so a caveat that
+  // applies to a game everywhere (Daily, Archive, Unlimited) only needs
+  // editing once rather than staying in sync across every page.
   const helpModal = helpOpen && (
     <HelpModal title={isArchive ? 'Archived Puzzle' : "Today's Puzzle"} onClose={() => setHelpOpen(false)}>
-      <p>
-        Fill all 9 cells with a character that fits both its row and column category.
-      </p>
-      <p>
-        A character may only be used <b>once</b> per board.
-      </p>
       {isArchive ? (
         <p>
           This puzzle is archived. Your picks still count toward this puzzle's community pick-rate
@@ -268,8 +267,20 @@ export default function PuzzlePage() {
           games-played or average-score stats.
         </p>
       ) : (
+        <>
+          <p>
+            Fill all 9 cells with a character that fits both its row and column category.
+          </p>
+          <p>
+            A character may only be used <b>once</b> per board.
+          </p>
+        </>
+      )}
+      {validGame &&
+        GAME_HELP_NOTES[validGame]?.map((note, i) => <p key={i}>{note}</p>)}
+      {!isArchive && (
         <p>
-          The Daily Puzzle resets at midnight Pacific time. Sign in to revisit past days from the Archive.
+          The Daily Puzzle resets at <b>midnight Pacific time</b>. Sign in to save your progress and revisit past days from the Archive.
         </p>
       )}
     </HelpModal>
@@ -315,7 +326,7 @@ export default function PuzzlePage() {
           sideColumn={[
             <UniquenessScore key="uniq" score={remoteUniquenessScore} percentile={remoteUniquenessPercentile} youFinished />,
             <Score key="score" correct={puzzleStats.you.score} total={totalCells} />,
-            <GuessCounter key="guesses" remaining={Math.max(DAILY_GUESS_LIMIT - puzzleStats.you.guessesUsed, 0)} iconSrc={DAILY_GUESS_ICON[validGame]} />,
+            <GuessCounter key="guesses" remaining={Math.max(DAILY_GUESS_LIMIT - puzzleStats.you.guessesUsed, 0)} iconSrc={DAILY_GUESS_ICON[validGame]} gaveUp={puzzleStats.you.gaveUp} />,
           ]}
         />
 
@@ -360,7 +371,7 @@ export default function PuzzlePage() {
         sideColumn={[
           <UniquenessScore key="uniq" score={liveUniquenessScore} percentile={uniquenessPercentile} youFinished={isGameOver} />,
           <Score key="score" correct={correctCount} total={totalCells} feedback={feedback} />,
-          <GuessCounter key="guesses" remaining={guessesRemaining} iconSrc={DAILY_GUESS_ICON[validGame]} feedback={feedback} />,
+          <GuessCounter key="guesses" remaining={guessesRemaining} iconSrc={DAILY_GUESS_ICON[validGame]} feedback={feedback} gaveUp={gaveUp} />,
         ]}
       />
 

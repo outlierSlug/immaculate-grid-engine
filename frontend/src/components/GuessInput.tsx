@@ -3,6 +3,7 @@ import { fetchItems } from '../api/client';
 import type { GridItem } from '../types/puzzle';
 import LoadingSpinner from './LoadingSpinner';
 import ErrorState from './ErrorState';
+import { formatCategoryLabel } from './CategoryChip';
 
 interface GuessInputProps {
   game: string;
@@ -99,9 +100,9 @@ export default function GuessInput({
 
         <div className="flex items-center gap-2 text-sm font-semibold text-black dark:text-gray-100 mt-1 pr-6">
           <span className="w-2 h-2 rounded-full bg-indigo-500" />
-          <span className="uppercase tracking-wide">{rowLabel}</span>
+          <span className="uppercase tracking-wide">{formatCategoryLabel(rowLabel)}</span>
           <span className="text-black dark:text-gray-100">/</span>
-          <span className="uppercase tracking-wide">{colLabel}</span>
+          <span className="uppercase tracking-wide">{formatCategoryLabel(colLabel)}</span>
         </div>
       </div>
 

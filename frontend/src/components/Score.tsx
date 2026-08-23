@@ -1,4 +1,5 @@
 import { useLayoutEffect, useState } from 'react';
+import ClickTooltip from './ClickTooltip';
 
 interface ScoreProps {
   correct: number;
@@ -21,15 +22,17 @@ export default function Score({ correct, total, feedback }: ScoreProps) {
   }, [feedback]);
 
   return (
-    <div title="Score" className="text-gray-700 dark:text-gray-300">
-      <div
-        key={popKey}
-        className={`font-mono text-lg font-semibold tabular-nums ${
-          popKey > 0 ? 'animate-[pop_700ms_ease-in-out]' : ''
-        }`}
-      >
-        {correct}/{total}
+    <ClickTooltip heading="Score" description={`You scored ${correct} out of a possible ${total} points.`}>
+      <div className="text-gray-700 dark:text-gray-300">
+        <div
+          key={popKey}
+          className={`font-mono text-lg font-semibold tabular-nums ${
+            popKey > 0 ? 'animate-[pop_700ms_ease-in-out]' : ''
+          }`}
+        >
+          {correct}/{total}
+        </div>
       </div>
-    </div>
+    </ClickTooltip>
   );
 }

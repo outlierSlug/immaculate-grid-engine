@@ -6,6 +6,7 @@ import json
 from pathlib import Path
 
 from backfill_brawler_classes import KNOWN_CLASSES
+from backfill_brawler_traits import KNOWN_TRAITS
 from schema import validate_entities
 
 RAW_PATH = Path(__file__).parent / "raw" / "brawlstars_brawlers_raw.json"
@@ -28,6 +29,7 @@ def map_brawler(raw: dict) -> dict | None:
         "attributes": {
             "rarity": raw["rarity"]["name"],
             "brawler_class": brawler_class,
+            "traits": KNOWN_TRAITS.get(raw["name"], []),
         },
     }
 

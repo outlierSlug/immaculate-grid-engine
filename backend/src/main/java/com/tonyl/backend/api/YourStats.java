@@ -12,5 +12,6 @@ import java.util.Map;
 public record YourStats(
     int score,
     Map<String, String> cellAnswers,
-    int guessesUsed
+    int guessesUsed,
+    boolean gaveUp
 ) {}
