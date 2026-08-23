@@ -103,7 +103,8 @@ public class UserStatsService {
         // value, no ambiguity to resolve here.
         return attempts.stream()
             .filter(a -> puzzlesById.containsKey(a.getPuzzleId()) && puzzlesById.get(a.getPuzzleId()).getGameId().equals(gameId))
-            .map(a -> new CompletedDateInfo(puzzlesById.get(a.getPuzzleId()).getPuzzleDate().toString(), a.isPlayedLive()))
+            .map(a -> new CompletedDateInfo(
+                puzzlesById.get(a.getPuzzleId()).getPuzzleDate().toString(), a.isPlayedLive(), a.getScore()))
             .toList();
     }
 

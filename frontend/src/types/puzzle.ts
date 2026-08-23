@@ -154,6 +154,7 @@ export interface UserGameStats {
 export interface CompletedDateInfo {
   date: string;
   playedLive: boolean;
+  score: number;
 }
 
 // Organized by game, not combined - see UserGameStats.

@@ -35,20 +35,70 @@ function pastDates(): string[] {
   return dates;
 }
 
+const WEEK_GROUP_SIZE = 7;
+
+function shortLabel(date: string): string {
+  return new Date(date + 'T00:00:00').toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
+}
+
+function yearOf(date: string): number {
+  return new Date(date + 'T00:00:00').getFullYear();
+}
+
+// Chunks the 30 dates (most-recent-first) into rolling 7-day groups, each
+// labeled by its own date range - a lighter-weight grouping than real
+// calendar weeks (which would need to know what weekday "yesterday" falls
+// on), but it's what actually keeps a 30-row list scannable, which is the
+// only thing this grouping is for.
+//
+// Every group's label carries its year, even when it repeats the same
+// number as its neighbors - deliberately consistent rather than only
+// showing it where it changes. A group whose own two ends straddle a year
+// boundary (e.g. late Dec into early Jan) spells out both years rather
+// than picking just one.
+function groupByWeek(dates: string[]): { label: string; dates: string[] }[] {
+  const groups: { label: string; dates: string[] }[] = [];
+
+  for (let i = 0; i < dates.length; i += WEEK_GROUP_SIZE) {
+    const chunk = dates.slice(i, i + WEEK_GROUP_SIZE);
+    const oldest = chunk[chunk.length - 1];
+    const newest = chunk[0];
+    const oldestYear = yearOf(oldest);
+    const newestYear = yearOf(newest);
+
+    let label: string;
+    if (chunk.length === 1) {
+      // A trailing group of exactly one date - "Jul 24 - Jul 24, 2026"
+      // would be a redundant self-range (oldest and newest are literally
+      // the same date here). Not reachable with today's 30/7 combination
+      // (always leaves a remainder of 2+), but a real case for other
+      // ARCHIVE_WINDOW_DAYS/WEEK_GROUP_SIZE combinations.
+      label = `${shortLabel(oldest)}, ${oldestYear}`;
+    } else if (oldestYear !== newestYear) {
+      label = `${shortLabel(oldest)}, ${oldestYear} – ${shortLabel(newest)}, ${newestYear}`;
+    } else {
+      label = `${shortLabel(oldest)} – ${shortLabel(newest)}, ${oldestYear}`;
+    }
+    groups.push({ label, dates: chunk });
+  }
+  return groups;
+}
+
 export default function ArchiveListPage() {
   const { game } = useParams();
   const { user, isLoading: authLoading } = useAuth();
   const validGame = isValidGameId(game) ? game : undefined;
-  // date -> playedLive, not just a Set - a date completed live (back when
-  // it was still today) reads differently from one completed later via
-  // Archive, since only the live ones count toward career stats/streaks.
-  const [completedDates, setCompletedDates] = useState<Map<string, boolean> | null>(null);
+  // date -> {playedLive, score}, not just a Set - a date completed live
+  // (back when it was still today) reads differently from one completed
+  // later via Archive, since only the live ones count toward career
+  // stats/streaks; score is shown alongside the completed badge.
+  const [completedDates, setCompletedDates] = useState<Map<string, { playedLive: boolean; score: number }> | null>(null);
   const [helpOpen, setHelpOpen] = useState(false);
 
   useEffect(() => {
     if (!user || !validGame) return;
     fetchCompletedDates(validGame)
-      .then((dates) => setCompletedDates(new Map(dates.map((d) => [d.date, d.playedLive]))))
+      .then((dates) => setCompletedDates(new Map(dates.map((d) => [d.date, { playedLive: d.playedLive, score: d.score }]))))
       .catch(() => setCompletedDates(new Map()));
   }, [user, validGame]);
 
@@ -86,37 +136,49 @@ export default function ArchiveListPage() {
         Access Daily Puzzles from up to the last {ARCHIVE_WINDOW_DAYS} days.
       </p>
 
-      <div className="w-full max-w-md flex flex-col gap-1.5">
-        {pastDates().map((date) => {
-          const playedLive = completedDates?.get(date);
-          const completed = playedLive !== undefined;
-          const label = new Date(date + 'T00:00:00').toLocaleDateString(undefined, {
-            weekday: 'short',
-            month: 'short',
-            day: 'numeric',
-          });
-          return (
-            <Link
-              key={date}
-              to={`/${validGame}/archive/${date}`}
-              className="flex items-center justify-between px-4 py-2.5 rounded-lg bg-white dark:bg-gray-900 ring-1 ring-black/5 dark:ring-white/10 hover:ring-indigo-300 dark:hover:ring-indigo-500/50 transition"
-            >
-              <span className="font-medium">{label}</span>
-              {completed && (
-                <span
-                  title={playedLive ? "Completed via Daily Puzzle" : "Completed via Archive"}
-                  className={`text-xs font-semibold uppercase tracking-wide ${
-                    playedLive
-                      ? 'text-indigo-600 dark:text-indigo-400'
-                      : 'text-gray-400 dark:text-gray-600'
-                  }`}
+      <div className="w-full max-w-md flex flex-col gap-5">
+        {groupByWeek(pastDates()).map((group) => (
+          <div key={group.label} className="flex flex-col gap-1.5">
+            <span className="text-xs font-bold uppercase tracking-wider text-gray-400 dark:text-gray-600 px-1">
+              {group.label}
+            </span>
+            {group.dates.map((date) => {
+              const info = completedDates?.get(date);
+              const completed = info !== undefined;
+              const label = new Date(date + 'T00:00:00').toLocaleDateString(undefined, {
+                weekday: 'short',
+                month: 'short',
+                day: 'numeric',
+              });
+              return (
+                <Link
+                  key={date}
+                  to={`/${validGame}/archive/${date}`}
+                  className="flex items-center justify-between px-4 py-2.5 rounded-lg bg-white dark:bg-gray-900 ring-1 ring-black/5 dark:ring-white/10 hover:ring-indigo-300 dark:hover:ring-indigo-500/50 transition"
                 >
-                  Completed
-                </span>
-              )}
-            </Link>
-          );
-        })}
+                  <span className="font-medium">{label}</span>
+                  {completed && (
+                    <div className="flex items-center gap-2">
+                      <span className="text-xs font-bold text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 rounded-full px-2.5 py-0.5 tabular-nums">
+                        {info.score}/9
+                      </span>
+                      <span
+                        title={info.playedLive ? "Completed via Daily Puzzle" : "Completed via Archive"}
+                        className={`text-xs font-semibold uppercase tracking-wide ${
+                          info.playedLive
+                            ? 'text-indigo-600 dark:text-indigo-400'
+                            : 'text-gray-400 dark:text-gray-600'
+                        }`}
+                      >
+                        Completed
+                      </span>
+                    </div>
+                  )}
+                </Link>
+              );
+            })}
+          </div>
+        ))}
       </div>
 
       {helpOpen && (
