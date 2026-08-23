@@ -96,7 +96,7 @@ export default function UnlimitedPage() {
         Generate as many grids as you want with your preferred parameters.
       </p>
       <p>
-        Unlimited is a practice/sandbox mode. Puzzles are <b>not</b> saved and nothing here ever counts toward your personal stats or
+        Unlimited is a practice/sandbox mode. Puzzles are <b>not</b> saved or persisted and nothing here ever counts toward your personal stats or
         community pick-rate data.
       </p>
       {GAME_HELP_NOTES[validGame]?.map((note, i) => <p key={i}>{note}</p>)}
@@ -126,18 +126,31 @@ export default function UnlimitedPage() {
 
   const canGenerate = !!categories && remainingDimensionCount(categories, settings.excludedCategoryIds) >= 2;
 
+  // Unlimited never changes routes (everything happens on /:game/unlimited),
+  // so "back" is just discarding the current puzzle to show the settings
+  // screen again - not a navigation. Deliberately doesn't reset `settings`,
+  // so whatever filters were configured are still there to tweak or
+  // immediately re-generate with. No confirmation guard, matching the
+  // existing "New Puzzle" button's own silent-discard precedent - Unlimited
+  // puzzles are never saved either way (see the help modal above).
+  function handleBackToSettings() {
+    setPuzzle(null);
+    setError(null);
+  }
+
   if (!puzzle) {
     return (
       <main className="flex flex-col items-center gap-5 py-8 motion-safe:animate-[page-in_350ms_ease-out]">
-        <div className="flex items-center gap-2">
-          {/* Invisible mirror of the HelpButton below, same size - keeps the
-              centered flex row's midpoint under the h1 itself instead of
-              shifting left to make room for a right-only icon. */}
-          <div className="invisible" aria-hidden="true">
-            <HelpButton onClick={() => {}} label="" />
+        <div className="flex items-center gap-2 sm:gap-4">
+          {/* Same box widths (w-9 sm:w-36) as the post-generate heading below,
+              even though there's no Back button to show here - matching
+              widths is what keeps the title from visibly shifting when
+              Generate swaps this screen for the puzzle view (and back). */}
+          <div className="w-9 sm:w-36 flex justify-end" aria-hidden="true" />
+          <h1 className="text-2xl font-bold whitespace-nowrap">Unlimited Mode</h1>
+          <div className="w-9 sm:w-36 flex items-center justify-start">
+            <HelpButton onClick={() => setHelpOpen(true)} label="About Unlimited Mode" />
           </div>
-          <h1 className="text-2xl font-bold">Unlimited Mode</h1>
-          <HelpButton onClick={() => setHelpOpen(true)} label="About Unlimited Mode" />
         </div>
 
         <UnlimitedSettingsPanel
@@ -172,12 +185,29 @@ export default function UnlimitedPage() {
 
   return (
     <main className="flex flex-col items-center gap-5 py-8">
-      <div className="flex items-center gap-2">
-        <div className="invisible" aria-hidden="true">
-          <HelpButton onClick={() => {}} label="" />
+      <div className="flex items-center gap-2 sm:gap-4">
+        {/* Equal-width boxes on both sides (same pattern PuzzlePage uses for
+            its own Back to Archive link) so "Unlimited Mode" stays centered
+            regardless of the Back button's and HelpButton's different
+            widths - a plain invisible mirror only works when one side is
+            empty, which stopped being true once Back needed real content. */}
+        <div className="w-9 sm:w-36 flex justify-end">
+          <button
+            type="button"
+            onClick={handleBackToSettings}
+            className="inline-flex items-center gap-1 text-sm font-medium text-gray-500 hover:text-indigo-600 dark:text-gray-400 dark:hover:text-indigo-400 transition cursor-pointer"
+          >
+            <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2} aria-hidden="true">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+            </svg>
+            <span className="sm:hidden">Back</span>
+            <span className="hidden sm:inline">Back to Settings</span>
+          </button>
         </div>
-        <h1 className="text-2xl font-bold">Unlimited Mode</h1>
-        <HelpButton onClick={() => setHelpOpen(true)} label="About Unlimited Mode" />
+        <h1 className="text-2xl font-bold whitespace-nowrap">Unlimited Mode</h1>
+        <div className="w-9 sm:w-36 flex items-center justify-start">
+          <HelpButton onClick={() => setHelpOpen(true)} label="About Unlimited Mode" />
+        </div>
       </div>
 
       {error && <p className="text-red-600 text-sm text-center px-4">{error}</p>}
