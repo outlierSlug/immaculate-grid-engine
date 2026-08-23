@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { fetchPuzzleStats, submitGuess, submitPuzzleAttempt } from '../api/client';
 import { getSessionId } from '../utils/session';
+import { celebrateSolve } from '../utils/confetti';
 import type { PuzzleResponse, GridItem, PuzzleStatsResponse } from '../types/puzzle';
 
 export interface UsePuzzleGuessesOptions {
@@ -241,6 +242,9 @@ export function usePuzzleGuesses(puzzle: PuzzleResponse | null, options: UsePuzz
     if (!isGameOver || endedAt != null) return;
     const ts = Date.now();
     setEndedAt(ts);
+    if (isComplete) {
+      celebrateSolve();
+    }
     if (persistKey) {
       saveProgress(persistKey, {
         filledCells,
