@@ -1,0 +1,18 @@
+{
+  // Deploys the built Vite SPA as a Worker serving static assets, no
+  // custom Worker script - Cloudflare's dashboard now defaults new
+  // projects into this flow rather than classic Pages (Pages still
+  // exists but isn't the steered path anymore). "name" must match the
+  // project/Worker name entered in the dashboard's Git-connect setup.
+  "name": "gachagrid",
+  "compatibility_date": "2026-08-24",
+  "assets": {
+    "directory": "./dist/",
+    // Serves index.html for any request that doesn't match a real built
+    // asset, so react-router's client-side routes (e.g. /genshin/unlimited)
+    // work on a direct load/refresh - the Workers-static-assets equivalent
+    // of Pages' _redirects file (kept alongside this, harmless, unused
+    // under this deploy path).
+    "not_found_handling": "single-page-application"
+  }
+}
