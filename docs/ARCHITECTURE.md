@@ -460,6 +460,49 @@ one frontend-side variable the same way.
   including the real admin, passes. **Must be set explicitly on the real
   production deployment**, not just local dev, or the admin panel is
   unreachable by anyone.
+- `PORT` - no default read here directly; `server.port=${PORT:8080}` falls
+  back to 8080 when unset (always true locally). Render/Railway/Fly all
+  inject this to tell the app which port to actually bind to.
+
+## Deployment (gachagrid.com)
+
+Frontend on Cloudflare Pages, backend on Render, database on Neon - chosen
+because the domain is already on Cloudflare (Pages shares its dashboard,
+no extra CNAME hop) and Render needs no Dockerfile for a plain Maven/Java
+service (`render.yaml` at the repo root is its Blueprint). Every
+environment-specific value above is already env-var-driven with a
+local-dev-safe default, so going live needed almost no config change -
+just `server.port` (above) and `frontend/public/_redirects` so Cloudflare
+Pages serves `index.html` for any client-side route instead of 404ing on
+direct loads. Render's health check reuses the existing
+`HealthController` (`GET /api/health`, root `com.tonyl.backend` package)
+rather than adding a new one.
+
+The OAuth flow is server-side (`SecurityConfig`/`GoogleAuthSuccessHandler`
+- browser hits `{backend}/oauth2/authorization/google`, Google redirects
+to `{backend}/login/oauth2/code/google`, the handler then redirects to
+`{FRONTEND_BASE_URL}/auth/callback#code=...`), so the Google Cloud Console
+redirect URI to register is the **backend's** domain
+(`https://api.gachagrid.com/login/oauth2/code/google`), not the frontend's
+- kept alongside the existing `localhost:8080` one, not replacing it.
+
+Manual setup (not code, done once through each platform's dashboard):
+1. Neon project -> `DB_URL` (with `?sslmode=require`) into Render. No data
+   migration - the DB starts empty, `ddl-auto=update` creates the schema
+   on first boot exactly like local dev already does.
+2. Render web service from `render.yaml`, real values for every env var it
+   declares, custom domain `api.gachagrid.com`.
+3. Cloudflare Pages project (`frontend` root dir, `npm run build`, output
+   `dist`), `VITE_API_BASE_URL=https://api.gachagrid.com/api` as a
+   build-time env var, custom domain `gachagrid.com`.
+4. Cloudflare DNS: CNAME `api` -> Render's given target (Pages' own domain
+   wires up automatically, Render's doesn't).
+5. Google Cloud Console: add the prod redirect URI to the existing OAuth
+   client (see above).
+
+`ddl-auto=update` in production is the same known gotcha this doc already
+flags below - fine to launch with, worth revisiting with a real migration
+tool (Flyway) once schema changes start happening post-launch.
 
 **`pg_hba.conf` gotcha, worth knowing before touching Postgres auth again**:
 the `grid-postgres` container's `pg_hba.conf` originally had explicit

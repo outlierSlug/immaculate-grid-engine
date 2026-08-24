@@ -1,0 +1,34 @@
+# Render Blueprint for the backend - see docs/ARCHITECTURE.md's deployment
+# notes. `sync: false` on every env var means "this key must exist, set its
+# real value in the Render dashboard" - no secret values are ever committed
+# here, this file only declares which keys the app needs.
+#
+# -DskipTests is required, not just faster: this project's tests hit a
+# real Postgres (@DataJpaTest + @AutoConfigureTestDatabase(Replace.NONE),
+# no embedded H2), which isn't available during Render's build step.
+# Testing stays a local/pre-push step, same as before this file existed.
+services:
+  - type: web
+    name: gachagrid-backend
+    runtime: java
+    rootDir: backend
+    buildCommand: ./mvnw clean package -DskipTests
+    startCommand: java -jar target/backend-0.0.1-SNAPSHOT.jar
+    healthCheckPath: /api/health
+    envVars:
+      - key: DB_URL
+        sync: false
+      - key: DB_USERNAME
+        sync: false
+      - key: DB_PASSWORD
+        sync: false
+      - key: CORS_ALLOWED_ORIGINS
+        sync: false
+      - key: GOOGLE_CLIENT_ID
+        sync: false
+      - key: GOOGLE_CLIENT_SECRET
+        sync: false
+      - key: FRONTEND_BASE_URL
+        sync: false
+      - key: ADMIN_EMAILS
+        sync: false
