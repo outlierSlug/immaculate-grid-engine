@@ -6,6 +6,7 @@ import { fetchCompletedDates } from '../api/client';
 import HelpButton from '../components/HelpButton';
 import HelpModal from '../components/HelpModal';
 import LoadingSpinner from '../components/LoadingSpinner';
+import NotFoundPage from './NotFoundPage';
 
 const ARCHIVE_WINDOW_DAYS = 30;
 
@@ -103,7 +104,7 @@ export default function ArchiveListPage() {
   }, [user, validGame]);
 
   if (!validGame) {
-    return <Navigate to="/" replace />;
+    return <NotFoundPage />;
   }
 
   // Wait for AuthProvider's own revalidation before deciding to bounce a

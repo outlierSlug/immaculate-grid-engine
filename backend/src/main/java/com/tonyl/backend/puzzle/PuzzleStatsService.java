@@ -130,6 +130,30 @@ public class PuzzleStatsService {
             uniquenessScores, you);
     }
 
+    // Admin-only, full-reveal variant of getStats: bypasses the "you must
+    // have your own completed attempt to see 0-count answers" gate above -
+    // admin already sees the full answer key through the curation endpoints,
+    // so gating it again here would just add friction, not privacy. No
+    // sessionId/caller, so `you` is always null.
+    public PuzzleStatsResponse getStatsForAdmin(String puzzleId) {
+        Puzzle puzzle = puzzleRepository.findById(puzzleId)
+            .orElseThrow(() -> new NoSuchElementException("No puzzle found with id " + puzzleId));
+
+        List<PuzzleAttempt> attempts = puzzleAttemptRepository.findByPuzzleId(puzzleId);
+        long gamesPlayed = attempts.size();
+        double avgScore = attempts.stream().mapToInt(PuzzleAttempt::getScore).average().orElse(0);
+
+        Map<String, CellStatsResponse> perCell = buildPerCellStats(attempts, gamesPlayed, puzzle.getCellSolutions());
+        Map<Long, Integer> liveScoreByAttemptId = computeLiveUniquenessScores(attempts, perCell);
+
+        Map<String, Long> scoreDistribution = buildScoreDistribution(attempts);
+        Integer mostUniqueScore = liveScoreByAttemptId.values().stream().min(Integer::compareTo).orElse(null);
+        List<Integer> uniquenessScores = List.copyOf(liveScoreByAttemptId.values());
+
+        return new PuzzleStatsResponse(gamesPlayed, avgScore, mostUniqueScore, scoreDistribution, perCell,
+            uniquenessScores, null);
+    }
+
     // A "user:{id}" sessionId is only acceptable from the caller whose own
     // resolved identity it names - unlike the anonymous UUID form, this one
     // is guessable, so without this check anyone could forge another

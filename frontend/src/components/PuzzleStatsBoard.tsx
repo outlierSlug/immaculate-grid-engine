@@ -10,6 +10,13 @@ interface PuzzleStatsBoardProps {
   mode: 'most' | 'least';
   onCellClick: (cellKey: string) => void;
   avatarShapeClass: string;
+  // Admin-only: how many characters are a valid answer for each cell,
+  // shown as a small top-left badge (the top-right corner is already the
+  // pick's own % badge). Undefined for every real player-facing usage of
+  // this board (PuzzleStatsPanel never passes it) - revealing "how many
+  // valid answers exist" would spoil a puzzle a player hasn't necessarily
+  // solved every cell of yet.
+  cellAnswerCounts?: Record<string, number>;
 }
 
 // Deliberately no row/col category chips here (unlike PuzzleGrid) — this
@@ -24,6 +31,7 @@ export default function PuzzleStatsBoard({
   mode,
   onCellClick,
   avatarShapeClass,
+  cellAnswerCounts,
 }: PuzzleStatsBoardProps) {
   return (
     <div
@@ -38,6 +46,7 @@ export default function PuzzleStatsBoard({
           const cellKey = `${rowIndex}-${colIndex}`;
           const answers = perCell[cellKey]?.answers ?? [];
           const answer = answers.length > 0 ? (mode === 'most' ? answers[0] : answers[answers.length - 1]) : null;
+          const answerCount = cellAnswerCounts?.[cellKey];
 
           return (
             <button
@@ -47,6 +56,18 @@ export default function PuzzleStatsBoard({
               disabled={!answer}
               className="relative border border-gray-300 dark:border-gray-700 focus-ring-inset bg-white dark:bg-gray-900 flex flex-col items-center justify-center gap-1.5 hover:bg-gray-50 dark:hover:bg-gray-800 disabled:hover:bg-white dark:disabled:hover:bg-gray-900 cursor-pointer disabled:cursor-default"
             >
+              {answerCount != null && (
+                <span
+                  className={`absolute top-1 left-1 inline-flex items-center justify-center px-1.5 py-0.5 rounded-lg font-semibold text-xs leading-tight ${
+                    answerCount === 0
+                      ? 'bg-red-100 dark:bg-red-900/50 text-red-700 dark:text-red-300'
+                      : 'bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400'
+                  }`}
+                  title="Valid answers for this cell"
+                >
+                  {answerCount}
+                </span>
+              )}
               {answer ? (
                 <>
                   <span className="absolute top-1 right-1 inline-flex items-center justify-center px-1.5 py-0.5 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-100 font-semibold text-xs leading-tight">

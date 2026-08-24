@@ -14,6 +14,7 @@ import ConfirmModal from '../components/ConfirmModal';
 import HelpButton from '../components/HelpButton';
 import HelpModal from '../components/HelpModal';
 import LoadingSpinner from '../components/LoadingSpinner';
+import NotFoundPage from './NotFoundPage';
 import { usePuzzleGuesses } from '../hooks/usePuzzleGuesses';
 import { computeLiveUniquenessScore, computeUniquenessPercentile } from '../utils/uniqueness';
 import { useAuth } from '../auth/AuthProvider';
@@ -191,7 +192,7 @@ export default function PuzzlePage() {
   const remoteCompletion = !!user && !hasLocalProgress && !!puzzleStats?.you;
 
   if (!validGame) {
-    return <Navigate to="/" replace />;
+    return <NotFoundPage />;
   }
 
   if (archiveRedirect) {

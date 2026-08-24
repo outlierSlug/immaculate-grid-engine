@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams, Navigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { fetchGameCategories, generateUnlimitedPuzzle } from '../api/client';
 import type { GameCategoriesResponse, PuzzleResponse } from '../types/puzzle';
 import { GAMES, isValidGameId, type GameId } from '../config/games';
@@ -16,6 +16,7 @@ import UnlimitedSettingsPanel, {
 import ConfirmModal from '../components/ConfirmModal';
 import HelpButton from '../components/HelpButton';
 import HelpModal from '../components/HelpModal';
+import NotFoundPage from './NotFoundPage';
 import { usePuzzleGuesses } from '../hooks/usePuzzleGuesses';
 import acquaintFateIcon from '../assets/genshin/Item_Acquaint_Fate.webp';
 import starrPinIcon from '../assets/brawlstars/starr_pin.png';
@@ -75,14 +76,24 @@ export default function UnlimitedPage() {
 
   useEffect(() => {
     if (!validGame) return;
-    setCategoriesError(false);
+    let cancelled = false;
     fetchGameCategories(validGame)
-      .then(setCategories)
-      .catch(() => setCategoriesError(true));
+      .then((result) => {
+        if (cancelled) return;
+        setCategories(result);
+        setCategoriesError(false);
+      })
+      .catch(() => {
+        if (cancelled) return;
+        setCategoriesError(true);
+      });
+    return () => {
+      cancelled = true;
+    };
   }, [validGame, categoriesRetryCount]);
 
   if (!validGame) {
-    return <Navigate to="/" replace />;
+    return <NotFoundPage />;
   }
 
   const avatarShapeClass = GAMES[validGame].avatarShapeClass;

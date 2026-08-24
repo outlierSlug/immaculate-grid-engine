@@ -70,6 +70,15 @@ versions. Concrete traps hit so far, kept here so they aren't re-derived:
     make sure every code path that writes the entity sets it going forward.
   Rule of thumb: never assume `ddl-auto=update` reconciled a schema
   change — check the running dev Postgres directly before relying on it.
+- **`@DataJpaTest`/`@AutoConfigureTestDatabase` moved packages in Spring
+  Boot 4.1**: no longer `org.springframework.boot.test.autoconfigure.orm.jpa`/
+  `org.springframework.boot.test.autoconfigure.jdbc` — now
+  `org.springframework.boot.data.jpa.test.autoconfigure.*` and
+  `org.springframework.boot.jdbc.test.autoconfigure.*`. This project has no
+  embedded test database, so a `@DataJpaTest` (e.g.
+  `AdminPuzzleServiceRoundTripTest`) needs
+  `@AutoConfigureTestDatabase(replace = Replace.NONE)` to run against the
+  real `grid-postgres` container instead of trying to swap in H2.
 ## Core abstractions (game-agnostic)
  
 - **GridItem** — the guessable thing (character, card, creature). Named
@@ -446,6 +455,11 @@ one frontend-side variable the same way.
 - `JPA_SHOW_SQL` - defaults to off (`spring.jpa.show-sql=false`). Was
   on and logging raw SQL - including emails, once accounts existed - to
   the console; toggle on only for local debugging.
+- `ADMIN_EMAILS` - comma-separated allowlist gating `/api/admin/**` (see
+  Admin puzzle curation & tracking below), no default - empty means nobody,
+  including the real admin, passes. **Must be set explicitly on the real
+  production deployment**, not just local dev, or the admin panel is
+  unreachable by anyone.
 
 **`pg_hba.conf` gotcha, worth knowing before touching Postgres auth again**:
 the `grid-postgres` container's `pg_hba.conf` originally had explicit

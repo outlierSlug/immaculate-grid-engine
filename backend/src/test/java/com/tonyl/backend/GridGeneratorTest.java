@@ -505,10 +505,11 @@ class GridGeneratorTest {
             overallMaxDrought, worstDroughtId != null ? displayNameById.get(worstDroughtId) : "n/a");
 
         // Full per-character breakdown, for follow-up analysis beyond what
-        // fits in a console report.
-        Path outDir = Path.of(
-            "C:\\Users\\tonyl\\AppData\\Local\\Temp\\claude\\c--Users-tonyl-Projects-immaculate-grid-engine\\33411940-3426-4cb8-93fa-58303258d653\\scratchpad"
-        );
+        // fits in a console report. target/ - not a hardcoded machine-
+        // specific path - so this runs on any machine/CI, not just the one
+        // it happened to be written on; already .gitignore'd as a build
+        // output directory.
+        Path outDir = Path.of("target", "fairness-reports");
         Files.createDirectories(outDir);
         Path csvPath = outDir.resolve(gameLabel + "_fairness_report.csv");
         try (PrintWriter writer = new PrintWriter(Files.newBufferedWriter(csvPath))) {

@@ -161,3 +161,93 @@ export interface CompletedDateInfo {
 export interface UserStatsResponse {
   games: UserGameStats[];
 }
+
+// --- Admin puzzle curation + tracking (see /admin, admin-only) ---
+
+// rowCategories/colCategories reuse CategoryOption's {id, label} shape -
+// same as CategorySnapshot on the backend, no separate type needed.
+export interface AdminPuzzleCandidateResponse {
+  rowCategories: CategoryOption[];
+  colCategories: CategoryOption[];
+  cellSolutions: Record<string, string[]>;
+  cellAnswerCounts: Record<string, number>;
+}
+
+export interface AdminPuzzleEvaluationResponse extends AdminPuzzleCandidateResponse {
+  solvable: boolean;
+}
+
+export interface AdminPuzzleResponse {
+  id: string;
+  gameId: string;
+  puzzleDate: string;
+  rowCategories: CategoryOption[];
+  colCategories: CategoryOption[];
+  cellSolutions: Record<string, string[]>;
+  cellAnswerCounts: Record<string, number>;
+}
+
+// Posted verbatim from a candidate/evaluation response - deliberately the
+// same three fields (no cellAnswerCounts/solvable), so the caller can just
+// pick rowCategories/colCategories/cellSolutions off whichever response it
+// already has.
+export interface PinPuzzleRequest {
+  rowCategories: CategoryOption[];
+  colCategories: CategoryOption[];
+  cellSolutions: Record<string, string[]>;
+}
+
+// lastAppearanceDate/daysSinceLastAppearance are both null when appearances
+// is 0 - see the backend CharacterAppearance record's own doc comment.
+export interface CharacterAppearance {
+  itemId: string;
+  displayName: string;
+  appearances: number;
+  appearanceRatePct: number;
+  lastAppearanceDate: string | null;
+  daysSinceLastAppearance: number | null;
+}
+
+export interface CategoryAppearance {
+  dimension: string;
+  categoryId: string;
+  label: string;
+  appearances: number;
+  appearanceRatePct: number;
+  lastAppearanceDate: string | null;
+  daysSinceLastAppearance: number | null;
+}
+
+export interface DimensionPairing {
+  dimensionA: string;
+  dimensionB: string;
+  appearances: number;
+}
+
+export interface TrackingWindow {
+  windowStart: string;
+  windowEnd: string;
+  puzzleCount: number;
+  characters: CharacterAppearance[];
+  categories: CategoryAppearance[];
+  pairings: DimensionPairing[];
+}
+
+export interface AdminTrackingResponse {
+  allTime: TrackingWindow;
+  trailing30Days: TrackingWindow;
+}
+
+// Read-only History tab payload: category shape plus the same full-reveal
+// PuzzleStatsResponse a player who'd completed the puzzle would see. No
+// cellSolutions/cellAnswerCounts of its own (unlike AdminPuzzleResponse) -
+// stats.perCell already carries every valid answer per cell, count 0
+// included, plus who actually picked what.
+export interface AdminPuzzleHistoryResponse {
+  id: string;
+  gameId: string;
+  puzzleDate: string;
+  rowCategories: CategoryOption[];
+  colCategories: CategoryOption[];
+  stats: PuzzleStatsResponse;
+}

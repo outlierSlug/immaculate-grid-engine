@@ -231,7 +231,7 @@ public class PuzzleService {
 
     private List<CategorySnapshot> toSnapshots(List<CategoryDefinition> categories) {
         return categories.stream()
-            .map(c -> new CategorySnapshot(c.getId(), c.getLabel()))
+            .map(CategorySnapshot::from)
             .toList();
     }
 }

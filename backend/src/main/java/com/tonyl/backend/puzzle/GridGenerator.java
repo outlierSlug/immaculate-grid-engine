@@ -373,8 +373,13 @@ public class GridGenerator {
      * can every cell be assigned a distinct entity from its own candidate list?
      * Cheap at this scale (9 cells, a handful of candidates each), so run to
      * completion rather than approximating.
+     * <p>
+     * Package-private (not private) so AdminPuzzleService can call it
+     * directly against a hand-built manual grid — same convention as
+     * PuzzleService.generateDailyPuzzle: no Spring wiring needed to reuse it
+     * from within this package.
      */
-    private boolean hasPerfectMatching(Map<String, List<String>> cellSolutions) {
+    boolean hasPerfectMatching(Map<String, List<String>> cellSolutions) {
         Map<String, String> entityToCell = new HashMap<>();
         for (String cellKey : cellSolutions.keySet()) {
             if (!tryAugment(cellKey, cellSolutions, entityToCell, new HashSet<>())) {

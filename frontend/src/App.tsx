@@ -10,6 +10,7 @@ import ProfilePage from './pages/ProfilePage';
 import AuthCallbackPage from './pages/AuthCallbackPage';
 import LegalPage from './pages/LegalPage';
 import NotFoundPage from './pages/NotFoundPage';
+import AdminPage from './pages/AdminPage';
 
 function Layout() {
   return (
@@ -34,6 +35,10 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/auth/callback" element={<AuthCallbackPage />} />
         <Route path="/profile" element={<ProfilePage />} />
+        {/* No nav link anywhere points here - admin-only, reached by a
+            bookmarked URL. Static path so it out-ranks the /:game param
+            route regardless of declaration order. */}
+        <Route path="/admin" element={<AdminPage />} />
         <Route path="/:game" element={<PuzzlePage />} />
         <Route path="/:game/unlimited" element={<UnlimitedPage />} />
         <Route path="/:game/archive" element={<ArchiveListPage />} />

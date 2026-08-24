@@ -11,6 +11,12 @@ import type {
   UserResponse,
   UserStatsResponse,
   CompletedDateInfo,
+  AdminPuzzleCandidateResponse,
+  AdminPuzzleEvaluationResponse,
+  AdminPuzzleResponse,
+  AdminTrackingResponse,
+  AdminPuzzleHistoryResponse,
+  PinPuzzleRequest,
 } from '../types/puzzle';
 import { getStoredAuth } from '../utils/auth';
 
@@ -221,4 +227,81 @@ export async function fetchCompletedDates(game: string): Promise<CompletedDateIn
     throw new Error(`Failed to fetch completed dates: ${res.status}`);
   }
   return res.json();
+}
+
+// --- Admin puzzle curation + tracking (see /admin, admin-only) ---
+// Every call here can 401 (not signed in) or 403 (signed in, not on the
+// server's ADMIN_EMAILS allowlist) - callers need the status specifically
+// to tell "you're not an admin" (403, show once and stop) apart from a
+// validation rejection (400, e.g. an unsolvable manual grid, shown inline
+// near whatever triggered it) rather than treating every failure the same.
+
+export class AdminApiError extends Error {
+  status: number;
+  constructor(status: number, message: string) {
+    super(message);
+    this.status = status;
+  }
+}
+
+async function adminRequest<T>(path: string, init?: RequestInit): Promise<T> {
+  const res = await fetch(`${BASE_URL}${path}`, {
+    ...init,
+    headers: { ...authHeaders(), ...(init?.headers ?? {}) },
+  });
+  if (!res.ok) {
+    const message = await res.text().catch(() => '');
+    throw new AdminApiError(res.status, message || `Admin request failed: ${res.status}`);
+  }
+  return res.json();
+}
+
+export function fetchAdminCandidates(
+  game: string,
+  date: string,
+  count: number = 5
+): Promise<AdminPuzzleCandidateResponse[]> {
+  return adminRequest(`/admin/puzzle/candidates?game=${game}&date=${date}&count=${count}`);
+}
+
+// Only meaningful once all 3 row + 3 col categories are actually chosen -
+// callers should not invoke this with any slot still empty.
+export function evaluateAdminGrid(
+  game: string,
+  rowCategoryIds: string[],
+  colCategoryIds: string[]
+): Promise<AdminPuzzleEvaluationResponse> {
+  const rows = rowCategoryIds.map(encodeURIComponent);
+  const cols = colCategoryIds.map(encodeURIComponent);
+  return adminRequest(
+    `/admin/puzzle/evaluate?game=${game}&rowCategoryIds=${rows.join(',')}&colCategoryIds=${cols.join(',')}`
+  );
+}
+
+export function pinAdminPuzzle(
+  game: string,
+  date: string,
+  candidate: PinPuzzleRequest
+): Promise<AdminPuzzleResponse> {
+  return adminRequest(`/admin/puzzle/pin?game=${game}&date=${date}`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(candidate),
+  });
+}
+
+export function fetchPinnedAdminPuzzle(game: string, date: string): Promise<AdminPuzzleResponse> {
+  return adminRequest(`/admin/puzzle/pinned?game=${game}&date=${date}`);
+}
+
+export function fetchAdminTracking(game: string): Promise<AdminTrackingResponse> {
+  return adminRequest(`/admin/puzzle/tracking?game=${game}`);
+}
+
+// 404s (via AdminApiError) when no puzzle was ever generated for that date -
+// callers should show that distinctly from a real error, not auto-generate
+// anything (see AdminPuzzleService.getHistory's doc comment on why this
+// never falls back to getOrCreateForDate).
+export function fetchAdminPuzzleHistory(game: string, date: string): Promise<AdminPuzzleHistoryResponse> {
+  return adminRequest(`/admin/puzzle/history?game=${game}&date=${date}`);
 }

@@ -3,7 +3,11 @@ import { useEffect } from 'react';
 interface UniquenessModalProps {
   // Every finished attempt's live uniqueness score, raw and unordered.
   uniquenessScores: number[];
-  yourScore: number;
+  // null for a viewer with no score of their own (e.g. the admin History
+  // tab, browsing a puzzle rather than having played it) - hides the "Your
+  // score"/"Your rank" stats and skips highlighting any bucket, instead of
+  // requiring every caller to invent a fake number.
+  yourScore: number | null;
   mostUniqueScore: number | null;
   // Same value driving UniquenessScore's own tooltip ("better than X% of
   // players today") - null only means "no one else to compare against yet"
@@ -57,7 +61,7 @@ export default function UniquenessModal({ uniquenessScores, yourScore, mostUniqu
     counts[bucketIndex(score)] += 1;
   });
   const maxCount = Math.max(1, ...counts);
-  const yourBucket = bucketIndex(yourScore);
+  const yourBucket = yourScore != null ? bucketIndex(yourScore) : null;
 
   return (
     <div className="fixed inset-0 bg-black/40 flex items-start justify-center pt-16 z-50" onClick={onClose}>
@@ -86,14 +90,18 @@ export default function UniquenessModal({ uniquenessScores, yourScore, mostUniqu
         </div>
 
         <div className="px-6 pt-4 flex justify-center gap-8 text-center">
-          <div>
-            <div className="text-xs text-gray-500 dark:text-gray-400">Your score</div>
-            <div className="text-lg font-bold tabular-nums">{yourScore}</div>
-          </div>
-          <div>
-            <div className="text-xs text-gray-500 dark:text-gray-400">Your rank</div>
-            <div className="text-lg font-bold tabular-nums">{formatRank(percentile)}</div>
-          </div>
+          {yourScore != null && (
+            <>
+              <div>
+                <div className="text-xs text-gray-500 dark:text-gray-400">Your score</div>
+                <div className="text-lg font-bold tabular-nums">{yourScore}</div>
+              </div>
+              <div>
+                <div className="text-xs text-gray-500 dark:text-gray-400">Your rank</div>
+                <div className="text-lg font-bold tabular-nums">{formatRank(percentile)}</div>
+              </div>
+            </>
+          )}
           <div>
             <div className="text-xs text-gray-500 dark:text-gray-400">Most unique today</div>
             <div className="text-lg font-bold tabular-nums">{mostUniqueScore ?? '—'}</div>
@@ -103,7 +111,7 @@ export default function UniquenessModal({ uniquenessScores, yourScore, mostUniqu
         <div className="px-6 pt-5 pb-5">
           <div className="flex items-end justify-between gap-1" style={{ height: CHART_HEIGHT }}>
             {counts.map((count, i) => {
-              const isYours = i === yourBucket;
+              const isYours = yourBucket != null && i === yourBucket;
               const barHeight = count > 0 ? Math.max(3, (count / maxCount) * (CHART_HEIGHT - 18)) : 0;
               return (
                 <div key={i} className="flex-1 flex flex-col items-center justify-end gap-1 h-full">
