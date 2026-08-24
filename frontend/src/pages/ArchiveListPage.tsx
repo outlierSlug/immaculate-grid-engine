@@ -148,7 +148,18 @@ export default function ArchiveListPage() {
       </p>
 
       <div className="w-full max-w-md flex flex-col gap-5">
-        {groupByWeek(pastDates()).map((group) => (
+        {pastDates().length === 0 ? (
+          // Genuinely reachable, not just a theoretical edge case: for the
+          // first ARCHIVE_WINDOW_DAYS after a fresh launch, every date the
+          // rolling window would otherwise offer is before LAUNCH_DATE and
+          // gets filtered out entirely - an unexplained empty div here (the
+          // silent default before this existed) reads as broken rather than
+          // "there's genuinely nothing here yet".
+          <p className="text-sm text-gray-400 dark:text-gray-500 text-center py-8">
+            Nothing archived yet.
+          </p>
+        ) : (
+          groupByWeek(pastDates()).map((group) => (
           <div key={group.label} className="flex flex-col gap-1.5">
             <span className="text-xs font-bold uppercase tracking-wider text-gray-400 dark:text-gray-600 px-1">
               {group.label}
@@ -189,7 +200,8 @@ export default function ArchiveListPage() {
               );
             })}
           </div>
-        ))}
+          ))
+        )}
       </div>
 
       {helpOpen && (
