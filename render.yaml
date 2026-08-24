@@ -33,3 +33,5 @@ services:
         sync: false
       - key: ADMIN_EMAILS
         sync: false
+      - key: ARCHIVE_LAUNCH_DATE
+        sync: false

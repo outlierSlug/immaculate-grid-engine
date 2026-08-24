@@ -7,6 +7,7 @@ import com.tonyl.backend.puzzle.PuzzleClock;
 import com.tonyl.backend.puzzle.PuzzleService;
 import com.tonyl.backend.puzzle.PuzzleStatsService;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -32,10 +33,21 @@ public class PuzzleController {
 
     private final PuzzleService puzzleService;
     private final PuzzleStatsService puzzleStatsService;
+    // null (the local-dev default) means no floor - the full rolling
+    // ARCHIVE_WINDOW_DAYS window applies as before. Set on the real
+    // production deployment to the actual go-live date, so the Archive
+    // can never fabricate a puzzle for a date before the site genuinely
+    // existed - without this, getOrCreateForDate would happily
+    // auto-generate a fully playable "puzzle" for a date nobody could
+    // have actually seen, since GridGenerator's date-derived determinism
+    // doesn't know or care whether that date precedes launch.
+    private final LocalDate launchDate;
 
-    public PuzzleController(PuzzleService puzzleService, PuzzleStatsService puzzleStatsService) {
+    public PuzzleController(PuzzleService puzzleService, PuzzleStatsService puzzleStatsService,
+                             @Value("${app.archive.launch-date:}") String launchDate) {
         this.puzzleService = puzzleService;
         this.puzzleStatsService = puzzleStatsService;
+        this.launchDate = launchDate.isBlank() ? null : LocalDate.parse(launchDate);
     }
 
     @GetMapping("/today")
@@ -66,8 +78,13 @@ public class PuzzleController {
         // puzzle could sail through as if it were already archived. Removed
         // that client-side guess entirely in favor of this single source of
         // truth; the frontend now just redirects on this rejection.
-        if (!parsedDate.isBefore(today) || parsedDate.isBefore(today.minusDays(ARCHIVE_WINDOW_DAYS))) {
-            throw new IllegalArgumentException("date must be a past date within the last " + ARCHIVE_WINDOW_DAYS + " days");
+        LocalDate windowStart = today.minusDays(ARCHIVE_WINDOW_DAYS);
+        if (launchDate != null && launchDate.isAfter(windowStart)) {
+            windowStart = launchDate;
+        }
+        if (!parsedDate.isBefore(today) || parsedDate.isBefore(windowStart)) {
+            throw new IllegalArgumentException("date must be a past date within the last " + ARCHIVE_WINDOW_DAYS + " days"
+                + (launchDate != null ? ", and not before " + launchDate : ""));
         }
         Puzzle puzzle = puzzleService.getOrCreateForDate(game, parsedDate);
         return PuzzleResponse.from(puzzle);

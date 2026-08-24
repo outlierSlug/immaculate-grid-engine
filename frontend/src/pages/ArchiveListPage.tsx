@@ -9,6 +9,13 @@ import LoadingSpinner from '../components/LoadingSpinner';
 import NotFoundPage from './NotFoundPage';
 
 const ARCHIVE_WINDOW_DAYS = 30;
+// The real site's go-live date - mirrors the backend's ARCHIVE_LAUNCH_DATE
+// env var (see PuzzleController.archive), which is the actual enforcement
+// boundary; this just keeps the visible list from offering a date the
+// backend would reject anyway. Self-resolving: once ARCHIVE_WINDOW_DAYS
+// has passed since this date, the rolling window is entirely after it and
+// this constant stops doing anything.
+const LAUNCH_DATE = '2026-08-24';
 
 // Local calendar date, not toISOString() (always UTC) - the two disagree
 // for hours every day, which is exactly the bug that let today's own
@@ -31,7 +38,10 @@ function pastDates(): string[] {
   for (let i = 1; i <= ARCHIVE_WINDOW_DAYS; i++) {
     const d = new Date();
     d.setDate(d.getDate() - i);
-    dates.push(toLocalDateString(d));
+    const dateStr = toLocalDateString(d);
+    if (dateStr >= LAUNCH_DATE) {
+      dates.push(dateStr);
+    }
   }
   return dates;
 }
