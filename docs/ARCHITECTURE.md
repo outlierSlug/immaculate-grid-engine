@@ -468,15 +468,21 @@ one frontend-side variable the same way.
 
 Frontend on Cloudflare Pages, backend on Render, database on Neon - chosen
 because the domain is already on Cloudflare (Pages shares its dashboard,
-no extra CNAME hop) and Render needs no Dockerfile for a plain Maven/Java
-service (`render.yaml` at the repo root is its Blueprint). Every
-environment-specific value above is already env-var-driven with a
-local-dev-safe default, so going live needed almost no config change -
-just `server.port` (above) and `frontend/public/_redirects` so Cloudflare
-Pages serves `index.html` for any client-side route instead of 404ing on
-direct loads. Render's health check reuses the existing
-`HealthController` (`GET /api/health`, root `com.tonyl.backend` package)
-rather than adding a new one.
+no extra CNAME hop). `render.yaml` at the repo root is Render's Blueprint.
+Render has **no native Java/Maven runtime** (confirmed against
+render.com/docs/blueprint-spec after `runtime: java` was rejected as
+invalid on a first attempt - only node/python/elixir/go/ruby/rust are
+native, everything else needs `runtime: docker`), so `backend/Dockerfile`
+is required - a standard multi-stage build (`maven:3.9-eclipse-temurin-21`
+to build the jar, `eclipse-temurin:21-jre` to run it), tests skipped for
+the same "needs a real Postgres this build step doesn't have" reason
+`render.yaml` itself notes. Every environment-specific value above is
+already env-var-driven with a local-dev-safe default, so going live still
+needed almost no *application* config change beyond `server.port` (above)
+and `frontend/public/_redirects` so Cloudflare Pages serves `index.html`
+for any client-side route instead of 404ing on direct loads. Render's
+health check reuses the existing `HealthController` (`GET /api/health`,
+root `com.tonyl.backend` package) rather than adding a new one.
 
 The OAuth flow is server-side (`SecurityConfig`/`GoogleAuthSuccessHandler`
 - browser hits `{backend}/oauth2/authorization/google`, Google redirects

@@ -3,17 +3,18 @@
 # real value in the Render dashboard" - no secret values are ever committed
 # here, this file only declares which keys the app needs.
 #
-# -DskipTests is required, not just faster: this project's tests hit a
-# real Postgres (@DataJpaTest + @AutoConfigureTestDatabase(Replace.NONE),
-# no embedded H2), which isn't available during Render's build step.
-# Testing stays a local/pre-push step, same as before this file existed.
+# runtime: docker, not a native Java runtime - Render has no native
+# Java/Maven runtime at all (verified against render.com/docs/blueprint-spec
+# after `runtime: java` was rejected as invalid on first attempt), so
+# backend/Dockerfile is required. buildCommand/startCommand are ignored
+# for docker services - the Dockerfile's own RUN/ENTRYPOINT govern both,
+# already skipping tests there for the same reason noted in that file.
 services:
   - type: web
     name: gachagrid-backend
-    runtime: java
-    rootDir: backend
-    buildCommand: ./mvnw clean package -DskipTests
-    startCommand: java -jar target/backend-0.0.1-SNAPSHOT.jar
+    runtime: docker
+    dockerfilePath: backend/Dockerfile
+    dockerContext: backend
     healthCheckPath: /api/health
     envVars:
       - key: DB_URL
