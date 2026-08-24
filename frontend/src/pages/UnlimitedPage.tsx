@@ -65,6 +65,7 @@ export default function UnlimitedPage() {
     totalCells,
     guessesRemaining,
     isGameOver,
+    isComplete,
     giveUp,
     gaveUp,
     feedback,
@@ -224,7 +225,7 @@ export default function UnlimitedPage() {
         feedback={feedback}
         avatarShapeClass={avatarShapeClass}
         sideColumn={[
-          <Timer key="timer" startedAt={startedAt} endedAt={endedAt} visible={settings.showTimer} />,
+          <Timer key="timer" startedAt={startedAt} endedAt={endedAt} visible={settings.showTimer} isComplete={isComplete} />,
           <Score key="score" correct={correctCount} total={totalCells} feedback={feedback} />,
           <GuessCounter key="guesses" remaining={guessesRemaining} iconSrc={UNLIMITED_GUESS_ICON[validGame]} feedback={feedback} gaveUp={gaveUp} />,
         ]}

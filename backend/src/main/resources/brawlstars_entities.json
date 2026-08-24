@@ -10,7 +10,9 @@
       "traits": [
         "Hover",
         "Shield"
-      ]
+      ],
+      "tags": [],
+      "release_year": 2026
     }
   },
   {
@@ -21,7 +23,9 @@
     "attributes": {
       "rarity": "Legendary",
       "brawler_class": "Assassin",
-      "traits": []
+      "traits": [],
+      "tags": [],
+      "release_year": 2026
     }
   },
   {
@@ -35,7 +39,9 @@
       "traits": [
         "Movement",
         "Speed"
-      ]
+      ],
+      "tags": [],
+      "release_year": 2026
     }
   },
   {
@@ -46,7 +52,9 @@
     "attributes": {
       "rarity": "Mythic",
       "brawler_class": "Assassin",
-      "traits": []
+      "traits": [],
+      "tags": [],
+      "release_year": 2026
     }
   },
   {
@@ -59,7 +67,9 @@
       "brawler_class": "Tank",
       "traits": [
         "Damage"
-      ]
+      ],
+      "tags": [],
+      "release_year": 2026
     }
   },
   {
@@ -70,7 +80,9 @@
     "attributes": {
       "rarity": "Mythic",
       "brawler_class": "Damage Dealer",
-      "traits": []
+      "traits": [],
+      "tags": [],
+      "release_year": 2026
     }
   },
   {
@@ -83,7 +95,9 @@
       "brawler_class": "Controller",
       "traits": [
         "Time"
-      ]
+      ],
+      "tags": [],
+      "release_year": 2026
     }
   },
   {
@@ -96,7 +110,9 @@
       "brawler_class": "Support",
       "traits": [
         "Super Healing"
-      ]
+      ],
+      "tags": [],
+      "release_year": 2026
     }
   },
   {
@@ -109,7 +125,9 @@
       "brawler_class": "Assassin",
       "traits": [
         "Dodge"
-      ]
+      ],
+      "tags": [],
+      "release_year": 2025
     }
   },
   {
@@ -120,7 +138,9 @@
     "attributes": {
       "rarity": "Legendary",
       "brawler_class": "Marksman",
-      "traits": []
+      "traits": [],
+      "tags": [],
+      "release_year": 2026
     }
   },
   {
@@ -131,7 +151,9 @@
     "attributes": {
       "rarity": "Mythic",
       "brawler_class": "Controller",
-      "traits": []
+      "traits": [],
+      "tags": [],
+      "release_year": 2025
     }
   },
   {
@@ -142,7 +164,9 @@
     "attributes": {
       "rarity": "Mythic",
       "brawler_class": "Damage Dealer",
-      "traits": []
+      "traits": [],
+      "tags": [],
+      "release_year": 2025
     }
   },
   {
@@ -155,7 +179,9 @@
       "brawler_class": "Tank",
       "traits": [
         "Damage"
-      ]
+      ],
+      "tags": [],
+      "release_year": 2025
     }
   },
   {
@@ -169,7 +195,9 @@
       "traits": [
         "Hover",
         "Enraged"
-      ]
+      ],
+      "tags": [],
+      "release_year": 2025
     }
   },
   {
@@ -180,7 +208,11 @@
     "attributes": {
       "rarity": "Ultra Legendary",
       "brawler_class": "Assassin",
-      "traits": []
+      "traits": [],
+      "tags": [
+        "Has Legendary Skin"
+      ],
+      "release_year": 2025
     }
   },
   {
@@ -193,7 +225,9 @@
       "brawler_class": "Support",
       "traits": [
         "Time"
-      ]
+      ],
+      "tags": [],
+      "release_year": 2025
     }
   },
   {
@@ -204,7 +238,11 @@
     "attributes": {
       "rarity": "Mythic",
       "brawler_class": "Controller",
-      "traits": []
+      "traits": [],
+      "tags": [
+        "Has Legendary Skin"
+      ],
+      "release_year": 2025
     }
   },
   {
@@ -215,7 +253,9 @@
     "attributes": {
       "rarity": "Mythic",
       "brawler_class": "Damage Dealer",
-      "traits": []
+      "traits": [],
+      "tags": [],
+      "release_year": 2025
     }
   },
   {
@@ -228,7 +268,9 @@
       "brawler_class": "Tank",
       "traits": [
         "Damage"
-      ]
+      ],
+      "tags": [],
+      "release_year": 2025
     }
   },
   {
@@ -239,7 +281,9 @@
     "attributes": {
       "rarity": "Epic",
       "brawler_class": "Controller",
-      "traits": []
+      "traits": [],
+      "tags": [],
+      "release_year": 2025
     }
   },
   {
@@ -252,7 +296,9 @@
       "brawler_class": "Artillery",
       "traits": [
         "Hover"
-      ]
+      ],
+      "tags": [],
+      "release_year": 2024
     }
   },
   {
@@ -266,7 +312,11 @@
       "traits": [
         "Hover",
         "Proximity"
-      ]
+      ],
+      "tags": [
+        "Has Legendary Skin"
+      ],
+      "release_year": 2024
     }
   },
   {
@@ -279,7 +329,12 @@
       "brawler_class": "Assassin",
       "traits": [
         "Lifesteal"
-      ]
+      ],
+      "tags": [
+        "Has Hypercharge Skin",
+        "Has Legendary Skin"
+      ],
+      "release_year": 2024
     }
   },
   {
@@ -290,7 +345,11 @@
     "attributes": {
       "rarity": "Mythic",
       "brawler_class": "Damage Dealer",
-      "traits": []
+      "traits": [],
+      "tags": [
+        "Has Wallbreak"
+      ],
+      "release_year": 2024
     }
   },
   {
@@ -303,7 +362,9 @@
       "brawler_class": "Damage Dealer",
       "traits": [
         "Power Token"
-      ]
+      ],
+      "tags": [],
+      "release_year": 2024
     }
   },
   {
@@ -316,7 +377,9 @@
       "brawler_class": "Support",
       "traits": [
         "Super Healing"
-      ]
+      ],
+      "tags": [],
+      "release_year": 2024
     }
   },
   {
@@ -329,7 +392,9 @@
       "brawler_class": "Assassin",
       "traits": [
         "Proximity"
-      ]
+      ],
+      "tags": [],
+      "release_year": 2024
     }
   },
   {
@@ -342,7 +407,11 @@
       "brawler_class": "Tank",
       "traits": [
         "Damage"
-      ]
+      ],
+      "tags": [
+        "Has Legendary Skin"
+      ],
+      "release_year": 2024
     }
   },
   {
@@ -355,7 +424,9 @@
       "brawler_class": "Marksman",
       "traits": [
         "Hover"
-      ]
+      ],
+      "tags": [],
+      "release_year": 2024
     }
   },
   {
@@ -366,7 +437,9 @@
     "attributes": {
       "rarity": "Mythic",
       "brawler_class": "Assassin",
-      "traits": []
+      "traits": [],
+      "tags": [],
+      "release_year": 2024
     }
   },
   {
@@ -377,7 +450,11 @@
     "attributes": {
       "rarity": "Epic",
       "brawler_class": "Artillery",
-      "traits": []
+      "traits": [],
+      "tags": [
+        "Has Legendary Skin"
+      ],
+      "release_year": 2024
     }
   },
   {
@@ -390,7 +467,9 @@
       "brawler_class": "Support",
       "traits": [
         "Time"
-      ]
+      ],
+      "tags": [],
+      "release_year": 2024
     }
   },
   {
@@ -401,7 +480,11 @@
     "attributes": {
       "rarity": "Mythic",
       "brawler_class": "Assassin",
-      "traits": []
+      "traits": [],
+      "tags": [
+        "Has Legendary Skin"
+      ],
+      "release_year": 2023
     }
   },
   {
@@ -412,7 +495,12 @@
     "attributes": {
       "rarity": "Mythic",
       "brawler_class": "Controller",
-      "traits": []
+      "traits": [],
+      "tags": [
+        "Former Chromatic",
+        "Has Legendary Skin"
+      ],
+      "release_year": 2023
     }
   },
   {
@@ -425,7 +513,11 @@
       "brawler_class": "Damage Dealer",
       "traits": [
         "Time"
-      ]
+      ],
+      "tags": [
+        "Has Legendary Skin"
+      ],
+      "release_year": 2023
     }
   },
   {
@@ -438,7 +530,12 @@
       "brawler_class": "Damage Dealer",
       "traits": [
         "Increased Damage"
-      ]
+      ],
+      "tags": [
+        "Former Chromatic",
+        "Has Wallbreak"
+      ],
+      "release_year": 2023
     }
   },
   {
@@ -451,7 +548,9 @@
       "brawler_class": "Support",
       "traits": [
         "Super Healing"
-      ]
+      ],
+      "tags": [],
+      "release_year": 2023
     }
   },
   {
@@ -464,7 +563,12 @@
       "brawler_class": "Assassin",
       "traits": [
         "Proximity"
-      ]
+      ],
+      "tags": [
+        "Former Chromatic",
+        "Has Legendary Skin"
+      ],
+      "release_year": 2023
     }
   },
   {
@@ -477,7 +581,9 @@
       "brawler_class": "Tank",
       "traits": [
         "Damage"
-      ]
+      ],
+      "tags": [],
+      "release_year": 2023
     }
   },
   {
@@ -488,7 +594,11 @@
     "attributes": {
       "rarity": "Epic",
       "brawler_class": "Marksman",
-      "traits": []
+      "traits": [],
+      "tags": [
+        "Former Chromatic"
+      ],
+      "release_year": 2023
     }
   },
   {
@@ -499,7 +609,9 @@
     "attributes": {
       "rarity": "Mythic",
       "brawler_class": "Controller",
-      "traits": []
+      "traits": [],
+      "tags": [],
+      "release_year": 2023
     }
   },
   {
@@ -512,7 +624,11 @@
       "brawler_class": "Damage Dealer",
       "traits": [
         "Hover"
-      ]
+      ],
+      "tags": [
+        "Former Chromatic"
+      ],
+      "release_year": 2023
     }
   },
   {
@@ -523,7 +639,11 @@
     "attributes": {
       "rarity": "Epic",
       "brawler_class": "Marksman",
-      "traits": []
+      "traits": [],
+      "tags": [
+        "Former Chromatic"
+      ],
+      "release_year": 2023
     }
   },
   {
@@ -534,7 +654,12 @@
     "attributes": {
       "rarity": "Mythic",
       "brawler_class": "Support",
-      "traits": []
+      "traits": [],
+      "tags": [
+        "Has Wallbreak",
+        "Has Legendary Skin"
+      ],
+      "release_year": 2022
     }
   },
   {
@@ -547,7 +672,11 @@
       "brawler_class": "Damage Dealer",
       "traits": [
         "Random"
-      ]
+      ],
+      "tags": [
+        "Has Wallbreak"
+      ],
+      "release_year": 2022
     }
   },
   {
@@ -560,7 +689,11 @@
       "brawler_class": "Tank",
       "traits": [
         "Proximity"
-      ]
+      ],
+      "tags": [
+        "Former Chromatic"
+      ],
+      "release_year": 2022
     }
   },
   {
@@ -571,7 +704,9 @@
     "attributes": {
       "rarity": "Super Rare",
       "brawler_class": "Support",
-      "traits": []
+      "traits": [],
+      "tags": [],
+      "release_year": 2022
     }
   },
   {
@@ -584,7 +719,11 @@
       "brawler_class": "Assassin",
       "traits": [
         "Time"
-      ]
+      ],
+      "tags": [
+        "Former Chromatic"
+      ],
+      "release_year": 2022
     }
   },
   {
@@ -595,7 +734,11 @@
     "attributes": {
       "rarity": "Mythic",
       "brawler_class": "Controller",
-      "traits": []
+      "traits": [],
+      "tags": [
+        "Former Chromatic"
+      ],
+      "release_year": 2022
     }
   },
   {
@@ -606,7 +749,9 @@
     "attributes": {
       "rarity": "Epic",
       "brawler_class": "Marksman",
-      "traits": []
+      "traits": [],
+      "tags": [],
+      "release_year": 2022
     }
   },
   {
@@ -617,7 +762,11 @@
     "attributes": {
       "rarity": "Mythic",
       "brawler_class": "Marksman",
-      "traits": []
+      "traits": [],
+      "tags": [
+        "Former Chromatic"
+      ],
+      "release_year": 2022
     }
   },
   {
@@ -630,7 +779,11 @@
       "brawler_class": "Damage Dealer",
       "traits": [
         "Hover"
-      ]
+      ],
+      "tags": [
+        "Former Chromatic"
+      ],
+      "release_year": 2022
     }
   },
   {
@@ -641,7 +794,11 @@
     "attributes": {
       "rarity": "Mythic",
       "brawler_class": "Assassin",
-      "traits": []
+      "traits": [],
+      "tags": [
+        "Former Chromatic"
+      ],
+      "release_year": 2022
     }
   },
   {
@@ -652,7 +809,11 @@
     "attributes": {
       "rarity": "Epic",
       "brawler_class": "Damage Dealer",
-      "traits": []
+      "traits": [],
+      "tags": [
+        "Former Chromatic"
+      ],
+      "release_year": 2021
     }
   },
   {
@@ -663,7 +824,11 @@
     "attributes": {
       "rarity": "Legendary",
       "brawler_class": "Tank",
-      "traits": []
+      "traits": [],
+      "tags": [
+        "Has Hypercharge Skin"
+      ],
+      "release_year": 2021
     }
   },
   {
@@ -676,7 +841,11 @@
       "brawler_class": "Tank",
       "traits": [
         "Damage"
-      ]
+      ],
+      "tags": [
+        "Former Chromatic"
+      ],
+      "release_year": 2021
     }
   },
   {
@@ -687,7 +856,11 @@
     "attributes": {
       "rarity": "Epic",
       "brawler_class": "Controller",
-      "traits": []
+      "traits": [],
+      "tags": [
+        "Has Wallbreak"
+      ],
+      "release_year": 2021
     }
   },
   {
@@ -700,7 +873,12 @@
       "brawler_class": "Assassin",
       "traits": [
         "Proximity"
-      ]
+      ],
+      "tags": [
+        "Former Chromatic",
+        "Has Hypercharge Skin"
+      ],
+      "release_year": 2021
     }
   },
   {
@@ -711,7 +889,12 @@
     "attributes": {
       "rarity": "Epic",
       "brawler_class": "Artillery",
-      "traits": []
+      "traits": [],
+      "tags": [
+        "Has Wallbreak",
+        "Has Legendary Skin"
+      ],
+      "release_year": 2021
     }
   },
   {
@@ -722,7 +905,9 @@
     "attributes": {
       "rarity": "Mythic",
       "brawler_class": "Controller",
-      "traits": []
+      "traits": [],
+      "tags": [],
+      "release_year": 2021
     }
   },
   {
@@ -733,7 +918,11 @@
     "attributes": {
       "rarity": "Epic",
       "brawler_class": "Marksman",
-      "traits": []
+      "traits": [],
+      "tags": [
+        "Former Chromatic"
+      ],
+      "release_year": 2021
     }
   },
   {
@@ -744,7 +933,12 @@
     "attributes": {
       "rarity": "Epic",
       "brawler_class": "Assassin",
-      "traits": []
+      "traits": [],
+      "tags": [
+        "Has Wallbreak",
+        "Has Legendary Skin"
+      ],
+      "release_year": 2021
     }
   },
   {
@@ -755,7 +949,12 @@
     "attributes": {
       "rarity": "Mythic",
       "brawler_class": "Support",
-      "traits": []
+      "traits": [],
+      "tags": [
+        "Former Chromatic",
+        "Has Wallbreak"
+      ],
+      "release_year": 2021
     }
   },
   {
@@ -768,7 +967,12 @@
       "brawler_class": "Assassin",
       "traits": [
         "Time"
-      ]
+      ],
+      "tags": [
+        "Has Hypercharge Skin",
+        "Has Legendary Skin"
+      ],
+      "release_year": 2020
     }
   },
   {
@@ -779,7 +983,9 @@
     "attributes": {
       "rarity": "Mythic",
       "brawler_class": "Support",
-      "traits": []
+      "traits": [],
+      "tags": [],
+      "release_year": 2020
     }
   },
   {
@@ -790,7 +996,12 @@
     "attributes": {
       "rarity": "Mythic",
       "brawler_class": "Controller",
-      "traits": []
+      "traits": [],
+      "tags": [
+        "Former Chromatic",
+        "Has Legendary Skin"
+      ],
+      "release_year": 2020
     }
   },
   {
@@ -801,7 +1012,11 @@
     "attributes": {
       "rarity": "Legendary",
       "brawler_class": "Controller",
-      "traits": []
+      "traits": [],
+      "tags": [
+        "Has Legendary Skin"
+      ],
+      "release_year": 2020
     }
   },
   {
@@ -812,7 +1027,11 @@
     "attributes": {
       "rarity": "Epic",
       "brawler_class": "Damage Dealer",
-      "traits": []
+      "traits": [],
+      "tags": [
+        "Former Chromatic"
+      ],
+      "release_year": 2020
     }
   },
   {
@@ -823,7 +1042,12 @@
     "attributes": {
       "rarity": "Legendary",
       "brawler_class": "Damage Dealer",
-      "traits": []
+      "traits": [],
+      "tags": [
+        "Former Chromatic",
+        "Has Legendary Skin"
+      ],
+      "release_year": 2020
     }
   },
   {
@@ -834,7 +1058,9 @@
     "attributes": {
       "rarity": "Mythic",
       "brawler_class": "Artillery",
-      "traits": []
+      "traits": [],
+      "tags": [],
+      "release_year": 2020
     }
   },
   {
@@ -845,7 +1071,11 @@
     "attributes": {
       "rarity": "Epic",
       "brawler_class": "Marksman",
-      "traits": []
+      "traits": [],
+      "tags": [
+        "Has Wallbreak"
+      ],
+      "release_year": 2020
     }
   },
   {
@@ -856,7 +1086,11 @@
     "attributes": {
       "rarity": "Epic",
       "brawler_class": "Controller",
-      "traits": []
+      "traits": [],
+      "tags": [
+        "Former Chromatic"
+      ],
+      "release_year": 2020
     }
   },
   {
@@ -869,7 +1103,9 @@
       "brawler_class": "Tank",
       "traits": [
         "Damage"
-      ]
+      ],
+      "tags": [],
+      "release_year": 2020
     }
   },
   {
@@ -882,7 +1118,9 @@
       "brawler_class": "Support",
       "traits": [
         "Movement"
-      ]
+      ],
+      "tags": [],
+      "release_year": 2019
     }
   },
   {
@@ -893,7 +1131,9 @@
     "attributes": {
       "rarity": "Mythic",
       "brawler_class": "Controller",
-      "traits": []
+      "traits": [],
+      "tags": [],
+      "release_year": 2020
     }
   },
   {
@@ -904,7 +1144,9 @@
     "attributes": {
       "rarity": "Epic",
       "brawler_class": "Controller",
-      "traits": []
+      "traits": [],
+      "tags": [],
+      "release_year": 2019
     }
   },
   {
@@ -915,7 +1157,9 @@
     "attributes": {
       "rarity": "Epic",
       "brawler_class": "Marksman",
-      "traits": []
+      "traits": [],
+      "tags": [],
+      "release_year": 2019
     }
   },
   {
@@ -926,7 +1170,11 @@
     "attributes": {
       "rarity": "Legendary",
       "brawler_class": "Controller",
-      "traits": []
+      "traits": [],
+      "tags": [
+        "Has Legendary Skin"
+      ],
+      "release_year": 2019
     }
   },
   {
@@ -937,7 +1185,11 @@
     "attributes": {
       "rarity": "Super Rare",
       "brawler_class": "Damage Dealer",
-      "traits": []
+      "traits": [],
+      "tags": [
+        "Has Legendary Skin"
+      ],
+      "release_year": 2019
     }
   },
   {
@@ -948,7 +1200,11 @@
     "attributes": {
       "rarity": "Epic",
       "brawler_class": "Tank",
-      "traits": []
+      "traits": [],
+      "tags": [
+        "Has Legendary Skin"
+      ],
+      "release_year": 2019
     }
   },
   {
@@ -959,7 +1215,9 @@
     "attributes": {
       "rarity": "Super Rare",
       "brawler_class": "Damage Dealer",
-      "traits": []
+      "traits": [],
+      "tags": [],
+      "release_year": 2019
     }
   },
   {
@@ -972,7 +1230,9 @@
       "brawler_class": "Tank",
       "traits": [
         "Damage"
-      ]
+      ],
+      "tags": [],
+      "release_year": 2019
     }
   },
   {
@@ -983,7 +1243,11 @@
     "attributes": {
       "rarity": "Legendary",
       "brawler_class": "Assassin",
-      "traits": []
+      "traits": [],
+      "tags": [
+        "Has Legendary Skin"
+      ],
+      "release_year": 2018
     }
   },
   {
@@ -994,7 +1258,12 @@
     "attributes": {
       "rarity": "Super Rare",
       "brawler_class": "Artillery",
-      "traits": []
+      "traits": [],
+      "tags": [
+        "Has Wallbreak",
+        "Has Legendary Skin"
+      ],
+      "release_year": 2019
     }
   },
   {
@@ -1005,7 +1274,11 @@
     "attributes": {
       "rarity": "Mythic",
       "brawler_class": "Controller",
-      "traits": []
+      "traits": [],
+      "tags": [
+        "Has Wallbreak"
+      ],
+      "release_year": 2019
     }
   },
   {
@@ -1018,7 +1291,12 @@
       "brawler_class": "Tank",
       "traits": [
         "Damage"
-      ]
+      ],
+      "tags": [
+        "Has Wallbreak",
+        "Has Legendary Skin"
+      ],
+      "release_year": 2018
     }
   },
   {
@@ -1029,7 +1307,9 @@
     "attributes": {
       "rarity": "Super Rare",
       "brawler_class": "Artillery",
-      "traits": []
+      "traits": [],
+      "tags": [],
+      "release_year": 2018
     }
   },
   {
@@ -1042,7 +1322,9 @@
       "brawler_class": "Tank",
       "traits": [
         "Time"
-      ]
+      ],
+      "tags": [],
+      "release_year": 2017
     }
   },
   {
@@ -1053,7 +1335,11 @@
     "attributes": {
       "rarity": "Mythic",
       "brawler_class": "Damage Dealer",
-      "traits": []
+      "traits": [],
+      "tags": [
+        "Has Wallbreak"
+      ],
+      "release_year": 2017
     }
   },
   {
@@ -1064,7 +1350,11 @@
     "attributes": {
       "rarity": "Epic",
       "brawler_class": "Support",
-      "traits": []
+      "traits": [],
+      "tags": [
+        "Has Legendary Skin"
+      ],
+      "release_year": 2017
     }
   },
   {
@@ -1075,7 +1365,12 @@
     "attributes": {
       "rarity": "Epic",
       "brawler_class": "Marksman",
-      "traits": []
+      "traits": [],
+      "tags": [
+        "Has Wallbreak",
+        "Has Hypercharge Skin"
+      ],
+      "release_year": 2017
     }
   },
   {
@@ -1086,7 +1381,12 @@
     "attributes": {
       "rarity": "Epic",
       "brawler_class": "Controller",
-      "traits": []
+      "traits": [],
+      "tags": [
+        "Has Wallbreak",
+        "Has Legendary Skin"
+      ],
+      "release_year": 2017
     }
   },
   {
@@ -1097,7 +1397,11 @@
     "attributes": {
       "rarity": "Rare",
       "brawler_class": "Support",
-      "traits": []
+      "traits": [],
+      "tags": [
+        "Has Hypercharge Skin"
+      ],
+      "release_year": 2017
     }
   },
   {
@@ -1108,7 +1412,11 @@
     "attributes": {
       "rarity": "Legendary",
       "brawler_class": "Assassin",
-      "traits": []
+      "traits": [],
+      "tags": [
+        "Has Legendary Skin"
+      ],
+      "release_year": 2017
     }
   },
   {
@@ -1119,7 +1427,12 @@
     "attributes": {
       "rarity": "Mythic",
       "brawler_class": "Assassin",
-      "traits": []
+      "traits": [],
+      "tags": [
+        "Has Hypercharge Skin",
+        "Has Legendary Skin"
+      ],
+      "release_year": 2017
     }
   },
   {
@@ -1132,7 +1445,12 @@
       "brawler_class": "Tank",
       "traits": [
         "Damage"
-      ]
+      ],
+      "tags": [
+        "Has Wallbreak",
+        "Has Legendary Skin"
+      ],
+      "release_year": 2017
     }
   },
   {
@@ -1143,7 +1461,12 @@
     "attributes": {
       "rarity": "Super Rare",
       "brawler_class": "Artillery",
-      "traits": []
+      "traits": [],
+      "tags": [
+        "Has Wallbreak",
+        "Has Legendary Skin"
+      ],
+      "release_year": 2017
     }
   },
   {
@@ -1154,7 +1477,12 @@
     "attributes": {
       "rarity": "Rare",
       "brawler_class": "Damage Dealer",
-      "traits": []
+      "traits": [],
+      "tags": [
+        "Has Hypercharge Skin",
+        "Has Legendary Skin"
+      ],
+      "release_year": 2017
     }
   },
   {
@@ -1165,7 +1493,11 @@
     "attributes": {
       "rarity": "Super Rare",
       "brawler_class": "Controller",
-      "traits": []
+      "traits": [],
+      "tags": [
+        "Has Legendary Skin"
+      ],
+      "release_year": 2017
     }
   },
   {
@@ -1176,7 +1508,9 @@
     "attributes": {
       "rarity": "Rare",
       "brawler_class": "Artillery",
-      "traits": []
+      "traits": [],
+      "tags": [],
+      "release_year": 2017
     }
   },
   {
@@ -1187,7 +1521,11 @@
     "attributes": {
       "rarity": "Legendary",
       "brawler_class": "Damage Dealer",
-      "traits": []
+      "traits": [],
+      "tags": [
+        "Has Legendary Skin"
+      ],
+      "release_year": 2017
     }
   },
   {
@@ -1198,7 +1536,11 @@
     "attributes": {
       "rarity": "Super Rare",
       "brawler_class": "Damage Dealer",
-      "traits": []
+      "traits": [],
+      "tags": [
+        "Has Hypercharge Skin"
+      ],
+      "release_year": 2017
     }
   },
   {
@@ -1209,7 +1551,11 @@
     "attributes": {
       "rarity": "Rare",
       "brawler_class": "Marksman",
-      "traits": []
+      "traits": [],
+      "tags": [
+        "Has Wallbreak"
+      ],
+      "release_year": 2017
     }
   },
   {
@@ -1222,7 +1568,11 @@
       "brawler_class": "Tank",
       "traits": [
         "Damage"
-      ]
+      ],
+      "tags": [
+        "Has Wallbreak"
+      ],
+      "release_year": 2017
     }
   },
   {
@@ -1233,7 +1583,12 @@
     "attributes": {
       "rarity": "Rare",
       "brawler_class": "Damage Dealer",
-      "traits": []
+      "traits": [],
+      "tags": [
+        "Has Wallbreak",
+        "Has Legendary Skin"
+      ],
+      "release_year": 2017
     }
   },
   {
@@ -1244,7 +1599,12 @@
     "attributes": {
       "rarity": "Common",
       "brawler_class": "Damage Dealer",
-      "traits": []
+      "traits": [],
+      "tags": [
+        "Has Wallbreak",
+        "Has Legendary Skin"
+      ],
+      "release_year": 2017
     }
   }
 ]

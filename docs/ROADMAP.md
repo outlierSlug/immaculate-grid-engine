@@ -392,11 +392,17 @@ sync here at a glance:
   `PuzzleService.generateDailyPuzzle` now retries with date-derived
   seeds and falls back to an exhaustive search before giving up,
   closing a measured ~42% single-seed failure rate for Brawl Stars.
-- Two Brawl Stars characters (Kaze, Shelly) never appeared as a valid
-  Daily answer at all across a 3650-simulated-day fairness check
-  (`GridGeneratorTest#characterFairnessReport`) — likely too thin on
-  category overlap with the rest of the roster. Worth a look if full
-  roster collectibility matters; not a correctness bug.
+- ~~Two Brawl Stars characters (Kaze, Shelly) never appeared as a valid
+  Daily answer at all across a 3650-simulated-day fairness check~~ —
+  resolved 2026-08-23 as a side effect of the `tags`
+  (Former Chromatic/Has Wallbreak/Has Hypercharge Skin/Has Legendary Skin)
+  and `release_year` categories: re-run of
+  `GridGeneratorTest#characterFairnessReport` shows 106/106 roster coverage
+  (was 104/106), Gini 0.252 (was 0.305), and Daily generation success up
+  from 60.4% to 99.6% — more dimensions gave `GridGenerator` far more
+  row/col pairings to find a valid grid through. Not something that was
+  deliberately targeted; caught by re-running the report after unrelated
+  category work.
 - Animation polish (scoped 2026-08-21, not yet built): distribution-chart
   bars in `ScoreDistributionModal`/`UniquenessModal`/
   `CommunityAnswersModal` snap to full height on open instead of

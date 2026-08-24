@@ -7,6 +7,8 @@ import re
 from pathlib import Path
 
 from backfill_brawler_classes import KNOWN_CLASSES
+from backfill_brawler_release_years import KNOWN_RELEASE_YEARS
+from backfill_brawler_tags import KNOWN_TAGS
 from backfill_brawler_traits import KNOWN_TRAITS
 from schema import validate_entities
 
@@ -51,6 +53,13 @@ def map_brawler(raw: dict) -> dict | None:
             "rarity": raw["rarity"]["name"],
             "brawler_class": brawler_class,
             "traits": KNOWN_TRAITS.get(raw["name"], []),
+            "tags": KNOWN_TAGS.get(raw["name"], []),
+            # No .get() default - unlike traits/tags (legitimately empty for
+            # most brawlers), every released brawler has exactly one release
+            # year, so a missing entry here means the backfill data is
+            # incomplete and should fail loudly rather than silently
+            # producing a null release_year.
+            "release_year": KNOWN_RELEASE_YEARS[raw["name"]],
         },
     }
 

@@ -46,6 +46,9 @@ import traitSpeedIcon from '../assets/brawlstars/traits/icon_trait_speed.png';
 import traitMovementIcon from '../assets/brawlstars/traits/icon_trait_move.png';
 import traitLifestealIcon from '../assets/brawlstars/traits/icon_trait_lifesteal.png';
 
+import hyperchargeSkinIcon from '../assets/brawlstars/hypercharge_skin.png';
+import legendarySkinIcon from '../assets/brawlstars/legendary_skin.png';
+
 interface CategoryChipProps {
   label: string;
 }
@@ -103,6 +106,12 @@ const ICONS: Record<string, string> = {
   Speed: traitSpeedIcon,
   Movement: traitMovementIcon,
   Lifesteal: traitLifestealIcon,
+
+  // Brawler tags (see TAG_DESCRIPTIONS below) - unlike traits/classes above,
+  // these are full-color self-contained badges (own built-in shadow), not
+  // black line art, so they're left out of INVERT_IN_DARK.
+  'Has Hypercharge Skin': hyperchargeSkinIcon,
+  'Has Legendary Skin': legendarySkinIcon,
 };
 
 // Unlike the Genshin icons above (each a self-contained badge with its own
@@ -216,6 +225,18 @@ function releaseVersionDescription(label: string): string | undefined {
     : undefined;
 }
 
+// Same reasoning as release version above, but for Brawl Stars' release_year
+// (a bare 4-digit year, e.g. "2017") - a new value ships every year, so this
+// is a pattern rather than a lookup map. Doesn't collide with anything else
+// hitting this same fallback pill (no other label here is 4 bare digits).
+const RELEASE_YEAR_PATTERN = /^\d{4}$/;
+
+function releaseYearDescription(label: string): string | undefined {
+  return RELEASE_YEAR_PATTERN.test(label)
+    ? `This brawler was released in ${label}.`
+    : undefined;
+}
+
 const TRAIT_LABELS = new Set(Object.keys(TRAIT_DESCRIPTIONS));
 
 // GuessInput's row/col header shows the same category labels as this chip
@@ -242,6 +263,15 @@ const BS_RARITY_DESCRIPTIONS: Record<string, string> = {
   Mythic: "This brawler's rarity is Mythic.",
   Legendary: "This brawler's rarity is Legendary.",
   'Ultra Legendary': "This brawler's rarity is Ultra Legendary.",
+};
+
+// Tags with no bespoke chip treatment of their own (unlike Former Chromatic
+// below) fall through to the plain-text pill, same as model/rarity - this
+// is just their tooltip copy.
+const TAG_DESCRIPTIONS: Record<string, string> = {
+  'Has Wallbreak': "This brawler can break walls.",
+  'Has Hypercharge Skin': 'This brawler has a Hypercharge skin.',
+  'Has Legendary Skin': 'This brawler has a Legendary skin.',
 };
 
 const RARITY_STYLES: Record<string, string> = {
@@ -277,7 +307,8 @@ export default function CategoryChip({ label }: CategoryChipProps) {
       REGION_DESCRIPTIONS[label] ??
       CLASS_DESCRIPTIONS[label] ??
       ELEMENT_DESCRIPTIONS[label] ??
-      WEAPON_DESCRIPTIONS[label];
+      WEAPON_DESCRIPTIONS[label] ??
+      TAG_DESCRIPTIONS[label];
     const iconBox = (
       <div className="relative w-(--grid-chip) h-(--grid-chip) bg-gray-100 dark:bg-transparent flex items-center justify-center">
         {!imageReady && (
@@ -325,6 +356,22 @@ export default function CategoryChip({ label }: CategoryChipProps) {
     );
   }
 
+  if (label === 'Former Chromatic') {
+    return (
+      <ClickTooltip heading={label} description="This brawler's rarity used to be Chromatic.">
+        <div className="inline-flex flex-wrap items-center justify-center gap-x-1 text-center px-2 py-1.5 sm:px-3 sm:py-2 rounded-lg sm:rounded-xl border font-bold text-xs sm:text-sm leading-tight max-w-full border-orange-300 dark:border-orange-700 bg-orange-50 dark:bg-orange-500/15">
+          <span className="text-orange-700 dark:text-orange-400">Former</span>
+          {/* Chromatic's own in-game name treatment: a purple-to-gold text
+              gradient, echoing the rarity it replaced (Epic-through-Legendary)
+              rather than a flat color like every other rarity pill. */}
+          <span className="bg-gradient-to-r from-purple-500 to-amber-400 bg-clip-text text-transparent">
+            Chromatic
+          </span>
+        </div>
+      </ClickTooltip>
+    );
+  }
+
   const rarityClass = RARITY_STYLES[label];
   const pill = (
     <div
@@ -340,7 +387,9 @@ export default function CategoryChip({ label }: CategoryChipProps) {
     MODEL_DESCRIPTIONS[label] ??
     RARITY_DESCRIPTIONS[label] ??
     BS_RARITY_DESCRIPTIONS[label] ??
-    releaseVersionDescription(label);
+    TAG_DESCRIPTIONS[label] ??
+    releaseVersionDescription(label) ??
+    releaseYearDescription(label);
   if (pillDescription) {
     return (
       <ClickTooltip heading={label} description={pillDescription}>

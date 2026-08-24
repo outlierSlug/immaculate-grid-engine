@@ -22,7 +22,9 @@ public class BrawlStarsGameModule implements GameModule {
         List<CategoryDefinition> categories = new ArrayList<>();
         categories.addAll(categoriesForAttribute(entities, "rarity"));
         categories.addAll(categoriesForAttribute(entities, "brawler_class"));
+        categories.addAll(categoriesForAttribute(entities, "release_year"));
         categories.addAll(categoriesForListAttribute(entities, "traits"));
+        categories.addAll(categoriesForListAttribute(entities, "tags"));
         return categories;
     }
 

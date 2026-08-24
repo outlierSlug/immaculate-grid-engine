@@ -22,4 +22,13 @@ export const GAME_HELP_NOTES: Partial<Record<GameId, ReactNode[]>> = {
       region category.
     </>,
   ],
+  brawlstars: [
+    <>
+      Only <b>playable brawlers</b> released up through August 2026 are selectable. Buzz Lightyear is not a selectable character.
+    </>,
+    <>
+      A brawler's <b>Release Year</b> is considered the year in which the brawler was first available to <b>all</b> players, including
+      if that brawler was given away for free that year. Early access offers do <b>not</b> count towards a brawler's release year.
+    </>,
+  ],
 };

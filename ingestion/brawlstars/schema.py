@@ -8,6 +8,8 @@ class BrawlStarsAttributes(BaseModel):
     rarity: str
     brawler_class: str | None  # None for the small number of "Unknown"-class brawlers
     traits: list[str]  # [] for brawlers with no passive trait, hand-curated - see backfill_brawler_traits.py
+    tags: list[str]  # [] for brawlers with no tags - non-mutually-exclusive flags, see backfill_brawler_tags.py
+    release_year: int  # mutually-exclusive scalar, same shape as rarity - see backfill_brawler_release_years.py
 
 
 class Entity(BaseModel):
@@ -39,5 +41,15 @@ def validate_entities(raw_entities: list[dict]) -> list[Entity]:
     thin_traits = {t: n for t, n in trait_counts.items() if n < 3}
     if thin_traits:
         print(f"WARNING: thin trait categories (fewer than 3 entities): {thin_traits}")
+
+    tag_counts = Counter(t for e in validated for t in e.attributes.tags)
+    thin_tags = {t: n for t, n in tag_counts.items() if n < 3}
+    if thin_tags:
+        print(f"WARNING: thin tag categories (fewer than 3 entities): {thin_tags}")
+
+    year_counts = Counter(e.attributes.release_year for e in validated)
+    thin_years = {y: n for y, n in year_counts.items() if n < 3}
+    if thin_years:
+        print(f"WARNING: thin release_year categories (fewer than 3 entities): {thin_years}")
 
     return validated
