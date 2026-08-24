@@ -493,9 +493,23 @@ redirect URI to register is the **backend's** domain
 - kept alongside the existing `localhost:8080` one, not replacing it.
 
 Manual setup (not code, done once through each platform's dashboard):
-1. Neon project -> `DB_URL` (with `?sslmode=require`) into Render. No data
-   migration - the DB starts empty, `ddl-auto=update` creates the schema
-   on first boot exactly like local dev already does.
+1. Neon project -> **direct** (not `-pooler`) host, `jdbc:postgresql://...`
+   with `?sslmode=require`, into Render's `DB_URL`. Direct, not pooler:
+   Neon's pooler is PgBouncer in transaction-pooling mode, which has known
+   friction with JDBC prepared statements (Hibernate relies on them
+   heavily); Hikari already pools connections app-side, so there's no
+   benefit to layering PgBouncer on top for a single long-running Render
+   instance. `ddl-auto=update` creates the *schema* on first boot exactly
+   like local dev already does, but Neon starts with no *data* - the
+   character roster still needs seeding once, since `GameDataLoader`
+   (`@Profile("load-data")`, loads `genshin_entities.json`/
+   `brawlstars_entities.json` from the jar's bundled resources) only runs
+   when that profile is active, not on a normal boot. Run it once against
+   Neon directly: `SPRING_PROFILES_ACTIVE=load-data DB_URL=... DB_USERNAME=...
+   DB_PASSWORD=... java -jar target/backend-0.0.1-SNAPSHOT.jar` from a
+   local machine (kill it once the console logs "Loaded N grid items" for
+   both games) - safe to re-run any time, `GridItemRepository.save` upserts
+   on id rather than duplicating rows.
 2. Render web service from `render.yaml`, real values for every env var it
    declares, custom domain `api.gachagrid.com`.
 3. Cloudflare Pages project (`frontend` root dir, `npm run build`, output

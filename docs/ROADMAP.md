@@ -459,6 +459,22 @@ sync here at a glance:
   alongside the site's dark mode and brand-identity pass; see
   docs/ARCHITECTURE.md. ~~A footer is still a nice-to-have, not yet
   scoped~~ — shipped in Phase 7 (`Footer.tsx`, `/legal`).
+- Real schema migration tool (Flyway) for production, replacing
+  `ddl-auto=update` - flagged during the gachagrid.com deploy (2026-08-24).
+  `update` auto-alters the live Neon schema on every boot with no review
+  step, no rollback, and renames/drops don't work as intended (a rename
+  just adds a new column and orphans the old one). Deliberately not done
+  now - real added complexity (baselining Flyway against an already-live
+  schema, switching `ddl-auto` to `validate`) for a project that's still
+  pre-launch and where schema changes are infrequent. Revisit once either
+  real user data exists that a bad auto-migration could damage, or schema
+  changes get frequent enough that "what changed and when" stops being
+  reconstructable from memory. Note this is scoped to *structural* changes
+  (new tables/columns) only - adding a new attribute/category (like `tags`/
+  `release_year` this session) never touches the schema at all, since
+  `GridItem.attributes` is a flexible JSONB `Map<String, Object>` and
+  `CategoryDefinition`s are derived from whatever keys/values already
+  exist in that data - see `GameModule`/`AttributeEqualsCategory`.
 
 ## Notes
 - Total estimate: ~8-10 weeks part-time, revised upward from the original
