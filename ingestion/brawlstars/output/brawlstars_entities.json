@@ -40,7 +40,9 @@
         "Movement",
         "Speed"
       ],
-      "tags": [],
+      "tags": [
+        "Has Wallbreak"
+      ],
       "release_year": 2026
     }
   },

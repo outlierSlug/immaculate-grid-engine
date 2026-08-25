@@ -282,16 +282,6 @@ const RARITY_STYLES: Record<string, string> = {
   Legendary: 'border-amber-300 dark:border-amber-700 bg-amber-50 dark:bg-amber-500/15 text-amber-700 dark:text-amber-400',
 };
 
-// Chunky (not blended) color bands, echoing the diagonal texture stripe
-// used elsewhere in the app (see CommunityAnswersModal's pick-rate bar) -
-// "pixel" rainbow rather than a smooth gradient blur, closer to Brawl
-// Stars' own chunky Ultra Legendary treatment. Same Tailwind 500-step hues
-// used everywhere else in this file, just cycled instead of picked once.
-const ULTRA_LEGENDARY_BACKGROUND =
-  'repeating-linear-gradient(135deg, #ef4444 0px, #ef4444 6px, #f97316 6px, #f97316 12px, ' +
-  '#eab308 12px, #eab308 18px, #22c55e 18px, #22c55e 24px, #3b82f6 24px, #3b82f6 30px, ' +
-  '#a855f7 30px, #a855f7 36px)';
-
 export default function CategoryChip({ label }: CategoryChipProps) {
   const icon = ICONS[label];
   // On a slow connection these (up to 6 per puzzle, all requested at once)
@@ -346,11 +336,16 @@ export default function CategoryChip({ label }: CategoryChipProps) {
   if (label === 'Ultra Legendary') {
     return (
       <ClickTooltip heading={label} description={BS_RARITY_DESCRIPTIONS[label]}>
-        <div
-          className="inline-flex items-center justify-center text-center px-2 py-1.5 sm:px-3 sm:py-2 rounded-lg sm:rounded-xl text-white font-bold text-xs sm:text-sm leading-tight max-w-full [text-shadow:0_1px_2px_rgba(0,0,0,0.6)]"
-          style={{ backgroundImage: ULTRA_LEGENDARY_BACKGROUND }}
-        >
-          {label}
+        <div className="inline-flex items-center justify-center text-center px-2 py-1.5 sm:px-3 sm:py-2 rounded-lg sm:rounded-xl border font-bold text-xs sm:text-sm leading-tight max-w-full border-lime-300 dark:border-lime-700 bg-lime-50 dark:bg-lime-500/15">
+          {/* Same "gradient text, plain pill" treatment as Former Chromatic
+              below rather than a distinct look of its own - a rainbow-ish
+              3-stop gradient (not Former Chromatic's purple-to-gold) since
+              this is a different rarity, not the one Chromatic became. Lime
+              border/tint (not a neutral gray) so the pill itself still
+              reads as distinct from an ordinary rarity, not just the text. */}
+          <span className="bg-gradient-to-r from-pink-500 via-amber-400 to-indigo-500 bg-clip-text text-transparent">
+            {label}
+          </span>
         </div>
       </ClickTooltip>
     );

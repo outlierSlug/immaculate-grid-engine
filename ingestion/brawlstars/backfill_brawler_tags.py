@@ -18,6 +18,7 @@ KNOWN_TAGS: dict[str, list[str]] = {
     "Belle": ["Former Chromatic"],
     "Bibi": ["Has Legendary Skin"],
     "Bo": ["Has Wallbreak", "Has Legendary Skin"],
+    "Bolt": ["Has Wallbreak"],
     "Brock": ["Has Wallbreak"],
     "Bull": ["Has Wallbreak"],
     "Buster": ["Former Chromatic"],
