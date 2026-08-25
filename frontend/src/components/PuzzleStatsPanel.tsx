@@ -24,6 +24,13 @@ interface PuzzleStatsPanelProps {
   gameId: string;
   gameLabel: string;
   correctCellKeys: Set<string>;
+  // ShareResultRow's countdown always refers to today's Daily reset,
+  // regardless of which puzzle is on screen - misleading on a past Archive
+  // date, where it reads as if that specific (already-permanent) puzzle is
+  // about to reset. The whole row is hidden for Archive rather than just
+  // the countdown, since Share's "I scored X/9" framing also assumes a
+  // live, one-shot attempt.
+  isArchive: boolean;
 }
 
 export default function PuzzleStatsPanel({
@@ -36,6 +43,7 @@ export default function PuzzleStatsPanel({
   gameId,
   gameLabel,
   correctCellKeys,
+  isArchive,
 }: PuzzleStatsPanelProps) {
   const [tab, setTab] = useState<'most' | 'least'>('most');
   const [selectedCellKey, setSelectedCellKey] = useState<string | null>(null);
@@ -53,14 +61,16 @@ export default function PuzzleStatsPanel({
 
   return (
     <div className="flex flex-col items-center gap-4 py-6 border-t border-gray-200 dark:border-gray-800 w-full">
-      <ShareResultRow
-        puzzleDate={puzzleDate}
-        gameId={gameId}
-        gameLabel={gameLabel}
-        correctCellKeys={correctCellKeys}
-        rowCount={rowLabels.length}
-        colCount={colLabels.length}
-      />
+      {!isArchive && (
+        <ShareResultRow
+          puzzleDate={puzzleDate}
+          gameId={gameId}
+          gameLabel={gameLabel}
+          correctCellKeys={correctCellKeys}
+          rowCount={rowLabels.length}
+          colCount={colLabels.length}
+        />
+      )}
 
       <h2 className="text-2xl font-bold">Puzzle Stats</h2>
 

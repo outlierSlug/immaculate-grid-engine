@@ -18,8 +18,13 @@ export const GAME_HELP_NOTES: Partial<Record<GameId, ReactNode[]>> = {
       selectable character.
     </>,
     <>
-      Aloy, Nicole, Skirk, and the Traveler don't originate from any of Teyvat's nations, so they never count for a
+      Aloy, Nicole, Skirk, and the Traveler don't originate from any of Teyvat's nations, so they <b>never count</b> for a
       region category.
+    </>,
+    <>
+      Traveler is selectable as <b>either</b> Aether/Lumine, and <b>any</b> of their 7 playable elements.
+      Each of the Traveler's element variants counts for the <b>Version</b> in which that <b>specific element became
+      playable</b> (e.g. Dendro Traveler is Version 3.0), not the Version the Traveler itself first debuted in (1.0).
     </>,
   ],
   brawlstars: [

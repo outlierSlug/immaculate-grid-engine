@@ -370,6 +370,7 @@ export default function PuzzlePage() {
           puzzleDate={puzzle.puzzleDate}
           gameId={validGame}
           gameLabel={GAMES[validGame].label}
+          isArchive={isArchive}
           correctCellKeys={new Set(Object.keys(remoteFilledCells))}
         />
         {helpModal}
@@ -455,6 +456,7 @@ export default function PuzzlePage() {
           puzzleDate={puzzle.puzzleDate}
           gameId={validGame}
           gameLabel={GAMES[validGame].label}
+          isArchive={isArchive}
           correctCellKeys={new Set(Object.keys(filledCells))}
         />
       )}
