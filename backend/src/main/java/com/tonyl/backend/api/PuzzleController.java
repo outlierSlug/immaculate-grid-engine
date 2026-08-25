@@ -98,8 +98,10 @@ public class PuzzleController {
     }
 
     @PostMapping("/{puzzleId}/guess")
-    public GuessResponse guess(@PathVariable String puzzleId, @RequestBody GuessRequest request) {
-        var result = puzzleService.checkGuess(puzzleId, request.row(), request.col(), request.itemId());
+    public GuessResponse guess(@PathVariable String puzzleId, @RequestBody GuessRequest request,
+                                @CurrentUser Optional<User> user) {
+        var result = puzzleService.checkGuess(puzzleId, request.row(), request.col(), request.itemId(),
+            request.sessionId(), user);
         return new GuessResponse(result.correct(), result.itemId(), result.displayName(), result.imageUrl());
     }
 

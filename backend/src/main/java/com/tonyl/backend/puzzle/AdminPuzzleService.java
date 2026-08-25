@@ -134,7 +134,7 @@ public class AdminPuzzleService {
                 + "distinct characters at once. Swap one of the categories involved for one with more "
                 + "independent answers, or widen a cell's answer pool.");
         }
-        return new Puzzle(gameId + ":" + date, gameId, date, PuzzleMode.DAILY,
+        return new Puzzle(gameId + ":" + date, gameId, date, PuzzleMode.DAILY, null,
             request.rowCategories(), request.colCategories(), request.cellSolutions());
     }
 

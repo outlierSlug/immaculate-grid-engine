@@ -28,6 +28,17 @@ public class Puzzle {
     @Enumerated(EnumType.STRING)
     private PuzzleMode mode;
 
+    // Only meaningful for UNLIMITED (a player's own choice at generation
+    // time, see UnlimitedPuzzleRequest.unlimitedGuesses) - null there means
+    // genuinely unlimited guesses, a real product feature, not "no limit
+    // set yet". DAILY's limit is a fixed genre constant enforced in
+    // PuzzleService/PuzzleController regardless of this column's value, so
+    // it's always null on DAILY rows and never read for them - avoids the
+    // ambiguity a nullable "no floor yet" column would otherwise create for
+    // every pre-existing DAILY row once this column was added.
+    @Column
+    private Integer guessLimit;
+
     @Type(JsonType.class)
     @Column(columnDefinition = "jsonb", nullable = false)
     private List<CategorySnapshot> rowCategories;
@@ -43,13 +54,14 @@ public class Puzzle {
     protected Puzzle() {
     }
 
-    public Puzzle(String id, String gameId, LocalDate puzzleDate, PuzzleMode mode,
+    public Puzzle(String id, String gameId, LocalDate puzzleDate, PuzzleMode mode, Integer guessLimit,
                   List<CategorySnapshot> rowCategories, List<CategorySnapshot> colCategories,
                   Map<String, List<String>> cellSolutions) {
         this.id = id;
         this.gameId = gameId;
         this.puzzleDate = puzzleDate;
         this.mode = mode;
+        this.guessLimit = guessLimit;
         this.rowCategories = rowCategories;
         this.colCategories = colCategories;
         this.cellSolutions = cellSolutions;
@@ -59,6 +71,7 @@ public class Puzzle {
     public String getGameId() { return gameId; }
     public LocalDate getPuzzleDate() { return puzzleDate; }
     public PuzzleMode getMode() { return mode; }
+    public Integer getGuessLimit() { return guessLimit; }
     public List<CategorySnapshot> getRowCategories() { return rowCategories; }
     public List<CategorySnapshot> getColCategories() { return colCategories; }
     public Map<String, List<String>> getCellSolutions() { return cellSolutions; }

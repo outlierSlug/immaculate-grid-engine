@@ -123,6 +123,7 @@ export default function UnlimitedPage() {
         excludedCategoryIds: settings.excludedCategoryIds,
         minAnswersPerCell: settings.allowSingleAnswers ? 1 : 2,
         requireSoftLockGuard: settings.softLockGuard,
+        unlimitedGuesses: settings.unlimitedGuesses,
       });
       setPuzzle(generated);
       setActiveGuessLimit(settings.unlimitedGuesses ? null : GUESS_LIMIT);

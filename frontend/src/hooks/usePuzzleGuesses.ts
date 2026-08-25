@@ -179,12 +179,12 @@ export function usePuzzleGuesses(puzzle: PuzzleResponse | null, options: UsePuzz
   // Without this, each tab only reads localStorage once (on mount/puzzle
   // change) and then trusts its own in-memory guessesUsed/filledCells for
   // the rest of its life - so a wrong guess spent in tab A is invisible to
-  // tab B until tab B happens to remount. That's more than a display
-  // nit: since guessesUsed only ever lives client-side (the backend's
-  // /guess endpoint validates a pick against the puzzle's answer key, not
-  // against how many guesses this session has already burned), a stale tab
-  // B would let a wrong guess in tab A become a "free" extra attempt in tab
-  // B instead of actually costing the shared guess pool. The `storage`
+  // tab B until tab B happens to remount. That's more than a display nit:
+  // the backend now independently enforces the same shared guess budget per
+  // (puzzleId, sessionId) (see PuzzleService.checkGuess), so a stale tab B
+  // wouldn't get a free extra guess even without this - but it would still
+  // get a confusing rejected-guess error instead of just seeing tab A's
+  // guess already reflected, which this resync avoids. The `storage`
   // event fires only in OTHER same-origin tabs when localStorage changes
   // (never the tab that made the write), which is exactly the asymmetry
   // needed here - this re-syncs the instant another tab writes under the
@@ -306,7 +306,20 @@ export function usePuzzleGuesses(puzzle: PuzzleResponse | null, options: UsePuzz
     if (!puzzle || !activeCell || isGameOver) return;
     const { row, col } = activeCell;
 
-    const result = await submitGuess(puzzle.id, { row, col, itemId: item.id });
+    let result;
+    try {
+      result = await submitGuess(puzzle.id, { row, col, itemId: item.id, sessionId: getSessionId() });
+    } catch (err) {
+      // Should never happen for a legitimate client in sync with the
+      // server's own guess count (see PuzzleService.checkGuess) - this is
+      // just a safety net for a rare desync (e.g. two tabs racing past the
+      // storage-event resync below) or a network error. Closes the input
+      // rather than silently pretending the guess succeeded or crashing the
+      // click handler with an unhandled rejection.
+      console.error('Failed to submit guess', err);
+      setActiveCell(null);
+      return;
+    }
 
     const nextGuessesUsed = guessesUsed + 1;
     setGuessesUsed(nextGuessesUsed);

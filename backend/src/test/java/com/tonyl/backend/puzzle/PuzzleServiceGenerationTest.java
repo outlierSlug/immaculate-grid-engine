@@ -29,7 +29,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 // arguments.
 class PuzzleServiceGenerationTest {
 
-    private static final PuzzleService service = new PuzzleService(null, null, null);
+    private static final PuzzleService service = new PuzzleService(null, null, null, null, null);
 
     private static List<GridItem> loadEntities(String resourceName) throws Exception {
         JsonMapper mapper = JsonMapper.builder().build();

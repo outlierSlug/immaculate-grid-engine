@@ -1,14 +1,17 @@
 package com.tonyl.backend.puzzle;
 
 import com.tonyl.backend.api.UnlimitedPuzzleRequest;
+import com.tonyl.backend.auth.SessionOwnership;
 import com.tonyl.backend.domain.CategorySnapshot;
 import com.tonyl.backend.domain.GridItem;
 import com.tonyl.backend.domain.Puzzle;
 import com.tonyl.backend.domain.PuzzleMode;
+import com.tonyl.backend.domain.User;
 import com.tonyl.backend.game.CategoryDefinition;
 import com.tonyl.backend.game.GameModule;
 import com.tonyl.backend.game.GameModuleRegistry;
 import com.tonyl.backend.repository.GridItemRepository;
+import com.tonyl.backend.repository.PuzzleGuessCountRepository;
 import com.tonyl.backend.repository.PuzzleRepository;
 import org.springframework.stereotype.Service;
 
@@ -49,16 +52,29 @@ public class PuzzleService {
     private static final int EXHAUSTIVE_FALLBACK_MAX_CANDIDATES = 50;
     private static final long EXHAUSTIVE_FALLBACK_COMBO_BUDGET = 6_000_000L;
 
+    // Fixed genre convention (matches Pokedoku), same value the frontend
+    // hardcodes independently for DAILY (PuzzlePage's DAILY_GUESS_LIMIT) and
+    // for a capped UNLIMITED puzzle (UnlimitedPage's GUESS_LIMIT) - kept as
+    // its own server-side constant rather than trusting either value from
+    // the client, since checkGuess is exactly the enforcement this constant
+    // exists for.
+    private static final int GUESS_LIMIT = 9;
+
     private final GridItemRepository gridItemRepository;
     private final PuzzleRepository puzzleRepository;
+    private final PuzzleGuessCountRepository puzzleGuessCountRepository;
     private final GameModuleRegistry gameModuleRegistry;
+    private final SessionOwnership sessionOwnership;
     private final GridGenerator gridGenerator = new GridGenerator();
 
     public PuzzleService(GridItemRepository gridItemRepository, PuzzleRepository puzzleRepository,
-                          GameModuleRegistry gameModuleRegistry) {
+                          PuzzleGuessCountRepository puzzleGuessCountRepository, GameModuleRegistry gameModuleRegistry,
+                          SessionOwnership sessionOwnership) {
         this.gridItemRepository = gridItemRepository;
         this.puzzleRepository = puzzleRepository;
+        this.puzzleGuessCountRepository = puzzleGuessCountRepository;
         this.gameModuleRegistry = gameModuleRegistry;
+        this.sessionOwnership = sessionOwnership;
     }
 
     public Puzzle getOrCreateTodaysPuzzle(String gameId) {
@@ -80,7 +96,8 @@ public class PuzzleService {
         return generateAndSave(gameId, date);
     }
     
-    public GuessResult checkGuess(String puzzleId, int row, int col, String itemId) {
+    public GuessResult checkGuess(String puzzleId, int row, int col, String itemId, String sessionId,
+                                   Optional<User> caller) {
         Puzzle puzzle = puzzleRepository.findById(puzzleId)
             .orElseThrow(() -> new NoSuchElementException("No puzzle found with id " + puzzleId));
 
@@ -88,6 +105,37 @@ public class PuzzleService {
         List<String> validAnswers = puzzle.getCellSolutions().get(cellKey);
         if (validAnswers == null) {
             throw new IllegalArgumentException("Invalid cell position: " + cellKey);
+        }
+
+        // DAILY's limit is the fixed genre constant regardless of this row's
+        // own guessLimit column (always null there, see Puzzle.guessLimit's
+        // doc comment); UNLIMITED's is whatever the player chose at
+        // generation time, including genuinely null (unlimited). Either way,
+        // a non-null limit here means this puzzle has a guess budget that
+        // must be spent server-side before a guess is evaluated at all - the
+        // frontend's own guessesUsed count is trusted for nothing more than
+        // UI display.
+        // Not a ternary: `mode == DAILY ? GUESS_LIMIT : puzzle.getGuessLimit()`
+        // mixes an int with an Integer, which forces Java to unbox the
+        // Integer branch to determine the expression's type - triggering a
+        // NullPointerException the moment an UNLIMITED puzzle's genuinely
+        // null guessLimit is selected, even though this is exactly the
+        // legitimate "no limit" case that branch exists to represent.
+        Integer effectiveLimit;
+        if (puzzle.getMode() == PuzzleMode.DAILY) {
+            effectiveLimit = GUESS_LIMIT;
+        } else {
+            effectiveLimit = puzzle.getGuessLimit();
+        }
+        if (effectiveLimit != null) {
+            if (sessionId == null || sessionId.isBlank()) {
+                throw new IllegalArgumentException("sessionId is required for a guess-limited puzzle");
+            }
+            sessionOwnership.verify(sessionId, caller);
+            int allowed = puzzleGuessCountRepository.tryConsumeGuess(puzzleId, sessionId, effectiveLimit);
+            if (allowed == 0) {
+                throw new IllegalStateException("No guesses remaining for this puzzle");
+            }
         }
 
         String normalizedItemId = itemId.toLowerCase();
@@ -140,11 +188,18 @@ public class PuzzleService {
                 "Could not generate a valid unlimited puzzle for " + gameId + " with the selected filters");
         }
 
+        // Defaults to true (unlimited), matching UnlimitedSettingsPanel's own
+        // default - an omitted field on this request behaves the same as an
+        // explicit unlimitedGuesses:true one.
+        boolean unlimitedGuesses = request.unlimitedGuesses() == null || request.unlimitedGuesses();
+        Integer guessLimit = unlimitedGuesses ? null : GUESS_LIMIT;
+
         Puzzle puzzle = new Puzzle(
             gameId + ":unlimited:" + UUID.randomUUID(),
             gameId,
             PuzzleClock.today(),
             PuzzleMode.UNLIMITED,
+            guessLimit,
             toSnapshots(result.rowCategories()),
             toSnapshots(result.colCategories()),
             result.cellSolutions()
@@ -177,6 +232,7 @@ public class PuzzleService {
             gameId,
             date,
             PuzzleMode.DAILY,
+            null, // unused for DAILY - checkGuess enforces GUESS_LIMIT unconditionally for this mode
             toSnapshots(generated.rowCategories()),
             toSnapshots(generated.colCategories()),
             generated.cellSolutions()

@@ -15,6 +15,7 @@ export interface GuessRequest {
   row: number;
   col: number;
   itemId: string;
+  sessionId: string;
 }
 
 export interface GuessResponse {
@@ -52,6 +53,11 @@ export interface UnlimitedPuzzleRequest {
   excludedCategoryIds?: string[];
   minAnswersPerCell?: number;
   requireSoftLockGuard?: boolean;
+  // Resolved guess limit is persisted on the generated Puzzle and enforced
+  // server-side on every guess against it (see backend PuzzleService.
+  // checkGuess) - defaults to true (unlimited) when omitted, same as
+  // UnlimitedSettingsPanel's own default.
+  unlimitedGuesses?: boolean;
 }
 
 export interface SubmitAttemptRequest {

@@ -48,7 +48,7 @@ class AdminTrackingServiceTest {
                 cells.put(key, cellOverrides.getOrDefault(key, List.of(id + ":" + key + ":default")));
             }
         }
-        return new Puzzle(id, "genshin", date, PuzzleMode.DAILY, rowCategories, colCategories, cells);
+        return new Puzzle(id, "genshin", date, PuzzleMode.DAILY, null, rowCategories, colCategories, cells);
     }
 
     @Test

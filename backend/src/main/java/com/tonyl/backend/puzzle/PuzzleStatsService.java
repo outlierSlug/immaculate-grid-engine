@@ -5,7 +5,7 @@ import com.tonyl.backend.api.CellStatsResponse;
 import com.tonyl.backend.api.PuzzleStatsResponse;
 import com.tonyl.backend.api.SubmitAttemptRequest;
 import com.tonyl.backend.api.YourStats;
-import com.tonyl.backend.auth.ForbiddenException;
+import com.tonyl.backend.auth.SessionOwnership;
 import com.tonyl.backend.domain.GridItem;
 import com.tonyl.backend.domain.Puzzle;
 import com.tonyl.backend.domain.PuzzleAttempt;
@@ -41,25 +41,22 @@ public class PuzzleStatsService {
     // anywhere else.
     private static final int MAX_SCORE = 9;
     private static final int UNIQUENESS_CEILING = 900;
-    // sessionId values for signed-in users are "user:{id}" (see
-    // utils/session.ts's getSessionId on the frontend) - unlike an
-    // anonymous UUID, a sequential id is guessable, so any caller claiming
-    // one of these must be verified against their own resolved identity.
-    private static final String USER_SESSION_PREFIX = "user:";
 
     private final PuzzleAttemptRepository puzzleAttemptRepository;
     private final PuzzleRepository puzzleRepository;
     private final GridItemRepository gridItemRepository;
+    private final SessionOwnership sessionOwnership;
 
     public PuzzleStatsService(PuzzleAttemptRepository puzzleAttemptRepository, PuzzleRepository puzzleRepository,
-                               GridItemRepository gridItemRepository) {
+                               GridItemRepository gridItemRepository, SessionOwnership sessionOwnership) {
         this.puzzleAttemptRepository = puzzleAttemptRepository;
         this.puzzleRepository = puzzleRepository;
         this.gridItemRepository = gridItemRepository;
+        this.sessionOwnership = sessionOwnership;
     }
 
     public void submitAttempt(String puzzleId, SubmitAttemptRequest request, Optional<User> caller) {
-        verifySessionOwnership(request.sessionId(), caller);
+        sessionOwnership.verify(request.sessionId(), caller);
 
         Puzzle puzzle = puzzleRepository.findById(puzzleId)
             .orElseThrow(() -> new NoSuchElementException("No puzzle found with id " + puzzleId));
@@ -98,7 +95,7 @@ public class PuzzleStatsService {
     }
 
     public PuzzleStatsResponse getStats(String puzzleId, String sessionId, Optional<User> caller) {
-        verifySessionOwnership(sessionId, caller);
+        sessionOwnership.verify(sessionId, caller);
 
         List<PuzzleAttempt> attempts = puzzleAttemptRepository.findByPuzzleId(puzzleId);
         long gamesPlayed = attempts.size();
@@ -154,21 +151,6 @@ public class PuzzleStatsService {
             uniquenessScores, null);
     }
 
-    // A "user:{id}" sessionId is only acceptable from the caller whose own
-    // resolved identity it names - unlike the anonymous UUID form, this one
-    // is guessable, so without this check anyone could forge another
-    // signed-in user's attempts or read back their answers. Anonymous
-    // sessionIds (any value not starting with the prefix, including null)
-    // need no check, matching today's behavior exactly.
-    private void verifySessionOwnership(String sessionId, Optional<User> caller) {
-        if (sessionId == null || !sessionId.startsWith(USER_SESSION_PREFIX)) {
-            return;
-        }
-        String expected = caller.map(User::getId).map(id -> USER_SESSION_PREFIX + id).orElse(null);
-        if (!sessionId.equals(expected)) {
-            throw new ForbiddenException("sessionId does not match the authenticated caller");
-        }
-    }
 
     private Map<String, CellStatsResponse> buildPerCellStats(List<PuzzleAttempt> attempts, long gamesPlayed,
                                                                Map<String, List<String>> revealedCellSolutions) {
