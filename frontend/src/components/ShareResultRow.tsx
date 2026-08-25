@@ -17,7 +17,7 @@ interface ShareResultRowProps {
 // Always the real production domain, never the request's own origin - the
 // whole point of a shared link is that it works for whoever receives it,
 // not just this tab (which could be localhost, a preview deploy, etc.).
-const SITE_ORIGIN = 'gachagrid.com';
+const SITE_ORIGIN = 'https://gachagrid.com';
 
 // Ticks a live "HH:MM:SS" countdown to the next Daily reset. Recomputed
 // only when puzzleDate changes (not every render) - nextPacificMidnight()
