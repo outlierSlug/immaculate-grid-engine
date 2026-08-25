@@ -12,6 +12,7 @@ interface FooterLink {
 // to send bug reports/feedback to - no email address is exposed publicly.
 const FOOTER_LINKS: FooterLink[] = [
   { label: 'GitHub', href: 'https://github.com/outlierSlug/immaculate-grid-engine' },
+  { label: 'X/Twitter', href: 'https://x.com/GachaGridDev' },
   { label: 'Fan Content & Privacy', to: '/legal' },
 ];
 
