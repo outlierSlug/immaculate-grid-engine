@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /profile
+Disallow: /auth/callback
+Disallow: /genshin/archive
+Disallow: /brawlstars/archive
+
+Sitemap: https://gachagrid.com/sitemap.xml
