@@ -367,6 +367,10 @@ export default function PuzzlePage() {
           colLabels={puzzle.colLabels}
           yourUniquenessScore={remoteUniquenessScore}
           avatarShapeClass={avatarShapeClass}
+          puzzleDate={puzzle.puzzleDate}
+          gameId={validGame}
+          gameLabel={GAMES[validGame].label}
+          correctCellKeys={new Set(Object.keys(remoteFilledCells))}
         />
         {helpModal}
       </main>
@@ -448,6 +452,10 @@ export default function PuzzlePage() {
           colLabels={puzzle.colLabels}
           yourUniquenessScore={liveUniquenessScore}
           avatarShapeClass={avatarShapeClass}
+          puzzleDate={puzzle.puzzleDate}
+          gameId={validGame}
+          gameLabel={GAMES[validGame].label}
+          correctCellKeys={new Set(Object.keys(filledCells))}
         />
       )}
 

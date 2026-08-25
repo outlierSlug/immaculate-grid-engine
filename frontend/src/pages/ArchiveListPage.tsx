@@ -3,6 +3,7 @@ import { useParams, Navigate, Link } from 'react-router-dom';
 import { isValidGameId } from '../config/games';
 import { useAuth } from '../auth/AuthProvider';
 import { fetchCompletedDates } from '../api/client';
+import { shortDateLabel } from '../utils/dateIso';
 import HelpButton from '../components/HelpButton';
 import HelpModal from '../components/HelpModal';
 import LoadingSpinner from '../components/LoadingSpinner';
@@ -48,10 +49,6 @@ function pastDates(): string[] {
 
 const WEEK_GROUP_SIZE = 7;
 
-function shortLabel(date: string): string {
-  return new Date(date + 'T00:00:00').toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
-}
-
 function yearOf(date: string): number {
   return new Date(date + 'T00:00:00').getFullYear();
 }
@@ -84,11 +81,11 @@ function groupByWeek(dates: string[]): { label: string; dates: string[] }[] {
       // the same date here). Not reachable with today's 30/7 combination
       // (always leaves a remainder of 2+), but a real case for other
       // ARCHIVE_WINDOW_DAYS/WEEK_GROUP_SIZE combinations.
-      label = `${shortLabel(oldest)}, ${oldestYear}`;
+      label = `${shortDateLabel(oldest)}, ${oldestYear}`;
     } else if (oldestYear !== newestYear) {
-      label = `${shortLabel(oldest)}, ${oldestYear} – ${shortLabel(newest)}, ${newestYear}`;
+      label = `${shortDateLabel(oldest)}, ${oldestYear} – ${shortDateLabel(newest)}, ${newestYear}`;
     } else {
-      label = `${shortLabel(oldest)} – ${shortLabel(newest)}, ${oldestYear}`;
+      label = `${shortDateLabel(oldest)} – ${shortDateLabel(newest)}, ${oldestYear}`;
     }
     groups.push({ label, dates: chunk });
   }

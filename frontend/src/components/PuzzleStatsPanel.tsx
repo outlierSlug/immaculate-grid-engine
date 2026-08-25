@@ -3,6 +3,7 @@ import PuzzleStatsBoard from './PuzzleStatsBoard';
 import CommunityAnswersModal from './CommunityAnswersModal';
 import ScoreDistributionModal from './ScoreDistributionModal';
 import UniquenessModal from './UniquenessModal';
+import ShareResultRow from './ShareResultRow';
 import { BOARD_WIDTH_CSS } from '../utils/gridSizing';
 import { computeUniquenessPercentile } from '../utils/uniqueness';
 import type { PuzzleStatsResponse } from '../types/puzzle';
@@ -16,6 +17,13 @@ interface PuzzleStatsPanelProps {
   // so there's one place that owns filledCells + the formula inputs.
   yourUniquenessScore: number;
   avatarShapeClass: string;
+  // Everything ShareResultRow needs - see its own doc comment for why
+  // score is derived from correctCellKeys.size rather than passed
+  // separately.
+  puzzleDate: string;
+  gameId: string;
+  gameLabel: string;
+  correctCellKeys: Set<string>;
 }
 
 export default function PuzzleStatsPanel({
@@ -24,6 +32,10 @@ export default function PuzzleStatsPanel({
   colLabels,
   yourUniquenessScore,
   avatarShapeClass,
+  puzzleDate,
+  gameId,
+  gameLabel,
+  correctCellKeys,
 }: PuzzleStatsPanelProps) {
   const [tab, setTab] = useState<'most' | 'least'>('most');
   const [selectedCellKey, setSelectedCellKey] = useState<string | null>(null);
@@ -41,6 +53,15 @@ export default function PuzzleStatsPanel({
 
   return (
     <div className="flex flex-col items-center gap-4 py-6 border-t border-gray-200 dark:border-gray-800 w-full">
+      <ShareResultRow
+        puzzleDate={puzzleDate}
+        gameId={gameId}
+        gameLabel={gameLabel}
+        correctCellKeys={correctCellKeys}
+        rowCount={rowLabels.length}
+        colCount={colLabels.length}
+      />
+
       <h2 className="text-2xl font-bold">Puzzle Stats</h2>
 
       <div
