@@ -77,7 +77,15 @@ export default function PuzzleGrid({
       <div />
 
       {colLabels.map((label) => (
-        <div key={label} className="flex items-center justify-center p-2">
+        // Extra bottom padding (not just p-2 on every side) - the chip was
+        // reading as touching the grid below it, since a flex-centered
+        // chip just grows to fill however wide/tall its own grid track is
+        // rather than leaving visible room on its own. Biasing padding
+        // toward the grid-facing side is what actually creates a visible
+        // gap there, at the cost of the chip no longer sitting perfectly
+        // centered in its own track - an acceptable trade since the eye
+        // reads this as "gap before the grid," not "chip is off-center."
+        <div key={label} className="flex items-center justify-center p-2 pb-3">
           <CategoryChip label={label} />
         </div>
       ))}
@@ -86,7 +94,9 @@ export default function PuzzleGrid({
 
       {rowLabels.map((rowLabel, rowIndex) => (
         <Fragment key={rowLabel}>
-          <div className="flex items-center justify-center p-2">
+          {/* Same reasoning as the column label above, mirrored to the
+              right side since row labels sit to the grid's left. */}
+          <div className="flex items-center justify-center p-2 pr-3">
             <CategoryChip label={rowLabel} />
           </div>
 

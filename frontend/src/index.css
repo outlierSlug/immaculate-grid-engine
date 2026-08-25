@@ -70,17 +70,22 @@ html {
   --grid-cell: clamp(4.25rem, 21vw, 8rem);
   --grid-label: clamp(2.75rem, 13vw, 7rem);
   --grid-header: clamp(3.5rem, 15vw, 6rem);
-  /* 22vw/13.5vw (not the naive 25vw/15vw first tried) - a bigger boost
-     looks right in isolation but leaves too little margin once the block
-     is re-centered on the cell area (see the -ml-(--col-label) comment
-     where this is consumed). That recentering also has to account for
-     `html { scrollbar-gutter: stable }` above: vw units are relative to
-     the full viewport, but the actual content area is ~15px narrower once
-     the reserved scrollbar gutter is subtracted - the true constraint at a
-     320px viewport, so these coefficients are tuned against that, not the
-     bare 320px figure. */
+  /* 22vw/15vw (not the naive 25vw/15vw first tried, which bumped both
+     coefficients at once) - a bigger boost to BOTH looks right in isolation
+     but leaves too little margin once the block is re-centered on the cell
+     area (see the -ml-(--col-label) comment where this is consumed). Label
+     alone went from 13.5vw to 15vw afterward (row/col chips were crowding
+     the grid, and the label text was already wrapping to 2 lines at the
+     old width) - re-verified at 320-430px with the cell coefficient left
+     untouched, confirming this narrower, single-variable bump doesn't
+     reintroduce the overflow the combined 25/15 attempt caused. That
+     recentering also has to account for `html { scrollbar-gutter: stable }`
+     above: vw units are relative to the full viewport, but the actual
+     content area is ~15px narrower once the reserved scrollbar gutter is
+     subtracted - the true constraint at a 320px viewport, so these
+     coefficients are tuned against that, not the bare 320px figure. */
   --grid-cell-solo: clamp(4.25rem, 22vw, 8rem);
-  --grid-label-solo: clamp(2.75rem, 13.5vw, 7rem);
+  --grid-label-solo: clamp(2.75rem, 15vw, 7rem);
   /* CategoryChip's icon medallion (region/element/weapon). Was a hard
      w-13/sm:w-20 breakpoint jump - fluid instead, so it scales continuously
      with the rest of the grid rather than visibly resizing at 640px. Tuned
