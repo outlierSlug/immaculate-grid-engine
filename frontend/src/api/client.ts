@@ -77,7 +77,7 @@ export async function fetchArchivedPuzzle(game: string, date: string): Promise<P
 export async function submitGuess(puzzleId: string, guess: GuessRequest): Promise<GuessResponse> {
   const res = await fetch(`${BASE_URL}/puzzle/${puzzleId}/guess`, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: { 'Content-Type': 'application/json', ...authHeaders() },
     body: JSON.stringify(guess),
   });
   if (!res.ok) {
