@@ -1,0 +1,41 @@
+name: Database Backup
+
+# Runs a daily pg_dump of the production Neon database and uploads it to a
+# private Cloudflare R2 bucket - NOT a workflow artifact. This repo is
+# public, so an Actions artifact would be downloadable by any
+# GitHub-authenticated user, and a raw dump contains real user emails and
+# session tokens (see backend UserSession.token, stored in plaintext).
+# Neon's own point-in-time-restore window is only 6 hours on the Free
+# plan, so this is an independent, longer-lived backup, not a duplicate of
+# something Neon already guarantees.
+on:
+  schedule:
+    # 09:00 UTC - late night/early morning Pacific, this project's
+    # lowest-traffic window.
+    - cron: '0 9 * * *'
+  workflow_dispatch: {}
+
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dump production database
+        env:
+          DATABASE_URL: ${{ secrets.NEON_DATABASE_URL }}
+        run: |
+          # postgres:16 (not whatever pg_dump ubuntu-latest happens to
+          # ship) so the dump tool's major version matches Neon's actual
+          # server version - an older client's pg_dump against a newer
+          # server is the failure mode this avoids.
+          docker run --rm postgres:16 pg_dump "$DATABASE_URL" --no-owner --no-privileges \
+            | gzip > backup.sql.gz
+
+      - name: Upload to Cloudflare R2
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: auto
+        run: |
+          FILENAME="gachagrid-$(date -u +%Y%m%d-%H%M%S).sql.gz"
+          aws s3 cp backup.sql.gz "s3://gachagrid-backups/$FILENAME" \
+            --endpoint-url "https://${{ secrets.R2_ACCOUNT_ID }}.r2.cloudflarestorage.com"
