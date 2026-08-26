@@ -6,6 +6,14 @@ import ErrorState from './ErrorState';
 import { formatCategoryLabel } from './CategoryChip';
 import type { GameId } from '../config/games';
 
+// Strips punctuation before matching so a name's stylized punctuation
+// doesn't have to be typed exactly - "pekka" should find "P.E.K.K.A" (and
+// "Mini P.E.K.K.A"), "mr p" should find "Mr. P", without needing the
+// periods. Keeps spaces (so word boundaries still count) and digits.
+function normalizeForSearch(value: string): string {
+  return value.toLowerCase().replace(/[^a-z0-9\s]/g, '');
+}
+
 interface GuessInputProps {
   game: GameId;
   rowLabel: string;
@@ -51,11 +59,13 @@ export default function GuessInput({
     return () => window.removeEventListener('keydown', handleEscape);
   }, [onClose]);
 
+  // A query that's all punctuation (e.g. "." or "/") normalizes to an
+  // empty string - since "".includes("") style matching is always true,
+  // that would otherwise match every item instead of none.
+  const normalizedQuery = normalizeForSearch(query);
   const filtered =
-    query.trim().length > 0
-      ? items.filter((item) =>
-          item.displayName.toLowerCase().includes(query.toLowerCase())
-        )
+    query.trim().length > 0 && normalizedQuery.length > 0
+      ? items.filter((item) => normalizeForSearch(item.displayName).includes(normalizedQuery))
       : [];
 
   function handleSelectClick(item: GridItem) {

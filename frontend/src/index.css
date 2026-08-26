@@ -103,10 +103,15 @@ html {
      which render narrower than --grid-avatar's square box at any given
      height (aspect-[19/28] vs 1:1), so they need MORE height to reach a
      comparable visual size/footprint to a square avatar of the same
-     height. Desktop cells have plenty of unused vertical slack today
-     (avatar+label only fill a fraction of --grid-cell's height) to grow
-     into safely. */
-  --grid-avatar-card: clamp(2.75rem, 13vw, 5.5rem);
+     height. The max was originally 5.5rem, sized without checking a long
+     two-line display name (e.g. "Spirit Empress (Ground)") against the
+     label space left over in --grid-cell's own 8rem max - that left
+     exactly zero slack (88px avatar + a ~34px two-line label + 6px gap
+     summed to precisely 128px), so any long name clipped into the cell
+     below at desktop widths. Backed off to 4.75rem to restore real
+     margin for a long two-line label, still visibly bigger than
+     --grid-avatar's plain 4rem max. */
+  --grid-avatar-card: clamp(2.75rem, 12vw, 4.75rem);
 }
 
 body {
