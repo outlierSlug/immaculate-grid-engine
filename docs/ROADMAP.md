@@ -180,7 +180,7 @@ result summary, and cross-mode navigation persistence — none affect
 Phase 6, and none needed the dedicated-pass urgency the rest of this
 phase did.
 
-## Phase 6 — Guess stats & deployment (~2 weeks)
+## Phase 6 — Guess stats & deployment [COMPLETE]
 Goal: ship the daily puzzle as a real, live, playable product with the
 rarity/uniqueness mechanic that makes this genre engaging.
 
@@ -259,11 +259,19 @@ rarity/uniqueness mechanic that makes this genre engaging.
       fails fast, `CORS_ALLOWED_ORIGINS`), `config/WebConfig.java`
       centralizes CORS instead of 3 duplicated `@CrossOrigin`
       annotations, `pg_hba.conf` fixed from `trust` to `scram-sha-256`
-      (the DB password was never actually being checked locally).
-      Mechanism is deployment-ready; still needs the real prod origin
-      added once a domain exists.
-- [ ] Deploy backend (Fly.io/Railway) + frontend (Vercel/Netlify) +
-      managed Postgres
+      (the DB password was never actually being checked locally). The
+      real prod origin (gachagrid.com) was added to `CORS_ALLOWED_ORIGINS`
+      when Phase 7.5's deploy actually happened.
+- [x] Deploy backend (Render, Docker runtime) + frontend (Cloudflare
+      Workers static assets) + managed Postgres (Neon) — live at
+      gachagrid.com since 2026-08-24. Diverged from this phase's original
+      Fly.io/Railway + Vercel/Netlify sketch: Render has no native Java
+      runtime (Docker required instead of a buildpack), and Cloudflare
+      Workers' own SPA-fallback handling collided with a leftover
+      Pages-style `_redirects` file (removed) — the domain being already
+      on Cloudflare made Workers the natural fit for the frontend once
+      Pages was reconsidered. See Phase 7.5 for the deploy-adjacent
+      hardening and launch polish that followed.
 
 ## Phase 7 — Accounts, Archive & launch polish [COMPLETE]
 Goal: turn the anonymous-only single-player game into one with real
@@ -353,6 +361,87 @@ stretch of feature work before Phase 6's sole remaining item
       "same date always produces the same puzzle forever"). Verified at
       0/1000 failures for both games post-fix.
 
+## Phase 7.5 — Deployment, hardening & post-launch polish [COMPLETE]
+Goal: take the feature-complete app from Phase 7 live at gachagrid.com,
+then close the gaps only a real deployment and real usage surface.
+
+- [x] Deployment infra: Render (Docker) backend, Cloudflare Workers
+      (static assets) frontend, Neon Postgres. Every environment-specific
+      value was already env-var-driven from Phase 6's config hygiene, so
+      this was purely additive (`server.port=${PORT:8080}`, `render.yaml`,
+      `backend/Dockerfile`, `wrangler.jsonc`). Two real deploy-time bugs
+      found and fixed, not just planned for: Render rejected
+      `runtime: java` outright (Docker was required instead), and
+      Cloudflare Workers' built-in SPA fallback collided with a leftover
+      Pages-style `frontend/public/_redirects` file (removed).
+- [x] Neon data-seeding: the managed Postgres starts genuinely empty —
+      `ddl-auto=update` only creates the schema, not the character
+      roster — so `GameDataLoader` (`@Profile("load-data")`) needs a
+      manual one-time run against prod credentials. Documented as a
+      repeatable procedure in `docs/ARCHITECTURE.md` since every future
+      attribute/category addition needs the same reload.
+- [x] Security: server-side guess-limit enforcement (`puzzle_guess_counts`
+      table, atomic upsert-and-check per `(puzzleId, sessionId)`) —
+      previously only the frontend's own counter capped guesses, so a
+      scripted client could brute-force every cell's answer and pollute
+      community pick-rate/uniqueness stats with fake perfect runs.
+      Shipped with a same-day follow-up fix: `submitGuess` wasn't sending
+      its auth header, so every signed-in player's guesses started
+      403ing the moment the cap went live.
+- [x] Admin puzzle curation/tracking/history (`/admin`, allowlist-gated by
+      `ADMIN_EMAILS`; a non-admin gets the same 404 a broken link would,
+      never a redirect or "unauthorized" that would itself confirm the
+      surface exists): hand-build or generate a future Daily with a live
+      per-cell answer-count preview before pinning; roster/dimension-
+      pairing appearance-rate tracking (all-time + trailing-30-day,
+      sortable, 0-appearance rows kept visible); a read-only History view
+      of any past puzzle (not just the public Archive's 30-day window),
+      reusing the same stats components a real player sees
+      post-completion.
+- [x] Self-hosted character icons (Genshin + Brawl Stars) — replaced
+      hotlinking Enka Network/Brawlify with build-time-downloaded assets
+      under `frontend/public/{game}/icons/`, removing the runtime
+      dependency on a third-party CDN; both sources credited on the Legal
+      page as a courtesy.
+- [x] Archive polish: a launch-date floor (`ARCHIVE_LAUNCH_DATE`) so the
+      rolling 30-day window can't fabricate a playable pre-launch date; a
+      real empty state instead of a blank page on a fetch failure; score
+      display + week grouping in the list view; the in-progress countdown
+      removed from the archived-puzzle view (meaningless once the date is
+      already fixed in the past).
+- [x] Data fix: Brawl Stars `tags` (Former Chromatic/Has Wallbreak/Has
+      Hypercharge Skin/Has Legendary Skin) + `release_year` categories —
+      closed the last roster-coverage gap from the Phase 4 fairness work
+      (2 of 106 brawlers could never appear as a valid Daily answer;
+      106/106 after), and pushed Daily generation success from 60.4% to
+      99.6%. Bolt's `Has Wallbreak` tag added shortly after as a follow-up
+      data correction, alongside an `Ultra Legendary` chip restyle
+      (lime-tinted border + gradient text, matching `Former Chromatic`'s
+      pattern).
+- [x] Genre/UX polish: a confetti celebration on a full 9/9 solve (fires
+      once, `motion-safe:`-gated, shared across Daily/Unlimited/Archive
+      via the common `usePuzzleGuesses` hook); Unlimited's Timer given the
+      same click-tooltip every other board stat already had; a Back
+      button on Unlimited's puzzle view; a shareable result button (with a
+      same-day fix to the share URL itself); Traveler variant help notes
+      added to Genshin's Archive view.
+- [x] Growth/ops: `robots.txt` + `sitemap.xml` and Google Search Console
+      submission for search indexing; an X/Twitter link in the footer; a
+      high-res `BrandMark` export for social profile use; a GitHub
+      Actions workflow (`db-backup.yml`) backing up Neon to Cloudflare R2;
+      Cloudflare's dashboard security settings reviewed now that
+      gachagrid.com is a live public site rather than a parked domain.
+- [x] Mobile: a further-tuned row/column category-chip spacing pass
+      against the grid (`--grid-label-solo` clamp coefficient +
+      directional padding) — a narrower follow-up to Phase 6's
+      mobile-responsiveness pass, prompted by a real Android screenshot
+      showing the chips still reading as touching the grid. A companion
+      font-consistency issue found the same way (`font-mono` resolving to
+      a visually different, more jarring face on Android than on desktop)
+      was investigated and deliberately left as-is — every fix explored
+      would have also changed desktop's already-acceptable font
+      rendering, ruled out as not worth that tradeoff.
+
 ## Phase 8 — Real-time head-to-head (~2-3 weeks)
 Deliberately after a deployed, polished single-player game exists —
 additive feature on a proven foundation, not a prerequisite for having a
@@ -386,8 +475,8 @@ sync here at a glance:
   before Phase 8 (H2H), not urgent before then
 - ~~CORS origins moved to configuration once a deployment target
   exists~~ — mechanism shipped in Phase 7 (`config/WebConfig.java`,
-  `CORS_ALLOWED_ORIGINS`); only the real production origin still needs
-  adding once a domain exists.
+  `CORS_ALLOWED_ORIGINS`); the real gachagrid.com origin was added when
+  the site actually deployed (Phase 7.5).
 - ~~Deterministic resilience for Daily generation~~ — fixed in Phase 7:
   `PuzzleService.generateDailyPuzzle` now retries with date-derived
   seeds and falls back to an exhaustive search before giving up,
@@ -412,12 +501,16 @@ sync here at a glance:
   Formspree-style form endpoint, not a bare `mailto:` (would expose a
   personal email to scrapers). Left as a `TODO` above `FOOTER_LINKS` in
   `Footer.tsx`.
-- Pre-deployment fresh start — before real launch, reset the Archive
-  (only puzzles generated after deployment should appear there) and
-  remove accumulated dev/test data. Must wipe `puzzles` and
-  `puzzle_attempts` together — there's no FK between them (plain-string
-  `puzzleId`), so deleting only one leaves the other silently orphaned
-  but still counted in a user's aggregate stats.
+- ~~Pre-deployment fresh start — reset the Archive so only puzzles
+  generated after deployment appear there~~ — superseded in Phase 7.5 by
+  the `ARCHIVE_LAUNCH_DATE` floor instead: rather than a destructive
+  `puzzles`/`puzzle_attempts` wipe (risky post-launch given the two
+  tables have no FK between them and would need deleting together), the
+  Archive's rolling window is simply clamped to never offer a date before
+  real launch, regardless of what dev/test rows exist underneath.
+  Accumulated dev/test data itself is still sitting in prod, just never
+  surfaced — a real cleanup pass is still open, see the "Database
+  management" item below.
 - A user-facing help/about page (`/help`) was built once, then reverted
   the same day at the user's request (no reason recorded) — not
   currently present. Could resurface fresh or by restoring from git
@@ -438,8 +531,9 @@ sync here at a glance:
   curation is a real priority (Phase 6+).
 - Additional category dimensions (candidates: affiliation, birthday
   month — both already present in raw ingested data, unused so far)
-- Wordle-style shareable result summary — common genre expectation for a
-  once-a-day puzzle, not yet scoped in detail
+- ~~Wordle-style shareable result summary~~ — shipped in Phase 7.5 as a
+  share button on a finished puzzle, with a same-day follow-up fix to
+  the generated share URL itself.
 - Cross-mode state persistence (Daily ↔ Unlimited navigation via the
   header toggle) — Daily's own page-refresh persistence shipped in
   Phase 5, but switching modes and back still discards in-progress state
@@ -451,10 +545,15 @@ sync here at a glance:
   the Scores distribution modal
 - Database management: no cleanup path for ephemeral rows. Unlimited-mode
   puzzles accumulate forever (every "Generate" click inserts a new row,
-  never pruned — 86+ rows from dev testing alone as of Phase 6); nothing
-  else writes to the `puzzles`/`puzzle_attempts` tables yet either. Not
-  urgent pre-deployment, but worth a real answer (scheduled cleanup job,
-  TTL, or similar) before real traffic accumulates this at scale.
+  never pruned — 86+ rows from dev testing alone as of Phase 6). Now that
+  the site is actually live on Neon (Phase 7.5), this also covers the
+  pre-launch dev/test `puzzles`/`puzzle_attempts` rows that were never
+  wiped (see the superseded "Pre-deployment fresh start" item above) —
+  they're invisible to real players (the Archive's launch-date floor
+  hides them) but still sitting in prod and counted in any raw table
+  scan. Worth a real answer (scheduled cleanup job, TTL, or a one-time
+  manual purge, or similar) before real traffic makes this harder to
+  untangle from genuine user data.
 - ~~Header polish for narrow viewports~~ — fixed in a later session
   alongside the site's dark mode and brand-identity pass; see
   docs/ARCHITECTURE.md. ~~A footer is still a nice-to-have, not yet
@@ -480,17 +579,19 @@ sync here at a glance:
 - Total estimate: ~8-10 weeks part-time, revised upward from the original
   estimate given Phase 3 grew into a full Unlimited-mode build rather than
   a lighter "polish pass."
-- Phases 0-7 complete; Phase 6's only unchecked item (deploy backend +
-  frontend + managed Postgres) is also the only unchecked item left in
-  the entire roadmap short of Phases 8-9 — Phase 7 shipped everything
-  else that had been planned or requested since (accounts, OAuth,
-  Archive, the GachaGrid rebrand, dark mode, footer/legal, account
-  deletion, Brawl Stars Traits, app-wide tooltips, and the Daily
-  generation reliability fix). This file and `docs/ARCHITECTURE.md` had
-  drifted out of sync with several sessions' worth of shipped work before
-  this pass reconciled them against actual git history (2026-08-22) —
-  worth re-checking both against `git log` periodically rather than
-  trusting them as current by default. See Backlog for three smaller
+- Phases 0-7.5 complete — GachaGrid is live at gachagrid.com. Phase 6's
+  formerly-only unchecked item (deploy backend + frontend + managed
+  Postgres) shipped 2026-08-24, and everything that followed from actually
+  going live (deploy-time infra fixes, a server-side guess-limit security
+  hole closed, admin curation tooling, self-hosted icons, Archive/SEO/
+  ops/share polish) is now tracked as its own Phase 7.5 rather than left
+  as a pile of unreconciled commits. Only Phases 8-9 (real-time
+  head-to-head, then scale/leaderboards/a third game) remain unstarted.
+  This file and `docs/ARCHITECTURE.md` had drifted out of sync with
+  several sessions' worth of shipped work twice now (first reconciled
+  2026-08-22, again 2026-08-25 after the deploy) — worth re-checking both
+  against `git log` periodically rather than trusting them as current by
+  default. See Backlog for three smaller
   Phase-5-adjacent items (additional category dimensions, shareable
   result summary, cross-mode navigation persistence) deliberately moved
   out rather than left half-checked, since none of them block Phase 6.
