@@ -40,7 +40,7 @@ export default function LegalPage() {
         </section>
 
         <section className="flex flex-col gap-3">
-          <h2 className="text-xl font-bold tracking-tight mb-2">Brawl Stars</h2>
+          <h2 className="text-xl font-bold tracking-tight mb-2">Brawl Stars &amp; Clash Royale</h2>
           <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
             This material is unofficial and is not endorsed by Supercell. For more information see Supercell's{' '}
             <a
@@ -63,7 +63,16 @@ export default function LegalPage() {
             >
               Brawlify CDN
             </a>
-            .
+            . Card icons are sourced from the official Clash Royale API, through{' '}
+            <a
+              href="https://docs.royaleapi.com/"
+              target="_blank"
+              rel="noreferrer"
+              className="text-indigo-600 dark:text-indigo-400 hover:underline"
+            >
+              RoyaleAPI
+            </a>
+            's proxy service.
           </p>
         </section>
 
