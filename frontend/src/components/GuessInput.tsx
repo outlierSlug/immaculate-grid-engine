@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { fetchItems } from '../api/client';
 import type { GridItem } from '../types/puzzle';
 import LoadingSpinner from './LoadingSpinner';
@@ -12,6 +12,35 @@ import type { GameId } from '../config/games';
 // periods. Keeps spaces (so word boundaries still count) and digits.
 function normalizeForSearch(value: string): string {
   return value.toLowerCase().replace(/[^a-z0-9\s]/g, '');
+}
+
+// Clash Royale's Evolution/Hero variants are officially named with a
+// literal "Evo "/"Hero " prefix (e.g. "Evo Knight", "Hero Wizard") - and
+// that prefix is also exactly a category value (the "form" dimension). A
+// plain substring search means a short-enough query ("ev", "evo", "hero")
+// matches every card in that category and NOTHING else, letting a player
+// browse the whole category without knowing a single card in it.
+//
+// The check isn't just "do the matches all share a form" - a query like
+// "evo w" (Evo Witch, Evo Wizard) also does that, but it's a completely
+// ordinary narrowed search, not a leak: it's 2 cards out of 41
+// Evolutions, not "the category." The real signal is whether the query
+// reveals the ENTIRE category: does the match count equal that form's
+// total count across the whole roster? Brute-forcing every 1-4 letter
+// query against the full roster shows this is a clean, bimodal split
+// with no fuzzy middle ground to tune a threshold for - the real leaks
+// ("ev", "ero", "evo", "hero") sit at exactly 100% of their form's
+// total, everything else (including "evo w" at 5%, "hero g" at 13%)
+// isn't remotely close. Computed from the live roster (not hardcoded
+// "Evolution"/"Hero" strings), so this stays correct if cards are
+// added/renamed. A query narrowing to exactly one card is never blocked
+// - one specific match is the point of searching, not a leak.
+function isAmbiguousCategoryReveal(matches: GridItem[], formTotals: Map<unknown, number>): boolean {
+  if (matches.length < 2) return false;
+  const forms = new Set(matches.map((item) => item.attributes.form));
+  const [onlyForm] = forms;
+  if (forms.size !== 1 || onlyForm == null) return false;
+  return matches.length === formTotals.get(onlyForm);
 }
 
 interface GuessInputProps {
@@ -59,14 +88,31 @@ export default function GuessInput({
     return () => window.removeEventListener('keydown', handleEscape);
   }, [onClose]);
 
+  // Total count of each `form` value across the whole roster - what
+  // isAmbiguousCategoryReveal compares a match count against to tell "a
+  // subset of this category" from "the whole category." Only meaningful
+  // for Clash Royale; every other game's items have no `form` attribute
+  // at all, so this stays empty and the check below is always a no-op
+  // for them.
+  const formTotals = useMemo(() => {
+    const counts = new Map<unknown, number>();
+    for (const item of items) {
+      const value = item.attributes.form;
+      if (value == null) continue;
+      counts.set(value, (counts.get(value) ?? 0) + 1);
+    }
+    return counts;
+  }, [items]);
+
   // A query that's all punctuation (e.g. "." or "/") normalizes to an
   // empty string - since "".includes("") style matching is always true,
   // that would otherwise match every item instead of none.
   const normalizedQuery = normalizeForSearch(query);
-  const filtered =
+  const naiveMatches =
     query.trim().length > 0 && normalizedQuery.length > 0
       ? items.filter((item) => normalizeForSearch(item.displayName).includes(normalizedQuery))
       : [];
+  const filtered = isAmbiguousCategoryReveal(naiveMatches, formTotals) ? [] : naiveMatches;
 
   function handleSelectClick(item: GridItem) {
     // Characters cannot be used more than once
