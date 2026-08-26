@@ -11,6 +11,7 @@ export interface ChangelogEntry {
 }
 
 export const CHANGELOG: ChangelogEntry[] = [
-  { date: '2026-08-25', text: 'Added Clash Royale as a third game.' },
+  { date: '2026-08-26', text: 'Added Honkai: Star Rail.' },
+  { date: '2026-08-25', text: 'Added Clash Royale.' },
   { date: '2026-08-24', text: 'Launch date! GachaGrid went live with Genshin Impact and Brawl Stars.' },
 ];

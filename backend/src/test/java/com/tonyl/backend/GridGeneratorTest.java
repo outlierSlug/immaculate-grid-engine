@@ -7,6 +7,7 @@ import com.tonyl.backend.game.GenshinGameModule;
 import com.tonyl.backend.puzzle.GridGenerator;
 import com.tonyl.backend.game.BrawlStarsGameModule;
 import com.tonyl.backend.game.ClashRoyaleGameModule;
+import com.tonyl.backend.game.StarRailGameModule;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -50,7 +51,8 @@ class GridGeneratorTest {
         return Stream.of(
             new Object[]{ new GenshinGameModule(), loadEntities("genshin_entities.json") },
             new Object[]{ new BrawlStarsGameModule(), loadEntities("brawlstars_entities.json") },
-            new Object[]{ new ClashRoyaleGameModule(), loadEntities("clashroyale_entities.json") }
+            new Object[]{ new ClashRoyaleGameModule(), loadEntities("clashroyale_entities.json") },
+            new Object[]{ new StarRailGameModule(), loadEntities("starrail_entities.json") }
         );
     }
 

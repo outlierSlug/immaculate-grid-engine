@@ -1,0 +1,8 @@
+{
+  "name": "starrail-ingestion",
+  "private": true,
+  "type": "commonjs",
+  "dependencies": {
+    "starrail.js": "^1.9.10"
+  }
+}

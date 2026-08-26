@@ -1,0 +1,5240 @@
+[
+  {
+    "id": 1001,
+    "enhancedId": 0,
+    "name": "March 7th",
+    "path": {
+      "id": "Knight"
+    },
+    "combatType": {
+      "id": "Ice"
+    },
+    "stars": 4,
+    "maxEnergy": 120,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/1001.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/1001.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/1001.png",
+      "path": "SpriteOutput/AvatarMiniIcon/1001.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/1001.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/1001.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/1001.png",
+      "path": "SpriteOutput/AvatarDrawCard/1001.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 1002,
+    "enhancedId": 0,
+    "name": "Dan Heng",
+    "path": {
+      "id": "Rogue"
+    },
+    "combatType": {
+      "id": "Wind"
+    },
+    "stars": 4,
+    "maxEnergy": 100,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/1002.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/1002.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/1002.png",
+      "path": "SpriteOutput/AvatarMiniIcon/1002.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/1002.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/1002.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/1002.png",
+      "path": "SpriteOutput/AvatarDrawCard/1002.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 1003,
+    "enhancedId": 0,
+    "name": "Himeko",
+    "path": {
+      "id": "Mage"
+    },
+    "combatType": {
+      "id": "Fire"
+    },
+    "stars": 5,
+    "maxEnergy": 120,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/1003.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/1003.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/1003.png",
+      "path": "SpriteOutput/AvatarMiniIcon/1003.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/1003.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/1003.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/1003.png",
+      "path": "SpriteOutput/AvatarDrawCard/1003.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 1004,
+    "enhancedId": 0,
+    "name": "Welt",
+    "path": {
+      "id": "Warlock"
+    },
+    "combatType": {
+      "id": "Imaginary"
+    },
+    "stars": 5,
+    "maxEnergy": 120,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/1004.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/1004.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/1004.png",
+      "path": "SpriteOutput/AvatarMiniIcon/1004.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/1004.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/1004.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/1004.png",
+      "path": "SpriteOutput/AvatarDrawCard/1004.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 1005,
+    "enhancedId": 0,
+    "name": "Kafka",
+    "path": {
+      "id": "Warlock"
+    },
+    "combatType": {
+      "id": "Thunder"
+    },
+    "stars": 5,
+    "maxEnergy": 120,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/1005.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/1005.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/1005.png",
+      "path": "SpriteOutput/AvatarMiniIcon/1005.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/1005.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/1005.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/1005.png",
+      "path": "SpriteOutput/AvatarDrawCard/1005.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 1006,
+    "enhancedId": 0,
+    "name": "Silver Wolf",
+    "path": {
+      "id": "Warlock"
+    },
+    "combatType": {
+      "id": "Quantum"
+    },
+    "stars": 5,
+    "maxEnergy": 110,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/1006.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/1006.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/1006.png",
+      "path": "SpriteOutput/AvatarMiniIcon/1006.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/1006.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/1006.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/1006.png",
+      "path": "SpriteOutput/AvatarDrawCard/1006.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 1008,
+    "enhancedId": 0,
+    "name": "Arlan",
+    "path": {
+      "id": "Warrior"
+    },
+    "combatType": {
+      "id": "Thunder"
+    },
+    "stars": 4,
+    "maxEnergy": 110,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/1008.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/1008.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/1008.png",
+      "path": "SpriteOutput/AvatarMiniIcon/1008.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/1008.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/1008.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/1008.png",
+      "path": "SpriteOutput/AvatarDrawCard/1008.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 1009,
+    "enhancedId": 0,
+    "name": "Asta",
+    "path": {
+      "id": "Shaman"
+    },
+    "combatType": {
+      "id": "Fire"
+    },
+    "stars": 4,
+    "maxEnergy": 120,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/1009.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/1009.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/1009.png",
+      "path": "SpriteOutput/AvatarMiniIcon/1009.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/1009.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/1009.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/1009.png",
+      "path": "SpriteOutput/AvatarDrawCard/1009.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 1013,
+    "enhancedId": 0,
+    "name": "Herta",
+    "path": {
+      "id": "Mage"
+    },
+    "combatType": {
+      "id": "Ice"
+    },
+    "stars": 4,
+    "maxEnergy": 110,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/1013.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/1013.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/1013.png",
+      "path": "SpriteOutput/AvatarMiniIcon/1013.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/1013.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/1013.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/1013.png",
+      "path": "SpriteOutput/AvatarDrawCard/1013.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 1014,
+    "enhancedId": 0,
+    "name": "Saber",
+    "path": {
+      "id": "Warrior"
+    },
+    "combatType": {
+      "id": "Wind"
+    },
+    "stars": 5,
+    "maxEnergy": 360,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/1014.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/1014.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/1014.png",
+      "path": "SpriteOutput/AvatarMiniIcon/1014.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/1014.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/1014.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/1014.png",
+      "path": "SpriteOutput/AvatarDrawCard/1014.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 1015,
+    "enhancedId": 0,
+    "name": "Archer",
+    "path": {
+      "id": "Rogue"
+    },
+    "combatType": {
+      "id": "Quantum"
+    },
+    "stars": 5,
+    "maxEnergy": 220,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/1015.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/1015.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/1015.png",
+      "path": "SpriteOutput/AvatarMiniIcon/1015.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/1015.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/1015.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/1015.png",
+      "path": "SpriteOutput/AvatarDrawCard/1015.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 1101,
+    "enhancedId": 0,
+    "name": "Bronya",
+    "path": {
+      "id": "Shaman"
+    },
+    "combatType": {
+      "id": "Wind"
+    },
+    "stars": 5,
+    "maxEnergy": 120,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/1101.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/1101.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/1101.png",
+      "path": "SpriteOutput/AvatarMiniIcon/1101.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/1101.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/1101.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/1101.png",
+      "path": "SpriteOutput/AvatarDrawCard/1101.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 1102,
+    "enhancedId": 0,
+    "name": "Seele",
+    "path": {
+      "id": "Rogue"
+    },
+    "combatType": {
+      "id": "Quantum"
+    },
+    "stars": 5,
+    "maxEnergy": 120,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/1102.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/1102.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/1102.png",
+      "path": "SpriteOutput/AvatarMiniIcon/1102.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/1102.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/1102.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/1102.png",
+      "path": "SpriteOutput/AvatarDrawCard/1102.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 1103,
+    "enhancedId": 0,
+    "name": "Serval",
+    "path": {
+      "id": "Mage"
+    },
+    "combatType": {
+      "id": "Thunder"
+    },
+    "stars": 4,
+    "maxEnergy": 100,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/1103.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/1103.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/1103.png",
+      "path": "SpriteOutput/AvatarMiniIcon/1103.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/1103.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/1103.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/1103.png",
+      "path": "SpriteOutput/AvatarDrawCard/1103.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 1104,
+    "enhancedId": 0,
+    "name": "Gepard",
+    "path": {
+      "id": "Knight"
+    },
+    "combatType": {
+      "id": "Ice"
+    },
+    "stars": 5,
+    "maxEnergy": 100,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/1104.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/1104.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/1104.png",
+      "path": "SpriteOutput/AvatarMiniIcon/1104.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/1104.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/1104.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/1104.png",
+      "path": "SpriteOutput/AvatarDrawCard/1104.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 1105,
+    "enhancedId": 0,
+    "name": "Natasha",
+    "path": {
+      "id": "Priest"
+    },
+    "combatType": {
+      "id": "Physical"
+    },
+    "stars": 4,
+    "maxEnergy": 90,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/1105.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/1105.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/1105.png",
+      "path": "SpriteOutput/AvatarMiniIcon/1105.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/1105.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/1105.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/1105.png",
+      "path": "SpriteOutput/AvatarDrawCard/1105.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 1106,
+    "enhancedId": 0,
+    "name": "Pela",
+    "path": {
+      "id": "Warlock"
+    },
+    "combatType": {
+      "id": "Ice"
+    },
+    "stars": 4,
+    "maxEnergy": 110,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/1106.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/1106.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/1106.png",
+      "path": "SpriteOutput/AvatarMiniIcon/1106.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/1106.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/1106.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/1106.png",
+      "path": "SpriteOutput/AvatarDrawCard/1106.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 1107,
+    "enhancedId": 0,
+    "name": "Clara",
+    "path": {
+      "id": "Warrior"
+    },
+    "combatType": {
+      "id": "Physical"
+    },
+    "stars": 5,
+    "maxEnergy": 110,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/1107.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/1107.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/1107.png",
+      "path": "SpriteOutput/AvatarMiniIcon/1107.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/1107.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/1107.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/1107.png",
+      "path": "SpriteOutput/AvatarDrawCard/1107.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 1108,
+    "enhancedId": 0,
+    "name": "Sampo",
+    "path": {
+      "id": "Warlock"
+    },
+    "combatType": {
+      "id": "Wind"
+    },
+    "stars": 4,
+    "maxEnergy": 120,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/1108.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/1108.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/1108.png",
+      "path": "SpriteOutput/AvatarMiniIcon/1108.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/1108.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/1108.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/1108.png",
+      "path": "SpriteOutput/AvatarDrawCard/1108.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 1109,
+    "enhancedId": 0,
+    "name": "Hook",
+    "path": {
+      "id": "Warrior"
+    },
+    "combatType": {
+      "id": "Fire"
+    },
+    "stars": 4,
+    "maxEnergy": 120,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/1109.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/1109.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/1109.png",
+      "path": "SpriteOutput/AvatarMiniIcon/1109.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/1109.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/1109.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/1109.png",
+      "path": "SpriteOutput/AvatarDrawCard/1109.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 1110,
+    "enhancedId": 0,
+    "name": "Lynx",
+    "path": {
+      "id": "Priest"
+    },
+    "combatType": {
+      "id": "Quantum"
+    },
+    "stars": 4,
+    "maxEnergy": 100,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/1110.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/1110.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/1110.png",
+      "path": "SpriteOutput/AvatarMiniIcon/1110.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/1110.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/1110.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/1110.png",
+      "path": "SpriteOutput/AvatarDrawCard/1110.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 1111,
+    "enhancedId": 0,
+    "name": "Luka",
+    "path": {
+      "id": "Warlock"
+    },
+    "combatType": {
+      "id": "Physical"
+    },
+    "stars": 4,
+    "maxEnergy": 130,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/1111.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/1111.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/1111.png",
+      "path": "SpriteOutput/AvatarMiniIcon/1111.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/1111.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/1111.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/1111.png",
+      "path": "SpriteOutput/AvatarDrawCard/1111.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 1112,
+    "enhancedId": 0,
+    "name": "Topaz & Numby",
+    "path": {
+      "id": "Rogue"
+    },
+    "combatType": {
+      "id": "Fire"
+    },
+    "stars": 5,
+    "maxEnergy": 130,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/1112.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/1112.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/1112.png",
+      "path": "SpriteOutput/AvatarMiniIcon/1112.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/1112.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/1112.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/1112.png",
+      "path": "SpriteOutput/AvatarDrawCard/1112.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 1201,
+    "enhancedId": 0,
+    "name": "Qingque",
+    "path": {
+      "id": "Mage"
+    },
+    "combatType": {
+      "id": "Quantum"
+    },
+    "stars": 4,
+    "maxEnergy": 140,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/1201.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/1201.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/1201.png",
+      "path": "SpriteOutput/AvatarMiniIcon/1201.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/1201.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/1201.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/1201.png",
+      "path": "SpriteOutput/AvatarDrawCard/1201.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 1202,
+    "enhancedId": 0,
+    "name": "Tingyun",
+    "path": {
+      "id": "Shaman"
+    },
+    "combatType": {
+      "id": "Thunder"
+    },
+    "stars": 4,
+    "maxEnergy": 130,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/1202.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/1202.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/1202.png",
+      "path": "SpriteOutput/AvatarMiniIcon/1202.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/1202.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/1202.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/1202.png",
+      "path": "SpriteOutput/AvatarDrawCard/1202.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 1203,
+    "enhancedId": 0,
+    "name": "Luocha",
+    "path": {
+      "id": "Priest"
+    },
+    "combatType": {
+      "id": "Imaginary"
+    },
+    "stars": 5,
+    "maxEnergy": 100,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/1203.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/1203.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/1203.png",
+      "path": "SpriteOutput/AvatarMiniIcon/1203.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/1203.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/1203.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/1203.png",
+      "path": "SpriteOutput/AvatarDrawCard/1203.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 1204,
+    "enhancedId": 0,
+    "name": "Jing Yuan",
+    "path": {
+      "id": "Mage"
+    },
+    "combatType": {
+      "id": "Thunder"
+    },
+    "stars": 5,
+    "maxEnergy": 130,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/1204.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/1204.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/1204.png",
+      "path": "SpriteOutput/AvatarMiniIcon/1204.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/1204.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/1204.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/1204.png",
+      "path": "SpriteOutput/AvatarDrawCard/1204.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 1205,
+    "enhancedId": 0,
+    "name": "Blade",
+    "path": {
+      "id": "Warrior"
+    },
+    "combatType": {
+      "id": "Wind"
+    },
+    "stars": 5,
+    "maxEnergy": 130,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/1205.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/1205.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/1205.png",
+      "path": "SpriteOutput/AvatarMiniIcon/1205.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/1205.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/1205.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/1205.png",
+      "path": "SpriteOutput/AvatarDrawCard/1205.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 1206,
+    "enhancedId": 0,
+    "name": "Sushang",
+    "path": {
+      "id": "Rogue"
+    },
+    "combatType": {
+      "id": "Physical"
+    },
+    "stars": 4,
+    "maxEnergy": 120,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/1206.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/1206.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/1206.png",
+      "path": "SpriteOutput/AvatarMiniIcon/1206.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/1206.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/1206.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/1206.png",
+      "path": "SpriteOutput/AvatarDrawCard/1206.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 1207,
+    "enhancedId": 0,
+    "name": "Yukong",
+    "path": {
+      "id": "Shaman"
+    },
+    "combatType": {
+      "id": "Imaginary"
+    },
+    "stars": 4,
+    "maxEnergy": 130,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/1207.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/1207.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/1207.png",
+      "path": "SpriteOutput/AvatarMiniIcon/1207.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/1207.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/1207.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/1207.png",
+      "path": "SpriteOutput/AvatarDrawCard/1207.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 1208,
+    "enhancedId": 0,
+    "name": "Fu Xuan",
+    "path": {
+      "id": "Knight"
+    },
+    "combatType": {
+      "id": "Quantum"
+    },
+    "stars": 5,
+    "maxEnergy": 135,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/1208.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/1208.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/1208.png",
+      "path": "SpriteOutput/AvatarMiniIcon/1208.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/1208.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/1208.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/1208.png",
+      "path": "SpriteOutput/AvatarDrawCard/1208.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 1209,
+    "enhancedId": 0,
+    "name": "Yanqing",
+    "path": {
+      "id": "Rogue"
+    },
+    "combatType": {
+      "id": "Ice"
+    },
+    "stars": 5,
+    "maxEnergy": 140,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/1209.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/1209.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/1209.png",
+      "path": "SpriteOutput/AvatarMiniIcon/1209.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/1209.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/1209.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/1209.png",
+      "path": "SpriteOutput/AvatarDrawCard/1209.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 1210,
+    "enhancedId": 0,
+    "name": "Guinaifen",
+    "path": {
+      "id": "Warlock"
+    },
+    "combatType": {
+      "id": "Fire"
+    },
+    "stars": 4,
+    "maxEnergy": 120,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/1210.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/1210.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/1210.png",
+      "path": "SpriteOutput/AvatarMiniIcon/1210.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/1210.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/1210.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/1210.png",
+      "path": "SpriteOutput/AvatarDrawCard/1210.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 1211,
+    "enhancedId": 0,
+    "name": "Bailu",
+    "path": {
+      "id": "Priest"
+    },
+    "combatType": {
+      "id": "Thunder"
+    },
+    "stars": 5,
+    "maxEnergy": 100,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/1211.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/1211.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/1211.png",
+      "path": "SpriteOutput/AvatarMiniIcon/1211.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/1211.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/1211.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/1211.png",
+      "path": "SpriteOutput/AvatarDrawCard/1211.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 1212,
+    "enhancedId": 0,
+    "name": "Jingliu",
+    "path": {
+      "id": "Warrior"
+    },
+    "combatType": {
+      "id": "Ice"
+    },
+    "stars": 5,
+    "maxEnergy": 140,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/1212.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/1212.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/1212.png",
+      "path": "SpriteOutput/AvatarMiniIcon/1212.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/1212.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/1212.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/1212.png",
+      "path": "SpriteOutput/AvatarDrawCard/1212.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 1213,
+    "enhancedId": 0,
+    "name": "Dan Heng • Imbibitor Lunae",
+    "path": {
+      "id": "Warrior"
+    },
+    "combatType": {
+      "id": "Imaginary"
+    },
+    "stars": 5,
+    "maxEnergy": 140,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/1213.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/1213.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/1213.png",
+      "path": "SpriteOutput/AvatarMiniIcon/1213.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/1213.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/1213.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/1213.png",
+      "path": "SpriteOutput/AvatarDrawCard/1213.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 1214,
+    "enhancedId": 0,
+    "name": "Xueyi",
+    "path": {
+      "id": "Warrior"
+    },
+    "combatType": {
+      "id": "Quantum"
+    },
+    "stars": 4,
+    "maxEnergy": 120,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/1214.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/1214.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/1214.png",
+      "path": "SpriteOutput/AvatarMiniIcon/1214.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/1214.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/1214.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/1214.png",
+      "path": "SpriteOutput/AvatarDrawCard/1214.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 1215,
+    "enhancedId": 0,
+    "name": "Hanya",
+    "path": {
+      "id": "Shaman"
+    },
+    "combatType": {
+      "id": "Physical"
+    },
+    "stars": 4,
+    "maxEnergy": 140,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/1215.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/1215.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/1215.png",
+      "path": "SpriteOutput/AvatarMiniIcon/1215.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/1215.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/1215.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/1215.png",
+      "path": "SpriteOutput/AvatarDrawCard/1215.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 1217,
+    "enhancedId": 0,
+    "name": "Huohuo",
+    "path": {
+      "id": "Priest"
+    },
+    "combatType": {
+      "id": "Wind"
+    },
+    "stars": 5,
+    "maxEnergy": 140,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/1217.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/1217.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/1217.png",
+      "path": "SpriteOutput/AvatarMiniIcon/1217.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/1217.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/1217.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/1217.png",
+      "path": "SpriteOutput/AvatarDrawCard/1217.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 1218,
+    "enhancedId": 0,
+    "name": "Jiaoqiu",
+    "path": {
+      "id": "Warlock"
+    },
+    "combatType": {
+      "id": "Fire"
+    },
+    "stars": 5,
+    "maxEnergy": 100,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/1218.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/1218.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/1218.png",
+      "path": "SpriteOutput/AvatarMiniIcon/1218.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/1218.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/1218.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/1218.png",
+      "path": "SpriteOutput/AvatarDrawCard/1218.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 1220,
+    "enhancedId": 0,
+    "name": "Feixiao",
+    "path": {
+      "id": "Rogue"
+    },
+    "combatType": {
+      "id": "Wind"
+    },
+    "stars": 5,
+    "maxEnergy": 12,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/1220.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/1220.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/1220.png",
+      "path": "SpriteOutput/AvatarMiniIcon/1220.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/1220.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/1220.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/1220.png",
+      "path": "SpriteOutput/AvatarDrawCard/1220.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 1221,
+    "enhancedId": 0,
+    "name": "Yunli",
+    "path": {
+      "id": "Warrior"
+    },
+    "combatType": {
+      "id": "Physical"
+    },
+    "stars": 5,
+    "maxEnergy": 240,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/1221.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/1221.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/1221.png",
+      "path": "SpriteOutput/AvatarMiniIcon/1221.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/1221.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/1221.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/1221.png",
+      "path": "SpriteOutput/AvatarDrawCard/1221.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 1222,
+    "enhancedId": 0,
+    "name": "Lingsha",
+    "path": {
+      "id": "Priest"
+    },
+    "combatType": {
+      "id": "Fire"
+    },
+    "stars": 5,
+    "maxEnergy": 110,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/1222.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/1222.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/1222.png",
+      "path": "SpriteOutput/AvatarMiniIcon/1222.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/1222.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/1222.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/1222.png",
+      "path": "SpriteOutput/AvatarDrawCard/1222.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 1223,
+    "enhancedId": 0,
+    "name": "Moze",
+    "path": {
+      "id": "Rogue"
+    },
+    "combatType": {
+      "id": "Thunder"
+    },
+    "stars": 4,
+    "maxEnergy": 120,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/1223.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/1223.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/1223.png",
+      "path": "SpriteOutput/AvatarMiniIcon/1223.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/1223.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/1223.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/1223.png",
+      "path": "SpriteOutput/AvatarDrawCard/1223.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 1224,
+    "enhancedId": 0,
+    "name": "March 7th",
+    "path": {
+      "id": "Rogue"
+    },
+    "combatType": {
+      "id": "Imaginary"
+    },
+    "stars": 4,
+    "maxEnergy": 110,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/1224.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/1224.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/1224.png",
+      "path": "SpriteOutput/AvatarMiniIcon/1224.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/1224.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/1224.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/1224.png",
+      "path": "SpriteOutput/AvatarDrawCard/1224.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 1225,
+    "enhancedId": 0,
+    "name": "Fugue",
+    "path": {
+      "id": "Warlock"
+    },
+    "combatType": {
+      "id": "Fire"
+    },
+    "stars": 5,
+    "maxEnergy": 130,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/1225.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/1225.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/1225.png",
+      "path": "SpriteOutput/AvatarMiniIcon/1225.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/1225.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/1225.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/1225.png",
+      "path": "SpriteOutput/AvatarDrawCard/1225.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 1301,
+    "enhancedId": 0,
+    "name": "Gallagher",
+    "path": {
+      "id": "Priest"
+    },
+    "combatType": {
+      "id": "Fire"
+    },
+    "stars": 4,
+    "maxEnergy": 110,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/1301.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/1301.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/1301.png",
+      "path": "SpriteOutput/AvatarMiniIcon/1301.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/1301.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/1301.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/1301.png",
+      "path": "SpriteOutput/AvatarDrawCard/1301.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 1302,
+    "enhancedId": 0,
+    "name": "Argenti",
+    "path": {
+      "id": "Mage"
+    },
+    "combatType": {
+      "id": "Physical"
+    },
+    "stars": 5,
+    "maxEnergy": 180,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/1302.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/1302.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/1302.png",
+      "path": "SpriteOutput/AvatarMiniIcon/1302.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/1302.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/1302.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/1302.png",
+      "path": "SpriteOutput/AvatarDrawCard/1302.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 1303,
+    "enhancedId": 0,
+    "name": "Ruan Mei",
+    "path": {
+      "id": "Shaman"
+    },
+    "combatType": {
+      "id": "Ice"
+    },
+    "stars": 5,
+    "maxEnergy": 130,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/1303.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/1303.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/1303.png",
+      "path": "SpriteOutput/AvatarMiniIcon/1303.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/1303.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/1303.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/1303.png",
+      "path": "SpriteOutput/AvatarDrawCard/1303.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 1304,
+    "enhancedId": 0,
+    "name": "Aventurine",
+    "path": {
+      "id": "Knight"
+    },
+    "combatType": {
+      "id": "Imaginary"
+    },
+    "stars": 5,
+    "maxEnergy": 110,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/1304.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/1304.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/1304.png",
+      "path": "SpriteOutput/AvatarMiniIcon/1304.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/1304.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/1304.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/1304.png",
+      "path": "SpriteOutput/AvatarDrawCard/1304.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 1305,
+    "enhancedId": 0,
+    "name": "Dr. Ratio",
+    "path": {
+      "id": "Rogue"
+    },
+    "combatType": {
+      "id": "Imaginary"
+    },
+    "stars": 5,
+    "maxEnergy": 140,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/1305.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/1305.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/1305.png",
+      "path": "SpriteOutput/AvatarMiniIcon/1305.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/1305.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/1305.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/1305.png",
+      "path": "SpriteOutput/AvatarDrawCard/1305.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 1306,
+    "enhancedId": 0,
+    "name": "Sparkle",
+    "path": {
+      "id": "Shaman"
+    },
+    "combatType": {
+      "id": "Quantum"
+    },
+    "stars": 5,
+    "maxEnergy": 110,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/1306.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/1306.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/1306.png",
+      "path": "SpriteOutput/AvatarMiniIcon/1306.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/1306.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/1306.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/1306.png",
+      "path": "SpriteOutput/AvatarDrawCard/1306.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 1307,
+    "enhancedId": 0,
+    "name": "Black Swan",
+    "path": {
+      "id": "Warlock"
+    },
+    "combatType": {
+      "id": "Wind"
+    },
+    "stars": 5,
+    "maxEnergy": 120,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/1307.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/1307.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/1307.png",
+      "path": "SpriteOutput/AvatarMiniIcon/1307.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/1307.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/1307.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/1307.png",
+      "path": "SpriteOutput/AvatarDrawCard/1307.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 1308,
+    "enhancedId": 0,
+    "name": "Acheron",
+    "path": {
+      "id": "Warlock"
+    },
+    "combatType": {
+      "id": "Thunder"
+    },
+    "stars": 5,
+    "maxEnergy": 9,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/1308.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/1308.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/1308.png",
+      "path": "SpriteOutput/AvatarMiniIcon/1308.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/1308.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/1308.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/1308.png",
+      "path": "SpriteOutput/AvatarDrawCard/1308.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 1309,
+    "enhancedId": 0,
+    "name": "Robin",
+    "path": {
+      "id": "Shaman"
+    },
+    "combatType": {
+      "id": "Physical"
+    },
+    "stars": 5,
+    "maxEnergy": 160,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/1309.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/1309.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/1309.png",
+      "path": "SpriteOutput/AvatarMiniIcon/1309.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/1309.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/1309.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/1309.png",
+      "path": "SpriteOutput/AvatarDrawCard/1309.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 1310,
+    "enhancedId": 0,
+    "name": "Firefly",
+    "path": {
+      "id": "Warrior"
+    },
+    "combatType": {
+      "id": "Fire"
+    },
+    "stars": 5,
+    "maxEnergy": 240,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/1310.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/1310.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/1310.png",
+      "path": "SpriteOutput/AvatarMiniIcon/1310.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/1310.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/1310.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/1310.png",
+      "path": "SpriteOutput/AvatarDrawCard/1310.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 1312,
+    "enhancedId": 0,
+    "name": "Misha",
+    "path": {
+      "id": "Warrior"
+    },
+    "combatType": {
+      "id": "Ice"
+    },
+    "stars": 4,
+    "maxEnergy": 100,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/1312.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/1312.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/1312.png",
+      "path": "SpriteOutput/AvatarMiniIcon/1312.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/1312.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/1312.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/1312.png",
+      "path": "SpriteOutput/AvatarDrawCard/1312.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 1313,
+    "enhancedId": 0,
+    "name": "Sunday",
+    "path": {
+      "id": "Shaman"
+    },
+    "combatType": {
+      "id": "Imaginary"
+    },
+    "stars": 5,
+    "maxEnergy": 130,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/1313.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/1313.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/1313.png",
+      "path": "SpriteOutput/AvatarMiniIcon/1313.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/1313.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/1313.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/1313.png",
+      "path": "SpriteOutput/AvatarDrawCard/1313.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 1314,
+    "enhancedId": 0,
+    "name": "Jade",
+    "path": {
+      "id": "Mage"
+    },
+    "combatType": {
+      "id": "Quantum"
+    },
+    "stars": 5,
+    "maxEnergy": 140,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/1314.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/1314.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/1314.png",
+      "path": "SpriteOutput/AvatarMiniIcon/1314.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/1314.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/1314.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/1314.png",
+      "path": "SpriteOutput/AvatarDrawCard/1314.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 1315,
+    "enhancedId": 0,
+    "name": "Boothill",
+    "path": {
+      "id": "Rogue"
+    },
+    "combatType": {
+      "id": "Physical"
+    },
+    "stars": 5,
+    "maxEnergy": 115,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/1315.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/1315.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/1315.png",
+      "path": "SpriteOutput/AvatarMiniIcon/1315.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/1315.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/1315.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/1315.png",
+      "path": "SpriteOutput/AvatarDrawCard/1315.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 1317,
+    "enhancedId": 0,
+    "name": "Rappa",
+    "path": {
+      "id": "Mage"
+    },
+    "combatType": {
+      "id": "Imaginary"
+    },
+    "stars": 5,
+    "maxEnergy": 140,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/1317.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/1317.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/1317.png",
+      "path": "SpriteOutput/AvatarMiniIcon/1317.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/1317.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/1317.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/1317.png",
+      "path": "SpriteOutput/AvatarDrawCard/1317.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 1321,
+    "enhancedId": 0,
+    "name": "The Dahlia",
+    "path": {
+      "id": "Warlock"
+    },
+    "combatType": {
+      "id": "Fire"
+    },
+    "stars": 5,
+    "maxEnergy": 130,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/1321.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/1321.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/1321.png",
+      "path": "SpriteOutput/AvatarMiniIcon/1321.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/1321.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/1321.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/1321.png",
+      "path": "SpriteOutput/AvatarDrawCard/1321.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 1401,
+    "enhancedId": 0,
+    "name": "The Herta",
+    "path": {
+      "id": "Mage"
+    },
+    "combatType": {
+      "id": "Ice"
+    },
+    "stars": 5,
+    "maxEnergy": 220,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/1401.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/1401.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/1401.png",
+      "path": "SpriteOutput/AvatarMiniIcon/1401.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/1401.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/1401.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/1401.png",
+      "path": "SpriteOutput/AvatarDrawCard/1401.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 1402,
+    "enhancedId": 0,
+    "name": "Aglaea",
+    "path": {
+      "id": "Memory"
+    },
+    "combatType": {
+      "id": "Thunder"
+    },
+    "stars": 5,
+    "maxEnergy": 350,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/1402.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/1402.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/1402.png",
+      "path": "SpriteOutput/AvatarMiniIcon/1402.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/1402.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/1402.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/1402.png",
+      "path": "SpriteOutput/AvatarDrawCard/1402.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 1403,
+    "enhancedId": 0,
+    "name": "Tribbie",
+    "path": {
+      "id": "Shaman"
+    },
+    "combatType": {
+      "id": "Quantum"
+    },
+    "stars": 5,
+    "maxEnergy": 120,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/1403.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/1403.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/1403.png",
+      "path": "SpriteOutput/AvatarMiniIcon/1403.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/1403.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/1403.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/1403.png",
+      "path": "SpriteOutput/AvatarDrawCard/1403.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 1404,
+    "enhancedId": 0,
+    "name": "Mydei",
+    "path": {
+      "id": "Warrior"
+    },
+    "combatType": {
+      "id": "Imaginary"
+    },
+    "stars": 5,
+    "maxEnergy": 160,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/1404.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/1404.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/1404.png",
+      "path": "SpriteOutput/AvatarMiniIcon/1404.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/1404.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/1404.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/1404.png",
+      "path": "SpriteOutput/AvatarDrawCard/1404.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 1405,
+    "enhancedId": 0,
+    "name": "Anaxa",
+    "path": {
+      "id": "Mage"
+    },
+    "combatType": {
+      "id": "Wind"
+    },
+    "stars": 5,
+    "maxEnergy": 140,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/1405.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/1405.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/1405.png",
+      "path": "SpriteOutput/AvatarMiniIcon/1405.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/1405.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/1405.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/1405.png",
+      "path": "SpriteOutput/AvatarDrawCard/1405.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 1406,
+    "enhancedId": 0,
+    "name": "Cipher",
+    "path": {
+      "id": "Warlock"
+    },
+    "combatType": {
+      "id": "Quantum"
+    },
+    "stars": 5,
+    "maxEnergy": 130,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/1406.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/1406.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/1406.png",
+      "path": "SpriteOutput/AvatarMiniIcon/1406.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/1406.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/1406.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/1406.png",
+      "path": "SpriteOutput/AvatarDrawCard/1406.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 1407,
+    "enhancedId": 0,
+    "name": "Castorice",
+    "path": {
+      "id": "Memory"
+    },
+    "combatType": {
+      "id": "Quantum"
+    },
+    "stars": 5,
+    "maxEnergy": null,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/1407.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/1407.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/1407.png",
+      "path": "SpriteOutput/AvatarMiniIcon/1407.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/1407.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/1407.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/1407.png",
+      "path": "SpriteOutput/AvatarDrawCard/1407.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 1408,
+    "enhancedId": 0,
+    "name": "Phainon",
+    "path": {
+      "id": "Warrior"
+    },
+    "combatType": {
+      "id": "Physical"
+    },
+    "stars": 5,
+    "maxEnergy": 12,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/1408.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/1408.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/1408.png",
+      "path": "SpriteOutput/AvatarMiniIcon/1408.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/1408.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/1408.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/1408.png",
+      "path": "SpriteOutput/AvatarDrawCard/1408.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 1409,
+    "enhancedId": 0,
+    "name": "Hyacine",
+    "path": {
+      "id": "Memory"
+    },
+    "combatType": {
+      "id": "Wind"
+    },
+    "stars": 5,
+    "maxEnergy": 140,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/1409.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/1409.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/1409.png",
+      "path": "SpriteOutput/AvatarMiniIcon/1409.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/1409.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/1409.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/1409.png",
+      "path": "SpriteOutput/AvatarDrawCard/1409.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 1410,
+    "enhancedId": 0,
+    "name": "Hysilens",
+    "path": {
+      "id": "Warlock"
+    },
+    "combatType": {
+      "id": "Physical"
+    },
+    "stars": 5,
+    "maxEnergy": 110,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/1410.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/1410.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/1410.png",
+      "path": "SpriteOutput/AvatarMiniIcon/1410.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/1410.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/1410.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/1410.png",
+      "path": "SpriteOutput/AvatarDrawCard/1410.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 1412,
+    "enhancedId": 0,
+    "name": "Cerydra",
+    "path": {
+      "id": "Shaman"
+    },
+    "combatType": {
+      "id": "Wind"
+    },
+    "stars": 5,
+    "maxEnergy": 130,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/1412.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/1412.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/1412.png",
+      "path": "SpriteOutput/AvatarMiniIcon/1412.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/1412.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/1412.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/1412.png",
+      "path": "SpriteOutput/AvatarDrawCard/1412.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 1413,
+    "enhancedId": 0,
+    "name": "Evernight",
+    "path": {
+      "id": "Memory"
+    },
+    "combatType": {
+      "id": "Ice"
+    },
+    "stars": 5,
+    "maxEnergy": 240,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/1413.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/1413.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/1413.png",
+      "path": "SpriteOutput/AvatarMiniIcon/1413.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/1413.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/1413.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/1413.png",
+      "path": "SpriteOutput/AvatarDrawCard/1413.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 1414,
+    "enhancedId": 0,
+    "name": "Dan Heng • Permansor Terrae",
+    "path": {
+      "id": "Knight"
+    },
+    "combatType": {
+      "id": "Physical"
+    },
+    "stars": 5,
+    "maxEnergy": 135,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/1414.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/1414.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/1414.png",
+      "path": "SpriteOutput/AvatarMiniIcon/1414.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/1414.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/1414.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/1414.png",
+      "path": "SpriteOutput/AvatarDrawCard/1414.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 1415,
+    "enhancedId": 0,
+    "name": "Cyrene",
+    "path": {
+      "id": "Memory"
+    },
+    "combatType": {
+      "id": "Ice"
+    },
+    "stars": 5,
+    "maxEnergy": 24,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/1415.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/1415.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/1415.png",
+      "path": "SpriteOutput/AvatarMiniIcon/1415.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/1415.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/1415.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/1415.png",
+      "path": "SpriteOutput/AvatarDrawCard/1415.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 1501,
+    "enhancedId": 0,
+    "name": "Sparxie",
+    "path": {
+      "id": "Elation"
+    },
+    "combatType": {
+      "id": "Fire"
+    },
+    "stars": 5,
+    "maxEnergy": 160,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/1501.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/1501.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/1501.png",
+      "path": "SpriteOutput/AvatarMiniIcon/1501.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/1501.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/1501.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/1501.png",
+      "path": "SpriteOutput/AvatarDrawCard/1501.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 1502,
+    "enhancedId": 0,
+    "name": "Yao Guang",
+    "path": {
+      "id": "Elation"
+    },
+    "combatType": {
+      "id": "Physical"
+    },
+    "stars": 5,
+    "maxEnergy": 180,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/1502.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/1502.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/1502.png",
+      "path": "SpriteOutput/AvatarMiniIcon/1502.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/1502.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/1502.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/1502.png",
+      "path": "SpriteOutput/AvatarDrawCard/1502.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 1504,
+    "enhancedId": 0,
+    "name": "Ashveil",
+    "path": {
+      "id": "Rogue"
+    },
+    "combatType": {
+      "id": "Thunder"
+    },
+    "stars": 5,
+    "maxEnergy": 150,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/1504.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/1504.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/1504.png",
+      "path": "SpriteOutput/AvatarMiniIcon/1504.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/1504.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/1504.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/1504.png",
+      "path": "SpriteOutput/AvatarDrawCard/1504.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 1505,
+    "enhancedId": 0,
+    "name": "Evanescia",
+    "path": {
+      "id": "Elation"
+    },
+    "combatType": {
+      "id": "Physical"
+    },
+    "stars": 5,
+    "maxEnergy": 480,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/1505.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/1505.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/1505.png",
+      "path": "SpriteOutput/AvatarMiniIcon/1505.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/1505.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/1505.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/1505.png",
+      "path": "SpriteOutput/AvatarDrawCard/1505.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 1506,
+    "enhancedId": 0,
+    "name": "Silver Wolf LV.<unbreak>999</unbreak>",
+    "path": {
+      "id": "Elation"
+    },
+    "combatType": {
+      "id": "Imaginary"
+    },
+    "stars": 5,
+    "maxEnergy": 60,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/1506.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/1506.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/1506.png",
+      "path": "SpriteOutput/AvatarMiniIcon/1506.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/1506.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/1506.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/1506.png",
+      "path": "SpriteOutput/AvatarDrawCard/1506.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 1507,
+    "enhancedId": 0,
+    "name": "Mortenax Blade",
+    "path": {
+      "id": "Warlock"
+    },
+    "combatType": {
+      "id": "Fire"
+    },
+    "stars": 5,
+    "maxEnergy": 160,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/1507.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/1507.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/1507.png",
+      "path": "SpriteOutput/AvatarMiniIcon/1507.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/1507.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/1507.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/1507.png",
+      "path": "SpriteOutput/AvatarDrawCard/1507.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 1508,
+    "enhancedId": 0,
+    "name": "Rin Tohsaka",
+    "path": {
+      "id": "Mage"
+    },
+    "combatType": {
+      "id": "Quantum"
+    },
+    "stars": 5,
+    "maxEnergy": 160,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/1508.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/1508.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/1508.png",
+      "path": "SpriteOutput/AvatarMiniIcon/1508.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/1508.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/1508.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/1508.png",
+      "path": "SpriteOutput/AvatarDrawCard/1508.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 1509,
+    "enhancedId": 0,
+    "name": "Gilgamesh",
+    "path": {
+      "id": "Warrior"
+    },
+    "combatType": {
+      "id": "Thunder"
+    },
+    "stars": 5,
+    "maxEnergy": 360,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/1509.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/1509.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/1509.png",
+      "path": "SpriteOutput/AvatarMiniIcon/1509.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/1509.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/1509.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/1509.png",
+      "path": "SpriteOutput/AvatarDrawCard/1509.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 1510,
+    "enhancedId": 0,
+    "name": "Himeko • Nova",
+    "path": {
+      "id": "Mage"
+    },
+    "combatType": {
+      "id": "Fire"
+    },
+    "stars": 5,
+    "maxEnergy": 150,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/1510.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/1510.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/1510.png",
+      "path": "SpriteOutput/AvatarMiniIcon/1510.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/1510.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/1510.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/1510.png",
+      "path": "SpriteOutput/AvatarDrawCard/1510.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 1512,
+    "enhancedId": 0,
+    "name": "Robin • Summeretto",
+    "path": {
+      "id": "Memory"
+    },
+    "combatType": {
+      "id": "Wind"
+    },
+    "stars": 5,
+    "maxEnergy": 140,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/1512.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/1512.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/1512.png",
+      "path": "SpriteOutput/AvatarMiniIcon/1512.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/1512.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/1512.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/1512.png",
+      "path": "SpriteOutput/AvatarDrawCard/1512.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 1513,
+    "enhancedId": 0,
+    "name": "Aventurine • Waveflair",
+    "path": {
+      "id": "Elation"
+    },
+    "combatType": {
+      "id": "Quantum"
+    },
+    "stars": 5,
+    "maxEnergy": 130,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/1513.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/1513.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/1513.png",
+      "path": "SpriteOutput/AvatarMiniIcon/1513.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/1513.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/1513.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/1513.png",
+      "path": "SpriteOutput/AvatarDrawCard/1513.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 8001,
+    "enhancedId": 0,
+    "name": "{NICKNAME}",
+    "path": {
+      "id": "Warrior"
+    },
+    "combatType": {
+      "id": "Physical"
+    },
+    "stars": 5,
+    "maxEnergy": 120,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/8001.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/8001.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/8001.png",
+      "path": "SpriteOutput/AvatarMiniIcon/8001.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/8001.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/8001.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/8001.png",
+      "path": "SpriteOutput/AvatarDrawCard/8001.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 8002,
+    "enhancedId": 0,
+    "name": "{NICKNAME}",
+    "path": {
+      "id": "Warrior"
+    },
+    "combatType": {
+      "id": "Physical"
+    },
+    "stars": 5,
+    "maxEnergy": 120,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/8002.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/8002.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/8002.png",
+      "path": "SpriteOutput/AvatarMiniIcon/8002.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/8002.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/8002.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/8002.png",
+      "path": "SpriteOutput/AvatarDrawCard/8002.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 8003,
+    "enhancedId": 0,
+    "name": "{NICKNAME}",
+    "path": {
+      "id": "Knight"
+    },
+    "combatType": {
+      "id": "Fire"
+    },
+    "stars": 5,
+    "maxEnergy": 120,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/8003.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/8003.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/8003.png",
+      "path": "SpriteOutput/AvatarMiniIcon/8003.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/8003.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/8003.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/8003.png",
+      "path": "SpriteOutput/AvatarDrawCard/8003.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 8004,
+    "enhancedId": 0,
+    "name": "{NICKNAME}",
+    "path": {
+      "id": "Knight"
+    },
+    "combatType": {
+      "id": "Fire"
+    },
+    "stars": 5,
+    "maxEnergy": 120,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/8004.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/8004.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/8004.png",
+      "path": "SpriteOutput/AvatarMiniIcon/8004.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/8004.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/8004.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/8004.png",
+      "path": "SpriteOutput/AvatarDrawCard/8004.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 8005,
+    "enhancedId": 0,
+    "name": "{NICKNAME}",
+    "path": {
+      "id": "Shaman"
+    },
+    "combatType": {
+      "id": "Imaginary"
+    },
+    "stars": 5,
+    "maxEnergy": 140,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/8005.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/8005.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/8005.png",
+      "path": "SpriteOutput/AvatarMiniIcon/8005.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/8005.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/8005.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/8005.png",
+      "path": "SpriteOutput/AvatarDrawCard/8005.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 8006,
+    "enhancedId": 0,
+    "name": "{NICKNAME}",
+    "path": {
+      "id": "Shaman"
+    },
+    "combatType": {
+      "id": "Imaginary"
+    },
+    "stars": 5,
+    "maxEnergy": 140,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/8006.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/8006.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/8006.png",
+      "path": "SpriteOutput/AvatarMiniIcon/8006.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/8006.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/8006.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/8006.png",
+      "path": "SpriteOutput/AvatarDrawCard/8006.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 8007,
+    "enhancedId": 0,
+    "name": "{NICKNAME}",
+    "path": {
+      "id": "Memory"
+    },
+    "combatType": {
+      "id": "Ice"
+    },
+    "stars": 5,
+    "maxEnergy": 160,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/8007.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/8007.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/8007.png",
+      "path": "SpriteOutput/AvatarMiniIcon/8007.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/8007.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/8007.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/8007.png",
+      "path": "SpriteOutput/AvatarDrawCard/8007.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 8008,
+    "enhancedId": 0,
+    "name": "{NICKNAME}",
+    "path": {
+      "id": "Memory"
+    },
+    "combatType": {
+      "id": "Ice"
+    },
+    "stars": 5,
+    "maxEnergy": 160,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/8008.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/8008.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/8008.png",
+      "path": "SpriteOutput/AvatarMiniIcon/8008.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/8008.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/8008.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/8008.png",
+      "path": "SpriteOutput/AvatarDrawCard/8008.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 8009,
+    "enhancedId": 0,
+    "name": "{NICKNAME}",
+    "path": {
+      "id": "Elation"
+    },
+    "combatType": {
+      "id": "Thunder"
+    },
+    "stars": 5,
+    "maxEnergy": 160,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/8009.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/8009.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/8009.png",
+      "path": "SpriteOutput/AvatarMiniIcon/8009.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/8009.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/8009.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/8009.png",
+      "path": "SpriteOutput/AvatarDrawCard/8009.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
+    "id": 8010,
+    "enhancedId": 0,
+    "name": "{NICKNAME}",
+    "path": {
+      "id": "Elation"
+    },
+    "combatType": {
+      "id": "Thunder"
+    },
+    "stars": 5,
+    "maxEnergy": 160,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/8010.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/8010.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/8010.png",
+      "path": "SpriteOutput/AvatarMiniIcon/8010.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/8010.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/8010.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/8010.png",
+      "path": "SpriteOutput/AvatarDrawCard/8010.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  }
+]

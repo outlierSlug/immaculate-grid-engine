@@ -21,6 +21,7 @@ import { usePuzzleGuesses } from '../hooks/usePuzzleGuesses';
 import acquaintFateIcon from '../assets/genshin/Item_Acquaint_Fate.webp';
 import starrPinIcon from '../assets/brawlstars/starr_pin.png';
 import luckyDropIcon from '../assets/clashroyale/Item_Lucky_Drop_Common.png';
+import starRailPassIcon from '../assets/starrail/star_rail_pass.webp';
 
 const GUESS_LIMIT = 9;
 
@@ -32,6 +33,7 @@ const UNLIMITED_GUESS_ICON: Partial<Record<GameId, string>> = {
   genshin: acquaintFateIcon,
   brawlstars: starrPinIcon,
   clashroyale: luckyDropIcon,
+  starrail: starRailPassIcon,
 };
 
 function remainingDimensionCount(categories: GameCategoriesResponse | null, excludedCategoryIds: string[]): number {

@@ -16,12 +16,12 @@ export default function LegalPage() {
         </section>
 
         <section className="flex flex-col gap-3">
-          <h2 className="text-xl font-bold tracking-tight mb-2">Genshin Impact</h2>
+          <h2 className="text-xl font-bold tracking-tight mb-2">Genshin Impact &amp; Honkai: Star Rail</h2>
           <>
             <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
               GachaGrid is not affiliated with,
-              endorsed, sponsored, or specifically approved by Cognosphere Pte. Ltd. or HoYoverse. Genshin Impact,
-              including its characters, names, and associated assets, is the property of Cognosphere Pte. Ltd. /
+              endorsed, sponsored, or specifically approved by Cognosphere Pte. Ltd. or HoYoverse. Genshin Impact and Honkai: Star Rail,
+              including characters, names, and associated assets, is the property of Cognosphere Pte. Ltd. /
               HoYoverse. All rights reserved to their respective owners.
             </p>
             <p className="text-gray-600 dark:text-gray-400 leading-relaxed">

@@ -23,6 +23,7 @@ export default function HomePage() {
             logoAlt={game.label}
             logoAspectClass={game.logoAspectClass}
             logoObjectPosition={game.logoObjectPosition}
+            logoSizeClass={game.logoSizeClass}
             accentRingClass={game.accentRingClass}
           />
         ))}

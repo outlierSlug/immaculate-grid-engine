@@ -60,6 +60,24 @@ import elixir7Icon from '../assets/clashroyale/7elixir.png';
 import elixir8Icon from '../assets/clashroyale/8elixir.png';
 import elixir9Icon from '../assets/clashroyale/9elixir.png';
 
+import pathAbundanceIcon from '../assets/starrail/paths/Path_Abundance.webp';
+import pathDestructionIcon from '../assets/starrail/paths/Path_Destruction.webp';
+import pathElationIcon from '../assets/starrail/paths/Path_Elation.webp';
+import pathEruditionIcon from '../assets/starrail/paths/Path_Erudition.webp';
+import pathHarmonyIcon from '../assets/starrail/paths/Path_Harmony.webp';
+import pathNihilityIcon from '../assets/starrail/paths/Path_Nihility.webp';
+import pathPreservationIcon from '../assets/starrail/paths/Path_Preservation.webp';
+import pathRemembranceIcon from '../assets/starrail/paths/Path_Remembrance.webp';
+import pathTheHuntIcon from '../assets/starrail/paths/Path_The_Hunt.webp';
+
+import elementPhysicalIcon from '../assets/starrail/elements/Type_Physical.webp';
+import elementFireIcon from '../assets/starrail/elements/Type_Fire.webp';
+import elementIceIcon from '../assets/starrail/elements/Type_Ice.webp';
+import elementLightningIcon from '../assets/starrail/elements/Type_Lightning.webp';
+import elementWindIcon from '../assets/starrail/elements/Type_Wind.webp';
+import elementQuantumIcon from '../assets/starrail/elements/Type_Quantum.webp';
+import elementImaginaryIcon from '../assets/starrail/elements/Type_Imaginary.webp';
+
 interface CategoryChipProps {
   label: string;
   // Every lookup below is scoped by game (icons, tooltip copy, rarity
@@ -341,23 +359,93 @@ const CLASHROYALE_RARITY_STYLES: Record<string, string> = {
   Champion: 'border-amber-300 dark:border-amber-700 bg-amber-50 dark:bg-amber-500/15 text-amber-700 dark:text-amber-400',
 };
 
+// ── Honkai: Star Rail ────────────────────────────────────────────────────
+const STARRAIL_ICONS: Record<string, string> = {
+  // Paths - "The Hunt" (not "Hunt" alone) is the real in-game path name,
+  // resolved from the raw data itself (AvatarBaseType.json's FirstWordText),
+  // not a guess - see ingestion/starrail/normalize.py.
+  Abundance: pathAbundanceIcon,
+  Destruction: pathDestructionIcon,
+  Elation: pathElationIcon,
+  Erudition: pathEruditionIcon,
+  Harmony: pathHarmonyIcon,
+  Nihility: pathNihilityIcon,
+  Preservation: pathPreservationIcon,
+  Remembrance: pathRemembranceIcon,
+  'The Hunt': pathTheHuntIcon,
+
+  // Elements
+  Physical: elementPhysicalIcon,
+  Fire: elementFireIcon,
+  Ice: elementIceIcon,
+  Lightning: elementLightningIcon,
+  Wind: elementWindIcon,
+  Quantum: elementQuantumIcon,
+  Imaginary: elementImaginaryIcon,
+};
+
+const STARRAIL_DESCRIPTIONS: Record<string, string> = {
+  // Paths
+  Abundance: 'This character follows the Path of Abundance.',
+  Destruction: 'This character follows the Path of Destruction.',
+  Elation: 'This character follows the Path of Elation.',
+  Erudition: 'This character follows the Path of Erudition.',
+  Harmony: 'This character follows the Path of Harmony.',
+  Nihility: 'This character follows the Path of Nihility.',
+  Preservation: 'This character follows the Path of Preservation.',
+  Remembrance: 'This character follows the Path of Remembrance.',
+  'The Hunt': 'This character follows the Path of The Hunt.',
+
+  // Elements (Combat Types)
+  Physical: 'This character deals Physical DMG.',
+  Fire: 'This character deals Fire DMG.',
+  Ice: 'This character deals Ice DMG.',
+  Lightning: 'This character deals Lightning DMG.',
+  Wind: 'This character deals Wind DMG.',
+  Quantum: 'This character deals Quantum DMG.',
+  Imaginary: 'This character deals Imaginary DMG.',
+
+  // Rarity renders as the plain-text fallback pill (see the final return
+  // below), same "4-Star"/"5-Star" treatment as Genshin - no dedicated
+  // color, same underlying concept (a star count, not an in-game rarity
+  // name/color the way Brawl Stars/Clash Royale have).
+  '4-Star': 'This character is a 4-star character.',
+  '5-Star': 'This character is a 5-star character.',
+};
+
+// Path icons are white/light line art baked for a dark backdrop - legible
+// against the chip's dark:bg-transparent background, but nearly invisible
+// against its light-mode bg-gray-100 (too subtle a value difference to
+// read at this size). Element icons don't have this problem (they carry
+// their own color), so this is scoped to paths only, not all STARRAIL_ICONS.
+const STARRAIL_PATH_LABELS = new Set([
+  'Abundance', 'Destruction', 'Elation', 'Erudition', 'Harmony',
+  'Nihility', 'Preservation', 'Remembrance', 'The Hunt',
+]);
+
 // ── Per-game lookup tables ───────────────────────────────────────────────
 const ICONS_BY_GAME: Record<GameId, Record<string, string>> = {
   genshin: GENSHIN_ICONS,
   brawlstars: BRAWLSTARS_ICONS,
   clashroyale: CLASHROYALE_ICONS,
+  starrail: STARRAIL_ICONS,
 };
 
 const DESCRIPTIONS_BY_GAME: Record<GameId, Record<string, string>> = {
   genshin: GENSHIN_DESCRIPTIONS,
   brawlstars: BRAWLSTARS_DESCRIPTIONS,
   clashroyale: CLASHROYALE_DESCRIPTIONS,
+  starrail: STARRAIL_DESCRIPTIONS,
 };
 
 const RARITY_STYLES_BY_GAME: Record<GameId, Record<string, string>> = {
   genshin: {},
   brawlstars: BRAWLSTARS_RARITY_STYLES,
   clashroyale: CLASHROYALE_RARITY_STYLES,
+  // Same reasoning as Genshin's empty map above - "4-Star"/"5-Star" is a
+  // star count, not an in-game rarity name/color, so it stays the default
+  // plain pill.
+  starrail: {},
 };
 
 function patternDescription(game: GameId, label: string): string | undefined {
@@ -409,6 +497,13 @@ export default function CategoryChip({ label, game }: CategoryChipProps) {
           onError={() => setImageReady(true)}
           className={`w-(--grid-chip-img) h-(--grid-chip-img) object-contain transition-opacity duration-300 ${
             INVERT_IN_DARK.has(label) ? 'dark:invert' : ''
+          } ${
+            // Opposite direction from INVERT_IN_DARK above: these icons are
+            // white line art, invisible against the chip's light-mode
+            // bg-gray-100 - inverted (white -> black) in light mode only,
+            // then un-inverted back to white for dark mode, where they're
+            // already legible against the transparent/dark background.
+            game === 'starrail' && STARRAIL_PATH_LABELS.has(label) ? 'invert dark:invert-0' : ''
           } ${imageReady ? 'opacity-100' : 'opacity-0'}`}
         />
       </div>

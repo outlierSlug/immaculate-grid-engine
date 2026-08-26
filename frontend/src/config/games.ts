@@ -4,6 +4,8 @@ import brawlStarsHero from '../assets/brawlstars/wallpapers/loading_2020_arcade.
 import brawlStarsLogo from '../assets/brawlstars/BS_EN.png';
 import clashRoyaleHero from '../assets/clashroyale/wallpapers/group_champions.png';
 import clashRoyaleLogo from '../assets/clashroyale/Clash_Royale_Logo_cropped.png';
+import starRailHero from '../assets/starrail/wallpapers/Splash_Screen_Second_Closed_Beta_cropped.png';
+import starRailLogo from '../assets/starrail/star_rail_logo.png';
 import type { HeroImage } from '../hooks/useRandomHeroImage';
 
 export const GAMES = {
@@ -27,6 +29,12 @@ export const GAMES = {
     // exactly, rather than a guessed ratio.
     logoAspectClass: 'aspect-[2.78]',
     logoObjectPosition: '50% 48%',
+    // Explicit even though it matches GameCard's own default - every entry
+    // declares it so TypeScript's inferred type for GAMES's values is
+    // consistent across all four (Object.values(GAMES) is a union of each
+    // entry's own literal shape; a field only some of them have fails to
+    // type-check when accessed generically, e.g. in HomePage's game.map()).
+    logoSizeClass: 'h-10 sm:h-12',
     // Tailwind class literals (not built dynamically) so the JIT scanner
     // picks them up - see GameCard.
     accentRingClass: 'hover:ring-sky-300',
@@ -53,6 +61,41 @@ export const GAMES = {
     // definition against the cell background.
     avatarBorderClass: 'border border-gray-200 dark:border-gray-700',
   },
+  starrail: {
+    id: 'starrail',
+    label: 'Honkai: Star Rail',
+    // Official splash art (Cognosphere / HoYoverse), cropped (see the
+    // _cropped filename) from the original 1280x730 to remove ~350px of
+    // empty dark space on the left that was reserved for the game's own
+    // logo watermark - this app has its own separate logo file, so that
+    // space just pushed Caelus/Stelle uncomfortably off-center in the
+    // GameCard's narrower aspect-4/3 box. Biased slightly up from center
+    // to keep both characters' faces in frame after that box's height crop.
+    heroImages: [{ src: starRailHero, objectPosition: '50% 25%' }] satisfies HeroImage[],
+    logoImage: starRailLogo,
+    // star_rail_logo.png (1290x625) has zero transparent padding - content
+    // already fills the full canvas edge to edge (verified via alpha
+    // bbox, same as Clash Royale's pre-cropped logo) - so the aspect is
+    // just the file's own native ratio, no crop-window math needed.
+    logoAspectClass: 'aspect-[2.06]',
+    logoObjectPosition: '50% 50%',
+    // Reads slightly smaller than the other three logos at the shared
+    // h-10 sm:h-12 box height (thinner wordmark strokes) - bumped up one
+    // step to compensate.
+    logoSizeClass: 'h-11 sm:h-14',
+    // Orange - distinct from Genshin's sky, Brawl Stars' red, and Clash
+    // Royale's indigo/violet.
+    accentRingClass: 'hover:ring-orange-400',
+    dotClass: 'bg-orange-400',
+    selectedRingClass: 'ring-orange-400',
+    // Source character art has no baked-in frame (same as Genshin) - a
+    // circular crop reads cleanly, matching the "icons should display
+    // similarly to genshin" call made when sourcing these.
+    avatarShapeClass: 'rounded-full',
+    avatarAspectClass: 'aspect-square',
+    avatarSizeClass: 'h-(--grid-avatar)',
+    avatarBorderClass: 'border border-gray-200 dark:border-gray-700',
+  },
   brawlstars: {
     id: 'brawlstars',
     label: 'Brawl Stars',
@@ -67,9 +110,12 @@ export const GAMES = {
     // the same box height, which native aspect alone doesn't guarantee.
     logoAspectClass: 'aspect-[2.14]',
     logoObjectPosition: '50% 50%',
-    accentRingClass: 'hover:ring-amber-400',
-    dotClass: 'bg-amber-400',
-    selectedRingClass: 'ring-amber-400',
+    logoSizeClass: 'h-10 sm:h-12',
+    // Red - fits Brawl Stars' own logo color (distinct from Star Rail's
+    // orange and Clash Royale's indigo/violet).
+    accentRingClass: 'hover:ring-red-400',
+    dotClass: 'bg-red-400',
+    selectedRingClass: 'ring-red-400',
     // Brawl Stars' brawler portraits already bake their own square frame
     // into the source image - a circular mask on top clipped that frame's
     // corners, so these stay unmasked squares instead (no rounding at all,
@@ -102,8 +148,9 @@ export const GAMES = {
     // is just that canvas's own ratio, no padding left to correct for.
     logoAspectClass: 'aspect-[2.32]',
     logoObjectPosition: '50% 50%',
+    logoSizeClass: 'h-10 sm:h-12',
     // Indigo/violet for the "royal" crown-and-castle branding - distinct
-    // from Genshin's sky and Brawl Stars' amber.
+    // from Genshin's sky and Brawl Stars' red.
     accentRingClass: 'hover:ring-indigo-400',
     dotClass: 'bg-indigo-400',
     selectedRingClass: 'ring-indigo-400',

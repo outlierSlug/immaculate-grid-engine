@@ -36,4 +36,10 @@ export const GAME_HELP_NOTES: Partial<Record<GameId, ReactNode[]>> = {
       if that brawler was given away for free that year. Early access offers do <b>not</b> count towards a brawler's release year.
     </>,
   ],
+  starrail: [
+    <>
+      Only <b>playable characters</b> released up through Version 4.5 are selectable. Trailblazer is selectable as either Caelus/Stelle 
+      and any of their playable paths.
+    </>,
+  ],
 };

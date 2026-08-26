@@ -20,6 +20,11 @@ interface GameCardProps {
   accentRingClass: string;
   logoAspectClass: string;
   logoObjectPosition: string;
+  // Height of the logo's own box (width is derived from this via
+  // logoAspectClass) - defaults to the shared h-10 sm:h-12 every other
+  // game uses; only overridden per-game when one logo reads smaller than
+  // the others at that shared height (see games.ts).
+  logoSizeClass?: string;
 }
 
 export default function GameCard({
@@ -30,6 +35,7 @@ export default function GameCard({
   accentRingClass,
   logoAspectClass,
   logoObjectPosition,
+  logoSizeClass = 'h-10 sm:h-12',
 }: GameCardProps) {
   const heroImage = useRandomHeroImage(gameId);
   // Hero art is a large real photo/key-art file - on a slow connection it
@@ -68,7 +74,7 @@ export default function GameCard({
       </span>
 
       <div className="absolute bottom-0 left-0 right-0 p-5 flex items-end justify-between gap-3">
-        <div className={`h-10 sm:h-12 ${logoAspectClass} overflow-hidden shrink-0`}>
+        <div className={`${logoSizeClass} ${logoAspectClass} overflow-hidden shrink-0`}>
           <img
             src={logoImage}
             alt={logoAlt}

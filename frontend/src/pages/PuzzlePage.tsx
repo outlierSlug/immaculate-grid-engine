@@ -21,6 +21,7 @@ import { useAuth } from '../auth/AuthProvider';
 import intertwinedFateIcon from '../assets/genshin/Item_Intertwined_Fate.webp';
 import starrPinIcon from '../assets/brawlstars/starr_pin.png';
 import luckyDropIcon from '../assets/clashroyale/Item_Lucky_Drop_Common.png';
+import starRailSpecialPassIcon from '../assets/starrail/star_rail_special_pass.webp';
 
 // Daily's guess limit is a fixed genre convention (matches Pokedoku), not a
 // user-facing setting — unlike Unlimited, there is no toggle and no
@@ -34,6 +35,7 @@ const DAILY_GUESS_ICON: Partial<Record<GameId, string>> = {
   // Genshin's premium/standard wish split, Clash Royale doesn't have an
   // obvious two-tier "pull currency" pair to mirror that with.
   clashroyale: luckyDropIcon,
+  starrail: starRailSpecialPassIcon,
 };
 
 export default function PuzzlePage() {

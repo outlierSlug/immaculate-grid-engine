@@ -10,8 +10,18 @@ import type { GameId } from '../config/games';
 // doesn't have to be typed exactly - "pekka" should find "P.E.K.K.A" (and
 // "Mini P.E.K.K.A"), "mr p" should find "Mr. P", without needing the
 // periods. Keeps spaces (so word boundaries still count) and digits.
+//
+// The collapse-whitespace pass after that is required, not cosmetic: a
+// separator with spaces on BOTH sides ("Traveler – Aether", "Trailblazer
+// – Stelle", "Dan Heng • Imbibitor Lunae") strips down to a DOUBLE space
+// where the punctuation was (the dash/bullet itself vanishes, but the two
+// spaces around it don't merge on their own) - so a natural single-spaced
+// query like "traveler aether" would never match via plain .includes(),
+// even though the name is right there. Collapsing runs of whitespace to
+// one space fixes that without affecting "P.E.K.K.A" (no spaces around
+// its periods to begin with, so nothing to collapse there).
 function normalizeForSearch(value: string): string {
-  return value.toLowerCase().replace(/[^a-z0-9\s]/g, '');
+  return value.toLowerCase().replace(/[^a-z0-9\s]/g, '').replace(/\s+/g, ' ').trim();
 }
 
 // Clash Royale's Evolution/Hero variants are officially named with a

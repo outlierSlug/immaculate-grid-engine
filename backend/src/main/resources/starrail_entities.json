@@ -1,0 +1,1069 @@
+[
+  {
+    "id": "starrail:march-7th-preservation",
+    "game_id": "starrail",
+    "display_name": "March 7th (Preservation)",
+    "image_url": "/starrail/icons/march-7th-preservation.png",
+    "attributes": {
+      "rarity": 4,
+      "path": "Preservation",
+      "element": "Ice"
+    }
+  },
+  {
+    "id": "starrail:dan-heng",
+    "game_id": "starrail",
+    "display_name": "Dan Heng",
+    "image_url": "/starrail/icons/dan-heng.png",
+    "attributes": {
+      "rarity": 4,
+      "path": "The Hunt",
+      "element": "Wind"
+    }
+  },
+  {
+    "id": "starrail:himeko",
+    "game_id": "starrail",
+    "display_name": "Himeko",
+    "image_url": "/starrail/icons/himeko.png",
+    "attributes": {
+      "rarity": 5,
+      "path": "Erudition",
+      "element": "Fire"
+    }
+  },
+  {
+    "id": "starrail:welt",
+    "game_id": "starrail",
+    "display_name": "Welt",
+    "image_url": "/starrail/icons/welt.png",
+    "attributes": {
+      "rarity": 5,
+      "path": "Nihility",
+      "element": "Imaginary"
+    }
+  },
+  {
+    "id": "starrail:kafka",
+    "game_id": "starrail",
+    "display_name": "Kafka",
+    "image_url": "/starrail/icons/kafka.png",
+    "attributes": {
+      "rarity": 5,
+      "path": "Nihility",
+      "element": "Lightning"
+    }
+  },
+  {
+    "id": "starrail:silver-wolf",
+    "game_id": "starrail",
+    "display_name": "Silver Wolf",
+    "image_url": "/starrail/icons/silver-wolf.png",
+    "attributes": {
+      "rarity": 5,
+      "path": "Nihility",
+      "element": "Quantum"
+    }
+  },
+  {
+    "id": "starrail:arlan",
+    "game_id": "starrail",
+    "display_name": "Arlan",
+    "image_url": "/starrail/icons/arlan.png",
+    "attributes": {
+      "rarity": 4,
+      "path": "Destruction",
+      "element": "Lightning"
+    }
+  },
+  {
+    "id": "starrail:asta",
+    "game_id": "starrail",
+    "display_name": "Asta",
+    "image_url": "/starrail/icons/asta.png",
+    "attributes": {
+      "rarity": 4,
+      "path": "Harmony",
+      "element": "Fire"
+    }
+  },
+  {
+    "id": "starrail:herta",
+    "game_id": "starrail",
+    "display_name": "Herta",
+    "image_url": "/starrail/icons/herta.png",
+    "attributes": {
+      "rarity": 4,
+      "path": "Erudition",
+      "element": "Ice"
+    }
+  },
+  {
+    "id": "starrail:saber",
+    "game_id": "starrail",
+    "display_name": "Saber",
+    "image_url": "/starrail/icons/saber.png",
+    "attributes": {
+      "rarity": 5,
+      "path": "Destruction",
+      "element": "Wind"
+    }
+  },
+  {
+    "id": "starrail:archer",
+    "game_id": "starrail",
+    "display_name": "Archer",
+    "image_url": "/starrail/icons/archer.png",
+    "attributes": {
+      "rarity": 5,
+      "path": "The Hunt",
+      "element": "Quantum"
+    }
+  },
+  {
+    "id": "starrail:bronya",
+    "game_id": "starrail",
+    "display_name": "Bronya",
+    "image_url": "/starrail/icons/bronya.png",
+    "attributes": {
+      "rarity": 5,
+      "path": "Harmony",
+      "element": "Wind"
+    }
+  },
+  {
+    "id": "starrail:seele",
+    "game_id": "starrail",
+    "display_name": "Seele",
+    "image_url": "/starrail/icons/seele.png",
+    "attributes": {
+      "rarity": 5,
+      "path": "The Hunt",
+      "element": "Quantum"
+    }
+  },
+  {
+    "id": "starrail:serval",
+    "game_id": "starrail",
+    "display_name": "Serval",
+    "image_url": "/starrail/icons/serval.png",
+    "attributes": {
+      "rarity": 4,
+      "path": "Erudition",
+      "element": "Lightning"
+    }
+  },
+  {
+    "id": "starrail:gepard",
+    "game_id": "starrail",
+    "display_name": "Gepard",
+    "image_url": "/starrail/icons/gepard.png",
+    "attributes": {
+      "rarity": 5,
+      "path": "Preservation",
+      "element": "Ice"
+    }
+  },
+  {
+    "id": "starrail:natasha",
+    "game_id": "starrail",
+    "display_name": "Natasha",
+    "image_url": "/starrail/icons/natasha.png",
+    "attributes": {
+      "rarity": 4,
+      "path": "Abundance",
+      "element": "Physical"
+    }
+  },
+  {
+    "id": "starrail:pela",
+    "game_id": "starrail",
+    "display_name": "Pela",
+    "image_url": "/starrail/icons/pela.png",
+    "attributes": {
+      "rarity": 4,
+      "path": "Nihility",
+      "element": "Ice"
+    }
+  },
+  {
+    "id": "starrail:clara",
+    "game_id": "starrail",
+    "display_name": "Clara",
+    "image_url": "/starrail/icons/clara.png",
+    "attributes": {
+      "rarity": 5,
+      "path": "Destruction",
+      "element": "Physical"
+    }
+  },
+  {
+    "id": "starrail:sampo",
+    "game_id": "starrail",
+    "display_name": "Sampo",
+    "image_url": "/starrail/icons/sampo.png",
+    "attributes": {
+      "rarity": 4,
+      "path": "Nihility",
+      "element": "Wind"
+    }
+  },
+  {
+    "id": "starrail:hook",
+    "game_id": "starrail",
+    "display_name": "Hook",
+    "image_url": "/starrail/icons/hook.png",
+    "attributes": {
+      "rarity": 4,
+      "path": "Destruction",
+      "element": "Fire"
+    }
+  },
+  {
+    "id": "starrail:lynx",
+    "game_id": "starrail",
+    "display_name": "Lynx",
+    "image_url": "/starrail/icons/lynx.png",
+    "attributes": {
+      "rarity": 4,
+      "path": "Abundance",
+      "element": "Quantum"
+    }
+  },
+  {
+    "id": "starrail:luka",
+    "game_id": "starrail",
+    "display_name": "Luka",
+    "image_url": "/starrail/icons/luka.png",
+    "attributes": {
+      "rarity": 4,
+      "path": "Nihility",
+      "element": "Physical"
+    }
+  },
+  {
+    "id": "starrail:topaz-numby",
+    "game_id": "starrail",
+    "display_name": "Topaz & Numby",
+    "image_url": "/starrail/icons/topaz-numby.png",
+    "attributes": {
+      "rarity": 5,
+      "path": "The Hunt",
+      "element": "Fire"
+    }
+  },
+  {
+    "id": "starrail:qingque",
+    "game_id": "starrail",
+    "display_name": "Qingque",
+    "image_url": "/starrail/icons/qingque.png",
+    "attributes": {
+      "rarity": 4,
+      "path": "Erudition",
+      "element": "Quantum"
+    }
+  },
+  {
+    "id": "starrail:tingyun",
+    "game_id": "starrail",
+    "display_name": "Tingyun",
+    "image_url": "/starrail/icons/tingyun.png",
+    "attributes": {
+      "rarity": 4,
+      "path": "Harmony",
+      "element": "Lightning"
+    }
+  },
+  {
+    "id": "starrail:luocha",
+    "game_id": "starrail",
+    "display_name": "Luocha",
+    "image_url": "/starrail/icons/luocha.png",
+    "attributes": {
+      "rarity": 5,
+      "path": "Abundance",
+      "element": "Imaginary"
+    }
+  },
+  {
+    "id": "starrail:jing-yuan",
+    "game_id": "starrail",
+    "display_name": "Jing Yuan",
+    "image_url": "/starrail/icons/jing-yuan.png",
+    "attributes": {
+      "rarity": 5,
+      "path": "Erudition",
+      "element": "Lightning"
+    }
+  },
+  {
+    "id": "starrail:blade",
+    "game_id": "starrail",
+    "display_name": "Blade",
+    "image_url": "/starrail/icons/blade.png",
+    "attributes": {
+      "rarity": 5,
+      "path": "Destruction",
+      "element": "Wind"
+    }
+  },
+  {
+    "id": "starrail:sushang",
+    "game_id": "starrail",
+    "display_name": "Sushang",
+    "image_url": "/starrail/icons/sushang.png",
+    "attributes": {
+      "rarity": 4,
+      "path": "The Hunt",
+      "element": "Physical"
+    }
+  },
+  {
+    "id": "starrail:yukong",
+    "game_id": "starrail",
+    "display_name": "Yukong",
+    "image_url": "/starrail/icons/yukong.png",
+    "attributes": {
+      "rarity": 4,
+      "path": "Harmony",
+      "element": "Imaginary"
+    }
+  },
+  {
+    "id": "starrail:fu-xuan",
+    "game_id": "starrail",
+    "display_name": "Fu Xuan",
+    "image_url": "/starrail/icons/fu-xuan.png",
+    "attributes": {
+      "rarity": 5,
+      "path": "Preservation",
+      "element": "Quantum"
+    }
+  },
+  {
+    "id": "starrail:yanqing",
+    "game_id": "starrail",
+    "display_name": "Yanqing",
+    "image_url": "/starrail/icons/yanqing.png",
+    "attributes": {
+      "rarity": 5,
+      "path": "The Hunt",
+      "element": "Ice"
+    }
+  },
+  {
+    "id": "starrail:guinaifen",
+    "game_id": "starrail",
+    "display_name": "Guinaifen",
+    "image_url": "/starrail/icons/guinaifen.png",
+    "attributes": {
+      "rarity": 4,
+      "path": "Nihility",
+      "element": "Fire"
+    }
+  },
+  {
+    "id": "starrail:bailu",
+    "game_id": "starrail",
+    "display_name": "Bailu",
+    "image_url": "/starrail/icons/bailu.png",
+    "attributes": {
+      "rarity": 5,
+      "path": "Abundance",
+      "element": "Lightning"
+    }
+  },
+  {
+    "id": "starrail:jingliu",
+    "game_id": "starrail",
+    "display_name": "Jingliu",
+    "image_url": "/starrail/icons/jingliu.png",
+    "attributes": {
+      "rarity": 5,
+      "path": "Destruction",
+      "element": "Ice"
+    }
+  },
+  {
+    "id": "starrail:dan-heng-imbibitor-lunae",
+    "game_id": "starrail",
+    "display_name": "Dan Heng • Imbibitor Lunae",
+    "image_url": "/starrail/icons/dan-heng-imbibitor-lunae.png",
+    "attributes": {
+      "rarity": 5,
+      "path": "Destruction",
+      "element": "Imaginary"
+    }
+  },
+  {
+    "id": "starrail:xueyi",
+    "game_id": "starrail",
+    "display_name": "Xueyi",
+    "image_url": "/starrail/icons/xueyi.png",
+    "attributes": {
+      "rarity": 4,
+      "path": "Destruction",
+      "element": "Quantum"
+    }
+  },
+  {
+    "id": "starrail:hanya",
+    "game_id": "starrail",
+    "display_name": "Hanya",
+    "image_url": "/starrail/icons/hanya.png",
+    "attributes": {
+      "rarity": 4,
+      "path": "Harmony",
+      "element": "Physical"
+    }
+  },
+  {
+    "id": "starrail:huohuo",
+    "game_id": "starrail",
+    "display_name": "Huohuo",
+    "image_url": "/starrail/icons/huohuo.png",
+    "attributes": {
+      "rarity": 5,
+      "path": "Abundance",
+      "element": "Wind"
+    }
+  },
+  {
+    "id": "starrail:jiaoqiu",
+    "game_id": "starrail",
+    "display_name": "Jiaoqiu",
+    "image_url": "/starrail/icons/jiaoqiu.png",
+    "attributes": {
+      "rarity": 5,
+      "path": "Nihility",
+      "element": "Fire"
+    }
+  },
+  {
+    "id": "starrail:feixiao",
+    "game_id": "starrail",
+    "display_name": "Feixiao",
+    "image_url": "/starrail/icons/feixiao.png",
+    "attributes": {
+      "rarity": 5,
+      "path": "The Hunt",
+      "element": "Wind"
+    }
+  },
+  {
+    "id": "starrail:yunli",
+    "game_id": "starrail",
+    "display_name": "Yunli",
+    "image_url": "/starrail/icons/yunli.png",
+    "attributes": {
+      "rarity": 5,
+      "path": "Destruction",
+      "element": "Physical"
+    }
+  },
+  {
+    "id": "starrail:lingsha",
+    "game_id": "starrail",
+    "display_name": "Lingsha",
+    "image_url": "/starrail/icons/lingsha.png",
+    "attributes": {
+      "rarity": 5,
+      "path": "Abundance",
+      "element": "Fire"
+    }
+  },
+  {
+    "id": "starrail:moze",
+    "game_id": "starrail",
+    "display_name": "Moze",
+    "image_url": "/starrail/icons/moze.png",
+    "attributes": {
+      "rarity": 4,
+      "path": "The Hunt",
+      "element": "Lightning"
+    }
+  },
+  {
+    "id": "starrail:march-7th-the-hunt",
+    "game_id": "starrail",
+    "display_name": "March 7th (The Hunt)",
+    "image_url": "/starrail/icons/march-7th-the-hunt.png",
+    "attributes": {
+      "rarity": 4,
+      "path": "The Hunt",
+      "element": "Imaginary"
+    }
+  },
+  {
+    "id": "starrail:fugue",
+    "game_id": "starrail",
+    "display_name": "Fugue",
+    "image_url": "/starrail/icons/fugue.png",
+    "attributes": {
+      "rarity": 5,
+      "path": "Nihility",
+      "element": "Fire"
+    }
+  },
+  {
+    "id": "starrail:gallagher",
+    "game_id": "starrail",
+    "display_name": "Gallagher",
+    "image_url": "/starrail/icons/gallagher.png",
+    "attributes": {
+      "rarity": 4,
+      "path": "Abundance",
+      "element": "Fire"
+    }
+  },
+  {
+    "id": "starrail:argenti",
+    "game_id": "starrail",
+    "display_name": "Argenti",
+    "image_url": "/starrail/icons/argenti.png",
+    "attributes": {
+      "rarity": 5,
+      "path": "Erudition",
+      "element": "Physical"
+    }
+  },
+  {
+    "id": "starrail:ruan-mei",
+    "game_id": "starrail",
+    "display_name": "Ruan Mei",
+    "image_url": "/starrail/icons/ruan-mei.png",
+    "attributes": {
+      "rarity": 5,
+      "path": "Harmony",
+      "element": "Ice"
+    }
+  },
+  {
+    "id": "starrail:aventurine",
+    "game_id": "starrail",
+    "display_name": "Aventurine",
+    "image_url": "/starrail/icons/aventurine.png",
+    "attributes": {
+      "rarity": 5,
+      "path": "Preservation",
+      "element": "Imaginary"
+    }
+  },
+  {
+    "id": "starrail:dr-ratio",
+    "game_id": "starrail",
+    "display_name": "Dr. Ratio",
+    "image_url": "/starrail/icons/dr-ratio.png",
+    "attributes": {
+      "rarity": 5,
+      "path": "The Hunt",
+      "element": "Imaginary"
+    }
+  },
+  {
+    "id": "starrail:sparkle",
+    "game_id": "starrail",
+    "display_name": "Sparkle",
+    "image_url": "/starrail/icons/sparkle.png",
+    "attributes": {
+      "rarity": 5,
+      "path": "Harmony",
+      "element": "Quantum"
+    }
+  },
+  {
+    "id": "starrail:black-swan",
+    "game_id": "starrail",
+    "display_name": "Black Swan",
+    "image_url": "/starrail/icons/black-swan.png",
+    "attributes": {
+      "rarity": 5,
+      "path": "Nihility",
+      "element": "Wind"
+    }
+  },
+  {
+    "id": "starrail:acheron",
+    "game_id": "starrail",
+    "display_name": "Acheron",
+    "image_url": "/starrail/icons/acheron.png",
+    "attributes": {
+      "rarity": 5,
+      "path": "Nihility",
+      "element": "Lightning"
+    }
+  },
+  {
+    "id": "starrail:robin",
+    "game_id": "starrail",
+    "display_name": "Robin",
+    "image_url": "/starrail/icons/robin.png",
+    "attributes": {
+      "rarity": 5,
+      "path": "Harmony",
+      "element": "Physical"
+    }
+  },
+  {
+    "id": "starrail:firefly",
+    "game_id": "starrail",
+    "display_name": "Firefly",
+    "image_url": "/starrail/icons/firefly.png",
+    "attributes": {
+      "rarity": 5,
+      "path": "Destruction",
+      "element": "Fire"
+    }
+  },
+  {
+    "id": "starrail:misha",
+    "game_id": "starrail",
+    "display_name": "Misha",
+    "image_url": "/starrail/icons/misha.png",
+    "attributes": {
+      "rarity": 4,
+      "path": "Destruction",
+      "element": "Ice"
+    }
+  },
+  {
+    "id": "starrail:sunday",
+    "game_id": "starrail",
+    "display_name": "Sunday",
+    "image_url": "/starrail/icons/sunday.png",
+    "attributes": {
+      "rarity": 5,
+      "path": "Harmony",
+      "element": "Imaginary"
+    }
+  },
+  {
+    "id": "starrail:jade",
+    "game_id": "starrail",
+    "display_name": "Jade",
+    "image_url": "/starrail/icons/jade.png",
+    "attributes": {
+      "rarity": 5,
+      "path": "Erudition",
+      "element": "Quantum"
+    }
+  },
+  {
+    "id": "starrail:boothill",
+    "game_id": "starrail",
+    "display_name": "Boothill",
+    "image_url": "/starrail/icons/boothill.png",
+    "attributes": {
+      "rarity": 5,
+      "path": "The Hunt",
+      "element": "Physical"
+    }
+  },
+  {
+    "id": "starrail:rappa",
+    "game_id": "starrail",
+    "display_name": "Rappa",
+    "image_url": "/starrail/icons/rappa.png",
+    "attributes": {
+      "rarity": 5,
+      "path": "Erudition",
+      "element": "Imaginary"
+    }
+  },
+  {
+    "id": "starrail:the-dahlia",
+    "game_id": "starrail",
+    "display_name": "The Dahlia",
+    "image_url": "/starrail/icons/the-dahlia.png",
+    "attributes": {
+      "rarity": 5,
+      "path": "Nihility",
+      "element": "Fire"
+    }
+  },
+  {
+    "id": "starrail:the-herta",
+    "game_id": "starrail",
+    "display_name": "The Herta",
+    "image_url": "/starrail/icons/the-herta.png",
+    "attributes": {
+      "rarity": 5,
+      "path": "Erudition",
+      "element": "Ice"
+    }
+  },
+  {
+    "id": "starrail:aglaea",
+    "game_id": "starrail",
+    "display_name": "Aglaea",
+    "image_url": "/starrail/icons/aglaea.png",
+    "attributes": {
+      "rarity": 5,
+      "path": "Remembrance",
+      "element": "Lightning"
+    }
+  },
+  {
+    "id": "starrail:tribbie",
+    "game_id": "starrail",
+    "display_name": "Tribbie",
+    "image_url": "/starrail/icons/tribbie.png",
+    "attributes": {
+      "rarity": 5,
+      "path": "Harmony",
+      "element": "Quantum"
+    }
+  },
+  {
+    "id": "starrail:mydei",
+    "game_id": "starrail",
+    "display_name": "Mydei",
+    "image_url": "/starrail/icons/mydei.png",
+    "attributes": {
+      "rarity": 5,
+      "path": "Destruction",
+      "element": "Imaginary"
+    }
+  },
+  {
+    "id": "starrail:anaxa",
+    "game_id": "starrail",
+    "display_name": "Anaxa",
+    "image_url": "/starrail/icons/anaxa.png",
+    "attributes": {
+      "rarity": 5,
+      "path": "Erudition",
+      "element": "Wind"
+    }
+  },
+  {
+    "id": "starrail:cipher",
+    "game_id": "starrail",
+    "display_name": "Cipher",
+    "image_url": "/starrail/icons/cipher.png",
+    "attributes": {
+      "rarity": 5,
+      "path": "Nihility",
+      "element": "Quantum"
+    }
+  },
+  {
+    "id": "starrail:castorice",
+    "game_id": "starrail",
+    "display_name": "Castorice",
+    "image_url": "/starrail/icons/castorice.png",
+    "attributes": {
+      "rarity": 5,
+      "path": "Remembrance",
+      "element": "Quantum"
+    }
+  },
+  {
+    "id": "starrail:phainon",
+    "game_id": "starrail",
+    "display_name": "Phainon",
+    "image_url": "/starrail/icons/phainon.png",
+    "attributes": {
+      "rarity": 5,
+      "path": "Destruction",
+      "element": "Physical"
+    }
+  },
+  {
+    "id": "starrail:hyacine",
+    "game_id": "starrail",
+    "display_name": "Hyacine",
+    "image_url": "/starrail/icons/hyacine.png",
+    "attributes": {
+      "rarity": 5,
+      "path": "Remembrance",
+      "element": "Wind"
+    }
+  },
+  {
+    "id": "starrail:hysilens",
+    "game_id": "starrail",
+    "display_name": "Hysilens",
+    "image_url": "/starrail/icons/hysilens.png",
+    "attributes": {
+      "rarity": 5,
+      "path": "Nihility",
+      "element": "Physical"
+    }
+  },
+  {
+    "id": "starrail:cerydra",
+    "game_id": "starrail",
+    "display_name": "Cerydra",
+    "image_url": "/starrail/icons/cerydra.png",
+    "attributes": {
+      "rarity": 5,
+      "path": "Harmony",
+      "element": "Wind"
+    }
+  },
+  {
+    "id": "starrail:evernight",
+    "game_id": "starrail",
+    "display_name": "Evernight",
+    "image_url": "/starrail/icons/evernight.png",
+    "attributes": {
+      "rarity": 5,
+      "path": "Remembrance",
+      "element": "Ice"
+    }
+  },
+  {
+    "id": "starrail:dan-heng-permansor-terrae",
+    "game_id": "starrail",
+    "display_name": "Dan Heng • Permansor Terrae",
+    "image_url": "/starrail/icons/dan-heng-permansor-terrae.png",
+    "attributes": {
+      "rarity": 5,
+      "path": "Preservation",
+      "element": "Physical"
+    }
+  },
+  {
+    "id": "starrail:cyrene",
+    "game_id": "starrail",
+    "display_name": "Cyrene",
+    "image_url": "/starrail/icons/cyrene.png",
+    "attributes": {
+      "rarity": 5,
+      "path": "Remembrance",
+      "element": "Ice"
+    }
+  },
+  {
+    "id": "starrail:sparxie",
+    "game_id": "starrail",
+    "display_name": "Sparxie",
+    "image_url": "/starrail/icons/sparxie.png",
+    "attributes": {
+      "rarity": 5,
+      "path": "Elation",
+      "element": "Fire"
+    }
+  },
+  {
+    "id": "starrail:yao-guang",
+    "game_id": "starrail",
+    "display_name": "Yao Guang",
+    "image_url": "/starrail/icons/yao-guang.png",
+    "attributes": {
+      "rarity": 5,
+      "path": "Elation",
+      "element": "Physical"
+    }
+  },
+  {
+    "id": "starrail:ashveil",
+    "game_id": "starrail",
+    "display_name": "Ashveil",
+    "image_url": "/starrail/icons/ashveil.png",
+    "attributes": {
+      "rarity": 5,
+      "path": "The Hunt",
+      "element": "Lightning"
+    }
+  },
+  {
+    "id": "starrail:evanescia",
+    "game_id": "starrail",
+    "display_name": "Evanescia",
+    "image_url": "/starrail/icons/evanescia.png",
+    "attributes": {
+      "rarity": 5,
+      "path": "Elation",
+      "element": "Physical"
+    }
+  },
+  {
+    "id": "starrail:silver-wolf-lv999",
+    "game_id": "starrail",
+    "display_name": "Silver Wolf LV.999",
+    "image_url": "/starrail/icons/silver-wolf-lv999.png",
+    "attributes": {
+      "rarity": 5,
+      "path": "Elation",
+      "element": "Imaginary"
+    }
+  },
+  {
+    "id": "starrail:mortenax-blade",
+    "game_id": "starrail",
+    "display_name": "Mortenax Blade",
+    "image_url": "/starrail/icons/mortenax-blade.png",
+    "attributes": {
+      "rarity": 5,
+      "path": "Nihility",
+      "element": "Fire"
+    }
+  },
+  {
+    "id": "starrail:rin-tohsaka",
+    "game_id": "starrail",
+    "display_name": "Rin Tohsaka",
+    "image_url": "/starrail/icons/rin-tohsaka.png",
+    "attributes": {
+      "rarity": 5,
+      "path": "Erudition",
+      "element": "Quantum"
+    }
+  },
+  {
+    "id": "starrail:gilgamesh",
+    "game_id": "starrail",
+    "display_name": "Gilgamesh",
+    "image_url": "/starrail/icons/gilgamesh.png",
+    "attributes": {
+      "rarity": 5,
+      "path": "Destruction",
+      "element": "Lightning"
+    }
+  },
+  {
+    "id": "starrail:himeko-nova",
+    "game_id": "starrail",
+    "display_name": "Himeko • Nova",
+    "image_url": "/starrail/icons/himeko-nova.png",
+    "attributes": {
+      "rarity": 5,
+      "path": "Erudition",
+      "element": "Fire"
+    }
+  },
+  {
+    "id": "starrail:robin-summeretto",
+    "game_id": "starrail",
+    "display_name": "Robin • Summeretto",
+    "image_url": "/starrail/icons/robin-summeretto.png",
+    "attributes": {
+      "rarity": 5,
+      "path": "Remembrance",
+      "element": "Wind"
+    }
+  },
+  {
+    "id": "starrail:aventurine-waveflair",
+    "game_id": "starrail",
+    "display_name": "Aventurine • Waveflair",
+    "image_url": "/starrail/icons/aventurine-waveflair.png",
+    "attributes": {
+      "rarity": 5,
+      "path": "Elation",
+      "element": "Quantum"
+    }
+  },
+  {
+    "id": "starrail:trailblazer-caelus-destruction",
+    "game_id": "starrail",
+    "display_name": "Trailblazer – Caelus (Destruction)",
+    "image_url": "/starrail/icons/trailblazer-caelus-destruction.png",
+    "attributes": {
+      "rarity": 5,
+      "path": "Destruction",
+      "element": "Physical"
+    }
+  },
+  {
+    "id": "starrail:trailblazer-stelle-destruction",
+    "game_id": "starrail",
+    "display_name": "Trailblazer – Stelle (Destruction)",
+    "image_url": "/starrail/icons/trailblazer-stelle-destruction.png",
+    "attributes": {
+      "rarity": 5,
+      "path": "Destruction",
+      "element": "Physical"
+    }
+  },
+  {
+    "id": "starrail:trailblazer-caelus-preservation",
+    "game_id": "starrail",
+    "display_name": "Trailblazer – Caelus (Preservation)",
+    "image_url": "/starrail/icons/trailblazer-caelus-preservation.png",
+    "attributes": {
+      "rarity": 5,
+      "path": "Preservation",
+      "element": "Fire"
+    }
+  },
+  {
+    "id": "starrail:trailblazer-stelle-preservation",
+    "game_id": "starrail",
+    "display_name": "Trailblazer – Stelle (Preservation)",
+    "image_url": "/starrail/icons/trailblazer-stelle-preservation.png",
+    "attributes": {
+      "rarity": 5,
+      "path": "Preservation",
+      "element": "Fire"
+    }
+  },
+  {
+    "id": "starrail:trailblazer-caelus-harmony",
+    "game_id": "starrail",
+    "display_name": "Trailblazer – Caelus (Harmony)",
+    "image_url": "/starrail/icons/trailblazer-caelus-harmony.png",
+    "attributes": {
+      "rarity": 5,
+      "path": "Harmony",
+      "element": "Imaginary"
+    }
+  },
+  {
+    "id": "starrail:trailblazer-stelle-harmony",
+    "game_id": "starrail",
+    "display_name": "Trailblazer – Stelle (Harmony)",
+    "image_url": "/starrail/icons/trailblazer-stelle-harmony.png",
+    "attributes": {
+      "rarity": 5,
+      "path": "Harmony",
+      "element": "Imaginary"
+    }
+  },
+  {
+    "id": "starrail:trailblazer-caelus-remembrance",
+    "game_id": "starrail",
+    "display_name": "Trailblazer – Caelus (Remembrance)",
+    "image_url": "/starrail/icons/trailblazer-caelus-remembrance.png",
+    "attributes": {
+      "rarity": 5,
+      "path": "Remembrance",
+      "element": "Ice"
+    }
+  },
+  {
+    "id": "starrail:trailblazer-stelle-remembrance",
+    "game_id": "starrail",
+    "display_name": "Trailblazer – Stelle (Remembrance)",
+    "image_url": "/starrail/icons/trailblazer-stelle-remembrance.png",
+    "attributes": {
+      "rarity": 5,
+      "path": "Remembrance",
+      "element": "Ice"
+    }
+  },
+  {
+    "id": "starrail:trailblazer-caelus-elation",
+    "game_id": "starrail",
+    "display_name": "Trailblazer – Caelus (Elation)",
+    "image_url": "/starrail/icons/trailblazer-caelus-elation.png",
+    "attributes": {
+      "rarity": 5,
+      "path": "Elation",
+      "element": "Lightning"
+    }
+  },
+  {
+    "id": "starrail:trailblazer-stelle-elation",
+    "game_id": "starrail",
+    "display_name": "Trailblazer – Stelle (Elation)",
+    "image_url": "/starrail/icons/trailblazer-stelle-elation.png",
+    "attributes": {
+      "rarity": 5,
+      "path": "Elation",
+      "element": "Lightning"
+    }
+  }
+]
