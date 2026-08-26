@@ -275,12 +275,20 @@ export default function UnlimitedPage() {
             type="button"
             onClick={handleGenerate}
             disabled={generating}
-            className="flex items-center gap-2 px-6 py-2.5 rounded-full bg-indigo-600 text-white font-semibold hover:bg-indigo-700 disabled:bg-gray-300 dark:disabled:bg-gray-700 transition cursor-pointer"
+            // Icon-only below sm - full icon+text (px-6, not this icon
+            // button's tighter p-2.5) doesn't fit this row's per-cell grid
+            // column at narrow widths and was overlapping the hamburger
+            // button next to it. Only this button changes; Give Up and
+            // Daily mode (which has no Generate button at all) are
+            // untouched. aria-label keeps this labeled for screen readers
+            // once the visible text is hidden.
+            aria-label={generating ? 'Generating…' : 'Generate'}
+            className="flex items-center justify-center gap-2 p-2.5 sm:px-6 sm:py-2.5 rounded-full bg-indigo-600 text-white font-semibold hover:bg-indigo-700 disabled:bg-gray-300 dark:disabled:bg-gray-700 transition cursor-pointer"
           >
             <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2} aria-hidden="true">
               <path strokeLinecap="round" strokeLinejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
             </svg>
-            {generating ? 'Generating…' : 'Generate'}
+            <span className="hidden sm:inline">{generating ? 'Generating…' : 'Generate'}</span>
           </button>
         </div>
         <div className="flex justify-center">
