@@ -20,6 +20,7 @@ import NotFoundPage from './NotFoundPage';
 import { usePuzzleGuesses } from '../hooks/usePuzzleGuesses';
 import acquaintFateIcon from '../assets/genshin/Item_Acquaint_Fate.webp';
 import starrPinIcon from '../assets/brawlstars/starr_pin.png';
+import luckyDropIcon from '../assets/clashroyale/Item_Lucky_Drop_Common.png';
 
 const GUESS_LIMIT = 9;
 
@@ -30,6 +31,7 @@ const GUESS_LIMIT = 9;
 const UNLIMITED_GUESS_ICON: Partial<Record<GameId, string>> = {
   genshin: acquaintFateIcon,
   brawlstars: starrPinIcon,
+  clashroyale: luckyDropIcon,
 };
 
 function remainingDimensionCount(categories: GameCategoriesResponse | null, excludedCategoryIds: string[]): number {
@@ -97,6 +99,9 @@ export default function UnlimitedPage() {
   }
 
   const avatarShapeClass = GAMES[validGame].avatarShapeClass;
+  const avatarAspectClass = GAMES[validGame].avatarAspectClass;
+  const avatarSizeClass = GAMES[validGame].avatarSizeClass;
+  const avatarBorderClass = GAMES[validGame].avatarBorderClass;
 
   // Page-specific rules live inline here (edit these paragraphs directly to
   // change what the (i) button next to "Unlimited Mode" shows) - anything
@@ -229,13 +234,14 @@ export default function UnlimitedPage() {
           just no visible copy yet. Revisit once the messaging is designed. */}
 
       <PuzzleGrid
+        game={validGame}
         rowLabels={puzzle.rowLabels}
         colLabels={puzzle.colLabels}
         filledCells={filledCells}
         onCellClick={handleCellClick}
         locked={isGameOver}
         feedback={feedback}
-        avatarShapeClass={avatarShapeClass}
+        avatarShapeClass={avatarShapeClass} avatarAspectClass={avatarAspectClass} avatarSizeClass={avatarSizeClass} avatarBorderClass={avatarBorderClass}
         sideColumn={[
           <Timer key="timer" startedAt={startedAt} endedAt={endedAt} visible={settings.showTimer} isComplete={isComplete} />,
           <Score key="score" correct={correctCount} total={totalCells} feedback={feedback} />,
@@ -300,7 +306,7 @@ export default function UnlimitedPage() {
           usedItemIds={new Set(Object.values(filledCells).map((item) => item.id))}
           onSelect={handleGuessSelect}
           onClose={closeActiveCell}
-          avatarShapeClass={avatarShapeClass}
+          avatarShapeClass={avatarShapeClass} avatarAspectClass={avatarAspectClass}
         />
       )}
 

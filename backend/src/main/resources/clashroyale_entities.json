@@ -1,0 +1,2162 @@
+[
+  {
+    "id": "clashroyale:knight",
+    "game_id": "clashroyale",
+    "display_name": "Knight",
+    "image_url": "/clashroyale/icons/knight.png",
+    "attributes": {
+      "rarity": "Common",
+      "card_type": "Troop",
+      "elixir_cost": 3,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:knight-evo",
+    "game_id": "clashroyale",
+    "display_name": "Evo Knight",
+    "image_url": "/clashroyale/icons/knight-evo.png",
+    "attributes": {
+      "rarity": "Common",
+      "card_type": "Troop",
+      "elixir_cost": 3,
+      "form": "Evolution"
+    }
+  },
+  {
+    "id": "clashroyale:knight-hero",
+    "game_id": "clashroyale",
+    "display_name": "Hero Knight",
+    "image_url": "/clashroyale/icons/knight-hero.png",
+    "attributes": {
+      "rarity": "Common",
+      "card_type": "Troop",
+      "elixir_cost": 3,
+      "form": "Hero"
+    }
+  },
+  {
+    "id": "clashroyale:archers",
+    "game_id": "clashroyale",
+    "display_name": "Archers",
+    "image_url": "/clashroyale/icons/archers.png",
+    "attributes": {
+      "rarity": "Common",
+      "card_type": "Troop",
+      "elixir_cost": 3,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:archers-evo",
+    "game_id": "clashroyale",
+    "display_name": "Evo Archers",
+    "image_url": "/clashroyale/icons/archers-evo.png",
+    "attributes": {
+      "rarity": "Common",
+      "card_type": "Troop",
+      "elixir_cost": 3,
+      "form": "Evolution"
+    }
+  },
+  {
+    "id": "clashroyale:goblins",
+    "game_id": "clashroyale",
+    "display_name": "Goblins",
+    "image_url": "/clashroyale/icons/goblins.png",
+    "attributes": {
+      "rarity": "Common",
+      "card_type": "Troop",
+      "elixir_cost": 2,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:goblins-hero",
+    "game_id": "clashroyale",
+    "display_name": "Hero Goblins",
+    "image_url": "/clashroyale/icons/goblins-hero.png",
+    "attributes": {
+      "rarity": "Common",
+      "card_type": "Troop",
+      "elixir_cost": 2,
+      "form": "Hero"
+    }
+  },
+  {
+    "id": "clashroyale:giant",
+    "game_id": "clashroyale",
+    "display_name": "Giant",
+    "image_url": "/clashroyale/icons/giant.png",
+    "attributes": {
+      "rarity": "Rare",
+      "card_type": "Troop",
+      "elixir_cost": 5,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:giant-hero",
+    "game_id": "clashroyale",
+    "display_name": "Hero Giant",
+    "image_url": "/clashroyale/icons/giant-hero.png",
+    "attributes": {
+      "rarity": "Rare",
+      "card_type": "Troop",
+      "elixir_cost": 5,
+      "form": "Hero"
+    }
+  },
+  {
+    "id": "clashroyale:pekka",
+    "game_id": "clashroyale",
+    "display_name": "P.E.K.K.A",
+    "image_url": "/clashroyale/icons/pekka.png",
+    "attributes": {
+      "rarity": "Epic",
+      "card_type": "Troop",
+      "elixir_cost": 7,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:pekka-evo",
+    "game_id": "clashroyale",
+    "display_name": "Evo P.E.K.K.A",
+    "image_url": "/clashroyale/icons/pekka-evo.png",
+    "attributes": {
+      "rarity": "Epic",
+      "card_type": "Troop",
+      "elixir_cost": 7,
+      "form": "Evolution"
+    }
+  },
+  {
+    "id": "clashroyale:minions",
+    "game_id": "clashroyale",
+    "display_name": "Minions",
+    "image_url": "/clashroyale/icons/minions.png",
+    "attributes": {
+      "rarity": "Common",
+      "card_type": "Troop",
+      "elixir_cost": 3,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:balloon",
+    "game_id": "clashroyale",
+    "display_name": "Balloon",
+    "image_url": "/clashroyale/icons/balloon.png",
+    "attributes": {
+      "rarity": "Epic",
+      "card_type": "Troop",
+      "elixir_cost": 5,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:balloon-hero",
+    "game_id": "clashroyale",
+    "display_name": "Hero Balloon",
+    "image_url": "/clashroyale/icons/balloon-hero.png",
+    "attributes": {
+      "rarity": "Epic",
+      "card_type": "Troop",
+      "elixir_cost": 5,
+      "form": "Hero"
+    }
+  },
+  {
+    "id": "clashroyale:witch",
+    "game_id": "clashroyale",
+    "display_name": "Witch",
+    "image_url": "/clashroyale/icons/witch.png",
+    "attributes": {
+      "rarity": "Epic",
+      "card_type": "Troop",
+      "elixir_cost": 5,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:witch-evo",
+    "game_id": "clashroyale",
+    "display_name": "Evo Witch",
+    "image_url": "/clashroyale/icons/witch-evo.png",
+    "attributes": {
+      "rarity": "Epic",
+      "card_type": "Troop",
+      "elixir_cost": 5,
+      "form": "Evolution"
+    }
+  },
+  {
+    "id": "clashroyale:barbarians",
+    "game_id": "clashroyale",
+    "display_name": "Barbarians",
+    "image_url": "/clashroyale/icons/barbarians.png",
+    "attributes": {
+      "rarity": "Common",
+      "card_type": "Troop",
+      "elixir_cost": 5,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:barbarians-evo",
+    "game_id": "clashroyale",
+    "display_name": "Evo Barbarians",
+    "image_url": "/clashroyale/icons/barbarians-evo.png",
+    "attributes": {
+      "rarity": "Common",
+      "card_type": "Troop",
+      "elixir_cost": 5,
+      "form": "Evolution"
+    }
+  },
+  {
+    "id": "clashroyale:golem",
+    "game_id": "clashroyale",
+    "display_name": "Golem",
+    "image_url": "/clashroyale/icons/golem.png",
+    "attributes": {
+      "rarity": "Epic",
+      "card_type": "Troop",
+      "elixir_cost": 8,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:skeletons",
+    "game_id": "clashroyale",
+    "display_name": "Skeletons",
+    "image_url": "/clashroyale/icons/skeletons.png",
+    "attributes": {
+      "rarity": "Common",
+      "card_type": "Troop",
+      "elixir_cost": 1,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:skeletons-evo",
+    "game_id": "clashroyale",
+    "display_name": "Evo Skeletons",
+    "image_url": "/clashroyale/icons/skeletons-evo.png",
+    "attributes": {
+      "rarity": "Common",
+      "card_type": "Troop",
+      "elixir_cost": 1,
+      "form": "Evolution"
+    }
+  },
+  {
+    "id": "clashroyale:valkyrie",
+    "game_id": "clashroyale",
+    "display_name": "Valkyrie",
+    "image_url": "/clashroyale/icons/valkyrie.png",
+    "attributes": {
+      "rarity": "Rare",
+      "card_type": "Troop",
+      "elixir_cost": 4,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:valkyrie-evo",
+    "game_id": "clashroyale",
+    "display_name": "Evo Valkyrie",
+    "image_url": "/clashroyale/icons/valkyrie-evo.png",
+    "attributes": {
+      "rarity": "Rare",
+      "card_type": "Troop",
+      "elixir_cost": 4,
+      "form": "Evolution"
+    }
+  },
+  {
+    "id": "clashroyale:valkyrie-hero",
+    "game_id": "clashroyale",
+    "display_name": "Hero Valkyrie",
+    "image_url": "/clashroyale/icons/valkyrie-hero.png",
+    "attributes": {
+      "rarity": "Rare",
+      "card_type": "Troop",
+      "elixir_cost": 4,
+      "form": "Hero"
+    }
+  },
+  {
+    "id": "clashroyale:skeleton-army",
+    "game_id": "clashroyale",
+    "display_name": "Skeleton Army",
+    "image_url": "/clashroyale/icons/skeleton-army.png",
+    "attributes": {
+      "rarity": "Epic",
+      "card_type": "Troop",
+      "elixir_cost": 3,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:skeleton-army-evo",
+    "game_id": "clashroyale",
+    "display_name": "Evo Skeleton Army",
+    "image_url": "/clashroyale/icons/skeleton-army-evo.png",
+    "attributes": {
+      "rarity": "Epic",
+      "card_type": "Troop",
+      "elixir_cost": 3,
+      "form": "Evolution"
+    }
+  },
+  {
+    "id": "clashroyale:bomber",
+    "game_id": "clashroyale",
+    "display_name": "Bomber",
+    "image_url": "/clashroyale/icons/bomber.png",
+    "attributes": {
+      "rarity": "Common",
+      "card_type": "Troop",
+      "elixir_cost": 2,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:bomber-evo",
+    "game_id": "clashroyale",
+    "display_name": "Evo Bomber",
+    "image_url": "/clashroyale/icons/bomber-evo.png",
+    "attributes": {
+      "rarity": "Common",
+      "card_type": "Troop",
+      "elixir_cost": 2,
+      "form": "Evolution"
+    }
+  },
+  {
+    "id": "clashroyale:musketeer",
+    "game_id": "clashroyale",
+    "display_name": "Musketeer",
+    "image_url": "/clashroyale/icons/musketeer.png",
+    "attributes": {
+      "rarity": "Rare",
+      "card_type": "Troop",
+      "elixir_cost": 4,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:musketeer-evo",
+    "game_id": "clashroyale",
+    "display_name": "Evo Musketeer",
+    "image_url": "/clashroyale/icons/musketeer-evo.png",
+    "attributes": {
+      "rarity": "Rare",
+      "card_type": "Troop",
+      "elixir_cost": 4,
+      "form": "Evolution"
+    }
+  },
+  {
+    "id": "clashroyale:musketeer-hero",
+    "game_id": "clashroyale",
+    "display_name": "Hero Musketeer",
+    "image_url": "/clashroyale/icons/musketeer-hero.png",
+    "attributes": {
+      "rarity": "Rare",
+      "card_type": "Troop",
+      "elixir_cost": 4,
+      "form": "Hero"
+    }
+  },
+  {
+    "id": "clashroyale:baby-dragon",
+    "game_id": "clashroyale",
+    "display_name": "Baby Dragon",
+    "image_url": "/clashroyale/icons/baby-dragon.png",
+    "attributes": {
+      "rarity": "Epic",
+      "card_type": "Troop",
+      "elixir_cost": 4,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:baby-dragon-evo",
+    "game_id": "clashroyale",
+    "display_name": "Evo Baby Dragon",
+    "image_url": "/clashroyale/icons/baby-dragon-evo.png",
+    "attributes": {
+      "rarity": "Epic",
+      "card_type": "Troop",
+      "elixir_cost": 4,
+      "form": "Evolution"
+    }
+  },
+  {
+    "id": "clashroyale:prince",
+    "game_id": "clashroyale",
+    "display_name": "Prince",
+    "image_url": "/clashroyale/icons/prince.png",
+    "attributes": {
+      "rarity": "Epic",
+      "card_type": "Troop",
+      "elixir_cost": 5,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:wizard",
+    "game_id": "clashroyale",
+    "display_name": "Wizard",
+    "image_url": "/clashroyale/icons/wizard.png",
+    "attributes": {
+      "rarity": "Rare",
+      "card_type": "Troop",
+      "elixir_cost": 5,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:wizard-evo",
+    "game_id": "clashroyale",
+    "display_name": "Evo Wizard",
+    "image_url": "/clashroyale/icons/wizard-evo.png",
+    "attributes": {
+      "rarity": "Rare",
+      "card_type": "Troop",
+      "elixir_cost": 5,
+      "form": "Evolution"
+    }
+  },
+  {
+    "id": "clashroyale:wizard-hero",
+    "game_id": "clashroyale",
+    "display_name": "Hero Wizard",
+    "image_url": "/clashroyale/icons/wizard-hero.png",
+    "attributes": {
+      "rarity": "Rare",
+      "card_type": "Troop",
+      "elixir_cost": 5,
+      "form": "Hero"
+    }
+  },
+  {
+    "id": "clashroyale:mini-pekka",
+    "game_id": "clashroyale",
+    "display_name": "Mini P.E.K.K.A",
+    "image_url": "/clashroyale/icons/mini-pekka.png",
+    "attributes": {
+      "rarity": "Rare",
+      "card_type": "Troop",
+      "elixir_cost": 4,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:mini-pekka-hero",
+    "game_id": "clashroyale",
+    "display_name": "Hero Mini P.E.K.K.A",
+    "image_url": "/clashroyale/icons/mini-pekka-hero.png",
+    "attributes": {
+      "rarity": "Rare",
+      "card_type": "Troop",
+      "elixir_cost": 4,
+      "form": "Hero"
+    }
+  },
+  {
+    "id": "clashroyale:spear-goblins",
+    "game_id": "clashroyale",
+    "display_name": "Spear Goblins",
+    "image_url": "/clashroyale/icons/spear-goblins.png",
+    "attributes": {
+      "rarity": "Common",
+      "card_type": "Troop",
+      "elixir_cost": 2,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:giant-skeleton",
+    "game_id": "clashroyale",
+    "display_name": "Giant Skeleton",
+    "image_url": "/clashroyale/icons/giant-skeleton.png",
+    "attributes": {
+      "rarity": "Epic",
+      "card_type": "Troop",
+      "elixir_cost": 6,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:hog-rider",
+    "game_id": "clashroyale",
+    "display_name": "Hog Rider",
+    "image_url": "/clashroyale/icons/hog-rider.png",
+    "attributes": {
+      "rarity": "Rare",
+      "card_type": "Troop",
+      "elixir_cost": 4,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:minion-horde",
+    "game_id": "clashroyale",
+    "display_name": "Minion Horde",
+    "image_url": "/clashroyale/icons/minion-horde.png",
+    "attributes": {
+      "rarity": "Common",
+      "card_type": "Troop",
+      "elixir_cost": 5,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:minion-horde-evo",
+    "game_id": "clashroyale",
+    "display_name": "Evo Minion Horde",
+    "image_url": "/clashroyale/icons/minion-horde-evo.png",
+    "attributes": {
+      "rarity": "Common",
+      "card_type": "Troop",
+      "elixir_cost": 5,
+      "form": "Evolution"
+    }
+  },
+  {
+    "id": "clashroyale:ice-wizard",
+    "game_id": "clashroyale",
+    "display_name": "Ice Wizard",
+    "image_url": "/clashroyale/icons/ice-wizard.png",
+    "attributes": {
+      "rarity": "Legendary",
+      "card_type": "Troop",
+      "elixir_cost": 3,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:royal-giant",
+    "game_id": "clashroyale",
+    "display_name": "Royal Giant",
+    "image_url": "/clashroyale/icons/royal-giant.png",
+    "attributes": {
+      "rarity": "Common",
+      "card_type": "Troop",
+      "elixir_cost": 6,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:royal-giant-evo",
+    "game_id": "clashroyale",
+    "display_name": "Evo Royal Giant",
+    "image_url": "/clashroyale/icons/royal-giant-evo.png",
+    "attributes": {
+      "rarity": "Common",
+      "card_type": "Troop",
+      "elixir_cost": 6,
+      "form": "Evolution"
+    }
+  },
+  {
+    "id": "clashroyale:guards",
+    "game_id": "clashroyale",
+    "display_name": "Guards",
+    "image_url": "/clashroyale/icons/guards.png",
+    "attributes": {
+      "rarity": "Epic",
+      "card_type": "Troop",
+      "elixir_cost": 3,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:princess",
+    "game_id": "clashroyale",
+    "display_name": "Princess",
+    "image_url": "/clashroyale/icons/princess.png",
+    "attributes": {
+      "rarity": "Legendary",
+      "card_type": "Troop",
+      "elixir_cost": 3,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:princess-evo",
+    "game_id": "clashroyale",
+    "display_name": "Evo Princess",
+    "image_url": "/clashroyale/icons/princess-evo.png",
+    "attributes": {
+      "rarity": "Legendary",
+      "card_type": "Troop",
+      "elixir_cost": 3,
+      "form": "Evolution"
+    }
+  },
+  {
+    "id": "clashroyale:dark-prince",
+    "game_id": "clashroyale",
+    "display_name": "Dark Prince",
+    "image_url": "/clashroyale/icons/dark-prince.png",
+    "attributes": {
+      "rarity": "Epic",
+      "card_type": "Troop",
+      "elixir_cost": 4,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:dark-prince-hero",
+    "game_id": "clashroyale",
+    "display_name": "Hero Dark Prince",
+    "image_url": "/clashroyale/icons/dark-prince-hero.png",
+    "attributes": {
+      "rarity": "Epic",
+      "card_type": "Troop",
+      "elixir_cost": 4,
+      "form": "Hero"
+    }
+  },
+  {
+    "id": "clashroyale:three-musketeers",
+    "game_id": "clashroyale",
+    "display_name": "Three Musketeers",
+    "image_url": "/clashroyale/icons/three-musketeers.png",
+    "attributes": {
+      "rarity": "Rare",
+      "card_type": "Troop",
+      "elixir_cost": 9,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:lava-hound",
+    "game_id": "clashroyale",
+    "display_name": "Lava Hound",
+    "image_url": "/clashroyale/icons/lava-hound.png",
+    "attributes": {
+      "rarity": "Legendary",
+      "card_type": "Troop",
+      "elixir_cost": 7,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:ice-spirit",
+    "game_id": "clashroyale",
+    "display_name": "Ice Spirit",
+    "image_url": "/clashroyale/icons/ice-spirit.png",
+    "attributes": {
+      "rarity": "Common",
+      "card_type": "Troop",
+      "elixir_cost": 1,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:ice-spirit-evo",
+    "game_id": "clashroyale",
+    "display_name": "Evo Ice Spirit",
+    "image_url": "/clashroyale/icons/ice-spirit-evo.png",
+    "attributes": {
+      "rarity": "Common",
+      "card_type": "Troop",
+      "elixir_cost": 1,
+      "form": "Evolution"
+    }
+  },
+  {
+    "id": "clashroyale:fire-spirit",
+    "game_id": "clashroyale",
+    "display_name": "Fire Spirit",
+    "image_url": "/clashroyale/icons/fire-spirit.png",
+    "attributes": {
+      "rarity": "Common",
+      "card_type": "Troop",
+      "elixir_cost": 1,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:miner",
+    "game_id": "clashroyale",
+    "display_name": "Miner",
+    "image_url": "/clashroyale/icons/miner.png",
+    "attributes": {
+      "rarity": "Legendary",
+      "card_type": "Troop",
+      "elixir_cost": 3,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:sparky",
+    "game_id": "clashroyale",
+    "display_name": "Sparky",
+    "image_url": "/clashroyale/icons/sparky.png",
+    "attributes": {
+      "rarity": "Legendary",
+      "card_type": "Troop",
+      "elixir_cost": 6,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:bowler",
+    "game_id": "clashroyale",
+    "display_name": "Bowler",
+    "image_url": "/clashroyale/icons/bowler.png",
+    "attributes": {
+      "rarity": "Epic",
+      "card_type": "Troop",
+      "elixir_cost": 5,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:bowler-hero",
+    "game_id": "clashroyale",
+    "display_name": "Hero Bowler",
+    "image_url": "/clashroyale/icons/bowler-hero.png",
+    "attributes": {
+      "rarity": "Epic",
+      "card_type": "Troop",
+      "elixir_cost": 5,
+      "form": "Hero"
+    }
+  },
+  {
+    "id": "clashroyale:lumberjack",
+    "game_id": "clashroyale",
+    "display_name": "Lumberjack",
+    "image_url": "/clashroyale/icons/lumberjack.png",
+    "attributes": {
+      "rarity": "Legendary",
+      "card_type": "Troop",
+      "elixir_cost": 4,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:lumberjack-evo",
+    "game_id": "clashroyale",
+    "display_name": "Evo Lumberjack",
+    "image_url": "/clashroyale/icons/lumberjack-evo.png",
+    "attributes": {
+      "rarity": "Legendary",
+      "card_type": "Troop",
+      "elixir_cost": 4,
+      "form": "Evolution"
+    }
+  },
+  {
+    "id": "clashroyale:battle-ram",
+    "game_id": "clashroyale",
+    "display_name": "Battle Ram",
+    "image_url": "/clashroyale/icons/battle-ram.png",
+    "attributes": {
+      "rarity": "Rare",
+      "card_type": "Troop",
+      "elixir_cost": 4,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:battle-ram-evo",
+    "game_id": "clashroyale",
+    "display_name": "Evo Battle Ram",
+    "image_url": "/clashroyale/icons/battle-ram-evo.png",
+    "attributes": {
+      "rarity": "Rare",
+      "card_type": "Troop",
+      "elixir_cost": 4,
+      "form": "Evolution"
+    }
+  },
+  {
+    "id": "clashroyale:inferno-dragon",
+    "game_id": "clashroyale",
+    "display_name": "Inferno Dragon",
+    "image_url": "/clashroyale/icons/inferno-dragon.png",
+    "attributes": {
+      "rarity": "Legendary",
+      "card_type": "Troop",
+      "elixir_cost": 4,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:inferno-dragon-evo",
+    "game_id": "clashroyale",
+    "display_name": "Evo Inferno Dragon",
+    "image_url": "/clashroyale/icons/inferno-dragon-evo.png",
+    "attributes": {
+      "rarity": "Legendary",
+      "card_type": "Troop",
+      "elixir_cost": 4,
+      "form": "Evolution"
+    }
+  },
+  {
+    "id": "clashroyale:ice-golem",
+    "game_id": "clashroyale",
+    "display_name": "Ice Golem",
+    "image_url": "/clashroyale/icons/ice-golem.png",
+    "attributes": {
+      "rarity": "Rare",
+      "card_type": "Troop",
+      "elixir_cost": 2,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:ice-golem-hero",
+    "game_id": "clashroyale",
+    "display_name": "Hero Ice Golem",
+    "image_url": "/clashroyale/icons/ice-golem-hero.png",
+    "attributes": {
+      "rarity": "Rare",
+      "card_type": "Troop",
+      "elixir_cost": 2,
+      "form": "Hero"
+    }
+  },
+  {
+    "id": "clashroyale:mega-minion",
+    "game_id": "clashroyale",
+    "display_name": "Mega Minion",
+    "image_url": "/clashroyale/icons/mega-minion.png",
+    "attributes": {
+      "rarity": "Rare",
+      "card_type": "Troop",
+      "elixir_cost": 3,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:mega-minion-hero",
+    "game_id": "clashroyale",
+    "display_name": "Hero Mega Minion",
+    "image_url": "/clashroyale/icons/mega-minion-hero.png",
+    "attributes": {
+      "rarity": "Rare",
+      "card_type": "Troop",
+      "elixir_cost": 3,
+      "form": "Hero"
+    }
+  },
+  {
+    "id": "clashroyale:dart-goblin",
+    "game_id": "clashroyale",
+    "display_name": "Dart Goblin",
+    "image_url": "/clashroyale/icons/dart-goblin.png",
+    "attributes": {
+      "rarity": "Rare",
+      "card_type": "Troop",
+      "elixir_cost": 3,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:dart-goblin-evo",
+    "game_id": "clashroyale",
+    "display_name": "Evo Dart Goblin",
+    "image_url": "/clashroyale/icons/dart-goblin-evo.png",
+    "attributes": {
+      "rarity": "Rare",
+      "card_type": "Troop",
+      "elixir_cost": 3,
+      "form": "Evolution"
+    }
+  },
+  {
+    "id": "clashroyale:goblin-gang",
+    "game_id": "clashroyale",
+    "display_name": "Goblin Gang",
+    "image_url": "/clashroyale/icons/goblin-gang.png",
+    "attributes": {
+      "rarity": "Common",
+      "card_type": "Troop",
+      "elixir_cost": 3,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:electro-wizard",
+    "game_id": "clashroyale",
+    "display_name": "Electro Wizard",
+    "image_url": "/clashroyale/icons/electro-wizard.png",
+    "attributes": {
+      "rarity": "Legendary",
+      "card_type": "Troop",
+      "elixir_cost": 4,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:elite-barbarians",
+    "game_id": "clashroyale",
+    "display_name": "Elite Barbarians",
+    "image_url": "/clashroyale/icons/elite-barbarians.png",
+    "attributes": {
+      "rarity": "Common",
+      "card_type": "Troop",
+      "elixir_cost": 6,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:hunter",
+    "game_id": "clashroyale",
+    "display_name": "Hunter",
+    "image_url": "/clashroyale/icons/hunter.png",
+    "attributes": {
+      "rarity": "Epic",
+      "card_type": "Troop",
+      "elixir_cost": 4,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:hunter-evo",
+    "game_id": "clashroyale",
+    "display_name": "Evo Hunter",
+    "image_url": "/clashroyale/icons/hunter-evo.png",
+    "attributes": {
+      "rarity": "Epic",
+      "card_type": "Troop",
+      "elixir_cost": 4,
+      "form": "Evolution"
+    }
+  },
+  {
+    "id": "clashroyale:executioner",
+    "game_id": "clashroyale",
+    "display_name": "Executioner",
+    "image_url": "/clashroyale/icons/executioner.png",
+    "attributes": {
+      "rarity": "Epic",
+      "card_type": "Troop",
+      "elixir_cost": 5,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:executioner-evo",
+    "game_id": "clashroyale",
+    "display_name": "Evo Executioner",
+    "image_url": "/clashroyale/icons/executioner-evo.png",
+    "attributes": {
+      "rarity": "Epic",
+      "card_type": "Troop",
+      "elixir_cost": 5,
+      "form": "Evolution"
+    }
+  },
+  {
+    "id": "clashroyale:bandit",
+    "game_id": "clashroyale",
+    "display_name": "Bandit",
+    "image_url": "/clashroyale/icons/bandit.png",
+    "attributes": {
+      "rarity": "Legendary",
+      "card_type": "Troop",
+      "elixir_cost": 3,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:royal-recruits",
+    "game_id": "clashroyale",
+    "display_name": "Royal Recruits",
+    "image_url": "/clashroyale/icons/royal-recruits.png",
+    "attributes": {
+      "rarity": "Common",
+      "card_type": "Troop",
+      "elixir_cost": 7,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:royal-recruits-evo",
+    "game_id": "clashroyale",
+    "display_name": "Evo Royal Recruits",
+    "image_url": "/clashroyale/icons/royal-recruits-evo.png",
+    "attributes": {
+      "rarity": "Common",
+      "card_type": "Troop",
+      "elixir_cost": 7,
+      "form": "Evolution"
+    }
+  },
+  {
+    "id": "clashroyale:night-witch",
+    "game_id": "clashroyale",
+    "display_name": "Night Witch",
+    "image_url": "/clashroyale/icons/night-witch.png",
+    "attributes": {
+      "rarity": "Legendary",
+      "card_type": "Troop",
+      "elixir_cost": 4,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:bats",
+    "game_id": "clashroyale",
+    "display_name": "Bats",
+    "image_url": "/clashroyale/icons/bats.png",
+    "attributes": {
+      "rarity": "Common",
+      "card_type": "Troop",
+      "elixir_cost": 2,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:bats-evo",
+    "game_id": "clashroyale",
+    "display_name": "Evo Bats",
+    "image_url": "/clashroyale/icons/bats-evo.png",
+    "attributes": {
+      "rarity": "Common",
+      "card_type": "Troop",
+      "elixir_cost": 2,
+      "form": "Evolution"
+    }
+  },
+  {
+    "id": "clashroyale:royal-ghost",
+    "game_id": "clashroyale",
+    "display_name": "Royal Ghost",
+    "image_url": "/clashroyale/icons/royal-ghost.png",
+    "attributes": {
+      "rarity": "Legendary",
+      "card_type": "Troop",
+      "elixir_cost": 3,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:royal-ghost-evo",
+    "game_id": "clashroyale",
+    "display_name": "Evo Royal Ghost",
+    "image_url": "/clashroyale/icons/royal-ghost-evo.png",
+    "attributes": {
+      "rarity": "Legendary",
+      "card_type": "Troop",
+      "elixir_cost": 3,
+      "form": "Evolution"
+    }
+  },
+  {
+    "id": "clashroyale:ram-rider",
+    "game_id": "clashroyale",
+    "display_name": "Ram Rider",
+    "image_url": "/clashroyale/icons/ram-rider.png",
+    "attributes": {
+      "rarity": "Legendary",
+      "card_type": "Troop",
+      "elixir_cost": 5,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:zappies",
+    "game_id": "clashroyale",
+    "display_name": "Zappies",
+    "image_url": "/clashroyale/icons/zappies.png",
+    "attributes": {
+      "rarity": "Rare",
+      "card_type": "Troop",
+      "elixir_cost": 4,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:rascals",
+    "game_id": "clashroyale",
+    "display_name": "Rascals",
+    "image_url": "/clashroyale/icons/rascals.png",
+    "attributes": {
+      "rarity": "Common",
+      "card_type": "Troop",
+      "elixir_cost": 5,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:cannon-cart",
+    "game_id": "clashroyale",
+    "display_name": "Cannon Cart",
+    "image_url": "/clashroyale/icons/cannon-cart.png",
+    "attributes": {
+      "rarity": "Epic",
+      "card_type": "Troop",
+      "elixir_cost": 5,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:mega-knight",
+    "game_id": "clashroyale",
+    "display_name": "Mega Knight",
+    "image_url": "/clashroyale/icons/mega-knight.png",
+    "attributes": {
+      "rarity": "Legendary",
+      "card_type": "Troop",
+      "elixir_cost": 7,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:mega-knight-evo",
+    "game_id": "clashroyale",
+    "display_name": "Evo Mega Knight",
+    "image_url": "/clashroyale/icons/mega-knight-evo.png",
+    "attributes": {
+      "rarity": "Legendary",
+      "card_type": "Troop",
+      "elixir_cost": 7,
+      "form": "Evolution"
+    }
+  },
+  {
+    "id": "clashroyale:skeleton-barrel",
+    "game_id": "clashroyale",
+    "display_name": "Skeleton Barrel",
+    "image_url": "/clashroyale/icons/skeleton-barrel.png",
+    "attributes": {
+      "rarity": "Common",
+      "card_type": "Troop",
+      "elixir_cost": 3,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:skeleton-barrel-evo",
+    "game_id": "clashroyale",
+    "display_name": "Evo Skeleton Barrel",
+    "image_url": "/clashroyale/icons/skeleton-barrel-evo.png",
+    "attributes": {
+      "rarity": "Common",
+      "card_type": "Troop",
+      "elixir_cost": 3,
+      "form": "Evolution"
+    }
+  },
+  {
+    "id": "clashroyale:flying-machine",
+    "game_id": "clashroyale",
+    "display_name": "Flying Machine",
+    "image_url": "/clashroyale/icons/flying-machine.png",
+    "attributes": {
+      "rarity": "Rare",
+      "card_type": "Troop",
+      "elixir_cost": 4,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:wall-breakers",
+    "game_id": "clashroyale",
+    "display_name": "Wall Breakers",
+    "image_url": "/clashroyale/icons/wall-breakers.png",
+    "attributes": {
+      "rarity": "Epic",
+      "card_type": "Troop",
+      "elixir_cost": 2,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:wall-breakers-evo",
+    "game_id": "clashroyale",
+    "display_name": "Evo Wall Breakers",
+    "image_url": "/clashroyale/icons/wall-breakers-evo.png",
+    "attributes": {
+      "rarity": "Epic",
+      "card_type": "Troop",
+      "elixir_cost": 2,
+      "form": "Evolution"
+    }
+  },
+  {
+    "id": "clashroyale:royal-hogs",
+    "game_id": "clashroyale",
+    "display_name": "Royal Hogs",
+    "image_url": "/clashroyale/icons/royal-hogs.png",
+    "attributes": {
+      "rarity": "Rare",
+      "card_type": "Troop",
+      "elixir_cost": 5,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:royal-hogs-evo",
+    "game_id": "clashroyale",
+    "display_name": "Evo Royal Hogs",
+    "image_url": "/clashroyale/icons/royal-hogs-evo.png",
+    "attributes": {
+      "rarity": "Rare",
+      "card_type": "Troop",
+      "elixir_cost": 5,
+      "form": "Evolution"
+    }
+  },
+  {
+    "id": "clashroyale:goblin-giant",
+    "game_id": "clashroyale",
+    "display_name": "Goblin Giant",
+    "image_url": "/clashroyale/icons/goblin-giant.png",
+    "attributes": {
+      "rarity": "Epic",
+      "card_type": "Troop",
+      "elixir_cost": 6,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:goblin-giant-evo",
+    "game_id": "clashroyale",
+    "display_name": "Evo Goblin Giant",
+    "image_url": "/clashroyale/icons/goblin-giant-evo.png",
+    "attributes": {
+      "rarity": "Epic",
+      "card_type": "Troop",
+      "elixir_cost": 6,
+      "form": "Evolution"
+    }
+  },
+  {
+    "id": "clashroyale:fisherman",
+    "game_id": "clashroyale",
+    "display_name": "Fisherman",
+    "image_url": "/clashroyale/icons/fisherman.png",
+    "attributes": {
+      "rarity": "Legendary",
+      "card_type": "Troop",
+      "elixir_cost": 3,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:magic-archer",
+    "game_id": "clashroyale",
+    "display_name": "Magic Archer",
+    "image_url": "/clashroyale/icons/magic-archer.png",
+    "attributes": {
+      "rarity": "Legendary",
+      "card_type": "Troop",
+      "elixir_cost": 4,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:magic-archer-hero",
+    "game_id": "clashroyale",
+    "display_name": "Hero Magic Archer",
+    "image_url": "/clashroyale/icons/magic-archer-hero.png",
+    "attributes": {
+      "rarity": "Legendary",
+      "card_type": "Troop",
+      "elixir_cost": 4,
+      "form": "Hero"
+    }
+  },
+  {
+    "id": "clashroyale:electro-dragon",
+    "game_id": "clashroyale",
+    "display_name": "Electro Dragon",
+    "image_url": "/clashroyale/icons/electro-dragon.png",
+    "attributes": {
+      "rarity": "Epic",
+      "card_type": "Troop",
+      "elixir_cost": 5,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:electro-dragon-evo",
+    "game_id": "clashroyale",
+    "display_name": "Evo Electro Dragon",
+    "image_url": "/clashroyale/icons/electro-dragon-evo.png",
+    "attributes": {
+      "rarity": "Epic",
+      "card_type": "Troop",
+      "elixir_cost": 5,
+      "form": "Evolution"
+    }
+  },
+  {
+    "id": "clashroyale:firecracker",
+    "game_id": "clashroyale",
+    "display_name": "Firecracker",
+    "image_url": "/clashroyale/icons/firecracker.png",
+    "attributes": {
+      "rarity": "Common",
+      "card_type": "Troop",
+      "elixir_cost": 3,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:firecracker-evo",
+    "game_id": "clashroyale",
+    "display_name": "Evo Firecracker",
+    "image_url": "/clashroyale/icons/firecracker-evo.png",
+    "attributes": {
+      "rarity": "Common",
+      "card_type": "Troop",
+      "elixir_cost": 3,
+      "form": "Evolution"
+    }
+  },
+  {
+    "id": "clashroyale:mighty-miner",
+    "game_id": "clashroyale",
+    "display_name": "Mighty Miner",
+    "image_url": "/clashroyale/icons/mighty-miner.png",
+    "attributes": {
+      "rarity": "Champion",
+      "card_type": "Troop",
+      "elixir_cost": 4,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:elixir-golem",
+    "game_id": "clashroyale",
+    "display_name": "Elixir Golem",
+    "image_url": "/clashroyale/icons/elixir-golem.png",
+    "attributes": {
+      "rarity": "Rare",
+      "card_type": "Troop",
+      "elixir_cost": 3,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:battle-healer",
+    "game_id": "clashroyale",
+    "display_name": "Battle Healer",
+    "image_url": "/clashroyale/icons/battle-healer.png",
+    "attributes": {
+      "rarity": "Rare",
+      "card_type": "Troop",
+      "elixir_cost": 4,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:skeleton-king",
+    "game_id": "clashroyale",
+    "display_name": "Skeleton King",
+    "image_url": "/clashroyale/icons/skeleton-king.png",
+    "attributes": {
+      "rarity": "Champion",
+      "card_type": "Troop",
+      "elixir_cost": 4,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:archer-queen",
+    "game_id": "clashroyale",
+    "display_name": "Archer Queen",
+    "image_url": "/clashroyale/icons/archer-queen.png",
+    "attributes": {
+      "rarity": "Champion",
+      "card_type": "Troop",
+      "elixir_cost": 5,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:golden-knight",
+    "game_id": "clashroyale",
+    "display_name": "Golden Knight",
+    "image_url": "/clashroyale/icons/golden-knight.png",
+    "attributes": {
+      "rarity": "Champion",
+      "card_type": "Troop",
+      "elixir_cost": 4,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:monk",
+    "game_id": "clashroyale",
+    "display_name": "Monk",
+    "image_url": "/clashroyale/icons/monk.png",
+    "attributes": {
+      "rarity": "Champion",
+      "card_type": "Troop",
+      "elixir_cost": 5,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:skeleton-dragons",
+    "game_id": "clashroyale",
+    "display_name": "Skeleton Dragons",
+    "image_url": "/clashroyale/icons/skeleton-dragons.png",
+    "attributes": {
+      "rarity": "Common",
+      "card_type": "Troop",
+      "elixir_cost": 4,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:mother-witch",
+    "game_id": "clashroyale",
+    "display_name": "Mother Witch",
+    "image_url": "/clashroyale/icons/mother-witch.png",
+    "attributes": {
+      "rarity": "Legendary",
+      "card_type": "Troop",
+      "elixir_cost": 4,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:electro-spirit",
+    "game_id": "clashroyale",
+    "display_name": "Electro Spirit",
+    "image_url": "/clashroyale/icons/electro-spirit.png",
+    "attributes": {
+      "rarity": "Common",
+      "card_type": "Troop",
+      "elixir_cost": 1,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:electro-giant",
+    "game_id": "clashroyale",
+    "display_name": "Electro Giant",
+    "image_url": "/clashroyale/icons/electro-giant.png",
+    "attributes": {
+      "rarity": "Epic",
+      "card_type": "Troop",
+      "elixir_cost": 7,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:phoenix",
+    "game_id": "clashroyale",
+    "display_name": "Phoenix",
+    "image_url": "/clashroyale/icons/phoenix.png",
+    "attributes": {
+      "rarity": "Legendary",
+      "card_type": "Troop",
+      "elixir_cost": 4,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:little-prince",
+    "game_id": "clashroyale",
+    "display_name": "Little Prince",
+    "image_url": "/clashroyale/icons/little-prince.png",
+    "attributes": {
+      "rarity": "Champion",
+      "card_type": "Troop",
+      "elixir_cost": 3,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:goblin-demolisher",
+    "game_id": "clashroyale",
+    "display_name": "Goblin Demolisher",
+    "image_url": "/clashroyale/icons/goblin-demolisher.png",
+    "attributes": {
+      "rarity": "Rare",
+      "card_type": "Troop",
+      "elixir_cost": 4,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:goblin-machine",
+    "game_id": "clashroyale",
+    "display_name": "Goblin Machine",
+    "image_url": "/clashroyale/icons/goblin-machine.png",
+    "attributes": {
+      "rarity": "Legendary",
+      "card_type": "Troop",
+      "elixir_cost": 5,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:suspicious-bush",
+    "game_id": "clashroyale",
+    "display_name": "Suspicious Bush",
+    "image_url": "/clashroyale/icons/suspicious-bush.png",
+    "attributes": {
+      "rarity": "Rare",
+      "card_type": "Troop",
+      "elixir_cost": 2,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:goblinstein",
+    "game_id": "clashroyale",
+    "display_name": "Goblinstein",
+    "image_url": "/clashroyale/icons/goblinstein.png",
+    "attributes": {
+      "rarity": "Champion",
+      "card_type": "Troop",
+      "elixir_cost": 5,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:rune-giant",
+    "game_id": "clashroyale",
+    "display_name": "Rune Giant",
+    "image_url": "/clashroyale/icons/rune-giant.png",
+    "attributes": {
+      "rarity": "Epic",
+      "card_type": "Troop",
+      "elixir_cost": 4,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:berserker",
+    "game_id": "clashroyale",
+    "display_name": "Berserker",
+    "image_url": "/clashroyale/icons/berserker.png",
+    "attributes": {
+      "rarity": "Common",
+      "card_type": "Troop",
+      "elixir_cost": 2,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:berserker-hero",
+    "game_id": "clashroyale",
+    "display_name": "Hero Berserker",
+    "image_url": "/clashroyale/icons/berserker-hero.png",
+    "attributes": {
+      "rarity": "Common",
+      "card_type": "Troop",
+      "elixir_cost": 2,
+      "form": "Hero"
+    }
+  },
+  {
+    "id": "clashroyale:boss-bandit",
+    "game_id": "clashroyale",
+    "display_name": "Boss Bandit",
+    "image_url": "/clashroyale/icons/boss-bandit.png",
+    "attributes": {
+      "rarity": "Champion",
+      "card_type": "Troop",
+      "elixir_cost": 6,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:ronin",
+    "game_id": "clashroyale",
+    "display_name": "Ronin",
+    "image_url": "/clashroyale/icons/ronin.png",
+    "attributes": {
+      "rarity": "Legendary",
+      "card_type": "Troop",
+      "elixir_cost": 5,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:cannon",
+    "game_id": "clashroyale",
+    "display_name": "Cannon",
+    "image_url": "/clashroyale/icons/cannon.png",
+    "attributes": {
+      "rarity": "Common",
+      "card_type": "Building",
+      "elixir_cost": 3,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:cannon-evo",
+    "game_id": "clashroyale",
+    "display_name": "Evo Cannon",
+    "image_url": "/clashroyale/icons/cannon-evo.png",
+    "attributes": {
+      "rarity": "Common",
+      "card_type": "Building",
+      "elixir_cost": 3,
+      "form": "Evolution"
+    }
+  },
+  {
+    "id": "clashroyale:goblin-hut",
+    "game_id": "clashroyale",
+    "display_name": "Goblin Hut",
+    "image_url": "/clashroyale/icons/goblin-hut.png",
+    "attributes": {
+      "rarity": "Rare",
+      "card_type": "Building",
+      "elixir_cost": 4,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:mortar",
+    "game_id": "clashroyale",
+    "display_name": "Mortar",
+    "image_url": "/clashroyale/icons/mortar.png",
+    "attributes": {
+      "rarity": "Common",
+      "card_type": "Building",
+      "elixir_cost": 4,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:mortar-evo",
+    "game_id": "clashroyale",
+    "display_name": "Evo Mortar",
+    "image_url": "/clashroyale/icons/mortar-evo.png",
+    "attributes": {
+      "rarity": "Common",
+      "card_type": "Building",
+      "elixir_cost": 4,
+      "form": "Evolution"
+    }
+  },
+  {
+    "id": "clashroyale:inferno-tower",
+    "game_id": "clashroyale",
+    "display_name": "Inferno Tower",
+    "image_url": "/clashroyale/icons/inferno-tower.png",
+    "attributes": {
+      "rarity": "Rare",
+      "card_type": "Building",
+      "elixir_cost": 5,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:bomb-tower",
+    "game_id": "clashroyale",
+    "display_name": "Bomb Tower",
+    "image_url": "/clashroyale/icons/bomb-tower.png",
+    "attributes": {
+      "rarity": "Rare",
+      "card_type": "Building",
+      "elixir_cost": 4,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:barbarian-hut",
+    "game_id": "clashroyale",
+    "display_name": "Barbarian Hut",
+    "image_url": "/clashroyale/icons/barbarian-hut.png",
+    "attributes": {
+      "rarity": "Rare",
+      "card_type": "Building",
+      "elixir_cost": 6,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:tesla",
+    "game_id": "clashroyale",
+    "display_name": "Tesla",
+    "image_url": "/clashroyale/icons/tesla.png",
+    "attributes": {
+      "rarity": "Common",
+      "card_type": "Building",
+      "elixir_cost": 4,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:tesla-evo",
+    "game_id": "clashroyale",
+    "display_name": "Evo Tesla",
+    "image_url": "/clashroyale/icons/tesla-evo.png",
+    "attributes": {
+      "rarity": "Common",
+      "card_type": "Building",
+      "elixir_cost": 4,
+      "form": "Evolution"
+    }
+  },
+  {
+    "id": "clashroyale:elixir-collector",
+    "game_id": "clashroyale",
+    "display_name": "Elixir Collector",
+    "image_url": "/clashroyale/icons/elixir-collector.png",
+    "attributes": {
+      "rarity": "Rare",
+      "card_type": "Building",
+      "elixir_cost": 6,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:x-bow",
+    "game_id": "clashroyale",
+    "display_name": "X-Bow",
+    "image_url": "/clashroyale/icons/x-bow.png",
+    "attributes": {
+      "rarity": "Epic",
+      "card_type": "Building",
+      "elixir_cost": 6,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:tombstone",
+    "game_id": "clashroyale",
+    "display_name": "Tombstone",
+    "image_url": "/clashroyale/icons/tombstone.png",
+    "attributes": {
+      "rarity": "Rare",
+      "card_type": "Building",
+      "elixir_cost": 3,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:tombstone-hero",
+    "game_id": "clashroyale",
+    "display_name": "Hero Tombstone",
+    "image_url": "/clashroyale/icons/tombstone-hero.png",
+    "attributes": {
+      "rarity": "Rare",
+      "card_type": "Building",
+      "elixir_cost": 3,
+      "form": "Hero"
+    }
+  },
+  {
+    "id": "clashroyale:furnace",
+    "game_id": "clashroyale",
+    "display_name": "Furnace",
+    "image_url": "/clashroyale/icons/furnace.png",
+    "attributes": {
+      "rarity": "Rare",
+      "card_type": "Troop",
+      "elixir_cost": 4,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:furnace-evo",
+    "game_id": "clashroyale",
+    "display_name": "Evo Furnace",
+    "image_url": "/clashroyale/icons/furnace-evo.png",
+    "attributes": {
+      "rarity": "Rare",
+      "card_type": "Troop",
+      "elixir_cost": 4,
+      "form": "Evolution"
+    }
+  },
+  {
+    "id": "clashroyale:goblin-cage",
+    "game_id": "clashroyale",
+    "display_name": "Goblin Cage",
+    "image_url": "/clashroyale/icons/goblin-cage.png",
+    "attributes": {
+      "rarity": "Rare",
+      "card_type": "Building",
+      "elixir_cost": 4,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:goblin-cage-evo",
+    "game_id": "clashroyale",
+    "display_name": "Evo Goblin Cage",
+    "image_url": "/clashroyale/icons/goblin-cage-evo.png",
+    "attributes": {
+      "rarity": "Rare",
+      "card_type": "Building",
+      "elixir_cost": 4,
+      "form": "Evolution"
+    }
+  },
+  {
+    "id": "clashroyale:goblin-drill",
+    "game_id": "clashroyale",
+    "display_name": "Goblin Drill",
+    "image_url": "/clashroyale/icons/goblin-drill.png",
+    "attributes": {
+      "rarity": "Epic",
+      "card_type": "Building",
+      "elixir_cost": 4,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:goblin-drill-evo",
+    "game_id": "clashroyale",
+    "display_name": "Evo Goblin Drill",
+    "image_url": "/clashroyale/icons/goblin-drill-evo.png",
+    "attributes": {
+      "rarity": "Epic",
+      "card_type": "Building",
+      "elixir_cost": 4,
+      "form": "Evolution"
+    }
+  },
+  {
+    "id": "clashroyale:fireball",
+    "game_id": "clashroyale",
+    "display_name": "Fireball",
+    "image_url": "/clashroyale/icons/fireball.png",
+    "attributes": {
+      "rarity": "Rare",
+      "card_type": "Spell",
+      "elixir_cost": 4,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:arrows",
+    "game_id": "clashroyale",
+    "display_name": "Arrows",
+    "image_url": "/clashroyale/icons/arrows.png",
+    "attributes": {
+      "rarity": "Common",
+      "card_type": "Spell",
+      "elixir_cost": 3,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:rage",
+    "game_id": "clashroyale",
+    "display_name": "Rage",
+    "image_url": "/clashroyale/icons/rage.png",
+    "attributes": {
+      "rarity": "Epic",
+      "card_type": "Spell",
+      "elixir_cost": 2,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:rocket",
+    "game_id": "clashroyale",
+    "display_name": "Rocket",
+    "image_url": "/clashroyale/icons/rocket.png",
+    "attributes": {
+      "rarity": "Rare",
+      "card_type": "Spell",
+      "elixir_cost": 6,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:goblin-barrel",
+    "game_id": "clashroyale",
+    "display_name": "Goblin Barrel",
+    "image_url": "/clashroyale/icons/goblin-barrel.png",
+    "attributes": {
+      "rarity": "Epic",
+      "card_type": "Spell",
+      "elixir_cost": 3,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:goblin-barrel-evo",
+    "game_id": "clashroyale",
+    "display_name": "Evo Goblin Barrel",
+    "image_url": "/clashroyale/icons/goblin-barrel-evo.png",
+    "attributes": {
+      "rarity": "Epic",
+      "card_type": "Spell",
+      "elixir_cost": 3,
+      "form": "Evolution"
+    }
+  },
+  {
+    "id": "clashroyale:freeze",
+    "game_id": "clashroyale",
+    "display_name": "Freeze",
+    "image_url": "/clashroyale/icons/freeze.png",
+    "attributes": {
+      "rarity": "Epic",
+      "card_type": "Spell",
+      "elixir_cost": 4,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:mirror",
+    "game_id": "clashroyale",
+    "display_name": "Mirror",
+    "image_url": "/clashroyale/icons/mirror.png",
+    "attributes": {
+      "rarity": "Epic",
+      "card_type": "Spell",
+      "elixir_cost": null,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:lightning",
+    "game_id": "clashroyale",
+    "display_name": "Lightning",
+    "image_url": "/clashroyale/icons/lightning.png",
+    "attributes": {
+      "rarity": "Epic",
+      "card_type": "Spell",
+      "elixir_cost": 6,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:zap",
+    "game_id": "clashroyale",
+    "display_name": "Zap",
+    "image_url": "/clashroyale/icons/zap.png",
+    "attributes": {
+      "rarity": "Common",
+      "card_type": "Spell",
+      "elixir_cost": 2,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:zap-evo",
+    "game_id": "clashroyale",
+    "display_name": "Evo Zap",
+    "image_url": "/clashroyale/icons/zap-evo.png",
+    "attributes": {
+      "rarity": "Common",
+      "card_type": "Spell",
+      "elixir_cost": 2,
+      "form": "Evolution"
+    }
+  },
+  {
+    "id": "clashroyale:poison",
+    "game_id": "clashroyale",
+    "display_name": "Poison",
+    "image_url": "/clashroyale/icons/poison.png",
+    "attributes": {
+      "rarity": "Epic",
+      "card_type": "Spell",
+      "elixir_cost": 4,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:graveyard",
+    "game_id": "clashroyale",
+    "display_name": "Graveyard",
+    "image_url": "/clashroyale/icons/graveyard.png",
+    "attributes": {
+      "rarity": "Legendary",
+      "card_type": "Spell",
+      "elixir_cost": 5,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:the-log",
+    "game_id": "clashroyale",
+    "display_name": "The Log",
+    "image_url": "/clashroyale/icons/the-log.png",
+    "attributes": {
+      "rarity": "Legendary",
+      "card_type": "Spell",
+      "elixir_cost": 2,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:tornado",
+    "game_id": "clashroyale",
+    "display_name": "Tornado",
+    "image_url": "/clashroyale/icons/tornado.png",
+    "attributes": {
+      "rarity": "Epic",
+      "card_type": "Spell",
+      "elixir_cost": 3,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:clone",
+    "game_id": "clashroyale",
+    "display_name": "Clone",
+    "image_url": "/clashroyale/icons/clone.png",
+    "attributes": {
+      "rarity": "Epic",
+      "card_type": "Spell",
+      "elixir_cost": 3,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:earthquake",
+    "game_id": "clashroyale",
+    "display_name": "Earthquake",
+    "image_url": "/clashroyale/icons/earthquake.png",
+    "attributes": {
+      "rarity": "Rare",
+      "card_type": "Spell",
+      "elixir_cost": 3,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:barbarian-barrel",
+    "game_id": "clashroyale",
+    "display_name": "Barbarian Barrel",
+    "image_url": "/clashroyale/icons/barbarian-barrel.png",
+    "attributes": {
+      "rarity": "Epic",
+      "card_type": "Spell",
+      "elixir_cost": 2,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:barbarian-barrel-hero",
+    "game_id": "clashroyale",
+    "display_name": "Hero Barbarian Barrel",
+    "image_url": "/clashroyale/icons/barbarian-barrel-hero.png",
+    "attributes": {
+      "rarity": "Epic",
+      "card_type": "Spell",
+      "elixir_cost": 2,
+      "form": "Hero"
+    }
+  },
+  {
+    "id": "clashroyale:heal-spirit",
+    "game_id": "clashroyale",
+    "display_name": "Heal Spirit",
+    "image_url": "/clashroyale/icons/heal-spirit.png",
+    "attributes": {
+      "rarity": "Rare",
+      "card_type": "Troop",
+      "elixir_cost": 1,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:giant-snowball",
+    "game_id": "clashroyale",
+    "display_name": "Giant Snowball",
+    "image_url": "/clashroyale/icons/giant-snowball.png",
+    "attributes": {
+      "rarity": "Common",
+      "card_type": "Spell",
+      "elixir_cost": 2,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:giant-snowball-evo",
+    "game_id": "clashroyale",
+    "display_name": "Evo Giant Snowball",
+    "image_url": "/clashroyale/icons/giant-snowball-evo.png",
+    "attributes": {
+      "rarity": "Common",
+      "card_type": "Spell",
+      "elixir_cost": 2,
+      "form": "Evolution"
+    }
+  },
+  {
+    "id": "clashroyale:royal-delivery",
+    "game_id": "clashroyale",
+    "display_name": "Royal Delivery",
+    "image_url": "/clashroyale/icons/royal-delivery.png",
+    "attributes": {
+      "rarity": "Common",
+      "card_type": "Spell",
+      "elixir_cost": 3,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:void",
+    "game_id": "clashroyale",
+    "display_name": "Void",
+    "image_url": "/clashroyale/icons/void.png",
+    "attributes": {
+      "rarity": "Epic",
+      "card_type": "Spell",
+      "elixir_cost": 5,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:goblin-curse",
+    "game_id": "clashroyale",
+    "display_name": "Goblin Curse",
+    "image_url": "/clashroyale/icons/goblin-curse.png",
+    "attributes": {
+      "rarity": "Epic",
+      "card_type": "Spell",
+      "elixir_cost": 2,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:spirit-empress",
+    "game_id": "clashroyale",
+    "display_name": "Spirit Empress",
+    "image_url": "/clashroyale/icons/spirit-empress.png",
+    "attributes": {
+      "rarity": "Legendary",
+      "card_type": "Troop",
+      "elixir_cost": 6,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:spirit-empress-ground",
+    "game_id": "clashroyale",
+    "display_name": "Spirit Empress (Ground)",
+    "image_url": "/clashroyale/icons/spirit-empress-ground.png",
+    "attributes": {
+      "rarity": "Legendary",
+      "card_type": "Troop",
+      "elixir_cost": 3,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:vines",
+    "game_id": "clashroyale",
+    "display_name": "Vines",
+    "image_url": "/clashroyale/icons/vines.png",
+    "attributes": {
+      "rarity": "Epic",
+      "card_type": "Spell",
+      "elixir_cost": 3,
+      "form": "Base"
+    }
+  }
+]

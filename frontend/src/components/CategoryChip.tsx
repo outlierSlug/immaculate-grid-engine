@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import ClickTooltip from './ClickTooltip';
+import type { GameId } from '../config/games';
 import mondstadtIcon from '../assets/genshin/regions/Mondstadt_Emblem_Night.webp';
 import liyueIcon from '../assets/genshin/regions/Liyue_Emblem_Night.webp';
 import inazumaIcon from '../assets/genshin/regions/Inazuma_Emblem_Night.webp';
@@ -49,13 +50,28 @@ import traitLifestealIcon from '../assets/brawlstars/traits/icon_trait_lifesteal
 import hyperchargeSkinIcon from '../assets/brawlstars/hypercharge_skin.png';
 import legendarySkinIcon from '../assets/brawlstars/legendary_skin.png';
 
+import elixir1Icon from '../assets/clashroyale/1elixir.png';
+import elixir2Icon from '../assets/clashroyale/2elixir.png';
+import elixir3Icon from '../assets/clashroyale/3elixir.png';
+import elixir4Icon from '../assets/clashroyale/4elixir.png';
+import elixir5Icon from '../assets/clashroyale/5elixir.png';
+import elixir6Icon from '../assets/clashroyale/6elixir.png';
+import elixir7Icon from '../assets/clashroyale/7elixir.png';
+import elixir8Icon from '../assets/clashroyale/8elixir.png';
+import elixir9Icon from '../assets/clashroyale/9elixir.png';
+
 interface CategoryChipProps {
   label: string;
+  // Every lookup below is scoped by game (icons, tooltip copy, rarity
+  // colors) - two different games can and do reuse the exact same label
+  // text (both Brawl Stars and Clash Royale have a "Common"/"Rare" rarity,
+  // for instance), so a single flat label->content map would silently
+  // leak one game's copy/styling onto another's identically-named value.
+  game: GameId;
 }
 
-// Merged lookup: region and element both render as icon medallions,
-// sourced from separate asset folders but treated identically here.
-const ICONS: Record<string, string> = {
+// ── Genshin ──────────────────────────────────────────────────────────────
+const GENSHIN_ICONS: Record<string, string> = {
   // Regions
   Mondstadt: mondstadtIcon,
   Liyue: liyueIcon,
@@ -81,8 +97,66 @@ const ICONS: Record<string, string> = {
   Claymore: claymoreIcon,
   Polearm: polearmIcon,
   Sword: swordIcon,
+};
 
-  // Brawler classes
+// Functional, not lore - this states the puzzle rule the icon represents
+// rather than a trivia blurb, matching what a player actually needs to
+// solve the cell.
+const GENSHIN_DESCRIPTIONS: Record<string, string> = {
+  // Regions
+  Mondstadt: 'This character must originate from Mondstadt.',
+  Liyue: 'This character must originate from Liyue.',
+  Inazuma: 'This character must originate from Inazuma.',
+  Sumeru: 'This character must originate from Sumeru.',
+  Fontaine: 'This character must originate from Fontaine.',
+  Natlan: 'This character must originate from Natlan.',
+  'Nod-Krai': 'This character must originate from Nod-Krai.',
+  Snezhnaya: 'This character must originate from Snezhnaya.',
+
+  // Elements
+  Anemo: 'This character wields the power of Anemo.',
+  Geo: 'This character wields the power of Geo.',
+  Electro: 'This character wields the power of Electro.',
+  Dendro: 'This character wields the power of Dendro.',
+  Hydro: 'This character wields the power of Hydro.',
+  Pyro: 'This character wields the power of Pyro.',
+  Cryo: 'This character wields the power of Cryo.',
+
+  // Weapons
+  Bow: 'This character uses a Bow.',
+  Catalyst: 'This character uses a Catalyst.',
+  Claymore: 'This character uses a Claymore.',
+  Polearm: 'This character uses a Polearm.',
+  Sword: 'This character uses a Sword.',
+
+  // Model and rarity render as the plain-text fallback pill, not an icon
+  // (see the final return below) - same map, just consumed from that
+  // branch instead of the icon one.
+  'Short Female': 'This character has a Short Female model.',
+  'Medium Female': 'This character has a Medium Female model.',
+  'Tall Female': 'This character has a Tall Female model.',
+  'Medium Male': 'This character has a Medium Male model.',
+  'Tall Male': 'This character has a Tall Male model.',
+  '4-Star': 'This character is a 4-star character.',
+  '5-Star': 'This character is a 5-star character.',
+};
+
+// Release version has no fixed set of values (a new one ships every patch),
+// so unlike the maps above this can't be a lookup map - it's a template
+// applied to any label shaped like a version number. Two shapes exist in
+// real data: numeric ("1.0".."5.8", "7.0") and, since the 6.0-era rename,
+// "Luna <roman numeral>" ("Luna I".."Luna VIII" so far).
+const RELEASE_VERSION_PATTERNS = [/^\d+\.\d+$/, /^Luna [IVXLCDM]+$/];
+
+function releaseVersionDescription(label: string): string | undefined {
+  return RELEASE_VERSION_PATTERNS.some((pattern) => pattern.test(label))
+    ? `This character was released in Version ${label}.`
+    : undefined;
+}
+
+// ── Brawl Stars ──────────────────────────────────────────────────────────
+const BRAWLSTARS_ICONS: Record<string, string> = {
+  // Classes
   Artillery: artilleryIcon,
   Assassin: assassinIcon,
   Controller: controllerIcon,
@@ -91,7 +165,7 @@ const ICONS: Record<string, string> = {
   Support: supportIcon,
   Tank: tankIcon,
 
-  // Brawler traits
+  // Traits
   Damage: traitDamageIcon,
   Time: traitTimeIcon,
   Hover: traitHoverIcon,
@@ -107,7 +181,7 @@ const ICONS: Record<string, string> = {
   Movement: traitMovementIcon,
   Lifesteal: traitLifestealIcon,
 
-  // Brawler tags (see TAG_DESCRIPTIONS below) - unlike traits/classes above,
+  // Tags (see BRAWLSTARS_DESCRIPTIONS below) - unlike traits/classes above,
   // these are full-color self-contained badges (own built-in shadow), not
   // black line art, so they're left out of INVERT_IN_DARK.
   'Has Hypercharge Skin': hyperchargeSkinIcon,
@@ -129,11 +203,9 @@ const INVERT_IN_DARK = new Set([
 
 // In-game explanation of what each trait actually does, shown in a
 // click-to-reveal tooltip on the trait's icon - the trait icons alone
-// aren't enough for a player to recall the mechanic behind them. Every
-// other icon-backed category (region, brawler class, element, weapon) gets
-// the same tooltip treatment below, via its own *_DESCRIPTIONS map - see
-// tooltipDescription's lookup chain further down for the full list.
-const TRAIT_DESCRIPTIONS: Record<string, string> = {
+// aren't enough for a player to recall the mechanic behind them.
+const BRAWLSTARS_DESCRIPTIONS: Record<string, string> = {
+  // Traits
   Damage: 'This brawler charges its super by taking damage.',
   Time: "This brawler's super charges automatically over time.",
   Hover: 'This brawler can move over water.',
@@ -148,25 +220,9 @@ const TRAIT_DESCRIPTIONS: Record<string, string> = {
   Speed: 'This brawler moves faster the longer it keeps moving.',
   Movement: 'This brawler charges its super by moving.',
   Lifesteal: 'This brawler heals for a portion of the damage it deals.',
-};
 
-// Functional, not lore - this states the puzzle rule the icon represents
-// rather than a trivia blurb, matching what a player actually needs to
-// solve the cell (same reasoning as the trait descriptions above).
-const REGION_DESCRIPTIONS: Record<string, string> = {
-  Mondstadt: 'This character must originate from Mondstadt.',
-  Liyue: 'This character must originate from Liyue.',
-  Inazuma: 'This character must originate from Inazuma.',
-  Sumeru: 'This character must originate from Sumeru.',
-  Fontaine: 'This character must originate from Fontaine.',
-  Natlan: 'This character must originate from Natlan.',
-  'Nod-Krai': 'This character must originate from Nod-Krai.',
-  Snezhnaya: 'This character must originate from Snezhnaya.',
-};
-
-// Same reasoning as region: states the puzzle rule the icon represents
-// (Brawl Stars' own in-game class label) rather than trivia.
-const CLASS_DESCRIPTIONS: Record<string, string> = {
+  // Classes - same reasoning as region above: states the puzzle rule the
+  // icon represents (Brawl Stars' own in-game class label) rather than trivia.
   Artillery: 'This brawler is classified as an Artillery.',
   Assassin: 'This brawler is classified as an Assassin.',
   Controller: 'This brawler is classified as a Controller.',
@@ -174,61 +230,39 @@ const CLASS_DESCRIPTIONS: Record<string, string> = {
   Marksman: 'This brawler is classified as a Marksman.',
   Support: 'This brawler is classified as a Support.',
   Tank: 'This brawler is classified as a Tank.',
+
+  // Rarity - applied to the plain-text fallback pill (no dedicated rarity
+  // icon asset exists, unlike class/trait). Common is left out on purpose:
+  // the real game gives it no special color either, so it keeps the
+  // default gray, same as the fallback pill's own default. Ultra Legendary
+  // isn't a flat color in-game and is handled separately below.
+  Common: "This brawler's rarity is Common.",
+  Rare: "This brawler's rarity is Rare.",
+  'Super Rare': "This brawler's rarity is Super Rare.",
+  Epic: "This brawler's rarity is Epic.",
+  Mythic: "This brawler's rarity is Mythic.",
+  Legendary: "This brawler's rarity is Legendary.",
+  'Ultra Legendary': "This brawler's rarity is Ultra Legendary.",
+
+  // Tags with no bespoke chip treatment of their own (unlike Former
+  // Chromatic below) fall through to the plain-text pill, same as rarity -
+  // this is just their tooltip copy.
+  'Has Wallbreak': 'This brawler can break walls.',
+  'Has Hypercharge Skin': 'This brawler has a Hypercharge skin.',
+  'Has Legendary Skin': 'This brawler has a Legendary skin.',
 };
 
-const ELEMENT_DESCRIPTIONS: Record<string, string> = {
-  Anemo: 'This character wields the power of Anemo.',
-  Geo: 'This character wields the power of Geo.',
-  Electro: 'This character wields the power of Electro.',
-  Dendro: 'This character wields the power of Dendro.',
-  Hydro: 'This character wields the power of Hydro.',
-  Pyro: 'This character wields the power of Pyro.',
-  Cryo: 'This character wields the power of Cryo.',
+const BRAWLSTARS_RARITY_STYLES: Record<string, string> = {
+  Rare: 'border-green-300 dark:border-green-700 bg-green-50 dark:bg-green-500/15 text-green-700 dark:text-green-400',
+  'Super Rare': 'border-blue-300 dark:border-blue-700 bg-blue-50 dark:bg-blue-500/15 text-blue-700 dark:text-blue-400',
+  Epic: 'border-purple-300 dark:border-purple-700 bg-purple-50 dark:bg-purple-500/15 text-purple-700 dark:text-purple-400',
+  Mythic: 'border-red-300 dark:border-red-700 bg-red-50 dark:bg-red-500/15 text-red-700 dark:text-red-400',
+  Legendary: 'border-amber-300 dark:border-amber-700 bg-amber-50 dark:bg-amber-500/15 text-amber-700 dark:text-amber-400',
 };
-
-const WEAPON_DESCRIPTIONS: Record<string, string> = {
-  Bow: 'This character uses a Bow.',
-  Catalyst: 'This character uses a Catalyst.',
-  Claymore: 'This character uses a Claymore.',
-  Polearm: 'This character uses a Polearm.',
-  Sword: 'This character uses a Sword.',
-};
-
-// Model and rarity render as the plain-text fallback pill, not an icon
-// (see the final return below) - same *_DESCRIPTIONS lookup pattern still
-// applies, it's just consumed from that branch instead of the icon one.
-const MODEL_DESCRIPTIONS: Record<string, string> = {
-  'Short Female': 'This character has a Short Female model.',
-  'Medium Female': 'This character has a Medium Female model.',
-  'Tall Female': 'This character has a Tall Female model.',
-  'Medium Male': 'This character has a Medium Male model.',
-  'Tall Male': 'This character has a Tall Male model.',
-};
-
-const RARITY_DESCRIPTIONS: Record<string, string> = {
-  '4-Star': 'This character is a 4-star character.',
-  '5-Star': 'This character is a 5-star character.',
-};
-
-// Release version has no fixed set of values (a new one ships every patch),
-// so unlike the other categories this can't be a lookup map - it's a
-// template applied to any label shaped like a version number. Two shapes
-// exist in real data: numeric ("1.0".."5.8", "7.0") and, since the 6.0-era
-// rename, "Luna <roman numeral>" ("Luna I".."Luna VIII" so far). Neither
-// pattern collides with anything else that hits this same fallback pill
-// (rarity is "5-Star", model is "Tall Male", etc).
-const RELEASE_VERSION_PATTERNS = [/^\d+\.\d+$/, /^Luna [IVXLCDM]+$/];
-
-function releaseVersionDescription(label: string): string | undefined {
-  return RELEASE_VERSION_PATTERNS.some((pattern) => pattern.test(label))
-    ? `This character was released in Version ${label}.`
-    : undefined;
-}
 
 // Same reasoning as release version above, but for Brawl Stars' release_year
 // (a bare 4-digit year, e.g. "2017") - a new value ships every year, so this
-// is a pattern rather than a lookup map. Doesn't collide with anything else
-// hitting this same fallback pill (no other label here is 4 bare digits).
+// is a pattern rather than a lookup map.
 const RELEASE_YEAR_PATTERN = /^\d{4}$/;
 
 function releaseYearDescription(label: string): string | undefined {
@@ -237,53 +271,119 @@ function releaseYearDescription(label: string): string | undefined {
     : undefined;
 }
 
-const TRAIT_LABELS = new Set(Object.keys(TRAIT_DESCRIPTIONS));
+const TRAIT_LABELS = new Set([
+  'Damage', 'Time', 'Hover', 'Proximity', 'Random', 'Increased Damage', 'Power Token',
+  'Super Healing', 'Enraged', 'Shield', 'Dodge', 'Speed', 'Movement', 'Lifesteal',
+]);
 
-// GuessInput's row/col header shows the same category labels as this chip
-// but as plain text, with no icon for context - a bare "Damage" or "Time"
-// reads as ambiguous there in a way "Legendary" or "Tank" doesn't. Category
-// label formatting is otherwise entirely this file's concern (icons,
-// colors, etc.), so this keeps GuessInput from needing to know which labels
-// are traits - it just renders whatever this returns.
-export function formatCategoryLabel(label: string): string {
-  return TRAIT_LABELS.has(label) ? `${label} Trait` : label;
+// ── Clash Royale ─────────────────────────────────────────────────────────
+// Elixir cost renders as an icon (the real in-game droplet-with-number
+// badge) rather than the plain-text fallback pill every other scalar
+// category (rarity, card type) uses - unlike a bare "3", the badge is
+// immediately legible as "elixir cost" on its own.
+const CLASHROYALE_ICONS: Record<string, string> = {
+  '1': elixir1Icon,
+  '2': elixir2Icon,
+  '3': elixir3Icon,
+  '4': elixir4Icon,
+  '5': elixir5Icon,
+  '6': elixir6Icon,
+  '7': elixir7Icon,
+  '8': elixir8Icon,
+  '9': elixir9Icon,
+};
+
+const CLASHROYALE_ELIXIR_DESCRIPTIONS: Record<string, string> = {
+  '1': 'This card costs 1 Elixir.',
+  '2': 'This card costs 2 Elixir.',
+  '3': 'This card costs 3 Elixir.',
+  '4': 'This card costs 4 Elixir.',
+  '5': 'This card costs 5 Elixir.',
+  '6': 'This card costs 6 Elixir.',
+  '7': 'This card costs 7 Elixir.',
+  '8': 'This card costs 8 Elixir.',
+  '9': 'This card costs 9 Elixir.',
+};
+
+const CLASHROYALE_DESCRIPTIONS: Record<string, string> = {
+  ...CLASHROYALE_ELIXIR_DESCRIPTIONS,
+
+  // Rarity - same "plain-text fallback pill, colored per real in-game
+  // rarity" treatment as Brawl Stars above. Unlike Brawl Stars, Common gets
+  // its own color here too (a light blue tint) rather than falling back to
+  // the generic gray pill. Legendary is handled as its own bespoke branch
+  // below (a gradient-text treatment, not a flat color), same as Ultra
+  // Legendary/Former Chromatic.
+  Common: "This card's rarity is Common.",
+  Rare: "This card's rarity is Rare.",
+  Epic: "This card's rarity is Epic.",
+  Legendary: "This card's rarity is Legendary.",
+  Champion: "This card's rarity is Champion.",
+
+  // Card type
+  Troop: 'This card is classified as a Troop.',
+  Building: 'This card is classified as a Building.',
+  Spell: 'This card is classified as a Spell.',
+
+  // Form - see normalize.py's map_card for how Evolution/Hero become their
+  // own independently-guessable entities rather than a tag on the base card.
+  Base: "This must be a card's base form, not an Evolution or Hero variant.",
+  Evolution: 'This card must be an Evolution.',
+  Hero: 'This card must be a Hero form.',
+};
+
+// Legendary isn't here - it gets its own gradient-text branch below, same
+// treatment as Brawl Stars' Ultra Legendary/Former Chromatic.
+const CLASHROYALE_RARITY_STYLES: Record<string, string> = {
+  Common: 'border-sky-300 dark:border-sky-700 bg-sky-50 dark:bg-sky-500/15 text-sky-700 dark:text-sky-400',
+  Rare: 'border-orange-300 dark:border-orange-700 bg-orange-50 dark:bg-orange-500/15 text-orange-700 dark:text-orange-400',
+  Epic: 'border-purple-300 dark:border-purple-700 bg-purple-50 dark:bg-purple-500/15 text-purple-700 dark:text-purple-400',
+  Champion: 'border-amber-300 dark:border-amber-700 bg-amber-50 dark:bg-amber-500/15 text-amber-700 dark:text-amber-400',
+};
+
+// ── Per-game lookup tables ───────────────────────────────────────────────
+const ICONS_BY_GAME: Record<GameId, Record<string, string>> = {
+  genshin: GENSHIN_ICONS,
+  brawlstars: BRAWLSTARS_ICONS,
+  clashroyale: CLASHROYALE_ICONS,
+};
+
+const DESCRIPTIONS_BY_GAME: Record<GameId, Record<string, string>> = {
+  genshin: GENSHIN_DESCRIPTIONS,
+  brawlstars: BRAWLSTARS_DESCRIPTIONS,
+  clashroyale: CLASHROYALE_DESCRIPTIONS,
+};
+
+const RARITY_STYLES_BY_GAME: Record<GameId, Record<string, string>> = {
+  genshin: {},
+  brawlstars: BRAWLSTARS_RARITY_STYLES,
+  clashroyale: CLASHROYALE_RARITY_STYLES,
+};
+
+function patternDescription(game: GameId, label: string): string | undefined {
+  if (game === 'genshin') return releaseVersionDescription(label);
+  if (game === 'brawlstars') return releaseYearDescription(label);
+  return undefined;
 }
 
-// Brawl Stars' own rarity colors, applied to the plain-text fallback pill
-// below (no dedicated rarity icon asset exists, unlike class/element/weapon)
-// - same pill shape, just colored instead of generic gray. Common is left
-// out on purpose: the real game gives it no special color either, so it
-// keeps the default gray. Ultra Legendary isn't a flat color in-game and is
-// handled separately below.
-const BS_RARITY_DESCRIPTIONS: Record<string, string> = {
-  Common: "This brawler's rarity is Common.",
-  Rare: "This brawler's rarity is Rare.",
-  'Super Rare': "This brawler's rarity is Super Rare.",
-  Epic: "This brawler's rarity is Epic.",
-  Mythic: "This brawler's rarity is Mythic.",
-  Legendary: "This brawler's rarity is Legendary.",
-  'Ultra Legendary': "This brawler's rarity is Ultra Legendary.",
-};
+// GuessInput's row/col header shows the same category labels as this chip
+// but as plain text, with no icon for context - a bare "Damage" or a bare
+// "5" reads as ambiguous there in a way "Legendary" or "Tank" doesn't.
+// Category label formatting is otherwise entirely this file's concern
+// (icons, colors, etc.), so this keeps GuessInput from needing its own
+// per-game formatting rules - it just renders whatever this returns.
+export function formatCategoryLabel(label: string, game: GameId): string {
+  if (game === 'brawlstars' && TRAIT_LABELS.has(label)) return `${label} Trait`;
+  if (game === 'clashroyale' && label in CLASHROYALE_ELIXIR_DESCRIPTIONS) return `${label} Elixir`;
+  // "Base" alone reads as ambiguous next to "Evolution"/"Hero" - those are
+  // both clearly card variants, but a bare "Base" doesn't say "form" the
+  // way they imply it by contrast.
+  if (game === 'clashroyale' && label === 'Base') return 'Base Form';
+  return label;
+}
 
-// Tags with no bespoke chip treatment of their own (unlike Former Chromatic
-// below) fall through to the plain-text pill, same as model/rarity - this
-// is just their tooltip copy.
-const TAG_DESCRIPTIONS: Record<string, string> = {
-  'Has Wallbreak': "This brawler can break walls.",
-  'Has Hypercharge Skin': 'This brawler has a Hypercharge skin.',
-  'Has Legendary Skin': 'This brawler has a Legendary skin.',
-};
-
-const RARITY_STYLES: Record<string, string> = {
-  Rare: 'border-green-300 dark:border-green-700 bg-green-50 dark:bg-green-500/15 text-green-700 dark:text-green-400',
-  'Super Rare': 'border-blue-300 dark:border-blue-700 bg-blue-50 dark:bg-blue-500/15 text-blue-700 dark:text-blue-400',
-  Epic: 'border-purple-300 dark:border-purple-700 bg-purple-50 dark:bg-purple-500/15 text-purple-700 dark:text-purple-400',
-  Mythic: 'border-red-300 dark:border-red-700 bg-red-50 dark:bg-red-500/15 text-red-700 dark:text-red-400',
-  Legendary: 'border-amber-300 dark:border-amber-700 bg-amber-50 dark:bg-amber-500/15 text-amber-700 dark:text-amber-400',
-};
-
-export default function CategoryChip({ label }: CategoryChipProps) {
-  const icon = ICONS[label];
+export default function CategoryChip({ label, game }: CategoryChipProps) {
+  const icon = ICONS_BY_GAME[game][label];
   // On a slow connection these (up to 6 per puzzle, all requested at once)
   // can take a moment - previously the box just stayed blank with no
   // feedback. A pulsing placeholder fills the gap and unmounts once the
@@ -292,13 +392,7 @@ export default function CategoryChip({ label }: CategoryChipProps) {
   const [imageReady, setImageReady] = useState(false);
 
   if (icon) {
-    const tooltipDescription =
-      TRAIT_DESCRIPTIONS[label] ??
-      REGION_DESCRIPTIONS[label] ??
-      CLASS_DESCRIPTIONS[label] ??
-      ELEMENT_DESCRIPTIONS[label] ??
-      WEAPON_DESCRIPTIONS[label] ??
-      TAG_DESCRIPTIONS[label];
+    const tooltipDescription = DESCRIPTIONS_BY_GAME[game][label];
     const iconBox = (
       <div className="relative w-(--grid-chip) h-(--grid-chip) bg-gray-100 dark:bg-transparent flex items-center justify-center">
         {!imageReady && (
@@ -323,7 +417,7 @@ export default function CategoryChip({ label }: CategoryChipProps) {
     return (
       <div className="flex flex-col items-center gap-1.5">
         {tooltipDescription ? (
-          <ClickTooltip heading={formatCategoryLabel(label)} description={tooltipDescription}>
+          <ClickTooltip heading={formatCategoryLabel(label, game)} description={tooltipDescription}>
             {iconBox}
           </ClickTooltip>
         ) : (
@@ -333,9 +427,9 @@ export default function CategoryChip({ label }: CategoryChipProps) {
     );
   }
 
-  if (label === 'Ultra Legendary') {
+  if (game === 'brawlstars' && label === 'Ultra Legendary') {
     return (
-      <ClickTooltip heading={label} description={BS_RARITY_DESCRIPTIONS[label]}>
+      <ClickTooltip heading={label} description={BRAWLSTARS_DESCRIPTIONS[label]}>
         <div className="inline-flex items-center justify-center text-center px-2 py-1.5 sm:px-3 sm:py-2 rounded-lg sm:rounded-xl border font-bold text-xs sm:text-sm leading-tight max-w-full border-lime-300 dark:border-lime-700 bg-lime-50 dark:bg-lime-500/15">
           {/* Same "gradient text, plain pill" treatment as Former Chromatic
               below rather than a distinct look of its own - a rainbow-ish
@@ -351,7 +445,7 @@ export default function CategoryChip({ label }: CategoryChipProps) {
     );
   }
 
-  if (label === 'Former Chromatic') {
+  if (game === 'brawlstars' && label === 'Former Chromatic') {
     return (
       <ClickTooltip heading={label} description="This brawler's rarity used to be Chromatic.">
         <div className="inline-flex flex-wrap items-center justify-center gap-x-1 text-center px-2 py-1.5 sm:px-3 sm:py-2 rounded-lg sm:rounded-xl border font-bold text-xs sm:text-sm leading-tight max-w-full border-orange-300 dark:border-orange-700 bg-orange-50 dark:bg-orange-500/15">
@@ -367,27 +461,67 @@ export default function CategoryChip({ label }: CategoryChipProps) {
     );
   }
 
-  const rarityClass = RARITY_STYLES[label];
+  if (game === 'clashroyale' && label === 'Legendary') {
+    return (
+      <ClickTooltip heading={label} description={CLASHROYALE_DESCRIPTIONS[label]}>
+        <div className="inline-flex items-center justify-center text-center px-2 py-1.5 sm:px-3 sm:py-2 rounded-lg sm:rounded-xl border font-bold text-xs sm:text-sm leading-tight max-w-full border-teal-300 dark:border-teal-700 bg-teal-50 dark:bg-teal-500/15">
+          {/* Legendary cards have a shimmering rainbow-ish frame in-game,
+              not a flat color - a light green-to-pink text gradient on a
+              teal-tinted pill approximates that instead of picking one hue. */}
+          <span className="bg-gradient-to-r from-green-300 to-pink-400 bg-clip-text text-transparent">
+            {label}
+          </span>
+        </div>
+      </ClickTooltip>
+    );
+  }
+
+  if (game === 'clashroyale' && label === 'Evolution') {
+    return (
+      <ClickTooltip heading={label} description={CLASHROYALE_DESCRIPTIONS[label]}>
+        <div className="inline-flex items-center justify-center text-center px-2 py-1.5 sm:px-3 sm:py-2 rounded-lg sm:rounded-xl border font-bold text-xs sm:text-sm leading-tight max-w-full border-purple-300 dark:border-purple-700 bg-purple-50 dark:bg-purple-500/15">
+          {/* Light-purple-to-purple text gradient (not white - bg-clip-text
+              on a light pill background made a white stop unreadable in
+              light mode) - echoes the purple glow an Evolution's own
+              in-game unlock animation has. */}
+          <span className="bg-gradient-to-r from-purple-400 to-purple-700 bg-clip-text text-transparent">
+            {label}
+          </span>
+        </div>
+      </ClickTooltip>
+    );
+  }
+
+  if (game === 'clashroyale' && label === 'Hero') {
+    return (
+      <ClickTooltip heading={label} description={CLASHROYALE_DESCRIPTIONS[label]}>
+        <div className="inline-flex items-center justify-center text-center px-2 py-1.5 sm:px-3 sm:py-2 rounded-lg sm:rounded-xl border font-bold text-xs sm:text-sm leading-tight max-w-full border-amber-300 dark:border-amber-700 bg-amber-50 dark:bg-amber-500/15">
+          {/* Same light-to-color treatment as Evolution above, yellow-to-gold
+              instead of purple - Hero (Tower Troop) cards get a golden
+              tower-defense frame in-game. */}
+          <span className="bg-gradient-to-r from-yellow-400 to-amber-600 bg-clip-text text-transparent">
+            {label}
+          </span>
+        </div>
+      </ClickTooltip>
+    );
+  }
+
+  const rarityClass = RARITY_STYLES_BY_GAME[game][label];
   const pill = (
     <div
       className={`inline-flex items-center justify-center text-center px-2 py-1.5 sm:px-3 sm:py-2 rounded-lg sm:rounded-xl border font-bold text-xs sm:text-sm leading-tight max-w-full ${
         rarityClass ?? 'border-gray-300 dark:border-gray-700 bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-100'
       }`}
     >
-      {label}
+      {formatCategoryLabel(label, game)}
     </div>
   );
 
-  const pillDescription =
-    MODEL_DESCRIPTIONS[label] ??
-    RARITY_DESCRIPTIONS[label] ??
-    BS_RARITY_DESCRIPTIONS[label] ??
-    TAG_DESCRIPTIONS[label] ??
-    releaseVersionDescription(label) ??
-    releaseYearDescription(label);
+  const pillDescription = DESCRIPTIONS_BY_GAME[game][label] ?? patternDescription(game, label);
   if (pillDescription) {
     return (
-      <ClickTooltip heading={label} description={pillDescription}>
+      <ClickTooltip heading={formatCategoryLabel(label, game)} description={pillDescription}>
         {pill}
       </ClickTooltip>
     );

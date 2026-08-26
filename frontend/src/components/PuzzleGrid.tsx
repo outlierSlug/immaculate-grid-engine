@@ -2,8 +2,13 @@ import { Fragment, type ReactNode } from 'react';
 import CategoryChip from './CategoryChip';
 import { HEADER_ROW_SIZE } from '../utils/gridSizing';
 import type { CellStats, GridItem } from '../types/puzzle';
+import type { GameId } from '../config/games';
 
 interface PuzzleGridProps {
+  // Which per-game lookup CategoryChip's icons/tooltips/colors resolve
+  // against - see its own doc comment for why this can't be inferred from
+  // the label text alone.
+  game: GameId;
   rowLabels: string[];
   colLabels: string[];
   filledCells: Record<string, GridItem>; // key: "row-col", e.g. "0-0"
@@ -30,9 +35,19 @@ interface PuzzleGridProps {
   // avatarShapeClass comment in config/games.ts for why this varies
   // per game instead of being a fixed rounded-full.
   avatarShapeClass: string;
+  // Per-game box aspect (fixed height, derived width) - see the
+  // avatarAspectClass comment in config/games.ts.
+  avatarAspectClass: string;
+  // Per-game avatar box height variable - see the avatarSizeClass comment
+  // in config/games.ts.
+  avatarSizeClass: string;
+  // Per-game border (empty when the source art bakes in its own frame) -
+  // see the avatarBorderClass comment in config/games.ts.
+  avatarBorderClass: string;
 }
 
 export default function PuzzleGrid({
+  game,
   rowLabels,
   colLabels,
   filledCells,
@@ -42,6 +57,9 @@ export default function PuzzleGrid({
   feedback,
   cellStats,
   avatarShapeClass,
+  avatarAspectClass,
+  avatarSizeClass,
+  avatarBorderClass,
 }: PuzzleGridProps) {
   return (
     <div className="flex flex-col items-center gap-2">
@@ -86,7 +104,7 @@ export default function PuzzleGrid({
         // centered in its own track - an acceptable trade since the eye
         // reads this as "gap before the grid," not "chip is off-center."
         <div key={label} className="flex items-center justify-center p-2 pb-3">
-          <CategoryChip label={label} />
+          <CategoryChip label={label} game={game} />
         </div>
       ))}
 
@@ -97,7 +115,7 @@ export default function PuzzleGrid({
           {/* Same reasoning as the column label above, mirrored to the
               right side since row labels sit to the grid's left. */}
           <div className="flex items-center justify-center p-2 pr-3">
-            <CategoryChip label={rowLabel} />
+            <CategoryChip label={rowLabel} game={game} />
           </div>
 
           {colLabels.map((_, colIndex) => {
@@ -134,7 +152,7 @@ export default function PuzzleGrid({
                     <img
                       src={filled.imageUrl}
                       alt={filled.displayName}
-                      className={`w-(--grid-avatar) h-(--grid-avatar) ${avatarShapeClass} object-cover border border-gray-200 dark:border-gray-700 shadow-sm`}
+                      className={`${avatarSizeClass} ${avatarAspectClass} ${avatarShapeClass} object-cover ${avatarBorderClass} shadow-sm`}
                     />
                     <span className="inline-flex items-center justify-center text-center px-1.5 sm:px-2 py-0.5 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-100 font-semibold text-(length:--grid-avatar-label) leading-tight max-w-[92%] wrap-break-word">
                       {filled.displayName}

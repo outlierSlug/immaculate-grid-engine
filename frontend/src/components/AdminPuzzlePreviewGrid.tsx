@@ -2,8 +2,10 @@ import { Fragment } from 'react';
 import CategoryChip from './CategoryChip';
 import { CELL_SIZE, HEADER_ROW_SIZE, LABEL_COL_SIZE } from '../utils/gridSizing';
 import type { CategoryOption } from '../types/puzzle';
+import type { GameId } from '../config/games';
 
 interface AdminPuzzlePreviewGridProps {
+  game: GameId;
   // null slots only ever occur in Build Manually mode, before that header
   // has been chosen - Curate/candidate/pinned views always pass 3 real
   // categories on each side.
@@ -31,6 +33,7 @@ interface AdminPuzzlePreviewGridProps {
 // headers PuzzleStatsBoard omits (nothing else on an admin page already
 // shows the categories the way PuzzleStatsBoard's live board above it does).
 export default function AdminPuzzlePreviewGrid({
+  game,
   rowCategories,
   colCategories,
   cellAnswerCounts,
@@ -49,14 +52,14 @@ export default function AdminPuzzlePreviewGrid({
 
       {colCategories.map((category, colIndex) => (
         <div key={`col-${colIndex}`} className="flex items-center justify-center p-2">
-          <HeaderSlot category={category} onClick={onHeaderClick ? () => onHeaderClick('col', colIndex) : undefined} />
+          <HeaderSlot game={game} category={category} onClick={onHeaderClick ? () => onHeaderClick('col', colIndex) : undefined} />
         </div>
       ))}
 
       {rowCategories.map((rowCategory, rowIndex) => (
         <Fragment key={`row-${rowIndex}`}>
           <div className="flex items-center justify-center p-2">
-            <HeaderSlot category={rowCategory} onClick={onHeaderClick ? () => onHeaderClick('row', rowIndex) : undefined} />
+            <HeaderSlot game={game} category={rowCategory} onClick={onHeaderClick ? () => onHeaderClick('row', rowIndex) : undefined} />
           </div>
 
           {colCategories.map((_, colIndex) => {
@@ -99,14 +102,14 @@ export default function AdminPuzzlePreviewGrid({
   );
 }
 
-function HeaderSlot({ category, onClick }: { category: CategoryOption | null; onClick?: () => void }) {
+function HeaderSlot({ game, category, onClick }: { game: GameId; category: CategoryOption | null; onClick?: () => void }) {
   if (category) {
     return onClick ? (
       <button type="button" onClick={onClick} className="cursor-pointer">
-        <CategoryChip label={category.label} />
+        <CategoryChip label={category.label} game={game} />
       </button>
     ) : (
-      <CategoryChip label={category.label} />
+      <CategoryChip label={category.label} game={game} />
     );
   }
 

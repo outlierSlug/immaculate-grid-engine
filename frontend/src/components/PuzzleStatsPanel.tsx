@@ -17,6 +17,9 @@ interface PuzzleStatsPanelProps {
   // so there's one place that owns filledCells + the formula inputs.
   yourUniquenessScore: number;
   avatarShapeClass: string;
+  avatarAspectClass: string;
+  avatarSizeClass: string;
+  avatarBorderClass: string;
   // Everything ShareResultRow needs - see its own doc comment for why
   // score is derived from correctCellKeys.size rather than passed
   // separately.
@@ -39,6 +42,9 @@ export default function PuzzleStatsPanel({
   colLabels,
   yourUniquenessScore,
   avatarShapeClass,
+  avatarAspectClass,
+  avatarSizeClass,
+  avatarBorderClass,
   puzzleDate,
   gameId,
   gameLabel,
@@ -134,6 +140,9 @@ export default function PuzzleStatsPanel({
         mode={tab}
         onCellClick={setSelectedCellKey}
         avatarShapeClass={avatarShapeClass}
+        avatarAspectClass={avatarAspectClass}
+        avatarSizeClass={avatarSizeClass}
+        avatarBorderClass={avatarBorderClass}
       />
 
       {selectedCell && perCell[selectedCell.cellKey] && (
@@ -144,6 +153,8 @@ export default function PuzzleStatsPanel({
           yourItemId={you?.cellAnswers[selectedCell.cellKey] ?? null}
           onClose={() => setSelectedCellKey(null)}
           avatarShapeClass={avatarShapeClass}
+          avatarAspectClass={avatarAspectClass}
+          avatarBorderClass={avatarBorderClass}
         />
       )}
 

@@ -74,6 +74,9 @@ export default function AdminHistoryPanel({ game }: AdminHistoryPanelProps) {
   }
 
   const avatarShapeClass = GAMES[game].avatarShapeClass;
+  const avatarAspectClass = GAMES[game].avatarAspectClass;
+  const avatarSizeClass = GAMES[game].avatarSizeClass;
+  const avatarBorderClass = GAMES[game].avatarBorderClass;
 
   const selectedCell = selectedCellKey && history
     ? {
@@ -199,12 +202,13 @@ export default function AdminHistoryPanel({ game }: AdminHistoryPanelProps) {
                 width) - see AdminGridStats' STATS_WIDTH constant. */}
             <div style={{ width: `calc(${STATS_WIDTH} - ${LABEL_COL_SIZE})` }} className="shrink-0" aria-hidden="true" />
             <AdminHistoryBoard
+              game={game}
               rowCategories={history.rowCategories}
               colCategories={history.colCategories}
               perCell={history.stats.perCell}
               mode={tab}
               onCellClick={setSelectedCellKey}
-              avatarShapeClass={avatarShapeClass}
+              avatarShapeClass={avatarShapeClass} avatarAspectClass={avatarAspectClass} avatarSizeClass={avatarSizeClass} avatarBorderClass={avatarBorderClass}
             />
             <AdminGridStats
               rowCategories={history.rowCategories}
@@ -220,7 +224,7 @@ export default function AdminHistoryPanel({ game }: AdminHistoryPanelProps) {
               cellStats={history.stats.perCell[selectedCell.cellKey]}
               yourItemId={null}
               onClose={() => setSelectedCellKey(null)}
-              avatarShapeClass={avatarShapeClass}
+              avatarShapeClass={avatarShapeClass} avatarAspectClass={avatarAspectClass} avatarBorderClass={avatarBorderClass}
             />
           )}
 

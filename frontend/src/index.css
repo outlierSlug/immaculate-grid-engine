@@ -97,6 +97,16 @@ html {
      w-11/sm:w-16 (portrait) and text-[10px]/sm:text-xs (label) jump. */
   --grid-avatar: clamp(2.75rem, 10.5vw, 4rem);
   --grid-avatar-label: clamp(0.625rem, 2vw, 0.75rem);
+  /* Wider max/faster vw growth than --grid-avatar, same min (mobile-safe -
+     the smallest cell has no extra slack to give, see games.ts's
+     avatarSizeClass comment) - for portrait card icons (Clash Royale),
+     which render narrower than --grid-avatar's square box at any given
+     height (aspect-[19/28] vs 1:1), so they need MORE height to reach a
+     comparable visual size/footprint to a square avatar of the same
+     height. Desktop cells have plenty of unused vertical slack today
+     (avatar+label only fill a fraction of --grid-cell's height) to grow
+     into safely. */
+  --grid-avatar-card: clamp(2.75rem, 13vw, 5.5rem);
 }
 
 body {

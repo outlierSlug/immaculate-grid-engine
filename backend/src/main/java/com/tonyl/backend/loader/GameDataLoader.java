@@ -19,7 +19,8 @@ public class GameDataLoader implements CommandLineRunner {
 
     private static final Map<String, String> GAME_SEED_FILES = Map.of(
         "genshin", "genshin_entities.json",
-        "brawlstars", "brawlstars_entities.json"
+        "brawlstars", "brawlstars_entities.json",
+        "clashroyale", "clashroyale_entities.json"
     );
 
     private final GridItemRepository repository;

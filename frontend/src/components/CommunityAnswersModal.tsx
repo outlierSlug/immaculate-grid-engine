@@ -10,6 +10,8 @@ interface CommunityAnswersModalProps {
   yourItemId?: string | null;
   onClose: () => void;
   avatarShapeClass: string;
+  avatarAspectClass: string;
+  avatarBorderClass: string;
 }
 
 // Generic gray avatar marking "this is what you picked" for an anonymous
@@ -42,6 +44,8 @@ export default function CommunityAnswersModal({
   yourItemId,
   onClose,
   avatarShapeClass,
+  avatarAspectClass,
+  avatarBorderClass,
 }: CommunityAnswersModalProps) {
   const { user } = useAuth();
 
@@ -96,7 +100,7 @@ export default function CommunityAnswersModal({
                 <img
                   src={answer.imageUrl ?? undefined}
                   alt={answer.displayName}
-                  className={`w-9 h-9 ${avatarShapeClass} object-cover border border-gray-200 dark:border-gray-700 shrink-0`}
+                  className={`h-9 ${avatarAspectClass} ${avatarShapeClass} object-cover ${avatarBorderClass} shrink-0`}
                 />
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2">

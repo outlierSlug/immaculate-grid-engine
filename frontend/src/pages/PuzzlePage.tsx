@@ -20,6 +20,7 @@ import { computeLiveUniquenessScore, computeUniquenessPercentile } from '../util
 import { useAuth } from '../auth/AuthProvider';
 import intertwinedFateIcon from '../assets/genshin/Item_Intertwined_Fate.webp';
 import starrPinIcon from '../assets/brawlstars/starr_pin.png';
+import luckyDropIcon from '../assets/clashroyale/Item_Lucky_Drop_Common.png';
 
 // Daily's guess limit is a fixed genre convention (matches Pokedoku), not a
 // user-facing setting — unlike Unlimited, there is no toggle and no
@@ -29,6 +30,10 @@ const DAILY_GUESS_LIMIT = 9;
 const DAILY_GUESS_ICON: Partial<Record<GameId, string>> = {
   genshin: intertwinedFateIcon,
   brawlstars: starrPinIcon,
+  // One icon for both Daily and Unlimited, same as Brawl Stars - unlike
+  // Genshin's premium/standard wish split, Clash Royale doesn't have an
+  // obvious two-tier "pull currency" pair to mirror that with.
+  clashroyale: luckyDropIcon,
 };
 
 export default function PuzzlePage() {
@@ -225,6 +230,9 @@ export default function PuzzlePage() {
   }
 
   const avatarShapeClass = GAMES[validGame].avatarShapeClass;
+  const avatarAspectClass = GAMES[validGame].avatarAspectClass;
+  const avatarSizeClass = GAMES[validGame].avatarSizeClass;
+  const avatarBorderClass = GAMES[validGame].avatarBorderClass;
 
   // Lets a visitor get back to the date list directly from the puzzle
   // itself, rather than re-clicking the header's already-active Archive
@@ -347,13 +355,14 @@ export default function PuzzlePage() {
       <main className="flex flex-col items-center gap-5 py-8 motion-safe:animate-[page-in_350ms_ease-out]">
         {heading}
         <PuzzleGrid
+          game={validGame}
           rowLabels={puzzle.rowLabels}
           colLabels={puzzle.colLabels}
           filledCells={remoteFilledCells}
           onCellClick={() => {}}
           locked
           cellStats={puzzleStats.perCell}
-          avatarShapeClass={avatarShapeClass}
+          avatarShapeClass={avatarShapeClass} avatarAspectClass={avatarAspectClass} avatarSizeClass={avatarSizeClass} avatarBorderClass={avatarBorderClass}
           sideColumn={[
             <UniquenessScore key="uniq" score={remoteUniquenessScore} percentile={remoteUniquenessPercentile} youFinished />,
             <Score key="score" correct={puzzleStats.you.score} total={totalCells} />,
@@ -366,7 +375,7 @@ export default function PuzzlePage() {
           rowLabels={puzzle.rowLabels}
           colLabels={puzzle.colLabels}
           yourUniquenessScore={remoteUniquenessScore}
-          avatarShapeClass={avatarShapeClass}
+          avatarShapeClass={avatarShapeClass} avatarAspectClass={avatarAspectClass} avatarSizeClass={avatarSizeClass} avatarBorderClass={avatarBorderClass}
           puzzleDate={puzzle.puzzleDate}
           gameId={validGame}
           gameLabel={GAMES[validGame].label}
@@ -396,6 +405,7 @@ export default function PuzzlePage() {
       {heading}
 
       <PuzzleGrid
+        game={validGame}
         rowLabels={puzzle.rowLabels}
         colLabels={puzzle.colLabels}
         filledCells={filledCells}
@@ -403,7 +413,7 @@ export default function PuzzlePage() {
         locked={isGameOver}
         feedback={feedback}
         cellStats={puzzleStats?.perCell}
-        avatarShapeClass={avatarShapeClass}
+        avatarShapeClass={avatarShapeClass} avatarAspectClass={avatarAspectClass} avatarSizeClass={avatarSizeClass} avatarBorderClass={avatarBorderClass}
         sideColumn={[
           <UniquenessScore key="uniq" score={liveUniquenessScore} percentile={uniquenessPercentile} youFinished={isGameOver} />,
           <Score key="score" correct={correctCount} total={totalCells} feedback={feedback} />,
@@ -442,7 +452,7 @@ export default function PuzzlePage() {
           usedItemIds={new Set(Object.values(filledCells).map((item) => item.id))}
           onSelect={handleGuessSelect}
           onClose={closeActiveCell}
-          avatarShapeClass={avatarShapeClass}
+          avatarShapeClass={avatarShapeClass} avatarAspectClass={avatarAspectClass}
         />
       )}
 
@@ -452,7 +462,7 @@ export default function PuzzlePage() {
           rowLabels={puzzle.rowLabels}
           colLabels={puzzle.colLabels}
           yourUniquenessScore={liveUniquenessScore}
-          avatarShapeClass={avatarShapeClass}
+          avatarShapeClass={avatarShapeClass} avatarAspectClass={avatarAspectClass} avatarSizeClass={avatarSizeClass} avatarBorderClass={avatarBorderClass}
           puzzleDate={puzzle.puzzleDate}
           gameId={validGame}
           gameLabel={GAMES[validGame].label}

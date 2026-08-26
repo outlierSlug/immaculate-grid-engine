@@ -10,6 +10,9 @@ interface PuzzleStatsBoardProps {
   mode: 'most' | 'least';
   onCellClick: (cellKey: string) => void;
   avatarShapeClass: string;
+  avatarAspectClass: string;
+  avatarSizeClass: string;
+  avatarBorderClass: string;
   // Admin-only: how many characters are a valid answer for each cell,
   // shown as a small top-left badge (the top-right corner is already the
   // pick's own % badge). Undefined for every real player-facing usage of
@@ -31,6 +34,9 @@ export default function PuzzleStatsBoard({
   mode,
   onCellClick,
   avatarShapeClass,
+  avatarAspectClass,
+  avatarSizeClass,
+  avatarBorderClass,
   cellAnswerCounts,
 }: PuzzleStatsBoardProps) {
   return (
@@ -76,7 +82,7 @@ export default function PuzzleStatsBoard({
                   <img
                     src={answer.imageUrl ?? undefined}
                     alt={answer.displayName}
-                    className={`w-(--grid-avatar) h-(--grid-avatar) ${avatarShapeClass} object-cover border border-gray-200 dark:border-gray-700 shadow-sm`}
+                    className={`${avatarSizeClass} ${avatarAspectClass} ${avatarShapeClass} object-cover ${avatarBorderClass} shadow-sm`}
                   />
                   <span className="inline-flex items-center justify-center text-center px-1.5 sm:px-2 py-0.5 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-100 font-semibold text-(length:--grid-avatar-label) leading-tight max-w-[92%] wrap-break-word">
                     {answer.displayName}

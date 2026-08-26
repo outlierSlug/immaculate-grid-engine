@@ -4,15 +4,17 @@ import type { GridItem } from '../types/puzzle';
 import LoadingSpinner from './LoadingSpinner';
 import ErrorState from './ErrorState';
 import { formatCategoryLabel } from './CategoryChip';
+import type { GameId } from '../config/games';
 
 interface GuessInputProps {
-  game: string;
+  game: GameId;
   rowLabel: string;
   colLabel: string;
   usedItemIds: Set<string>;
   onSelect: (item: GridItem) => void;
   onClose: () => void;
   avatarShapeClass: string;
+  avatarAspectClass: string;
 }
 
 export default function GuessInput({
@@ -23,6 +25,7 @@ export default function GuessInput({
   onSelect,
   onClose,
   avatarShapeClass,
+  avatarAspectClass,
 }: GuessInputProps) {
   const [items, setItems] = useState<GridItem[]>([]);
   const [query, setQuery] = useState('');
@@ -100,9 +103,9 @@ export default function GuessInput({
 
         <div className="flex items-center gap-2 text-sm font-semibold text-black dark:text-gray-100 mt-1 pr-6">
           <span className="w-2 h-2 rounded-full bg-indigo-500" />
-          <span className="uppercase tracking-wide">{formatCategoryLabel(rowLabel)}</span>
+          <span className="uppercase tracking-wide">{formatCategoryLabel(rowLabel, game)}</span>
           <span className="text-black dark:text-gray-100">/</span>
-          <span className="uppercase tracking-wide">{formatCategoryLabel(colLabel)}</span>
+          <span className="uppercase tracking-wide">{formatCategoryLabel(colLabel, game)}</span>
         </div>
       </div>
 
@@ -195,7 +198,7 @@ export default function GuessInput({
                 <img
                   src={item.imageUrl}
                   alt={item.displayName}
-                  className={`w-10 h-10 ${avatarShapeClass} object-cover shrink-0`}
+                  className={`h-10 ${avatarAspectClass} ${avatarShapeClass} object-cover shrink-0`}
                 />
 
                 <span className="font-medium flex-1 min-w-0 text-black dark:text-gray-100">

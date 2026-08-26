@@ -242,6 +242,8 @@ export default function AdminCuratePanel({ game, date }: AdminCuratePanelProps) 
   }
 
   const avatarShapeClass = GAMES[game].avatarShapeClass;
+  const avatarAspectClass = GAMES[game].avatarAspectClass;
+  const avatarBorderClass = GAMES[game].avatarBorderClass;
   const candidate = candidates[candidateIndex] ?? null;
 
   return (
@@ -261,6 +263,7 @@ export default function AdminCuratePanel({ game, date }: AdminCuratePanelProps) 
           <div className="flex items-center justify-center gap-6">
             <div className="w-40 shrink-0" aria-hidden="true" />
             <AdminPuzzlePreviewGrid
+              game={game}
               rowCategories={pinned.rowCategories}
               colCategories={pinned.colCategories}
               cellAnswerCounts={pinned.cellAnswerCounts}
@@ -334,6 +337,7 @@ export default function AdminCuratePanel({ game, date }: AdminCuratePanelProps) 
                   </button>
 
                   <AdminPuzzlePreviewGrid
+                    game={game}
                     rowCategories={candidate.rowCategories}
                     colCategories={candidate.colCategories}
                     cellAnswerCounts={candidate.cellAnswerCounts}
@@ -404,6 +408,7 @@ export default function AdminCuratePanel({ game, date }: AdminCuratePanelProps) 
             <div className="flex items-center justify-center gap-6">
               <div className="w-40 shrink-0" aria-hidden="true" />
               <AdminPuzzlePreviewGrid
+                game={game}
                 rowCategories={categoryOptionsFor(manualRowIds)}
                 colCategories={categoryOptionsFor(manualColIds)}
                 cellAnswerCounts={displayedEvaluation?.cellAnswerCounts}
@@ -485,7 +490,7 @@ export default function AdminCuratePanel({ game, date }: AdminCuratePanelProps) 
           rowLabel={answersModal.rowLabel}
           colLabel={answersModal.colLabel}
           answers={itemsForIds(answersModal.itemIds)}
-          avatarShapeClass={avatarShapeClass}
+          avatarShapeClass={avatarShapeClass} avatarAspectClass={avatarAspectClass} avatarBorderClass={avatarBorderClass}
           onClose={() => setAnswersModal(null)}
         />
       )}
