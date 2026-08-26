@@ -105,6 +105,18 @@ export function usePuzzleGuesses(puzzle: PuzzleResponse | null, options: UsePuzz
   // initial mount, and so it can still address the OLD persistKey after the
   // new one has already replaced it in scope.
   const previousIdentityRef = useRef<{ puzzleId: string; persistKey: string | null } | null>(null);
+  // Guards handleGuessSelect against a second click firing while the first
+  // submission is still in flight (double-click, mobile double-tap, or just
+  // an impatient re-click on a slow connection - nothing else disables the
+  // confirm button mid-request). Without this, both calls read the same
+  // stale `guessesUsed` closure and both compute the same "next" value, so
+  // the client only counts one increment while the server - which commits
+  // each guess's spend unconditionally, by design, see PuzzleService.
+  // checkGuess - correctly consumes two. That desync is permanent for the
+  // rest of the puzzle (guessesUsed only ever moves forward from a
+  // successful response), and was mistaken for a stale-puzzle/deploy-timing
+  // issue in production before this was found.
+  const submittingRef = useRef(false);
 
   useEffect(() => {
     const previous = previousIdentityRef.current;
@@ -304,6 +316,15 @@ export function usePuzzleGuesses(puzzle: PuzzleResponse | null, options: UsePuzz
 
   async function handleGuessSelect(item: GridItem) {
     if (!puzzle || !activeCell || isGameOver) return;
+    // Re-entrant call while the previous submission is still in flight
+    // (double-click, double-tap, or an impatient re-click on a slow
+    // connection) - see submittingRef's own doc comment for why this has
+    // to be a synchronous guard, not just disabling the button, since the
+    // button's own re-render isn't guaranteed to land before a second
+    // click event is already queued.
+    if (submittingRef.current) return;
+    submittingRef.current = true;
+
     const { row, col } = activeCell;
 
     let result;
@@ -318,6 +339,7 @@ export function usePuzzleGuesses(puzzle: PuzzleResponse | null, options: UsePuzz
       // click handler with an unhandled rejection.
       console.error('Failed to submit guess', err);
       setActiveCell(null);
+      submittingRef.current = false;
       return;
     }
 
@@ -356,6 +378,7 @@ export function usePuzzleGuesses(puzzle: PuzzleResponse | null, options: UsePuzz
     }
 
     setActiveCell(null);
+    submittingRef.current = false;
   }
 
   return {
