@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import type { CellStats } from '../types/puzzle';
 import { useAuth } from '../auth/AuthProvider';
 import UserAvatar from './UserAvatar';
+import { formatPercent } from '../utils/formatPercent';
 
 interface CommunityAnswersModalProps {
   rowLabel: string;
@@ -108,7 +109,7 @@ export default function CommunityAnswersModal({
                       {answer.displayName}
                     </span>
                     <span className="text-sm font-semibold text-gray-800 dark:text-gray-100 tabular-nums shrink-0 whitespace-nowrap">
-                      {answer.percent > 0 && answer.percent < 1 ? '<1' : Math.round(answer.percent)}% ({answer.count})
+                      {formatPercent(answer.percent)} ({answer.count})
                     </span>
                     {isYours && (user ? (
                       <YourPickAvatar displayName={user.displayName} avatarUrl={user.avatarUrl} />

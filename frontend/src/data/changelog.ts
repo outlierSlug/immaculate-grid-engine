@@ -1,0 +1,16 @@
+// Hand-curated, player-facing log of launches and notable post-launch
+// changes (new games, data fixes that change what shows up as an answer)
+// - NOT auto-generated from git history, which is full of internal
+// refactor/cleanup language a player has no reason to see. Keep entries
+// terse and about what a player would actually notice; routine polish/bug
+// fixes that don't change the answer key or add a game don't belong here.
+// Newest first.
+export interface ChangelogEntry {
+  date: string; // yyyy-mm-dd, local calendar date (see utils/dateIso.ts)
+  text: string;
+}
+
+export const CHANGELOG: ChangelogEntry[] = [
+  { date: '2026-08-25', text: 'Added Clash Royale as a third game.' },
+  { date: '2026-08-24', text: 'Launch date! GachaGrid went live with Genshin Impact and Brawl Stars.' },
+];

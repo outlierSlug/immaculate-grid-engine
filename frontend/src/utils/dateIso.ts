@@ -20,8 +20,6 @@ export function addDays(dateIso: string, delta: number): string {
   return toLocalDateString(d);
 }
 
-// "Aug 24" - shared by ArchiveListPage's date list and ShareResultRow's
-// share-card date label, so both read a puzzle date the same way.
 export function shortDateLabel(dateIso: string): string {
   return new Date(dateIso + 'T00:00:00').toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
 }

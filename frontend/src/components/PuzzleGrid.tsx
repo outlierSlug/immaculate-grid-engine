@@ -1,6 +1,7 @@
 import { Fragment, type ReactNode } from 'react';
 import CategoryChip from './CategoryChip';
 import { HEADER_ROW_SIZE } from '../utils/gridSizing';
+import { formatPercent } from '../utils/formatPercent';
 import type { CellStats, GridItem } from '../types/puzzle';
 import type { GameId } from '../config/games';
 
@@ -146,7 +147,7 @@ export default function PuzzleGrid({
                   <>
                     {rarityPercent != null && (
                       <span className="absolute top-1 right-1 inline-flex items-center justify-center px-1.5 py-0.5 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-100 font-semibold text-xs leading-tight">
-                        {rarityPercent > 0 && rarityPercent < 1 ? '<1' : Math.round(rarityPercent)}%
+                        {formatPercent(rarityPercent)}
                       </span>
                     )}
                     <img

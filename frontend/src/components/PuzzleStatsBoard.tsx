@@ -1,4 +1,5 @@
 import { CELL_SIZE } from '../utils/gridSizing';
+import { formatPercent } from '../utils/formatPercent';
 import type { CellStats } from '../types/puzzle';
 
 interface PuzzleStatsBoardProps {
@@ -77,7 +78,7 @@ export default function PuzzleStatsBoard({
               {answer ? (
                 <>
                   <span className="absolute top-1 right-1 inline-flex items-center justify-center px-1.5 py-0.5 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-100 font-semibold text-xs leading-tight">
-                    {answer.percent > 0 && answer.percent < 1 ? '<1' : Math.round(answer.percent)}%
+                    {formatPercent(answer.percent)}
                   </span>
                   <img
                     src={answer.imageUrl ?? undefined}

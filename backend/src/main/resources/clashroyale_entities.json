@@ -912,6 +912,18 @@
     }
   },
   {
+    "id": "clashroyale:elite-barbarians-evo",
+    "game_id": "clashroyale",
+    "display_name": "Evo Elite Barbarians",
+    "image_url": "/clashroyale/icons/elite-barbarians-evo.png",
+    "attributes": {
+      "rarity": "Common",
+      "card_type": "Troop",
+      "elixir_cost": 6,
+      "form": "Evolution"
+    }
+  },
+  {
     "id": "clashroyale:hunter",
     "game_id": "clashroyale",
     "display_name": "Hunter",
