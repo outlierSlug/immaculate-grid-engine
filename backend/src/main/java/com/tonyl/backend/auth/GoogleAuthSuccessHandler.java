@@ -17,6 +17,7 @@ import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.time.Instant;
+import java.util.Optional;
 import java.util.UUID;
 
 // Runs once Spring Security's own OAuth2 code-exchange with Google succeeds.
@@ -52,8 +53,23 @@ public class GoogleAuthSuccessHandler implements AuthenticationSuccessHandler {
         String name = oauth2User.getAttribute("name");
         String picture = oauth2User.getAttribute("picture");
 
-        User user = userRepository.findByGoogleSub(sub)
-            .orElseGet(() -> userRepository.save(new User(sub, email, name, picture, Instant.now())));
+        // The found-user branch re-syncs the profile fields on every sign-in
+        // (see User.updateProfile's own comment) rather than just returning
+        // the existing row as-is - a name/avatar/email changed on Google's
+        // side used to stick at whatever it was on first login, forever,
+        // with no way for the user to self-correct. Split from the
+        // new-user branch (rather than always calling updateProfile+save
+        // unconditionally after this block) so creating a brand-new account
+        // is still exactly one write, not a redundant create-then-update pair.
+        Optional<User> existingUser = userRepository.findByGoogleSub(sub);
+        User user;
+        if (existingUser.isPresent()) {
+            user = existingUser.get();
+            user.updateProfile(email, name, picture);
+            user = userRepository.save(user);
+        } else {
+            user = userRepository.save(new User(sub, email, name, picture, Instant.now()));
+        }
 
         LoginCode loginCode = new LoginCode(
             UUID.randomUUID().toString(),

@@ -48,13 +48,16 @@ public class AuthController {
     // and LoginCode's doc comments for why the real token never touches a URL.
     @PostMapping("/exchange")
     public AuthResponse exchange(@RequestBody ExchangeCodeRequest request) {
-        LoginCode loginCode = loginCodeRepository.findByCode(request.code())
-            .orElseThrow(() -> new IllegalArgumentException("Invalid or expired code"));
-        if (loginCode.isConsumed() || loginCode.getExpiresAt().isBefore(Instant.now())) {
+        // tryConsume is the actual single-use enforcement (atomic - see its
+        // own doc comment for the race a plain read-then-write allowed). The
+        // findByCode below only runs after this thread has already won that
+        // race, purely to read the userId a since-consumed code pointed at -
+        // it's not part of the validity check anymore.
+        if (loginCodeRepository.tryConsume(request.code()) == 0) {
             throw new IllegalArgumentException("Invalid or expired code");
         }
-        loginCode.markConsumed();
-        loginCodeRepository.save(loginCode);
+        LoginCode loginCode = loginCodeRepository.findByCode(request.code())
+            .orElseThrow(() -> new IllegalArgumentException("Invalid or expired code"));
 
         User user = userRepository.findById(loginCode.getUserId())
             .orElseThrow(() -> new NoSuchElementException("User not found"));

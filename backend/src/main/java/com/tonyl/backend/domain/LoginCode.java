@@ -49,6 +49,9 @@ public class LoginCode {
     public String getCode() { return code; }
     public Long getUserId() { return userId; }
     public Instant getExpiresAt() { return expiresAt; }
-    public boolean isConsumed() { return consumed; }
-    public void markConsumed() { this.consumed = true; }
+    // No isConsumed()/markConsumed() - consumption is enforced entirely by
+    // LoginCodeRepository.tryConsume's atomic UPDATE, not read-checked and
+    // mutated here in Java (see its own doc comment for why). `consumed`
+    // stays a real mapped field only because Hibernate needs it for schema
+    // generation and entity loading.
 }

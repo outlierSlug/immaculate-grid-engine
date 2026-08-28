@@ -1,7 +1,9 @@
 package com.tonyl.backend.puzzle;
 
+import com.tonyl.backend.api.UnlimitedPuzzleRequest;
 import com.tonyl.backend.auth.ForbiddenException;
 import com.tonyl.backend.domain.CategorySnapshot;
+import com.tonyl.backend.domain.GridItem;
 import com.tonyl.backend.domain.Puzzle;
 import com.tonyl.backend.domain.PuzzleMode;
 import com.tonyl.backend.domain.User;
@@ -149,6 +151,42 @@ class PuzzleServiceGuessLimitTest {
         // before the atomic increment, not after.
         assertFalse(puzzleGuessCountRepository.findAll().stream()
             .anyMatch(row -> row.getPuzzleId().equals(puzzle.getId()) && row.getSessionId().equals("user:999")));
+    }
+
+    @Test
+    void nullOrBlankItemIdIsRejectedBeforeSpendingAGuess() {
+        Puzzle puzzle = savePuzzle("guess-limit-null-item-id", PuzzleMode.DAILY, null);
+        PuzzleService service = newService();
+
+        assertThrows(IllegalArgumentException.class,
+            () -> service.checkGuess(puzzle.getId(), 0, 0, null, "session-null-item", Optional.empty()));
+        assertThrows(IllegalArgumentException.class,
+            () -> service.checkGuess(puzzle.getId(), 0, 0, "  ", "session-null-item", Optional.empty()));
+
+        // Neither rejected attempt above should have consumed a guess - same
+        // "validated before the atomic increment, not after" property as
+        // aForgedUserSessionIdIsRejectedBeforeSpendingAGuess above, for the
+        // itemId check instead of the session-ownership check.
+        assertFalse(puzzleGuessCountRepository.findAll().stream()
+            .anyMatch(row -> row.getPuzzleId().equals(puzzle.getId()) && row.getSessionId().equals("session-null-item")));
+    }
+
+    // Not really a "guess limit" test, but PuzzleService.generateUnlimitedPuzzle
+    // needs the same real-DB GridItem/GameModuleRegistry wiring this file
+    // already sets up, so it lives here rather than duplicating that setup
+    // in a new file for one test.
+    @Test
+    void unlimitedGenerationRejectsMinAnswersPerCellBelowOne() {
+        gridItemRepository.save(new GridItem(
+            "genshin:test-item", "genshin", "Test Item", "",
+            Map.of("element", "Pyro", "rarity", 5)));
+        PuzzleService service = newService();
+
+        var request = new UnlimitedPuzzleRequest(null, null, 0, null, null);
+
+        assertThrows(IllegalArgumentException.class,
+            () -> service.generateUnlimitedPuzzle("genshin", request),
+            "minAnswersPerCell=0 must be rejected, not silently disable the per-cell answer floor");
     }
 
     @Test

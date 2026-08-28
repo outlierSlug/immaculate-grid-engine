@@ -50,4 +50,16 @@ public class User {
     public String getDisplayName() { return displayName; }
     public String getAvatarUrl() { return avatarUrl; }
     public Instant getCreatedAt() { return createdAt; }
+
+    // Syncs the profile fields Google itself can change out from under us
+    // (a display name, avatar, or email edited on Google's side) - called on
+    // every returning sign-in (see GoogleAuthSuccessHandler), not just once
+    // at account creation. googleSub/createdAt are deliberately not settable
+    // here: googleSub is the account's stable identity, not a profile field,
+    // and createdAt should never move after the row is first written.
+    public void updateProfile(String email, String displayName, String avatarUrl) {
+        this.email = email;
+        this.displayName = displayName;
+        this.avatarUrl = avatarUrl;
+    }
 }

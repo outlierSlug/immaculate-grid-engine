@@ -106,6 +106,14 @@ public class PuzzleService {
         if (validAnswers == null) {
             throw new IllegalArgumentException("Invalid cell position: " + cellKey);
         }
+        // Validated before the guess-budget consumption below, not after: a
+        // malformed request must fail without spending one of the player's
+        // limited guesses. itemId.toLowerCase() further down would already
+        // NPE on a missing itemId, but only after tryConsumeGuess() had
+        // already committed the spend.
+        if (itemId == null || itemId.isBlank()) {
+            throw new IllegalArgumentException("itemId is required");
+        }
 
         // DAILY's limit is the fixed genre constant regardless of this row's
         // own guessLimit column (always null there, see Puzzle.guessLimit's
@@ -165,6 +173,15 @@ public class PuzzleService {
         }
 
         int minAnswersPerCell = request.minAnswersPerCell() != null ? request.minAnswersPerCell() : 1;
+        // A value of 0 (or negative) doesn't mean "no extra restriction" the
+        // way it might read - GridGenerator's own floor check is
+        // `matches.size() < minAnswersPerCell`, so 0 turns it into `size <
+        // 0`, which is never true, and disables the floor entirely: a cell
+        // with zero valid answers would pass through as a real, persisted,
+        // unsolvable puzzle.
+        if (minAnswersPerCell < 1) {
+            throw new IllegalArgumentException("minAnswersPerCell must be at least 1");
+        }
         boolean requireSoftLockGuard = request.requireSoftLockGuard() == null || request.requireSoftLockGuard();
 
         Optional<GridGenerator.GeneratedPuzzle> generated = Optional.empty();
