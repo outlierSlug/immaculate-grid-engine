@@ -118,4 +118,12 @@ public class PuzzleController {
                                       @CurrentUser Optional<User> user) {
         return puzzleStatsService.getStats(puzzleId, sessionId, user);
     }
+
+    // Unlimited-only (see PuzzleService.getUnlimitedAnswers's own comment on
+    // why) - post-game answer reveal, not a spoiler surface for a puzzle
+    // anyone else could still be attempting.
+    @GetMapping("/{puzzleId}/answers")
+    public PuzzleAnswersResponse answers(@PathVariable String puzzleId) {
+        return new PuzzleAnswersResponse(puzzleService.getUnlimitedAnswers(puzzleId));
+    }
 }

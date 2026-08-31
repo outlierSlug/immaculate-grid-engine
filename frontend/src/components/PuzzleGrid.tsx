@@ -32,6 +32,13 @@ interface PuzzleGridProps {
   // so the same cell's badge can show a different percentage across visits
   // as more players submit results for the puzzle.
   cellStats?: Record<string, CellStats> | null;
+  // Unlimited-only post-game answer reveal - when set, every cell (filled
+  // or not) becomes clickable regardless of `locked`, showing this count as
+  // a badge instead of the row/col guess-input flow. Absent (the default)
+  // means no reveal is active - existing filled/locked/guess behavior is
+  // completely unchanged.
+  revealedAnswerCounts?: Record<string, number>;
+  onRevealedCellClick?: (row: number, col: number) => void;
   // Per-game shape mask for the filled-cell portrait - see the
   // avatarShapeClass comment in config/games.ts for why this varies
   // per game instead of being a fixed rounded-full.
@@ -57,6 +64,8 @@ export default function PuzzleGrid({
   locked,
   feedback,
   cellStats,
+  revealedAnswerCounts,
+  onRevealedCellClick,
   avatarShapeClass,
   avatarAspectClass,
   avatarSizeClass,
@@ -136,11 +145,14 @@ export default function PuzzleGrid({
                 : 'border-red-500'
               : 'border-gray-300 dark:border-gray-700';
 
+            const revealedCount = revealedAnswerCounts?.[cellKey];
+            const isRevealed = revealedCount != null;
+
             return (
               <button
                 key={cellKey}
-                onClick={() => onCellClick(rowIndex, colIndex)}
-                disabled={!!filled || locked}
+                onClick={() => (isRevealed ? onRevealedCellClick?.(rowIndex, colIndex) : onCellClick(rowIndex, colIndex))}
+                disabled={isRevealed ? false : !!filled || locked}
                 className={`relative border ${borderColorClass} focus-ring-inset transition-colors duration-200 bg-white dark:bg-gray-900 flex flex-col items-center justify-center gap-1.5 hover:bg-gray-50 dark:hover:bg-gray-800 disabled:hover:bg-white dark:disabled:hover:bg-gray-900 cursor-pointer disabled:cursor-not-allowed`}
               >
                 {filled ? (

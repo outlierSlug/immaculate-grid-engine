@@ -18,6 +18,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.Set;
@@ -231,6 +232,26 @@ public class PuzzleService {
             result.cellSolutions()
         );
         return puzzleRepository.save(puzzle);
+    }
+
+    // Unlimited-only, enforced here rather than trusted to the caller -
+    // Daily's cellSolutions must never be exposed through this path, since
+    // (unlike Unlimited, which has zero server-side attempt tracking and
+    // no community pick-rate data to protect) an early answer leak would
+    // undermine the community stats every player's Daily attempt feeds
+    // into. Unlimited itself has no equivalent "is this game actually
+    // over yet" server-side signal to gate on - the frontend only surfaces
+    // the reveal action once its own isGameOver is true, which is an
+    // accepted tradeoff for a mode with no stats/leaderboard to protect
+    // (see UnlimitedPage's own help text: nothing here counts toward
+    // anything, so spoiling it only affects the player who did it).
+    public Map<String, List<String>> getUnlimitedAnswers(String puzzleId) {
+        Puzzle puzzle = puzzleRepository.findById(puzzleId)
+            .orElseThrow(() -> new NoSuchElementException("No puzzle found with id " + puzzleId));
+        if (puzzle.getMode() != PuzzleMode.UNLIMITED) {
+            throw new IllegalArgumentException("Answer reveal is only available for Unlimited puzzles");
+        }
+        return puzzle.getCellSolutions();
     }
 
     private List<CategoryDefinition> filterCategories(List<CategoryDefinition> categories, UnlimitedPuzzleRequest request) {

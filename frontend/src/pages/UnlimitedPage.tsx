@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { fetchGameCategories, generateUnlimitedPuzzle } from '../api/client';
-import type { GameCategoriesResponse, PuzzleResponse } from '../types/puzzle';
+import { fetchGameCategories, generateUnlimitedPuzzle, fetchUnlimitedAnswers, fetchItems } from '../api/client';
+import type { GameCategoriesResponse, PuzzleResponse, GridItem } from '../types/puzzle';
 import { GAMES, isValidGameId, type GameId } from '../config/games';
 import { GAME_HELP_NOTES } from '../config/gameHelpNotes';
 import PuzzleGrid from '../components/PuzzleGrid';
@@ -16,6 +16,7 @@ import UnlimitedSettingsPanel, {
 import ConfirmModal from '../components/ConfirmModal';
 import HelpButton from '../components/HelpButton';
 import HelpModal from '../components/HelpModal';
+import AdminCellAnswersModal from '../components/AdminCellAnswersModal';
 import NotFoundPage from './NotFoundPage';
 import { usePuzzleGuesses } from '../hooks/usePuzzleGuesses';
 import acquaintFateIcon from '../assets/genshin/Item_Acquaint_Fate.webp';
@@ -59,6 +60,28 @@ export default function UnlimitedPage() {
   const [categoriesRetryCount, setCategoriesRetryCount] = useState(0);
   const [confirmGiveUpOpen, setConfirmGiveUpOpen] = useState(false);
   const [helpOpen, setHelpOpen] = useState(false);
+  // Post-game answer reveal (see AdminCellAnswersModal's own doc comment -
+  // same shell, ground-truth valid answers rather than community % data).
+  // All null/unset until the player explicitly clicks Reveal Answers -
+  // never fetched proactively, so an ordinary playthrough never even hits
+  // this endpoint.
+  const [answers, setAnswers] = useState<Record<string, string[]> | null>(null);
+  const [answersItems, setAnswersItems] = useState<GridItem[]>([]);
+  const [answersLoading, setAnswersLoading] = useState(false);
+  const [answersError, setAnswersError] = useState<string | null>(null);
+  const [openAnswerCell, setOpenAnswerCell] = useState<{ row: number; col: number } | null>(null);
+  // Guards the auto-reveal effect below against a real race: when
+  // handleGenerate sets a new `puzzle`, usePuzzleGuesses's OWN internal
+  // reset (which clears gaveUp/guessesUsed for that new puzzle) only takes
+  // effect one render later - on the render in between, `puzzle` already
+  // points to the new puzzle but `isGameOver` is still transiently true,
+  // stale from the game that just ended. Without this guard, the very
+  // first render of a fresh puzzle would immediately auto-reveal it before
+  // the player ever got to play. Tracks which puzzle id this effect has
+  // already "settled" on - isGameOver is only trusted starting from the
+  // SECOND time the effect observes a given puzzle id, by which point
+  // usePuzzleGuesses's reset has always already landed.
+  const settledPuzzleIdRef = useRef<string | null>(null);
 
   const {
     filledCells,
@@ -96,6 +119,26 @@ export default function UnlimitedPage() {
       cancelled = true;
     };
   }, [validGame, categoriesRetryCount]);
+
+  // Auto-reveals every cell's full valid-answer list the instant the game
+  // ends - no separate "Reveal Answers" button/click required. Guarded by
+  // `!answers && !answersLoading` (both already reset to null/false on a
+  // fresh puzzle - see handleGenerate/handleBackToSettings) so this fires
+  // exactly once per finished puzzle, not on every re-render while
+  // isGameOver stays true.
+  useEffect(() => {
+    if (!puzzle) return;
+    if (settledPuzzleIdRef.current !== puzzle.id) {
+      // First render seeing this puzzle id - isGameOver isn't trustworthy
+      // yet (see settledPuzzleIdRef's own comment). Record it and wait for
+      // the next effect run instead of acting on it now.
+      settledPuzzleIdRef.current = puzzle.id;
+      return;
+    }
+    if (!isGameOver || answers || answersLoading) return;
+    handleRevealAnswers();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [puzzle, isGameOver, answers, answersLoading]);
 
   if (!validGame) {
     return <NotFoundPage />;
@@ -135,6 +178,12 @@ export default function UnlimitedPage() {
       });
       setPuzzle(generated);
       setActiveGuessLimit(settings.unlimitedGuesses ? null : GUESS_LIMIT);
+      // A fresh puzzle - any previously-revealed answers belonged to the
+      // last one and would otherwise silently misattribute (wrong cells,
+      // wrong counts) onto this new grid.
+      setAnswers(null);
+      setAnswersError(null);
+      setOpenAnswerCell(null);
     } catch (err) {
       // A failed generation (e.g. filters too narrow) drops back to the
       // loadup/settings screen rather than leaving a stale grid on screen.
@@ -142,6 +191,24 @@ export default function UnlimitedPage() {
       setError(err instanceof Error ? err.message : 'Failed to generate puzzle');
     } finally {
       setGenerating(false);
+    }
+  }
+
+  async function handleRevealAnswers() {
+    if (!puzzle || answersLoading) return;
+    setAnswersLoading(true);
+    setAnswersError(null);
+    try {
+      const [answersResponse, allItems] = await Promise.all([
+        fetchUnlimitedAnswers(puzzle.id),
+        answersItems.length > 0 ? Promise.resolve(answersItems) : fetchItems(validGame),
+      ]);
+      setAnswers(answersResponse.cellSolutions);
+      setAnswersItems(allItems);
+    } catch (err) {
+      setAnswersError(err instanceof Error ? err.message : 'Failed to load answers');
+    } finally {
+      setAnswersLoading(false);
     }
   }
 
@@ -157,6 +224,9 @@ export default function UnlimitedPage() {
   function handleBackToSettings() {
     setPuzzle(null);
     setError(null);
+    setAnswers(null);
+    setAnswersError(null);
+    setOpenAnswerCell(null);
   }
 
   if (!puzzle) {
@@ -236,6 +306,8 @@ export default function UnlimitedPage() {
           left unstyled for now — logic (locking, timer stop) is fully wired,
           just no visible copy yet. Revisit once the messaging is designed. */}
 
+      {answersError && <p className="text-red-600 text-sm text-center px-4">{answersError}</p>}
+
       <PuzzleGrid
         game={validGame}
         rowLabels={puzzle.rowLabels}
@@ -244,6 +316,13 @@ export default function UnlimitedPage() {
         onCellClick={handleCellClick}
         locked={isGameOver}
         feedback={feedback}
+        // Belt-and-suspenders on top of the settledPuzzleIdRef guard above -
+        // reveal data should never render as active for a puzzle that
+        // isn't actually over, regardless of how `answers` got populated.
+        revealedAnswerCounts={
+          isGameOver && answers ? Object.fromEntries(Object.entries(answers).map(([k, v]) => [k, v.length])) : undefined
+        }
+        onRevealedCellClick={(row, col) => setOpenAnswerCell({ row, col })}
         avatarShapeClass={avatarShapeClass} avatarAspectClass={avatarAspectClass} avatarSizeClass={avatarSizeClass} avatarBorderClass={avatarBorderClass}
         sideColumn={[
           <Timer key="timer" startedAt={startedAt} endedAt={endedAt} visible={settings.showTimer} isComplete={isComplete} />,
@@ -263,7 +342,10 @@ export default function UnlimitedPage() {
       >
         <div />
         <div className="flex justify-center">
-          {activeGuessLimit != null && !isGameOver && (
+          {/* Not gated on activeGuessLimit - with unlimitedGuesses on,
+              running out of guesses can never end the game, so solving
+              every cell would otherwise be the ONLY way to finish. */}
+          {!isGameOver && (
             <button
               type="button"
               onClick={() => setConfirmGiveUpOpen(true)}
@@ -271,6 +353,13 @@ export default function UnlimitedPage() {
             >
               Give Up
             </button>
+          )}
+          {/* No explicit "Reveal Answers" action - the grid unlocks itself
+              the instant the game ends (see the auto-reveal effect above).
+              This is just the brief loading state for that automatic fetch,
+              not something a player triggers. */}
+          {isGameOver && answersLoading && (
+            <span className="text-sm text-gray-500 dark:text-gray-400">Revealing answers…</span>
           )}
         </div>
         <div className="flex justify-center">
@@ -344,6 +433,20 @@ export default function UnlimitedPage() {
             giveUp();
           }}
           onCancel={() => setConfirmGiveUpOpen(false)}
+        />
+      )}
+
+      {openAnswerCell && answers && (
+        <AdminCellAnswersModal
+          rowLabel={puzzle.rowLabels[openAnswerCell.row]}
+          colLabel={puzzle.colLabels[openAnswerCell.col]}
+          answers={(answers[`${openAnswerCell.row}-${openAnswerCell.col}`] ?? [])
+            .map((id) => answersItems.find((item) => item.id === id))
+            .filter((item): item is GridItem => item != null)}
+          onClose={() => setOpenAnswerCell(null)}
+          avatarShapeClass={avatarShapeClass}
+          avatarAspectClass={avatarAspectClass}
+          avatarBorderClass={avatarBorderClass}
         />
       )}
 

@@ -18,6 +18,13 @@ export interface GuessRequest {
   sessionId: string;
 }
 
+// "row-col" -> every valid item id for that cell. Unlimited-only (see the
+// backend's PuzzleService.getUnlimitedAnswers doc comment) - a post-game
+// answer reveal, not something ever fetched for Daily.
+export interface PuzzleAnswersResponse {
+  cellSolutions: Record<string, string[]>;
+}
+
 export interface GuessResponse {
   correct: boolean;
   itemId: string;

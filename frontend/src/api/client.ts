@@ -17,6 +17,7 @@ import type {
   AdminTrackingResponse,
   AdminPuzzleHistoryResponse,
   PinPuzzleRequest,
+  PuzzleAnswersResponse,
 } from '../types/puzzle';
 import { getStoredAuth } from '../utils/auth';
 
@@ -157,6 +158,20 @@ export async function submitPuzzleAttempt(puzzleId: string, request: SubmitAttem
   } catch (err) {
     console.error('Failed to submit puzzle attempt', err);
   }
+}
+
+// Unlimited-only (the backend 400s for a Daily puzzleId - see
+// PuzzleService.getUnlimitedAnswers's own comment on why). Unlike
+// submitPuzzleAttempt/fetchPuzzleStats above, this is a player-initiated
+// "Reveal Answers" action, not a background nice-to-have - a failure here
+// should surface to whoever clicked the button, not fail silently.
+export async function fetchUnlimitedAnswers(puzzleId: string): Promise<PuzzleAnswersResponse> {
+  const res = await fetch(`${BASE_URL}/puzzle/${puzzleId}/answers`);
+  if (!res.ok) {
+    const message = await res.text().catch(() => '');
+    throw new Error(message || `Failed to fetch answers: ${res.status}`);
+  }
+  return res.json();
 }
 
 // Same fire-and-forget contract as submitPuzzleAttempt - a failed stats fetch

@@ -14,7 +14,7 @@ export interface UnlimitedSettings {
 export const DEFAULT_UNLIMITED_SETTINGS: UnlimitedSettings = {
   excludedCategoryIds: [],
   allowSingleAnswers: true,
-  showTimer: false,
+  showTimer: true,
   unlimitedGuesses: true,
   softLockGuard: true,
 };
