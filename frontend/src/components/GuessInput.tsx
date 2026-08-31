@@ -172,11 +172,16 @@ export default function GuessInput({
           ✕
         </button>
 
-        <div className="flex items-center gap-2 text-sm font-semibold text-black dark:text-gray-100 mt-1 pr-6">
-          <span className="w-2 h-2 rounded-full bg-indigo-500" />
-          <span className="uppercase tracking-wide">{formatCategoryLabel(rowLabel, game)}</span>
-          <span className="text-black dark:text-gray-100">/</span>
-          <span className="uppercase tracking-wide">{formatCategoryLabel(colLabel, game)}</span>
+        <div className="text-sm font-semibold text-black dark:text-gray-100 mt-1 pr-6">
+          <span className="inline-block w-2 h-2 mr-2 rounded-full bg-indigo-500 align-middle" />
+          {/* One continuous inline text run (not separate flex items) - a
+              long row and/or col label needs to wrap like ordinary text,
+              with the whole "ROW / COL" reading as a single flowing block,
+              not have the "/" separator get stranded on its own line the
+              way a flex-wrapped item would. */}
+          <span className="uppercase tracking-wide">
+            {formatCategoryLabel(rowLabel, game)} / {formatCategoryLabel(colLabel, game)}
+          </span>
         </div>
       </div>
 

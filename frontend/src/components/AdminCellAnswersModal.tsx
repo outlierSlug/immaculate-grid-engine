@@ -48,11 +48,13 @@ export default function AdminCellAnswersModal({
           >
             ✕
           </button>
-          <div className="flex items-center justify-center gap-2 text-xs font-semibold text-gray-600 dark:text-gray-400 mt-2">
-            <span className="w-2 h-2 rounded-full bg-indigo-500" />
-            <span className="uppercase tracking-wide">{rowLabel}</span>
-            <span>/</span>
-            <span className="uppercase tracking-wide">{colLabel}</span>
+          <div className="text-center text-xs font-semibold text-gray-600 dark:text-gray-400 mt-2">
+            <span className="inline-block w-2 h-2 mr-2 rounded-full bg-indigo-500 align-middle" />
+            {/* One continuous inline text run, not separate flex items - see
+                GuessInput.tsx's own comment on why. */}
+            <span className="uppercase tracking-wide">
+              {rowLabel} / {colLabel}
+            </span>
           </div>
           <div className="flex justify-center mt-2">
             <span className="inline-flex px-2 py-0.5 rounded-full bg-indigo-50 dark:bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 text-xs font-semibold">
