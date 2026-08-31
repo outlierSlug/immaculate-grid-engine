@@ -117,11 +117,27 @@ class AdminPuzzleServiceRoundTripTest {
         GameModule module = new GenshinGameModule();
         List<CategoryDefinition> categories = module.getCategoryDefinitions(entities);
 
+        // A handful of independent seeds, not just one - generateCandidates
+        // already retries up to 500 times internally against a SINGLE
+        // seed's RNG stream, but Genshin's raw single-seed success rate
+        // dropped to ~42.5% once its ascension-material dimensions were
+        // added (see GenshinGameModule.ASCENSION_MATERIAL_MIN_COUNT's own
+        // comment), so even that isn't a sure thing on every run - this test
+        // cares whether pinFuturePuzzle accepts a real candidate, not
+        // whether one specific random seed happens to find one, so trying a
+        // few seeds (same SEED_RETRY_COUNT idea PuzzleService.
+        // generateUnlimitedPuzzle itself uses) keeps that the actual thing
+        // under test instead of an incidental source of flakiness.
         GridGenerator generator = new GridGenerator();
-        List<GridGenerator.GeneratedPuzzle> candidates =
-            generator.generateCandidates(entities, categories, ThreadLocalRandom.current().nextLong(), 1, true, 1);
-        assertTrue(candidates.size() == 1, "expected generateCandidates to find at least one valid candidate");
-        GridGenerator.GeneratedPuzzle candidate = candidates.get(0);
+        GridGenerator.GeneratedPuzzle candidate = null;
+        for (int attempt = 0; attempt < 5 && candidate == null; attempt++) {
+            List<GridGenerator.GeneratedPuzzle> candidates =
+                generator.generateCandidates(entities, categories, ThreadLocalRandom.current().nextLong(), 1, true, 1);
+            if (!candidates.isEmpty()) {
+                candidate = candidates.get(0);
+            }
+        }
+        assertTrue(candidate != null, "expected generateCandidates to find at least one valid candidate across 5 seed attempts");
 
         PinPuzzleRequest request = new PinPuzzleRequest(
             candidate.rowCategories().stream().map(CategorySnapshot::from).toList(),

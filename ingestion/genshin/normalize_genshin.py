@@ -7,6 +7,15 @@ from schema import validate_entities
 # ── Paths ────────────────────────────────────────────────
 RAW_PATH = Path(__file__).parent / "raw" / "genshin_characters.json"
 OUTPUT_PATH = Path(__file__).parent / "output" / "genshin_entities.json"
+# Deliberately read from build_ascension_materials.py's own OUTPUT, not a
+# copy under raw/ - see README.md's ascension pipeline section. Re-run that
+# script (and re-run this one) after adding a new character, rather than
+# hand-editing this file.
+ASCENSION_DATA_PATH = Path(__file__).parent / "output" / "genshin_ascension_materials.json"
+
+_ascension_data = json.loads(ASCENSION_DATA_PATH.read_text(encoding="utf-8"))
+ASCENSION_BY_NAME = {c["name"]: c for c in _ascension_data["characters"]}
+TRAVELER_ASCENSION = _ascension_data["traveler"]
 
 # ── Enka icon mapping ────────────────────────────────────
 ENKA_ICON_MAP = {
@@ -202,11 +211,34 @@ def map_character(raw: dict) -> list[dict]:
                         "model": model,
                         "release_date": raw.get("release_date") or "2020-09-28",
                         "release_version": TRAVELER_ELEMENT_RELEASE_VERSION[element],
+                        # Identical across every element - Traveler ascends
+                        # on a unique gemstone (Brilliant Diamond) with no
+                        # elemental variants, so there's one true ascension
+                        # record, not one per element. See TRAVELER_ASCENSION's
+                        # own doc comment (README.md's ascension pipeline
+                        # section) for how this was confirmed, not assumed.
+                        "local_specialty": TRAVELER_ASCENSION["local_specialty"],
+                        "common_material": TRAVELER_ASCENSION["common_material"],
+                        "boss_material": TRAVELER_ASCENSION["boss_material"],
+                        "ascension_stat": TRAVELER_ASCENSION["ascension_stat_label"],
                     },
                 })
         return entities
 
     # ── Normal characters ────────────────────────────────
+    ascension = ASCENSION_BY_NAME.get(name)
+    if ascension is None:
+        # A character in raw/genshin_characters.json with no matching entry
+        # in output/genshin_ascension_materials.json - almost always means
+        # a new character was added to the roster file but
+        # build_ascension_materials.py hasn't been re-run yet. Fails loudly
+        # here rather than writing an empty-string placeholder, which would
+        # otherwise silently create a bogus one-character puzzle category.
+        raise ValueError(
+            f"No ascension-materials data for {name!r} - run fetch_dimbreath.py then "
+            "build_ascension_materials.py before normalizing a newly-added character"
+        )
+
     return [{
         "id": f"genshin:{slugify(name)}",
         "game_id": "genshin",
@@ -220,6 +252,10 @@ def map_character(raw: dict) -> list[dict]:
             "model": raw.get("model") or "",
             "release_date": raw.get("release_date") or "",
             "release_version": raw.get("release_version") or "",
+            "local_specialty": ascension["local_specialty"],
+            "common_material": ascension["common_material"],
+            "boss_material": ascension["boss_material"],
+            "ascension_stat": ascension["ascension_stat_label"],
         },
     }]
 

@@ -47,3 +47,9 @@ dist/
 # via fetch_star_rail.js, ~33MB, same "not the project's own output"
 # reasoning as node_modules/ above.
 ingestion/starrail/cache/
+
+# Dimbreath AnimeGameData mirror (ingestion/genshin) - regenerable via
+# fetch_dimbreath.py, ~30MB, same reasoning as ingestion/starrail/cache/
+# above. genshin_characters.json stays checked in - it's small and
+# hand-curated - this is a large third-party raw data mine.
+ingestion/genshin/raw/dimbreath/

@@ -124,15 +124,27 @@ class GridGeneratorTest {
         // category set (see PuzzleServiceGenerationTest, which verifies THAT
         // production-facing guarantee: 0 failures across 1000+ simulated
         // dates per game with the fallback in place). Brawl Stars' floor is
-        // intentionally much lower than Genshin's: its 14 trait categories
-        // include 8 with exactly one member and one with two (Movement),
-        // same as rarity's Common/Ultra Legendary - legitimately, permanently
-        // thin, not a bug (see CategoryChip.tsx's trait tooltips work and
-        // GridGeneratorTest#characterFairnessReport, which measured this
-        // directly). A regression below either floor still means investigate
-        // - it just means "investigate for a NEW problem", not this one.
+        // intentionally much lower than the other 3 games': its 14 trait
+        // categories include 8 with exactly one member and one with two
+        // (Movement), same as rarity's Common/Ultra Legendary - legitimately,
+        // permanently thin, not a bug (see CategoryChip.tsx's trait tooltips
+        // work and GridGeneratorTest#characterFairnessReport, which measured
+        // this directly). Genshin's floor got the same treatment once its
+        // ascension-material dimensions were added (see
+        // GenshinGameModule.ASCENSION_MATERIAL_MIN_COUNT's own comment):
+        // local_specialty's single richest value only has 4 members, so no
+        // floor on that dimension can reach the other games' 90% bar without
+        // emptying it out entirely - measured raw single-seed rate is
+        // ~42.5%, 35% leaves headroom without being so loose it'd miss a
+        // real regression. A regression below any floor still means
+        // investigate - it just means "investigate for a NEW problem", not
+        // this one.
         double successRate = (double) successCount / DATES_TO_TEST;
-        double floor = module.getGameId().equals("brawlstars") ? 0.5 : 0.9;
+        double floor = switch (module.getGameId()) {
+            case "brawlstars" -> 0.5;
+            case "genshin" -> 0.35;
+            default -> 0.9;
+        };
         assertTrue(successRate > floor,
             "Only " + successCount + "/" + DATES_TO_TEST + " dates produced a valid puzzle (" + (successRate * 100)
             + "%) for " + module.getGameId() + " — below the " + (floor * 100) + "% single-seed floor, investigate category thinness");
@@ -362,6 +374,100 @@ class GridGeneratorTest {
         assertTrue(successCount > 0); // sanity only — this test is a report, not a gate
     }
 
+    // ── Ad-hoc: per-grid composition report - are grids actually interesting,
+    // not just individually valid? reportsDimensionDistributionAcrossManyGenerations
+    // and characterFairnessReport already cover "which dimensions/characters
+    // get picked how often" - this covers the shape of an individual grid's
+    // cells: how many valid answers does each cell actually have (a cell
+    // with 1 valid answer isn't wrong, but a grid where every cell has just
+    // 1-2 is a very different puzzle-feel than one with 5-10 each), and how
+    // many distinct characters could fill this grid at all (its total
+    // "answer surface", not just the 9 actually used). Written specifically
+    // to check the ascension categories' min-count floor + weighting
+    // (GenshinGameModule) didn't accidentally make grids feel thin even
+    // though they generate reliably. Deliberately not a regression gate
+    // (only a sanity assertion at the bottom) - a report to read, not a
+    // pass/fail check, same as the other ad-hoc reports in this file. ──
+    @Test
+    void gridCompositionReport() throws Exception {
+        GameModule module = new GenshinGameModule();
+        List<GridItem> entities = loadEntities("genshin_entities.json");
+        List<CategoryDefinition> categories = module.getCategoryDefinitions(entities);
+
+        int sampleSize = 3650; // match characterFairnessReport's scale
+        int successCount = 0;
+        int globalThinnestCell = Integer.MAX_VALUE;
+        int globalWidestCell = Integer.MIN_VALUE;
+        String globalThinnestCellLabel = null;
+        String globalWidestCellLabel = null;
+        List<Integer> totalValidAnswersPerGrid = new ArrayList<>();
+        List<Integer> uniqueCharactersPerGrid = new ArrayList<>();
+        List<Double> avgPerCellPerGrid = new ArrayList<>();
+        Map<Integer, Integer> cellSizeHistogram = new TreeMap<>(); // cell depth -> how many cells had exactly that many valid answers
+
+        for (long seed = 0; seed < sampleSize; seed++) {
+            Optional<GridGenerator.GeneratedPuzzle> result = generator.generate(entities, categories, seed, 1, true);
+            if (result.isEmpty()) continue;
+            successCount++;
+
+            GridGenerator.GeneratedPuzzle puzzle = result.get();
+            int totalValidAnswers = 0;
+            Set<String> uniqueCharacters = new HashSet<>();
+
+            for (var cellEntry : puzzle.cellSolutions().entrySet()) {
+                int depth = cellEntry.getValue().size();
+                totalValidAnswers += depth;
+                uniqueCharacters.addAll(cellEntry.getValue());
+                cellSizeHistogram.merge(depth, 1, Integer::sum);
+
+                if (depth < globalThinnestCell) {
+                    globalThinnestCell = depth;
+                    CategoryDefinition rowCat = puzzle.rowCategories().get(Integer.parseInt(cellEntry.getKey().split("-")[0]));
+                    CategoryDefinition colCat = puzzle.colCategories().get(Integer.parseInt(cellEntry.getKey().split("-")[1]));
+                    globalThinnestCellLabel = rowCat.getLabel() + " x " + colCat.getLabel();
+                }
+                if (depth > globalWidestCell) {
+                    globalWidestCell = depth;
+                    CategoryDefinition rowCat = puzzle.rowCategories().get(Integer.parseInt(cellEntry.getKey().split("-")[0]));
+                    CategoryDefinition colCat = puzzle.colCategories().get(Integer.parseInt(cellEntry.getKey().split("-")[1]));
+                    globalWidestCellLabel = rowCat.getLabel() + " x " + colCat.getLabel();
+                }
+            }
+
+            totalValidAnswersPerGrid.add(totalValidAnswers);
+            uniqueCharactersPerGrid.add(uniqueCharacters.size());
+            avgPerCellPerGrid.add(totalValidAnswers / 9.0);
+        }
+
+        System.out.println();
+        System.out.println("=== Grid composition report (Genshin, " + successCount + "/" + sampleSize + " successful) ===");
+        System.out.printf("Global thinnest cell seen: %d valid answers (%s)%n", globalThinnestCell, globalThinnestCellLabel);
+        System.out.printf("Global widest cell seen:   %d valid answers (%s)%n", globalWidestCell, globalWidestCellLabel);
+        System.out.println();
+        System.out.printf("Total valid answers per grid (sum of all 9 cells): min=%d, mean=%.1f, median=%d, max=%d%n",
+            Collections.min(totalValidAnswersPerGrid), average(totalValidAnswersPerGrid), median(totalValidAnswersPerGrid), Collections.max(totalValidAnswersPerGrid));
+        System.out.printf("Unique characters per grid (distinct across all 9 cells' answer pools): min=%d, mean=%.1f, median=%d, max=%d%n",
+            Collections.min(uniqueCharactersPerGrid), average(uniqueCharactersPerGrid), median(uniqueCharactersPerGrid), Collections.max(uniqueCharactersPerGrid));
+        System.out.printf("Avg valid answers per cell, per grid: min=%.2f, mean=%.2f, max=%.2f%n",
+            Collections.min(avgPerCellPerGrid), avgPerCellPerGrid.stream().mapToDouble(Double::doubleValue).average().orElse(0), Collections.max(avgPerCellPerGrid));
+        System.out.println();
+        System.out.println("-- Cell-depth histogram (how many of the " + (successCount * 9) + " total cells had exactly N valid answers) --");
+        for (var entry : cellSizeHistogram.entrySet()) {
+            System.out.printf("  %3d valid answers: %5d cells (%.1f%%)%n", entry.getKey(), entry.getValue(), 100.0 * entry.getValue() / (successCount * 9));
+        }
+
+        assertTrue(successCount > 0); // sanity only — this test is a report, not a gate
+    }
+
+    private static double average(List<Integer> values) {
+        return values.stream().mapToInt(Integer::intValue).average().orElse(0);
+    }
+
+    private static int median(List<Integer> values) {
+        List<Integer> sorted = values.stream().sorted().toList();
+        return sorted.get(sorted.size() / 2);
+    }
+
     // ── Ad-hoc: benchmark findAllValidGrids (the exhaustive narrow-filter
     // fallback) against the scenarios known from manual analysis to be the
     // hardest cases for the randomized search: a single thin dimension
@@ -544,7 +650,27 @@ class GridGeneratorTest {
         List<GridItem> entities = loadEntities("genshin_entities.json");
         GameModule module = new GenshinGameModule();
         List<CategoryDefinition> categories = module.getCategoryDefinitions(entities);
-        LocalDate date = LocalDate.of(2026, 8, 12);
+
+        // What's actually under test here is determinism (same date -> same
+        // puzzle), not raw single-seed reliability - that's a separate,
+        // already-covered concern (see generatedPuzzlesAreCorrectAndComplete's
+        // per-game floor, and PuzzleServiceGenerationTest for the real
+        // production-facing retry+fallback guarantee). A single hardcoded
+        // date used to be safe to assume would succeed when every game's raw
+        // single-seed rate was ~90%+, but Genshin's dropped to ~42.5% once
+        // its ascension-material dimensions were added (see
+        // GenshinGameModule.ASCENSION_MATERIAL_MIN_COUNT's own comment) - so
+        // this scans a small range of dates for one that actually succeeds
+        // first, rather than gambling on one fixed date.
+        LocalDate date = null;
+        for (int offset = 0; offset < 30; offset++) {
+            LocalDate candidate = LocalDate.of(2026, 8, 12).plusDays(offset);
+            if (generator.generate(entities, categories, candidate).isPresent()) {
+                date = candidate;
+                break;
+            }
+        }
+        assertTrue(date != null, "No date in a 30-day scan produced a valid single-seed puzzle - a real regression, not bad luck");
 
         var first = generator.generate(entities, categories, date);
         var second = generator.generate(entities, categories, date);

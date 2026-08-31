@@ -1,0 +1,2262 @@
+List of items used to ascend each Character.
+
+Character	Ascension Gems	Local Specialty	Enemy Drop Materials	Boss Drop Material
+Aino
+Hydro
+Aino
+Varunada Lazurite Sliver
+Varunada Lazurite Fragment
+Varunada Lazurite Chunk
+Varunada Lazurite Gemstone
+
+Varunada Lazurite	
+Portable Bearing
+Portable Bearing
+Broken Drive Shaft
+Broken Drive Shaft
+Reinforced Drive Shaft
+Reinforced Drive Shaft
+Precision Drive Shaft
+Precision Drive Shaft
+Precision Kuuvahki Stamping Die
+Precision Kuuvahki Stamping Die
+Albedo
+Geo
+Albedo
+Prithiva Topaz Sliver
+Prithiva Topaz Fragment
+Prithiva Topaz Chunk
+Prithiva Topaz Gemstone
+
+Prithiva Topaz	
+Cecilia
+Cecilia
+Divining Scroll
+Divining Scroll
+Sealed Scroll
+Sealed Scroll
+Forbidden Curse Scroll
+Forbidden Curse Scroll
+Basalt Pillar
+Basalt Pillar
+Alhaitham
+Dendro
+Alhaitham
+Nagadus Emerald Sliver
+Nagadus Emerald Fragment
+Nagadus Emerald Chunk
+Nagadus Emerald Gemstone
+
+Nagadus Emerald	
+Sand Grease Pupa
+Sand Grease Pupa
+Faded Red Satin
+Faded Red Satin
+Trimmed Red Silk
+Trimmed Red Silk
+Rich Red Brocade
+Rich Red Brocade
+Pseudo-Stamens
+Pseudo-Sta­mens
+Aloy
+Cryo
+Aloy
+Shivada Jade Sliver
+Shivada Jade Fragment
+Shivada Jade Chunk
+Shivada Jade Gemstone
+
+Shivada Jade	
+Crystal Marrow
+Crystal Marrow
+Spectral Husk
+Spectral Husk
+Spectral Heart
+Spectral Heart
+Spectral Nucleus
+Spectral Nucleus
+Crystalline Bloom
+Crys­tal­line Bloom
+Alyosha
+Electro
+Alyosha
+Vajrada Amethyst Sliver
+Vajrada Amethyst Fragment
+Vajrada Amethyst Chunk
+Vajrada Amethyst Gemstone
+
+Vajrada Amethyst	
+Flockingweed
+Flockingweed
+Chimeric Core
+Chimeric Core
+Symbiotic Chimeric Nucleus
+Symbiotic Chimeric Nucleus
+Prime Chimeric Nexus
+Prime Chimeric Nexus
+Severed Tail of the Sky-Roamer
+Severed Tail of the Sky-Roamer
+Amber
+Pyro
+Amber
+Agnidus Agate Sliver
+Agnidus Agate Fragment
+Agnidus Agate Chunk
+Agnidus Agate Gemstone
+
+Agnidus Agate	
+Small Lamp Grass
+Small Lamp Grass
+Firm Arrowhead
+Firm Arrowhead
+Sharp Arrowhead
+Sharp Arrowhead
+Weathered Arrowhead
+Weathered Arrowhead
+Everflame Seed
+Ever­flame Seed
+Arataki Itto
+Geo
+Itto
+Prithiva Topaz Sliver
+Prithiva Topaz Fragment
+Prithiva Topaz Chunk
+Prithiva Topaz Gemstone
+
+Prithiva Topaz	
+Onikabuto
+O­ni­ka­bu­to
+Slime Condensate
+Sli­me Con­den­sate
+Slime Secretions
+Slime Secretions
+Slime Concentrate
+Sli­me Con­cen­trate
+Riftborn Regalia
+Riftborn Regalia
+Arlecchino
+Pyro
+Arlecchino
+Agnidus Agate Sliver
+Agnidus Agate Fragment
+Agnidus Agate Chunk
+Agnidus Agate Gemstone
+
+Agnidus Agate	
+Rainbow Rose
+Rainbow Rose
+Recruit's Insignia
+Recruit's Insignia
+Sergeant's Insignia
+Sergeant's Insignia
+Lieutenant's Insignia
+Lieutenant's Insignia
+Fragment of a Golden Melody
+Frag­ment of a Golden Melody
+Baizhu
+Dendro
+Baizhu
+Nagadus Emerald Sliver
+Nagadus Emerald Fragment
+Nagadus Emerald Chunk
+Nagadus Emerald Gemstone
+
+Nagadus Emerald	
+Violetgrass
+Vi­o­let­grass
+Fungal Spores
+Fungal Spores
+Luminescent Pollen
+Luminescent Pollen
+Crystalline Cyst Dust
+Crystalline Cyst Dust
+Evergloom Ring
+Ev­er­gloom Ring
+Barbara
+Hydro
+Barbara
+Varunada Lazurite Sliver
+Varunada Lazurite Fragment
+Varunada Lazurite Chunk
+Varunada Lazurite Gemstone
+
+Varunada Lazurite	
+Philanemo Mushroom
+Phil­a­ne­mo Mush­room
+Divining Scroll
+Divining Scroll
+Sealed Scroll
+Sealed Scroll
+Forbidden Curse Scroll
+Forbidden Curse Scroll
+Cleansing Heart
+Cleans­ing Heart
+Beidou
+Electro
+Beidou
+Vajrada Amethyst Sliver
+Vajrada Amethyst Fragment
+Vajrada Amethyst Chunk
+Vajrada Amethyst Gemstone
+
+Vajrada Amethyst	
+Noctilucous Jade
+Noc­ti­lu­cous Jade
+Treasure Hoarder Insignia
+Treasure Hoarder Insignia
+Silver Raven Insignia
+Silver Raven Insignia
+Golden Raven Insignia
+Golden Raven Insignia
+Lightning Prism
+Light­ning Prism
+Bennett
+Pyro
+Bennett
+Agnidus Agate Sliver
+Agnidus Agate Fragment
+Agnidus Agate Chunk
+Agnidus Agate Gemstone
+
+Agnidus Agate	
+Windwheel Aster
+Wind­wheel As­ter
+Treasure Hoarder Insignia
+Treasure Hoarder Insignia
+Silver Raven Insignia
+Silver Raven Insignia
+Golden Raven Insignia
+Golden Raven Insignia
+Everflame Seed
+Ever­flame Seed
+Candace
+Hydro
+Candace
+Varunada Lazurite Sliver
+Varunada Lazurite Fragment
+Varunada Lazurite Chunk
+Varunada Lazurite Gemstone
+
+Varunada Lazurite	
+Henna Berry
+Henna Berry
+Faded Red Satin
+Faded Red Satin
+Trimmed Red Silk
+Trimmed Red Silk
+Rich Red Brocade
+Rich Red Brocade
+Light Guiding Tetrahedron
+Light Guid­ing Tetra­he­dron
+Charlotte
+Cryo
+Charlotte
+Shivada Jade Sliver
+Shivada Jade Fragment
+Shivada Jade Chunk
+Shivada Jade Gemstone
+
+Shivada Jade	
+Beryl Conch
+Beryl Conch
+Meshing Gear
+Meshing Gear
+Mechanical Spur Gear
+Mechanical Spur Gear
+Artificed Dynamic Gear
+Artificed Dynamic Gear
+"Tourbillon Device"
+"Tour­bil­lon De­vice"
+Chasca
+Anemo
+Chasca
+Vayuda Turquoise Sliver
+Vayuda Turquoise Fragment
+Vayuda Turquoise Chunk
+Vayuda Turquoise Gemstone
+
+Vayuda Turquoise	
+Withering Purpurbloom
+Withering Purpurbloom
+Juvenile Fang
+Juvenile Fang
+Seasoned Fang
+Seasoned Fang
+Tyrant's Fang
+Tyrant's Fang
+Ensnaring Gaze
+Ensnaring Gaze
+Chevreuse
+Pyro
+Chevreuse
+Agnidus Agate Sliver
+Agnidus Agate Fragment
+Agnidus Agate Chunk
+Agnidus Agate Gemstone
+
+Agnidus Agate	
+Lumidouce Bell
+Lumidouce Bell
+Meshing Gear
+Meshing Gear
+Mechanical Spur Gear
+Mechanical Spur Gear
+Artificed Dynamic Gear
+Artificed Dynamic Gear
+Fontemer Unihorn
+Fonte­mer Uni­horn
+Chiori
+Geo
+Chiori
+Prithiva Topaz Sliver
+Prithiva Topaz Fragment
+Prithiva Topaz Chunk
+Prithiva Topaz Gemstone
+
+Prithiva Topaz	
+Dendrobium
+Den­dro­bi­um
+Spectral Husk
+Spectral Husk
+Spectral Heart
+Spectral Heart
+Spectral Nucleus
+Spectral Nucleus
+Artificed Spare Clockwork Component — Coppelia
+Ar­ti­ficed Spare Clock­work Com­po­nent — Cop­pe­li­a
+Chongyun
+Cryo
+Chongyun
+Shivada Jade Sliver
+Shivada Jade Fragment
+Shivada Jade Chunk
+Shivada Jade Gemstone
+
+Shivada Jade	
+Cor Lapis
+Cor Lapis
+Damaged Mask
+Damaged Mask
+Stained Mask
+Stained Mask
+Ominous Mask
+Ominous Mask
+Hoarfrost Core
+Hoar­frost Core
+Citlali
+Cryo
+Citlali
+Shivada Jade Sliver
+Shivada Jade Fragment
+Shivada Jade Chunk
+Shivada Jade Gemstone
+
+Shivada Jade	
+Quenepa Berry
+Quenepa Berry
+Juvenile Fang
+Juvenile Fang
+Seasoned Fang
+Seasoned Fang
+Tyrant's Fang
+Tyrant's Fang
+Talisman of the Enigmatic Land
+Talisman of the Enigmatic Land
+Clorinde
+Electro
+Clorinde
+Vajrada Amethyst Sliver
+Vajrada Amethyst Fragment
+Vajrada Amethyst Chunk
+Vajrada Amethyst Gemstone
+
+Vajrada Amethyst	
+Lumitoile
+Lumitoile
+Transoceanic Pearl
+Trans­ocean­ic Pearl
+Transoceanic Chunk
+Trans­ocean­ic Chunk
+Xenochromatic Crystal
+Xeno­chrom­at­ic Cryst­al
+Fontemer Unihorn
+Fonte­mer Uni­horn
+Collei
+Dendro
+Collei
+Nagadus Emerald Sliver
+Nagadus Emerald Fragment
+Nagadus Emerald Chunk
+Nagadus Emerald Gemstone
+
+Nagadus Emerald	
+Rukkhashava Mushrooms
+Ruk­kha­sha­va Mush­rooms
+Firm Arrowhead
+Firm Arrowhead
+Sharp Arrowhead
+Sharp Arrowhead
+Weathered Arrowhead
+Weathered Arrowhead
+Majestic Hooked Beak
+Majestic Hooked Beak
+Columbina
+Hydro
+Columbina
+Varunada Lazurite Sliver
+Varunada Lazurite Fragment
+Varunada Lazurite Chunk
+Varunada Lazurite Gemstone
+
+Varunada Lazurite	
+Winter Icelea
+Winter Icelea
+Slime Condensate
+Sli­me Con­den­sate
+Slime Secretions
+Slime Secretions
+Slime Concentrate
+Sli­me Con­cen­trate
+Radiant Antler
+Radiant Antler
+Cyno
+Electro
+Cyno
+Vajrada Amethyst Sliver
+Vajrada Amethyst Fragment
+Vajrada Amethyst Chunk
+Vajrada Amethyst Gemstone
+
+Vajrada Amethyst	
+Scarab
+Scarab
+Divining Scroll
+Divining Scroll
+Sealed Scroll
+Sealed Scroll
+Forbidden Curse Scroll
+Forbidden Curse Scroll
+Thunderclap Fruitcore
+Thun­der­clap Fruit­core
+Dahlia
+Hydro
+Dahlia
+Varunada Lazurite Sliver
+Varunada Lazurite Fragment
+Varunada Lazurite Chunk
+Varunada Lazurite Gemstone
+
+Varunada Lazurite	
+Calla Lily
+Calla Lily
+Firm Arrowhead
+Firm Arrowhead
+Sharp Arrowhead
+Sharp Arrowhead
+Weathered Arrowhead
+Weathered Arrowhead
+Secret Source Airflow Accumulator
+Secret Source Airflow Accumulator
+Dehya
+Pyro
+Dehya
+Agnidus Agate Sliver
+Agnidus Agate Fragment
+Agnidus Agate Chunk
+Agnidus Agate Gemstone
+
+Agnidus Agate	
+Sand Grease Pupa
+Sand Grease Pupa
+Faded Red Satin
+Faded Red Satin
+Trimmed Red Silk
+Trimmed Red Silk
+Rich Red Brocade
+Rich Red Brocade
+Light Guiding Tetrahedron
+Light Guid­ing Tetra­he­dron
+Diluc
+Pyro
+Diluc
+Agnidus Agate Sliver
+Agnidus Agate Fragment
+Agnidus Agate Chunk
+Agnidus Agate Gemstone
+
+Agnidus Agate	
+Small Lamp Grass
+Small Lamp Grass
+Recruit's Insignia
+Recruit's Insignia
+Sergeant's Insignia
+Sergeant's Insignia
+Lieutenant's Insignia
+Lieutenant's Insignia
+Everflame Seed
+Ever­flame Seed
+Diona
+Cryo
+Diona
+Shivada Jade Sliver
+Shivada Jade Fragment
+Shivada Jade Chunk
+Shivada Jade Gemstone
+
+Shivada Jade	
+Calla Lily
+Calla Lily
+Firm Arrowhead
+Firm Arrowhead
+Sharp Arrowhead
+Sharp Arrowhead
+Weathered Arrowhead
+Weathered Arrowhead
+Hoarfrost Core
+Hoar­frost Core
+Dori
+Electro
+Dori
+Vajrada Amethyst Sliver
+Vajrada Amethyst Fragment
+Vajrada Amethyst Chunk
+Vajrada Amethyst Gemstone
+
+Vajrada Amethyst	
+Kalpalata Lotus
+Kalpalata Lotus
+Faded Red Satin
+Faded Red Satin
+Trimmed Red Silk
+Trimmed Red Silk
+Rich Red Brocade
+Rich Red Brocade
+Thunderclap Fruitcore
+Thun­der­clap Fruit­core
+Durin
+Pyro
+Durin
+Agnidus Agate Sliver
+Agnidus Agate Fragment
+Agnidus Agate Chunk
+Agnidus Agate Gemstone
+
+Agnidus Agate	
+Frostlamp Flower
+Frostlamp Flower
+Tattered Warrant
+Tattered Warrant
+Immaculate Warrant
+Immaculate Warrant
+Frost-Etched Warrant
+Frost-Etched Warrant
+Cyclic Military Kuuvahki Core
+Cyclic Military Kuuvahki Core
+Emilie
+Dendro
+Emilie
+Nagadus Emerald Sliver
+Nagadus Emerald Fragment
+Nagadus Emerald Chunk
+Nagadus Emerald Gemstone
+
+Nagadus Emerald	
+Lakelight Lily
+Lakelight Lily
+Meshing Gear
+Meshing Gear
+Mechanical Spur Gear
+Mechanical Spur Gear
+Artificed Dynamic Gear
+Artificed Dynamic Gear
+Fragment of a Golden Melody
+Frag­ment of a Golden Melody
+Escoffier
+Cryo
+Escoffier
+Shivada Jade Sliver
+Shivada Jade Fragment
+Shivada Jade Chunk
+Shivada Jade Gemstone
+
+Shivada Jade	
+Beryl Conch
+Beryl Conch
+Meshing Gear
+Meshing Gear
+Mechanical Spur Gear
+Mechanical Spur Gear
+Artificed Dynamic Gear
+Artificed Dynamic Gear
+Secret Source Airflow Accumulator
+Secret Source Airflow Accumulator
+Eula
+Cryo
+Eula
+Shivada Jade Sliver
+Shivada Jade Fragment
+Shivada Jade Chunk
+Shivada Jade Gemstone
+
+Shivada Jade	
+Dandelion Seed
+Dan­de­lion Seed
+Damaged Mask
+Damaged Mask
+Stained Mask
+Stained Mask
+Ominous Mask
+Ominous Mask
+Crystalline Bloom
+Crys­tal­line Bloom
+Faruzan
+Anemo
+Faruzan
+Vayuda Turquoise Sliver
+Vayuda Turquoise Fragment
+Vayuda Turquoise Chunk
+Vayuda Turquoise Gemstone
+
+Vayuda Turquoise	
+Henna Berry
+Henna Berry
+Faded Red Satin
+Faded Red Satin
+Trimmed Red Silk
+Trimmed Red Silk
+Rich Red Brocade
+Rich Red Brocade
+Light Guiding Tetrahedron
+Light Guid­ing Tetra­he­dron
+Fischl
+Electro
+Fischl
+Vajrada Amethyst Sliver
+Vajrada Amethyst Fragment
+Vajrada Amethyst Chunk
+Vajrada Amethyst Gemstone
+
+Vajrada Amethyst	
+Small Lamp Grass
+Small Lamp Grass
+Firm Arrowhead
+Firm Arrowhead
+Sharp Arrowhead
+Sharp Arrowhead
+Weathered Arrowhead
+Weathered Arrowhead
+Lightning Prism
+Light­ning Prism
+Flins
+Electro
+Flins
+Vajrada Amethyst Sliver
+Vajrada Amethyst Fragment
+Vajrada Amethyst Chunk
+Vajrada Amethyst Gemstone
+
+Vajrada Amethyst	
+Frostlamp Flower
+Frostlamp Flower
+Broken Drive Shaft
+Broken Drive Shaft
+Reinforced Drive Shaft
+Reinforced Drive Shaft
+Precision Drive Shaft
+Precision Drive Shaft
+Precision Kuuvahki Stamping Die
+Precision Kuuvahki Stamping Die
+Freminet
+Cryo
+Freminet
+Shivada Jade Sliver
+Shivada Jade Fragment
+Shivada Jade Chunk
+Shivada Jade Gemstone
+
+Shivada Jade	
+Romaritime Flower
+Romaritime Flower
+Transoceanic Pearl
+Trans­ocean­ic Pearl
+Transoceanic Chunk
+Trans­ocean­ic Chunk
+Xenochromatic Crystal
+Xeno­chrom­at­ic Cryst­al
+Artificed Spare Clockwork Component — Coppelius
+Ar­ti­ficed Spare Clock­work Com­po­nent — Cop­pe­li­us
+Furina
+Hydro
+Furina
+Varunada Lazurite Sliver
+Varunada Lazurite Fragment
+Varunada Lazurite Chunk
+Varunada Lazurite Gemstone
+
+Varunada Lazurite	
+Lakelight Lily
+Lakelight Lily
+Whopperflower Nectar
+Whopper­flower Nectar
+Shimmering Nectar
+Shimmering Nectar
+Energy Nectar
+Energy Nectar
+Water That Failed To Transcend
+Wa­ter That Failed To Tran­scend
+Gaming
+Pyro
+Gaming
+Agnidus Agate Sliver
+Agnidus Agate Fragment
+Agnidus Agate Chunk
+Agnidus Agate Gemstone
+
+Agnidus Agate	
+Starconch
+Star­conch
+Slime Condensate
+Sli­me Con­den­sate
+Slime Secretions
+Slime Secretions
+Slime Concentrate
+Sli­me Con­cen­trate
+Emperor's Resolution
+Em­per­or's Res­o­lu­tion
+Ganyu
+Cryo
+Ganyu
+Shivada Jade Sliver
+Shivada Jade Fragment
+Shivada Jade Chunk
+Shivada Jade Gemstone
+
+Shivada Jade	
+Qingxin
+Qing­xin
+Whopperflower Nectar
+Whopper­flower Nectar
+Shimmering Nectar
+Shimmering Nectar
+Energy Nectar
+Energy Nectar
+Hoarfrost Core
+Hoar­frost Core
+Gorou
+Geo
+Gorou
+Prithiva Topaz Sliver
+Prithiva Topaz Fragment
+Prithiva Topaz Chunk
+Prithiva Topaz Gemstone
+
+Prithiva Topaz	
+Sango Pearl
+Sango Pearl
+Spectral Husk
+Spectral Husk
+Spectral Heart
+Spectral Heart
+Spectral Nucleus
+Spectral Nucleus
+Perpetual Heart
+Per­pet­ual Heart
+Hu Tao
+Pyro
+Hu Tao
+Agnidus Agate Sliver
+Agnidus Agate Fragment
+Agnidus Agate Chunk
+Agnidus Agate Gemstone
+
+Agnidus Agate	
+Silk Flower
+Silk Flower
+Whopperflower Nectar
+Whopper­flower Nectar
+Shimmering Nectar
+Shimmering Nectar
+Energy Nectar
+Energy Nectar
+Juvenile Jade
+Juvenile Jade
+Iansan
+Electro
+Iansan
+Vajrada Amethyst Sliver
+Vajrada Amethyst Fragment
+Vajrada Amethyst Chunk
+Vajrada Amethyst Gemstone
+
+Vajrada Amethyst	
+Dracolite
+Dracolite
+Sentry's Wooden Whistle
+Sentry's Wooden Whistle
+Warrior's Metal Whistle
+Warrior's Metal Whistle
+Saurian-Crowned Warrior's Golden Whistle
+Saurian-Crowned Warrior's Golden Whistle
+Ensnaring Gaze
+Ensnaring Gaze
+Ifa
+Anemo
+Ifa
+Vayuda Turquoise Sliver
+Vayuda Turquoise Fragment
+Vayuda Turquoise Chunk
+Vayuda Turquoise Gemstone
+
+Vayuda Turquoise	
+Saurian Claw Succulent
+Saurian Claw Succulent
+Juvenile Fang
+Juvenile Fang
+Seasoned Fang
+Seasoned Fang
+Tyrant's Fang
+Tyrant's Fang
+Sparkless Statue Core
+Sparkless Statue Core
+Illuga
+Geo
+Illuga
+Prithiva Topaz Sliver
+Prithiva Topaz Fragment
+Prithiva Topaz Chunk
+Prithiva Topaz Gemstone
+
+Prithiva Topaz	
+Pine Amber
+Pine Amber
+Broken Drive Shaft
+Broken Drive Shaft
+Reinforced Drive Shaft
+Reinforced Drive Shaft
+Precision Drive Shaft
+Precision Drive Shaft
+Cyclic Military Kuuvahki Core
+Cyclic Military Kuuvahki Core
+Ineffa
+Electro
+Ineffa
+Vajrada Amethyst Sliver
+Vajrada Amethyst Fragment
+Vajrada Amethyst Chunk
+Vajrada Amethyst Gemstone
+
+Vajrada Amethyst	
+Glowing Hornshroom
+Glowing Hornshroom
+Sentry's Wooden Whistle
+Sentry's Wooden Whistle
+Warrior's Metal Whistle
+Warrior's Metal Whistle
+Saurian-Crowned Warrior's Golden Whistle
+Saurian-Crowned Warrior's Golden Whistle
+Secret Source Airflow Accumulator
+Secret Source Airflow Accumulator
+Jahoda
+Anemo
+Jahoda
+Vayuda Turquoise Sliver
+Vayuda Turquoise Fragment
+Vayuda Turquoise Chunk
+Vayuda Turquoise Gemstone
+
+Vayuda Turquoise	
+Portable Bearing
+Portable Bearing
+Broken Drive Shaft
+Broken Drive Shaft
+Reinforced Drive Shaft
+Reinforced Drive Shaft
+Precision Drive Shaft
+Precision Drive Shaft
+Lightbearing Scale-Feather
+Lightbearing Scale-Feather
+Jean
+Anemo
+Jean
+Vayuda Turquoise Sliver
+Vayuda Turquoise Fragment
+Vayuda Turquoise Chunk
+Vayuda Turquoise Gemstone
+
+Vayuda Turquoise	
+Dandelion Seed
+Dan­de­lion Seed
+Damaged Mask
+Damaged Mask
+Stained Mask
+Stained Mask
+Ominous Mask
+Ominous Mask
+Hurricane Seed
+Hur­ri­cane Seed
+Kachina
+Geo
+Kachina
+Prithiva Topaz Sliver
+Prithiva Topaz Fragment
+Prithiva Topaz Chunk
+Prithiva Topaz Gemstone
+
+Prithiva Topaz	
+Quenepa Berry
+Quenepa Berry
+Sentry's Wooden Whistle
+Sentry's Wooden Whistle
+Warrior's Metal Whistle
+Warrior's Metal Whistle
+Saurian-Crowned Warrior's Golden Whistle
+Saurian-Crowned Warrior's Golden Whistle
+Overripe Flamegranate
+Over­ripe Flame­gra­nate
+Kaedehara Kazuha
+Anemo
+Kazuha
+Vayuda Turquoise Sliver
+Vayuda Turquoise Fragment
+Vayuda Turquoise Chunk
+Vayuda Turquoise Gemstone
+
+Vayuda Turquoise	
+Sea Ganoderma
+Sea Gan­o­der­ma
+Treasure Hoarder Insignia
+Treasure Hoarder Insignia
+Silver Raven Insignia
+Silver Raven Insignia
+Golden Raven Insignia
+Golden Raven Insignia
+Marionette Core
+Mar­i­onette Core
+Kaeya
+Cryo
+Kaeya
+Shivada Jade Sliver
+Shivada Jade Fragment
+Shivada Jade Chunk
+Shivada Jade Gemstone
+
+Shivada Jade	
+Calla Lily
+Calla Lily
+Treasure Hoarder Insignia
+Treasure Hoarder Insignia
+Silver Raven Insignia
+Silver Raven Insignia
+Golden Raven Insignia
+Golden Raven Insignia
+Hoarfrost Core
+Hoar­frost Core
+Kamisato Ayaka
+Cryo
+Ayaka
+Shivada Jade Sliver
+Shivada Jade Fragment
+Shivada Jade Chunk
+Shivada Jade Gemstone
+
+Shivada Jade	
+Sakura Bloom
+Sakura Bloom
+Old Handguard
+Old Handguard
+Kageuchi Handguard
+Kageuchi Handguard
+Famed Handguard
+Famed Handguard
+Perpetual Heart
+Per­pet­ual Heart
+Kamisato Ayato
+Hydro
+Ayato
+Varunada Lazurite Sliver
+Varunada Lazurite Fragment
+Varunada Lazurite Chunk
+Varunada Lazurite Gemstone
+
+Varunada Lazurite	
+Sakura Bloom
+Sakura Bloom
+Old Handguard
+Old Handguard
+Kageuchi Handguard
+Kageuchi Handguard
+Famed Handguard
+Famed Handguard
+Dew of Repudiation
+Dew of Re­pu­di­a­tion
+Kaveh
+Dendro
+Kaveh
+Nagadus Emerald Sliver
+Nagadus Emerald Fragment
+Nagadus Emerald Chunk
+Nagadus Emerald Gemstone
+
+Nagadus Emerald	
+Mourning Flower
+Mourning Flower
+Fungal Spores
+Fungal Spores
+Luminescent Pollen
+Luminescent Pollen
+Crystalline Cyst Dust
+Crystalline Cyst Dust
+Quelled Creeper
+Quelled Creeper
+Keqing
+Electro
+Keqing
+Vajrada Amethyst Sliver
+Vajrada Amethyst Fragment
+Vajrada Amethyst Chunk
+Vajrada Amethyst Gemstone
+
+Vajrada Amethyst	
+Cor Lapis
+Cor Lapis
+Whopperflower Nectar
+Whopper­flower Nectar
+Shimmering Nectar
+Shimmering Nectar
+Energy Nectar
+Energy Nectar
+Lightning Prism
+Light­ning Prism
+Kinich
+Dendro
+Kinich
+Nagadus Emerald Sliver
+Nagadus Emerald Fragment
+Nagadus Emerald Chunk
+Nagadus Emerald Gemstone
+
+Nagadus Emerald	
+Saurian Claw Succulent
+Saurian Claw Succulent
+Juvenile Fang
+Juvenile Fang
+Seasoned Fang
+Seasoned Fang
+Tyrant's Fang
+Tyrant's Fang
+Overripe Flamegranate
+Over­ripe Flame­gra­nate
+Kirara
+Dendro
+Kirara
+Nagadus Emerald Sliver
+Nagadus Emerald Fragment
+Nagadus Emerald Chunk
+Nagadus Emerald Gemstone
+
+Nagadus Emerald	
+Amakumo Fruit
+A­ma­ku­mo Fruit
+Spectral Husk
+Spectral Husk
+Spectral Heart
+Spectral Heart
+Spectral Nucleus
+Spectral Nucleus
+Evergloom Ring
+Ev­er­gloom Ring
+Klee
+Pyro
+Klee
+Agnidus Agate Sliver
+Agnidus Agate Fragment
+Agnidus Agate Chunk
+Agnidus Agate Gemstone
+
+Agnidus Agate	
+Philanemo Mushroom
+Phil­a­ne­mo Mush­room
+Divining Scroll
+Divining Scroll
+Sealed Scroll
+Sealed Scroll
+Forbidden Curse Scroll
+Forbidden Curse Scroll
+Everflame Seed
+Ever­flame Seed
+Kujou Sara
+Electro
+Kujou Sara
+Vajrada Amethyst Sliver
+Vajrada Amethyst Fragment
+Vajrada Amethyst Chunk
+Vajrada Amethyst Gemstone
+
+Vajrada Amethyst	
+Dendrobium
+Den­dro­bi­um
+Damaged Mask
+Damaged Mask
+Stained Mask
+Stained Mask
+Ominous Mask
+Ominous Mask
+Storm Beads
+Storm Beads
+Kuki Shinobu
+Electro
+Shinobu
+Vajrada Amethyst Sliver
+Vajrada Amethyst Fragment
+Vajrada Amethyst Chunk
+Vajrada Amethyst Gemstone
+
+Vajrada Amethyst	
+Naku Weed
+Naku Weed
+Spectral Husk
+Spectral Husk
+Spectral Heart
+Spectral Heart
+Spectral Nucleus
+Spectral Nucleus
+Runic Fang
+Runic Fang
+Lan Yan
+Anemo
+Lan Yan
+Vayuda Turquoise Sliver
+Vayuda Turquoise Fragment
+Vayuda Turquoise Chunk
+Vayuda Turquoise Gemstone
+
+Vayuda Turquoise	
+Clearwater Jade
+Clear­wa­ter Jade
+Whopperflower Nectar
+Whopper­flower Nectar
+Shimmering Nectar
+Shimmering Nectar
+Energy Nectar
+Energy Nectar
+Gold-Inscribed Secret Source Core
+Gold-Inscribed Secret Source Core
+Lauma
+Dendro
+Lauma
+Nagadus Emerald Sliver
+Nagadus Emerald Fragment
+Nagadus Emerald Chunk
+Nagadus Emerald Gemstone
+
+Nagadus Emerald	
+Moonfall Silver
+Moonfall Silver
+Tattered Warrant
+Tattered Warrant
+Immaculate Warrant
+Immaculate Warrant
+Frost-Etched Warrant
+Frost-Etched Warrant
+Lightbearing Scale-Feather
+Lightbearing Scale-Feather
+Layla
+Cryo
+Layla
+Shivada Jade Sliver
+Shivada Jade Fragment
+Shivada Jade Chunk
+Shivada Jade Gemstone
+
+Shivada Jade	
+Nilotpala Lotus
+Nilotpala Lotus
+Divining Scroll
+Divining Scroll
+Sealed Scroll
+Sealed Scroll
+Forbidden Curse Scroll
+Forbidden Curse Scroll
+Perpetual Caliber
+Per­pet­u­al Cal­iber
+Linnea
+Geo
+Linnea
+Prithiva Topaz Sliver
+Prithiva Topaz Fragment
+Prithiva Topaz Chunk
+Prithiva Topaz Gemstone
+
+Prithiva Topaz	
+Etherwing Moth
+Eth­er­wing Moth
+Tattered Warrant
+Tattered Warrant
+Immaculate Warrant
+Immaculate Warrant
+Frost-Etched Warrant
+Frost-Etched Warrant
+Plume of the Fallen Watcher
+Plume of the Fallen Watcher
+Lisa
+Electro
+Lisa
+Vajrada Amethyst Sliver
+Vajrada Amethyst Fragment
+Vajrada Amethyst Chunk
+Vajrada Amethyst Gemstone
+
+Vajrada Amethyst	
+Valberry
+Valberry
+Slime Condensate
+Sli­me Con­den­sate
+Slime Secretions
+Slime Secretions
+Slime Concentrate
+Sli­me Con­cen­trate
+Lightning Prism
+Light­ning Prism
+Lohen
+Cryo
+Lohen
+Shivada Jade Sliver
+Shivada Jade Fragment
+Shivada Jade Chunk
+Shivada Jade Gemstone
+
+Shivada Jade	
+Etherwing Moth
+Eth­er­wing Moth
+Firm Arrowhead
+Firm Arrowhead
+Sharp Arrowhead
+Sharp Arrowhead
+Weathered Arrowhead
+Weathered Arrowhead
+Prismatic Severed Tail
+Prismatic Severed Tail
+Lynette
+Anemo
+Lynette
+Vayuda Turquoise Sliver
+Vayuda Turquoise Fragment
+Vayuda Turquoise Chunk
+Vayuda Turquoise Gemstone
+
+Vayuda Turquoise	
+Lumidouce Bell
+Lumidouce Bell
+Meshing Gear
+Meshing Gear
+Mechanical Spur Gear
+Mechanical Spur Gear
+Artificed Dynamic Gear
+Artificed Dynamic Gear
+Artificed Spare Clockwork Component — Coppelia
+Ar­ti­ficed Spare Clock­work Com­po­nent — Cop­pe­li­a
+Lyney
+Pyro
+Lyney
+Agnidus Agate Sliver
+Agnidus Agate Fragment
+Agnidus Agate Chunk
+Agnidus Agate Gemstone
+
+Agnidus Agate	
+Rainbow Rose
+Rainbow Rose
+Recruit's Insignia
+Recruit's Insignia
+Sergeant's Insignia
+Sergeant's Insignia
+Lieutenant's Insignia
+Lieutenant's Insignia
+Emperor's Resolution
+Em­per­or's Res­o­lu­tion
+Mavuika
+Pyro
+Mavuika
+Agnidus Agate Sliver
+Agnidus Agate Fragment
+Agnidus Agate Chunk
+Agnidus Agate Gemstone
+
+Agnidus Agate	
+Withering Purpurbloom
+Withering Purpurbloom
+Sentry's Wooden Whistle
+Sentry's Wooden Whistle
+Warrior's Metal Whistle
+Warrior's Metal Whistle
+Saurian-Crowned Warrior's Golden Whistle
+Saurian-Crowned Warrior's Golden Whistle
+Gold-Inscribed Secret Source Core
+Gold-Inscribed Secret Source Core
+Mika
+Cryo
+Mika
+Shivada Jade Sliver
+Shivada Jade Fragment
+Shivada Jade Chunk
+Shivada Jade Gemstone
+
+Shivada Jade	
+Wolfhook
+Wolf­hook
+Recruit's Insignia
+Recruit's Insignia
+Sergeant's Insignia
+Sergeant's Insignia
+Lieutenant's Insignia
+Lieutenant's Insignia
+Pseudo-Stamens
+Pseudo-Sta­mens
+Mona
+Hydro
+Mona
+Varunada Lazurite Sliver
+Varunada Lazurite Fragment
+Varunada Lazurite Chunk
+Varunada Lazurite Gemstone
+
+Varunada Lazurite	
+Philanemo Mushroom
+Phil­a­ne­mo Mush­room
+Whopperflower Nectar
+Whopper­flower Nectar
+Shimmering Nectar
+Shimmering Nectar
+Energy Nectar
+Energy Nectar
+Cleansing Heart
+Cleans­ing Heart
+Mualani
+Hydro
+Mualani
+Varunada Lazurite Sliver
+Varunada Lazurite Fragment
+Varunada Lazurite Chunk
+Varunada Lazurite Gemstone
+
+Varunada Lazurite	
+Sprayfeather Gill
+Sprayfeather Gill
+Sentry's Wooden Whistle
+Sentry's Wooden Whistle
+Warrior's Metal Whistle
+Warrior's Metal Whistle
+Saurian-Crowned Warrior's Golden Whistle
+Saurian-Crowned Warrior's Golden Whistle
+Mark of the Binding Blessing
+Mark of the Binding Blessing
+Nahida
+Dendro
+Nahida
+Nagadus Emerald Sliver
+Nagadus Emerald Fragment
+Nagadus Emerald Chunk
+Nagadus Emerald Gemstone
+
+Nagadus Emerald	
+Kalpalata Lotus
+Kalpalata Lotus
+Fungal Spores
+Fungal Spores
+Luminescent Pollen
+Luminescent Pollen
+Crystalline Cyst Dust
+Crystalline Cyst Dust
+Quelled Creeper
+Quelled Creeper
+Navia
+Geo
+Navia
+Prithiva Topaz Sliver
+Prithiva Topaz Fragment
+Prithiva Topaz Chunk
+Prithiva Topaz Gemstone
+
+Prithiva Topaz	
+Spring of the First Dewdrop
+Spring of the First Dewdrop
+Transoceanic Pearl
+Trans­ocean­ic Pearl
+Transoceanic Chunk
+Trans­ocean­ic Chunk
+Xenochromatic Crystal
+Xeno­chrom­at­ic Cryst­al
+Artificed Spare Clockwork Component — Coppelius
+Ar­ti­ficed Spare Clock­work Com­po­nent — Cop­pe­li­us
+Nefer
+Dendro
+Nefer
+Nagadus Emerald Sliver
+Nagadus Emerald Fragment
+Nagadus Emerald Chunk
+Nagadus Emerald Gemstone
+
+Nagadus Emerald	
+Moonfall Silver
+Moonfall Silver
+Tattered Warrant
+Tattered Warrant
+Immaculate Warrant
+Immaculate Warrant
+Frost-Etched Warrant
+Frost-Etched Warrant
+Radiant Antler
+Radiant Antler
+Neuvillette
+Hydro
+Neuvillette
+Varunada Lazurite Sliver
+Varunada Lazurite Fragment
+Varunada Lazurite Chunk
+Varunada Lazurite Gemstone
+
+Varunada Lazurite	
+Lumitoile
+Lumitoile
+Transoceanic Pearl
+Trans­ocean­ic Pearl
+Transoceanic Chunk
+Trans­ocean­ic Chunk
+Xenochromatic Crystal
+Xeno­chrom­at­ic Cryst­al
+Fontemer Unihorn
+Fonte­mer Uni­horn
+Nicole
+Pyro
+Nicole
+Agnidus Agate Sliver
+Agnidus Agate Fragment
+Agnidus Agate Chunk
+Agnidus Agate Gemstone
+
+Agnidus Agate	
+Pine Amber
+Pine Amber
+Tattered Warrant
+Tattered Warrant
+Immaculate Warrant
+Immaculate Warrant
+Frost-Etched Warrant
+Frost-Etched Warrant
+Remnant of the Dreadwing
+Remnant of the Dreadwing
+Nilou
+Hydro
+Nilou
+Varunada Lazurite Sliver
+Varunada Lazurite Fragment
+Varunada Lazurite Chunk
+Varunada Lazurite Gemstone
+
+Varunada Lazurite	
+Padisarah
+Pa­di­sa­rah
+Fungal Spores
+Fungal Spores
+Luminescent Pollen
+Luminescent Pollen
+Crystalline Cyst Dust
+Crystalline Cyst Dust
+Perpetual Caliber
+Per­pet­u­al Cal­iber
+Ningguang
+Geo
+Ningguang
+Prithiva Topaz Sliver
+Prithiva Topaz Fragment
+Prithiva Topaz Chunk
+Prithiva Topaz Gemstone
+
+Prithiva Topaz	
+Glaze Lily
+Glaze Lily
+Recruit's Insignia
+Recruit's Insignia
+Sergeant's Insignia
+Sergeant's Insignia
+Lieutenant's Insignia
+Lieutenant's Insignia
+Basalt Pillar
+Basalt Pillar
+Noelle
+Geo
+Noelle
+Prithiva Topaz Sliver
+Prithiva Topaz Fragment
+Prithiva Topaz Chunk
+Prithiva Topaz Gemstone
+
+Prithiva Topaz	
+Valberry
+Valberry
+Damaged Mask
+Damaged Mask
+Stained Mask
+Stained Mask
+Ominous Mask
+Ominous Mask
+Basalt Pillar
+Basalt Pillar
+Odette
+Cryo
+Odette
+Shivada Jade Sliver
+Shivada Jade Fragment
+Shivada Jade Chunk
+Shivada Jade Gemstone
+
+Shivada Jade	
+Frostfairy Flower
+Frostfairy Flower
+Ethereal Glimmershard
+Ethereal Glimmershard
+Ethereal Crystal
+Ethereal Crystal
+Ethereal Crystalscale Stone
+Ethereal Crystalscale Stone
+Unscorched Blossom Branch
+Unscorched Blossom Branch
+Ororon
+Electro
+Ororon
+Vajrada Amethyst Sliver
+Vajrada Amethyst Fragment
+Vajrada Amethyst Chunk
+Vajrada Amethyst Gemstone
+
+Vajrada Amethyst	
+Glowing Hornshroom
+Glowing Hornshroom
+Juvenile Fang
+Juvenile Fang
+Seasoned Fang
+Seasoned Fang
+Tyrant's Fang
+Tyrant's Fang
+Mark of the Binding Blessing
+Mark of the Binding Blessing
+Prune
+Anemo
+Prune
+Vayuda Turquoise Sliver
+Vayuda Turquoise Fragment
+Vayuda Turquoise Chunk
+Vayuda Turquoise Gemstone
+
+Vayuda Turquoise	
+Winter Icelea
+Winter Icelea
+Treasure Hoarder Insignia
+Treasure Hoarder Insignia
+Silver Raven Insignia
+Silver Raven Insignia
+Golden Raven Insignia
+Golden Raven Insignia
+Radiant Antler
+Radiant Antler
+Qiqi
+Cryo
+Qiqi
+Shivada Jade Sliver
+Shivada Jade Fragment
+Shivada Jade Chunk
+Shivada Jade Gemstone
+
+Shivada Jade	
+Violetgrass
+Vi­o­let­grass
+Divining Scroll
+Divining Scroll
+Sealed Scroll
+Sealed Scroll
+Forbidden Curse Scroll
+Forbidden Curse Scroll
+Hoarfrost Core
+Hoar­frost Core
+Raiden Shogun
+Electro
+Raiden
+Vajrada Amethyst Sliver
+Vajrada Amethyst Fragment
+Vajrada Amethyst Chunk
+Vajrada Amethyst Gemstone
+
+Vajrada Amethyst	
+Amakumo Fruit
+A­ma­ku­mo Fruit
+Old Handguard
+Old Handguard
+Kageuchi Handguard
+Kageuchi Handguard
+Famed Handguard
+Famed Handguard
+Storm Beads
+Storm Beads
+Razor
+Electro
+Razor
+Vajrada Amethyst Sliver
+Vajrada Amethyst Fragment
+Vajrada Amethyst Chunk
+Vajrada Amethyst Gemstone
+
+Vajrada Amethyst	
+Wolfhook
+Wolf­hook
+Damaged Mask
+Damaged Mask
+Stained Mask
+Stained Mask
+Ominous Mask
+Ominous Mask
+Lightning Prism
+Light­ning Prism
+Rosaria
+Cryo
+Rosaria
+Shivada Jade Sliver
+Shivada Jade Fragment
+Shivada Jade Chunk
+Shivada Jade Gemstone
+
+Shivada Jade	
+Valberry
+Valberry
+Recruit's Insignia
+Recruit's Insignia
+Sergeant's Insignia
+Sergeant's Insignia
+Lieutenant's Insignia
+Lieutenant's Insignia
+Hoarfrost Core
+Hoar­frost Core
+Sandrone
+Cryo
+Sandrone
+Shivada Jade Sliver
+Shivada Jade Fragment
+Shivada Jade Chunk
+Shivada Jade Gemstone
+
+Shivada Jade	
+Subdetection Unit
+Subdetection Unit
+Broken Drive Shaft
+Broken Drive Shaft
+Reinforced Drive Shaft
+Reinforced Drive Shaft
+Precision Drive Shaft
+Precision Drive Shaft
+Plume of the Fallen Watcher
+Plume of the Fallen Watcher
+Sangonomiya Kokomi
+Hydro
+Kokomi
+Varunada Lazurite Sliver
+Varunada Lazurite Fragment
+Varunada Lazurite Chunk
+Varunada Lazurite Gemstone
+
+Varunada Lazurite	
+Sango Pearl
+Sango Pearl
+Spectral Husk
+Spectral Husk
+Spectral Heart
+Spectral Heart
+Spectral Nucleus
+Spectral Nucleus
+Dew of Repudiation
+Dew of Re­pu­di­a­tion
+Sayu
+Anemo
+Sayu
+Vayuda Turquoise Sliver
+Vayuda Turquoise Fragment
+Vayuda Turquoise Chunk
+Vayuda Turquoise Gemstone
+
+Vayuda Turquoise	
+Crystal Marrow
+Crystal Marrow
+Whopperflower Nectar
+Whopper­flower Nectar
+Shimmering Nectar
+Shimmering Nectar
+Energy Nectar
+Energy Nectar
+Marionette Core
+Mar­i­onette Core
+Sethos
+Electro
+Sethos
+Vajrada Amethyst Sliver
+Vajrada Amethyst Fragment
+Vajrada Amethyst Chunk
+Vajrada Amethyst Gemstone
+
+Vajrada Amethyst	
+Trishiraite
+Trishiraite
+Faded Red Satin
+Faded Red Satin
+Trimmed Red Silk
+Trimmed Red Silk
+Rich Red Brocade
+Rich Red Brocade
+Cloudseam Scale
+Cloud­seam Scale
+Shenhe
+Cryo
+Shenhe
+Shivada Jade Sliver
+Shivada Jade Fragment
+Shivada Jade Chunk
+Shivada Jade Gemstone
+
+Shivada Jade	
+Qingxin
+Qing­xin
+Whopperflower Nectar
+Whopper­flower Nectar
+Shimmering Nectar
+Shimmering Nectar
+Energy Nectar
+Energy Nectar
+Dragonheir's False Fin
+Dragon­heir's False Fin
+Shikanoin Heizou
+Anemo
+Heizou
+Vayuda Turquoise Sliver
+Vayuda Turquoise Fragment
+Vayuda Turquoise Chunk
+Vayuda Turquoise Gemstone
+
+Vayuda Turquoise	
+Onikabuto
+O­ni­ka­bu­to
+Treasure Hoarder Insignia
+Treasure Hoarder Insignia
+Silver Raven Insignia
+Silver Raven Insignia
+Golden Raven Insignia
+Golden Raven Insignia
+Runic Fang
+Runic Fang
+Sigewinne
+Hydro
+Sigewinne
+Varunada Lazurite Sliver
+Varunada Lazurite Fragment
+Varunada Lazurite Chunk
+Varunada Lazurite Gemstone
+
+Varunada Lazurite	
+Romaritime Flower
+Romaritime Flower
+Transoceanic Pearl
+Trans­ocean­ic Pearl
+Transoceanic Chunk
+Trans­ocean­ic Chunk
+Xenochromatic Crystal
+Xeno­chrom­at­ic Cryst­al
+Water That Failed To Transcend
+Wa­ter That Failed To Tran­scend
+Skirk
+Cryo
+Skirk
+Shivada Jade Sliver
+Shivada Jade Fragment
+Shivada Jade Chunk
+Shivada Jade Gemstone
+
+Shivada Jade	
+Skysplit Gembloom
+Skysplit Gembloom
+Meshing Gear
+Meshing Gear
+Mechanical Spur Gear
+Mechanical Spur Gear
+Artificed Dynamic Gear
+Artificed Dynamic Gear
+Ensnaring Gaze
+Ensnaring Gaze
+Sucrose
+Anemo
+Sucrose
+Vayuda Turquoise Sliver
+Vayuda Turquoise Fragment
+Vayuda Turquoise Chunk
+Vayuda Turquoise Gemstone
+
+Vayuda Turquoise	
+Windwheel Aster
+Wind­wheel As­ter
+Whopperflower Nectar
+Whopper­flower Nectar
+Shimmering Nectar
+Shimmering Nectar
+Energy Nectar
+Energy Nectar
+Hurricane Seed
+Hur­ri­cane Seed
+Tartaglia
+Hydro
+Tartaglia
+Varunada Lazurite Sliver
+Varunada Lazurite Fragment
+Varunada Lazurite Chunk
+Varunada Lazurite Gemstone
+
+Varunada Lazurite	
+Starconch
+Star­conch
+Recruit's Insignia
+Recruit's Insignia
+Sergeant's Insignia
+Sergeant's Insignia
+Lieutenant's Insignia
+Lieutenant's Insignia
+Cleansing Heart
+Cleans­ing Heart
+Thoma
+Pyro
+Thoma
+Agnidus Agate Sliver
+Agnidus Agate Fragment
+Agnidus Agate Chunk
+Agnidus Agate Gemstone
+
+Agnidus Agate	
+Fluorescent Fungus
+Flu­o­res­cent Fun­gus
+Treasure Hoarder Insignia
+Treasure Hoarder Insignia
+Silver Raven Insignia
+Silver Raven Insignia
+Golden Raven Insignia
+Golden Raven Insignia
+Smoldering Pearl
+Smol­der­ing Pearl
+Tighnari
+Dendro
+Tighnari
+Nagadus Emerald Sliver
+Nagadus Emerald Fragment
+Nagadus Emerald Chunk
+Nagadus Emerald Gemstone
+
+Nagadus Emerald	
+Nilotpala Lotus
+Nilotpala Lotus
+Fungal Spores
+Fungal Spores
+Luminescent Pollen
+Luminescent Pollen
+Crystalline Cyst Dust
+Crystalline Cyst Dust
+Majestic Hooked Beak
+Majestic Hooked Beak
+Traveler
+Traveler
+Brilliant Diamond Sliver
+Brilliant Diamond Fragment
+Brilliant Diamond Chunk
+Brilliant Diamond Gemstone
+
+Brilliant Diamond	
+Windwheel Aster
+Wind­wheel As­ter
+Damaged Mask
+Damaged Mask
+Stained Mask
+Stained Mask
+Ominous Mask
+Ominous Mask
+None
+Varesa
+Electro
+Varesa
+Vajrada Amethyst Sliver
+Vajrada Amethyst Fragment
+Vajrada Amethyst Chunk
+Vajrada Amethyst Gemstone
+
+Vajrada Amethyst	
+Skysplit Gembloom
+Skysplit Gembloom
+Juvenile Fang
+Juvenile Fang
+Seasoned Fang
+Seasoned Fang
+Tyrant's Fang
+Tyrant's Fang
+Sparkless Statue Core
+Sparkless Statue Core
+Varka
+Anemo
+Varka
+Vayuda Turquoise Sliver
+Vayuda Turquoise Fragment
+Vayuda Turquoise Chunk
+Vayuda Turquoise Gemstone
+
+Vayuda Turquoise	
+Wolfhook
+Wolf­hook
+Broken Drive Shaft
+Broken Drive Shaft
+Reinforced Drive Shaft
+Reinforced Drive Shaft
+Precision Drive Shaft
+Precision Drive Shaft
+Prismatic Severed Tail
+Prismatic Severed Tail
+Venti
+Anemo
+Venti
+Vayuda Turquoise Sliver
+Vayuda Turquoise Fragment
+Vayuda Turquoise Chunk
+Vayuda Turquoise Gemstone
+
+Vayuda Turquoise	
+Cecilia
+Cecilia
+Slime Condensate
+Sli­me Con­den­sate
+Slime Secretions
+Slime Secretions
+Slime Concentrate
+Sli­me Con­cen­trate
+Hurricane Seed
+Hur­ri­cane Seed
+Wanderer
+Anemo
+Wanderer
+Vayuda Turquoise Sliver
+Vayuda Turquoise Fragment
+Vayuda Turquoise Chunk
+Vayuda Turquoise Gemstone
+
+Vayuda Turquoise	
+Rukkhashava Mushrooms
+Ruk­kha­sha­va Mush­rooms
+Old Handguard
+Old Handguard
+Kageuchi Handguard
+Kageuchi Handguard
+Famed Handguard
+Famed Handguard
+Perpetual Caliber
+Per­pet­u­al Cal­iber
+Wriothesley
+Cryo
+Wriothesley
+Shivada Jade Sliver
+Shivada Jade Fragment
+Shivada Jade Chunk
+Shivada Jade Gemstone
+
+Shivada Jade	
+Subdetection Unit
+Subdetection Unit
+Meshing Gear
+Meshing Gear
+Mechanical Spur Gear
+Mechanical Spur Gear
+Artificed Dynamic Gear
+Artificed Dynamic Gear
+"Tourbillon Device"
+"Tour­bil­lon De­vice"
+Xiangling
+Pyro
+Xiangling
+Agnidus Agate Sliver
+Agnidus Agate Fragment
+Agnidus Agate Chunk
+Agnidus Agate Gemstone
+
+Agnidus Agate	
+Jueyun Chili
+Jue­yun Chi­li
+Slime Condensate
+Sli­me Con­den­sate
+Slime Secretions
+Slime Secretions
+Slime Concentrate
+Sli­me Con­cen­trate
+Everflame Seed
+Ever­flame Seed
+Xianyun
+Anemo
+Xianyun
+Vayuda Turquoise Sliver
+Vayuda Turquoise Fragment
+Vayuda Turquoise Chunk
+Vayuda Turquoise Gemstone
+
+Vayuda Turquoise	
+Clearwater Jade
+Clear­wa­ter Jade
+Divining Scroll
+Divining Scroll
+Sealed Scroll
+Sealed Scroll
+Forbidden Curse Scroll
+Forbidden Curse Scroll
+Cloudseam Scale
+Cloud­seam Scale
+Xiao
+Anemo
+Xiao
+Vayuda Turquoise Sliver
+Vayuda Turquoise Fragment
+Vayuda Turquoise Chunk
+Vayuda Turquoise Gemstone
+
+Vayuda Turquoise	
+Qingxin
+Qing­xin
+Slime Condensate
+Sli­me Con­den­sate
+Slime Secretions
+Slime Secretions
+Slime Concentrate
+Sli­me Con­cen­trate
+Juvenile Jade
+Juvenile Jade
+Xilonen
+Geo
+Xilonen
+Prithiva Topaz Sliver
+Prithiva Topaz Fragment
+Prithiva Topaz Chunk
+Prithiva Topaz Gemstone
+
+Prithiva Topaz	
+Brilliant Chrysanthemum
+Brilliant Chrysanthemum
+Sentry's Wooden Whistle
+Sentry's Wooden Whistle
+Warrior's Metal Whistle
+Warrior's Metal Whistle
+Saurian-Crowned Warrior's Golden Whistle
+Saurian-Crowned Warrior's Golden Whistle
+Gold-Inscribed Secret Source Core
+Gold-Inscribed Secret Source Core
+Xingqiu
+Hydro
+Xingqiu
+Varunada Lazurite Sliver
+Varunada Lazurite Fragment
+Varunada Lazurite Chunk
+Varunada Lazurite Gemstone
+
+Varunada Lazurite	
+Silk Flower
+Silk Flower
+Damaged Mask
+Damaged Mask
+Stained Mask
+Stained Mask
+Ominous Mask
+Ominous Mask
+Cleansing Heart
+Cleans­ing Heart
+Xinyan
+Pyro
+Xinyan
+Agnidus Agate Sliver
+Agnidus Agate Fragment
+Agnidus Agate Chunk
+Agnidus Agate Gemstone
+
+Agnidus Agate	
+Violetgrass
+Vi­o­let­grass
+Treasure Hoarder Insignia
+Treasure Hoarder Insignia
+Silver Raven Insignia
+Silver Raven Insignia
+Golden Raven Insignia
+Golden Raven Insignia
+Everflame Seed
+Ever­flame Seed
+Yae Miko
+Electro
+Yae Miko
+Vajrada Amethyst Sliver
+Vajrada Amethyst Fragment
+Vajrada Amethyst Chunk
+Vajrada Amethyst Gemstone
+
+Vajrada Amethyst	
+Sea Ganoderma
+Sea Gan­o­der­ma
+Old Handguard
+Old Handguard
+Kageuchi Handguard
+Kageuchi Handguard
+Famed Handguard
+Famed Handguard
+Dragonheir's False Fin
+Dragon­heir's False Fin
+Yanfei
+Pyro
+Yanfei
+Agnidus Agate Sliver
+Agnidus Agate Fragment
+Agnidus Agate Chunk
+Agnidus Agate Gemstone
+
+Agnidus Agate	
+Noctilucous Jade
+Noc­ti­lu­cous Jade
+Treasure Hoarder Insignia
+Treasure Hoarder Insignia
+Silver Raven Insignia
+Silver Raven Insignia
+Golden Raven Insignia
+Golden Raven Insignia
+Juvenile Jade
+Juvenile Jade
+Yaoyao
+Dendro
+Yaoyao
+Nagadus Emerald Sliver
+Nagadus Emerald Fragment
+Nagadus Emerald Chunk
+Nagadus Emerald Gemstone
+
+Nagadus Emerald	
+Jueyun Chili
+Jue­yun Chi­li
+Slime Condensate
+Sli­me Con­den­sate
+Slime Secretions
+Slime Secretions
+Slime Concentrate
+Sli­me Con­cen­trate
+Quelled Creeper
+Quelled Creeper
+Yelan
+Hydro
+Yelan
+Varunada Lazurite Sliver
+Varunada Lazurite Fragment
+Varunada Lazurite Chunk
+Varunada Lazurite Gemstone
+
+Varunada Lazurite	
+Starconch
+Star­conch
+Recruit's Insignia
+Recruit's Insignia
+Sergeant's Insignia
+Sergeant's Insignia
+Lieutenant's Insignia
+Lieutenant's Insignia
+Runic Fang
+Runic Fang
+Yoimiya
+Pyro
+Yoimiya
+Agnidus Agate Sliver
+Agnidus Agate Fragment
+Agnidus Agate Chunk
+Agnidus Agate Gemstone
+
+Agnidus Agate	
+Naku Weed
+Naku Weed
+Divining Scroll
+Divining Scroll
+Sealed Scroll
+Sealed Scroll
+Forbidden Curse Scroll
+Forbidden Curse Scroll
+Smoldering Pearl
+Smol­der­ing Pearl
+Yumemizuki Mizuki
+Anemo
+Mizuki
+Vayuda Turquoise Sliver
+Vayuda Turquoise Fragment
+Vayuda Turquoise Chunk
+Vayuda Turquoise Gemstone
+
+Vayuda Turquoise	
+Sea Ganoderma
+Sea Gan­o­der­ma
+Old Handguard
+Old Handguard
+Kageuchi Handguard
+Kageuchi Handguard
+Famed Handguard
+Famed Handguard
+Talisman of the Enigmatic Land
+Talisman of the Enigmatic Land
+Yun Jin
+Geo
+Yun Jin
+Prithiva Topaz Sliver
+Prithiva Topaz Fragment
+Prithiva Topaz Chunk
+Prithiva Topaz Gemstone
+
+Prithiva Topaz	
+Glaze Lily
+Glaze Lily
+Damaged Mask
+Damaged Mask
+Stained Mask
+Stained Mask
+Ominous Mask
+Ominous Mask
+Riftborn Regalia
+Riftborn Regalia
+Zhongli
+Geo
+Zhongli
+Prithiva Topaz Sliver
+Prithiva Topaz Fragment
+Prithiva Topaz Chunk
+Prithiva Topaz Gemstone
+
+Prithiva Topaz	
+Cor Lapis
+Cor Lapis
+Slime Condensate
+Sli­me Con­den­sate
+Slime Secretions
+Slime Secretions
+Slime Concentrate
+Sli­me Con­cen­trate
+Basalt Pillar
+Basalt Pillar
+Zibai
+Geo
+Zibai
+Prithiva Topaz Sliver
+Prithiva Topaz Fragment
+Prithiva Topaz Chunk
+Prithiva Topaz Gemstone
+
+Prithiva Topaz	
+Glaze Lily
+Glaze Lily
+Tattered Warrant
+Tattered Warrant
+Immaculate Warrant
+Immaculate Warrant
+Frost-Etched Warrant
+Frost-Etched Warrant
+Remnant of the Dreadwing
+Remnant of the Dreadwing

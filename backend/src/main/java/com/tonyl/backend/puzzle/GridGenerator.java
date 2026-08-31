@@ -113,10 +113,8 @@ public class GridGenerator {
                 continue; // this particular dimension split didn't leave enough categories, retry
             }
 
-            Collections.shuffle(rowPool, random);
-            Collections.shuffle(colPool, random);
-            List<CategoryDefinition> rows = rowPool.subList(0, GRID_SIZE);
-            List<CategoryDefinition> cols = colPool.subList(0, GRID_SIZE);
+            List<CategoryDefinition> rows = weightedSample(rowPool, GRID_SIZE, random);
+            List<CategoryDefinition> cols = weightedSample(colPool, GRID_SIZE, random);
 
             // Soft rejection of monodimensional sides: the baseline proposal above is
             // unchanged, but a side that came out all-one-dimension gets a chance to be
@@ -308,6 +306,38 @@ public class GridGenerator {
             }
         }
         return result;
+    }
+
+    /**
+     * Picks `count` distinct categories from `pool` without replacement, biased
+     * by each category's own {@link CategoryDefinition#getWeight()} - a plain
+     * uniform pick (Collections.shuffle + subList) is exactly the weight=1.0
+     * special case of this, so every existing category/game that never opts
+     * into a non-default weight behaves identically to before.
+     * <p>
+     * Efraimidis-Spirakis weighted sampling: draw each item a random "arrival
+     * key" from an exponential distribution scaled by 1/weight (a higher
+     * weight produces a smaller expected key, i.e. "arrives earlier"), then
+     * take the `count` smallest keys. Standard, correct, O(n log n), and -
+     * important for Daily's determinism guarantee - every draw comes from the
+     * same seeded `random`, so the same seed still always produces the same
+     * puzzle.
+     */
+    private List<CategoryDefinition> weightedSample(List<CategoryDefinition> pool, int count, Random random) {
+        // Each item's key must be drawn exactly once before sorting, not
+        // inside the comparator - a comparator can be invoked more than once
+        // per pair while sorting, and re-rolling random.nextDouble() on a
+        // later call would both break the weighting and risk Java throwing
+        // "Comparison method violates its general contract" from an
+        // inconsistent comparator.
+        Map<CategoryDefinition, Double> keys = new HashMap<>();
+        for (CategoryDefinition cat : pool) {
+            keys.put(cat, -Math.log(random.nextDouble()) / Math.max(cat.getWeight(), 1e-9));
+        }
+        return pool.stream()
+            .sorted(Comparator.comparingDouble(keys::get))
+            .limit(count)
+            .collect(Collectors.toList());
     }
 
     /**

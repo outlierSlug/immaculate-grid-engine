@@ -1,0 +1,1554 @@
+{
+  "characters": [
+    {
+      "name": "Aino",
+      "boss_material": "Precision Kuuvahki Stamping Die",
+      "local_specialty": "Portable Bearing",
+      "common_material_tiers": [
+        "Broken Drive Shaft",
+        "Reinforced Drive Shaft",
+        "Precision Drive Shaft"
+      ],
+      "common_material": "Precision Drive Shaft",
+      "ascension_stat_prop": "FIGHT_PROP_ELEMENT_MASTERY",
+      "ascension_stat_label": "Elemental Mastery"
+    },
+    {
+      "name": "Albedo",
+      "boss_material": "Basalt Pillar",
+      "local_specialty": "Cecilia",
+      "common_material_tiers": [
+        "Divining Scroll",
+        "Sealed Scroll",
+        "Forbidden Curse Scroll"
+      ],
+      "common_material": "Forbidden Curse Scroll",
+      "ascension_stat_prop": "FIGHT_PROP_ROCK_ADD_HURT",
+      "ascension_stat_label": "Geo DMG Bonus%"
+    },
+    {
+      "name": "Alhaitham",
+      "boss_material": "Pseudo-Stamens",
+      "local_specialty": "Sand Grease Pupa",
+      "common_material_tiers": [
+        "Faded Red Satin",
+        "Trimmed Red Silk",
+        "Rich Red Brocade"
+      ],
+      "common_material": "Rich Red Brocade",
+      "ascension_stat_prop": "FIGHT_PROP_GRASS_ADD_HURT",
+      "ascension_stat_label": "Dendro DMG Bonus%"
+    },
+    {
+      "name": "Aloy",
+      "boss_material": "Crystalline Bloom",
+      "local_specialty": "Crystal Marrow",
+      "common_material_tiers": [
+        "Spectral Husk",
+        "Spectral Heart",
+        "Spectral Nucleus"
+      ],
+      "common_material": "Spectral Nucleus",
+      "ascension_stat_prop": "FIGHT_PROP_ICE_ADD_HURT",
+      "ascension_stat_label": "Cryo DMG Bonus%"
+    },
+    {
+      "name": "Alyosha",
+      "boss_material": "Severed Tail of the Sky-Roamer",
+      "local_specialty": "Flockingweed",
+      "common_material_tiers": [
+        "Chimeric Core",
+        "Symbiotic Chimeric Nucleus",
+        "Prime Chimeric Nexus"
+      ],
+      "common_material": "Prime Chimeric Nexus",
+      "ascension_stat_prop": "FIGHT_PROP_CHARGE_EFFICIENCY",
+      "ascension_stat_label": "Energy Recharge%"
+    },
+    {
+      "name": "Amber",
+      "boss_material": "Everflame Seed",
+      "local_specialty": "Small Lamp Grass",
+      "common_material_tiers": [
+        "Firm Arrowhead",
+        "Sharp Arrowhead",
+        "Weathered Arrowhead"
+      ],
+      "common_material": "Weathered Arrowhead",
+      "ascension_stat_prop": "FIGHT_PROP_ATTACK_PERCENT",
+      "ascension_stat_label": "ATK%"
+    },
+    {
+      "name": "Arataki Itto",
+      "boss_material": "Riftborn Regalia",
+      "local_specialty": "Onikabuto",
+      "common_material_tiers": [
+        "Slime Condensate",
+        "Slime Secretions",
+        "Slime Concentrate"
+      ],
+      "common_material": "Slime Concentrate",
+      "ascension_stat_prop": "FIGHT_PROP_CRITICAL",
+      "ascension_stat_label": "CRIT Rate%"
+    },
+    {
+      "name": "Arlecchino",
+      "boss_material": "Fragment of a Golden Melody",
+      "local_specialty": "Rainbow Rose",
+      "common_material_tiers": [
+        "Recruit's Insignia",
+        "Sergeant's Insignia",
+        "Lieutenant's Insignia"
+      ],
+      "common_material": "Lieutenant's Insignia",
+      "ascension_stat_prop": "FIGHT_PROP_CRITICAL_HURT",
+      "ascension_stat_label": "CRIT DMG%"
+    },
+    {
+      "name": "Baizhu",
+      "boss_material": "Evergloom Ring",
+      "local_specialty": "Violetgrass",
+      "common_material_tiers": [
+        "Fungal Spores",
+        "Luminescent Pollen",
+        "Crystalline Cyst Dust"
+      ],
+      "common_material": "Crystalline Cyst Dust",
+      "ascension_stat_prop": "FIGHT_PROP_HP_PERCENT",
+      "ascension_stat_label": "HP%"
+    },
+    {
+      "name": "Barbara",
+      "boss_material": "Cleansing Heart",
+      "local_specialty": "Philanemo Mushroom",
+      "common_material_tiers": [
+        "Divining Scroll",
+        "Sealed Scroll",
+        "Forbidden Curse Scroll"
+      ],
+      "common_material": "Forbidden Curse Scroll",
+      "ascension_stat_prop": "FIGHT_PROP_HP_PERCENT",
+      "ascension_stat_label": "HP%"
+    },
+    {
+      "name": "Beidou",
+      "boss_material": "Lightning Prism",
+      "local_specialty": "Noctilucous Jade",
+      "common_material_tiers": [
+        "Treasure Hoarder Insignia",
+        "Silver Raven Insignia",
+        "Golden Raven Insignia"
+      ],
+      "common_material": "Golden Raven Insignia",
+      "ascension_stat_prop": "FIGHT_PROP_ELEC_ADD_HURT",
+      "ascension_stat_label": "Electro DMG Bonus%"
+    },
+    {
+      "name": "Bennett",
+      "boss_material": "Everflame Seed",
+      "local_specialty": "Windwheel Aster",
+      "common_material_tiers": [
+        "Treasure Hoarder Insignia",
+        "Silver Raven Insignia",
+        "Golden Raven Insignia"
+      ],
+      "common_material": "Golden Raven Insignia",
+      "ascension_stat_prop": "FIGHT_PROP_CHARGE_EFFICIENCY",
+      "ascension_stat_label": "Energy Recharge%"
+    },
+    {
+      "name": "Candace",
+      "boss_material": "Light Guiding Tetrahedron",
+      "local_specialty": "Henna Berry",
+      "common_material_tiers": [
+        "Faded Red Satin",
+        "Trimmed Red Silk",
+        "Rich Red Brocade"
+      ],
+      "common_material": "Rich Red Brocade",
+      "ascension_stat_prop": "FIGHT_PROP_HP_PERCENT",
+      "ascension_stat_label": "HP%"
+    },
+    {
+      "name": "Charlotte",
+      "boss_material": "\"Tourbillon Device\"",
+      "local_specialty": "Beryl Conch",
+      "common_material_tiers": [
+        "Meshing Gear",
+        "Mechanical Spur Gear",
+        "Artificed Dynamic Gear"
+      ],
+      "common_material": "Artificed Dynamic Gear",
+      "ascension_stat_prop": "FIGHT_PROP_ATTACK_PERCENT",
+      "ascension_stat_label": "ATK%"
+    },
+    {
+      "name": "Chasca",
+      "boss_material": "Ensnaring Gaze",
+      "local_specialty": "Withering Purpurbloom",
+      "common_material_tiers": [
+        "Juvenile Fang",
+        "Seasoned Fang",
+        "Tyrant's Fang"
+      ],
+      "common_material": "Tyrant's Fang",
+      "ascension_stat_prop": "FIGHT_PROP_CRITICAL",
+      "ascension_stat_label": "CRIT Rate%"
+    },
+    {
+      "name": "Chevreuse",
+      "boss_material": "Fontemer Unihorn",
+      "local_specialty": "Lumidouce Bell",
+      "common_material_tiers": [
+        "Meshing Gear",
+        "Mechanical Spur Gear",
+        "Artificed Dynamic Gear"
+      ],
+      "common_material": "Artificed Dynamic Gear",
+      "ascension_stat_prop": "FIGHT_PROP_HP_PERCENT",
+      "ascension_stat_label": "HP%"
+    },
+    {
+      "name": "Chiori",
+      "boss_material": "Artificed Spare Clockwork Component \u2014 Coppelia",
+      "local_specialty": "Dendrobium",
+      "common_material_tiers": [
+        "Spectral Husk",
+        "Spectral Heart",
+        "Spectral Nucleus"
+      ],
+      "common_material": "Spectral Nucleus",
+      "ascension_stat_prop": "FIGHT_PROP_CRITICAL",
+      "ascension_stat_label": "CRIT Rate%"
+    },
+    {
+      "name": "Chongyun",
+      "boss_material": "Hoarfrost Core",
+      "local_specialty": "Cor Lapis",
+      "common_material_tiers": [
+        "Damaged Mask",
+        "Stained Mask",
+        "Ominous Mask"
+      ],
+      "common_material": "Ominous Mask",
+      "ascension_stat_prop": "FIGHT_PROP_ATTACK_PERCENT",
+      "ascension_stat_label": "ATK%"
+    },
+    {
+      "name": "Citlali",
+      "boss_material": "Talisman of the Enigmatic Land",
+      "local_specialty": "Quenepa Berry",
+      "common_material_tiers": [
+        "Juvenile Fang",
+        "Seasoned Fang",
+        "Tyrant's Fang"
+      ],
+      "common_material": "Tyrant's Fang",
+      "ascension_stat_prop": "FIGHT_PROP_ELEMENT_MASTERY",
+      "ascension_stat_label": "Elemental Mastery"
+    },
+    {
+      "name": "Clorinde",
+      "boss_material": "Fontemer Unihorn",
+      "local_specialty": "Lumitoile",
+      "common_material_tiers": [
+        "Transoceanic Pearl",
+        "Transoceanic Chunk",
+        "Xenochromatic Crystal"
+      ],
+      "common_material": "Xenochromatic Crystal",
+      "ascension_stat_prop": "FIGHT_PROP_CRITICAL",
+      "ascension_stat_label": "CRIT Rate%"
+    },
+    {
+      "name": "Collei",
+      "boss_material": "Majestic Hooked Beak",
+      "local_specialty": "Rukkhashava Mushrooms",
+      "common_material_tiers": [
+        "Firm Arrowhead",
+        "Sharp Arrowhead",
+        "Weathered Arrowhead"
+      ],
+      "common_material": "Weathered Arrowhead",
+      "ascension_stat_prop": "FIGHT_PROP_ATTACK_PERCENT",
+      "ascension_stat_label": "ATK%"
+    },
+    {
+      "name": "Columbina",
+      "boss_material": "Radiant Antler",
+      "local_specialty": "Winter Icelea",
+      "common_material_tiers": [
+        "Slime Condensate",
+        "Slime Secretions",
+        "Slime Concentrate"
+      ],
+      "common_material": "Slime Concentrate",
+      "ascension_stat_prop": "FIGHT_PROP_CRITICAL",
+      "ascension_stat_label": "CRIT Rate%"
+    },
+    {
+      "name": "Cyno",
+      "boss_material": "Thunderclap Fruitcore",
+      "local_specialty": "Scarab",
+      "common_material_tiers": [
+        "Divining Scroll",
+        "Sealed Scroll",
+        "Forbidden Curse Scroll"
+      ],
+      "common_material": "Forbidden Curse Scroll",
+      "ascension_stat_prop": "FIGHT_PROP_CRITICAL_HURT",
+      "ascension_stat_label": "CRIT DMG%"
+    },
+    {
+      "name": "Dahlia",
+      "boss_material": "Secret Source Airflow Accumulator",
+      "local_specialty": "Calla Lily",
+      "common_material_tiers": [
+        "Firm Arrowhead",
+        "Sharp Arrowhead",
+        "Weathered Arrowhead"
+      ],
+      "common_material": "Weathered Arrowhead",
+      "ascension_stat_prop": "FIGHT_PROP_HP_PERCENT",
+      "ascension_stat_label": "HP%"
+    },
+    {
+      "name": "Dehya",
+      "boss_material": "Light Guiding Tetrahedron",
+      "local_specialty": "Sand Grease Pupa",
+      "common_material_tiers": [
+        "Faded Red Satin",
+        "Trimmed Red Silk",
+        "Rich Red Brocade"
+      ],
+      "common_material": "Rich Red Brocade",
+      "ascension_stat_prop": "FIGHT_PROP_HP_PERCENT",
+      "ascension_stat_label": "HP%"
+    },
+    {
+      "name": "Diluc",
+      "boss_material": "Everflame Seed",
+      "local_specialty": "Small Lamp Grass",
+      "common_material_tiers": [
+        "Recruit's Insignia",
+        "Sergeant's Insignia",
+        "Lieutenant's Insignia"
+      ],
+      "common_material": "Lieutenant's Insignia",
+      "ascension_stat_prop": "FIGHT_PROP_CRITICAL",
+      "ascension_stat_label": "CRIT Rate%"
+    },
+    {
+      "name": "Diona",
+      "boss_material": "Hoarfrost Core",
+      "local_specialty": "Calla Lily",
+      "common_material_tiers": [
+        "Firm Arrowhead",
+        "Sharp Arrowhead",
+        "Weathered Arrowhead"
+      ],
+      "common_material": "Weathered Arrowhead",
+      "ascension_stat_prop": "FIGHT_PROP_ICE_ADD_HURT",
+      "ascension_stat_label": "Cryo DMG Bonus%"
+    },
+    {
+      "name": "Dori",
+      "boss_material": "Thunderclap Fruitcore",
+      "local_specialty": "Kalpalata Lotus",
+      "common_material_tiers": [
+        "Faded Red Satin",
+        "Trimmed Red Silk",
+        "Rich Red Brocade"
+      ],
+      "common_material": "Rich Red Brocade",
+      "ascension_stat_prop": "FIGHT_PROP_HP_PERCENT",
+      "ascension_stat_label": "HP%"
+    },
+    {
+      "name": "Durin",
+      "boss_material": "Cyclic Military Kuuvahki Core",
+      "local_specialty": "Frostlamp Flower",
+      "common_material_tiers": [
+        "Tattered Warrant",
+        "Immaculate Warrant",
+        "Frost-Etched Warrant"
+      ],
+      "common_material": "Frost-Etched Warrant",
+      "ascension_stat_prop": "FIGHT_PROP_CRITICAL_HURT",
+      "ascension_stat_label": "CRIT DMG%"
+    },
+    {
+      "name": "Emilie",
+      "boss_material": "Fragment of a Golden Melody",
+      "local_specialty": "Lakelight Lily",
+      "common_material_tiers": [
+        "Meshing Gear",
+        "Mechanical Spur Gear",
+        "Artificed Dynamic Gear"
+      ],
+      "common_material": "Artificed Dynamic Gear",
+      "ascension_stat_prop": "FIGHT_PROP_CRITICAL_HURT",
+      "ascension_stat_label": "CRIT DMG%"
+    },
+    {
+      "name": "Escoffier",
+      "boss_material": "Secret Source Airflow Accumulator",
+      "local_specialty": "Beryl Conch",
+      "common_material_tiers": [
+        "Meshing Gear",
+        "Mechanical Spur Gear",
+        "Artificed Dynamic Gear"
+      ],
+      "common_material": "Artificed Dynamic Gear",
+      "ascension_stat_prop": "FIGHT_PROP_CRITICAL",
+      "ascension_stat_label": "CRIT Rate%"
+    },
+    {
+      "name": "Eula",
+      "boss_material": "Crystalline Bloom",
+      "local_specialty": "Dandelion Seed",
+      "common_material_tiers": [
+        "Damaged Mask",
+        "Stained Mask",
+        "Ominous Mask"
+      ],
+      "common_material": "Ominous Mask",
+      "ascension_stat_prop": "FIGHT_PROP_CRITICAL_HURT",
+      "ascension_stat_label": "CRIT DMG%"
+    },
+    {
+      "name": "Faruzan",
+      "boss_material": "Light Guiding Tetrahedron",
+      "local_specialty": "Henna Berry",
+      "common_material_tiers": [
+        "Faded Red Satin",
+        "Trimmed Red Silk",
+        "Rich Red Brocade"
+      ],
+      "common_material": "Rich Red Brocade",
+      "ascension_stat_prop": "FIGHT_PROP_ATTACK_PERCENT",
+      "ascension_stat_label": "ATK%"
+    },
+    {
+      "name": "Fischl",
+      "boss_material": "Lightning Prism",
+      "local_specialty": "Small Lamp Grass",
+      "common_material_tiers": [
+        "Firm Arrowhead",
+        "Sharp Arrowhead",
+        "Weathered Arrowhead"
+      ],
+      "common_material": "Weathered Arrowhead",
+      "ascension_stat_prop": "FIGHT_PROP_ATTACK_PERCENT",
+      "ascension_stat_label": "ATK%"
+    },
+    {
+      "name": "Flins",
+      "boss_material": "Precision Kuuvahki Stamping Die",
+      "local_specialty": "Frostlamp Flower",
+      "common_material_tiers": [
+        "Broken Drive Shaft",
+        "Reinforced Drive Shaft",
+        "Precision Drive Shaft"
+      ],
+      "common_material": "Precision Drive Shaft",
+      "ascension_stat_prop": "FIGHT_PROP_CRITICAL_HURT",
+      "ascension_stat_label": "CRIT DMG%"
+    },
+    {
+      "name": "Freminet",
+      "boss_material": "Artificed Spare Clockwork Component \u2014 Coppelius",
+      "local_specialty": "Romaritime Flower",
+      "common_material_tiers": [
+        "Transoceanic Pearl",
+        "Transoceanic Chunk",
+        "Xenochromatic Crystal"
+      ],
+      "common_material": "Xenochromatic Crystal",
+      "ascension_stat_prop": "FIGHT_PROP_ATTACK_PERCENT",
+      "ascension_stat_label": "ATK%"
+    },
+    {
+      "name": "Furina",
+      "boss_material": "Water That Failed To Transcend",
+      "local_specialty": "Lakelight Lily",
+      "common_material_tiers": [
+        "Whopperflower Nectar",
+        "Shimmering Nectar",
+        "Energy Nectar"
+      ],
+      "common_material": "Energy Nectar",
+      "ascension_stat_prop": "FIGHT_PROP_CRITICAL",
+      "ascension_stat_label": "CRIT Rate%"
+    },
+    {
+      "name": "Gaming",
+      "boss_material": "Emperor's Resolution",
+      "local_specialty": "Starconch",
+      "common_material_tiers": [
+        "Slime Condensate",
+        "Slime Secretions",
+        "Slime Concentrate"
+      ],
+      "common_material": "Slime Concentrate",
+      "ascension_stat_prop": "FIGHT_PROP_ATTACK_PERCENT",
+      "ascension_stat_label": "ATK%"
+    },
+    {
+      "name": "Ganyu",
+      "boss_material": "Hoarfrost Core",
+      "local_specialty": "Qingxin",
+      "common_material_tiers": [
+        "Whopperflower Nectar",
+        "Shimmering Nectar",
+        "Energy Nectar"
+      ],
+      "common_material": "Energy Nectar",
+      "ascension_stat_prop": "FIGHT_PROP_CRITICAL_HURT",
+      "ascension_stat_label": "CRIT DMG%"
+    },
+    {
+      "name": "Gorou",
+      "boss_material": "Perpetual Heart",
+      "local_specialty": "Sango Pearl",
+      "common_material_tiers": [
+        "Spectral Husk",
+        "Spectral Heart",
+        "Spectral Nucleus"
+      ],
+      "common_material": "Spectral Nucleus",
+      "ascension_stat_prop": "FIGHT_PROP_ROCK_ADD_HURT",
+      "ascension_stat_label": "Geo DMG Bonus%"
+    },
+    {
+      "name": "Hu Tao",
+      "boss_material": "Juvenile Jade",
+      "local_specialty": "Silk Flower",
+      "common_material_tiers": [
+        "Whopperflower Nectar",
+        "Shimmering Nectar",
+        "Energy Nectar"
+      ],
+      "common_material": "Energy Nectar",
+      "ascension_stat_prop": "FIGHT_PROP_CRITICAL_HURT",
+      "ascension_stat_label": "CRIT DMG%"
+    },
+    {
+      "name": "Iansan",
+      "boss_material": "Ensnaring Gaze",
+      "local_specialty": "Dracolite",
+      "common_material_tiers": [
+        "Sentry's Wooden Whistle",
+        "Warrior's Metal Whistle",
+        "Saurian-Crowned Warrior's Golden Whistle"
+      ],
+      "common_material": "Saurian-Crowned Warrior's Golden Whistle",
+      "ascension_stat_prop": "FIGHT_PROP_ATTACK_PERCENT",
+      "ascension_stat_label": "ATK%"
+    },
+    {
+      "name": "Ifa",
+      "boss_material": "Sparkless Statue Core",
+      "local_specialty": "Saurian Claw Succulent",
+      "common_material_tiers": [
+        "Juvenile Fang",
+        "Seasoned Fang",
+        "Tyrant's Fang"
+      ],
+      "common_material": "Tyrant's Fang",
+      "ascension_stat_prop": "FIGHT_PROP_ELEMENT_MASTERY",
+      "ascension_stat_label": "Elemental Mastery"
+    },
+    {
+      "name": "Illuga",
+      "boss_material": "Cyclic Military Kuuvahki Core",
+      "local_specialty": "Pine Amber",
+      "common_material_tiers": [
+        "Broken Drive Shaft",
+        "Reinforced Drive Shaft",
+        "Precision Drive Shaft"
+      ],
+      "common_material": "Precision Drive Shaft",
+      "ascension_stat_prop": "FIGHT_PROP_ELEMENT_MASTERY",
+      "ascension_stat_label": "Elemental Mastery"
+    },
+    {
+      "name": "Ineffa",
+      "boss_material": "Secret Source Airflow Accumulator",
+      "local_specialty": "Glowing Hornshroom",
+      "common_material_tiers": [
+        "Sentry's Wooden Whistle",
+        "Warrior's Metal Whistle",
+        "Saurian-Crowned Warrior's Golden Whistle"
+      ],
+      "common_material": "Saurian-Crowned Warrior's Golden Whistle",
+      "ascension_stat_prop": "FIGHT_PROP_CRITICAL",
+      "ascension_stat_label": "CRIT Rate%"
+    },
+    {
+      "name": "Jahoda",
+      "boss_material": "Lightbearing Scale-Feather",
+      "local_specialty": "Portable Bearing",
+      "common_material_tiers": [
+        "Broken Drive Shaft",
+        "Reinforced Drive Shaft",
+        "Precision Drive Shaft"
+      ],
+      "common_material": "Precision Drive Shaft",
+      "ascension_stat_prop": "FIGHT_PROP_HEAL_ADD",
+      "ascension_stat_label": "Healing Bonus%"
+    },
+    {
+      "name": "Jean",
+      "boss_material": "Hurricane Seed",
+      "local_specialty": "Dandelion Seed",
+      "common_material_tiers": [
+        "Damaged Mask",
+        "Stained Mask",
+        "Ominous Mask"
+      ],
+      "common_material": "Ominous Mask",
+      "ascension_stat_prop": "FIGHT_PROP_HEAL_ADD",
+      "ascension_stat_label": "Healing Bonus%"
+    },
+    {
+      "name": "Kachina",
+      "boss_material": "Overripe Flamegranate",
+      "local_specialty": "Quenepa Berry",
+      "common_material_tiers": [
+        "Sentry's Wooden Whistle",
+        "Warrior's Metal Whistle",
+        "Saurian-Crowned Warrior's Golden Whistle"
+      ],
+      "common_material": "Saurian-Crowned Warrior's Golden Whistle",
+      "ascension_stat_prop": "FIGHT_PROP_ROCK_ADD_HURT",
+      "ascension_stat_label": "Geo DMG Bonus%"
+    },
+    {
+      "name": "Kaedehara Kazuha",
+      "boss_material": "Marionette Core",
+      "local_specialty": "Sea Ganoderma",
+      "common_material_tiers": [
+        "Treasure Hoarder Insignia",
+        "Silver Raven Insignia",
+        "Golden Raven Insignia"
+      ],
+      "common_material": "Golden Raven Insignia",
+      "ascension_stat_prop": "FIGHT_PROP_ELEMENT_MASTERY",
+      "ascension_stat_label": "Elemental Mastery"
+    },
+    {
+      "name": "Kaeya",
+      "boss_material": "Hoarfrost Core",
+      "local_specialty": "Calla Lily",
+      "common_material_tiers": [
+        "Treasure Hoarder Insignia",
+        "Silver Raven Insignia",
+        "Golden Raven Insignia"
+      ],
+      "common_material": "Golden Raven Insignia",
+      "ascension_stat_prop": "FIGHT_PROP_CHARGE_EFFICIENCY",
+      "ascension_stat_label": "Energy Recharge%"
+    },
+    {
+      "name": "Kamisato Ayaka",
+      "boss_material": "Perpetual Heart",
+      "local_specialty": "Sakura Bloom",
+      "common_material_tiers": [
+        "Old Handguard",
+        "Kageuchi Handguard",
+        "Famed Handguard"
+      ],
+      "common_material": "Famed Handguard",
+      "ascension_stat_prop": "FIGHT_PROP_CRITICAL_HURT",
+      "ascension_stat_label": "CRIT DMG%"
+    },
+    {
+      "name": "Kamisato Ayato",
+      "boss_material": "Dew of Repudiation",
+      "local_specialty": "Sakura Bloom",
+      "common_material_tiers": [
+        "Old Handguard",
+        "Kageuchi Handguard",
+        "Famed Handguard"
+      ],
+      "common_material": "Famed Handguard",
+      "ascension_stat_prop": "FIGHT_PROP_CRITICAL_HURT",
+      "ascension_stat_label": "CRIT DMG%"
+    },
+    {
+      "name": "Kaveh",
+      "boss_material": "Quelled Creeper",
+      "local_specialty": "Mourning Flower",
+      "common_material_tiers": [
+        "Fungal Spores",
+        "Luminescent Pollen",
+        "Crystalline Cyst Dust"
+      ],
+      "common_material": "Crystalline Cyst Dust",
+      "ascension_stat_prop": "FIGHT_PROP_ELEMENT_MASTERY",
+      "ascension_stat_label": "Elemental Mastery"
+    },
+    {
+      "name": "Keqing",
+      "boss_material": "Lightning Prism",
+      "local_specialty": "Cor Lapis",
+      "common_material_tiers": [
+        "Whopperflower Nectar",
+        "Shimmering Nectar",
+        "Energy Nectar"
+      ],
+      "common_material": "Energy Nectar",
+      "ascension_stat_prop": "FIGHT_PROP_CRITICAL_HURT",
+      "ascension_stat_label": "CRIT DMG%"
+    },
+    {
+      "name": "Kinich",
+      "boss_material": "Overripe Flamegranate",
+      "local_specialty": "Saurian Claw Succulent",
+      "common_material_tiers": [
+        "Juvenile Fang",
+        "Seasoned Fang",
+        "Tyrant's Fang"
+      ],
+      "common_material": "Tyrant's Fang",
+      "ascension_stat_prop": "FIGHT_PROP_CRITICAL_HURT",
+      "ascension_stat_label": "CRIT DMG%"
+    },
+    {
+      "name": "Kirara",
+      "boss_material": "Evergloom Ring",
+      "local_specialty": "Amakumo Fruit",
+      "common_material_tiers": [
+        "Spectral Husk",
+        "Spectral Heart",
+        "Spectral Nucleus"
+      ],
+      "common_material": "Spectral Nucleus",
+      "ascension_stat_prop": "FIGHT_PROP_HP_PERCENT",
+      "ascension_stat_label": "HP%"
+    },
+    {
+      "name": "Klee",
+      "boss_material": "Everflame Seed",
+      "local_specialty": "Philanemo Mushroom",
+      "common_material_tiers": [
+        "Divining Scroll",
+        "Sealed Scroll",
+        "Forbidden Curse Scroll"
+      ],
+      "common_material": "Forbidden Curse Scroll",
+      "ascension_stat_prop": "FIGHT_PROP_FIRE_ADD_HURT",
+      "ascension_stat_label": "Pyro DMG Bonus%"
+    },
+    {
+      "name": "Kujou Sara",
+      "boss_material": "Storm Beads",
+      "local_specialty": "Dendrobium",
+      "common_material_tiers": [
+        "Damaged Mask",
+        "Stained Mask",
+        "Ominous Mask"
+      ],
+      "common_material": "Ominous Mask",
+      "ascension_stat_prop": "FIGHT_PROP_ATTACK_PERCENT",
+      "ascension_stat_label": "ATK%"
+    },
+    {
+      "name": "Kuki Shinobu",
+      "boss_material": "Runic Fang",
+      "local_specialty": "Naku Weed",
+      "common_material_tiers": [
+        "Spectral Husk",
+        "Spectral Heart",
+        "Spectral Nucleus"
+      ],
+      "common_material": "Spectral Nucleus",
+      "ascension_stat_prop": "FIGHT_PROP_HP_PERCENT",
+      "ascension_stat_label": "HP%"
+    },
+    {
+      "name": "Lan Yan",
+      "boss_material": "Gold-Inscribed Secret Source Core",
+      "local_specialty": "Clearwater Jade",
+      "common_material_tiers": [
+        "Whopperflower Nectar",
+        "Shimmering Nectar",
+        "Energy Nectar"
+      ],
+      "common_material": "Energy Nectar",
+      "ascension_stat_prop": "FIGHT_PROP_ATTACK_PERCENT",
+      "ascension_stat_label": "ATK%"
+    },
+    {
+      "name": "Lauma",
+      "boss_material": "Lightbearing Scale-Feather",
+      "local_specialty": "Moonfall Silver",
+      "common_material_tiers": [
+        "Tattered Warrant",
+        "Immaculate Warrant",
+        "Frost-Etched Warrant"
+      ],
+      "common_material": "Frost-Etched Warrant",
+      "ascension_stat_prop": "FIGHT_PROP_ELEMENT_MASTERY",
+      "ascension_stat_label": "Elemental Mastery"
+    },
+    {
+      "name": "Layla",
+      "boss_material": "Perpetual Caliber",
+      "local_specialty": "Nilotpala Lotus",
+      "common_material_tiers": [
+        "Divining Scroll",
+        "Sealed Scroll",
+        "Forbidden Curse Scroll"
+      ],
+      "common_material": "Forbidden Curse Scroll",
+      "ascension_stat_prop": "FIGHT_PROP_HP_PERCENT",
+      "ascension_stat_label": "HP%"
+    },
+    {
+      "name": "Linnea",
+      "boss_material": "Plume of the Fallen Watcher",
+      "local_specialty": "Etherwing Moth",
+      "common_material_tiers": [
+        "Tattered Warrant",
+        "Immaculate Warrant",
+        "Frost-Etched Warrant"
+      ],
+      "common_material": "Frost-Etched Warrant",
+      "ascension_stat_prop": "FIGHT_PROP_CRITICAL",
+      "ascension_stat_label": "CRIT Rate%"
+    },
+    {
+      "name": "Lisa",
+      "boss_material": "Lightning Prism",
+      "local_specialty": "Valberry",
+      "common_material_tiers": [
+        "Slime Condensate",
+        "Slime Secretions",
+        "Slime Concentrate"
+      ],
+      "common_material": "Slime Concentrate",
+      "ascension_stat_prop": "FIGHT_PROP_ELEMENT_MASTERY",
+      "ascension_stat_label": "Elemental Mastery"
+    },
+    {
+      "name": "Lohen",
+      "boss_material": "Prismatic Severed Tail",
+      "local_specialty": "Etherwing Moth",
+      "common_material_tiers": [
+        "Firm Arrowhead",
+        "Sharp Arrowhead",
+        "Weathered Arrowhead"
+      ],
+      "common_material": "Weathered Arrowhead",
+      "ascension_stat_prop": "FIGHT_PROP_CRITICAL_HURT",
+      "ascension_stat_label": "CRIT DMG%"
+    },
+    {
+      "name": "Lynette",
+      "boss_material": "Artificed Spare Clockwork Component \u2014 Coppelia",
+      "local_specialty": "Lumidouce Bell",
+      "common_material_tiers": [
+        "Meshing Gear",
+        "Mechanical Spur Gear",
+        "Artificed Dynamic Gear"
+      ],
+      "common_material": "Artificed Dynamic Gear",
+      "ascension_stat_prop": "FIGHT_PROP_WIND_ADD_HURT",
+      "ascension_stat_label": "Anemo DMG Bonus%"
+    },
+    {
+      "name": "Lyney",
+      "boss_material": "Emperor's Resolution",
+      "local_specialty": "Rainbow Rose",
+      "common_material_tiers": [
+        "Recruit's Insignia",
+        "Sergeant's Insignia",
+        "Lieutenant's Insignia"
+      ],
+      "common_material": "Lieutenant's Insignia",
+      "ascension_stat_prop": "FIGHT_PROP_CRITICAL",
+      "ascension_stat_label": "CRIT Rate%"
+    },
+    {
+      "name": "Mavuika",
+      "boss_material": "Gold-Inscribed Secret Source Core",
+      "local_specialty": "Withering Purpurbloom",
+      "common_material_tiers": [
+        "Sentry's Wooden Whistle",
+        "Warrior's Metal Whistle",
+        "Saurian-Crowned Warrior's Golden Whistle"
+      ],
+      "common_material": "Saurian-Crowned Warrior's Golden Whistle",
+      "ascension_stat_prop": "FIGHT_PROP_CRITICAL_HURT",
+      "ascension_stat_label": "CRIT DMG%"
+    },
+    {
+      "name": "Mika",
+      "boss_material": "Pseudo-Stamens",
+      "local_specialty": "Wolfhook",
+      "common_material_tiers": [
+        "Recruit's Insignia",
+        "Sergeant's Insignia",
+        "Lieutenant's Insignia"
+      ],
+      "common_material": "Lieutenant's Insignia",
+      "ascension_stat_prop": "FIGHT_PROP_HP_PERCENT",
+      "ascension_stat_label": "HP%"
+    },
+    {
+      "name": "Mona",
+      "boss_material": "Cleansing Heart",
+      "local_specialty": "Philanemo Mushroom",
+      "common_material_tiers": [
+        "Whopperflower Nectar",
+        "Shimmering Nectar",
+        "Energy Nectar"
+      ],
+      "common_material": "Energy Nectar",
+      "ascension_stat_prop": "FIGHT_PROP_CHARGE_EFFICIENCY",
+      "ascension_stat_label": "Energy Recharge%"
+    },
+    {
+      "name": "Mualani",
+      "boss_material": "Mark of the Binding Blessing",
+      "local_specialty": "Sprayfeather Gill",
+      "common_material_tiers": [
+        "Sentry's Wooden Whistle",
+        "Warrior's Metal Whistle",
+        "Saurian-Crowned Warrior's Golden Whistle"
+      ],
+      "common_material": "Saurian-Crowned Warrior's Golden Whistle",
+      "ascension_stat_prop": "FIGHT_PROP_CRITICAL",
+      "ascension_stat_label": "CRIT Rate%"
+    },
+    {
+      "name": "Nahida",
+      "boss_material": "Quelled Creeper",
+      "local_specialty": "Kalpalata Lotus",
+      "common_material_tiers": [
+        "Fungal Spores",
+        "Luminescent Pollen",
+        "Crystalline Cyst Dust"
+      ],
+      "common_material": "Crystalline Cyst Dust",
+      "ascension_stat_prop": "FIGHT_PROP_ELEMENT_MASTERY",
+      "ascension_stat_label": "Elemental Mastery"
+    },
+    {
+      "name": "Navia",
+      "boss_material": "Artificed Spare Clockwork Component \u2014 Coppelius",
+      "local_specialty": "Spring of the First Dewdrop",
+      "common_material_tiers": [
+        "Transoceanic Pearl",
+        "Transoceanic Chunk",
+        "Xenochromatic Crystal"
+      ],
+      "common_material": "Xenochromatic Crystal",
+      "ascension_stat_prop": "FIGHT_PROP_CRITICAL_HURT",
+      "ascension_stat_label": "CRIT DMG%"
+    },
+    {
+      "name": "Nefer",
+      "boss_material": "Radiant Antler",
+      "local_specialty": "Moonfall Silver",
+      "common_material_tiers": [
+        "Tattered Warrant",
+        "Immaculate Warrant",
+        "Frost-Etched Warrant"
+      ],
+      "common_material": "Frost-Etched Warrant",
+      "ascension_stat_prop": "FIGHT_PROP_CRITICAL_HURT",
+      "ascension_stat_label": "CRIT DMG%"
+    },
+    {
+      "name": "Neuvillette",
+      "boss_material": "Fontemer Unihorn",
+      "local_specialty": "Lumitoile",
+      "common_material_tiers": [
+        "Transoceanic Pearl",
+        "Transoceanic Chunk",
+        "Xenochromatic Crystal"
+      ],
+      "common_material": "Xenochromatic Crystal",
+      "ascension_stat_prop": "FIGHT_PROP_CRITICAL_HURT",
+      "ascension_stat_label": "CRIT DMG%"
+    },
+    {
+      "name": "Nicole",
+      "boss_material": "Remnant of the Dreadwing",
+      "local_specialty": "Pine Amber",
+      "common_material_tiers": [
+        "Tattered Warrant",
+        "Immaculate Warrant",
+        "Frost-Etched Warrant"
+      ],
+      "common_material": "Frost-Etched Warrant",
+      "ascension_stat_prop": "FIGHT_PROP_ATTACK_PERCENT",
+      "ascension_stat_label": "ATK%"
+    },
+    {
+      "name": "Nilou",
+      "boss_material": "Perpetual Caliber",
+      "local_specialty": "Padisarah",
+      "common_material_tiers": [
+        "Fungal Spores",
+        "Luminescent Pollen",
+        "Crystalline Cyst Dust"
+      ],
+      "common_material": "Crystalline Cyst Dust",
+      "ascension_stat_prop": "FIGHT_PROP_HP_PERCENT",
+      "ascension_stat_label": "HP%"
+    },
+    {
+      "name": "Ningguang",
+      "boss_material": "Basalt Pillar",
+      "local_specialty": "Glaze Lily",
+      "common_material_tiers": [
+        "Recruit's Insignia",
+        "Sergeant's Insignia",
+        "Lieutenant's Insignia"
+      ],
+      "common_material": "Lieutenant's Insignia",
+      "ascension_stat_prop": "FIGHT_PROP_ROCK_ADD_HURT",
+      "ascension_stat_label": "Geo DMG Bonus%"
+    },
+    {
+      "name": "Noelle",
+      "boss_material": "Basalt Pillar",
+      "local_specialty": "Valberry",
+      "common_material_tiers": [
+        "Damaged Mask",
+        "Stained Mask",
+        "Ominous Mask"
+      ],
+      "common_material": "Ominous Mask",
+      "ascension_stat_prop": "FIGHT_PROP_DEFENSE_PERCENT",
+      "ascension_stat_label": "DEF%"
+    },
+    {
+      "name": "Odette",
+      "boss_material": "Unscorched Blossom Branch",
+      "local_specialty": "Frostfairy Flower",
+      "common_material_tiers": [
+        "Ethereal Glimmershard",
+        "Ethereal Crystal",
+        "Ethereal Crystalscale Stone"
+      ],
+      "common_material": "Ethereal Crystalscale Stone",
+      "ascension_stat_prop": "FIGHT_PROP_CRITICAL_HURT",
+      "ascension_stat_label": "CRIT DMG%"
+    },
+    {
+      "name": "Ororon",
+      "boss_material": "Mark of the Binding Blessing",
+      "local_specialty": "Glowing Hornshroom",
+      "common_material_tiers": [
+        "Juvenile Fang",
+        "Seasoned Fang",
+        "Tyrant's Fang"
+      ],
+      "common_material": "Tyrant's Fang",
+      "ascension_stat_prop": "FIGHT_PROP_ATTACK_PERCENT",
+      "ascension_stat_label": "ATK%"
+    },
+    {
+      "name": "Prune",
+      "boss_material": "Radiant Antler",
+      "local_specialty": "Winter Icelea",
+      "common_material_tiers": [
+        "Treasure Hoarder Insignia",
+        "Silver Raven Insignia",
+        "Golden Raven Insignia"
+      ],
+      "common_material": "Golden Raven Insignia",
+      "ascension_stat_prop": "FIGHT_PROP_ATTACK_PERCENT",
+      "ascension_stat_label": "ATK%"
+    },
+    {
+      "name": "Qiqi",
+      "boss_material": "Hoarfrost Core",
+      "local_specialty": "Violetgrass",
+      "common_material_tiers": [
+        "Divining Scroll",
+        "Sealed Scroll",
+        "Forbidden Curse Scroll"
+      ],
+      "common_material": "Forbidden Curse Scroll",
+      "ascension_stat_prop": "FIGHT_PROP_HEAL_ADD",
+      "ascension_stat_label": "Healing Bonus%"
+    },
+    {
+      "name": "Raiden Shogun",
+      "boss_material": "Storm Beads",
+      "local_specialty": "Amakumo Fruit",
+      "common_material_tiers": [
+        "Old Handguard",
+        "Kageuchi Handguard",
+        "Famed Handguard"
+      ],
+      "common_material": "Famed Handguard",
+      "ascension_stat_prop": "FIGHT_PROP_CHARGE_EFFICIENCY",
+      "ascension_stat_label": "Energy Recharge%"
+    },
+    {
+      "name": "Razor",
+      "boss_material": "Lightning Prism",
+      "local_specialty": "Wolfhook",
+      "common_material_tiers": [
+        "Damaged Mask",
+        "Stained Mask",
+        "Ominous Mask"
+      ],
+      "common_material": "Ominous Mask",
+      "ascension_stat_prop": "FIGHT_PROP_PHYSICAL_ADD_HURT",
+      "ascension_stat_label": "Physical DMG Bonus%"
+    },
+    {
+      "name": "Rosaria",
+      "boss_material": "Hoarfrost Core",
+      "local_specialty": "Valberry",
+      "common_material_tiers": [
+        "Recruit's Insignia",
+        "Sergeant's Insignia",
+        "Lieutenant's Insignia"
+      ],
+      "common_material": "Lieutenant's Insignia",
+      "ascension_stat_prop": "FIGHT_PROP_ATTACK_PERCENT",
+      "ascension_stat_label": "ATK%"
+    },
+    {
+      "name": "Sandrone",
+      "boss_material": "Plume of the Fallen Watcher",
+      "local_specialty": "Subdetection Unit",
+      "common_material_tiers": [
+        "Broken Drive Shaft",
+        "Reinforced Drive Shaft",
+        "Precision Drive Shaft"
+      ],
+      "common_material": "Precision Drive Shaft",
+      "ascension_stat_prop": "FIGHT_PROP_CRITICAL",
+      "ascension_stat_label": "CRIT Rate%"
+    },
+    {
+      "name": "Sangonomiya Kokomi",
+      "boss_material": "Dew of Repudiation",
+      "local_specialty": "Sango Pearl",
+      "common_material_tiers": [
+        "Spectral Husk",
+        "Spectral Heart",
+        "Spectral Nucleus"
+      ],
+      "common_material": "Spectral Nucleus",
+      "ascension_stat_prop": "FIGHT_PROP_WATER_ADD_HURT",
+      "ascension_stat_label": "Hydro DMG Bonus%"
+    },
+    {
+      "name": "Sayu",
+      "boss_material": "Marionette Core",
+      "local_specialty": "Crystal Marrow",
+      "common_material_tiers": [
+        "Whopperflower Nectar",
+        "Shimmering Nectar",
+        "Energy Nectar"
+      ],
+      "common_material": "Energy Nectar",
+      "ascension_stat_prop": "FIGHT_PROP_ELEMENT_MASTERY",
+      "ascension_stat_label": "Elemental Mastery"
+    },
+    {
+      "name": "Sethos",
+      "boss_material": "Cloudseam Scale",
+      "local_specialty": "Trishiraite",
+      "common_material_tiers": [
+        "Faded Red Satin",
+        "Trimmed Red Silk",
+        "Rich Red Brocade"
+      ],
+      "common_material": "Rich Red Brocade",
+      "ascension_stat_prop": "FIGHT_PROP_ELEMENT_MASTERY",
+      "ascension_stat_label": "Elemental Mastery"
+    },
+    {
+      "name": "Shenhe",
+      "boss_material": "Dragonheir's False Fin",
+      "local_specialty": "Qingxin",
+      "common_material_tiers": [
+        "Whopperflower Nectar",
+        "Shimmering Nectar",
+        "Energy Nectar"
+      ],
+      "common_material": "Energy Nectar",
+      "ascension_stat_prop": "FIGHT_PROP_ATTACK_PERCENT",
+      "ascension_stat_label": "ATK%"
+    },
+    {
+      "name": "Shikanoin Heizou",
+      "boss_material": "Runic Fang",
+      "local_specialty": "Onikabuto",
+      "common_material_tiers": [
+        "Treasure Hoarder Insignia",
+        "Silver Raven Insignia",
+        "Golden Raven Insignia"
+      ],
+      "common_material": "Golden Raven Insignia",
+      "ascension_stat_prop": "FIGHT_PROP_WIND_ADD_HURT",
+      "ascension_stat_label": "Anemo DMG Bonus%"
+    },
+    {
+      "name": "Sigewinne",
+      "boss_material": "Water That Failed To Transcend",
+      "local_specialty": "Romaritime Flower",
+      "common_material_tiers": [
+        "Transoceanic Pearl",
+        "Transoceanic Chunk",
+        "Xenochromatic Crystal"
+      ],
+      "common_material": "Xenochromatic Crystal",
+      "ascension_stat_prop": "FIGHT_PROP_HP_PERCENT",
+      "ascension_stat_label": "HP%"
+    },
+    {
+      "name": "Skirk",
+      "boss_material": "Ensnaring Gaze",
+      "local_specialty": "Skysplit Gembloom",
+      "common_material_tiers": [
+        "Meshing Gear",
+        "Mechanical Spur Gear",
+        "Artificed Dynamic Gear"
+      ],
+      "common_material": "Artificed Dynamic Gear",
+      "ascension_stat_prop": "FIGHT_PROP_CRITICAL_HURT",
+      "ascension_stat_label": "CRIT DMG%"
+    },
+    {
+      "name": "Sucrose",
+      "boss_material": "Hurricane Seed",
+      "local_specialty": "Windwheel Aster",
+      "common_material_tiers": [
+        "Whopperflower Nectar",
+        "Shimmering Nectar",
+        "Energy Nectar"
+      ],
+      "common_material": "Energy Nectar",
+      "ascension_stat_prop": "FIGHT_PROP_WIND_ADD_HURT",
+      "ascension_stat_label": "Anemo DMG Bonus%"
+    },
+    {
+      "name": "Tartaglia",
+      "boss_material": "Cleansing Heart",
+      "local_specialty": "Starconch",
+      "common_material_tiers": [
+        "Recruit's Insignia",
+        "Sergeant's Insignia",
+        "Lieutenant's Insignia"
+      ],
+      "common_material": "Lieutenant's Insignia",
+      "ascension_stat_prop": "FIGHT_PROP_WATER_ADD_HURT",
+      "ascension_stat_label": "Hydro DMG Bonus%"
+    },
+    {
+      "name": "Thoma",
+      "boss_material": "Smoldering Pearl",
+      "local_specialty": "Fluorescent Fungus",
+      "common_material_tiers": [
+        "Treasure Hoarder Insignia",
+        "Silver Raven Insignia",
+        "Golden Raven Insignia"
+      ],
+      "common_material": "Golden Raven Insignia",
+      "ascension_stat_prop": "FIGHT_PROP_ATTACK_PERCENT",
+      "ascension_stat_label": "ATK%"
+    },
+    {
+      "name": "Tighnari",
+      "boss_material": "Majestic Hooked Beak",
+      "local_specialty": "Nilotpala Lotus",
+      "common_material_tiers": [
+        "Fungal Spores",
+        "Luminescent Pollen",
+        "Crystalline Cyst Dust"
+      ],
+      "common_material": "Crystalline Cyst Dust",
+      "ascension_stat_prop": "FIGHT_PROP_GRASS_ADD_HURT",
+      "ascension_stat_label": "Dendro DMG Bonus%"
+    },
+    {
+      "name": "Varesa",
+      "boss_material": "Sparkless Statue Core",
+      "local_specialty": "Skysplit Gembloom",
+      "common_material_tiers": [
+        "Juvenile Fang",
+        "Seasoned Fang",
+        "Tyrant's Fang"
+      ],
+      "common_material": "Tyrant's Fang",
+      "ascension_stat_prop": "FIGHT_PROP_CRITICAL",
+      "ascension_stat_label": "CRIT Rate%"
+    },
+    {
+      "name": "Varka",
+      "boss_material": "Prismatic Severed Tail",
+      "local_specialty": "Wolfhook",
+      "common_material_tiers": [
+        "Broken Drive Shaft",
+        "Reinforced Drive Shaft",
+        "Precision Drive Shaft"
+      ],
+      "common_material": "Precision Drive Shaft",
+      "ascension_stat_prop": "FIGHT_PROP_CRITICAL_HURT",
+      "ascension_stat_label": "CRIT DMG%"
+    },
+    {
+      "name": "Venti",
+      "boss_material": "Hurricane Seed",
+      "local_specialty": "Cecilia",
+      "common_material_tiers": [
+        "Slime Condensate",
+        "Slime Secretions",
+        "Slime Concentrate"
+      ],
+      "common_material": "Slime Concentrate",
+      "ascension_stat_prop": "FIGHT_PROP_CHARGE_EFFICIENCY",
+      "ascension_stat_label": "Energy Recharge%"
+    },
+    {
+      "name": "Wanderer",
+      "boss_material": "Perpetual Caliber",
+      "local_specialty": "Rukkhashava Mushrooms",
+      "common_material_tiers": [
+        "Old Handguard",
+        "Kageuchi Handguard",
+        "Famed Handguard"
+      ],
+      "common_material": "Famed Handguard",
+      "ascension_stat_prop": "FIGHT_PROP_CRITICAL",
+      "ascension_stat_label": "CRIT Rate%"
+    },
+    {
+      "name": "Wriothesley",
+      "boss_material": "\"Tourbillon Device\"",
+      "local_specialty": "Subdetection Unit",
+      "common_material_tiers": [
+        "Meshing Gear",
+        "Mechanical Spur Gear",
+        "Artificed Dynamic Gear"
+      ],
+      "common_material": "Artificed Dynamic Gear",
+      "ascension_stat_prop": "FIGHT_PROP_CRITICAL_HURT",
+      "ascension_stat_label": "CRIT DMG%"
+    },
+    {
+      "name": "Xiangling",
+      "boss_material": "Everflame Seed",
+      "local_specialty": "Jueyun Chili",
+      "common_material_tiers": [
+        "Slime Condensate",
+        "Slime Secretions",
+        "Slime Concentrate"
+      ],
+      "common_material": "Slime Concentrate",
+      "ascension_stat_prop": "FIGHT_PROP_ELEMENT_MASTERY",
+      "ascension_stat_label": "Elemental Mastery"
+    },
+    {
+      "name": "Xianyun",
+      "boss_material": "Cloudseam Scale",
+      "local_specialty": "Clearwater Jade",
+      "common_material_tiers": [
+        "Divining Scroll",
+        "Sealed Scroll",
+        "Forbidden Curse Scroll"
+      ],
+      "common_material": "Forbidden Curse Scroll",
+      "ascension_stat_prop": "FIGHT_PROP_ATTACK_PERCENT",
+      "ascension_stat_label": "ATK%"
+    },
+    {
+      "name": "Xiao",
+      "boss_material": "Juvenile Jade",
+      "local_specialty": "Qingxin",
+      "common_material_tiers": [
+        "Slime Condensate",
+        "Slime Secretions",
+        "Slime Concentrate"
+      ],
+      "common_material": "Slime Concentrate",
+      "ascension_stat_prop": "FIGHT_PROP_CRITICAL",
+      "ascension_stat_label": "CRIT Rate%"
+    },
+    {
+      "name": "Xilonen",
+      "boss_material": "Gold-Inscribed Secret Source Core",
+      "local_specialty": "Brilliant Chrysanthemum",
+      "common_material_tiers": [
+        "Sentry's Wooden Whistle",
+        "Warrior's Metal Whistle",
+        "Saurian-Crowned Warrior's Golden Whistle"
+      ],
+      "common_material": "Saurian-Crowned Warrior's Golden Whistle",
+      "ascension_stat_prop": "FIGHT_PROP_DEFENSE_PERCENT",
+      "ascension_stat_label": "DEF%"
+    },
+    {
+      "name": "Xingqiu",
+      "boss_material": "Cleansing Heart",
+      "local_specialty": "Silk Flower",
+      "common_material_tiers": [
+        "Damaged Mask",
+        "Stained Mask",
+        "Ominous Mask"
+      ],
+      "common_material": "Ominous Mask",
+      "ascension_stat_prop": "FIGHT_PROP_ATTACK_PERCENT",
+      "ascension_stat_label": "ATK%"
+    },
+    {
+      "name": "Xinyan",
+      "boss_material": "Everflame Seed",
+      "local_specialty": "Violetgrass",
+      "common_material_tiers": [
+        "Treasure Hoarder Insignia",
+        "Silver Raven Insignia",
+        "Golden Raven Insignia"
+      ],
+      "common_material": "Golden Raven Insignia",
+      "ascension_stat_prop": "FIGHT_PROP_ATTACK_PERCENT",
+      "ascension_stat_label": "ATK%"
+    },
+    {
+      "name": "Yae Miko",
+      "boss_material": "Dragonheir's False Fin",
+      "local_specialty": "Sea Ganoderma",
+      "common_material_tiers": [
+        "Old Handguard",
+        "Kageuchi Handguard",
+        "Famed Handguard"
+      ],
+      "common_material": "Famed Handguard",
+      "ascension_stat_prop": "FIGHT_PROP_CRITICAL",
+      "ascension_stat_label": "CRIT Rate%"
+    },
+    {
+      "name": "Yanfei",
+      "boss_material": "Juvenile Jade",
+      "local_specialty": "Noctilucous Jade",
+      "common_material_tiers": [
+        "Treasure Hoarder Insignia",
+        "Silver Raven Insignia",
+        "Golden Raven Insignia"
+      ],
+      "common_material": "Golden Raven Insignia",
+      "ascension_stat_prop": "FIGHT_PROP_FIRE_ADD_HURT",
+      "ascension_stat_label": "Pyro DMG Bonus%"
+    },
+    {
+      "name": "Yaoyao",
+      "boss_material": "Quelled Creeper",
+      "local_specialty": "Jueyun Chili",
+      "common_material_tiers": [
+        "Slime Condensate",
+        "Slime Secretions",
+        "Slime Concentrate"
+      ],
+      "common_material": "Slime Concentrate",
+      "ascension_stat_prop": "FIGHT_PROP_HP_PERCENT",
+      "ascension_stat_label": "HP%"
+    },
+    {
+      "name": "Yelan",
+      "boss_material": "Runic Fang",
+      "local_specialty": "Starconch",
+      "common_material_tiers": [
+        "Recruit's Insignia",
+        "Sergeant's Insignia",
+        "Lieutenant's Insignia"
+      ],
+      "common_material": "Lieutenant's Insignia",
+      "ascension_stat_prop": "FIGHT_PROP_CRITICAL",
+      "ascension_stat_label": "CRIT Rate%"
+    },
+    {
+      "name": "Yoimiya",
+      "boss_material": "Smoldering Pearl",
+      "local_specialty": "Naku Weed",
+      "common_material_tiers": [
+        "Divining Scroll",
+        "Sealed Scroll",
+        "Forbidden Curse Scroll"
+      ],
+      "common_material": "Forbidden Curse Scroll",
+      "ascension_stat_prop": "FIGHT_PROP_CRITICAL",
+      "ascension_stat_label": "CRIT Rate%"
+    },
+    {
+      "name": "Yumemizuki Mizuki",
+      "boss_material": "Talisman of the Enigmatic Land",
+      "local_specialty": "Sea Ganoderma",
+      "common_material_tiers": [
+        "Old Handguard",
+        "Kageuchi Handguard",
+        "Famed Handguard"
+      ],
+      "common_material": "Famed Handguard",
+      "ascension_stat_prop": "FIGHT_PROP_ELEMENT_MASTERY",
+      "ascension_stat_label": "Elemental Mastery"
+    },
+    {
+      "name": "Yun Jin",
+      "boss_material": "Riftborn Regalia",
+      "local_specialty": "Glaze Lily",
+      "common_material_tiers": [
+        "Damaged Mask",
+        "Stained Mask",
+        "Ominous Mask"
+      ],
+      "common_material": "Ominous Mask",
+      "ascension_stat_prop": "FIGHT_PROP_CHARGE_EFFICIENCY",
+      "ascension_stat_label": "Energy Recharge%"
+    },
+    {
+      "name": "Zhongli",
+      "boss_material": "Basalt Pillar",
+      "local_specialty": "Cor Lapis",
+      "common_material_tiers": [
+        "Slime Condensate",
+        "Slime Secretions",
+        "Slime Concentrate"
+      ],
+      "common_material": "Slime Concentrate",
+      "ascension_stat_prop": "FIGHT_PROP_ROCK_ADD_HURT",
+      "ascension_stat_label": "Geo DMG Bonus%"
+    },
+    {
+      "name": "Zibai",
+      "boss_material": "Remnant of the Dreadwing",
+      "local_specialty": "Glaze Lily",
+      "common_material_tiers": [
+        "Tattered Warrant",
+        "Immaculate Warrant",
+        "Frost-Etched Warrant"
+      ],
+      "common_material": "Frost-Etched Warrant",
+      "ascension_stat_prop": "FIGHT_PROP_CRITICAL_HURT",
+      "ascension_stat_label": "CRIT DMG%"
+    }
+  ],
+  "traveler": {
+    "boss_material": null,
+    "local_specialty": "Windwheel Aster",
+    "common_material_tiers": [
+      "Damaged Mask",
+      "Stained Mask",
+      "Ominous Mask"
+    ],
+    "common_material": "Ominous Mask",
+    "ascension_stat_prop": "FIGHT_PROP_ATTACK_PERCENT",
+    "ascension_stat_label": "ATK%"
+  },
+  "unresolved": [
+    "Wonderland Manekin"
+  ],
+  "ambiguous": []
+}

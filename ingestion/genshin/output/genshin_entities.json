@@ -11,7 +11,11 @@
       "region": "Nod-Krai",
       "model": "Short Female",
       "release_date": "2025-09-10",
-      "release_version": "Luna I"
+      "release_version": "Luna I",
+      "local_specialty": "Portable Bearing",
+      "common_material": "Precision Drive Shaft",
+      "boss_material": "Precision Kuuvahki Stamping Die",
+      "ascension_stat": "Elemental Mastery"
     }
   },
   {
@@ -26,7 +30,11 @@
       "region": "Mondstadt",
       "model": "Medium Male",
       "release_date": "2020-12-23",
-      "release_version": "1.2"
+      "release_version": "1.2",
+      "local_specialty": "Cecilia",
+      "common_material": "Forbidden Curse Scroll",
+      "boss_material": "Basalt Pillar",
+      "ascension_stat": "Geo DMG Bonus%"
     }
   },
   {
@@ -41,7 +49,11 @@
       "region": "Sumeru",
       "model": "Tall Male",
       "release_date": "2023-01-18",
-      "release_version": "3.4"
+      "release_version": "3.4",
+      "local_specialty": "Sand Grease Pupa",
+      "common_material": "Rich Red Brocade",
+      "boss_material": "Pseudo-Stamens",
+      "ascension_stat": "Dendro DMG Bonus%"
     }
   },
   {
@@ -56,7 +68,11 @@
       "region": "",
       "model": "Medium Female",
       "release_date": "2021-09-01",
-      "release_version": "2.1"
+      "release_version": "2.1",
+      "local_specialty": "Crystal Marrow",
+      "common_material": "Spectral Nucleus",
+      "boss_material": "Crystalline Bloom",
+      "ascension_stat": "Cryo DMG Bonus%"
     }
   },
   {
@@ -71,7 +87,11 @@
       "region": "Snezhnaya",
       "model": "Medium Male",
       "release_date": "2026-08-12",
-      "release_version": "7.0"
+      "release_version": "7.0",
+      "local_specialty": "Flockingweed",
+      "common_material": "Prime Chimeric Nexus",
+      "boss_material": "Severed Tail of the Sky-Roamer",
+      "ascension_stat": "Energy Recharge%"
     }
   },
   {
@@ -86,7 +106,11 @@
       "region": "Mondstadt",
       "model": "Medium Female",
       "release_date": "2020-09-28",
-      "release_version": "1.0"
+      "release_version": "1.0",
+      "local_specialty": "Small Lamp Grass",
+      "common_material": "Weathered Arrowhead",
+      "boss_material": "Everflame Seed",
+      "ascension_stat": "ATK%"
     }
   },
   {
@@ -101,7 +125,11 @@
       "region": "Inazuma",
       "model": "Tall Male",
       "release_date": "2021-12-14",
-      "release_version": "2.3"
+      "release_version": "2.3",
+      "local_specialty": "Onikabuto",
+      "common_material": "Slime Concentrate",
+      "boss_material": "Riftborn Regalia",
+      "ascension_stat": "CRIT Rate%"
     }
   },
   {
@@ -116,7 +144,11 @@
       "region": "Snezhnaya",
       "model": "Tall Female",
       "release_date": "2024-04-24",
-      "release_version": "4.6"
+      "release_version": "4.6",
+      "local_specialty": "Rainbow Rose",
+      "common_material": "Lieutenant's Insignia",
+      "boss_material": "Fragment of a Golden Melody",
+      "ascension_stat": "CRIT DMG%"
     }
   },
   {
@@ -131,7 +163,11 @@
       "region": "Liyue",
       "model": "Tall Male",
       "release_date": "2023-05-02",
-      "release_version": "3.6"
+      "release_version": "3.6",
+      "local_specialty": "Violetgrass",
+      "common_material": "Crystalline Cyst Dust",
+      "boss_material": "Evergloom Ring",
+      "ascension_stat": "HP%"
     }
   },
   {
@@ -146,7 +182,11 @@
       "region": "Mondstadt",
       "model": "Medium Female",
       "release_date": "2020-09-28",
-      "release_version": "1.0"
+      "release_version": "1.0",
+      "local_specialty": "Philanemo Mushroom",
+      "common_material": "Forbidden Curse Scroll",
+      "boss_material": "Cleansing Heart",
+      "ascension_stat": "HP%"
     }
   },
   {
@@ -161,7 +201,11 @@
       "region": "Liyue",
       "model": "Tall Female",
       "release_date": "2020-09-28",
-      "release_version": "1.0"
+      "release_version": "1.0",
+      "local_specialty": "Noctilucous Jade",
+      "common_material": "Golden Raven Insignia",
+      "boss_material": "Lightning Prism",
+      "ascension_stat": "Electro DMG Bonus%"
     }
   },
   {
@@ -176,7 +220,11 @@
       "region": "Mondstadt",
       "model": "Medium Male",
       "release_date": "2020-09-28",
-      "release_version": "1.0"
+      "release_version": "1.0",
+      "local_specialty": "Windwheel Aster",
+      "common_material": "Golden Raven Insignia",
+      "boss_material": "Everflame Seed",
+      "ascension_stat": "Energy Recharge%"
     }
   },
   {
@@ -191,7 +239,11 @@
       "region": "Sumeru",
       "model": "Tall Female",
       "release_date": "2022-09-28",
-      "release_version": "3.1"
+      "release_version": "3.1",
+      "local_specialty": "Henna Berry",
+      "common_material": "Rich Red Brocade",
+      "boss_material": "Light Guiding Tetrahedron",
+      "ascension_stat": "HP%"
     }
   },
   {
@@ -206,7 +258,11 @@
       "region": "Fontaine",
       "model": "Medium Female",
       "release_date": "2023-11-08",
-      "release_version": "4.2"
+      "release_version": "4.2",
+      "local_specialty": "Beryl Conch",
+      "common_material": "Artificed Dynamic Gear",
+      "boss_material": "\"Tourbillon Device\"",
+      "ascension_stat": "ATK%"
     }
   },
   {
@@ -221,7 +277,11 @@
       "region": "Natlan",
       "model": "Tall Female",
       "release_date": "2024-11-20",
-      "release_version": "5.2"
+      "release_version": "5.2",
+      "local_specialty": "Withering Purpurbloom",
+      "common_material": "Tyrant's Fang",
+      "boss_material": "Ensnaring Gaze",
+      "ascension_stat": "CRIT Rate%"
     }
   },
   {
@@ -236,7 +296,11 @@
       "region": "Fontaine",
       "model": "Medium Female",
       "release_date": "2024-01-09",
-      "release_version": "4.3"
+      "release_version": "4.3",
+      "local_specialty": "Lumidouce Bell",
+      "common_material": "Artificed Dynamic Gear",
+      "boss_material": "Fontemer Unihorn",
+      "ascension_stat": "HP%"
     }
   },
   {
@@ -251,7 +315,11 @@
       "region": "Inazuma",
       "model": "Medium Female",
       "release_date": "2024-03-13",
-      "release_version": "4.5"
+      "release_version": "4.5",
+      "local_specialty": "Dendrobium",
+      "common_material": "Spectral Nucleus",
+      "boss_material": "Artificed Spare Clockwork Component — Coppelia",
+      "ascension_stat": "CRIT Rate%"
     }
   },
   {
@@ -266,7 +334,11 @@
       "region": "Liyue",
       "model": "Medium Male",
       "release_date": "2020-09-28",
-      "release_version": "1.0"
+      "release_version": "1.0",
+      "local_specialty": "Cor Lapis",
+      "common_material": "Ominous Mask",
+      "boss_material": "Hoarfrost Core",
+      "ascension_stat": "ATK%"
     }
   },
   {
@@ -281,7 +353,11 @@
       "region": "Natlan",
       "model": "Medium Female",
       "release_date": "2025-01-01",
-      "release_version": "5.3"
+      "release_version": "5.3",
+      "local_specialty": "Quenepa Berry",
+      "common_material": "Tyrant's Fang",
+      "boss_material": "Talisman of the Enigmatic Land",
+      "ascension_stat": "Elemental Mastery"
     }
   },
   {
@@ -296,7 +372,11 @@
       "region": "Fontaine",
       "model": "Tall Female",
       "release_date": "2024-06-05",
-      "release_version": "4.7"
+      "release_version": "4.7",
+      "local_specialty": "Lumitoile",
+      "common_material": "Xenochromatic Crystal",
+      "boss_material": "Fontemer Unihorn",
+      "ascension_stat": "CRIT Rate%"
     }
   },
   {
@@ -311,7 +391,11 @@
       "region": "Sumeru",
       "model": "Medium Female",
       "release_date": "2022-08-24",
-      "release_version": "3.0"
+      "release_version": "3.0",
+      "local_specialty": "Rukkhashava Mushrooms",
+      "common_material": "Weathered Arrowhead",
+      "boss_material": "Majestic Hooked Beak",
+      "ascension_stat": "ATK%"
     }
   },
   {
@@ -326,7 +410,11 @@
       "region": "Nod-Krai",
       "model": "Medium Female",
       "release_date": "2026-01-14",
-      "release_version": "Luna IV"
+      "release_version": "Luna IV",
+      "local_specialty": "Winter Icelea",
+      "common_material": "Slime Concentrate",
+      "boss_material": "Radiant Antler",
+      "ascension_stat": "CRIT Rate%"
     }
   },
   {
@@ -341,7 +429,11 @@
       "region": "Sumeru",
       "model": "Medium Male",
       "release_date": "2022-09-28",
-      "release_version": "3.1"
+      "release_version": "3.1",
+      "local_specialty": "Scarab",
+      "common_material": "Forbidden Curse Scroll",
+      "boss_material": "Thunderclap Fruitcore",
+      "ascension_stat": "CRIT DMG%"
     }
   },
   {
@@ -356,7 +448,11 @@
       "region": "Mondstadt",
       "model": "Medium Male",
       "release_date": "2025-06-18",
-      "release_version": "5.7"
+      "release_version": "5.7",
+      "local_specialty": "Calla Lily",
+      "common_material": "Weathered Arrowhead",
+      "boss_material": "Secret Source Airflow Accumulator",
+      "ascension_stat": "HP%"
     }
   },
   {
@@ -371,7 +467,11 @@
       "region": "Sumeru",
       "model": "Tall Female",
       "release_date": "2023-03-01",
-      "release_version": "3.5"
+      "release_version": "3.5",
+      "local_specialty": "Sand Grease Pupa",
+      "common_material": "Rich Red Brocade",
+      "boss_material": "Light Guiding Tetrahedron",
+      "ascension_stat": "HP%"
     }
   },
   {
@@ -386,7 +486,11 @@
       "region": "Mondstadt",
       "model": "Tall Male",
       "release_date": "2020-09-28",
-      "release_version": "1.0"
+      "release_version": "1.0",
+      "local_specialty": "Small Lamp Grass",
+      "common_material": "Lieutenant's Insignia",
+      "boss_material": "Everflame Seed",
+      "ascension_stat": "CRIT Rate%"
     }
   },
   {
@@ -401,7 +505,11 @@
       "region": "Mondstadt",
       "model": "Short Female",
       "release_date": "2020-11-11",
-      "release_version": "1.1"
+      "release_version": "1.1",
+      "local_specialty": "Calla Lily",
+      "common_material": "Weathered Arrowhead",
+      "boss_material": "Hoarfrost Core",
+      "ascension_stat": "Cryo DMG Bonus%"
     }
   },
   {
@@ -416,7 +524,11 @@
       "region": "Sumeru",
       "model": "Short Female",
       "release_date": "2022-09-09",
-      "release_version": "3.0"
+      "release_version": "3.0",
+      "local_specialty": "Kalpalata Lotus",
+      "common_material": "Rich Red Brocade",
+      "boss_material": "Thunderclap Fruitcore",
+      "ascension_stat": "HP%"
     }
   },
   {
@@ -431,7 +543,11 @@
       "region": "Mondstadt",
       "model": "Medium Male",
       "release_date": "2025-12-03",
-      "release_version": "Luna III"
+      "release_version": "Luna III",
+      "local_specialty": "Frostlamp Flower",
+      "common_material": "Frost-Etched Warrant",
+      "boss_material": "Cyclic Military Kuuvahki Core",
+      "ascension_stat": "CRIT DMG%"
     }
   },
   {
@@ -446,7 +562,11 @@
       "region": "Fontaine",
       "model": "Medium Female",
       "release_date": "2024-08-06",
-      "release_version": "4.8"
+      "release_version": "4.8",
+      "local_specialty": "Lakelight Lily",
+      "common_material": "Artificed Dynamic Gear",
+      "boss_material": "Fragment of a Golden Melody",
+      "ascension_stat": "CRIT DMG%"
     }
   },
   {
@@ -461,7 +581,11 @@
       "region": "Fontaine",
       "model": "Medium Female",
       "release_date": "2025-05-07",
-      "release_version": "5.6"
+      "release_version": "5.6",
+      "local_specialty": "Beryl Conch",
+      "common_material": "Artificed Dynamic Gear",
+      "boss_material": "Secret Source Airflow Accumulator",
+      "ascension_stat": "CRIT Rate%"
     }
   },
   {
@@ -476,7 +600,11 @@
       "region": "Mondstadt",
       "model": "Tall Female",
       "release_date": "2021-05-18",
-      "release_version": "1.5"
+      "release_version": "1.5",
+      "local_specialty": "Dandelion Seed",
+      "common_material": "Ominous Mask",
+      "boss_material": "Crystalline Bloom",
+      "ascension_stat": "CRIT DMG%"
     }
   },
   {
@@ -491,7 +619,11 @@
       "region": "Sumeru",
       "model": "Medium Female",
       "release_date": "2022-12-07",
-      "release_version": "3.3"
+      "release_version": "3.3",
+      "local_specialty": "Henna Berry",
+      "common_material": "Rich Red Brocade",
+      "boss_material": "Light Guiding Tetrahedron",
+      "ascension_stat": "ATK%"
     }
   },
   {
@@ -506,7 +638,11 @@
       "region": "Mondstadt",
       "model": "Medium Female",
       "release_date": "2020-09-28",
-      "release_version": "1.0"
+      "release_version": "1.0",
+      "local_specialty": "Small Lamp Grass",
+      "common_material": "Weathered Arrowhead",
+      "boss_material": "Lightning Prism",
+      "ascension_stat": "ATK%"
     }
   },
   {
@@ -521,7 +657,11 @@
       "region": "Nod-Krai",
       "model": "Tall Male",
       "release_date": "2025-09-30",
-      "release_version": "Luna I"
+      "release_version": "Luna I",
+      "local_specialty": "Frostlamp Flower",
+      "common_material": "Precision Drive Shaft",
+      "boss_material": "Precision Kuuvahki Stamping Die",
+      "ascension_stat": "CRIT DMG%"
     }
   },
   {
@@ -536,7 +676,11 @@
       "region": "Fontaine",
       "model": "Medium Male",
       "release_date": "2023-09-05",
-      "release_version": "4.0"
+      "release_version": "4.0",
+      "local_specialty": "Romaritime Flower",
+      "common_material": "Xenochromatic Crystal",
+      "boss_material": "Artificed Spare Clockwork Component — Coppelius",
+      "ascension_stat": "ATK%"
     }
   },
   {
@@ -551,7 +695,11 @@
       "region": "Fontaine",
       "model": "Medium Female",
       "release_date": "2023-11-08",
-      "release_version": "4.2"
+      "release_version": "4.2",
+      "local_specialty": "Lakelight Lily",
+      "common_material": "Energy Nectar",
+      "boss_material": "Water That Failed To Transcend",
+      "ascension_stat": "CRIT Rate%"
     }
   },
   {
@@ -566,7 +714,11 @@
       "region": "Liyue",
       "model": "Medium Male",
       "release_date": "2024-01-31",
-      "release_version": "4.4"
+      "release_version": "4.4",
+      "local_specialty": "Starconch",
+      "common_material": "Slime Concentrate",
+      "boss_material": "Emperor's Resolution",
+      "ascension_stat": "ATK%"
     }
   },
   {
@@ -581,7 +733,11 @@
       "region": "Liyue",
       "model": "Medium Female",
       "release_date": "2021-01-12",
-      "release_version": "1.2"
+      "release_version": "1.2",
+      "local_specialty": "Qingxin",
+      "common_material": "Energy Nectar",
+      "boss_material": "Hoarfrost Core",
+      "ascension_stat": "CRIT DMG%"
     }
   },
   {
@@ -596,7 +752,11 @@
       "region": "Inazuma",
       "model": "Medium Male",
       "release_date": "2021-12-14",
-      "release_version": "2.3"
+      "release_version": "2.3",
+      "local_specialty": "Sango Pearl",
+      "common_material": "Spectral Nucleus",
+      "boss_material": "Perpetual Heart",
+      "ascension_stat": "Geo DMG Bonus%"
     }
   },
   {
@@ -611,7 +771,11 @@
       "region": "Liyue",
       "model": "Medium Female",
       "release_date": "2021-03-02",
-      "release_version": "1.3"
+      "release_version": "1.3",
+      "local_specialty": "Silk Flower",
+      "common_material": "Energy Nectar",
+      "boss_material": "Juvenile Jade",
+      "ascension_stat": "CRIT DMG%"
     }
   },
   {
@@ -626,7 +790,11 @@
       "region": "Natlan",
       "model": "Short Female",
       "release_date": "2025-03-26",
-      "release_version": "5.5"
+      "release_version": "5.5",
+      "local_specialty": "Dracolite",
+      "common_material": "Saurian-Crowned Warrior's Golden Whistle",
+      "boss_material": "Ensnaring Gaze",
+      "ascension_stat": "ATK%"
     }
   },
   {
@@ -641,7 +809,11 @@
       "region": "Natlan",
       "model": "Tall Male",
       "release_date": "2025-05-07",
-      "release_version": "5.6"
+      "release_version": "5.6",
+      "local_specialty": "Saurian Claw Succulent",
+      "common_material": "Tyrant's Fang",
+      "boss_material": "Sparkless Statue Core",
+      "ascension_stat": "Elemental Mastery"
     }
   },
   {
@@ -656,7 +828,11 @@
       "region": "Nod-Krai",
       "model": "Medium Male",
       "release_date": "2026-02-03",
-      "release_version": "Luna IV"
+      "release_version": "Luna IV",
+      "local_specialty": "Pine Amber",
+      "common_material": "Precision Drive Shaft",
+      "boss_material": "Cyclic Military Kuuvahki Core",
+      "ascension_stat": "Elemental Mastery"
     }
   },
   {
@@ -671,7 +847,11 @@
       "region": "Nod-Krai",
       "model": "Medium Female",
       "release_date": "2025-07-30",
-      "release_version": "5.8"
+      "release_version": "5.8",
+      "local_specialty": "Glowing Hornshroom",
+      "common_material": "Saurian-Crowned Warrior's Golden Whistle",
+      "boss_material": "Secret Source Airflow Accumulator",
+      "ascension_stat": "CRIT Rate%"
     }
   },
   {
@@ -686,7 +866,11 @@
       "region": "Nod-Krai",
       "model": "Medium Female",
       "release_date": "2025-12-03",
-      "release_version": "Luna III"
+      "release_version": "Luna III",
+      "local_specialty": "Portable Bearing",
+      "common_material": "Precision Drive Shaft",
+      "boss_material": "Lightbearing Scale-Feather",
+      "ascension_stat": "Healing Bonus%"
     }
   },
   {
@@ -701,7 +885,11 @@
       "region": "Mondstadt",
       "model": "Tall Female",
       "release_date": "2020-09-28",
-      "release_version": "1.0"
+      "release_version": "1.0",
+      "local_specialty": "Dandelion Seed",
+      "common_material": "Ominous Mask",
+      "boss_material": "Hurricane Seed",
+      "ascension_stat": "Healing Bonus%"
     }
   },
   {
@@ -716,7 +904,11 @@
       "region": "Natlan",
       "model": "Short Female",
       "release_date": "2024-08-28",
-      "release_version": "5.0"
+      "release_version": "5.0",
+      "local_specialty": "Quenepa Berry",
+      "common_material": "Saurian-Crowned Warrior's Golden Whistle",
+      "boss_material": "Overripe Flamegranate",
+      "ascension_stat": "Geo DMG Bonus%"
     }
   },
   {
@@ -731,7 +923,11 @@
       "region": "Inazuma",
       "model": "Medium Male",
       "release_date": "2021-06-29",
-      "release_version": "1.6"
+      "release_version": "1.6",
+      "local_specialty": "Sea Ganoderma",
+      "common_material": "Golden Raven Insignia",
+      "boss_material": "Marionette Core",
+      "ascension_stat": "Elemental Mastery"
     }
   },
   {
@@ -746,7 +942,11 @@
       "region": "Mondstadt",
       "model": "Tall Male",
       "release_date": "2020-09-28",
-      "release_version": "1.0"
+      "release_version": "1.0",
+      "local_specialty": "Calla Lily",
+      "common_material": "Golden Raven Insignia",
+      "boss_material": "Hoarfrost Core",
+      "ascension_stat": "Energy Recharge%"
     }
   },
   {
@@ -761,7 +961,11 @@
       "region": "Inazuma",
       "model": "Medium Female",
       "release_date": "2021-07-21",
-      "release_version": "2.0"
+      "release_version": "2.0",
+      "local_specialty": "Sakura Bloom",
+      "common_material": "Famed Handguard",
+      "boss_material": "Perpetual Heart",
+      "ascension_stat": "CRIT DMG%"
     }
   },
   {
@@ -776,7 +980,11 @@
       "region": "Inazuma",
       "model": "Tall Male",
       "release_date": "2022-03-30",
-      "release_version": "2.6"
+      "release_version": "2.6",
+      "local_specialty": "Sakura Bloom",
+      "common_material": "Famed Handguard",
+      "boss_material": "Dew of Repudiation",
+      "ascension_stat": "CRIT DMG%"
     }
   },
   {
@@ -791,7 +999,11 @@
       "region": "Sumeru",
       "model": "Tall Male",
       "release_date": "2023-05-02",
-      "release_version": "3.6"
+      "release_version": "3.6",
+      "local_specialty": "Mourning Flower",
+      "common_material": "Crystalline Cyst Dust",
+      "boss_material": "Quelled Creeper",
+      "ascension_stat": "Elemental Mastery"
     }
   },
   {
@@ -806,7 +1018,11 @@
       "region": "Liyue",
       "model": "Medium Female",
       "release_date": "2020-09-28",
-      "release_version": "1.0"
+      "release_version": "1.0",
+      "local_specialty": "Cor Lapis",
+      "common_material": "Energy Nectar",
+      "boss_material": "Lightning Prism",
+      "ascension_stat": "CRIT DMG%"
     }
   },
   {
@@ -821,7 +1037,11 @@
       "region": "Natlan",
       "model": "Medium Male",
       "release_date": "2024-09-17",
-      "release_version": "5.0"
+      "release_version": "5.0",
+      "local_specialty": "Saurian Claw Succulent",
+      "common_material": "Tyrant's Fang",
+      "boss_material": "Overripe Flamegranate",
+      "ascension_stat": "CRIT DMG%"
     }
   },
   {
@@ -836,7 +1056,11 @@
       "region": "Inazuma",
       "model": "Medium Female",
       "release_date": "2023-05-24",
-      "release_version": "3.7"
+      "release_version": "3.7",
+      "local_specialty": "Amakumo Fruit",
+      "common_material": "Spectral Nucleus",
+      "boss_material": "Evergloom Ring",
+      "ascension_stat": "HP%"
     }
   },
   {
@@ -851,7 +1075,11 @@
       "region": "Mondstadt",
       "model": "Short Female",
       "release_date": "2020-10-20",
-      "release_version": "1.0"
+      "release_version": "1.0",
+      "local_specialty": "Philanemo Mushroom",
+      "common_material": "Forbidden Curse Scroll",
+      "boss_material": "Everflame Seed",
+      "ascension_stat": "Pyro DMG Bonus%"
     }
   },
   {
@@ -866,7 +1094,11 @@
       "region": "Inazuma",
       "model": "Tall Female",
       "release_date": "2021-09-01",
-      "release_version": "2.1"
+      "release_version": "2.1",
+      "local_specialty": "Dendrobium",
+      "common_material": "Ominous Mask",
+      "boss_material": "Storm Beads",
+      "ascension_stat": "ATK%"
     }
   },
   {
@@ -881,7 +1113,11 @@
       "region": "Inazuma",
       "model": "Medium Female",
       "release_date": "2022-06-21",
-      "release_version": "2.7"
+      "release_version": "2.7",
+      "local_specialty": "Naku Weed",
+      "common_material": "Spectral Nucleus",
+      "boss_material": "Runic Fang",
+      "ascension_stat": "HP%"
     }
   },
   {
@@ -896,7 +1132,11 @@
       "region": "Liyue",
       "model": "Medium Female",
       "release_date": "2025-01-21",
-      "release_version": "5.3"
+      "release_version": "5.3",
+      "local_specialty": "Clearwater Jade",
+      "common_material": "Energy Nectar",
+      "boss_material": "Gold-Inscribed Secret Source Core",
+      "ascension_stat": "ATK%"
     }
   },
   {
@@ -911,7 +1151,11 @@
       "region": "Nod-Krai",
       "model": "Tall Female",
       "release_date": "2025-09-10",
-      "release_version": "Luna I"
+      "release_version": "Luna I",
+      "local_specialty": "Moonfall Silver",
+      "common_material": "Frost-Etched Warrant",
+      "boss_material": "Lightbearing Scale-Feather",
+      "ascension_stat": "Elemental Mastery"
     }
   },
   {
@@ -926,7 +1170,11 @@
       "region": "Sumeru",
       "model": "Medium Female",
       "release_date": "2022-11-18",
-      "release_version": "3.2"
+      "release_version": "3.2",
+      "local_specialty": "Nilotpala Lotus",
+      "common_material": "Forbidden Curse Scroll",
+      "boss_material": "Perpetual Caliber",
+      "ascension_stat": "HP%"
     }
   },
   {
@@ -941,7 +1189,11 @@
       "region": "Nod-Krai",
       "model": "Medium Female",
       "release_date": "2026-04-08",
-      "release_version": "Luna VI"
+      "release_version": "Luna VI",
+      "local_specialty": "Etherwing Moth",
+      "common_material": "Frost-Etched Warrant",
+      "boss_material": "Plume of the Fallen Watcher",
+      "ascension_stat": "CRIT Rate%"
     }
   },
   {
@@ -956,7 +1208,11 @@
       "region": "Mondstadt",
       "model": "Tall Female",
       "release_date": "2020-09-28",
-      "release_version": "1.0"
+      "release_version": "1.0",
+      "local_specialty": "Valberry",
+      "common_material": "Slime Concentrate",
+      "boss_material": "Lightning Prism",
+      "ascension_stat": "Elemental Mastery"
     }
   },
   {
@@ -971,7 +1227,11 @@
       "region": "Mondstadt",
       "model": "Medium Male",
       "release_date": "2026-06-09",
-      "release_version": "Luna VII"
+      "release_version": "Luna VII",
+      "local_specialty": "Etherwing Moth",
+      "common_material": "Weathered Arrowhead",
+      "boss_material": "Prismatic Severed Tail",
+      "ascension_stat": "CRIT DMG%"
     }
   },
   {
@@ -986,7 +1246,11 @@
       "region": "Fontaine",
       "model": "Medium Female",
       "release_date": "2023-08-16",
-      "release_version": "4.0"
+      "release_version": "4.0",
+      "local_specialty": "Lumidouce Bell",
+      "common_material": "Artificed Dynamic Gear",
+      "boss_material": "Artificed Spare Clockwork Component — Coppelia",
+      "ascension_stat": "Anemo DMG Bonus%"
     }
   },
   {
@@ -1001,7 +1265,11 @@
       "region": "Fontaine",
       "model": "Medium Male",
       "release_date": "2023-08-16",
-      "release_version": "4.0"
+      "release_version": "4.0",
+      "local_specialty": "Rainbow Rose",
+      "common_material": "Lieutenant's Insignia",
+      "boss_material": "Emperor's Resolution",
+      "ascension_stat": "CRIT Rate%"
     }
   },
   {
@@ -1016,7 +1284,11 @@
       "region": "Natlan",
       "model": "Tall Female",
       "release_date": "2025-01-01",
-      "release_version": "5.3"
+      "release_version": "5.3",
+      "local_specialty": "Withering Purpurbloom",
+      "common_material": "Saurian-Crowned Warrior's Golden Whistle",
+      "boss_material": "Gold-Inscribed Secret Source Core",
+      "ascension_stat": "CRIT DMG%"
     }
   },
   {
@@ -1031,7 +1303,11 @@
       "region": "Mondstadt",
       "model": "Medium Male",
       "release_date": "2023-03-21",
-      "release_version": "3.5"
+      "release_version": "3.5",
+      "local_specialty": "Wolfhook",
+      "common_material": "Lieutenant's Insignia",
+      "boss_material": "Pseudo-Stamens",
+      "ascension_stat": "HP%"
     }
   },
   {
@@ -1046,7 +1322,11 @@
       "region": "Mondstadt",
       "model": "Medium Female",
       "release_date": "2020-09-28",
-      "release_version": "1.0"
+      "release_version": "1.0",
+      "local_specialty": "Philanemo Mushroom",
+      "common_material": "Energy Nectar",
+      "boss_material": "Cleansing Heart",
+      "ascension_stat": "Energy Recharge%"
     }
   },
   {
@@ -1061,7 +1341,11 @@
       "region": "Natlan",
       "model": "Medium Female",
       "release_date": "2024-08-28",
-      "release_version": "5.0"
+      "release_version": "5.0",
+      "local_specialty": "Sprayfeather Gill",
+      "common_material": "Saurian-Crowned Warrior's Golden Whistle",
+      "boss_material": "Mark of the Binding Blessing",
+      "ascension_stat": "CRIT Rate%"
     }
   },
   {
@@ -1076,7 +1360,11 @@
       "region": "Sumeru",
       "model": "Short Female",
       "release_date": "2022-11-02",
-      "release_version": "3.2"
+      "release_version": "3.2",
+      "local_specialty": "Kalpalata Lotus",
+      "common_material": "Crystalline Cyst Dust",
+      "boss_material": "Quelled Creeper",
+      "ascension_stat": "Elemental Mastery"
     }
   },
   {
@@ -1091,7 +1379,11 @@
       "region": "Fontaine",
       "model": "Tall Female",
       "release_date": "2023-12-20",
-      "release_version": "4.3"
+      "release_version": "4.3",
+      "local_specialty": "Spring of the First Dewdrop",
+      "common_material": "Xenochromatic Crystal",
+      "boss_material": "Artificed Spare Clockwork Component — Coppelius",
+      "ascension_stat": "CRIT DMG%"
     }
   },
   {
@@ -1106,7 +1398,11 @@
       "region": "Nod-Krai",
       "model": "Tall Female",
       "release_date": "2025-10-22",
-      "release_version": "Luna II"
+      "release_version": "Luna II",
+      "local_specialty": "Moonfall Silver",
+      "common_material": "Frost-Etched Warrant",
+      "boss_material": "Radiant Antler",
+      "ascension_stat": "CRIT DMG%"
     }
   },
   {
@@ -1121,7 +1417,11 @@
       "region": "Fontaine",
       "model": "Tall Male",
       "release_date": "2023-09-27",
-      "release_version": "4.1"
+      "release_version": "4.1",
+      "local_specialty": "Lumitoile",
+      "common_material": "Xenochromatic Crystal",
+      "boss_material": "Fontemer Unihorn",
+      "ascension_stat": "CRIT DMG%"
     }
   },
   {
@@ -1136,7 +1436,11 @@
       "region": "",
       "model": "Tall Female",
       "release_date": "2026-05-20",
-      "release_version": "Luna VII"
+      "release_version": "Luna VII",
+      "local_specialty": "Pine Amber",
+      "common_material": "Frost-Etched Warrant",
+      "boss_material": "Remnant of the Dreadwing",
+      "ascension_stat": "ATK%"
     }
   },
   {
@@ -1151,7 +1455,11 @@
       "region": "Sumeru",
       "model": "Medium Female",
       "release_date": "2022-10-14",
-      "release_version": "3.1"
+      "release_version": "3.1",
+      "local_specialty": "Padisarah",
+      "common_material": "Crystalline Cyst Dust",
+      "boss_material": "Perpetual Caliber",
+      "ascension_stat": "HP%"
     }
   },
   {
@@ -1166,7 +1474,11 @@
       "region": "Liyue",
       "model": "Tall Female",
       "release_date": "2020-09-28",
-      "release_version": "1.0"
+      "release_version": "1.0",
+      "local_specialty": "Glaze Lily",
+      "common_material": "Lieutenant's Insignia",
+      "boss_material": "Basalt Pillar",
+      "ascension_stat": "Geo DMG Bonus%"
     }
   },
   {
@@ -1181,7 +1493,11 @@
       "region": "Mondstadt",
       "model": "Medium Female",
       "release_date": "2020-09-28",
-      "release_version": "1.0"
+      "release_version": "1.0",
+      "local_specialty": "Valberry",
+      "common_material": "Ominous Mask",
+      "boss_material": "Basalt Pillar",
+      "ascension_stat": "DEF%"
     }
   },
   {
@@ -1196,7 +1512,11 @@
       "region": "Snezhnaya",
       "model": "Medium Female",
       "release_date": "2026-08-12",
-      "release_version": "7.0"
+      "release_version": "7.0",
+      "local_specialty": "Frostfairy Flower",
+      "common_material": "Ethereal Crystalscale Stone",
+      "boss_material": "Unscorched Blossom Branch",
+      "ascension_stat": "CRIT DMG%"
     }
   },
   {
@@ -1211,7 +1531,11 @@
       "region": "Natlan",
       "model": "Tall Male",
       "release_date": "2024-11-20",
-      "release_version": "5.2"
+      "release_version": "5.2",
+      "local_specialty": "Glowing Hornshroom",
+      "common_material": "Tyrant's Fang",
+      "boss_material": "Mark of the Binding Blessing",
+      "ascension_stat": "ATK%"
     }
   },
   {
@@ -1226,7 +1550,11 @@
       "region": "Mondstadt",
       "model": "Short Female",
       "release_date": "2026-05-20",
-      "release_version": "Luna VII"
+      "release_version": "Luna VII",
+      "local_specialty": "Winter Icelea",
+      "common_material": "Golden Raven Insignia",
+      "boss_material": "Radiant Antler",
+      "ascension_stat": "ATK%"
     }
   },
   {
@@ -1241,7 +1569,11 @@
       "region": "Liyue",
       "model": "Short Female",
       "release_date": "2020-09-28",
-      "release_version": "1.0"
+      "release_version": "1.0",
+      "local_specialty": "Violetgrass",
+      "common_material": "Forbidden Curse Scroll",
+      "boss_material": "Hoarfrost Core",
+      "ascension_stat": "Healing Bonus%"
     }
   },
   {
@@ -1256,7 +1588,11 @@
       "region": "Inazuma",
       "model": "Tall Female",
       "release_date": "2021-09-01",
-      "release_version": "2.1"
+      "release_version": "2.1",
+      "local_specialty": "Amakumo Fruit",
+      "common_material": "Famed Handguard",
+      "boss_material": "Storm Beads",
+      "ascension_stat": "Energy Recharge%"
     }
   },
   {
@@ -1271,7 +1607,11 @@
       "region": "Mondstadt",
       "model": "Medium Male",
       "release_date": "2020-09-28",
-      "release_version": "1.0"
+      "release_version": "1.0",
+      "local_specialty": "Wolfhook",
+      "common_material": "Ominous Mask",
+      "boss_material": "Lightning Prism",
+      "ascension_stat": "Physical DMG Bonus%"
     }
   },
   {
@@ -1286,7 +1626,11 @@
       "region": "Mondstadt",
       "model": "Tall Female",
       "release_date": "2021-04-06",
-      "release_version": "1.4"
+      "release_version": "1.4",
+      "local_specialty": "Valberry",
+      "common_material": "Lieutenant's Insignia",
+      "boss_material": "Hoarfrost Core",
+      "ascension_stat": "ATK%"
     }
   },
   {
@@ -1301,7 +1645,11 @@
       "region": "Snezhnaya",
       "model": "Medium Female",
       "release_date": "2026-07-01",
-      "release_version": "Luna VIII"
+      "release_version": "Luna VIII",
+      "local_specialty": "Subdetection Unit",
+      "common_material": "Precision Drive Shaft",
+      "boss_material": "Plume of the Fallen Watcher",
+      "ascension_stat": "CRIT Rate%"
     }
   },
   {
@@ -1316,7 +1664,11 @@
       "region": "Inazuma",
       "model": "Medium Female",
       "release_date": "2021-09-21",
-      "release_version": "2.1"
+      "release_version": "2.1",
+      "local_specialty": "Sango Pearl",
+      "common_material": "Spectral Nucleus",
+      "boss_material": "Dew of Repudiation",
+      "ascension_stat": "Hydro DMG Bonus%"
     }
   },
   {
@@ -1331,7 +1683,11 @@
       "region": "Inazuma",
       "model": "Short Female",
       "release_date": "2021-08-10",
-      "release_version": "2.0"
+      "release_version": "2.0",
+      "local_specialty": "Crystal Marrow",
+      "common_material": "Energy Nectar",
+      "boss_material": "Marionette Core",
+      "ascension_stat": "Elemental Mastery"
     }
   },
   {
@@ -1346,7 +1702,11 @@
       "region": "Sumeru",
       "model": "Medium Male",
       "release_date": "2024-06-05",
-      "release_version": "4.7"
+      "release_version": "4.7",
+      "local_specialty": "Trishiraite",
+      "common_material": "Rich Red Brocade",
+      "boss_material": "Cloudseam Scale",
+      "ascension_stat": "Elemental Mastery"
     }
   },
   {
@@ -1361,7 +1721,11 @@
       "region": "Liyue",
       "model": "Tall Female",
       "release_date": "2022-01-05",
-      "release_version": "2.4"
+      "release_version": "2.4",
+      "local_specialty": "Qingxin",
+      "common_material": "Energy Nectar",
+      "boss_material": "Dragonheir's False Fin",
+      "ascension_stat": "ATK%"
     }
   },
   {
@@ -1376,7 +1740,11 @@
       "region": "Inazuma",
       "model": "Medium Male",
       "release_date": "2022-07-13",
-      "release_version": "2.8"
+      "release_version": "2.8",
+      "local_specialty": "Onikabuto",
+      "common_material": "Golden Raven Insignia",
+      "boss_material": "Runic Fang",
+      "ascension_stat": "Anemo DMG Bonus%"
     }
   },
   {
@@ -1391,7 +1759,11 @@
       "region": "Fontaine",
       "model": "Short Female",
       "release_date": "2024-06-25",
-      "release_version": "4.7"
+      "release_version": "4.7",
+      "local_specialty": "Romaritime Flower",
+      "common_material": "Xenochromatic Crystal",
+      "boss_material": "Water That Failed To Transcend",
+      "ascension_stat": "HP%"
     }
   },
   {
@@ -1406,7 +1778,11 @@
       "region": "",
       "model": "Medium Female",
       "release_date": "2025-06-18",
-      "release_version": "5.7"
+      "release_version": "5.7",
+      "local_specialty": "Skysplit Gembloom",
+      "common_material": "Artificed Dynamic Gear",
+      "boss_material": "Ensnaring Gaze",
+      "ascension_stat": "CRIT DMG%"
     }
   },
   {
@@ -1421,7 +1797,11 @@
       "region": "Mondstadt",
       "model": "Medium Female",
       "release_date": "2020-09-28",
-      "release_version": "1.0"
+      "release_version": "1.0",
+      "local_specialty": "Windwheel Aster",
+      "common_material": "Energy Nectar",
+      "boss_material": "Hurricane Seed",
+      "ascension_stat": "Anemo DMG Bonus%"
     }
   },
   {
@@ -1436,7 +1816,11 @@
       "region": "Snezhnaya",
       "model": "Tall Male",
       "release_date": "2020-11-11",
-      "release_version": "1.1"
+      "release_version": "1.1",
+      "local_specialty": "Starconch",
+      "common_material": "Lieutenant's Insignia",
+      "boss_material": "Cleansing Heart",
+      "ascension_stat": "Hydro DMG Bonus%"
     }
   },
   {
@@ -1451,7 +1835,11 @@
       "region": "Inazuma",
       "model": "Tall Male",
       "release_date": "2021-11-02",
-      "release_version": "2.2"
+      "release_version": "2.2",
+      "local_specialty": "Fluorescent Fungus",
+      "common_material": "Golden Raven Insignia",
+      "boss_material": "Smoldering Pearl",
+      "ascension_stat": "ATK%"
     }
   },
   {
@@ -1466,7 +1854,11 @@
       "region": "Sumeru",
       "model": "Medium Male",
       "release_date": "2022-08-24",
-      "release_version": "3.0"
+      "release_version": "3.0",
+      "local_specialty": "Nilotpala Lotus",
+      "common_material": "Crystalline Cyst Dust",
+      "boss_material": "Majestic Hooked Beak",
+      "ascension_stat": "Dendro DMG Bonus%"
     }
   },
   {
@@ -1481,7 +1873,11 @@
       "region": "",
       "model": "Medium Male",
       "release_date": "2020-09-28",
-      "release_version": "1.0"
+      "release_version": "1.0",
+      "local_specialty": "Windwheel Aster",
+      "common_material": "Ominous Mask",
+      "boss_material": null,
+      "ascension_stat": "ATK%"
     }
   },
   {
@@ -1496,7 +1892,11 @@
       "region": "",
       "model": "Medium Male",
       "release_date": "2020-09-28",
-      "release_version": "1.0"
+      "release_version": "1.0",
+      "local_specialty": "Windwheel Aster",
+      "common_material": "Ominous Mask",
+      "boss_material": null,
+      "ascension_stat": "ATK%"
     }
   },
   {
@@ -1511,7 +1911,11 @@
       "region": "",
       "model": "Medium Male",
       "release_date": "2020-09-28",
-      "release_version": "2.0"
+      "release_version": "2.0",
+      "local_specialty": "Windwheel Aster",
+      "common_material": "Ominous Mask",
+      "boss_material": null,
+      "ascension_stat": "ATK%"
     }
   },
   {
@@ -1526,7 +1930,11 @@
       "region": "",
       "model": "Medium Male",
       "release_date": "2020-09-28",
-      "release_version": "3.0"
+      "release_version": "3.0",
+      "local_specialty": "Windwheel Aster",
+      "common_material": "Ominous Mask",
+      "boss_material": null,
+      "ascension_stat": "ATK%"
     }
   },
   {
@@ -1541,7 +1949,11 @@
       "region": "",
       "model": "Medium Male",
       "release_date": "2020-09-28",
-      "release_version": "4.0"
+      "release_version": "4.0",
+      "local_specialty": "Windwheel Aster",
+      "common_material": "Ominous Mask",
+      "boss_material": null,
+      "ascension_stat": "ATK%"
     }
   },
   {
@@ -1556,7 +1968,11 @@
       "region": "",
       "model": "Medium Male",
       "release_date": "2020-09-28",
-      "release_version": "5.3"
+      "release_version": "5.3",
+      "local_specialty": "Windwheel Aster",
+      "common_material": "Ominous Mask",
+      "boss_material": null,
+      "ascension_stat": "ATK%"
     }
   },
   {
@@ -1571,7 +1987,11 @@
       "region": "",
       "model": "Medium Male",
       "release_date": "2020-09-28",
-      "release_version": "7.0"
+      "release_version": "7.0",
+      "local_specialty": "Windwheel Aster",
+      "common_material": "Ominous Mask",
+      "boss_material": null,
+      "ascension_stat": "ATK%"
     }
   },
   {
@@ -1586,7 +2006,11 @@
       "region": "",
       "model": "Medium Female",
       "release_date": "2020-09-28",
-      "release_version": "1.0"
+      "release_version": "1.0",
+      "local_specialty": "Windwheel Aster",
+      "common_material": "Ominous Mask",
+      "boss_material": null,
+      "ascension_stat": "ATK%"
     }
   },
   {
@@ -1601,7 +2025,11 @@
       "region": "",
       "model": "Medium Female",
       "release_date": "2020-09-28",
-      "release_version": "1.0"
+      "release_version": "1.0",
+      "local_specialty": "Windwheel Aster",
+      "common_material": "Ominous Mask",
+      "boss_material": null,
+      "ascension_stat": "ATK%"
     }
   },
   {
@@ -1616,7 +2044,11 @@
       "region": "",
       "model": "Medium Female",
       "release_date": "2020-09-28",
-      "release_version": "2.0"
+      "release_version": "2.0",
+      "local_specialty": "Windwheel Aster",
+      "common_material": "Ominous Mask",
+      "boss_material": null,
+      "ascension_stat": "ATK%"
     }
   },
   {
@@ -1631,7 +2063,11 @@
       "region": "",
       "model": "Medium Female",
       "release_date": "2020-09-28",
-      "release_version": "3.0"
+      "release_version": "3.0",
+      "local_specialty": "Windwheel Aster",
+      "common_material": "Ominous Mask",
+      "boss_material": null,
+      "ascension_stat": "ATK%"
     }
   },
   {
@@ -1646,7 +2082,11 @@
       "region": "",
       "model": "Medium Female",
       "release_date": "2020-09-28",
-      "release_version": "4.0"
+      "release_version": "4.0",
+      "local_specialty": "Windwheel Aster",
+      "common_material": "Ominous Mask",
+      "boss_material": null,
+      "ascension_stat": "ATK%"
     }
   },
   {
@@ -1661,7 +2101,11 @@
       "region": "",
       "model": "Medium Female",
       "release_date": "2020-09-28",
-      "release_version": "5.3"
+      "release_version": "5.3",
+      "local_specialty": "Windwheel Aster",
+      "common_material": "Ominous Mask",
+      "boss_material": null,
+      "ascension_stat": "ATK%"
     }
   },
   {
@@ -1676,7 +2120,11 @@
       "region": "",
       "model": "Medium Female",
       "release_date": "2020-09-28",
-      "release_version": "7.0"
+      "release_version": "7.0",
+      "local_specialty": "Windwheel Aster",
+      "common_material": "Ominous Mask",
+      "boss_material": null,
+      "ascension_stat": "ATK%"
     }
   },
   {
@@ -1691,7 +2139,11 @@
       "region": "Natlan",
       "model": "Medium Female",
       "release_date": "2025-03-26",
-      "release_version": "5.5"
+      "release_version": "5.5",
+      "local_specialty": "Skysplit Gembloom",
+      "common_material": "Tyrant's Fang",
+      "boss_material": "Sparkless Statue Core",
+      "ascension_stat": "CRIT Rate%"
     }
   },
   {
@@ -1706,7 +2158,11 @@
       "region": "Mondstadt",
       "model": "Tall Male",
       "release_date": "2026-02-25",
-      "release_version": "Luna V"
+      "release_version": "Luna V",
+      "local_specialty": "Wolfhook",
+      "common_material": "Precision Drive Shaft",
+      "boss_material": "Prismatic Severed Tail",
+      "ascension_stat": "CRIT DMG%"
     }
   },
   {
@@ -1721,7 +2177,11 @@
       "region": "Mondstadt",
       "model": "Medium Male",
       "release_date": "2020-09-28",
-      "release_version": "1.0"
+      "release_version": "1.0",
+      "local_specialty": "Cecilia",
+      "common_material": "Slime Concentrate",
+      "boss_material": "Hurricane Seed",
+      "ascension_stat": "Energy Recharge%"
     }
   },
   {
@@ -1736,7 +2196,11 @@
       "region": "Sumeru",
       "model": "Medium Male",
       "release_date": "2022-12-07",
-      "release_version": "3.3"
+      "release_version": "3.3",
+      "local_specialty": "Rukkhashava Mushrooms",
+      "common_material": "Famed Handguard",
+      "boss_material": "Perpetual Caliber",
+      "ascension_stat": "CRIT Rate%"
     }
   },
   {
@@ -1751,7 +2215,11 @@
       "region": "Fontaine",
       "model": "Tall Male",
       "release_date": "2023-10-17",
-      "release_version": "4.1"
+      "release_version": "4.1",
+      "local_specialty": "Subdetection Unit",
+      "common_material": "Artificed Dynamic Gear",
+      "boss_material": "\"Tourbillon Device\"",
+      "ascension_stat": "CRIT DMG%"
     }
   },
   {
@@ -1766,7 +2234,11 @@
       "region": "Liyue",
       "model": "Medium Female",
       "release_date": "2020-09-28",
-      "release_version": "1.0"
+      "release_version": "1.0",
+      "local_specialty": "Jueyun Chili",
+      "common_material": "Slime Concentrate",
+      "boss_material": "Everflame Seed",
+      "ascension_stat": "Elemental Mastery"
     }
   },
   {
@@ -1781,7 +2253,11 @@
       "region": "Liyue",
       "model": "Tall Female",
       "release_date": "2024-01-31",
-      "release_version": "4.4"
+      "release_version": "4.4",
+      "local_specialty": "Clearwater Jade",
+      "common_material": "Forbidden Curse Scroll",
+      "boss_material": "Cloudseam Scale",
+      "ascension_stat": "ATK%"
     }
   },
   {
@@ -1796,7 +2272,11 @@
       "region": "Liyue",
       "model": "Medium Male",
       "release_date": "2021-02-03",
-      "release_version": "1.3"
+      "release_version": "1.3",
+      "local_specialty": "Qingxin",
+      "common_material": "Slime Concentrate",
+      "boss_material": "Juvenile Jade",
+      "ascension_stat": "CRIT Rate%"
     }
   },
   {
@@ -1811,7 +2291,11 @@
       "region": "Natlan",
       "model": "Tall Female",
       "release_date": "2024-10-09",
-      "release_version": "5.1"
+      "release_version": "5.1",
+      "local_specialty": "Brilliant Chrysanthemum",
+      "common_material": "Saurian-Crowned Warrior's Golden Whistle",
+      "boss_material": "Gold-Inscribed Secret Source Core",
+      "ascension_stat": "DEF%"
     }
   },
   {
@@ -1826,7 +2310,11 @@
       "region": "Liyue",
       "model": "Medium Male",
       "release_date": "2020-09-28",
-      "release_version": "1.0"
+      "release_version": "1.0",
+      "local_specialty": "Silk Flower",
+      "common_material": "Ominous Mask",
+      "boss_material": "Cleansing Heart",
+      "ascension_stat": "ATK%"
     }
   },
   {
@@ -1841,7 +2329,11 @@
       "region": "Liyue",
       "model": "Medium Female",
       "release_date": "2020-12-01",
-      "release_version": "1.1"
+      "release_version": "1.1",
+      "local_specialty": "Violetgrass",
+      "common_material": "Golden Raven Insignia",
+      "boss_material": "Everflame Seed",
+      "ascension_stat": "ATK%"
     }
   },
   {
@@ -1856,7 +2348,11 @@
       "region": "Inazuma",
       "model": "Tall Female",
       "release_date": "2022-02-16",
-      "release_version": "2.5"
+      "release_version": "2.5",
+      "local_specialty": "Sea Ganoderma",
+      "common_material": "Famed Handguard",
+      "boss_material": "Dragonheir's False Fin",
+      "ascension_stat": "CRIT Rate%"
     }
   },
   {
@@ -1871,7 +2367,11 @@
       "region": "Liyue",
       "model": "Medium Female",
       "release_date": "2021-04-28",
-      "release_version": "1.5"
+      "release_version": "1.5",
+      "local_specialty": "Noctilucous Jade",
+      "common_material": "Golden Raven Insignia",
+      "boss_material": "Juvenile Jade",
+      "ascension_stat": "Pyro DMG Bonus%"
     }
   },
   {
@@ -1886,7 +2386,11 @@
       "region": "Liyue",
       "model": "Short Female",
       "release_date": "2023-01-18",
-      "release_version": "3.4"
+      "release_version": "3.4",
+      "local_specialty": "Jueyun Chili",
+      "common_material": "Slime Concentrate",
+      "boss_material": "Quelled Creeper",
+      "ascension_stat": "HP%"
     }
   },
   {
@@ -1901,7 +2405,11 @@
       "region": "Liyue",
       "model": "Tall Female",
       "release_date": "2022-05-31",
-      "release_version": "2.7"
+      "release_version": "2.7",
+      "local_specialty": "Starconch",
+      "common_material": "Lieutenant's Insignia",
+      "boss_material": "Runic Fang",
+      "ascension_stat": "CRIT Rate%"
     }
   },
   {
@@ -1916,7 +2424,11 @@
       "region": "Inazuma",
       "model": "Medium Female",
       "release_date": "2021-08-10",
-      "release_version": "2.0"
+      "release_version": "2.0",
+      "local_specialty": "Naku Weed",
+      "common_material": "Forbidden Curse Scroll",
+      "boss_material": "Smoldering Pearl",
+      "ascension_stat": "CRIT Rate%"
     }
   },
   {
@@ -1931,7 +2443,11 @@
       "region": "Inazuma",
       "model": "Medium Female",
       "release_date": "2025-02-12",
-      "release_version": "5.4"
+      "release_version": "5.4",
+      "local_specialty": "Sea Ganoderma",
+      "common_material": "Famed Handguard",
+      "boss_material": "Talisman of the Enigmatic Land",
+      "ascension_stat": "Elemental Mastery"
     }
   },
   {
@@ -1946,7 +2462,11 @@
       "region": "Liyue",
       "model": "Medium Female",
       "release_date": "2022-01-05",
-      "release_version": "2.4"
+      "release_version": "2.4",
+      "local_specialty": "Glaze Lily",
+      "common_material": "Ominous Mask",
+      "boss_material": "Riftborn Regalia",
+      "ascension_stat": "Energy Recharge%"
     }
   },
   {
@@ -1961,7 +2481,11 @@
       "region": "Liyue",
       "model": "Tall Male",
       "release_date": "2020-12-01",
-      "release_version": "1.1"
+      "release_version": "1.1",
+      "local_specialty": "Cor Lapis",
+      "common_material": "Slime Concentrate",
+      "boss_material": "Basalt Pillar",
+      "ascension_stat": "Geo DMG Bonus%"
     }
   },
   {
@@ -1976,7 +2500,11 @@
       "region": "Liyue",
       "model": "Tall Female",
       "release_date": "2026-02-03",
-      "release_version": "Luna IV"
+      "release_version": "Luna IV",
+      "local_specialty": "Glaze Lily",
+      "common_material": "Frost-Etched Warrant",
+      "boss_material": "Remnant of the Dreadwing",
+      "ascension_stat": "CRIT DMG%"
     }
   }
 ]

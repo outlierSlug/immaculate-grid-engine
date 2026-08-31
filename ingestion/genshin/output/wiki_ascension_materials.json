@@ -1,0 +1,1192 @@
+{
+  "Aino": {
+    "element": "Hydro",
+    "local_specialty": "Portable Bearing",
+    "common_material_tiers": [
+      "Broken Drive Shaft",
+      "Reinforced Drive Shaft",
+      "Precision Drive Shaft"
+    ],
+    "boss_material": "Precision Kuuvahki Stamping Die"
+  },
+  "Albedo": {
+    "element": "Geo",
+    "local_specialty": "Cecilia",
+    "common_material_tiers": [
+      "Divining Scroll",
+      "Sealed Scroll",
+      "Forbidden Curse Scroll"
+    ],
+    "boss_material": "Basalt Pillar"
+  },
+  "Alhaitham": {
+    "element": "Dendro",
+    "local_specialty": "Sand Grease Pupa",
+    "common_material_tiers": [
+      "Faded Red Satin",
+      "Trimmed Red Silk",
+      "Rich Red Brocade"
+    ],
+    "boss_material": "Pseudo-Stamens"
+  },
+  "Aloy": {
+    "element": "Cryo",
+    "local_specialty": "Crystal Marrow",
+    "common_material_tiers": [
+      "Spectral Husk",
+      "Spectral Heart",
+      "Spectral Nucleus"
+    ],
+    "boss_material": "Crystalline Bloom"
+  },
+  "Alyosha": {
+    "element": "Electro",
+    "local_specialty": "Flockingweed",
+    "common_material_tiers": [
+      "Chimeric Core",
+      "Symbiotic Chimeric Nucleus",
+      "Prime Chimeric Nexus"
+    ],
+    "boss_material": "Severed Tail of the Sky-Roamer"
+  },
+  "Amber": {
+    "element": "Pyro",
+    "local_specialty": "Small Lamp Grass",
+    "common_material_tiers": [
+      "Firm Arrowhead",
+      "Sharp Arrowhead",
+      "Weathered Arrowhead"
+    ],
+    "boss_material": "Everflame Seed"
+  },
+  "Arataki Itto": {
+    "element": "Geo",
+    "local_specialty": "Onikabuto",
+    "common_material_tiers": [
+      "Slime Condensate",
+      "Slime Secretions",
+      "Slime Concentrate"
+    ],
+    "boss_material": "Riftborn Regalia"
+  },
+  "Arlecchino": {
+    "element": "Pyro",
+    "local_specialty": "Rainbow Rose",
+    "common_material_tiers": [
+      "Recruit's Insignia",
+      "Sergeant's Insignia",
+      "Lieutenant's Insignia"
+    ],
+    "boss_material": "Fragment of a Golden Melody"
+  },
+  "Baizhu": {
+    "element": "Dendro",
+    "local_specialty": "Violetgrass",
+    "common_material_tiers": [
+      "Fungal Spores",
+      "Luminescent Pollen",
+      "Crystalline Cyst Dust"
+    ],
+    "boss_material": "Evergloom Ring"
+  },
+  "Barbara": {
+    "element": "Hydro",
+    "local_specialty": "Philanemo Mushroom",
+    "common_material_tiers": [
+      "Divining Scroll",
+      "Sealed Scroll",
+      "Forbidden Curse Scroll"
+    ],
+    "boss_material": "Cleansing Heart"
+  },
+  "Beidou": {
+    "element": "Electro",
+    "local_specialty": "Noctilucous Jade",
+    "common_material_tiers": [
+      "Treasure Hoarder Insignia",
+      "Silver Raven Insignia",
+      "Golden Raven Insignia"
+    ],
+    "boss_material": "Lightning Prism"
+  },
+  "Bennett": {
+    "element": "Pyro",
+    "local_specialty": "Windwheel Aster",
+    "common_material_tiers": [
+      "Treasure Hoarder Insignia",
+      "Silver Raven Insignia",
+      "Golden Raven Insignia"
+    ],
+    "boss_material": "Everflame Seed"
+  },
+  "Candace": {
+    "element": "Hydro",
+    "local_specialty": "Henna Berry",
+    "common_material_tiers": [
+      "Faded Red Satin",
+      "Trimmed Red Silk",
+      "Rich Red Brocade"
+    ],
+    "boss_material": "Light Guiding Tetrahedron"
+  },
+  "Charlotte": {
+    "element": "Cryo",
+    "local_specialty": "Beryl Conch",
+    "common_material_tiers": [
+      "Meshing Gear",
+      "Mechanical Spur Gear",
+      "Artificed Dynamic Gear"
+    ],
+    "boss_material": "\"Tourbillon Device\""
+  },
+  "Chasca": {
+    "element": "Anemo",
+    "local_specialty": "Withering Purpurbloom",
+    "common_material_tiers": [
+      "Juvenile Fang",
+      "Seasoned Fang",
+      "Tyrant's Fang"
+    ],
+    "boss_material": "Ensnaring Gaze"
+  },
+  "Chevreuse": {
+    "element": "Pyro",
+    "local_specialty": "Lumidouce Bell",
+    "common_material_tiers": [
+      "Meshing Gear",
+      "Mechanical Spur Gear",
+      "Artificed Dynamic Gear"
+    ],
+    "boss_material": "Fontemer Unihorn"
+  },
+  "Chiori": {
+    "element": "Geo",
+    "local_specialty": "Dendrobium",
+    "common_material_tiers": [
+      "Spectral Husk",
+      "Spectral Heart",
+      "Spectral Nucleus"
+    ],
+    "boss_material": "Artificed Spare Clockwork Component \u2014 Coppelia"
+  },
+  "Chongyun": {
+    "element": "Cryo",
+    "local_specialty": "Cor Lapis",
+    "common_material_tiers": [
+      "Damaged Mask",
+      "Stained Mask",
+      "Ominous Mask"
+    ],
+    "boss_material": "Hoarfrost Core"
+  },
+  "Citlali": {
+    "element": "Cryo",
+    "local_specialty": "Quenepa Berry",
+    "common_material_tiers": [
+      "Juvenile Fang",
+      "Seasoned Fang",
+      "Tyrant's Fang"
+    ],
+    "boss_material": "Talisman of the Enigmatic Land"
+  },
+  "Clorinde": {
+    "element": "Electro",
+    "local_specialty": "Lumitoile",
+    "common_material_tiers": [
+      "Transoceanic Pearl",
+      "Transoceanic Chunk",
+      "Xenochromatic Crystal"
+    ],
+    "boss_material": "Fontemer Unihorn"
+  },
+  "Collei": {
+    "element": "Dendro",
+    "local_specialty": "Rukkhashava Mushrooms",
+    "common_material_tiers": [
+      "Firm Arrowhead",
+      "Sharp Arrowhead",
+      "Weathered Arrowhead"
+    ],
+    "boss_material": "Majestic Hooked Beak"
+  },
+  "Columbina": {
+    "element": "Hydro",
+    "local_specialty": "Winter Icelea",
+    "common_material_tiers": [
+      "Slime Condensate",
+      "Slime Secretions",
+      "Slime Concentrate"
+    ],
+    "boss_material": "Radiant Antler"
+  },
+  "Cyno": {
+    "element": "Electro",
+    "local_specialty": "Scarab",
+    "common_material_tiers": [
+      "Divining Scroll",
+      "Sealed Scroll",
+      "Forbidden Curse Scroll"
+    ],
+    "boss_material": "Thunderclap Fruitcore"
+  },
+  "Dahlia": {
+    "element": "Hydro",
+    "local_specialty": "Calla Lily",
+    "common_material_tiers": [
+      "Firm Arrowhead",
+      "Sharp Arrowhead",
+      "Weathered Arrowhead"
+    ],
+    "boss_material": "Secret Source Airflow Accumulator"
+  },
+  "Dehya": {
+    "element": "Pyro",
+    "local_specialty": "Sand Grease Pupa",
+    "common_material_tiers": [
+      "Faded Red Satin",
+      "Trimmed Red Silk",
+      "Rich Red Brocade"
+    ],
+    "boss_material": "Light Guiding Tetrahedron"
+  },
+  "Diluc": {
+    "element": "Pyro",
+    "local_specialty": "Small Lamp Grass",
+    "common_material_tiers": [
+      "Recruit's Insignia",
+      "Sergeant's Insignia",
+      "Lieutenant's Insignia"
+    ],
+    "boss_material": "Everflame Seed"
+  },
+  "Diona": {
+    "element": "Cryo",
+    "local_specialty": "Calla Lily",
+    "common_material_tiers": [
+      "Firm Arrowhead",
+      "Sharp Arrowhead",
+      "Weathered Arrowhead"
+    ],
+    "boss_material": "Hoarfrost Core"
+  },
+  "Dori": {
+    "element": "Electro",
+    "local_specialty": "Kalpalata Lotus",
+    "common_material_tiers": [
+      "Faded Red Satin",
+      "Trimmed Red Silk",
+      "Rich Red Brocade"
+    ],
+    "boss_material": "Thunderclap Fruitcore"
+  },
+  "Durin": {
+    "element": "Pyro",
+    "local_specialty": "Frostlamp Flower",
+    "common_material_tiers": [
+      "Tattered Warrant",
+      "Immaculate Warrant",
+      "Frost-Etched Warrant"
+    ],
+    "boss_material": "Cyclic Military Kuuvahki Core"
+  },
+  "Emilie": {
+    "element": "Dendro",
+    "local_specialty": "Lakelight Lily",
+    "common_material_tiers": [
+      "Meshing Gear",
+      "Mechanical Spur Gear",
+      "Artificed Dynamic Gear"
+    ],
+    "boss_material": "Fragment of a Golden Melody"
+  },
+  "Escoffier": {
+    "element": "Cryo",
+    "local_specialty": "Beryl Conch",
+    "common_material_tiers": [
+      "Meshing Gear",
+      "Mechanical Spur Gear",
+      "Artificed Dynamic Gear"
+    ],
+    "boss_material": "Secret Source Airflow Accumulator"
+  },
+  "Eula": {
+    "element": "Cryo",
+    "local_specialty": "Dandelion Seed",
+    "common_material_tiers": [
+      "Damaged Mask",
+      "Stained Mask",
+      "Ominous Mask"
+    ],
+    "boss_material": "Crystalline Bloom"
+  },
+  "Faruzan": {
+    "element": "Anemo",
+    "local_specialty": "Henna Berry",
+    "common_material_tiers": [
+      "Faded Red Satin",
+      "Trimmed Red Silk",
+      "Rich Red Brocade"
+    ],
+    "boss_material": "Light Guiding Tetrahedron"
+  },
+  "Fischl": {
+    "element": "Electro",
+    "local_specialty": "Small Lamp Grass",
+    "common_material_tiers": [
+      "Firm Arrowhead",
+      "Sharp Arrowhead",
+      "Weathered Arrowhead"
+    ],
+    "boss_material": "Lightning Prism"
+  },
+  "Flins": {
+    "element": "Electro",
+    "local_specialty": "Frostlamp Flower",
+    "common_material_tiers": [
+      "Broken Drive Shaft",
+      "Reinforced Drive Shaft",
+      "Precision Drive Shaft"
+    ],
+    "boss_material": "Precision Kuuvahki Stamping Die"
+  },
+  "Freminet": {
+    "element": "Cryo",
+    "local_specialty": "Romaritime Flower",
+    "common_material_tiers": [
+      "Transoceanic Pearl",
+      "Transoceanic Chunk",
+      "Xenochromatic Crystal"
+    ],
+    "boss_material": "Artificed Spare Clockwork Component \u2014 Coppelius"
+  },
+  "Furina": {
+    "element": "Hydro",
+    "local_specialty": "Lakelight Lily",
+    "common_material_tiers": [
+      "Whopperflower Nectar",
+      "Shimmering Nectar",
+      "Energy Nectar"
+    ],
+    "boss_material": "Water That Failed To Transcend"
+  },
+  "Gaming": {
+    "element": "Pyro",
+    "local_specialty": "Starconch",
+    "common_material_tiers": [
+      "Slime Condensate",
+      "Slime Secretions",
+      "Slime Concentrate"
+    ],
+    "boss_material": "Emperor's Resolution"
+  },
+  "Ganyu": {
+    "element": "Cryo",
+    "local_specialty": "Qingxin",
+    "common_material_tiers": [
+      "Whopperflower Nectar",
+      "Shimmering Nectar",
+      "Energy Nectar"
+    ],
+    "boss_material": "Hoarfrost Core"
+  },
+  "Gorou": {
+    "element": "Geo",
+    "local_specialty": "Sango Pearl",
+    "common_material_tiers": [
+      "Spectral Husk",
+      "Spectral Heart",
+      "Spectral Nucleus"
+    ],
+    "boss_material": "Perpetual Heart"
+  },
+  "Hu Tao": {
+    "element": "Pyro",
+    "local_specialty": "Silk Flower",
+    "common_material_tiers": [
+      "Whopperflower Nectar",
+      "Shimmering Nectar",
+      "Energy Nectar"
+    ],
+    "boss_material": "Juvenile Jade"
+  },
+  "Iansan": {
+    "element": "Electro",
+    "local_specialty": "Dracolite",
+    "common_material_tiers": [
+      "Sentry's Wooden Whistle",
+      "Warrior's Metal Whistle",
+      "Saurian-Crowned Warrior's Golden Whistle"
+    ],
+    "boss_material": "Ensnaring Gaze"
+  },
+  "Ifa": {
+    "element": "Anemo",
+    "local_specialty": "Saurian Claw Succulent",
+    "common_material_tiers": [
+      "Juvenile Fang",
+      "Seasoned Fang",
+      "Tyrant's Fang"
+    ],
+    "boss_material": "Sparkless Statue Core"
+  },
+  "Illuga": {
+    "element": "Geo",
+    "local_specialty": "Pine Amber",
+    "common_material_tiers": [
+      "Broken Drive Shaft",
+      "Reinforced Drive Shaft",
+      "Precision Drive Shaft"
+    ],
+    "boss_material": "Cyclic Military Kuuvahki Core"
+  },
+  "Ineffa": {
+    "element": "Electro",
+    "local_specialty": "Glowing Hornshroom",
+    "common_material_tiers": [
+      "Sentry's Wooden Whistle",
+      "Warrior's Metal Whistle",
+      "Saurian-Crowned Warrior's Golden Whistle"
+    ],
+    "boss_material": "Secret Source Airflow Accumulator"
+  },
+  "Jahoda": {
+    "element": "Anemo",
+    "local_specialty": "Portable Bearing",
+    "common_material_tiers": [
+      "Broken Drive Shaft",
+      "Reinforced Drive Shaft",
+      "Precision Drive Shaft"
+    ],
+    "boss_material": "Lightbearing Scale-Feather"
+  },
+  "Jean": {
+    "element": "Anemo",
+    "local_specialty": "Dandelion Seed",
+    "common_material_tiers": [
+      "Damaged Mask",
+      "Stained Mask",
+      "Ominous Mask"
+    ],
+    "boss_material": "Hurricane Seed"
+  },
+  "Kachina": {
+    "element": "Geo",
+    "local_specialty": "Quenepa Berry",
+    "common_material_tiers": [
+      "Sentry's Wooden Whistle",
+      "Warrior's Metal Whistle",
+      "Saurian-Crowned Warrior's Golden Whistle"
+    ],
+    "boss_material": "Overripe Flamegranate"
+  },
+  "Kaedehara Kazuha": {
+    "element": "Anemo",
+    "local_specialty": "Sea Ganoderma",
+    "common_material_tiers": [
+      "Treasure Hoarder Insignia",
+      "Silver Raven Insignia",
+      "Golden Raven Insignia"
+    ],
+    "boss_material": "Marionette Core"
+  },
+  "Kaeya": {
+    "element": "Cryo",
+    "local_specialty": "Calla Lily",
+    "common_material_tiers": [
+      "Treasure Hoarder Insignia",
+      "Silver Raven Insignia",
+      "Golden Raven Insignia"
+    ],
+    "boss_material": "Hoarfrost Core"
+  },
+  "Kamisato Ayaka": {
+    "element": "Cryo",
+    "local_specialty": "Sakura Bloom",
+    "common_material_tiers": [
+      "Old Handguard",
+      "Kageuchi Handguard",
+      "Famed Handguard"
+    ],
+    "boss_material": "Perpetual Heart"
+  },
+  "Kamisato Ayato": {
+    "element": "Hydro",
+    "local_specialty": "Sakura Bloom",
+    "common_material_tiers": [
+      "Old Handguard",
+      "Kageuchi Handguard",
+      "Famed Handguard"
+    ],
+    "boss_material": "Dew of Repudiation"
+  },
+  "Kaveh": {
+    "element": "Dendro",
+    "local_specialty": "Mourning Flower",
+    "common_material_tiers": [
+      "Fungal Spores",
+      "Luminescent Pollen",
+      "Crystalline Cyst Dust"
+    ],
+    "boss_material": "Quelled Creeper"
+  },
+  "Keqing": {
+    "element": "Electro",
+    "local_specialty": "Cor Lapis",
+    "common_material_tiers": [
+      "Whopperflower Nectar",
+      "Shimmering Nectar",
+      "Energy Nectar"
+    ],
+    "boss_material": "Lightning Prism"
+  },
+  "Kinich": {
+    "element": "Dendro",
+    "local_specialty": "Saurian Claw Succulent",
+    "common_material_tiers": [
+      "Juvenile Fang",
+      "Seasoned Fang",
+      "Tyrant's Fang"
+    ],
+    "boss_material": "Overripe Flamegranate"
+  },
+  "Kirara": {
+    "element": "Dendro",
+    "local_specialty": "Amakumo Fruit",
+    "common_material_tiers": [
+      "Spectral Husk",
+      "Spectral Heart",
+      "Spectral Nucleus"
+    ],
+    "boss_material": "Evergloom Ring"
+  },
+  "Klee": {
+    "element": "Pyro",
+    "local_specialty": "Philanemo Mushroom",
+    "common_material_tiers": [
+      "Divining Scroll",
+      "Sealed Scroll",
+      "Forbidden Curse Scroll"
+    ],
+    "boss_material": "Everflame Seed"
+  },
+  "Kujou Sara": {
+    "element": "Electro",
+    "local_specialty": "Dendrobium",
+    "common_material_tiers": [
+      "Damaged Mask",
+      "Stained Mask",
+      "Ominous Mask"
+    ],
+    "boss_material": "Storm Beads"
+  },
+  "Kuki Shinobu": {
+    "element": "Electro",
+    "local_specialty": "Naku Weed",
+    "common_material_tiers": [
+      "Spectral Husk",
+      "Spectral Heart",
+      "Spectral Nucleus"
+    ],
+    "boss_material": "Runic Fang"
+  },
+  "Lan Yan": {
+    "element": "Anemo",
+    "local_specialty": "Clearwater Jade",
+    "common_material_tiers": [
+      "Whopperflower Nectar",
+      "Shimmering Nectar",
+      "Energy Nectar"
+    ],
+    "boss_material": "Gold-Inscribed Secret Source Core"
+  },
+  "Lauma": {
+    "element": "Dendro",
+    "local_specialty": "Moonfall Silver",
+    "common_material_tiers": [
+      "Tattered Warrant",
+      "Immaculate Warrant",
+      "Frost-Etched Warrant"
+    ],
+    "boss_material": "Lightbearing Scale-Feather"
+  },
+  "Layla": {
+    "element": "Cryo",
+    "local_specialty": "Nilotpala Lotus",
+    "common_material_tiers": [
+      "Divining Scroll",
+      "Sealed Scroll",
+      "Forbidden Curse Scroll"
+    ],
+    "boss_material": "Perpetual Caliber"
+  },
+  "Linnea": {
+    "element": "Geo",
+    "local_specialty": "Etherwing Moth",
+    "common_material_tiers": [
+      "Tattered Warrant",
+      "Immaculate Warrant",
+      "Frost-Etched Warrant"
+    ],
+    "boss_material": "Plume of the Fallen Watcher"
+  },
+  "Lisa": {
+    "element": "Electro",
+    "local_specialty": "Valberry",
+    "common_material_tiers": [
+      "Slime Condensate",
+      "Slime Secretions",
+      "Slime Concentrate"
+    ],
+    "boss_material": "Lightning Prism"
+  },
+  "Lohen": {
+    "element": "Cryo",
+    "local_specialty": "Etherwing Moth",
+    "common_material_tiers": [
+      "Firm Arrowhead",
+      "Sharp Arrowhead",
+      "Weathered Arrowhead"
+    ],
+    "boss_material": "Prismatic Severed Tail"
+  },
+  "Lynette": {
+    "element": "Anemo",
+    "local_specialty": "Lumidouce Bell",
+    "common_material_tiers": [
+      "Meshing Gear",
+      "Mechanical Spur Gear",
+      "Artificed Dynamic Gear"
+    ],
+    "boss_material": "Artificed Spare Clockwork Component \u2014 Coppelia"
+  },
+  "Lyney": {
+    "element": "Pyro",
+    "local_specialty": "Rainbow Rose",
+    "common_material_tiers": [
+      "Recruit's Insignia",
+      "Sergeant's Insignia",
+      "Lieutenant's Insignia"
+    ],
+    "boss_material": "Emperor's Resolution"
+  },
+  "Mavuika": {
+    "element": "Pyro",
+    "local_specialty": "Withering Purpurbloom",
+    "common_material_tiers": [
+      "Sentry's Wooden Whistle",
+      "Warrior's Metal Whistle",
+      "Saurian-Crowned Warrior's Golden Whistle"
+    ],
+    "boss_material": "Gold-Inscribed Secret Source Core"
+  },
+  "Mika": {
+    "element": "Cryo",
+    "local_specialty": "Wolfhook",
+    "common_material_tiers": [
+      "Recruit's Insignia",
+      "Sergeant's Insignia",
+      "Lieutenant's Insignia"
+    ],
+    "boss_material": "Pseudo-Stamens"
+  },
+  "Mona": {
+    "element": "Hydro",
+    "local_specialty": "Philanemo Mushroom",
+    "common_material_tiers": [
+      "Whopperflower Nectar",
+      "Shimmering Nectar",
+      "Energy Nectar"
+    ],
+    "boss_material": "Cleansing Heart"
+  },
+  "Mualani": {
+    "element": "Hydro",
+    "local_specialty": "Sprayfeather Gill",
+    "common_material_tiers": [
+      "Sentry's Wooden Whistle",
+      "Warrior's Metal Whistle",
+      "Saurian-Crowned Warrior's Golden Whistle"
+    ],
+    "boss_material": "Mark of the Binding Blessing"
+  },
+  "Nahida": {
+    "element": "Dendro",
+    "local_specialty": "Kalpalata Lotus",
+    "common_material_tiers": [
+      "Fungal Spores",
+      "Luminescent Pollen",
+      "Crystalline Cyst Dust"
+    ],
+    "boss_material": "Quelled Creeper"
+  },
+  "Navia": {
+    "element": "Geo",
+    "local_specialty": "Spring of the First Dewdrop",
+    "common_material_tiers": [
+      "Transoceanic Pearl",
+      "Transoceanic Chunk",
+      "Xenochromatic Crystal"
+    ],
+    "boss_material": "Artificed Spare Clockwork Component \u2014 Coppelius"
+  },
+  "Nefer": {
+    "element": "Dendro",
+    "local_specialty": "Moonfall Silver",
+    "common_material_tiers": [
+      "Tattered Warrant",
+      "Immaculate Warrant",
+      "Frost-Etched Warrant"
+    ],
+    "boss_material": "Radiant Antler"
+  },
+  "Neuvillette": {
+    "element": "Hydro",
+    "local_specialty": "Lumitoile",
+    "common_material_tiers": [
+      "Transoceanic Pearl",
+      "Transoceanic Chunk",
+      "Xenochromatic Crystal"
+    ],
+    "boss_material": "Fontemer Unihorn"
+  },
+  "Nicole": {
+    "element": "Pyro",
+    "local_specialty": "Pine Amber",
+    "common_material_tiers": [
+      "Tattered Warrant",
+      "Immaculate Warrant",
+      "Frost-Etched Warrant"
+    ],
+    "boss_material": "Remnant of the Dreadwing"
+  },
+  "Nilou": {
+    "element": "Hydro",
+    "local_specialty": "Padisarah",
+    "common_material_tiers": [
+      "Fungal Spores",
+      "Luminescent Pollen",
+      "Crystalline Cyst Dust"
+    ],
+    "boss_material": "Perpetual Caliber"
+  },
+  "Ningguang": {
+    "element": "Geo",
+    "local_specialty": "Glaze Lily",
+    "common_material_tiers": [
+      "Recruit's Insignia",
+      "Sergeant's Insignia",
+      "Lieutenant's Insignia"
+    ],
+    "boss_material": "Basalt Pillar"
+  },
+  "Noelle": {
+    "element": "Geo",
+    "local_specialty": "Valberry",
+    "common_material_tiers": [
+      "Damaged Mask",
+      "Stained Mask",
+      "Ominous Mask"
+    ],
+    "boss_material": "Basalt Pillar"
+  },
+  "Odette": {
+    "element": "Cryo",
+    "local_specialty": "Frostfairy Flower",
+    "common_material_tiers": [
+      "Ethereal Glimmershard",
+      "Ethereal Crystal",
+      "Ethereal Crystalscale Stone"
+    ],
+    "boss_material": "Unscorched Blossom Branch"
+  },
+  "Ororon": {
+    "element": "Electro",
+    "local_specialty": "Glowing Hornshroom",
+    "common_material_tiers": [
+      "Juvenile Fang",
+      "Seasoned Fang",
+      "Tyrant's Fang"
+    ],
+    "boss_material": "Mark of the Binding Blessing"
+  },
+  "Prune": {
+    "element": "Anemo",
+    "local_specialty": "Winter Icelea",
+    "common_material_tiers": [
+      "Treasure Hoarder Insignia",
+      "Silver Raven Insignia",
+      "Golden Raven Insignia"
+    ],
+    "boss_material": "Radiant Antler"
+  },
+  "Qiqi": {
+    "element": "Cryo",
+    "local_specialty": "Violetgrass",
+    "common_material_tiers": [
+      "Divining Scroll",
+      "Sealed Scroll",
+      "Forbidden Curse Scroll"
+    ],
+    "boss_material": "Hoarfrost Core"
+  },
+  "Raiden Shogun": {
+    "element": "Electro",
+    "local_specialty": "Amakumo Fruit",
+    "common_material_tiers": [
+      "Old Handguard",
+      "Kageuchi Handguard",
+      "Famed Handguard"
+    ],
+    "boss_material": "Storm Beads"
+  },
+  "Razor": {
+    "element": "Electro",
+    "local_specialty": "Wolfhook",
+    "common_material_tiers": [
+      "Damaged Mask",
+      "Stained Mask",
+      "Ominous Mask"
+    ],
+    "boss_material": "Lightning Prism"
+  },
+  "Rosaria": {
+    "element": "Cryo",
+    "local_specialty": "Valberry",
+    "common_material_tiers": [
+      "Recruit's Insignia",
+      "Sergeant's Insignia",
+      "Lieutenant's Insignia"
+    ],
+    "boss_material": "Hoarfrost Core"
+  },
+  "Sandrone": {
+    "element": "Cryo",
+    "local_specialty": "Subdetection Unit",
+    "common_material_tiers": [
+      "Broken Drive Shaft",
+      "Reinforced Drive Shaft",
+      "Precision Drive Shaft"
+    ],
+    "boss_material": "Plume of the Fallen Watcher"
+  },
+  "Sangonomiya Kokomi": {
+    "element": "Hydro",
+    "local_specialty": "Sango Pearl",
+    "common_material_tiers": [
+      "Spectral Husk",
+      "Spectral Heart",
+      "Spectral Nucleus"
+    ],
+    "boss_material": "Dew of Repudiation"
+  },
+  "Sayu": {
+    "element": "Anemo",
+    "local_specialty": "Crystal Marrow",
+    "common_material_tiers": [
+      "Whopperflower Nectar",
+      "Shimmering Nectar",
+      "Energy Nectar"
+    ],
+    "boss_material": "Marionette Core"
+  },
+  "Sethos": {
+    "element": "Electro",
+    "local_specialty": "Trishiraite",
+    "common_material_tiers": [
+      "Faded Red Satin",
+      "Trimmed Red Silk",
+      "Rich Red Brocade"
+    ],
+    "boss_material": "Cloudseam Scale"
+  },
+  "Shenhe": {
+    "element": "Cryo",
+    "local_specialty": "Qingxin",
+    "common_material_tiers": [
+      "Whopperflower Nectar",
+      "Shimmering Nectar",
+      "Energy Nectar"
+    ],
+    "boss_material": "Dragonheir's False Fin"
+  },
+  "Shikanoin Heizou": {
+    "element": "Anemo",
+    "local_specialty": "Onikabuto",
+    "common_material_tiers": [
+      "Treasure Hoarder Insignia",
+      "Silver Raven Insignia",
+      "Golden Raven Insignia"
+    ],
+    "boss_material": "Runic Fang"
+  },
+  "Sigewinne": {
+    "element": "Hydro",
+    "local_specialty": "Romaritime Flower",
+    "common_material_tiers": [
+      "Transoceanic Pearl",
+      "Transoceanic Chunk",
+      "Xenochromatic Crystal"
+    ],
+    "boss_material": "Water That Failed To Transcend"
+  },
+  "Skirk": {
+    "element": "Cryo",
+    "local_specialty": "Skysplit Gembloom",
+    "common_material_tiers": [
+      "Meshing Gear",
+      "Mechanical Spur Gear",
+      "Artificed Dynamic Gear"
+    ],
+    "boss_material": "Ensnaring Gaze"
+  },
+  "Sucrose": {
+    "element": "Anemo",
+    "local_specialty": "Windwheel Aster",
+    "common_material_tiers": [
+      "Whopperflower Nectar",
+      "Shimmering Nectar",
+      "Energy Nectar"
+    ],
+    "boss_material": "Hurricane Seed"
+  },
+  "Tartaglia": {
+    "element": "Hydro",
+    "local_specialty": "Starconch",
+    "common_material_tiers": [
+      "Recruit's Insignia",
+      "Sergeant's Insignia",
+      "Lieutenant's Insignia"
+    ],
+    "boss_material": "Cleansing Heart"
+  },
+  "Thoma": {
+    "element": "Pyro",
+    "local_specialty": "Fluorescent Fungus",
+    "common_material_tiers": [
+      "Treasure Hoarder Insignia",
+      "Silver Raven Insignia",
+      "Golden Raven Insignia"
+    ],
+    "boss_material": "Smoldering Pearl"
+  },
+  "Tighnari": {
+    "element": "Dendro",
+    "local_specialty": "Nilotpala Lotus",
+    "common_material_tiers": [
+      "Fungal Spores",
+      "Luminescent Pollen",
+      "Crystalline Cyst Dust"
+    ],
+    "boss_material": "Majestic Hooked Beak"
+  },
+  "Traveler": {
+    "element": "Traveler",
+    "local_specialty": "Windwheel Aster",
+    "common_material_tiers": [
+      "Damaged Mask",
+      "Stained Mask",
+      "Ominous Mask"
+    ],
+    "boss_material": null
+  },
+  "Varesa": {
+    "element": "Electro",
+    "local_specialty": "Skysplit Gembloom",
+    "common_material_tiers": [
+      "Juvenile Fang",
+      "Seasoned Fang",
+      "Tyrant's Fang"
+    ],
+    "boss_material": "Sparkless Statue Core"
+  },
+  "Varka": {
+    "element": "Anemo",
+    "local_specialty": "Wolfhook",
+    "common_material_tiers": [
+      "Broken Drive Shaft",
+      "Reinforced Drive Shaft",
+      "Precision Drive Shaft"
+    ],
+    "boss_material": "Prismatic Severed Tail"
+  },
+  "Venti": {
+    "element": "Anemo",
+    "local_specialty": "Cecilia",
+    "common_material_tiers": [
+      "Slime Condensate",
+      "Slime Secretions",
+      "Slime Concentrate"
+    ],
+    "boss_material": "Hurricane Seed"
+  },
+  "Wanderer": {
+    "element": "Anemo",
+    "local_specialty": "Rukkhashava Mushrooms",
+    "common_material_tiers": [
+      "Old Handguard",
+      "Kageuchi Handguard",
+      "Famed Handguard"
+    ],
+    "boss_material": "Perpetual Caliber"
+  },
+  "Wriothesley": {
+    "element": "Cryo",
+    "local_specialty": "Subdetection Unit",
+    "common_material_tiers": [
+      "Meshing Gear",
+      "Mechanical Spur Gear",
+      "Artificed Dynamic Gear"
+    ],
+    "boss_material": "\"Tourbillon Device\""
+  },
+  "Xiangling": {
+    "element": "Pyro",
+    "local_specialty": "Jueyun Chili",
+    "common_material_tiers": [
+      "Slime Condensate",
+      "Slime Secretions",
+      "Slime Concentrate"
+    ],
+    "boss_material": "Everflame Seed"
+  },
+  "Xianyun": {
+    "element": "Anemo",
+    "local_specialty": "Clearwater Jade",
+    "common_material_tiers": [
+      "Divining Scroll",
+      "Sealed Scroll",
+      "Forbidden Curse Scroll"
+    ],
+    "boss_material": "Cloudseam Scale"
+  },
+  "Xiao": {
+    "element": "Anemo",
+    "local_specialty": "Qingxin",
+    "common_material_tiers": [
+      "Slime Condensate",
+      "Slime Secretions",
+      "Slime Concentrate"
+    ],
+    "boss_material": "Juvenile Jade"
+  },
+  "Xilonen": {
+    "element": "Geo",
+    "local_specialty": "Brilliant Chrysanthemum",
+    "common_material_tiers": [
+      "Sentry's Wooden Whistle",
+      "Warrior's Metal Whistle",
+      "Saurian-Crowned Warrior's Golden Whistle"
+    ],
+    "boss_material": "Gold-Inscribed Secret Source Core"
+  },
+  "Xingqiu": {
+    "element": "Hydro",
+    "local_specialty": "Silk Flower",
+    "common_material_tiers": [
+      "Damaged Mask",
+      "Stained Mask",
+      "Ominous Mask"
+    ],
+    "boss_material": "Cleansing Heart"
+  },
+  "Xinyan": {
+    "element": "Pyro",
+    "local_specialty": "Violetgrass",
+    "common_material_tiers": [
+      "Treasure Hoarder Insignia",
+      "Silver Raven Insignia",
+      "Golden Raven Insignia"
+    ],
+    "boss_material": "Everflame Seed"
+  },
+  "Yae Miko": {
+    "element": "Electro",
+    "local_specialty": "Sea Ganoderma",
+    "common_material_tiers": [
+      "Old Handguard",
+      "Kageuchi Handguard",
+      "Famed Handguard"
+    ],
+    "boss_material": "Dragonheir's False Fin"
+  },
+  "Yanfei": {
+    "element": "Pyro",
+    "local_specialty": "Noctilucous Jade",
+    "common_material_tiers": [
+      "Treasure Hoarder Insignia",
+      "Silver Raven Insignia",
+      "Golden Raven Insignia"
+    ],
+    "boss_material": "Juvenile Jade"
+  },
+  "Yaoyao": {
+    "element": "Dendro",
+    "local_specialty": "Jueyun Chili",
+    "common_material_tiers": [
+      "Slime Condensate",
+      "Slime Secretions",
+      "Slime Concentrate"
+    ],
+    "boss_material": "Quelled Creeper"
+  },
+  "Yelan": {
+    "element": "Hydro",
+    "local_specialty": "Starconch",
+    "common_material_tiers": [
+      "Recruit's Insignia",
+      "Sergeant's Insignia",
+      "Lieutenant's Insignia"
+    ],
+    "boss_material": "Runic Fang"
+  },
+  "Yoimiya": {
+    "element": "Pyro",
+    "local_specialty": "Naku Weed",
+    "common_material_tiers": [
+      "Divining Scroll",
+      "Sealed Scroll",
+      "Forbidden Curse Scroll"
+    ],
+    "boss_material": "Smoldering Pearl"
+  },
+  "Yumemizuki Mizuki": {
+    "element": "Anemo",
+    "local_specialty": "Sea Ganoderma",
+    "common_material_tiers": [
+      "Old Handguard",
+      "Kageuchi Handguard",
+      "Famed Handguard"
+    ],
+    "boss_material": "Talisman of the Enigmatic Land"
+  },
+  "Yun Jin": {
+    "element": "Geo",
+    "local_specialty": "Glaze Lily",
+    "common_material_tiers": [
+      "Damaged Mask",
+      "Stained Mask",
+      "Ominous Mask"
+    ],
+    "boss_material": "Riftborn Regalia"
+  },
+  "Zhongli": {
+    "element": "Geo",
+    "local_specialty": "Cor Lapis",
+    "common_material_tiers": [
+      "Slime Condensate",
+      "Slime Secretions",
+      "Slime Concentrate"
+    ],
+    "boss_material": "Basalt Pillar"
+  },
+  "Zibai": {
+    "element": "Geo",
+    "local_specialty": "Glaze Lily",
+    "common_material_tiers": [
+      "Tattered Warrant",
+      "Immaculate Warrant",
+      "Frost-Etched Warrant"
+    ],
+    "boss_material": "Remnant of the Dreadwing"
+  }
+}

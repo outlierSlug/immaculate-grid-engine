@@ -157,7 +157,101 @@ const GENSHIN_DESCRIPTIONS: Record<string, string> = {
   'Tall Male': 'This character has a Tall Male model.',
   '4-Star': 'This character is a 4-star character.',
   '5-Star': 'This character is a 5-star character.',
+
+  // Ascension stat - also renders as the plain-text fallback pill (no
+  // dedicated icon exists for these in-game - see download_ascension_icons.
+  // py's own doc comment). A small, closed, rarely-changing set (16 values),
+  // unlike local specialty/common material/boss material below - hand-typed
+  // here is the right call at this size, unlike those three.
+  'ATK%': "This character's Ascension Stat is ATK%.",
+  'DEF%': "This character's Ascension Stat is DEF%.",
+  'HP%': "This character's Ascension Stat is HP%.",
+  'CRIT Rate%': "This character's Ascension Stat is CRIT Rate%.",
+  'CRIT DMG%': "This character's Ascension Stat is CRIT DMG%.",
+  'Energy Recharge%': "This character's Ascension Stat is Energy Recharge%.",
+  'Elemental Mastery': "This character's Ascension Stat is Elemental Mastery.",
+  'Healing Bonus%': "This character's Ascension Stat is Healing Bonus%.",
+  'Physical DMG Bonus%': "This character's Ascension Stat is Physical DMG Bonus%.",
+  'Pyro DMG Bonus%': "This character's Ascension Stat is Pyro DMG Bonus%.",
+  'Hydro DMG Bonus%': "This character's Ascension Stat is Hydro DMG Bonus%.",
+  'Electro DMG Bonus%': "This character's Ascension Stat is Electro DMG Bonus%.",
+  'Cryo DMG Bonus%': "This character's Ascension Stat is Cryo DMG Bonus%.",
+  'Anemo DMG Bonus%': "This character's Ascension Stat is Anemo DMG Bonus%.",
+  'Geo DMG Bonus%': "This character's Ascension Stat is Geo DMG Bonus%.",
+  'Dendro DMG Bonus%': "This character's Ascension Stat is Dendro DMG Bonus%.",
 };
+
+// ── Genshin ascension materials (local specialty / common material / boss
+// material) ─────────────────────────────────────────────────────────────
+// 125 distinct values across the 3 dimensions - a hand-written import + map
+// entry per icon (the pattern every other dimension in this file uses) is
+// impractical at this size and error-prone to keep in sync as new
+// characters/materials are added. import.meta.glob auto-loads every icon
+// in each folder instead, keyed by its file path; bySlug reduces that down
+// to just the filename stem (the same slug download_ascension_icons.py
+// already saved each file under). The three dimensions' distinct material
+// names never overlap (verified when the icons were downloaded), so their
+// slugs don't either - no risk of one dimension's lookup accidentally
+// resolving another's icon.
+const GENSHIN_LOCAL_SPECIALTY_MODULES = import.meta.glob('../assets/genshin/ascension/local_specialty/*.png', {
+  eager: true,
+  import: 'default',
+}) as Record<string, string>;
+const GENSHIN_COMMON_MATERIAL_MODULES = import.meta.glob('../assets/genshin/ascension/common_material/*.png', {
+  eager: true,
+  import: 'default',
+}) as Record<string, string>;
+const GENSHIN_BOSS_MATERIAL_MODULES = import.meta.glob('../assets/genshin/ascension/boss_material/*.png', {
+  eager: true,
+  import: 'default',
+}) as Record<string, string>;
+
+function bySlug(modules: Record<string, string>): Record<string, string> {
+  const result: Record<string, string> = {};
+  for (const [path, url] of Object.entries(modules)) {
+    const slug = path.slice(path.lastIndexOf('/') + 1).replace(/\.png$/, '');
+    result[slug] = url;
+  }
+  return result;
+}
+
+const GENSHIN_LOCAL_SPECIALTY_ICONS = bySlug(GENSHIN_LOCAL_SPECIALTY_MODULES);
+const GENSHIN_COMMON_MATERIAL_ICONS = bySlug(GENSHIN_COMMON_MATERIAL_MODULES);
+const GENSHIN_BOSS_MATERIAL_ICONS = bySlug(GENSHIN_BOSS_MATERIAL_MODULES);
+
+// Mirrors ingestion/genshin/normalize_genshin.py's own slugify() exactly -
+// the icon filenames on disk are that script's slugified material names,
+// not the raw label this component receives, so resolving a label to its
+// icon means re-deriving the same slug here. \w in a JS regex is
+// ASCII-only (unlike Python's default Unicode-aware \w), but every
+// material name in this dataset is plain English text, so the two stay
+// equivalent in practice.
+function genshinSlugify(name: string): string {
+  return name
+    .toLowerCase()
+    .trim()
+    .replace(/[^\w\s-]/g, '')
+    .replace(/[\s_]+/g, '-');
+}
+
+function genshinAscensionIcon(label: string): string | undefined {
+  const slug = genshinSlugify(label);
+  return GENSHIN_LOCAL_SPECIALTY_ICONS[slug] ?? GENSHIN_COMMON_MATERIAL_ICONS[slug] ?? GENSHIN_BOSS_MATERIAL_ICONS[slug];
+}
+
+function genshinAscensionDescription(label: string): string | undefined {
+  const slug = genshinSlugify(label);
+  if (slug in GENSHIN_LOCAL_SPECIALTY_ICONS) {
+    return `This character requires ${label} (a local specialty) to ascend.`;
+  }
+  if (slug in GENSHIN_COMMON_MATERIAL_ICONS) {
+    return `This character requires ${label} to ascend.`;
+  }
+  if (slug in GENSHIN_BOSS_MATERIAL_ICONS) {
+    return `This character requires ${label} (a boss material) to ascend.`;
+  }
+  return undefined;
+}
 
 // Release version has no fixed set of values (a new one ships every patch),
 // so unlike the maps above this can't be a lookup map - it's a template
@@ -471,7 +565,7 @@ export function formatCategoryLabel(label: string, game: GameId): string {
 }
 
 export default function CategoryChip({ label, game }: CategoryChipProps) {
-  const icon = ICONS_BY_GAME[game][label];
+  const icon = ICONS_BY_GAME[game][label] ?? (game === 'genshin' ? genshinAscensionIcon(label) : undefined);
   // On a slow connection these (up to 6 per puzzle, all requested at once)
   // can take a moment - previously the box just stayed blank with no
   // feedback. A pulsing placeholder fills the gap and unmounts once the
@@ -480,7 +574,8 @@ export default function CategoryChip({ label, game }: CategoryChipProps) {
   const [imageReady, setImageReady] = useState(false);
 
   if (icon) {
-    const tooltipDescription = DESCRIPTIONS_BY_GAME[game][label];
+    const tooltipDescription =
+      DESCRIPTIONS_BY_GAME[game][label] ?? (game === 'genshin' ? genshinAscensionDescription(label) : undefined);
     const iconBox = (
       <div className="relative w-(--grid-chip) h-(--grid-chip) bg-gray-100 dark:bg-transparent flex items-center justify-center">
         {!imageReady && (

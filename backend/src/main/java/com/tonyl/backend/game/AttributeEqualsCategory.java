@@ -7,11 +7,22 @@ public class AttributeEqualsCategory implements CategoryDefinition {
     private final String label;
     private final String attributeKey;
     private final Object expectedValue;
+    private final double weight;
 
     public AttributeEqualsCategory(String label, String attributeKey, Object expectedValue) {
+        this(label, attributeKey, expectedValue, 1.0);
+    }
+
+    public AttributeEqualsCategory(String label, String attributeKey, Object expectedValue, double weight) {
         this.label = label;
         this.attributeKey = attributeKey;
         this.expectedValue = expectedValue;
+        this.weight = weight;
+    }
+
+    @Override
+    public double getWeight() {
+        return weight;
     }
 
     @Override

@@ -1,0 +1,121 @@
+
+Icon	Name	HP	ATK	DEF	Ascension Stat	Ascension Stat Value
+Aino Icon	Aino	11,201	242	607	Elemental Mastery	96
+Albedo Icon	Albedo	13,225	251	876	Geo DMG Bonus	28.8%
+Alhaitham Icon	Alhaitham	13,348	313	781	Dendro DMG Bonus	28.8%
+Aloy Icon	Aloy	10,898	233	676	Cryo DMG Bonus	28.8%
+Alyosha Icon	Alyosha	11,962	265	702	Energy Recharge	26.8%
+Amber Icon	Amber	9,461	223	600	ATK	24%
+Arataki Itto Icon	Arataki Itto	12,858	227	959	CRIT Rate	19.2%
+Arlecchino Icon	Arlecchino	13,103	342	764	CRIT DMG	38.4%
+Baizhu Icon	Baizhu	13,348	192	499	HP	28.8%
+Barbara Icon	Barbara	9,787	159	668	HP	24%
+Beidou Icon	Beidou	13,049	225	648	Electro DMG Bonus	24%
+Bennett Icon	Bennett	12,397	191	771	Energy Recharge	26.68%
+Candace Icon	Candace	10,874	212	682	HP	24%
+Charlotte Icon	Charlotte	10,766	173	546	ATK	24%
+Chasca Icon	Chasca	9,796	346	614	CRIT Rate	19.2%
+Chevreuse Icon	Chevreuse	11,962	193	604	HP	24%
+Chiori Icon	Chiori	11,437	322	953	CRIT Rate	19.2%
+Chongyun Icon	Chongyun	10,983	223	648	ATK	24%
+Citlali Icon	Citlali	11,633	126	763	Elemental Mastery	115.2
+Clorinde Icon	Clorinde	12,956	337	783	CRIT Rate	19.2%
+Collei Icon	Collei	9,787	199	600	ATK	24%
+Columbina Icon	Columbina	14,695	95	514	CRIT Rate	19.2%
+Cyno Icon	Cyno	12,490	318	859	CRIT DMG	38.4%
+Dahlia Icon	Dahlia	12,506	189	559	HP	24%
+Dehya Icon	Dehya	15,674	265	627	HP	28.8%
+Diluc Icon	Diluc	12,980	334	783	CRIT Rate	19.2%
+Diona Icon	Diona	9,569	212	600	Cryo DMG Bonus	24%
+Dori Icon	Dori	12,397	223	723	HP	24%
+Durin Icon	Durin	12,429	346	822	CRIT DMG	38.4%
+Emilie Icon	Emilie	13,568	334	730	CRIT DMG	38.4%
+Escoffier Icon	Escoffier	13,348	346	731	CRIT Rate	19.2%
+Eula Icon	Eula	13,225	342	750	CRIT DMG	38.4%
+Faruzan Icon	Faruzan	9,569	196	627	ATK	24%
+Fischl Icon	Fischl	9,189	244	593	ATK	24%
+Flins Icon	Flins	12,490	351	808	CRIT DMG	38.4%
+Freminet Icon	Freminet	12,071	254	708	ATK	24%
+Furina Icon	Furina	15,307	243	695	CRIT Rate	19.2%
+Gaming Icon	Gaming	11,418	301	702	ATK	24%
+Ganyu Icon	Ganyu	9,796	334	630	CRIT DMG	38.4%
+Gorou Icon	Gorou	9,569	182	648	Geo DMG Bonus	24%
+Hu Tao Icon	Hu Tao	15,552	106	876	CRIT DMG	38.4%
+Iansan Icon	Iansan	10,657	257	638	ATK	24%
+Ifa Icon	Ifa	10,081	178	605	Elemental Mastery	96
+Illuga Icon	Illuga	11,962	191	813	Elemental Mastery	96
+Ineffa Icon	Ineffa	12,613	330	827	CRIT Rate	19.2%
+Jahoda Icon	Jahoda	9,646	223	580	Healing Bonus	18.48%
+Jean Icon	Jean	14,695	239	768	Healing Bonus	22.16%
+Kachina Icon	Kachina	11,799	216	792	Geo DMG Bonus	24%
+Kaedehara Kazuha Icon	Kaedehara Kazuha	13,348	296	806	Elemental Mastery	115.2
+Kaeya Icon	Kaeya	11,636	223	791	Energy Recharge	26.68%
+Kamisato Ayaka Icon	Kamisato Ayaka	12,858	342	783	CRIT DMG	38.4%
+Kamisato Ayato Icon	Kamisato Ayato	13,715	298	768	CRIT DMG	38.4%
+Kaveh Icon	Kaveh	11,962	233	750	Elemental Mastery	96
+Keqing Icon	Keqing	13,103	322	799	CRIT DMG	38.4%
+Kinich Icon	Kinich	12,858	332	801	CRIT DMG	38.4%
+Kirara Icon	Kirara	12,179	223	546	HP	24%
+Klee Icon	Klee	10,286	310	614	Pyro DMG Bonus	28.8%
+Kujou Sara Icon	Kujou Sara	9,569	195	627	ATK	24%
+Kuki Shinobu Icon	Kuki Shinobu	12,288	212	750	HP	24%
+Lan Yan Icon	Lan Yan	9,243	250	580	ATK	24%
+Lauma Icon	Lauma	10,653	254	668	Elemental Mastery	115.2
+Layla Icon	Layla	11,092	216	655	HP	24%
+Linnea Icon	Linnea	9,894	143	906	CRIT Rate	19.2%
+Lisa Icon	Lisa	9,569	231	573	Elemental Mastery	96
+Lohen Icon	Lohen	12,858	344	783	CRIT DMG	38.4%
+Lynette Icon	Lynette	12,397	231	711	Anemo DMG Bonus	24%
+Lyney Icon	Lyney	11,021	318	537	CRIT Rate	19.2%
+Mavuika Icon	Mavuika	12,552	358	791	CRIT DMG	38.4%
+Mika Icon	Mika	12,506	223	713	HP	24%
+Mona Icon	Mona	10,409	287	653	Energy Recharge	32%
+Mualani Icon	Mualani	15,184	181	570	CRIT Rate	19.2%
+Nahida Icon	Nahida	10,360	298	630	Elemental Mastery	115.2
+Navia Icon	Navia	12,650	351	793	CRIT DMG	38.4%
+Nefer Icon	Nefer	12,703	344	799	CRIT DMG	38.4%
+Neuvillette Icon	Neuvillette	14,695	208	576	CRIT DMG	38.4%
+Nicole Icon	Nicole	10,409	342	562	ATK	28.8%
+Nilou Icon	Nilou	15,184	229	728	HP	28.8%
+Ningguang Icon	Ningguang	9,787	212	573	Geo DMG Bonus	24%
+Noelle Icon	Noelle	12,071	191	798	DEF	30%
+Odette Icon	Odette	12,980	334	786	CRIT DMG	38.4%
+Ororon Icon	Ororon	9,243	244	586	ATK	24%
+Prune Icon	Prune	9,678	220	580	ATK	24%
+Qiqi Icon	Qiqi	12,368	287	922	Healing Bonus	22.16%
+Raiden Shogun Icon	Raiden Shogun	12,907	337	789	Energy Recharge	32%
+Razor Icon	Razor	11,962	233	750	Physical DMG Bonus	30%
+Rosaria Icon	Rosaria	12,288	240	709	ATK	24%
+Sandrone Icon	Sandrone	13,225	342	752	CRIT Rate	19.2%
+Sangonomiya Kokomi Icon	Sangonomiya Kokomi	13,470	234	657	Hydro DMG Bonus	28.8%
+Sayu Icon	Sayu	11,853	244	744	Elemental Mastery	96
+Sethos Icon	Sethos	9,787	227	559	Elemental Mastery	96
+Shenhe Icon	Shenhe	12,992	303	830	ATK	28.8%
+Shikanoin Heizou Icon	Shikanoin Heizou	10,657	225	683	Anemo DMG Bonus	24%
+Sigewinne Icon	Sigewinne	13,348	192	499	HP	28.8%
+Skirk Icon	Skirk	12,417	358	806	CRIT DMG	38.4%
+Sucrose Icon	Sucrose	9,243	169	702	Anemo DMG Bonus	24%
+Tartaglia Icon	Tartaglia	13,103	301	814	Hydro DMG Bonus	28.8%
+Thoma Icon	Thoma	10,331	201	750	ATK	24%
+Tighnari Icon	Tighnari	10,849	267	630	Dendro DMG Bonus	28.8%
+Traveler Icon	Traveler	10,874	212	682	ATK	24%
+Varesa Icon	Varesa	12,699	356	781	CRIT Rate	19.2%
+Varka Icon	Varka	12,613	352	795	CRIT DMG	38.4%
+Venti Icon	Venti	10,531	263	668	Energy Recharge	32%
+Wanderer Icon	Wanderer	10,164	327	607	CRIT Rate	19.2%
+Wriothesley Icon	Wriothesley	13,592	310	763	CRIT DMG	38.4%
+Xiangling Icon	Xiangling	10,874	225	668	Elemental Mastery	96
+Xianyun Icon	Xianyun	10,409	334	572	ATK	28.8%
+Xiao Icon	Xiao	12,735	349	799	CRIT Rate	19.2%
+Xilonen Icon	Xilonen	12,405	275	929	DEF	36%
+Xingqiu Icon	Xingqiu	10,222	201	757	ATK	24%
+Xinyan Icon	Xinyan	11,201	248	798	ATK	24%
+Yae Miko Icon	Yae Miko	10,372	339	568	CRIT Rate	19.2%
+Yanfei Icon	Yanfei	9,352	240	586	Pyro DMG Bonus	24%
+Yaoyao Icon	Yaoyao	12,288	212	750	HP	24%
+Yelan Icon	Yelan	14,450	243	547	CRIT Rate	19.2%
+Yoimiya Icon	Yoimiya	10,164	322	614	CRIT Rate	19.2%
+Yumemizuki Mizuki Icon	Yumemizuki Mizuki	12,735	215	757	Elemental Mastery	115.2
+Yun Jin Icon	Yun Jin	10,657	191	734	Energy Recharge	26.68%
+Zhongli Icon	Zhongli	14,695	251	737	Geo DMG Bonus	28.8%
+Zibai Icon	Zibai	12,919	224	956	CRIT DMG	38.4%
