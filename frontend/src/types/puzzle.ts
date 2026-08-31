@@ -23,6 +23,12 @@ export interface GuessResponse {
   itemId: string;
   displayName: string;
   imageUrl: string | null;
+  // The server's authoritative running count for this (puzzle, session)
+  // pair - null when the puzzle has no guess limit at all. usePuzzleGuesses
+  // trusts this over any locally-computed count (see its own comment on
+  // why: a locally-computed "+1" drifts from the server's real count under
+  // a retried request or a second tab/device).
+  guessesUsed: number | null;
 }
 
 export interface GridItem {

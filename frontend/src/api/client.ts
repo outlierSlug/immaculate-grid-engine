@@ -74,6 +74,19 @@ export async function fetchArchivedPuzzle(game: string, date: string): Promise<P
   return res.json();
 }
 
+// Thrown specifically for the 409 ApiExceptionHandler.handleGuessLimitExceeded
+// returns - carries the server's true guessesUsed so the caller can resync
+// its own count instead of just learning the guess was rejected. Any other
+// failure (network error, a 500, an unrelated 4xx) throws a plain Error
+// instead, same as every other fetch wrapper in this file.
+export class GuessLimitExceededError extends Error {
+  guessesUsed: number;
+  constructor(message: string, guessesUsed: number) {
+    super(message);
+    this.guessesUsed = guessesUsed;
+  }
+}
+
 export async function submitGuess(puzzleId: string, guess: GuessRequest): Promise<GuessResponse> {
   const res = await fetch(`${BASE_URL}/puzzle/${puzzleId}/guess`, {
     method: 'POST',
@@ -81,6 +94,12 @@ export async function submitGuess(puzzleId: string, guess: GuessRequest): Promis
     body: JSON.stringify(guess),
   });
   if (!res.ok) {
+    if (res.status === 409) {
+      const body = await res.json().catch(() => null);
+      if (body && typeof body.guessesUsed === 'number') {
+        throw new GuessLimitExceededError(body.message ?? 'No guesses remaining', body.guessesUsed);
+      }
+    }
     throw new Error(`Failed to submit guess: ${res.status}`);
   }
   return res.json();

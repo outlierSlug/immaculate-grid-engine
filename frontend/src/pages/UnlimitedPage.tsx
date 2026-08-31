@@ -74,6 +74,7 @@ export default function UnlimitedPage() {
     giveUp,
     gaveUp,
     feedback,
+    guessError,
     startedAt,
     endedAt,
   } = usePuzzleGuesses(puzzle, { guessLimit: activeGuessLimit });
@@ -316,6 +317,7 @@ export default function UnlimitedPage() {
           usedItemIds={new Set(Object.values(filledCells).map((item) => item.id))}
           onSelect={handleGuessSelect}
           onClose={closeActiveCell}
+          submitError={guessError}
           avatarShapeClass={avatarShapeClass} avatarAspectClass={avatarAspectClass}
         />
       )}

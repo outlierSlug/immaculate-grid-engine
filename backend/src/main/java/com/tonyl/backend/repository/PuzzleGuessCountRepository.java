@@ -8,6 +8,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
+
 public interface PuzzleGuessCountRepository extends JpaRepository<PuzzleGuessCount, Long> {
 
     // Atomically records one more guess against (puzzleId, sessionId) and
@@ -34,4 +36,16 @@ public interface PuzzleGuessCountRepository extends JpaRepository<PuzzleGuessCou
         """, nativeQuery = true)
     int tryConsumeGuess(@Param("puzzleId") String puzzleId, @Param("sessionId") String sessionId,
                          @Param("limit") int limit);
+
+    // The true, authoritative count for this (puzzle, session) pair -
+    // fetched right after tryConsumeGuess above so the caller can hand it
+    // back to the client instead of trusting the client's own locally-
+    // computed count, which can drift from the server's (a retried request,
+    // a second tab/device, or a rejected guess all leave the client's own
+    // counter wrong in ways it can't detect on its own). A plain JPQL
+    // property-path query, not native SQL like tryConsumeGuess - there's no
+    // atomicity requirement here, just a read of whatever the atomic upsert
+    // above just wrote.
+    @Query("SELECT g.guessesUsed FROM PuzzleGuessCount g WHERE g.puzzleId = :puzzleId AND g.sessionId = :sessionId")
+    Optional<Integer> findGuessesUsed(@Param("puzzleId") String puzzleId, @Param("sessionId") String sessionId);
 }

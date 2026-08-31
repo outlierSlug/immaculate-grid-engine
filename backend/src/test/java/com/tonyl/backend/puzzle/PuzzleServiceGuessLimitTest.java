@@ -24,7 +24,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -187,6 +189,49 @@ class PuzzleServiceGuessLimitTest {
         assertThrows(IllegalArgumentException.class,
             () -> service.generateUnlimitedPuzzle("genshin", request),
             "minAnswersPerCell=0 must be rejected, not silently disable the per-cell answer floor");
+    }
+
+    // Covers the guess-desync fix: the frontend now trusts GuessResponse's
+    // own guessesUsed instead of computing it locally (see
+    // usePuzzleGuesses.ts), so the server's count needs to be right on both
+    // the success and rejection paths - not just the accept/reject decision
+    // itself, which the tests above already cover.
+    @Test
+    void successfulGuessesReportTheServersRunningCount() {
+        Puzzle puzzle = savePuzzle("guess-limit-reports-count", PuzzleMode.DAILY, null);
+        PuzzleService service = newService();
+        String sessionId = "session-count";
+
+        var first = service.checkGuess(puzzle.getId(), 0, 0, "wrong-1", sessionId, Optional.empty());
+        assertEquals(1, first.guessesUsed());
+
+        var second = service.checkGuess(puzzle.getId(), 0, 0, "known-item", sessionId, Optional.empty());
+        assertEquals(2, second.guessesUsed());
+    }
+
+    @Test
+    void aRejectedGuessCarriesTheTrueServerCountForTheClientToResyncTo() {
+        Puzzle puzzle = savePuzzle("guess-limit-rejection-count", PuzzleMode.DAILY, null);
+        PuzzleService service = newService();
+        String sessionId = "session-rejection-count";
+
+        for (int i = 0; i < 9; i++) {
+            service.checkGuess(puzzle.getId(), 0, 0, "wrong-" + i, sessionId, Optional.empty());
+        }
+
+        GuessLimitExceededException ex = assertThrows(GuessLimitExceededException.class,
+            () -> service.checkGuess(puzzle.getId(), 0, 0, "wrong-10", sessionId, Optional.empty()));
+        assertEquals(9, ex.getGuessesUsed(),
+            "the rejected 10th guess must report the true count (9), not the limit or a stale value");
+    }
+
+    @Test
+    void anUnlimitedPuzzleReportsNoGuessesUsedCount() {
+        Puzzle puzzle = savePuzzle("guess-limit-unlimited-no-count", PuzzleMode.UNLIMITED, null);
+        PuzzleService service = newService();
+
+        var result = service.checkGuess(puzzle.getId(), 0, 0, "wrong-1", "session-unlimited-count", Optional.empty());
+        assertNull(result.guessesUsed(), "a puzzle with no guess limit has no server-side count to report");
     }
 
     @Test

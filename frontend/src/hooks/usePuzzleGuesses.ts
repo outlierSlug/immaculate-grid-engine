@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { fetchPuzzleStats, submitGuess, submitPuzzleAttempt } from '../api/client';
+import { fetchPuzzleStats, submitGuess, submitPuzzleAttempt, GuessLimitExceededError } from '../api/client';
 import { getSessionId } from '../utils/session';
 import { celebrateSolve } from '../utils/confetti';
 import type { PuzzleResponse, GridItem, PuzzleStatsResponse } from '../types/puzzle';
@@ -30,6 +30,17 @@ export interface UsePuzzleGuessesOptions {
   // canonical /today route) keeps behaving exactly as before without
   // needing to pass it; PuzzlePage passes false explicitly for Archive.
   playedLive?: boolean;
+  // Identifies "what page/route this hook instance represents" independent
+  // of which specific puzzle is currently loaded - e.g. `${game}:${isArchive}
+  // :${date}`. Required for the auto-finalize effect below to tell a genuine
+  // same-tab day rollover (this stays fixed while puzzle.id changes
+  // underneath) apart from the player just navigating to a different
+  // game/date (this changes too) - without it, navigating away from an
+  // unfinished Daily puzzle to look at an Archive date silently and
+  // permanently submitted the Daily puzzle as gave-up. null/undefined
+  // disables auto-finalize entirely (safe default - Unlimited never sets
+  // trackStats, so it never needed this to begin with).
+  pageKey?: string | null;
 }
 
 interface StoredProgress {
@@ -76,7 +87,7 @@ function saveProgress(key: string, progress: StoredProgress) {
  * is set, restores from localStorage instead of resetting.
  */
 export function usePuzzleGuesses(puzzle: PuzzleResponse | null, options: UsePuzzleGuessesOptions = {}) {
-  const { guessLimit = null, persistKey = null, trackStats = false, playedLive = true } = options;
+  const { guessLimit = null, persistKey = null, trackStats = false, playedLive = true, pageKey = null } = options;
   const [filledCells, setFilledCells] = useState<Record<string, GridItem>>({});
   const [activeCell, setActiveCell] = useState<{ row: number; col: number } | null>(null);
   const [guessesUsed, setGuessesUsed] = useState(0);
@@ -84,6 +95,12 @@ export function usePuzzleGuesses(puzzle: PuzzleResponse | null, options: UsePuzz
   // Most recent guess result, consumed by PuzzleGrid for a brief non-blocking
   // border flash instead of alert(). Cleared automatically after a beat.
   const [feedback, setFeedback] = useState<{ row: number; col: number; correct: boolean } | null>(null);
+  // Set when a guess submission fails for a reason other than the guess
+  // budget already being exhausted (that case is handled separately - see
+  // handleGuessSelect's catch block) - a network error or an unexpected
+  // server error. Cleared on the next attempt or a successful submission, so
+  // it's never left showing stale after the player retries.
+  const [guessError, setGuessError] = useState<string | null>(null);
   // Wall-clock timestamps (epoch ms), not accumulated durations — surviving
   // a refresh and freezing correctly at game-over both fall out naturally
   // from deriving elapsed time as (endedAt ?? now) - startedAt rather than
@@ -103,8 +120,19 @@ export function usePuzzleGuesses(puzzle: PuzzleResponse | null, options: UsePuzz
   // reset effect below can tell "a genuinely different puzzle just swapped
   // in" (e.g. the midnight rollover, still-live-tab case) apart from the
   // initial mount, and so it can still address the OLD persistKey after the
-  // new one has already replaced it in scope.
-  const previousIdentityRef = useRef<{ puzzleId: string; persistKey: string | null } | null>(null);
+  // new one has already replaced it in scope. pageKey is carried alongside
+  // so the auto-finalize check below can further tell that apart from the
+  // player simply navigating to a different game/date (see pageKey's own
+  // doc comment on UsePuzzleGuessesOptions).
+  const previousIdentityRef = useRef<{ puzzleId: string; persistKey: string | null; pageKey: string | null } | null>(null);
+  // The sessionId in effect while the CURRENT puzzle's guesses were actually
+  // made - captured on hydration and refreshed after every successful guess
+  // (see handleGuessSelect), rather than read fresh via getSessionId() at
+  // auto-finalize time below. Without this, an auth-state flip (e.g. a
+  // token silently revalidating) between the last guess and a same-tab
+  // rollover would attribute the abandonment to whichever identity happens
+  // to be active at that later moment, not whoever actually played.
+  const activeSessionIdRef = useRef<string | null>(null);
   // Guards handleGuessSelect against a second click firing while the first
   // submission is still in flight (double-click, mobile double-tap, or just
   // an impatient re-click on a slow connection - nothing else disables the
@@ -120,7 +148,7 @@ export function usePuzzleGuesses(puzzle: PuzzleResponse | null, options: UsePuzz
 
   useEffect(() => {
     const previous = previousIdentityRef.current;
-    previousIdentityRef.current = puzzle ? { puzzleId: puzzle.id, persistKey } : null;
+    previousIdentityRef.current = puzzle ? { puzzleId: puzzle.id, persistKey, pageKey } : null;
 
     // Auto-finalizes the OUTGOING puzzle as a gave-up attempt if the day
     // rolled over while this tab was still open on it, mid-play. Without
@@ -133,13 +161,28 @@ export function usePuzzleGuesses(puzzle: PuzzleResponse | null, options: UsePuzz
     // untouched doesn't inflate games-played with a hollow 0-score entry;
     // only Daily (trackStats) can ever hit this at all, since Archive dates
     // are immutable and never swap out from under the page on their own.
-    if (previous && previous.puzzleId !== puzzle?.id && trackStats && !isGameOver && guessesUsed > 0) {
+    //
+    // previous.pageKey === pageKey is the guard that keeps this to a
+    // GENUINE same-tab rollover: pageKey stays fixed while puzzle.id changes
+    // underneath it (the rollover case) but also changes the moment the
+    // player navigates to a different game/date - a plain puzzle.id
+    // comparison alone can't tell those apart, and used to auto-submit an
+    // unfinished Daily puzzle as abandoned just from navigating away to look
+    // at an Archive date.
+    if (
+      previous &&
+      previous.pageKey === pageKey &&
+      previous.puzzleId !== puzzle?.id &&
+      trackStats &&
+      !isGameOver &&
+      guessesUsed > 0
+    ) {
       const ts = Date.now();
       const cellAnswers = Object.fromEntries(
         Object.entries(filledCells).map(([cellKey, item]) => [cellKey, item.id])
       );
       submitPuzzleAttempt(previous.puzzleId, {
-        sessionId: getSessionId(),
+        sessionId: activeSessionIdRef.current ?? getSessionId(),
         cellAnswers,
         score: correctCount,
         guessesUsed,
@@ -169,8 +212,15 @@ export function usePuzzleGuesses(puzzle: PuzzleResponse | null, options: UsePuzz
     setGaveUp(stored?.gaveUp ?? false);
     setActiveCell(null);
     setFeedback(null);
+    setGuessError(null);
     setStartedAt(nextStartedAt);
     setEndedAt(nextEndedAt);
+    // Baseline for this puzzle's activeSessionIdRef - whatever identity is
+    // in effect right now is who this (possibly just-restored) progress
+    // belongs to, since persistKey itself is scoped per-identity (see its
+    // own doc comment on UsePuzzleGuessesOptions). Refreshed again after
+    // every successful guess below.
+    activeSessionIdRef.current = getSessionId();
 
     // First-ever visit to this puzzle: persist the freshly-chosen startedAt
     // right away, so a refresh moments later (before any guess) resumes
@@ -216,6 +266,7 @@ export function usePuzzleGuesses(puzzle: PuzzleResponse | null, options: UsePuzz
       setEndedAt(stored?.endedAt ?? null);
       setActiveCell(null);
       setFeedback(null);
+      setGuessError(null);
       if (trackStats && puzzle) {
         refreshStats(puzzle.id);
       }
@@ -324,27 +375,57 @@ export function usePuzzleGuesses(puzzle: PuzzleResponse | null, options: UsePuzz
     // click event is already queued.
     if (submittingRef.current) return;
     submittingRef.current = true;
+    setGuessError(null);
 
     const { row, col } = activeCell;
+    const sessionId = getSessionId();
 
     let result;
     try {
-      result = await submitGuess(puzzle.id, { row, col, itemId: item.id, sessionId: getSessionId() });
+      result = await submitGuess(puzzle.id, { row, col, itemId: item.id, sessionId });
     } catch (err) {
-      // Should never happen for a legitimate client in sync with the
-      // server's own guess count (see PuzzleService.checkGuess) - this is
-      // just a safety net for a rare desync (e.g. two tabs racing past the
-      // storage-event resync below) or a network error. Closes the input
-      // rather than silently pretending the guess succeeded or crashing the
-      // click handler with an unhandled rejection.
-      console.error('Failed to submit guess', err);
+      if (err instanceof GuessLimitExceededError) {
+        // The server's guess budget is already exhausted, even though this
+        // client's own count said otherwise - a retried request, a second
+        // tab/device, or just a desync. Trust the server's count (clamped to
+        // guessLimit, matching guessesRemaining's own clamp below) instead
+        // of pretending this guess went through; isGameOver picks this up
+        // automatically via outOfGuesses once guessesUsed catches up, which
+        // ends the game rather than leaving the player stuck on a cell that
+        // will never accept a guess again.
+        const resynced = guessLimit != null ? Math.min(err.guessesUsed, guessLimit) : err.guessesUsed;
+        setGuessesUsed(resynced);
+        if (persistKey) {
+          saveProgress(persistKey, {
+            filledCells,
+            guessesUsed: resynced,
+            gaveUp,
+            startedAt: startedAt ?? Date.now(),
+            endedAt,
+          });
+        }
+      } else {
+        // A genuine network error or unexpected server failure - surfaced
+        // via guessError rather than just logged, since silently closing the
+        // input with no feedback previously caused a real, hard-to-diagnose
+        // production regression (a guess the player thought they made never
+        // actually registered).
+        console.error('Failed to submit guess', err);
+        setGuessError('Something went wrong submitting your guess. Please try again.');
+      }
       setActiveCell(null);
       submittingRef.current = false;
       return;
     }
 
-    const nextGuessesUsed = guessesUsed + 1;
+    // Trusts the server's own running count over a locally-computed "+1" -
+    // see GuessResponse.guessesUsed's doc comment for why the local count
+    // can drift (a retried request, a second tab/device). Falls back to the
+    // local increment only for an unlimited puzzle, where the server has no
+    // count to report at all (guessesUsed is always null there).
+    const nextGuessesUsed = result.guessesUsed ?? guessesUsed + 1;
     setGuessesUsed(nextGuessesUsed);
+    activeSessionIdRef.current = sessionId;
 
     let nextFilledCells = filledCells;
     if (result.correct) {
@@ -395,6 +476,7 @@ export function usePuzzleGuesses(puzzle: PuzzleResponse | null, options: UsePuzz
     gaveUp,
     giveUp,
     feedback,
+    guessError,
     startedAt,
     endedAt,
     puzzleStats,

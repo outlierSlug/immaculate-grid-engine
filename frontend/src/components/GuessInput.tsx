@@ -60,6 +60,10 @@ interface GuessInputProps {
   usedItemIds: Set<string>;
   onSelect: (item: GridItem) => void;
   onClose: () => void;
+  // Shown as a small inline message when the most recent guess submission
+  // failed for a reason other than the guess budget being exhausted (see
+  // usePuzzleGuesses' guessError) - null/undefined shows nothing.
+  submitError?: string | null;
   avatarShapeClass: string;
   avatarAspectClass: string;
 }
@@ -71,6 +75,7 @@ export default function GuessInput({
   usedItemIds,
   onSelect,
   onClose,
+  submitError,
   avatarShapeClass,
   avatarAspectClass,
 }: GuessInputProps) {
@@ -174,6 +179,10 @@ export default function GuessInput({
           <span className="uppercase tracking-wide">{formatCategoryLabel(colLabel, game)}</span>
         </div>
       </div>
+
+        {submitError && (
+          <p className="px-4 pt-3 text-sm text-red-600 dark:text-red-400">{submitError}</p>
+        )}
 
         {/* Search */}
         <div className="px-4 py-3">

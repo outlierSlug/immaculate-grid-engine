@@ -135,14 +135,22 @@ public class PuzzleService {
         } else {
             effectiveLimit = puzzle.getGuessLimit();
         }
+        // The client's own guessesUsed is trusted for nothing more than UI
+        // display (see the field's own doc comment above) - guessesUsedAfter
+        // is what GuessResponse hands back instead, so the frontend can
+        // resync to the server's real count after every guess rather than
+        // just incrementing its own, which drifts under a retried request, a
+        // second tab/device, or a guess this call rejects.
+        Integer guessesUsedAfter = null;
         if (effectiveLimit != null) {
             if (sessionId == null || sessionId.isBlank()) {
                 throw new IllegalArgumentException("sessionId is required for a guess-limited puzzle");
             }
             sessionOwnership.verify(sessionId, caller);
             int allowed = puzzleGuessCountRepository.tryConsumeGuess(puzzleId, sessionId, effectiveLimit);
+            guessesUsedAfter = puzzleGuessCountRepository.findGuessesUsed(puzzleId, sessionId).orElse(effectiveLimit);
             if (allowed == 0) {
-                throw new IllegalStateException("No guesses remaining for this puzzle");
+                throw new GuessLimitExceededException("No guesses remaining for this puzzle", guessesUsedAfter);
             }
         }
 
@@ -155,11 +163,12 @@ public class PuzzleService {
             correct,
             normalizedItemId,
             item != null ? item.getDisplayName() : normalizedItemId,
-            item != null ? item.getImageUrl() : null
+            item != null ? item.getImageUrl() : null,
+            guessesUsedAfter
         );
     }
 
-    public record GuessResult(boolean correct, String itemId, String displayName, String imageUrl) {}
+    public record GuessResult(boolean correct, String itemId, String displayName, String imageUrl, Integer guessesUsed) {}
 
     public Puzzle generateUnlimitedPuzzle(String gameId, UnlimitedPuzzleRequest request) {
         List<GridItem> entities = gridItemRepository.findByGameId(gameId);

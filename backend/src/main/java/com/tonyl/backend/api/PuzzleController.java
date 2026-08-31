@@ -102,7 +102,7 @@ public class PuzzleController {
                                 @CurrentUser Optional<User> user) {
         var result = puzzleService.checkGuess(puzzleId, request.row(), request.col(), request.itemId(),
             request.sessionId(), user);
-        return new GuessResponse(result.correct(), result.itemId(), result.displayName(), result.imageUrl());
+        return new GuessResponse(result.correct(), result.itemId(), result.displayName(), result.imageUrl(), result.guessesUsed());
     }
 
     @PostMapping("/{puzzleId}/attempt")

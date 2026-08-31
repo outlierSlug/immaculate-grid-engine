@@ -163,9 +163,15 @@ export default function PuzzlePage() {
     giveUp,
     gaveUp,
     feedback,
+    guessError,
     puzzleStats,
   } = usePuzzleGuesses(puzzle, {
     guessLimit: DAILY_GUESS_LIMIT,
+    // Same shape as the fetch effect's own fetchTarget above - lets the
+    // hook's auto-finalize logic tell a genuine same-tab day rollover apart
+    // from navigating to a different game/date (see pageKey's own doc
+    // comment on UsePuzzleGuessesOptions).
+    pageKey: `${validGame ?? ''}:${isArchive}:${date ?? ''}`,
     // Same key format for Daily and Archive - puzzle.id already encodes the
     // date, so a puzzle played live and later revisited via Archive (or
     // vice versa, once "today" becomes a past date) resolves to the same
@@ -454,6 +460,7 @@ export default function PuzzlePage() {
           usedItemIds={new Set(Object.values(filledCells).map((item) => item.id))}
           onSelect={handleGuessSelect}
           onClose={closeActiveCell}
+          submitError={guessError}
           avatarShapeClass={avatarShapeClass} avatarAspectClass={avatarAspectClass}
         />
       )}
