@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import ClickTooltip from './ClickTooltip';
 import type { GameId } from '../config/games';
+import genshinMaterialSources from '../assets/genshin/ascension/material_sources.json';
 import mondstadtIcon from '../assets/genshin/regions/Mondstadt_Emblem_Night.webp';
 import liyueIcon from '../assets/genshin/regions/Liyue_Emblem_Night.webp';
 import inazumaIcon from '../assets/genshin/regions/Inazuma_Emblem_Night.webp';
@@ -239,16 +240,36 @@ function genshinAscensionIcon(label: string): string | undefined {
   return GENSHIN_LOCAL_SPECIALTY_ICONS[slug] ?? GENSHIN_COMMON_MATERIAL_ICONS[slug] ?? GENSHIN_BOSS_MATERIAL_ICONS[slug];
 }
 
+// Enemy/boss name each common/boss material drops from - see
+// ingestion/genshin/build_material_sources.py for how this was mined from
+// Dimbreath's own material flavor text (cross-checked by hand). Keyed by the
+// exact label text (not a slug - these are the raw attribute values, same
+// string CategoryDefinition.labelFor emits, no normalization needed here
+// unlike the icon lookups above). Covers every value present in
+// genshin_entities.json today, including ones too thin to ever clear
+// GenshinGameModule's min-count floor and become an actual puzzle category -
+// deliberately not trimmed to just the categories that appear, so the
+// tooltip stays consistent regardless of which materials the floor lets
+// through on any given generation.
+const GENSHIN_COMMON_MATERIAL_SOURCES: Record<string, string> = genshinMaterialSources.common_material;
+const GENSHIN_BOSS_MATERIAL_SOURCES: Record<string, string> = genshinMaterialSources.boss_material;
+
 function genshinAscensionDescription(label: string): string | undefined {
   const slug = genshinSlugify(label);
   if (slug in GENSHIN_LOCAL_SPECIALTY_ICONS) {
-    return `This character requires ${label} (a local specialty) to ascend.`;
-  }
-  if (slug in GENSHIN_COMMON_MATERIAL_ICONS) {
     return `This character requires ${label} to ascend.`;
   }
+  if (slug in GENSHIN_COMMON_MATERIAL_ICONS) {
+    const source = GENSHIN_COMMON_MATERIAL_SOURCES[label];
+    return source
+      ? `This character requires ${label} (${source}) to ascend.`
+      : `This character requires ${label} to ascend.`;
+  }
   if (slug in GENSHIN_BOSS_MATERIAL_ICONS) {
-    return `This character requires ${label} (a boss material) to ascend.`;
+    const source = GENSHIN_BOSS_MATERIAL_SOURCES[label];
+    return source
+      ? `This character requires ${label} (${source}) to ascend.`
+      : `This character requires ${label} (a boss material) to ascend.`;
   }
   return undefined;
 }

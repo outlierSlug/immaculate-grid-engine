@@ -67,10 +67,42 @@ Two independent sources, cross-checked against each other:
   no icon of its own - it renders as a plain-text pill, same treatment as
   Rarity's "4-Star"/"5-Star".
 
+- **`build_material_sources.py`** answers a different question than the
+  rest of this pipeline - not "which materials does a character need" but
+  "which enemy/boss drops each common/boss material," for
+  `CategoryChip.tsx`'s tooltip (`This character requires X (Y) to
+  ascend.`). Mines Dimbreath's material *flavor text* (a separate field
+  from the ascension-requirement data pipeline 1 uses - see
+  `raw/material_flavor_dump.txt`, a saved reference dump of every value's
+  flavor text, and `raw/boss_material_names.txt`, the plain list of boss
+  material values it was built against) via a regex-first pass (every
+  auto-extracted name is a verbatim quote from the game's own text, not a
+  guess), falling back to `MANUAL_OVERRIDES` in the script for text that
+  doesn't parse cleanly - all 66 entries (19 common + 47 boss) were
+  human-reviewed and corrected against actual game knowledge before being
+  trusted; several auto-extracted names were replaced with more specific
+  official boss names during that review (e.g. "the Wolflord" →
+  "Golden Wolflord", "ruin machine" → "Aeonblight Drake"). Writes
+  `output/genshin_material_sources.json` - copy into
+  `frontend/src/assets/genshin/ascension/material_sources.json` (same
+  plain-copy step as the icons). Deliberately covers every value in
+  `genshin_entities.json`, not just the ones that clear
+  `GenshinGameModule`'s min-count floor into a real category - keeps the
+  tooltip consistent regardless of which materials a given generation's
+  floor lets through. An unresolved value (no confident source in the
+  flavor text) is simply left out of the output, not guessed -
+  `CategoryChip.tsx` falls back to its older generic "(a boss material)"
+  tooltip for those, so a gap here is a silent no-op, never a wrong name
+  shown to a player. Re-run whenever the roster changes and new
+  common/boss material values show up, same as the rest of this pipeline.
+
 Run order: `fetch_dimbreath.py` → `build_ascension_materials.py` →
-`parse_wiki_ascension.py` → `download_ascension_icons.py` → copy
-`output/icons/ascension/` into `frontend/src/assets/genshin/ascension/`
-(not automated - a plain file copy) → back to pipeline 1's
+`parse_wiki_ascension.py` → `download_ascension_icons.py` →
+`build_material_sources.py` → copy `output/icons/ascension/` into
+`frontend/src/assets/genshin/ascension/` and
+`output/genshin_material_sources.json` to
+`frontend/src/assets/genshin/ascension/material_sources.json` (neither
+copy is automated - plain file copies) → back to pipeline 1's
 `normalize_genshin.py` to actually wire the new/changed data into
 `genshin_entities.json`.
 
