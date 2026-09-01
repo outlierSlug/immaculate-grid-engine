@@ -40,6 +40,17 @@ public class GenshinGameModule implements GameModule {
     // other 3 games' even at this floor.
     private static final int ASCENSION_MATERIAL_MIN_COUNT = 3;
 
+    // release_version's raw per-patch values are similarly thin (51
+    // distinct values, most held by just 1-2 characters - see
+    // ingestion/genshin/output/genshin_attribute_counts.txt) - the same
+    // near-unique-answer generation hazard as ASCENSION_MATERIAL_MIN_COUNT
+    // above. Those characters aren't dropped from the puzzle pool, though -
+    // release_era (a derived bucketing of release_version into "Version N
+    // (N.x)" - see normalize_genshin.py's release_era()) covers everyone at
+    // a coarser, healthier granularity (~7 buckets, all with 15+ members
+    // except the newest patch, which will only grow over time).
+    private static final int RELEASE_VERSION_MIN_COUNT = 3;
+
     // How often a category should be picked once its dimension is already in
     // a row/col pool, relative to the default of 1.0 - see CategoryDefinition
     // .getWeight()'s own doc comment for the mechanism (GridGenerator applies
@@ -73,7 +84,8 @@ public class GenshinGameModule implements GameModule {
         categories.addAll(categoriesForAttribute(entities, "region", 1, BOOSTED_WEIGHT));
         categories.addAll(categoriesForAttribute(entities, "rarity", 1, BOOSTED_WEIGHT));
         categories.addAll(categoriesForAttribute(entities, "model", 1, 1.0));
-        categories.addAll(categoriesForAttribute(entities, "release_version", 1, 1.0));
+        categories.addAll(categoriesForAttribute(entities, "release_version", RELEASE_VERSION_MIN_COUNT, 1.0));
+        categories.addAll(categoriesForAttribute(entities, "release_era", 1, 1.0));
         // Ascension-related dimensions - see ingestion/genshin/README.md's
         // ascension pipeline section. The elemental gemstone is
         // deliberately not here (1:1 with element, already covered above).

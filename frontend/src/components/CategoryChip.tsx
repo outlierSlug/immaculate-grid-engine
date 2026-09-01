@@ -287,6 +287,18 @@ function releaseVersionDescription(label: string): string | undefined {
     : undefined;
 }
 
+// release_era is release_version bucketed down to ~7 values (see
+// normalize_genshin.py's release_era()) - same "no fixed set, template
+// instead of a lookup map" reasoning as release_version above, just a
+// different label shape ("Version 1 (1.x)", "Version Luna (6.x)").
+const RELEASE_ERA_PATTERN = /^Version (?:\d+|Luna) \(\d+\.x\)$/;
+
+function releaseEraDescription(label: string): string | undefined {
+  return RELEASE_ERA_PATTERN.test(label)
+    ? `This character was released sometime during ${label}.`
+    : undefined;
+}
+
 // ── Brawl Stars ──────────────────────────────────────────────────────────
 const BRAWLSTARS_ICONS: Record<string, string> = {
   // Classes
@@ -564,7 +576,7 @@ const RARITY_STYLES_BY_GAME: Record<GameId, Record<string, string>> = {
 };
 
 function patternDescription(game: GameId, label: string): string | undefined {
-  if (game === 'genshin') return releaseVersionDescription(label);
+  if (game === 'genshin') return releaseVersionDescription(label) ?? releaseEraDescription(label);
   if (game === 'brawlstars') return releaseYearDescription(label);
   return undefined;
 }

@@ -14,6 +14,10 @@ class GenshinAttributes(BaseModel):
     model: str
     release_date: str      # from "release" in raw data, e.g. "2020-12-23"
     release_version: str
+    # Derived from release_version (see normalize_genshin.py's release_era())
+    # - buckets the ~51 thin exact versions down to ~7 healthy ones for a
+    # coarser puzzle category, not a second independently-scraped field.
+    release_era: str
     # Ascension-related attributes - see ingestion/genshin/README.md's
     # "Ascension-materials enrichment pipeline" section for where these
     # come from (Dimbreath's datamined game files, cross-checked against a

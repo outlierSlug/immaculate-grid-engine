@@ -171,6 +171,28 @@ def slugify(name: str) -> str:
     return s
 
 
+# Derived from release_version, not a new data source - buckets the 51
+# distinct exact versions (many with just 1-2 characters, see
+# genshin_attribute_counts.txt) down to ~7 healthy ones, so puzzle
+# generation still has a version-based category to draw on even for a
+# character whose exact version is too thin on its own (once
+# GenshinGameModule raises release_version's own floor to match). Labels
+# use the wiki's own "Version N" terminology (not just "N.x") so the
+# category reads as official rather than a made-up bucket name, with the
+# "(N.x)" suffix kept alongside it for players who think of patches that
+# way. The 6.0-6.7 era was branded "Luna I" through "Luna VIII" in-game
+# instead of numeric versions - "Version Luna (6.x)" names both the
+# in-universe title and where it sits in the numeric timeline.
+def release_era(version: str) -> str:
+    match = re.match(r"^(\d+)\.\d+$", version)
+    if match:
+        major = match.group(1)
+        return f"Version {major} ({major}.x)"
+    if version.startswith("Luna"):
+        return "Version Luna (6.x)"
+    return version
+
+
 def get_image_url(name: str) -> str:
     icon = ENKA_ICON_MAP.get(name)
     if icon:
@@ -211,6 +233,7 @@ def map_character(raw: dict) -> list[dict]:
                         "model": model,
                         "release_date": raw.get("release_date") or "2020-09-28",
                         "release_version": TRAVELER_ELEMENT_RELEASE_VERSION[element],
+                        "release_era": release_era(TRAVELER_ELEMENT_RELEASE_VERSION[element]),
                         # Identical across every element - Traveler ascends
                         # on a unique gemstone (Brilliant Diamond) with no
                         # elemental variants, so there's one true ascension
@@ -252,6 +275,7 @@ def map_character(raw: dict) -> list[dict]:
             "model": raw.get("model") or "",
             "release_date": raw.get("release_date") or "",
             "release_version": raw.get("release_version") or "",
+            "release_era": release_era(raw.get("release_version") or ""),
             "local_specialty": ascension["local_specialty"],
             "common_material": ascension["common_material"],
             "boss_material": ascension["boss_material"],
