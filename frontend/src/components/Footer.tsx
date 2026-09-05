@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { DISCORD_INVITE_URL } from '../config/links';
 
 interface FooterLink {
   label: string;
@@ -12,6 +13,7 @@ interface FooterLink {
 // to send bug reports/feedback to - no email address is exposed publicly.
 const FOOTER_LINKS: FooterLink[] = [
   { label: 'GitHub', href: 'https://github.com/outlierSlug/immaculate-grid-engine' },
+  { label: 'Discord', href: DISCORD_INVITE_URL },
   { label: 'X/Twitter', href: 'https://x.com/GachaGridDev' },
   { label: 'Fan Content & Privacy', to: '/legal' },
 ];

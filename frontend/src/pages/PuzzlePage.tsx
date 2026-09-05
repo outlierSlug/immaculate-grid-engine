@@ -10,6 +10,7 @@ import Score from '../components/Score';
 import GuessCounter from '../components/GuessCounter';
 import UniquenessScore from '../components/UniquenessScore';
 import PuzzleStatsPanel from '../components/PuzzleStatsPanel';
+import DiscordPromptBanner from '../components/DiscordPromptBanner';
 import ConfirmModal from '../components/ConfirmModal';
 import HelpButton from '../components/HelpButton';
 import HelpModal from '../components/HelpModal';
@@ -428,6 +429,8 @@ export default function PuzzlePage() {
           <GuessCounter key="guesses" remaining={guessesRemaining} iconSrc={DAILY_GUESS_ICON[validGame]} feedback={feedback} gaveUp={gaveUp} />,
         ]}
       />
+
+      {isGameOver && <DiscordPromptBanner />}
 
       {!isGameOver && (
         <button
