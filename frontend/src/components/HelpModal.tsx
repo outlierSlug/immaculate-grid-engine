@@ -1,6 +1,32 @@
 import { useEffect, useState, type ReactNode } from 'react';
-import { CHANGELOG } from '../data/changelog';
+import { CHANGELOG, type ChangelogEntry } from '../data/changelog';
 import { shortDateLabel } from '../utils/dateIso';
+
+// Splits entry.text around entry.link.text (an exact substring - see
+// ChangelogEntry's own doc comment) and renders that piece as a link,
+// rather than pulling in real markdown parsing for what's normally just
+// plain text.
+function renderChangelogText(entry: ChangelogEntry): ReactNode {
+  if (!entry.link) return entry.text;
+  const index = entry.text.indexOf(entry.link.text);
+  if (index === -1) return entry.text;
+  const before = entry.text.slice(0, index);
+  const after = entry.text.slice(index + entry.link.text.length);
+  return (
+    <>
+      {before}
+      <a
+        href={entry.link.url}
+        target="_blank"
+        rel="noreferrer"
+        className="text-indigo-600 dark:text-indigo-400 hover:underline"
+      >
+        {entry.link.text}
+      </a>
+      {after}
+    </>
+  );
+}
 
 interface HelpModalProps {
   title: string;
@@ -79,7 +105,7 @@ export default function HelpModal({ title, onClose, children }: HelpModalProps) 
                 <span className="shrink-0 w-14 text-xs font-semibold text-gray-400 dark:text-gray-500 pt-px">
                   {shortDateLabel(entry.date)}
                 </span>
-                <span className="text-gray-600 dark:text-gray-400 leading-relaxed">{entry.text}</span>
+                <span className="text-gray-600 dark:text-gray-400 leading-relaxed">{renderChangelogText(entry)}</span>
               </div>
             ))}
           </div>

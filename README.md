@@ -9,5 +9,8 @@ The public-facing product built on top of it is branded
 ## Live
 **[gachagrid.com](https://gachagrid.com)**
 
+## Community
+**[Discord](https://discord.gg/MbcECzvez)**
+
 ## Status
 Deployed. See docs/ROADMAP.md for what's shipped and what's next.
