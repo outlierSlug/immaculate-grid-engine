@@ -47,7 +47,7 @@ export default function DiscordPromptBanner() {
   }
 
   return (
-    <div className="w-full max-w-sm motion-safe:animate-[page-in_350ms_ease-out]">
+    <div className="w-[calc(100vw-2rem)] max-w-sm motion-safe:animate-[page-in_350ms_ease-out]">
       <div className="bg-white dark:bg-gray-900 rounded-xl shadow-sm border border-gray-100 dark:border-gray-800 px-4 py-3.5 flex flex-col items-center gap-2.5 text-center">
         <div className="flex items-center gap-2">
           <svg
