@@ -65,7 +65,7 @@ export default function PuzzleStatsBoard({
             >
               {answerCount != null && (
                 <span
-                  className={`absolute top-1 left-1 inline-flex items-center justify-center px-1.5 py-0.5 rounded-lg font-semibold text-xs leading-tight ${
+                  className={`absolute top-1 left-1 inline-flex items-center justify-center px-1.5 py-0.5 rounded-lg font-semibold text-(length:--grid-avatar-label) leading-tight ${
                     answerCount === 0
                       ? 'bg-red-100 dark:bg-red-900/50 text-red-700 dark:text-red-300'
                       : 'bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400'
@@ -77,7 +77,7 @@ export default function PuzzleStatsBoard({
               )}
               {answer ? (
                 <>
-                  <span className="absolute top-1 right-1 inline-flex items-center justify-center px-1.5 py-0.5 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-100 font-semibold text-xs leading-tight">
+                  <span className="absolute top-1 right-1 inline-flex items-center justify-center px-1.5 py-0.5 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-100 font-semibold text-(length:--grid-avatar-label) leading-tight">
                     {formatPercent(answer.percent)}
                   </span>
                   <img

@@ -66,7 +66,21 @@ export default function PuzzleStatsPanel({
     : null;
 
   return (
-    <div className="flex flex-col items-center gap-4 py-6 border-t border-gray-200 dark:border-gray-800 w-full">
+    <div
+      // Below sm, locally overrides the same flat properties PuzzleGrid's
+      // own container swaps to its -solo variants (see that component's
+      // comment) - --grid-cell/--grid-avatar*/etc are inherited by every
+      // descendant that references them (PuzzleStatsBoard's cells, and
+      // BOARD_WIDTH_CSS/ShareResultRow above it via the plain --grid-cell
+      // name), so this one override keeps the whole "Puzzle Stats" section
+      // proportionally matched to the main grid's now-bigger mobile size,
+      // not just the board itself. max-sm: (not a base/solo swap like
+      // PuzzleGrid uses) since --grid-cell itself - unlike the
+      // avatar/chip properties - already has many other flat-name
+      // consumers elsewhere; renaming it to introduce a -base variant
+      // would ripple far wider than this one section needs.
+      className="flex flex-col items-center gap-4 py-6 border-t border-gray-200 dark:border-gray-800 w-full max-sm:[--grid-cell:var(--grid-cell-solo)] max-sm:[--grid-avatar:var(--grid-avatar-solo)] max-sm:[--grid-avatar-label:var(--grid-avatar-label-solo)] max-sm:[--grid-avatar-card:var(--grid-avatar-card-solo)]"
+    >
       {!isArchive && (
         <ShareResultRow
           puzzleDate={puzzleDate}
