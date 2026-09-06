@@ -81,18 +81,29 @@ export default function PuzzleGrid({
         // itself moves to a separate row below the grid (rendered further
         // down) instead of disappearing.
         //
-        // -ml-(--col-label): centering this block naively (flex items-center
-        // on the parent) centers the whole label+cells span, but with no
-        // trailing column to balance the label, that puts the CELLS - the
-        // visually dominant part - off-center to the right by half the
-        // label's width. The fix isn't a -half-label margin, though: for a
-        // flex item centered via align-items, the margin box (content +
-        // margin) is what gets centered, so a negative margin only moves
-        // the content by HALF its own value - the other half is absorbed
-        // into where the centering math lands. A full -1x-label-width
-        // margin therefore produces the needed half-label-width shift.
-        // (0 on sm+, where the trailing column already balances things.)
-        className="grid -ml-(--col-label) sm:ml-0 [--col-cell:var(--grid-cell-solo)] [--col-label:var(--grid-label-solo)] [--col-stats:0px] sm:[--col-cell:var(--grid-cell)] sm:[--col-label:var(--grid-label)] sm:[--col-stats:var(--grid-label)]"
+        // The label+cells block is centered as a whole (no per-column
+        // offset) - a prior version instead shifted it left by a fraction
+        // of the label's own width, specifically to visually center the
+        // CELLS rather than the whole block. That put the row labels much
+        // closer to the left edge than the right edge got from the cells,
+        // which is exactly backwards: a long single-line label needs MORE
+        // room to its own left, not less, and the freed-up space on the
+        // right was otherwise wasted instead of growing the grid. Plain
+        // centering fixes both - see --grid-*-solo's own comment in
+        // index.css for how the block's width was grown to actually use
+        // that space once this offset was removed.
+        //
+        // Overriding --grid-avatar(-label/-card)/--grid-chip(-img) here too
+        // (not just --col-cell/--col-label above) is what makes the avatar
+        // portrait, its name label, and the row/col category chips actually
+        // grow in step with the now-bigger mobile cell, rather than staying
+        // sized for the old, smaller mobile proportions - see the -solo
+        // variants' own comment in index.css. This is a local override
+        // (CSS custom properties cascade), so it only affects consumers
+        // inside this grid's own subtree - GuessInput and the various
+        // answer-list modals live elsewhere in the DOM and keep resolving
+        // the unscaled, flat names regardless.
+        className="grid [--col-cell:var(--grid-cell-solo)] [--col-label:var(--grid-label-solo)] [--col-stats:0px] [--grid-avatar:var(--grid-avatar-solo)] [--grid-avatar-label:var(--grid-avatar-label-solo)] [--grid-avatar-card:var(--grid-avatar-card-solo)] [--grid-chip:var(--grid-chip-solo)] [--grid-chip-img:var(--grid-chip-img-solo)] sm:[--col-cell:var(--grid-cell)] sm:[--col-label:var(--grid-label)] sm:[--col-stats:var(--grid-label)] sm:[--grid-avatar:var(--grid-avatar-base)] sm:[--grid-avatar-label:var(--grid-avatar-label-base)] sm:[--grid-avatar-card:var(--grid-avatar-card-base)] sm:[--grid-chip:var(--grid-chip-base)] sm:[--grid-chip-img:var(--grid-chip-img-base)]"
         style={{
           // clamp() so this scales down on narrow viewports instead of
           // overflowing at a fixed 7rem/8rem (38rem = 608px total, wider than
@@ -123,8 +134,10 @@ export default function PuzzleGrid({
       {rowLabels.map((rowLabel, rowIndex) => (
         <Fragment key={rowLabel}>
           {/* Same reasoning as the column label above, mirrored to the
-              right side since row labels sit to the grid's left. */}
-          <div className="flex items-center justify-center p-2 pr-3">
+              right side since row labels sit to the grid's left - pr-4,
+              not pr-3, since --grid-label-solo's own widened column (see
+              index.css) left a bit more room to spend here too. */}
+          <div className="flex items-center justify-center p-2 pr-4">
             <CategoryChip label={rowLabel} game={game} />
           </div>
 
@@ -192,9 +205,10 @@ export default function PuzzleGrid({
       // Same column template as the main grid above (minus its own trailing
       // stats column, which doesn't apply here) so each stat lands centered
       // directly under its matching cell column instead of just floating as
-      // a loose centered row.
+      // a loose centered row - no offset here either, matching the main
+      // grid's own plain centering above.
       <div
-        className="grid sm:hidden -ml-(--col-label) [--col-cell:var(--grid-cell-solo)] [--col-label:var(--grid-label-solo)]"
+        className="grid sm:hidden [--col-cell:var(--grid-cell-solo)] [--col-label:var(--grid-label-solo)]"
         style={{ gridTemplateColumns: `var(--col-label) repeat(${colLabels.length}, var(--col-cell))` }}
       >
         <div />

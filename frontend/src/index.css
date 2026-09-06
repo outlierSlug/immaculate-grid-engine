@@ -70,33 +70,37 @@ html {
   --grid-cell: clamp(4.25rem, 21vw, 8rem);
   --grid-label: clamp(2.75rem, 13vw, 7rem);
   --grid-header: clamp(3.5rem, 15vw, 6rem);
-  /* 22vw/15vw (not the naive 25vw/15vw first tried, which bumped both
-     coefficients at once) - a bigger boost to BOTH looks right in isolation
-     but leaves too little margin once the block is re-centered on the cell
-     area (see the -ml-(--col-label) comment where this is consumed). Label
-     alone went from 13.5vw to 15vw afterward (row/col chips were crowding
-     the grid, and the label text was already wrapping to 2 lines at the
-     old width) - re-verified at 320-430px with the cell coefficient left
-     untouched, confirming this narrower, single-variable bump doesn't
-     reintroduce the overflow the combined 25/15 attempt caused. That
-     recentering also has to account for `html { scrollbar-gutter: stable }`
-     above: vw units are relative to the full viewport, but the actual
-     content area is ~15px narrower once the reserved scrollbar gutter is
-     subtracted - the true constraint at a 320px viewport, so these
-     coefficients are tuned against that, not the bare 320px figure. */
-  --grid-cell-solo: clamp(4.25rem, 22vw, 8rem);
-  --grid-label-solo: clamp(2.75rem, 15vw, 7rem);
+  /* PuzzleGrid centers the label+cells block as a whole on mobile (no
+     per-column offset - see its own comment for why an earlier version's
+     offset-based centering was actively counterproductive), so these two
+     coefficients directly control how much of the viewport the grid fills
+     rather than needing slack reserved for that offset. Label given a
+     bigger boost than a flat cell:label ratio would (19vw vs. the ~19.75vw
+     a straight scale-up of the base pair's ratio would give cell's 25vw -
+     close, but label is intentionally the one pushed further, not cell):
+     a long single-line row label (e.g. "Legendary") needs the extra room
+     more than the cells do, and there was still-unused gutter margin on
+     both sides to spend on it. Full block (label + 3 cells) lands around
+     ~94vw, still leaving a modest, even gutter rather than edge-to-edge.
+     Also has to account for `html { scrollbar-gutter: stable }` above: vw
+     units are relative to the full viewport, but the actual content area
+     is ~15px narrower once the reserved scrollbar gutter is subtracted -
+     the true constraint at a 320px viewport, so these coefficients are
+     tuned against that, not the bare 320px figure. Re-verify at 320-430px
+     if either changes again. */
+  --grid-cell-solo: clamp(4.25rem, 25vw, 8rem);
+  --grid-label-solo: clamp(2.75rem, 19vw, 7rem);
   /* CategoryChip's icon medallion (region/element/weapon). Was a hard
      w-13/sm:w-20 breakpoint jump - fluid instead, so it scales continuously
      with the rest of the grid rather than visibly resizing at 640px. Tuned
      to fit inside the header row's 3.5rem-6rem range at every width. */
-  --grid-chip: clamp(3.25rem, 14vw, 5rem);
-  --grid-chip-img: clamp(2.5rem, 11vw, 4rem);
+  --grid-chip-base: clamp(3.25rem, 14vw, 5rem);
+  --grid-chip-img-base: clamp(2.5rem, 11vw, 4rem);
   /* Filled-cell content (character portrait + name label), in PuzzleGrid
      and PuzzleStatsBoard - same fix as --grid-chip above, was a hard
      w-11/sm:w-16 (portrait) and text-[10px]/sm:text-xs (label) jump. */
-  --grid-avatar: clamp(2.75rem, 10.5vw, 4rem);
-  --grid-avatar-label: clamp(0.625rem, 2vw, 0.75rem);
+  --grid-avatar-base: clamp(2.75rem, 10.5vw, 4rem);
+  --grid-avatar-label-base: clamp(0.625rem, 2vw, 0.75rem);
   /* Wider max/faster vw growth than --grid-avatar, same min (mobile-safe -
      the smallest cell has no extra slack to give, see games.ts's
      avatarSizeClass comment) - for portrait card icons (Clash Royale),
@@ -111,7 +115,35 @@ html {
      below at desktop widths. Backed off to 4.75rem to restore real
      margin for a long two-line label, still visibly bigger than
      --grid-avatar's plain 4rem max. */
-  --grid-avatar-card: clamp(2.75rem, 12vw, 4.75rem);
+  --grid-avatar-card-base: clamp(2.75rem, 12vw, 4.75rem);
+
+  /* -solo counterparts of the 5 properties just above, same ~1.135x scale-
+     up already applied to --grid-cell-solo/--grid-label-solo (see that
+     comment) - without this, growing the mobile cell/label alone made the
+     avatar/icon/label INSIDE each cell look smaller relative to its cell
+     than before, since they'd still be sized off the old (smaller) mobile
+     proportions. Only PuzzleGrid's own container swaps these in locally
+     below sm, exactly like --col-cell does - every other consumer,
+     PuzzleStatsBoard included (it references the flat --grid-avatar-label
+     name too, but isn't laid out in this solo/desktop column-width scheme
+     and never overrides it), just inherits the -base default below
+     unconditionally. */
+  --grid-chip-solo: clamp(3.25rem, 16vw, 5rem);
+  --grid-chip-img-solo: clamp(2.5rem, 12.5vw, 4rem);
+  --grid-avatar-solo: clamp(2.75rem, 12vw, 4rem);
+  --grid-avatar-label-solo: clamp(0.625rem, 2.25vw, 0.75rem);
+  --grid-avatar-card-solo: clamp(2.75rem, 13.5vw, 4.75rem);
+
+  /* Every consumer references these flat names, never the -base/-solo
+     ones directly. Root-level default is always -base (desktop); only
+     PuzzleGrid's own container overrides them locally to the -solo variant
+     below sm, so this default is what every other consumer sees
+     regardless of viewport width. */
+  --grid-chip: var(--grid-chip-base);
+  --grid-chip-img: var(--grid-chip-img-base);
+  --grid-avatar: var(--grid-avatar-base);
+  --grid-avatar-label: var(--grid-avatar-label-base);
+  --grid-avatar-card: var(--grid-avatar-card-base);
 }
 
 body {

@@ -653,7 +653,7 @@ export default function CategoryChip({ label, game }: CategoryChipProps) {
   if (game === 'brawlstars' && label === 'Ultra Legendary') {
     return (
       <ClickTooltip heading={label} description={BRAWLSTARS_DESCRIPTIONS[label]}>
-        <div className="inline-flex items-center justify-center text-center px-2 py-1.5 sm:px-3 sm:py-2 rounded-lg sm:rounded-xl border font-bold text-xs sm:text-sm leading-tight max-w-full border-lime-300 dark:border-lime-700 bg-lime-50 dark:bg-lime-500/15">
+        <div className="inline-flex items-center justify-center text-center px-2 py-1.5 sm:px-3 sm:py-2 rounded-lg sm:rounded-xl border font-bold text-xs sm:text-sm leading-tight max-w-full wrap-break-word border-lime-300 dark:border-lime-700 bg-lime-50 dark:bg-lime-500/15">
           {/* Same "gradient text, plain pill" treatment as Former Chromatic
               below rather than a distinct look of its own - a rainbow-ish
               3-stop gradient (not Former Chromatic's purple-to-gold) since
@@ -671,7 +671,7 @@ export default function CategoryChip({ label, game }: CategoryChipProps) {
   if (game === 'brawlstars' && label === 'Former Chromatic') {
     return (
       <ClickTooltip heading={label} description="This brawler's rarity used to be Chromatic.">
-        <div className="inline-flex flex-wrap items-center justify-center gap-x-1 text-center px-2 py-1.5 sm:px-3 sm:py-2 rounded-lg sm:rounded-xl border font-bold text-xs sm:text-sm leading-tight max-w-full border-orange-300 dark:border-orange-700 bg-orange-50 dark:bg-orange-500/15">
+        <div className="inline-flex flex-wrap items-center justify-center gap-x-1 text-center px-2 py-1.5 sm:px-3 sm:py-2 rounded-lg sm:rounded-xl border font-bold text-xs sm:text-sm leading-tight max-w-full wrap-break-word border-orange-300 dark:border-orange-700 bg-orange-50 dark:bg-orange-500/15">
           <span className="text-orange-700 dark:text-orange-400">Former</span>
           {/* Chromatic's own in-game name treatment: a purple-to-gold text
               gradient, echoing the rarity it replaced (Epic-through-Legendary)
@@ -687,7 +687,7 @@ export default function CategoryChip({ label, game }: CategoryChipProps) {
   if (game === 'clashroyale' && label === 'Legendary') {
     return (
       <ClickTooltip heading={label} description={CLASHROYALE_DESCRIPTIONS[label]}>
-        <div className="inline-flex items-center justify-center text-center px-2 py-1.5 sm:px-3 sm:py-2 rounded-lg sm:rounded-xl border font-bold text-xs sm:text-sm leading-tight max-w-full border-teal-300 dark:border-teal-700 bg-teal-50 dark:bg-teal-500/15">
+        <div className="inline-flex items-center justify-center text-center px-2 py-1.5 sm:px-3 sm:py-2 rounded-lg sm:rounded-xl border font-bold text-xs sm:text-sm leading-tight max-w-full wrap-break-word border-teal-300 dark:border-teal-700 bg-teal-50 dark:bg-teal-500/15">
           {/* Legendary cards have a shimmering rainbow-ish frame in-game,
               not a flat color - a light green-to-pink text gradient on a
               teal-tinted pill approximates that instead of picking one hue. */}
@@ -702,7 +702,7 @@ export default function CategoryChip({ label, game }: CategoryChipProps) {
   if (game === 'clashroyale' && label === 'Evolution') {
     return (
       <ClickTooltip heading={label} description={CLASHROYALE_DESCRIPTIONS[label]}>
-        <div className="inline-flex items-center justify-center text-center px-2 py-1.5 sm:px-3 sm:py-2 rounded-lg sm:rounded-xl border font-bold text-xs sm:text-sm leading-tight max-w-full border-purple-300 dark:border-purple-700 bg-purple-50 dark:bg-purple-500/15">
+        <div className="inline-flex items-center justify-center text-center px-2 py-1.5 sm:px-3 sm:py-2 rounded-lg sm:rounded-xl border font-bold text-xs sm:text-sm leading-tight max-w-full wrap-break-word border-purple-300 dark:border-purple-700 bg-purple-50 dark:bg-purple-500/15">
           {/* Light-purple-to-purple text gradient (not white - bg-clip-text
               on a light pill background made a white stop unreadable in
               light mode) - echoes the purple glow an Evolution's own
@@ -718,7 +718,7 @@ export default function CategoryChip({ label, game }: CategoryChipProps) {
   if (game === 'clashroyale' && label === 'Hero') {
     return (
       <ClickTooltip heading={label} description={CLASHROYALE_DESCRIPTIONS[label]}>
-        <div className="inline-flex items-center justify-center text-center px-2 py-1.5 sm:px-3 sm:py-2 rounded-lg sm:rounded-xl border font-bold text-xs sm:text-sm leading-tight max-w-full border-amber-300 dark:border-amber-700 bg-amber-50 dark:bg-amber-500/15">
+        <div className="inline-flex items-center justify-center text-center px-2 py-1.5 sm:px-3 sm:py-2 rounded-lg sm:rounded-xl border font-bold text-xs sm:text-sm leading-tight max-w-full wrap-break-word border-amber-300 dark:border-amber-700 bg-amber-50 dark:bg-amber-500/15">
           {/* Same light-to-color treatment as Evolution above, yellow-to-gold
               instead of purple - Hero (Tower Troop) cards get a golden
               tower-defense frame in-game. */}
@@ -733,7 +733,7 @@ export default function CategoryChip({ label, game }: CategoryChipProps) {
   const rarityClass = RARITY_STYLES_BY_GAME[game][label];
   const pill = (
     <div
-      className={`inline-flex items-center justify-center text-center px-2 py-1.5 sm:px-3 sm:py-2 rounded-lg sm:rounded-xl border font-bold text-xs sm:text-sm leading-tight max-w-full ${
+      className={`inline-flex items-center justify-center text-center px-2 py-1.5 sm:px-3 sm:py-2 rounded-lg sm:rounded-xl border font-bold text-xs sm:text-sm leading-tight max-w-full wrap-break-word ${
         rarityClass ?? 'border-gray-300 dark:border-gray-700 bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-100'
       }`}
     >
