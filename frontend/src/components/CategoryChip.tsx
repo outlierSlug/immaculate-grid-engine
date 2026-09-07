@@ -11,6 +11,9 @@ import natlanIcon from '../assets/genshin/regions/Natlan_Emblem_Night.webp';
 import nodKraiIcon from '../assets/genshin/regions/Nod-Krai_Emblem_Night.webp';
 import snezhnayaIcon from '../assets/genshin/regions/Emblem_Snezhnaya.webp';
 
+import hexereiIcon from '../assets/genshin/talents/hexerei_symbol.png';
+import moonsignIcon from '../assets/genshin/talents/moonsign_symbol.png';
+
 import anemoIcon from '../assets/genshin/elements/Element_Anemo.svg';
 import geoIcon from '../assets/genshin/elements/Element_Geo.svg';
 import electroIcon from '../assets/genshin/elements/Element_Electro.svg';
@@ -116,6 +119,13 @@ const GENSHIN_ICONS: Record<string, string> = {
   Claymore: claymoreIcon,
   Polearm: polearmIcon,
   Sword: swordIcon,
+
+  // Passive Talent - the other 8 passive_talent values fall back to the
+  // plain-text pill (no bespoke icon exists for them); these two have a
+  // real in-game symbol, same self-contained-badge treatment as the region
+  // emblems above (not INVERT_IN_DARK - full color, not black line art).
+  "Witch's Eve Rite": hexereiIcon,
+  'Moonsign Benediction': moonsignIcon,
 };
 
 // Functional, not lore - this states the puzzle rule the icon represents
@@ -180,7 +190,38 @@ const GENSHIN_DESCRIPTIONS: Record<string, string> = {
   'Anemo DMG Bonus%': "This character's Ascension Stat is Anemo DMG Bonus%.",
   'Geo DMG Bonus%': "This character's Ascension Stat is Geo DMG Bonus%.",
   'Dendro DMG Bonus%': "This character's Ascension Stat is Dendro DMG Bonus%.",
+
+  // Passive Talent - multi-valued (a character can hold more than one, or
+  // none). Keyed on the bare stored label, not the displayed "... Talent"
+  // form - see GENSHIN_PASSIVE_TALENT_SUFFIX_LABELS/formatCategoryLabel
+  // below for where that suffix gets added, and
+  // ingestion/genshin/raw/passive_talent_definitive_plan.txt for the full
+  // design process this text and the member lists came from.
+  Cooking: "This character grants a chance to receive an additional dish for free upon Perfect Cooking, or has a special cooking passive.",
+  Crafting: "This character's passive grants a chance to receive a bonus item when crafting, forging, or creating furnishings.",
+  Expedition: "This character's passive reduces Expedition time or increases Expedition rewards when dispatched.",
+  'Stamina Reduction': "This character's passive reduces the stamina consumption of party members under certain conditions (climbing, gliding, sprinting, swimming, or underwater).",
+  'Movement SPD': "This character's passive increases the movement SPD of party members under certain conditions.",
+  'Resource Finding': "This character's passive reveals the location of specific resources on the minimap.",
+  Wildlife: "This character's passive prevents specific wildlife from being startled when approached.",
+  'Mora Cost Reduction': "This character's passive reduces the Mora cost of ascending certain weapons.",
+  "Witch's Eve Rite": "This character is a Hexerei character with a Witch's Eve Rite passive.",
+  'Moonsign Benediction': "This character's passive raises the party's Moonsign by 1 level.",
+  'Stellar Jubilee': 'This character enables Stellar-Glimmer reactions (Stellar-Conduct, Stellar-Swirl).',
 };
+
+// The 8 passive_talent labels that read as an ambiguous raw stat/mechanic
+// name on their own in a bare grid cell (e.g. "Movement SPD" could be
+// mistaken for a literal stat) - these get " Talent" appended at display
+// time by formatCategoryLabel below, same mechanism as Brawl Stars'
+// TRAIT_LABELS " Trait" suffix. The other 3 passive_talent values (Witch's
+// Eve Rite, Moonsign Benediction, Stellar Jubilee) are official in-game
+// proper-noun ability names, already unambiguous, and are deliberately left
+// out of this set.
+const GENSHIN_PASSIVE_TALENT_SUFFIX_LABELS = new Set([
+  'Cooking', 'Crafting', 'Expedition', 'Stamina Reduction', 'Movement SPD',
+  'Resource Finding', 'Wildlife', 'Mora Cost Reduction',
+]);
 
 // ── Genshin ascension materials (local specialty / common material / boss
 // material) ─────────────────────────────────────────────────────────────
@@ -588,6 +629,7 @@ function patternDescription(game: GameId, label: string): string | undefined {
 // (icons, colors, etc.), so this keeps GuessInput from needing its own
 // per-game formatting rules - it just renders whatever this returns.
 export function formatCategoryLabel(label: string, game: GameId): string {
+  if (game === 'genshin' && GENSHIN_PASSIVE_TALENT_SUFFIX_LABELS.has(label)) return `${label} Talent`;
   if (game === 'brawlstars' && TRAIT_LABELS.has(label)) return `${label} Trait`;
   if (game === 'clashroyale' && label in CLASHROYALE_ELIXIR_DESCRIPTIONS) return `${label} Elixir`;
   // "Base" alone reads as ambiguous next to "Evolution"/"Hero" - those are

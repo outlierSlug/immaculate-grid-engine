@@ -459,6 +459,51 @@ class GridGeneratorTest {
         assertTrue(successCount > 0); // sanity only — this test is a report, not a gate
     }
 
+    // ── Ad-hoc: per-dimension cell-depth breakdown - gridCompositionReport
+    // above shows the overall cell-depth histogram, but blends every
+    // dimension together. This isolates each dimension's own average cell
+    // depth (a cell counts toward both its row's and its col's dimension)
+    // to answer a narrower question: is passive_talent's weight low enough,
+    // or does it still produce unusually thin cells relative to the other
+    // dimensions? Deliberately not a regression gate - a report to read. ──
+    @Test
+    void perDimensionCellDepthReport() throws Exception {
+        GameModule module = new GenshinGameModule();
+        List<GridItem> entities = loadEntities("genshin_entities.json");
+        List<CategoryDefinition> categories = module.getCategoryDefinitions(entities);
+
+        int sampleSize = 3650;
+        int successCount = 0;
+        Map<String, List<Integer>> depthsByDimension = new TreeMap<>();
+
+        for (long seed = 0; seed < sampleSize; seed++) {
+            Optional<GridGenerator.GeneratedPuzzle> result = generator.generate(entities, categories, seed, 1, true);
+            if (result.isEmpty()) continue;
+            successCount++;
+
+            GridGenerator.GeneratedPuzzle puzzle = result.get();
+            for (var cellEntry : puzzle.cellSolutions().entrySet()) {
+                int depth = cellEntry.getValue().size();
+                CategoryDefinition rowCat = puzzle.rowCategories().get(Integer.parseInt(cellEntry.getKey().split("-")[0]));
+                CategoryDefinition colCat = puzzle.colCategories().get(Integer.parseInt(cellEntry.getKey().split("-")[1]));
+                depthsByDimension.computeIfAbsent(rowCat.getDimension(), d -> new ArrayList<>()).add(depth);
+                depthsByDimension.computeIfAbsent(colCat.getDimension(), d -> new ArrayList<>()).add(depth);
+            }
+        }
+
+        System.out.println();
+        System.out.println("=== Per-dimension cell-depth report (Genshin, " + successCount + "/" + sampleSize + " successful) ===");
+        System.out.printf("%-20s %8s %8s %8s %10s%n", "dimension", "cells", "mean", "median", "%depth=1");
+        for (var entry : depthsByDimension.entrySet()) {
+            List<Integer> depths = entry.getValue();
+            long onesCount = depths.stream().filter(d -> d == 1).count();
+            System.out.printf("%-20s %8d %8.2f %8d %9.1f%%%n",
+                entry.getKey(), depths.size(), average(depths), median(depths), 100.0 * onesCount / depths.size());
+        }
+
+        assertTrue(successCount > 0); // sanity only — this test is a report, not a gate
+    }
+
     private static double average(List<Integer> values) {
         return values.stream().mapToInt(Integer::intValue).average().orElse(0);
     }

@@ -163,6 +163,120 @@ TRAVELER_GENDERS = [
     ("lumine", "Lumine", "Medium Female", "UI_AvatarIcon_PlayerGirl"),
 ]
 
+# Hand-curated from wiki research (not scraped - no datamine source encodes
+# "Utility Passive" classifications) - see
+# ingestion/genshin/raw/passive_talent_definitive_plan.txt for the full
+# design process, member-list derivation, and tooltip text. Verified against
+# the real roster (100 distinct characters, 0 typos) before being copied in
+# here. The 18 real roster characters absent from this map (mostly Natlan's
+# Phlogiston-talent cast - Chasca, Citlali, Iansan, Ifa, Mavuika, Xilonen -
+# plus a handful of newer/unclassified characters) is expected, not a gap:
+# Night Realm's Gift was deliberately dropped as fully redundant with
+# region=Natlan (see the definitive plan doc), and passive_talent is a
+# nullable multi-valued attribute - not every character needs a value.
+PASSIVE_TALENT_MAP: dict[str, list[str]] = {
+    "Aino": ["Resource Finding", "Moonsign Benediction"],
+    "Albedo": ["Crafting", "Witch's Eve Rite"],
+    "Alhaitham": ["Crafting"],
+    "Aloy": ["Wildlife"],
+    "Alyosha": ["Resource Finding"],
+    "Amber": ["Stamina Reduction"],
+    "Barbara": ["Cooking"],
+    "Beidou": ["Stamina Reduction"],
+    "Bennett": ["Expedition"],
+    "Candace": ["Stamina Reduction"],
+    "Chevreuse": ["Stamina Reduction"],
+    "Chiori": ["Movement SPD"],
+    "Chongyun": ["Expedition"],
+    "Clorinde": ["Resource Finding"],
+    "Collei": ["Stamina Reduction"],
+    "Columbina": ["Wildlife", "Moonsign Benediction"],
+    "Cyno": ["Expedition"],
+    "Dahlia": ["Movement SPD"],
+    "Dehya": ["Movement SPD"],
+    "Diluc": ["Crafting"],
+    "Diona": ["Cooking"],
+    "Dori": ["Crafting"],
+    "Durin": ["Expedition", "Witch's Eve Rite"],
+    "Escoffier": ["Cooking"],
+    "Eula": ["Crafting"],
+    "Faruzan": ["Expedition"],
+    "Fischl": ["Expedition", "Witch's Eve Rite"],
+    "Flins": ["Resource Finding", "Moonsign Benediction"],
+    "Freminet": ["Stamina Reduction"],
+    "Gaming": ["Movement SPD"],
+    "Ganyu": ["Crafting"],
+    "Gorou": ["Resource Finding"],
+    "Hu Tao": ["Cooking"],
+    "Illuga": ["Movement SPD", "Moonsign Benediction"],
+    "Ineffa": ["Moonsign Benediction"],
+    "Jahoda": ["Expedition", "Moonsign Benediction"],
+    "Jean": ["Cooking"],
+    "Kachina": ["Resource Finding"],
+    "Kaedehara Kazuha": ["Stamina Reduction"],
+    "Kaeya": ["Stamina Reduction"],
+    "Kamisato Ayaka": ["Crafting"],
+    "Kamisato Ayato": ["Cooking"],
+    "Kaveh": ["Crafting"],
+    "Keqing": ["Expedition"],
+    "Kinich": ["Resource Finding"],
+    "Kirara": ["Wildlife"],
+    "Klee": ["Resource Finding", "Witch's Eve Rite"],
+    "Kujou Sara": ["Expedition"],
+    "Kuki Shinobu": ["Expedition"],
+    "Lan Yan": ["Wildlife"],
+    "Lauma": ["Resource Finding", "Wildlife", "Moonsign Benediction"],
+    "Layla": ["Crafting"],
+    "Linnea": ["Moonsign Benediction"],
+    "Lisa": ["Crafting"],
+    "Lohen": ["Witch's Eve Rite"],
+    "Lynette": ["Resource Finding"],
+    "Lyney": ["Resource Finding"],
+    "Mika": ["Resource Finding"],
+    "Mona": ["Crafting", "Witch's Eve Rite"],
+    "Mualani": ["Resource Finding"],
+    "Navia": ["Expedition"],
+    "Nefer": ["Expedition", "Moonsign Benediction"],
+    "Neuvillette": ["Movement SPD"],
+    "Nicole": ["Resource Finding", "Witch's Eve Rite"],
+    "Nilou": ["Cooking"],
+    "Ningguang": ["Resource Finding"],
+    "Noelle": ["Cooking"],
+    "Odette": ["Resource Finding", "Stellar Jubilee"],
+    "Ororon": ["Movement SPD"],
+    "Prune": ["Crafting", "Witch's Eve Rite"],
+    "Qiqi": ["Resource Finding"],
+    "Raiden Shogun": ["Mora Cost Reduction"],
+    "Razor": ["Stamina Reduction", "Witch's Eve Rite"],
+    "Rosaria": ["Movement SPD"],
+    "Sandrone": ["Stellar Jubilee"],
+    "Sangonomiya Kokomi": ["Stamina Reduction"],
+    "Sayu": ["Wildlife"],
+    "Sethos": ["Resource Finding"],
+    "Shenhe": ["Expedition"],
+    "Shikanoin Heizou": ["Stamina Reduction"],
+    "Sucrose": ["Crafting", "Witch's Eve Rite"],
+    "Tighnari": ["Resource Finding"],
+    "Varesa": ["Movement SPD"],
+    "Varka": ["Witch's Eve Rite"],
+    "Venti": ["Stamina Reduction", "Witch's Eve Rite"],
+    "Wanderer": ["Mora Cost Reduction"],
+    "Wriothesley": ["Crafting"],
+    "Xiangling": ["Cooking"],
+    "Xianyun": ["Movement SPD"],
+    "Xiao": ["Stamina Reduction"],
+    "Xingqiu": ["Crafting"],
+    "Xinyan": ["Cooking"],
+    "Yae Miko": ["Crafting"],
+    "Yanfei": ["Resource Finding"],
+    "Yaoyao": ["Wildlife"],
+    "Yelan": ["Expedition"],
+    "Yoimiya": ["Crafting"],
+    "Yun Jin": ["Cooking"],
+    "Zhongli": ["Crafting"],
+    "Zibai": ["Moonsign Benediction"],
+}
+
 
 def slugify(name: str) -> str:
     s = name.lower().strip()
@@ -244,6 +358,11 @@ def map_character(raw: dict) -> list[dict]:
                         "common_material": TRAVELER_ASCENSION["common_material"],
                         "boss_material": TRAVELER_ASCENSION["boss_material"],
                         "ascension_stat": TRAVELER_ASCENSION["ascension_stat_label"],
+                        # Only the Cryo Traveler enables Stellar-Glimmer
+                        # reactions - every other element gets no
+                        # passive_talent value at all, same as any other
+                        # uncategorized character.
+                        "passive_talent": ["Stellar Jubilee"] if element == "Cryo" else [],
                     },
                 })
         return entities
@@ -280,6 +399,7 @@ def map_character(raw: dict) -> list[dict]:
             "common_material": ascension["common_material"],
             "boss_material": ascension["boss_material"],
             "ascension_stat": ascension["ascension_stat_label"],
+            "passive_talent": PASSIVE_TALENT_MAP.get(name, []),
         },
     }]
 

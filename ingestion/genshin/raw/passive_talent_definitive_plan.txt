@@ -1,0 +1,90 @@
+Genshin passive_talent category plan (FINALIZED)
+Multi-valued attribute - a character can belong to more than one category.
+
+Naming convention: the stored value (used in PASSIVE_TALENT_MAP in
+normalize_genshin.py, and as the key into GENSHIN_DESCRIPTIONS in
+CategoryChip.tsx) is the short/raw label below. 8 of the 11 categories are
+generic mechanic descriptions that would be ambiguous as a bare grid-cell
+label with no dimension context nearby (e.g. "Movement SPD" alone reads like
+a raw stat, not a passive talent) - those get " Talent" appended at DISPLAY
+time only, via a new GENSHIN_PASSIVE_TALENT_SUFFIX_LABELS set consumed by
+formatCategoryLabel() in CategoryChip.tsx (same mechanism already used for
+Brawl Stars' " Trait" suffix and Clash Royale's " Elixir"/"Base Form"). The
+remaining 3 are official in-game proper-noun ability names, already
+unambiguous on their own, and are NOT suffixed.
+
+Cooking (11 members) — displays as "Cooking Talent"
+  Tooltip: This character grants a chance to receive an additional dish upon Perfect Cooking, or has a special cooking passive.
+  Members: Yun Jin, Nilou, Xiangling, Xinyan, Noelle, Diona, Jean, Barbara, Kamisato Ayato, Hu Tao, Escoffier
+
+Crafting (18 members) — displays as "Crafting Talent"
+  Tooltip: This character's passive grants a chance to receive a bonus item when crafting, forging, or creating furnishings.
+  Members: Sucrose, Dori, Eula, Xingqiu, Yae Miko, Layla, Prune, Lisa, Albedo, Kamisato Ayaka, Alhaitham, Mona, Wriothesley, Zhongli, Ganyu, Diluc, Yoimiya, Kaveh
+
+Expedition (14 members) — displays as "Expedition Talent"
+  Tooltip: This character's passive reduces Expedition time or increases Expedition rewards.
+  Members: Jahoda, Nefer, Durin, Chongyun, Bennett, Kujou Sara, Keqing, Fischl, Yelan, Navia, Shenhe, Kuki Shinobu, Cyno, Faruzan
+
+Stamina Reduction (13 members) — displays as "Stamina Reduction Talent"
+  Tooltip: This character's passive reduces the stamina consumption of party members under certain conditions (climbing, gliding, sprinting, swimming, or underwater).
+  Members: Candace, Xiao, Amber, Collei, Venti, Kaedehara Kazuha, Chevreuse, Kaeya, Shikanoin Heizou, Razor, Beidou, Sangonomiya Kokomi, Freminet
+
+Movement SPD (10 members) — displays as "Movement SPD Talent"
+  Tooltip: This character's passive increases the movement SPD of party members under certain conditions.
+  Members: Chiori, Rosaria, Illuga, Dahlia, Gaming, Dehya, Xianyun, Ororon, Varesa, Neuvillette
+
+Resource Finding (20 members) — displays as "Resource Finding Talent"
+  Tooltip: This character's passive reveals the location of specific resources on the minimap.
+  Members: Flins, Klee, Kachina, Mika, Odette, Yanfei, Tighnari, Qiqi, Aino, Clorinde, Lauma, Gorou, Kinich, Mualani, Sethos, Alyosha, Lyney, Ningguang, Lynette, Nicole
+
+Wildlife (7 members) — displays as "Wildlife Talent"
+  Tooltip: This character's passive prevents specific wildlife from being startled when approached.
+  Members: Kirara, Aloy, Columbina, Lauma, Yaoyao, Lan Yan, Sayu
+
+Mora Cost Reduction (2 members) — displays as "Mora Cost Reduction Talent"
+  Tooltip: This character's passive reduces the Mora cost of ascending certain weapons.
+  Members: Raiden Shogun, Wanderer
+
+Witch's Eve Rite (12 members) — no suffix, official ability name
+  Tooltip: This character is a Hexerei, whose passive talent is the Witch's Eve Rite.
+  Members: Albedo, Varka, Mona, Nicole, Durin, Fischl, Sucrose, Klee, Razor, Venti, Lohen, Prune
+
+Moonsign Benediction (10 members) — no suffix, official ability name
+  Tooltip: This character's passive raises the party's Moonsign by 1 level.
+  Members: Ineffa, Nefer, Aino, Linnea, Columbina, Lauma, Flins, Jahoda, Zibai, Illuga
+
+Stellar Jubilee (4 members) — no suffix, official ability name
+  Tooltip: This character enables Stellar-Glimmer reactions (Stellar-Conduct, Stellar-Swirl).
+  Members: Odette, Sandrone, Traveler (Cryo - genshin:traveler-aether-cryo, genshin:traveler-lumine-cryo only, not all 14 variants)
+
+=== Implementation notes ===
+
+Backend (GenshinGameModule.java):
+  - New categoriesForListAttribute(entities, attributeKey, minCount, weight)
+    overload (Genshin's categoriesForAttribute already supports minCount/
+    weight, unlike Brawl Stars' version - this needs the same).
+  - PASSIVE_TALENT_MIN_COUNT = 3 -> Mora Cost Reduction (2 members) is
+    silently excluded as a live puzzle category; Stellar Jubilee (4) clears
+    it. Matches ASCENSION_MATERIAL_MIN_COUNT's own value/reasoning.
+  - Weight: start at default 1.0 (not suppressed like ASCENSION_WEIGHT),
+    re-measure live appearance-% after launch and tune per established
+    convention.
+
+Ingestion (schema.py / normalize_genshin.py):
+  - schema.py: passive_talent: list[str] = [] on GenshinAttributes.
+  - normalize_genshin.py: static PASSIVE_TALENT_MAP dict (name -> list of
+    the 11 short labels above), attached via
+    PASSIVE_TALENT_MAP.get(name, []) in the normal-character branch.
+    Traveler special case: only the 2 Cryo entities
+    (genshin:traveler-aether-cryo, genshin:traveler-lumine-cryo) get
+    ["Stellar Jubilee"], every other element gets [].
+
+Frontend (CategoryChip.tsx):
+  - GENSHIN_DESCRIPTIONS: 11 new entries keyed on the bare stored label
+    (e.g. "Cooking", not "Cooking Talent") - tooltip body text above.
+  - New GENSHIN_PASSIVE_TALENT_SUFFIX_LABELS set (the 8 labels marked
+    "displays as ... Talent" above) consumed by a new branch in
+    formatCategoryLabel(): if (game === 'genshin' &&
+    GENSHIN_PASSIVE_TALENT_SUFFIX_LABELS.has(label)) return `${label} Talent`;
+  - No new icons/ICONS_BY_GAME entries - same fallback plain-text-pill
+    treatment as Ascension Stat.

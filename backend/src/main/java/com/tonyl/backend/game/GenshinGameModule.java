@@ -1,10 +1,12 @@
 package com.tonyl.backend.game;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import com.tonyl.backend.domain.GridItem;
 
@@ -51,6 +53,15 @@ public class GenshinGameModule implements GameModule {
     // except the newest patch, which will only grow over time).
     private static final int RELEASE_VERSION_MIN_COUNT = 3;
 
+    // passive_talent's two thinnest values (Mora Cost Reduction: 2 members,
+    // Stellar Jubilee: 4 members) sit on either side of this floor -
+    // deliberately the same value/reasoning as ASCENSION_MATERIAL_MIN_COUNT
+    // above (near-unique answers are a generation hazard, not just weak
+    // trivia), not a coincidence. See
+    // ingestion/genshin/raw/passive_talent_definitive_plan.txt for the full
+    // category design.
+    private static final int PASSIVE_TALENT_MIN_COUNT = 3;
+
     // How often a category should be picked once its dimension is already in
     // a row/col pool, relative to the default of 1.0 - see CategoryDefinition
     // .getWeight()'s own doc comment for the mechanism (GridGenerator applies
@@ -71,6 +82,33 @@ public class GenshinGameModule implements GameModule {
     private static final double BOOSTED_WEIGHT = 2.0;
     private static final double ASCENSION_WEIGHT = 0.3;
 
+    // passive_talent started at the default 1.0 and measured in line with
+    // the other core dimensions (11.0% of category slots vs. rarity's 12.0%,
+    // release_era's 8.9% - see reportsDimensionDistributionAcrossManyGenerations),
+    // but that measured how OFTEN it appears, not how HARD it is to solve -
+    // unlike element/weapon/region, recognizing a character's Utility Passive
+    // classification requires deep, specific game knowledge most players
+    // won't have memorized. Tried 0.3 (ASCENSION_WEIGHT's own value, 4.3%
+    // share - the same "genuinely obscure trivia" class as the ascension
+    // dimensions) and 0.2 (3.1% share) - settled back on 0.3. Note weight
+    // only controls how OFTEN this dimension is picked, not how thin its
+    // cells are once picked (see perDimensionCellDepthReport -
+    // passive_talent's own cell depth was never actually the outlier among
+    // Genshin's dimensions) - re-measure after changing and adjust further.
+    private static final double PASSIVE_TALENT_WEIGHT = 0.3;
+
+    // release_era and release_version are both patch-based (the same
+    // underlying timeline at different granularity) and both are among the
+    // healthier dimensions by cell depth (see perDimensionCellDepthReport -
+    // release_era's mean depth 5.13/11.9% single-answer is better than
+    // element/weapon/model; release_version's 3.48/34.5% is thinner but
+    // still nowhere near boss_material's 53.8%), so this isn't the same
+    // "genuinely obscure/thin" suppression ASCENSION_WEIGHT applies to the
+    // ascension dimensions - just a shared, modest trim off their shares so
+    // the two don't compete at full default weight against each other and
+    // the more central dimensions. Re-measure after changing and adjust.
+    private static final double VERSION_DIMENSION_WEIGHT = 0.7;
+
     @Override
     public String getGameId() {
         return "genshin";
@@ -84,8 +122,8 @@ public class GenshinGameModule implements GameModule {
         categories.addAll(categoriesForAttribute(entities, "region", 1, BOOSTED_WEIGHT));
         categories.addAll(categoriesForAttribute(entities, "rarity", 1, BOOSTED_WEIGHT));
         categories.addAll(categoriesForAttribute(entities, "model", 1, 1.0));
-        categories.addAll(categoriesForAttribute(entities, "release_version", RELEASE_VERSION_MIN_COUNT, 1.0));
-        categories.addAll(categoriesForAttribute(entities, "release_era", 1, 1.0));
+        categories.addAll(categoriesForAttribute(entities, "release_version", RELEASE_VERSION_MIN_COUNT, VERSION_DIMENSION_WEIGHT));
+        categories.addAll(categoriesForAttribute(entities, "release_era", 1, VERSION_DIMENSION_WEIGHT));
         // Ascension-related dimensions - see ingestion/genshin/README.md's
         // ascension pipeline section. The elemental gemstone is
         // deliberately not here (1:1 with element, already covered above).
@@ -93,6 +131,8 @@ public class GenshinGameModule implements GameModule {
         categories.addAll(categoriesForAttribute(entities, "common_material", 1, ASCENSION_WEIGHT));
         categories.addAll(categoriesForAttribute(entities, "boss_material", ASCENSION_MATERIAL_MIN_COUNT, ASCENSION_WEIGHT));
         categories.addAll(categoriesForAttribute(entities, "ascension_stat", 1, ASCENSION_WEIGHT));
+        // Multi-valued - see ingestion/genshin/raw/passive_talent_definitive_plan.txt.
+        categories.addAll(categoriesForListAttribute(entities, "passive_talent", PASSIVE_TALENT_MIN_COUNT, PASSIVE_TALENT_WEIGHT));
         return categories;
     }
 
@@ -109,6 +149,33 @@ public class GenshinGameModule implements GameModule {
             .filter(e -> e.getValue() >= minCount)
             .map(e -> (CategoryDefinition) new AttributeEqualsCategory(
                 labelFor(attributeKey, e.getKey()), attributeKey, e.getKey(), weight))
+            .toList();
+    }
+
+    // Like categoriesForAttribute, but for a multi-valued attribute (a
+    // character may belong to none, one, or several passive_talent
+    // categories) - flattens each entity's value list instead of reading a
+    // single scalar, and builds AttributeContainsCategory (list-membership)
+    // rather than AttributeEqualsCategory (equality). Mirrors Brawl Stars'
+    // own categoriesForListAttribute, but with the same minCount/weight
+    // support this class's categoriesForAttribute has (Brawl Stars' doesn't
+    // need it - none of its list attributes are thin enough to warrant a
+    // floor).
+    private List<CategoryDefinition> categoriesForListAttribute(
+        List<GridItem> entities, String attributeKey, int minCount, double weight
+    ) {
+        Map<String, Long> counts = entities.stream()
+            .flatMap(e -> {
+                Object raw = e.getAttributes().get(attributeKey);
+                return raw instanceof Collection<?> values ? values.stream() : Stream.empty();
+            })
+            .map(String::valueOf)
+            .collect(Collectors.groupingBy(v -> v, Collectors.counting()));
+
+        return counts.entrySet().stream()
+            .filter(e -> e.getValue() >= minCount)
+            .map(e -> (CategoryDefinition) new AttributeContainsCategory(
+                e.getKey(), attributeKey, e.getKey(), weight))
             .toList();
     }
 

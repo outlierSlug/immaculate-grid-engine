@@ -14,11 +14,22 @@ public class AttributeContainsCategory implements CategoryDefinition {
     private final String label;
     private final String attributeKey;
     private final String expectedValue;
+    private final double weight;
 
     public AttributeContainsCategory(String label, String attributeKey, String expectedValue) {
+        this(label, attributeKey, expectedValue, 1.0);
+    }
+
+    public AttributeContainsCategory(String label, String attributeKey, String expectedValue, double weight) {
         this.label = label;
         this.attributeKey = attributeKey;
         this.expectedValue = expectedValue;
+        this.weight = weight;
+    }
+
+    @Override
+    public double getWeight() {
+        return weight;
     }
 
     @Override

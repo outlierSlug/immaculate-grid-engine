@@ -32,6 +32,11 @@ class GenshinAttributes(BaseModel):
     # character has one.
     boss_material: Optional[str] = None
     ascension_stat: str
+    # Multi-valued - a character can hold more than one Utility Passive
+    # classification (or none). Hand-curated from wiki research, not scraped -
+    # see ingestion/genshin/raw/passive_talent_definitive_plan.txt for the
+    # full member lists/tooltip text and the process that produced them.
+    passive_talent: list[str] = Field(default_factory=list)
 
 
 class Entity(BaseModel):
@@ -61,5 +66,10 @@ def validate_entities(raw_entities: list[dict]) -> list[Entity]:
         thin = {value: n for value, n in counts.items() if n < 3}
         if thin:
             print(f"WARNING: thin '{attribute}' categories (fewer than 3 entities): {thin}")
+
+    passive_talent_counts = Counter(t for e in validated for t in e.attributes.passive_talent)
+    thin_passive_talents = {t: n for t, n in passive_talent_counts.items() if n < 3}
+    if thin_passive_talents:
+        print(f"WARNING: thin 'passive_talent' categories (fewer than 3 entities): {thin_passive_talents}")
 
     return validated

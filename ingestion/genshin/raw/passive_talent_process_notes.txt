@@ -1,0 +1,156 @@
+Genshin passive_talent category design - process notes
+(How we got from 3 raw planning docs to passive_talent_definitive_plan.txt,
+kept for future reference - e.g. classifying a newly-released character's
+Utility Passive later, or designing another deep/nuanced category.)
+
+=== 1. Source gathering ===
+
+Three source documents were involved, layered in over the course of the
+design conversation:
+- passive_talent_category_plan.txt - the initial flat proposal: wiki-sourced
+  category definitions + member lists, with a "Miscellaneous" bucket for
+  anything that didn't cleanly fit.
+- passive_talent_table - a more granular version of the same data (e.g.
+  Cooking Bonus broken down further into Adventurer's Dishes/ATK-Boosting
+  Dishes/DEF-Boosting Dishes/etc.), used purely to CROSS-VALIDATE the first
+  doc, not as a separate source of new categories.
+- passive_talent_night_realm.txt - full per-character passive text for
+  Natlan's Nightsoul-related mechanics. Requested to check one specific
+  category swap (Phlogiston Talent -> Night Realm's Gift), but turned out
+  to contain two ENTIRELY SEPARATE categories (Moonsign Benediction,
+  Witch's Eve Rite) that hadn't been surfaced in either prior doc. Lesson:
+  don't assume a source document only contains what it was fetched to
+  answer - read the whole thing.
+
+=== 2. Verification rigor applied throughout ===
+
+Every proposed category, at every stage, went through the same checks
+(scripted, not eyeballed) before being trusted:
+- Every member name matched against the REAL roster (genshin_entities.json)
+  - catches typos and non-existent characters immediately.
+- Internal duplicate check within a single category's member list (caught
+  "Ifa" listed twice in one draft).
+- Cross-document consistency check when two sources described the same
+  category (the plan.txt vs. passive_talent_table comparison, where every
+  category's member set had to match exactly once the table's finer
+  sub-splits were collapsed back to the plan's top-level buckets).
+- Completeness check: does every real roster character appear SOMEWHERE
+  across all categories + the Miscellaneous bucket? Run as an explicit
+  script-based diff, not assumed. Caught nothing missing on the first two
+  docs (a genuinely thorough manual research pass), and was re-run after
+  the Miscellaneous edge-case pass too (25/25 accounted for, confirmed).
+- Redundancy check against EXISTING dimensions already in the pipeline -
+  the single most valuable check. Comparing a new category's member set
+  directly against every existing attribute's values caught two things:
+  - Night Realm's Gift's 11 members were IDENTICAL to region=Natlan -
+    zero new puzzle-relevant signal, dropped entirely rather than kept
+    for "completeness."
+  - Moonsign Benediction's 10 members were ALMOST identical to
+    region=Nod-Krai, except for one real exception (Zibai, region=Liyue) -
+    kept, since that one exception means the category isn't actually
+    redundant, it just mostly overlaps.
+  General rule going forward: before finalizing a new category, diff its
+  member set against every existing single-valued attribute (element,
+  region, weapon, model, rarity, release_era, etc.). Exact or near-exact
+  matches are a signal to question whether the new category adds anything,
+  not just add it because a wiki page said it existed.
+
+=== 3. Structural decisions ===
+
+- Multi-valued from the start, once real overlaps were found (Lauma:
+  Resource Finding + Wildlife; Mualani: Resource Finding + Phlogiston;
+  Varesa: Movement SPD + Phlogiston) - this wasn't a hypothetical edge
+  case, it showed up in the very first verification pass. Confirmed the
+  backend already supports this pattern generically
+  (categoriesForListAttribute, already used for "tags" per
+  docs/ARCHITECTURE.md), so no new backend mechanism was needed.
+- Thin siblings that are conceptually the SAME mechanic were merged into
+  one parent (Forging Bonus [3] + Furnishing Creation Bonus [2] folded
+  into Crafting Bonus [now 18]) rather than kept as their own
+  barely-populated categories.
+- Thin-but-conceptually-DISTINCT categories were kept separate even
+  though both were on the small side (Stamina Consumption Reduction [13]
+  vs. Movement SPD Increase [10]) - the deciding factor wasn't size alone,
+  it was whether merging would erase a real distinction a knowledgeable
+  player would care about. User's own reasoning: keeping them distinct
+  "adds more depth... rewards those with deep game knowledge," which is
+  the whole point of this category existing at all.
+- Genuinely thin categories that don't merge into anything (Mora Cost
+  Reduction Talent [2], Stellar Jubilee [4]) are still recorded in the
+  data for completeness / in case future characters get added to them,
+  but are expected to be silently excluded from ever becoming a live
+  puzzle category via the same min-count-floor mechanism already
+  established for local_specialty/boss_material/release_version - no new
+  special-casing needed, just apply the existing floor.
+- A near-miss consideration: whether Hexerei Character / Moonsign
+  Benediction should be their OWN dimension separate from passive_talent,
+  since they're conceptually different from "what does this Utility
+  Passive DO out of combat" (they're closer to a faction/trait tag that
+  enables a party-wide synergy state when 2+ members share it). Ultimately
+  folded back into the single passive_talent dimension anyway for
+  simplicity, but the distinction is worth remembering if a similar
+  "faction tag" mechanic comes up again later - it's a real conceptual
+  difference even if it ended up living in the same dimension here.
+- Mechanical precision over surface-level similarity: Kachina's Turbo
+  Whirly stamina reduction reads similar to Stamina Consumption
+  Reduction, but was deliberately excluded from it because it's a
+  personal/vehicle-scoped effect, not party-wide - the category's actual
+  definition requires a party-wide effect. Don't include a character just
+  because their ability sounds thematically similar; check the actual
+  mechanical scope matches the category's definition.
+
+=== 4. Resolving the Miscellaneous bucket (the ~25 wiki-unclassified characters) ===
+
+Went character-by-character, not batch-guessed. For each:
+- N/A: genuinely doesn't fit any existing category, left with no
+  passive_talent value at all (a legitimate, expected outcome for a
+  nullable multi-valued attribute - not every character needs one).
+- Matched to an EXISTING category when the core MECHANIC lined up even if
+  the flavor text or exact trigger differed from that category's other
+  members - e.g.:
+  - Freminet's Aquatic Stamina reduction -> Stamina Consumption Reduction
+    (same mechanic, underwater-flavored variant).
+  - Neuvillette's underwater Sprint SPD -> Movement SPD Increase (same
+    mechanic, underwater-flavored variant).
+  - Lynette (reveals Recovery Orb locations) and Nicole (reveals nearest
+    chest via a compass-emulating passive) -> Resource Finding Talent,
+    even though orbs/chests aren't traditional gatherable materials - the
+    core "reveals a location on the minimap" mechanic is what matters,
+    not the exact object type.
+  Where a matched character's mechanic was distinct enough that the
+  category's existing tooltip would misdescribe them, the tooltip itself
+  was widened rather than the character left out - e.g. Escoffier's
+  Cooking Mek ability isn't literally "a bonus dish from Perfect Cooking,"
+  so Cooking Bonus's tooltip gained an "...or has a special cooking
+  passive" clause to stay accurate for her too.
+- Verified complete at the end (script-checked all 25 original entries
+  had an explicit decision - N/A or a category match - nothing skipped).
+
+=== 5. Tooltip-writing conventions settled on ===
+
+- Match the site's existing single-sentence "This character ___." voice
+  (see CategoryChip.tsx's other GENSHIN_DESCRIPTIONS entries).
+- Explicitly include the word "passive" in the description text (not the
+  category label/chip itself) - keeps chip labels short and scannable
+  like every other dimension's, while still making clear the whole
+  dimension is about Utility Passives specifically.
+- Deliberately omit caveats from the source wiki text that are true of
+  EVERY member of a category (or every Utility Passive generally, e.g.
+  "only works while in the party and alive") - restating a universal
+  truth in every tooltip doesn't help a player understand what makes
+  THIS category distinct from the others.
+- Deliberately simplify away mechanical nuance that doesn't affect
+  category membership (Resource Finding's stacking rules, Cooking Bonus's
+  per-character exact trigger conditions) - the tooltip communicates the
+  theme, not an exhaustive rules explanation.
+- Where a term genuinely isn't common player knowledge (Phlogiston,
+  Stellar-Glimmer/Stellar-Conduct/Stellar-Swirl), keep the term itself in
+  the tooltip (matches this category's whole "rewards deep game
+  knowledge" premise) but pair it with a short in-line clarifier rather
+  than assume familiarity.
+
+=== Final result ===
+
+11 categories, 102 distinct real characters covered (of 118), captured in
+passive_talent_definitive_plan.txt. See that file for the actual member
+lists, counts, and tooltip text to implement from.

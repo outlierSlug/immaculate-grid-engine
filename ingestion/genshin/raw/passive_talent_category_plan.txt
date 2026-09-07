@@ -1,0 +1,228 @@
+Passive Talents (new category proposal)
+
+Background: Utility Passives, officially referred to as Exploration Talents, are a type of Passive Talent. Upon obtaining a Character, their Utility Passive is automatically unlocked without requiring any Ascensions. The only exception is the Traveler, who doesn't possess any. These talents usually provide some sort of utility outside of combat. As these passives have not been officially categorized, the categories on this page are all unofficial and were determined by players based on the similarities between certain Talents.
+
+I would like to propose a new category, Passive Talents, with the following initial classifications:
+
+Cooking Bonus
+(Wiki) Characters with a cooking bonus as their Utility Passive have a chance of obtaining an additional dish for free when they achieve Perfect Cooking on a specific type of dish.
+
+Yun Jin
+Nilou
+Xiangling
+Xinyan
+Noelle
+Diona
+Jean
+Barbara
+Kamisato Ayato
+Hu Tao
+
+Note that these characters may have different conditions for their cooking bonus (for example, Xiangling’s only works on dishes with ATK% boosting effects, Hu Tao provides a bonus “suspicious” dish of the same type instead of a perfect copy), we can consider them to all be part of the “cooking bonus” talent classification.
+
+Crafting Bonus
+(Wiki) Characters with a crafting bonus as their Utility Passive have a chance of obtaining some sort of bonus product when crafting a specific type of item at a Crafting Bench. The bonus product is either a duplicate of the item crafted, an item used in crafting that is refunded to the player, or an alternative item of the same category and quality as the latter.
+
+Sucrose
+Dori
+Eula
+Xingqiu
+Yae Miko
+Layla
+Prune
+Lisa
+Albedo
+Kamisato Ayaka
+Alhaitham
+Mona
+Wriothesley
+
+Note that these passives are tied to a certain material (e.g. Xingqiu is a 25% chance to refund only for talent materials, Albedo is a 10% chance to double the weapon ascension material being crafted), but they can all be considered as “crafting bonuses”.
+
+There are also two other special passives, forging bonuses (zhongli, ganyu, diluc) and furnishing creation bonuses (yoimiya, kaveh) that are essentially the same as crafting bonuses but do not occur at the main “crafting bench”, rather they occur at the forging bench and furnishing bench respectively. We can decide if we include this in the “crafting bonus” classification (it would work, we just need to make the tooltip description cover this)
+
+Expedition Bonus
+(Wiki) Characters with an expedition bonus as their Utility Passive will either take less time to complete an Expedition or receive additional materials from an Expedition. There are 14 Talents that match the category selection:
+
+Jahoda
+Nefer
+Durin
+Chongyun
+Bennett
+Kujou Sara
+Keqing
+Fischl
+Yelan
+Navia
+Shenhe
+Kuki Shinobu
+Cyno 
+Faruzan
+
+Exploration Bonus
+Stamina Consumption Reduction
+Movement SPD Increases
+(Wiki) Characters with a stamina consumption reduction as their Utility Passive will decrease the amount of stamina consumed when performing specific actions by 20% for the player's own party members. These passives only take effect when the character is in the party and alive.
+Candace
+Xiao
+Amber
+Collei
+Venti
+Kaedehara Kazuha
+Chevreuse
+Kaeya
+Shikanoin Heizou
+Razor
+Beidou
+Sangonomiya Kokomi
+
+Note that these stamina reduction talents only take effect for a distinct action, i.e. climbing, gliding, sprinting, and swimming, but all are considered stamina reduction talents.
+
+(Wiki) Characters with a Swift Stride as their Utility Passive will increase the movement SPD by 10% (or as specified) for the player's own party members if their talent's conditions are met. These passives only take effect when the character is in the party and alive.
+Chiori
+Rosaria
+Illuga
+Dahlia
+Gaming
+Dehya
+Xianyun
+Ororon
+Varesa
+
+We can either combine these two (stamina consumption reduction/movement spd increase) as one category (exploration bonus) or we can keep it as two separate categories since they are distinct enough.
+
+Resource Finding Talent
+(Wiki) Characters with a resource finding talent as their Utility Passive will display the locations of specific types of resources on the mini-map, one location at a time, with a unique icon. These passives only take effect when the character is in the party, but the character does not need to be alive. Talents that mark different types of materials can "stack", resulting in multiple resources being displayed on the mini-map at once. Talents that mark the same type of materials will not stack. Local Specialties are all considered the same type of material; only one Local Specialty will be marked on the mini-map at a time, even if there are multiple characters in the party who mark Local Specialties from different regions. There are 18 Talents that match the category selection:
+Flins
+Klee
+Kachina
+Mika
+Odette
+Yanfei
+Tighnari
+Qiqi
+Aino
+Clorinde
+Lauma
+Gorou
+Kinich
+Mualani
+Sethos
+Alyosha
+Lyney
+Ningguang
+
+Note that Ningguang displays the location of nearby ore veins, while everyone else display local specialties unique to their associated region.
+
+Wildlife Talent
+(Wiki) Characters with a wildlife talent as their Utility Passive will not startle specific types of Wildlife upon approaching them. These passives only take effect when the character is in the party and alive. There are 7 Talents that match the category selection:
+
+Kirara
+Aloy
+Columbina
+Lauma
+Yaoyao
+Lan Yan
+Sayu
+
+Mora Cost Reduction Talent
+(Wiki) Characters with a Mora cost reduction talent as their Utility Passive will decrease the amount of Mora the player has to spend when ascending certain weapon type(s) by 50%.
+Raiden Shogun
+Wanderer
+This is an extremely thin category, we can still include it for exhaustive accuracy purposes, and in case new characters ever also get this talent.
+
+Phlogiston Talent
+Characters with a Utility Passive that restores or spends Phlogiston on certain conditions. There are 7 Talents that match the category selection:
+Varesa
+Iansan
+Chasca
+Citlali
+Ifa
+Ifa
+Mualani
+Xilonen
+
+This is an interesting category because Phlogiston is unique to Natlan, but not all Natlan characters have a Phlogiston restoration/consumption passive. (All Natlan characters use something called nightsoul, and phlogiston is a bar that starts being consumed after the current character’s nighstoul bar has run out, however).
+
+Then, there are Miscellaneous Talents which do not cleanly fit into any of the wiki classifications. I’ll make the call and say that we can just not consider this a category (too vague), and even though that means not every character will necessarily have a field for the passive talent category, its okay.
+
+There are some notable exceptions which we could consider (and this honestly deserves more explanation, we could even have a ful lmodal/page explaining this specific passive talent category at this point):
+
+Miscellaneous Talents 
+(Wiki) The following talents are Utility Passives that do not fit in with the above categories. There are 25 Talents that match the category selection:
+
+
+Character
+Description
+Sandrone
+When Sandrone is in the party, you will gain additional snack rewards after turning in your Daily Commissions with Katheryne.
+Wonderland Manekin (note: we will not consider the manekin)
+When the Manekin unleashes an Elemental Skill or Burst, it will change to one of its existing ensembles at random.
+Yumemizuki Mizuki
+When Yumemizuki Mizuki is in the party, party members have a chance to recover 30% additional HP when using healing foods that do not have reviving properties. The trigger chance for this effect increases with the corresponding character's Friendship Level. (This effect will always trigger if the Traveler is the character consuming healing food.) 
+Escoffier (note: could be considered a cooking passive, although not exactly a cooking bonus passive)
+When using the Hold form of her Elemental Skill Low-Temperature Cooking, Escoffier will activate her All-Spectrum Multi-Use Cooking Mek in its Off-the-Cuff Cookery mode.
+
+
+Cooking Mek: Off-the-Cuff Cookery Mode
+
+Places the Cooking Mek on the field. The Cooking Mek can absorb elemental attacks. When the absorbed elemental energy hits a certain limit, Escoffier can convert the ingredients placed within it into wonderful food.
+
+
+Escoffier needs time to purchase new ingredients, so she can only make a certain number of dishes like this each week. The number of dishes Escoffier can make resets every Monday at 4:00 AM GMT-5/GMT+1/GMT+8.
+Freminet (could be considered a stamina reduction passive/ underwater exploration passive, aquatic stamina is the underwater equivalent of stamina)
+Decreases Aquatic Stamina consumption for your own party members by 35%. Not stackable with Passive Talents that provide the exact same effects.
+Sigewinne
+While underwater, heal your active character over 2.5s when their HP falls under 50%. The amount healed is equal to 50% of their Max HP, and their All Elemental and Physical RES will be decreased by 10% for 10s. This effect can be triggered up to once every 20s.
+Charlotte
+After activating the Special Analysis Zoom Lens, Charlotte's "Framing: Freezing Point Composition" Hold Mode cannot trigger its original effects, but instead enables her to take photos in a rather unique manner...
+Ineffa
+(not really a cooking passive but more of a food passive, activates when using food not cooking it)
+When Ineffa uses food, there is a 30% chance of gaining a seasoning ingredient. Additionally, in Nod-Krai, it seems you'll be able to change Birgitta's appearance through certain means...
+Neuvillette
+(could be considered a movement spd increase passive/ underwater exploration passive)
+Increases underwater Sprint SPD for your own party members by 15%. Not stackable with Passive Talents that provide the exact same effects.
+Emilie
+When the Lumidouce Case created by Emilie is on the field, all party members gain 85% Pyro RES against Burning DMG.
+Baizhu
+When Baizhu is in the party, interacting with certain harvestable items will heal your current active character for 2.5% of Baizhu's Max HP.
+Varka
+For every party member from Mondstadt, the Hold version of Varka's Elemental Skill Windbound Execution's CD is decreased by 5%. This effect does not trigger in Domains, Trounce Domains, or the Spiral Abyss.
+Lynette
+(could be considered an exploration passive)
+Shows the location of nearby Recovery Orbs on the minimap. The Aquatic Stamina and HP gained from touching Orbs will be increased by 25%.
+Linnea
+When Linnea is not in combat, the charge time of her Aimed Shot is greatly decreased, and she will shoot an Ultra Convenient Quick Arrow instead. Different effects will occur depending on the targets hit
+* Specific animals: Ultra Convenient Quick Arrow will be transformed into a special "Net" that can capture the essence and form of these animals, using them as a medium to manifest the animal's physical form again. The "Net" can only be used for a limited number of times each week.
+* Ore veins used in forging: Linnea will dispatch Lumi, who will quickly strike at the ore marked by the Ultra Convenient Quick Arrow, then collect the dislodged ore. If Lumi is not on the field, Linnea will summon her for a short duration to help obtain the ore.
+The DMG dealt to opponents by Linnea's Ultra Convenient Quick Arrow is reduced to 20% of her original Charged Arrow. Additionally, after firing a certain number of Ultra Convenient Quick Arrows within a short period of time, Linnea needs to take a temporary break before she can continue using them.
+Tartaglia
+Increases your own party members' Normal Attack Level by 1.
+Zibai
+At night (18:00 – 06:00), when not in combat, restore 1 Elemental Energy to Zibai every 2 seconds. This effect does not work in Domains, Trounce Domains, or the Spiral Abyss.
+Skirk
+When all party members are either Hydro or Cryo, and if there is at least 1 Hydro and 1 Cryo character, your own party members' Elemental Skill Level is increased by 1.
+Nicole
+(could be considered an exploration passive, literally the definition of exploration help)
+When you are in Teyvat and not in combat, Nicole's Charged Attack becomes "Emissarial Guidance" if you have already obtained the current region's Treasure Compass.
+Emissarial Guidance: Calls upon nearby Seelie to show the way, triggering an effect similar to the region's Treasure Compass. This effect has a cooldown time of 5 seconds and does not work in Domains, Trounce Domains, and the Spiral Abyss.
+Mavuika
+(this is a unique natlan mechanic in which switching characters causes a “nightsoul transmission” that automatically gives the incoming character a bit of nightsoul. Adjacent to but not defined the same as phlogiston)
+The party's Nightsoul Transmission CD is decreased by 20%.
+Nahida
+(could be considered an exploration passive, helps collect materials)
+Nahida can use All Schemes to Know to interact with some harvestable items within a fixed AoE. This skill may even have some other effects...
+Thoma
+When you fish successfully in Inazuma, Thoma's help grants a 20% chance of scoring a double catch.
+Arlecchino
+While in combat, Arlecchino gains a 40% Pyro DMG Bonus and can only be healed through Balemoon Rising.
+Furina
+(could be considered an underwater exploration passive)
+Xenochromatic Fontemer Aberrant ability CD decreased by 30%.
+Lohen
+Lohen gains "High Spirits" for 9s after he unleashes the Elemental Skill Unforeseen Strike: Increases the Skill Level of Unforeseen Strike by 1. When unleashing an Elemental Skill, if the Level of any other party member's Normal Attack, Elemental Skill, or Elemental Burst is not lower than Lohen's Elemental Skill Level, the duration of this instance of High Spirits will be increased by an additional 6s. High Spirits can be gained once every 18s.
+Arataki Itto
+When a party member uses attacks to obtain wood from a tree, they have a 25% chance to get an additional log of wood.
+
+
+This exhausts the collection of passive talents from the Genshin wiki. Verify to make sure all characters appear here (some characters may have multiple passive talents), and think through and create a plan for how to adopt this new category. It’s a very deep category with a lot of potential as it greatly challenges and rewards those with deep game mechanic knowledge. 
