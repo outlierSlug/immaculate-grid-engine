@@ -271,9 +271,11 @@
     "name": "Ice Wizard",
     "id": 26000023,
     "maxLevel": 8,
+    "maxEvolutionLevel": 2,
     "elixirCost": 3,
     "iconUrls": {
-      "medium": "https://api-assets.clashroyale.com/cards/300/W3dkw0HTw9n1jB-zbknY2w3wHuyuLxSRIAV5fUT1SEY.png"
+      "medium": "https://api-assets.clashroyale.com/cards/300/W3dkw0HTw9n1jB-zbknY2w3wHuyuLxSRIAV5fUT1SEY.png",
+      "heroMedium": "https://api-assets.clashroyale.com/cardheroes/300/W3dkw0HTw9n1jB-zbknY2w3wHuyuLxSRIAV5fUT1SEY.png"
     },
     "rarity": "legendary"
   },
@@ -948,6 +950,16 @@
       "medium": "https://api-assets.clashroyale.com/cards/300/X0dTFs7OGUavreDEzOtYd_YNZ8Zly6qgAE-dd-bNfWU.png"
     },
     "rarity": "legendary"
+  },
+  {
+    "name": "Minion Giant",
+    "id": 26000107,
+    "maxLevel": 14,
+    "elixirCost": 4,
+    "iconUrls": {
+      "medium": "https://api-assets.clashroyale.com/cards/300/VRjL0yVLzrnoe-IBh2l2fDHDok0L-UoM9cG-X_8xbMk.png"
+    },
+    "rarity": "rare"
   },
   {
     "name": "Cannon",

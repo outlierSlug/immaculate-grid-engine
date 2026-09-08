@@ -28,6 +28,21 @@ OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 # are sequential.
 REQUEST_DELAY_SECONDS = 0.2
 
+# PLACEHOLDER ICONS (2026-09-07): minion-giant.png and ice-wizard-hero.png
+# were both 404ing on Supercell's own CDN the day these cards went live (a
+# known asset-rollout lag - see ARCHITECTURE.md/README precedent for other
+# games), so these two were instead hand-sourced from RoyaleAPI's card-
+# thumbnail mirror (cdns3.royaleapi.com/static/img/cards/{version}/{slug}.png)
+# and manually resized/composited onto a transparent 285x420 canvas to match
+# every other icon's dimensions - the border/frame style doesn't match
+# Supercell's own (same accepted tradeoff as elite-barbarians-evo.png), only
+# the character art itself does. Since download_icon() below skips any file
+# that already exists, these two will NOT get automatically replaced by a
+# future re-run once Supercell's CDN actually has them - delete
+# output/icons/minion-giant.png and output/icons/ice-wizard-hero.png by hand,
+# then re-run this script, once that's confirmed (check by curling the
+# medium/heroMedium URL in raw/clashroyale_cards_raw.json directly).
+
 # (icon_urls key, filename suffix) - mirrors normalize.py's map_card() form
 # detection exactly (evolutionMedium -> Evolution entity, heroMedium -> Hero
 # entity), so every entity normalize.py produces has a matching icon target

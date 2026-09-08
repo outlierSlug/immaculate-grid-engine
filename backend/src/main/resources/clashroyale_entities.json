@@ -540,6 +540,18 @@
     }
   },
   {
+    "id": "clashroyale:ice-wizard-hero",
+    "game_id": "clashroyale",
+    "display_name": "Hero Ice Wizard",
+    "image_url": "/clashroyale/icons/ice-wizard-hero.png",
+    "attributes": {
+      "rarity": "Legendary",
+      "card_type": "Troop",
+      "elixir_cost": 3,
+      "form": "Hero"
+    }
+  },
+  {
     "id": "clashroyale:royal-giant",
     "game_id": "clashroyale",
     "display_name": "Royal Giant",
@@ -1592,6 +1604,18 @@
       "rarity": "Legendary",
       "card_type": "Troop",
       "elixir_cost": 5,
+      "form": "Base"
+    }
+  },
+  {
+    "id": "clashroyale:minion-giant",
+    "game_id": "clashroyale",
+    "display_name": "Minion Giant",
+    "image_url": "/clashroyale/icons/minion-giant.png",
+    "attributes": {
+      "rarity": "Rare",
+      "card_type": "Troop",
+      "elixir_cost": 4,
       "form": "Base"
     }
   },
