@@ -41,6 +41,14 @@ export interface UsePuzzleGuessesOptions {
   // disables auto-finalize entirely (safe default - Unlimited never sets
   // trackStats, so it never needed this to begin with).
   pageKey?: string | null;
+  // Fired exactly once, at the genuine moment this puzzle transitions into
+  // game-over — reuses the "capture the end" effect's own endedAt-based
+  // guard below, which already correctly distinguishes a live completion
+  // from restoring an already-completed puzzle from localStorage (endedAt
+  // itself gets restored in the same pass, before that effect's guard ever
+  // runs, so it never re-fires there). Daily's PuzzleSummaryModal is the
+  // reason this exists; Unlimited simply never passes it.
+  onGameOver?: () => void;
 }
 
 interface StoredProgress {
@@ -87,7 +95,7 @@ function saveProgress(key: string, progress: StoredProgress) {
  * is set, restores from localStorage instead of resetting.
  */
 export function usePuzzleGuesses(puzzle: PuzzleResponse | null, options: UsePuzzleGuessesOptions = {}) {
-  const { guessLimit = null, persistKey = null, trackStats = false, playedLive = true, pageKey = null } = options;
+  const { guessLimit = null, persistKey = null, trackStats = false, playedLive = true, pageKey = null, onGameOver } = options;
   const [filledCells, setFilledCells] = useState<Record<string, GridItem>>({});
   const [activeCell, setActiveCell] = useState<{ row: number; col: number } | null>(null);
   const [guessesUsed, setGuessesUsed] = useState(0);
@@ -332,6 +340,7 @@ export function usePuzzleGuesses(puzzle: PuzzleResponse | null, options: UsePuzz
         playedLive,
       }).then(() => refreshStats(puzzle.id));
     }
+    onGameOver?.();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isGameOver]);
 

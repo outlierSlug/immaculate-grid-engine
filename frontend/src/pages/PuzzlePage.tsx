@@ -10,7 +10,7 @@ import Score from '../components/Score';
 import GuessCounter from '../components/GuessCounter';
 import UniquenessScore from '../components/UniquenessScore';
 import PuzzleStatsPanel from '../components/PuzzleStatsPanel';
-import DiscordPromptBanner from '../components/DiscordPromptBanner';
+import PuzzleSummaryModal from '../components/PuzzleSummaryModal';
 import ConfirmModal from '../components/ConfirmModal';
 import HelpButton from '../components/HelpButton';
 import HelpModal from '../components/HelpModal';
@@ -151,6 +151,9 @@ export default function PuzzlePage() {
     };
   }, [validGame, isArchive]);
 
+  const [summaryModalOpen, setSummaryModalOpen] = useState(false);
+  const statsRef = useRef<HTMLDivElement>(null);
+
   const {
     filledCells,
     activeCell,
@@ -168,6 +171,11 @@ export default function PuzzlePage() {
     puzzleStats,
   } = usePuzzleGuesses(puzzle, {
     guessLimit: DAILY_GUESS_LIMIT,
+    // Opens the one-time PuzzleSummaryModal - see UsePuzzleGuessesOptions'
+    // own doc comment for why this fires exactly once, only on a genuine
+    // live completion. Archive excluded outright - revisiting a past date
+    // isn't a "just finished today's Daily" moment.
+    onGameOver: isArchive ? undefined : () => setSummaryModalOpen(true),
     // Same shape as the fetch effect's own fetchTarget above - lets the
     // hook's auto-finalize logic tell a genuine same-tab day rollover apart
     // from navigating to a different game/date (see pageKey's own doc
@@ -204,6 +212,11 @@ export default function PuzzlePage() {
   const hasLocalProgress = correctCount > 0 || isGameOver
     || (guessesRemaining !== null && guessesRemaining < DAILY_GUESS_LIMIT);
   const remoteCompletion = !!user && !hasLocalProgress && !!puzzleStats?.you;
+
+  function scrollToStats() {
+    setSummaryModalOpen(false);
+    statsRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
 
   if (!validGame) {
     return <NotFoundPage />;
@@ -430,7 +443,15 @@ export default function PuzzlePage() {
         ]}
       />
 
-      {isGameOver && <DiscordPromptBanner />}
+      {isGameOver && !isArchive && (
+        <button
+          type="button"
+          onClick={() => setSummaryModalOpen(true)}
+          className="px-5 py-2.5 rounded-full border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 font-semibold hover:bg-gray-100 dark:hover:bg-gray-800 hover:border-indigo-400 dark:hover:border-indigo-500 transition cursor-pointer"
+        >
+          Summary
+        </button>
+      )}
 
       {!isGameOver && (
         <button
@@ -469,17 +490,37 @@ export default function PuzzlePage() {
       )}
 
       {isGameOver && puzzleStats && (
-        <PuzzleStatsPanel
-          puzzleStats={puzzleStats}
-          rowLabels={puzzle.rowLabels}
-          colLabels={puzzle.colLabels}
-          yourUniquenessScore={liveUniquenessScore}
-          avatarShapeClass={avatarShapeClass} avatarAspectClass={avatarAspectClass} avatarSizeClass={avatarSizeClass} avatarBorderClass={avatarBorderClass}
-          puzzleDate={puzzle.puzzleDate}
+        <div ref={statsRef} className="w-full flex flex-col items-center">
+          <PuzzleStatsPanel
+            puzzleStats={puzzleStats}
+            rowLabels={puzzle.rowLabels}
+            colLabels={puzzle.colLabels}
+            yourUniquenessScore={liveUniquenessScore}
+            avatarShapeClass={avatarShapeClass} avatarAspectClass={avatarAspectClass} avatarSizeClass={avatarSizeClass} avatarBorderClass={avatarBorderClass}
+            puzzleDate={puzzle.puzzleDate}
+            gameId={validGame}
+            gameLabel={GAMES[validGame].label}
+            isArchive={isArchive}
+            correctCellKeys={new Set(Object.keys(filledCells))}
+          />
+        </div>
+      )}
+
+      {summaryModalOpen && !isArchive && (
+        <PuzzleSummaryModal
+          onClose={() => setSummaryModalOpen(false)}
+          onViewStats={scrollToStats}
           gameId={validGame}
           gameLabel={GAMES[validGame].label}
-          isArchive={isArchive}
+          puzzleDate={puzzle.puzzleDate}
+          score={correctCount}
+          totalCells={totalCells}
           correctCellKeys={new Set(Object.keys(filledCells))}
+          rowCount={puzzle.rowLabels.length}
+          colCount={puzzle.colLabels.length}
+          uniquenessScore={liveUniquenessScore}
+          uniquenessPercentile={uniquenessPercentile}
+          mostUniqueScore={puzzleStats?.mostUniqueScore ?? null}
         />
       )}
 

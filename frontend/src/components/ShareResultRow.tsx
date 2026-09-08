@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { shortDateLabel, nextPacificMidnight } from '../utils/dateIso';
+import { nextPacificMidnight } from '../utils/dateIso';
 import { BOARD_WIDTH_CSS } from '../utils/gridSizing';
 
 interface ShareResultRowProps {
@@ -12,6 +12,12 @@ interface ShareResultRowProps {
   correctCellKeys: Set<string>;
   rowCount: number;
   colCount: number;
+  // Same three values PuzzleSummaryModal's share text uses - kept in sync
+  // so the copypasta reads identically regardless of which of the two
+  // share entry points produced it.
+  uniquenessScore: number | null;
+  uniquenessPercentile: number | null;
+  mostUniqueScore: number | null;
 }
 
 // Always the real production domain, never the request's own origin - the
@@ -57,6 +63,9 @@ export default function ShareResultRow({
   correctCellKeys,
   rowCount,
   colCount,
+  uniquenessScore,
+  uniquenessPercentile,
+  mostUniqueScore,
 }: ShareResultRowProps) {
   const countdown = useResetCountdown(puzzleDate);
   const score = correctCellKeys.size;
@@ -91,12 +100,21 @@ export default function ShareResultRow({
     for (let r = 0; r < rowCount; r++) {
       let line = '';
       for (let c = 0; c < colCount; c++) {
-        line += correctCellKeys.has(`${r}-${c}`) ? '🟩' : '⬛';
+        line += correctCellKeys.has(`${r}-${c}`) ? '✅' : '🟥';
       }
       lines.push(line);
     }
+    const summaryLines = [`GachaGrid - ${gameLabel} ${puzzleDate}`, `Score: ${score}/${totalCells}`];
+    if (uniquenessScore != null) {
+      summaryLines.push(
+        mostUniqueScore != null
+          ? `Uniqueness: ${uniquenessScore} (best possible: ${mostUniqueScore})`
+          : `Uniqueness: ${uniquenessScore}`
+      );
+    }
+    if (uniquenessPercentile != null) summaryLines.push(`Better than ${uniquenessPercentile.toFixed(1)}% of players today`);
     return [
-      `I scored ${score}/${totalCells} on GachaGrid - ${gameLabel} (${shortDateLabel(puzzleDate)})!`,
+      ...summaryLines,
       '',
       ...lines,
       '',
@@ -162,17 +180,9 @@ export default function ShareResultRow({
           className="absolute top-full right-0 mt-2 w-56 bg-white dark:bg-gray-800 rounded-xl shadow-lg p-3 z-20"
         >
           <div className="bg-gray-100 dark:bg-gray-900 rounded-lg px-3 py-2 text-center">
-            <p className="text-xs font-semibold text-gray-700 dark:text-gray-300 leading-snug mb-2">
-              I scored {score}/{totalCells} on GachaGrid - {gameLabel} ({shortDateLabel(puzzleDate)})!
-            </p>
-            <div className="text-lg leading-snug">
-              {Array.from({ length: rowCount }, (_, r) => (
-                <div key={r}>
-                  {Array.from({ length: colCount }, (_, c) => (correctCellKeys.has(`${r}-${c}`) ? '🟩' : '⬛')).join('')}
-                </div>
-              ))}
-            </div>
-            <p className="text-[11px] font-semibold text-indigo-600 dark:text-indigo-400 mt-2">{shareUrl}</p>
+            <pre className="text-xs font-semibold text-gray-700 dark:text-gray-300 leading-snug whitespace-pre-wrap font-sans">
+              {buildShareText()}
+            </pre>
           </div>
           {copied && (
             <p className="text-xs font-semibold text-green-600 dark:text-green-400 text-center mt-2">Copied to clipboard!</p>

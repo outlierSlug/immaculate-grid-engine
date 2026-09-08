@@ -57,6 +57,11 @@ export default function PuzzleStatsPanel({
   const [uniquenessModalOpen, setUniquenessModalOpen] = useState(false);
 
   const { gamesPlayed, avgScore, mostUniqueScore, scoreDistribution, perCell, uniquenessScores, you } = puzzleStats;
+  // true: this panel only ever renders once the puzzle is already
+  // game-over, so yourUniquenessScore's owner is always already counted
+  // among uniquenessScores - same reasoning as the side-column UNIQ stat's
+  // own percentile computation in PuzzlePage.
+  const yourUniquenessPercentile = computeUniquenessPercentile(yourUniquenessScore, uniquenessScores, true);
   const selectedCell = selectedCellKey
     ? {
         cellKey: selectedCellKey,
@@ -89,6 +94,9 @@ export default function PuzzleStatsPanel({
           correctCellKeys={correctCellKeys}
           rowCount={rowLabels.length}
           colCount={colLabels.length}
+          uniquenessScore={yourUniquenessScore}
+          uniquenessPercentile={yourUniquenessPercentile}
+          mostUniqueScore={mostUniqueScore}
         />
       )}
 

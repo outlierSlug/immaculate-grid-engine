@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Navigate, Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../auth/AuthProvider';
-import { fetchUserStats, fetchPuzzleStats, deleteAccount } from '../api/client';
-import { getSessionId } from '../utils/session';
-import { computeLiveUniquenessScore } from '../utils/uniqueness';
+import { fetchUserStats, deleteAccount } from '../api/client';
+import { useAvgUniqueness } from '../hooks/useAvgUniqueness';
 import { GAMES, isValidGameId } from '../config/games';
 import type { UserGameStats } from '../types/puzzle';
 import LoadingSpinner from '../components/LoadingSpinner';
@@ -21,36 +20,7 @@ interface GameStatsCardProps {
 // runs independently and one game's data doesn't block another's from
 // rendering.
 function GameStatsCard({ gameStats }: GameStatsCardProps) {
-  const [avgUniqueness, setAvgUniqueness] = useState<number | null>(null);
-
-  useEffect(() => {
-    if (gameStats.puzzles.length === 0) return;
-    let cancelled = false;
-
-    // Reuses the single-puzzle /stats endpoint + the same client-side
-    // uniqueness formula used mid-game (utils/uniqueness.ts) rather than
-    // the backend computing this - see UserStatsResponse's doc comment.
-    const sessionId = getSessionId();
-    Promise.all(
-      gameStats.puzzles.map(async (p) => {
-        const puzzleStats = await fetchPuzzleStats(p.puzzleId, sessionId);
-        if (!puzzleStats) return null;
-        // true: every puzzle here is already a completed, server-recorded
-        // attempt (that's how it ended up in gameStats.puzzles at all).
-        return computeLiveUniquenessScore(p.cellAnswers, puzzleStats.perCell, true);
-      })
-    ).then((scores) => {
-      if (cancelled) return;
-      const valid = scores.filter((s): s is number => s !== null);
-      if (valid.length > 0) {
-        setAvgUniqueness(Math.round(valid.reduce((sum, s) => sum + s, 0) / valid.length));
-      }
-    });
-
-    return () => {
-      cancelled = true;
-    };
-  }, [gameStats]);
+  const avgUniqueness = useAvgUniqueness(gameStats);
 
   const game = isValidGameId(gameStats.gameId) ? GAMES[gameStats.gameId] : undefined;
   const windowed = gameStats.puzzles.length > 0 && gameStats.puzzles.length < gameStats.gamesPlayed;
@@ -62,18 +32,32 @@ function GameStatsCard({ gameStats }: GameStatsCardProps) {
         <h2 className="font-bold text-lg">{game?.label ?? gameStats.gameId}</h2>
       </div>
 
-      <div className="flex gap-6 text-center">
-        <div>
+      <div className="w-full grid grid-cols-3 gap-1 text-center">
+        <div className="flex flex-col items-center">
           <div className="text-xs text-gray-500 dark:text-gray-400">Games Played</div>
           <div className="text-xl font-bold tabular-nums">{gameStats.gamesPlayed}</div>
         </div>
-        <div>
+        <div className="flex flex-col items-center">
           <div className="text-xs text-gray-500 dark:text-gray-400">Score Avg</div>
           <div className="text-xl font-bold tabular-nums">{gameStats.avgScore.toFixed(1)}</div>
         </div>
-        <div>
+        <div className="flex flex-col items-center">
           <div className="text-xs text-gray-500 dark:text-gray-400">UNIQ Avg</div>
           <div className="text-xl font-bold tabular-nums">{avgUniqueness ?? '—'}</div>
+        </div>
+      </div>
+
+      <div className="w-full grid grid-cols-2 gap-1 text-center pt-3 border-t border-gray-100 dark:border-gray-800">
+        <div className="flex flex-col items-center">
+          <div className="text-xs text-gray-500 dark:text-gray-400">Daily Streak</div>
+          <div className="text-xl font-bold tabular-nums flex items-center justify-center gap-1">
+            <span aria-hidden="true">🔥</span>
+            <span>{gameStats.currentStreak}</span>
+          </div>
+        </div>
+        <div className="flex flex-col items-center">
+          <div className="text-xs text-gray-500 dark:text-gray-400">Best Streak</div>
+          <div className="text-xl font-bold tabular-nums">{gameStats.maxStreak}</div>
         </div>
       </div>
 

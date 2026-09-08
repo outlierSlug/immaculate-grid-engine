@@ -164,6 +164,12 @@ export interface UserGameStats {
   gameId: string;
   gamesPlayed: number;
   avgScore: number;
+  // Consecutive Daily calendar dates with a live completion - see
+  // UserStatsService.buildGameStats on the backend for the exact
+  // definition (currentStreak is 0 once broken; maxStreak stays the best
+  // run ever, even after it ends).
+  currentStreak: number;
+  maxStreak: number;
   puzzles: UserPuzzleSummary[];
 }
 

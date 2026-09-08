@@ -12,6 +12,7 @@ import com.tonyl.backend.repository.PuzzleRepository;
 
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
@@ -108,10 +109,26 @@ public class UserStatsService {
             .toList();
     }
 
-    private UserGameStats buildGameStats(String gameId, List<PuzzleAttempt> gameAttempts,
-                                          Map<String, Puzzle> puzzlesById) {
+    // Package-private (not private) so UserStatsServiceTest can drive it
+    // directly with hand-built fixtures - same convention as
+    // PuzzleService.generateDailyPuzzle/AdminTrackingService.buildWindow.
+    UserGameStats buildGameStats(String gameId, List<PuzzleAttempt> gameAttempts,
+                                  Map<String, Puzzle> puzzlesById) {
         long gamesPlayed = gameAttempts.size();
         double avgScore = gameAttempts.stream().mapToInt(PuzzleAttempt::getScore).average().orElse(0);
+
+        // Distinct + sorted rather than assuming one attempt per date -
+        // true today (one attempt per (puzzleId, sessionId), and puzzleId
+        // encodes date for DAILY - see getCompletedDates's own comment on
+        // this), but cheap enough to not lean on that invariant holding
+        // forever just to compute a streak correctly.
+        List<LocalDate> playedDates = gameAttempts.stream()
+            .map(a -> puzzlesById.get(a.getPuzzleId()).getPuzzleDate())
+            .distinct()
+            .sorted()
+            .toList();
+        int maxStreak = computeMaxStreak(playedDates);
+        int currentStreak = computeCurrentStreak(playedDates);
 
         List<UserPuzzleSummary> recent = gameAttempts.stream()
             .sorted(Comparator.comparing(PuzzleAttempt::getCompletedAt).reversed())
@@ -130,6 +147,51 @@ public class UserStatsService {
             })
             .toList();
 
-        return new UserGameStats(gameId, gamesPlayed, avgScore, recent);
+        return new UserGameStats(gameId, gamesPlayed, avgScore, currentStreak, maxStreak, recent);
+    }
+
+    // Longest run of consecutive calendar dates anywhere in the list, past
+    // or present - sortedDistinctDates is assumed sorted ascending with no
+    // duplicates (see its construction above).
+    private int computeMaxStreak(List<LocalDate> sortedDistinctDates) {
+        if (sortedDistinctDates.isEmpty()) {
+            return 0;
+        }
+        int max = 1;
+        int run = 1;
+        for (int i = 1; i < sortedDistinctDates.size(); i++) {
+            if (sortedDistinctDates.get(i).equals(sortedDistinctDates.get(i - 1).plusDays(1))) {
+                run++;
+            } else {
+                run = 1;
+            }
+            max = Math.max(max, run);
+        }
+        return max;
+    }
+
+    // The run ending at the most recent played date, but only if that run
+    // is still "alive" - missing both today and yesterday means the streak
+    // is broken, even though the historical run itself still counts toward
+    // maxStreak above. Matches Daily's own one-completion-per-day model:
+    // playing today extends an unbroken streak from yesterday; skipping a
+    // day resets it, it doesn't just pause.
+    private int computeCurrentStreak(List<LocalDate> sortedDistinctDates) {
+        if (sortedDistinctDates.isEmpty()) {
+            return 0;
+        }
+        LocalDate mostRecent = sortedDistinctDates.get(sortedDistinctDates.size() - 1);
+        if (mostRecent.isBefore(PuzzleClock.today().minusDays(1))) {
+            return 0;
+        }
+        int streak = 1;
+        for (int i = sortedDistinctDates.size() - 1; i > 0; i--) {
+            if (sortedDistinctDates.get(i).equals(sortedDistinctDates.get(i - 1).plusDays(1))) {
+                streak++;
+            } else {
+                break;
+            }
+        }
+        return streak;
     }
 }
