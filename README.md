@@ -4,7 +4,9 @@ A game-agnostic "immaculate grid" style puzzle engine. Fill a
 category!
 
 The public-facing product built on top of it is branded
-**GachaGrid**. Test your knowledge and play a new puzzle every day! Currently supported games include Genshin Impact and Brawl Stars.
+**GachaGrid**. Test your knowledge and play a new puzzle every day!
+Currently supported games: Genshin Impact, Honkai: Star Rail, Brawl
+Stars, and Clash Royale.
 
 ## Live
 **[gachagrid.com](https://gachagrid.com)**

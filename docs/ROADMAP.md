@@ -442,7 +442,90 @@ then close the gaps only a real deployment and real usage surface.
       would have also changed desktop's already-acceptable font
       rendering, ruled out as not worth that tradeoff.
 
-## Phase 8 — Real-time head-to-head (~2-3 weeks)
+## Phase 8 — Third/fourth games, deep Genshin categories, streaks [COMPLETE]
+Goal: prove the engine scales past two games for real (Phase 2 was a
+proof of concept with Brawl Stars; this is two more real games shipped
+under actual traffic), then invest in category depth and engagement now
+that the foundation is live and stable.
+
+- [x] Clash Royale as a third game (2026-08-25) — first genuinely
+      different data shape (a card game, not a character roster): 4
+      dimensions (rarity/card_type/elixir_cost/form), `card_type` derived
+      from Supercell's own id-number prefix (no dedicated API field),
+      Evolution/Hero forms as independently-guessable entities (same
+      multi-entity pattern as Genshin's Traveler), a hand-curated
+      Spirit Empress "(Ground)" state. `CategoryChip.tsx` genuinely
+      modularized per-game at this point (GameId-keyed tables), since
+      Brawl Stars and Clash Royale both have "Common"/"Rare" rarities
+      that previously would have collided.
+- [x] Honkai: Star Rail as a fourth game (2026-08-26) — second character
+      roster; Node-only fetch step (`starrail.js`) paired with Python
+      normalization reading the library's own cache files directly;
+      Trailblazer's path/gender variants handled with the same
+      multi-entity pattern as Genshin's Traveler and Clash Royale's
+      Evolution/Hero forms.
+- [x] `docs/OVERVIEW.md` added — a short companion to the long-form
+      Architecture doc for faster onboarding/orientation.
+- [x] Two real bugs found via a scoped backend code-quality review: a
+      login-code replay race (two concurrent OAuth exchange calls could
+      mint two sessions from one single-use code) and
+      `PuzzleService.checkGuess` spending a guess *before* validating the
+      submitted item id.
+- [x] Guess-count desync fix — the frontend trusted its own
+      locally-computed guess count instead of the server's authoritative
+      one (could drift under a retried request or a second tab/device);
+      also fixed ordinary Archive navigation from an in-progress Daily
+      silently auto-submitting it as permanently gave-up, not just a
+      genuine midnight rollover.
+- [x] Genshin ascension-material categories (local specialty/common
+      material/boss material/ascension stat) — sourced from Dimbreath's
+      datamined files, cross-validated against wiki tables. Introduced
+      `CategoryDefinition.getWeight()` (generic, game-agnostic category
+      weighting) and a min-member-count floor after the raw material set
+      was measured causing ~67% Unlimited generation failure.
+- [x] Post-Unlimited-game answer reveal — the grid unlocks in place at
+      game-over; every cell becomes clickable to show its full
+      valid-answer list (Daily explicitly excluded, to protect community
+      pick-rate data).
+- [x] Genshin release_era category — buckets release_version's 51 thin
+      exact-patch values into ~7 healthier buckets once release_version's
+      own floor was raised to exclude them from ever being generated
+      directly.
+- [x] Discord community link — footer link plus a post-Daily join-prompt
+      banner.
+- [x] Genshin passive_talent category — the deepest category built so
+      far: a hand-curated, wiki-researched, multi-valued category (8
+      generic Utility Passive talents + 3 official proper-noun
+      mechanics) covering 102 of 118 characters, built via a documented
+      7-step design methodology (redundancy-check against every existing
+      dimension, empirical multi-valued detection, one-at-a-time
+      edge-case resolution) intended as the template for any future deep
+      category, not a one-off. See `docs/ARCHITECTURE.md`'s own section
+      and `ingestion/genshin/raw/passive_talent_process_notes.txt`.
+- [x] Mobile polish pass: rarity badge/Discord banner mobile scaling,
+      Puzzle Stats board scaled to match the main grid, puzzle grid
+      centering redesign to fill more of the available space.
+- [x] Clash Royale live-service update (Minion Giant + a Hero Ice Wizard
+      variant) after a real patch shipped — surfaced that brand-new
+      content's icons can lag Supercell's own CDN even after the API
+      already reports a card as released; shipped with hand-sourced
+      placeholder icons and an explicit tracking comment for the later
+      swap once Supercell's CDN catches up.
+- [x] Per-game streaks (current/max consecutive Daily days) + a one-time
+      post-Daily `PuzzleSummaryModal` — computed live from existing
+      `PuzzleAttempt` history, no schema change. The modal consolidates
+      the Discord prompt (moved in, not duplicated) and a richer "Share
+      Your Grid" flow (native share, X/Twitter intent, or an explicit
+      copy button with a checkmark+toast instead of plaintext) with
+      upgraded share text (score, UNIQ + best-possible, percentile) that
+      now also powers the pre-existing inline share row. Login-gated,
+      matching the existing Archive/personal-stats precedent. See
+      `docs/ARCHITECTURE.md`'s own section for the full design,
+      including a real bug a Playwright check caught (a naive
+      prev/current `isGameOver` check misfired on page reload) before it
+      shipped.
+
+## Phase 9 — Real-time head-to-head (~2-3 weeks)
 Deliberately after a deployed, polished single-player game exists —
 additive feature on a proven foundation, not a prerequisite for having a
 demoable product.
@@ -455,13 +538,16 @@ demoable product.
 - [ ] Rate limiting + server-side used-answer tracking on /guess (unsafe
       to defer once an opponent is involved, unlike single-player)
 
-## Phase 9 — Scale / advanced features
-- [ ] Leaderboards / streaks
+## Phase 10 — Scale / advanced features
+- [x] ~~Streaks~~ — shipped in Phase 8 as per-game Daily streaks, ahead of
+      this phase.
+- [x] ~~Third GameModule~~ — shipped in Phase 8, twice over (Clash Royale,
+      then Star Rail) — real proof points for the game-agnostic claim.
+      `GameModuleRegistry` is still a hardcoded switch internally, though
+      (see Backlog) — four games later, worth a real look now rather
+      than waiting for a hypothetical fifth.
+- [ ] Leaderboards
 - [ ] Redis for active room state (if needed under real multiplayer load)
-- [ ] Third GameModule — real proof point for a GameModule registry
-      replacing the current hardcoded switch (`GameModuleRegistry`
-      centralized the duplication in Phase 3, but didn't remove the
-      hardcoding itself)
 
 ## Backlog (non-blocking)
 Full detail lives in `docs/ARCHITECTURE.md`'s Backlog section — kept in
@@ -470,9 +556,12 @@ sync here at a glance:
   expanded attribute set (Super/Star Power count) for richer categories,
   rarity color mapping for CategoryChip, class-metadata gap
 - Real `GameModule` registry (config/filesystem-driven, not a hardcoded
-  switch) — once a third game exists or this is deployed
+  switch) — the original trigger condition ("once a third game exists or
+  this is deployed") is true twice over now (four games, live since
+  2026-08-24) - worth a real look sooner rather than later, not blocking
+  anything urgent yet.
 - Rate limiting + server-side used-answer tracking on `/guess` — required
-  before Phase 8 (H2H), not urgent before then
+  before Phase 9 (H2H), not urgent before then
 - ~~CORS origins moved to configuration once a deployment target
   exists~~ — mechanism shipped in Phase 7 (`config/WebConfig.java`,
   `CORS_ALLOWED_ORIGINS`); the real gachagrid.com origin was added when
@@ -530,10 +619,15 @@ sync here at a glance:
   upcoming Daily) is still unbuilt. No fixed phase — revisit once Daily
   curation is a real priority (Phase 6+).
 - Additional category dimensions (candidates: affiliation, birthday
-  month — both already present in raw ingested data, unused so far)
+  month — both already present in raw ingested data, unused so far).
+  Genshin got real category depth elsewhere instead (Phase 8's ascension
+  materials/release_era/passive_talent) - these two specific candidates
+  remain untouched, not superseded.
 - ~~Wordle-style shareable result summary~~ — shipped in Phase 7.5 as a
   share button on a finished puzzle, with a same-day follow-up fix to
-  the generated share URL itself.
+  the generated share URL itself; significantly enhanced in Phase 8 (richer
+  copypasta - score, UNIQ + best-possible, percentile - plus three
+  explicit share actions instead of one overloaded button).
 - Cross-mode state persistence (Daily ↔ Unlimited navigation via the
   header toggle) — Daily's own page-refresh persistence shipped in
   Phase 5, but switching modes and back still discards in-progress state
@@ -564,34 +658,48 @@ sync here at a glance:
   step, no rollback, and renames/drops don't work as intended (a rename
   just adds a new column and orphans the old one). Deliberately not done
   now - real added complexity (baselining Flyway against an already-live
-  schema, switching `ddl-auto` to `validate`) for a project that's still
-  pre-launch and where schema changes are infrequent. Revisit once either
-  real user data exists that a bad auto-migration could damage, or schema
-  changes get frequent enough that "what changed and when" stops being
-  reconstructable from memory. Note this is scoped to *structural* changes
-  (new tables/columns) only - adding a new attribute/category (like `tags`/
-  `release_year` this session) never touches the schema at all, since
-  `GridItem.attributes` is a flexible JSONB `Map<String, Object>` and
-  `CategoryDefinition`s are derived from whatever keys/values already
-  exist in that data - see `GameModule`/`AttributeEqualsCategory`.
+  schema, switching `ddl-auto` to `validate`) for a project where
+  structural schema changes are still infrequent, real user data now
+  exists (live since 2026-08-24), so the "revisit once real user data
+  exists" trigger below has technically already arrived - worth
+  prioritizing higher than this note's original framing suggested, even
+  though no bad auto-migration has actually happened yet. Revisit once
+  schema changes get frequent enough that "what changed and when" stops
+  being reconstructable from memory, or sooner given real data is now at
+  stake. Note this is scoped to *structural* changes (new tables/columns)
+  only - adding a new attribute/category (like `tags`/`release_year`,
+  and later Genshin's ascension materials/passive_talent) never touches
+  the schema at all, since `GridItem.attributes` is a flexible JSONB
+  `Map<String, Object>` and `CategoryDefinition`s are derived from
+  whatever keys/values already exist in that data - see
+  `GameModule`/`AttributeEqualsCategory`.
 
 ## Notes
 - Total estimate: ~8-10 weeks part-time, revised upward from the original
   estimate given Phase 3 grew into a full Unlimited-mode build rather than
   a lighter "polish pass."
-- Phases 0-7.5 complete — GachaGrid is live at gachagrid.com. Phase 6's
-  formerly-only unchecked item (deploy backend + frontend + managed
-  Postgres) shipped 2026-08-24, and everything that followed from actually
-  going live (deploy-time infra fixes, a server-side guess-limit security
-  hole closed, admin curation tooling, self-hosted icons, Archive/SEO/
+- Phases 0-8 complete — GachaGrid is live at gachagrid.com with four
+  games (Genshin Impact, Brawl Stars, Clash Royale, Star Rail), per-game
+  streaks, and a post-Daily summary/share flow. Phase 6's formerly-only
+  unchecked item (deploy backend + frontend + managed Postgres) shipped
+  2026-08-24, and everything that followed from actually going live
+  (deploy-time infra fixes, a server-side guess-limit security hole
+  closed, admin curation tooling, self-hosted icons, Archive/SEO/
   ops/share polish) is now tracked as its own Phase 7.5 rather than left
-  as a pile of unreconciled commits. Only Phases 8-9 (real-time
-  head-to-head, then scale/leaderboards/a third game) remain unstarted.
+  as a pile of unreconciled commits. Phase 8 then covered two more real
+  games (not just a proof of concept) plus deep Genshin category work and
+  the streaks/summary-modal feature. Only Phases 9-10 (real-time
+  head-to-head, then scale/leaderboards/a real GameModule registry)
+  remain unstarted.
   This file and `docs/ARCHITECTURE.md` had drifted out of sync with
-  several sessions' worth of shipped work twice now (first reconciled
-  2026-08-22, again 2026-08-25 after the deploy) — worth re-checking both
-  against `git log` periodically rather than trusting them as current by
-  default. See Backlog for three smaller
+  several sessions' worth of shipped work three times now (first
+  reconciled 2026-08-22, again 2026-08-25 after the deploy, again
+  2026-09-08 after an entire third and fourth game plus Phase 8's other
+  work had shipped with zero corresponding roadmap entries) — worth
+  re-checking both against `git log` periodically rather than trusting
+  them as current by default; this gap was the largest yet (two whole
+  games shipped and undocumented at the phase level, not just individual
+  features). See Backlog for three smaller
   Phase-5-adjacent items (additional category dimensions, shareable
   result summary, cross-mode navigation persistence) deliberately moved
   out rather than left half-checked, since none of them block Phase 6.

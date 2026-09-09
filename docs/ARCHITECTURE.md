@@ -284,6 +284,53 @@ likely. Requires at least 2 distinct dimensions to run at all (returns
     Genshin's 4 — expected, not a defect; not every `GameModule` needs the
     same number of dimensions, though more dimensions generally means
     richer/more varied puzzles.
+
+## Data sourcing — Clash Royale (Phase 8, third game)
+
+- Official API (`api.clashroyale.com`) via the RoyaleAPI proxy
+  (`proxy.royaleapi.dev`), which sidesteps the official API's static-IP
+  allowlist requirement — needs a local `.env` with
+  `CLASH_ROYALE_API_TOKEN`, never committed.
+- First genuinely different data shape from the two character rosters:
+  a card game. Four dimensions — `rarity`, `card_type`, `elixir_cost`,
+  `form`. `card_type` has no dedicated API field at all; derived from
+  Supercell's own id-number prefix (`26xxxxx` Troop / `27xxxxx` Building /
+  `28xxxxx` Spell), with a hand-curated `CARD_TYPE_OVERRIDES` exception
+  list for cards whose id predates a rework (Spirit Empress, Furnace,
+  Heal Spirit all still carry an old id despite no longer matching what
+  that prefix implies).
+- Evolution/Hero forms become their own independently-guessable entities
+  — the same one-raw-record-to-multiple-entities pattern as Genshin's
+  Traveler — detected from `iconUrls.evolutionMedium`/`heroMedium`
+  presence. Spirit Empress additionally gets a hand-curated `(Ground)`
+  entity (a real elixir-cost/targeting difference the API doesn't expose
+  at all).
+- **New-content icon lag**: a real patch (Minion Giant + a Hero Ice
+  Wizard variant) shipped with the API already reporting the cards as
+  released, but Supercell's own asset CDN 404'd on both icons for a
+  period after launch. Handled with hand-sourced placeholder icons
+  (RoyaleAPI's own card-thumbnail mirror, cropped/resized to match the
+  existing 285×420 convention) and a tracking comment in
+  `download_icons.py` naming exactly which files to delete and re-fetch
+  once Supercell's CDN catches up — `download_icon()`'s skip-if-exists
+  behavior means it won't self-heal without that manual nudge.
+
+## Data sourcing — Honkai: Star Rail (Phase 8, fourth game)
+
+- Second character-roster game (after Genshin) — reuses the same
+  category shape (element/path ≈ Genshin's element/weapon) but sourced
+  differently: the only usable data-access library (`starrail.js`) is
+  Node-only, so `ingestion/starrail/`'s *fetch* step is JavaScript while
+  *normalization* stays Python, reading the library's downloaded cache
+  files directly rather than trusting its object model — full control
+  over name/rarity/path/element resolution, same reasoning Genshin's own
+  hand-curated roster file already established (don't trust a
+  third-party library's shape more than necessary).
+- Trailblazer (5 paths × 2 genders) is the same multi-entity pattern as
+  Genshin's Traveler and Clash Royale's Evolution/Hero forms — one raw
+  record becomes multiple independently-guessable `GridItem`s at
+  ingestion time, not in the engine.
+
 ## Grid generation algorithm
  
 Implemented in `GridGenerator` (backend `puzzle` package), operating only
@@ -466,9 +513,29 @@ one frontend-side variable the same way.
 
 ## Deployment (gachagrid.com)
 
-Frontend on Cloudflare Pages, backend on Render, database on Neon - chosen
-because the domain is already on Cloudflare (Pages shares its dashboard,
-no extra CNAME hop). `render.yaml` at the repo root is Render's Blueprint.
+Frontend on Cloudflare Workers (static assets), backend on Render,
+database on Neon - chosen because the domain is already on Cloudflare
+(one dashboard, no extra CNAME hop for the frontend). Originally scoped
+as Cloudflare *Pages*, which is still fully supported, but Cloudflare's
+own dashboard now defaults new projects into the Workers-with-static-
+assets flow instead (confirmed against developers.cloudflare.com after
+the dashboard showed a Workers-style `npx wrangler deploy` setup screen,
+not the classic Pages build-command/output-directory form this doc
+originally assumed) - went with the flow the dashboard actually offered
+rather than hunting for the deprecated path. `frontend/wrangler.jsonc`
+is the resulting config: no custom Worker script, just
+`assets.directory: "./dist/"` and `assets.not_found_handling:
+"single-page-application"` (serves `index.html` for any route that isn't
+a real built asset, so react-router's client-side routes work on a
+direct load/refresh - the Workers equivalent of Pages' `_redirects`).
+`_redirects` itself was removed, not just left unused as originally
+assumed: Workers-with-static-assets *does* parse it (unlike the "inert
+leftover" this doc first claimed), and it has its own automatic
+`/index.html` -> `/` canonicalization built in - a Pages-style catch-all
+rule (`/* /index.html 200`) collides with that and gets rejected outright
+as an infinite loop (`assets.not_found_handling` already covers the same
+need natively, so there's nothing to keep this file for). `render.yaml`
+at the repo root is Render's Blueprint.
 Render has **no native Java/Maven runtime** (confirmed against
 render.com/docs/blueprint-spec after `runtime: java` was rejected as
 invalid on a first attempt - only node/python/elixir/go/ruby/rust are
@@ -479,10 +546,9 @@ the same "needs a real Postgres this build step doesn't have" reason
 `render.yaml` itself notes. Every environment-specific value above is
 already env-var-driven with a local-dev-safe default, so going live still
 needed almost no *application* config change beyond `server.port` (above)
-and `frontend/public/_redirects` so Cloudflare Pages serves `index.html`
-for any client-side route instead of 404ing on direct loads. Render's
-health check reuses the existing `HealthController` (`GET /api/health`,
-root `com.tonyl.backend` package) rather than adding a new one.
+and `wrangler.jsonc`'s SPA fallback handling. Render's health check
+reuses the existing `HealthController` (`GET /api/health`, root
+`com.tonyl.backend` package) rather than adding a new one.
 
 The OAuth flow is server-side (`SecurityConfig`/`GoogleAuthSuccessHandler`
 - browser hits `{backend}/oauth2/authorization/google`, Google redirects
@@ -512,11 +578,20 @@ Manual setup (not code, done once through each platform's dashboard):
    on id rather than duplicating rows.
 2. Render web service from `render.yaml`, real values for every env var it
    declares, custom domain `api.gachagrid.com`.
-3. Cloudflare Pages project (`frontend` root dir, `npm run build`, output
-   `dist`), `VITE_API_BASE_URL=https://api.gachagrid.com/api` as a
-   build-time env var, custom domain `gachagrid.com`.
-4. Cloudflare DNS: CNAME `api` -> Render's given target (Pages' own domain
-   wires up automatically, Render's doesn't).
+3. Cloudflare Workers project connected to the repo (dashboard: Workers &
+   Pages -> Create application -> Connect to Git), root directory
+   `frontend`, build command `npm run build`, deploy command left at its
+   default `npx wrangler deploy` (reads `wrangler.jsonc`). Worker name in
+   the dashboard must match `wrangler.jsonc`'s `name` field (`gachagrid`).
+   `VITE_API_BASE_URL=https://api.gachagrid.com/api` goes in **Settings ->
+   Build -> Build variables and secrets** specifically - a build-time-only
+   variable, not the runtime "Variables and Secrets" section (Vite bakes
+   this in at build time, it's never read at runtime). Custom domain
+   `gachagrid.com` via **Settings -> Domains & Routes -> Add -> Custom
+   Domain**.
+4. Cloudflare DNS: CNAME `api` -> Render's given target (the Worker's own
+   domain wires up automatically the same way Pages' did, Render's
+   doesn't).
 5. Google Cloud Console: add the prod redirect URI to the existing OAuth
    client (see above).
 
@@ -828,6 +903,31 @@ random UUID once the `users` row is gone, matching how anonymous play's
 history has always been treated. A later sign-in with the same Google
 account finds no matching `googleSub` and creates a brand-new account —
 deletion is permanent, not a suspend/restore.
+
+## Admin puzzle curation & tracking (Phase 7.5)
+
+`/api/admin/**` (`AdminPuzzleController`, `AdminAuthorization`) is gated by
+an email allowlist (`ADMIN_EMAILS`), not a role in the DB — a non-admin
+caller gets the same 404 a broken link would, never a redirect or an
+"unauthorized" response that would itself confirm the surface exists.
+`AdminAuthorization.requireAdmin(user)` is called as the literal first
+line of every controller method, no exceptions.
+
+- **`AdminPuzzleService`**: hand-build or generate a future Daily puzzle
+  with a live per-cell answer-count preview before pinning it
+  (`generateCandidates`/`pinFuturePuzzle`); a read-only `getHistory` view
+  of *any* past puzzle (not just the public Archive's rolling 30-day
+  window), reusing the same stats components a real player sees
+  post-completion; `evaluateGrid` for directly checking an exact
+  hand-picked row/col category combination with no randomness involved.
+- **`AdminTrackingService`**: roster/dimension-pairing appearance-rate
+  tracking across recent puzzles (all-time + trailing-30-day windows,
+  sortable, 0-appearance rows kept visible rather than hidden) — the
+  tool that surfaces a thin/over-represented category before it becomes
+  a player-visible fairness problem, complementing (not replacing)
+  `GridGeneratorTest`'s own simulated fairness reports.
+- Frontend: an `/admin` route, invisible unless signed in as an
+  allowlisted email — no separate "admin mode" toggle to discover.
 
 ## Frontend architecture
 
@@ -1160,6 +1260,114 @@ label so a bare "Tough" doesn't read ambiguously as a row/column header.
 traits itself, keeping it fully game-agnostic — the intended pattern
 for any future label-disambiguation need, not a one-off.
 
+## Genshin deep categories: ascension materials, release_era, passive_talent (Phase 8)
+
+Three category additions, each adding real puzzle depth without ever
+touching the schema — `GridItem.attributes` stays a flexible JSONB map,
+and `CategoryDefinition`s are derived from whatever keys/values already
+exist in the loaded data (see "Extending the backend" below).
+
+**Ascension materials** (`local_specialty`, `common_material`,
+`boss_material`, `ascension_stat`): sourced from Dimbreath's datamined
+game files, cross-validated against a wiki table. Introduced
+`CategoryDefinition.getWeight()` — a generic, game/dimension-agnostic
+relative-likelihood multiplier `GridGenerator.weightedSample` applies
+during category selection — because a first live-measurement pass found
+rarity/region under-represented and the new ascension categories running
+even with genuinely core dimensions despite being far more obscure. Also
+introduced a min-member-count floor (`ASCENSION_MATERIAL_MIN_COUNT`):
+near-unique category values are both bad trivia (nobody recognizes a
+material one character uses) and a generation hazard (a near-unique
+answer collides across cells and fails the soft-lock-guard's perfect-
+matching check) — measured directly against the running backend, the
+full raw material set generated successfully only ~33% of the time;
+the floor alone restored ~100% reliability.
+
+**`release_era`**: `release_version`'s 51 exact-patch values are mostly
+too thin individually (held by 1-2 characters) to be reliable puzzle
+categories on their own, so `release_version`'s own floor was raised
+(1 → 3) to exclude the thinnest — but the characters that excludes
+aren't lost from the puzzle pool: `release_era`, a *derived* bucketing
+(not a second independently-scraped field) of the same data down to ~7
+healthy values ("Version 1 (1.x)" .. "Version Luna (6.x)" for the
+6.0-6.7 in-game rebrand .. "Version 7 (7.x)"), covers everyone at a
+coarser granularity.
+
+**`passive_talent`**: the deepest category built so far — a multi-valued
+(`AttributeContainsCategory`, same mechanism as Brawl Stars' Traits),
+entirely hand-curated (no datamine source encodes "Utility Passive"
+classifications) category covering each character's Cooking/Crafting/
+Expedition/Stamina Reduction/Movement SPD/Resource Finding/Wildlife/Mora
+Cost Reduction talents, plus three official in-game proper-noun
+mechanics (Witch's Eve Rite, Moonsign Benediction, Stellar Jubilee).
+Labels are stored bare (`"Movement SPD"`, not `"Movement SPD Talent"`)
+and a display-time suffix set in `CategoryChip.tsx`'s
+`formatCategoryLabel` appends `" Talent"` only to the 8 labels that would
+otherwise read as an ambiguous raw stat in a bare grid cell — the same
+mechanism Brawl Stars' Trait labels already established, not a new
+pattern. The 7-step design process this category was built with
+(redundancy-check every new category's member set against every
+*existing* dimension before finalizing it — caught one candidate
+category being exactly identical to `region=Natlan`, zero new signal;
+detect multi-valued-ness empirically from real member overlaps, not by
+assumption; resolve ambiguous members one at a time, never batch-guessed)
+is the template for any future deep/nuanced category on any game, not a
+one-off — see `ingestion/genshin/raw/passive_talent_process_notes.txt`
+for the full worked example.
+
+## Streaks & the post-Daily summary modal (Phase 8)
+
+**Per-game streaks** (`currentStreak`/`maxStreak` on `UserGameStats`):
+computed live in `UserStatsService.buildGameStats` from the same
+unbounded, already-fetched `playedLive` `PuzzleAttempt` list `gamesPlayed`/
+`avgScore` already use — no new column, no stored counter, continuing
+this codebase's "everything computed live" preference from Phase 6's
+stats engine. A run of consecutive calendar `puzzleDate`s gives
+`maxStreak`; `currentStreak` is that same trailing run's length, but only
+if it's still "alive" (most recent completion is today or yesterday by
+`PuzzleClock.today()` — a 2+ day gap zeroes it, even though the historical
+run still counts toward `maxStreak`). Login-only, matching the existing
+Archive/`/users/me/stats` precedent (personal cross-puzzle history has
+always been an account feature in this app) rather than trying to make
+an anonymous `localStorage` UUID's streak feel reliable across a cleared
+cache or a different browser.
+
+**`PuzzleSummaryModal`**: a one-time "you're done" moment for Daily,
+consolidating what used to be scattered across the page. Fires exactly
+once per genuine completion via a new `onGameOver` callback option on
+`usePuzzleGuesses`, invoked from inside its existing "capture the end"
+effect (guarded by `endedAt != null`) rather than a new prev/current
+`isGameOver` ref comparison in the page component — a Playwright check
+caught the naive ref approach misfiring on page reload, since restoring
+progress from `localStorage` happens asynchronously in an effect *after*
+first paint, indistinguishable from a live completion to a plain
+before/after comparison; the existing effect's `endedAt`-based guard
+already correctly tells the two apart, because `endedAt` itself gets
+restored in the same pass, before the guard's dependency-check ever
+fires. `DiscordPromptBanner` was moved into the modal (not duplicated)
+from its old inline post-grid spot; a persistent "Summary" button left
+behind where it used to render lets a player reopen the same modal any
+time after game-over.
+
+**"Share Your Grid"**: a richer replacement for the plain share text a
+finished puzzle used to produce — now includes the score, this puzzle's
+own live UNIQ score plus the best (lowest) UNIQ anyone's achieved on it
+so far, and the live percentile, alongside the existing emoji grid
+(switched from 🟩/⬛ to ✅/🟥). Three explicit actions rather than one
+overloaded button, after user testing found a single share-icon button
+ambiguous about whether it copied anything on desktop: native
+`navigator.share` where available, an X/Twitter intent link, and an
+always-just-copies "Copy" button (checkmark icon swap + a toast, not a
+plaintext confirmation line, to avoid the row visibly reflowing on
+click). The exact same `buildShareText()` logic now also powers the
+pre-existing inline `ShareResultRow` (still living in
+`PuzzleStatsPanel`, deliberately *not* duplicated into the modal itself)
+via three new props threaded down from `PuzzleStatsPanel`'s own
+already-available `uniquenessScores`/`mostUniqueScore` — one
+implementation of the copypasta, not two that could drift apart, the
+same reasoning already established for the UNIQ formula itself back in
+Phase 6.
+
 ## Package structure (backend)
  
 ```
@@ -1173,7 +1381,8 @@ com.tonyl.backend
 │                         PuzzleAttempt, User, UserSession, LoginCode)
 ├── repository/         — Spring Data JPA repositories
 ├── game/               — CategoryDefinition, GameModule, GenshinGameModule,
-│                         BrawlStarsGameModule, GameModuleRegistry
+│                         BrawlStarsGameModule, ClashRoyaleGameModule,
+│                         StarRailGameModule, GameModuleRegistry
 ├── puzzle/             — GridGenerator, PuzzleService, PuzzleClock, PuzzleStatsService,
 │                         UserStatsService
 └── loader/             — one-time data loaders (CommandLineRunner, profile-gated)
@@ -1181,19 +1390,23 @@ com.tonyl.backend
  
 `domain`/`repository`/`api` are fully game-agnostic (`User`/`UserSession`/
 `LoginCode` included — accounts have no game-specific knowledge either).
-`game/GenshinGameModule` is the only class in the codebase with
-Genshin-specific knowledge — Phase 2 (adding a second game) is
-specifically designed to prove that adding `game/SlayTheSpireGameModule`
-requires zero changes elsewhere.
+Each `game/*GameModule` class is the only place with that game's own
+knowledge — Phase 2 (adding Brawl Stars as a second game) was specifically
+designed to prove this; Clash Royale (Phase 8, a genuinely different card
+data shape) and Star Rail (Phase 8, a second character roster) then proved
+it twice more for real, not as a second proof-of-concept.
  
 ## Why this scales to additional games
  
 All engine code (grid generator, solver, persistence, API routes) is
 written once against `GridItem`/`CategoryDefinition`/`GameModule` and takes
 `gameId` as a parameter. Game-specific logic lives only inside a
-`GameModule` implementation and its ingestion script. Phase 2 exists to
-prove this claim empirically rather than leave it as an unverified design
-intention.
+`GameModule` implementation and its ingestion script. Phase 2 (Brawl Stars)
+first proved this claim empirically rather than leaving it as an
+unverified design intention; four live games later (Genshin, Brawl Stars,
+Clash Royale, Star Rail), it's held up in practice, not just on paper —
+each new game has cost exactly one `GameModule` + one ingestion script, no
+engine-level changes.
  
 ## Backlog (non-blocking)
 See Roadmap for phase sequencing — everything here is non-blocking,
@@ -1202,8 +1415,15 @@ kept going stale faster than the items themselves resolved.
 
 - Additional category dimensions (candidates: affiliation, birthday
   month — both already present in raw ingested data, unused so far).
-- Wordle-style shareable result summary — common genre expectation for a
-  once-a-day puzzle, not yet scoped in detail.
+  Genshin got real category depth elsewhere instead (Phase 8's ascension
+  materials, release_era, and passive_talent) — these two specific
+  candidates are still untouched, not superseded.
+- ~~Wordle-style shareable result summary~~ — shipped in Phase 7.5 as a
+  share button on a finished puzzle; enhanced significantly in Phase 8
+  (see "Streaks & the post-Daily summary modal" above) with a richer
+  copypasta (score, UNIQ + best-possible, percentile) and three explicit
+  share actions (native share, X/Twitter intent, explicit copy) instead
+  of one overloaded button.
 - Tighten grid generation to reject overly-easy (1-answer) combinations —
   now user-configurable in Unlimited mode via "Allow single-answer cells"
   (`minAnswersPerCell`); Daily still always allows them.
@@ -1307,6 +1527,42 @@ kept going stale faster than the items themselves resolved.
   day at the user's explicit request (no reason given — don't assume
   the content itself was wrong). Not currently present; could resurface
   as a fresh build or by restoring from git history.
+
+## Extending the backend — common changes
+
+**Add a new attribute/category to an existing game.** Never touches the
+schema - `GridItem.attributes` is a flexible JSONB `Map<String, Object>`
+(see Data model above) and `CategoryDefinition`s are derived from whatever
+keys/values already exist in that data, not from a fixed SQL column or a
+hardcoded enum of possible values. This is the same process the `tags` and
+`release_year` categories were added by (2026-08-23/24).
+
+1. **Compute the attribute in the ingestion pipeline** -
+   `ingestion/<game>/normalize.py` (Brawl Stars) or
+   `ingestion/genshin/normalize_genshin.py`, plus its `schema.py`. Re-run
+   it to regenerate `backend/src/main/resources/<game>_entities.json` -
+   this file is what both local dev and `GameDataLoader` read from, so it
+   must be regenerated, not hand-edited.
+2. **Register it as a category** - one line in the game's `GameModule`
+   (`backend/.../game/BrawlStarsGameModule.java` or
+   `GenshinGameModule.java`):
+   ```java
+   categories.addAll(categoriesForAttribute(entities, "your_new_key"));
+   // or, for a non-exclusive/multi-valued attribute like tags:
+   categories.addAll(categoriesForListAttribute(entities, "your_new_key"));
+   ```
+   No enum to maintain - the actual category *values* are derived
+   automatically from whatever's present in the freshly-regenerated data.
+3. **Push the updated data into every real database** - local Postgres
+   picks it up on the next `./mvnw spring-boot:run -Dspring-boot.run.profiles=load-data`
+   (or the jar with `SPRING_PROFILES_ACTIVE=load-data`); production (Neon)
+   needs the same command run once, pointed at its `DB_URL`, from any
+   machine that can reach it - see "Deployment" above.
+   `GameDataLoader.run` upserts by id (`GridItemRepository.save`), so
+   re-running it is always safe and never duplicates rows.
+4. **Redeploy the backend** so the new `CategoryDefinition` logic is live
+   - the data alone doesn't do anything until the code that turns it into
+   a category ships too.
 
 ## Extending the frontend — common changes
 

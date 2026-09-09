@@ -2,7 +2,7 @@
 
 A companion to `docs/ARCHITECTURE.md`, which is comprehensive but long. This is the short version: what the system is, how its pieces fit together, and what to know before changing it. Read this first; go to `ARCHITECTURE.md` for the exhaustive version of any section.
 
-**Stats**: ~3,900 lines of backend Java (78 files), ~8,500 lines of frontend TypeScript (64 files, 37 components). Four games live: Genshin Impact, Honkai: Star Rail, Brawl Stars, Clash Royale.
+**Stats**: ~4,400 lines of backend Java (81 files), ~9,500 lines of frontend TypeScript (68 files, 39 components). Four games live: Genshin Impact, Honkai: Star Rail, Brawl Stars, Clash Royale.
 
 ## What it is
 
@@ -11,7 +11,7 @@ A daily/unlimited "immaculate grid" puzzle game across four games: fill a 3×3 b
 ## Stack
 
 - **Backend**: Spring Boot 4 / Java 21, Postgres (JPA/Hibernate), deployed to Render as a Docker container.
-- **Frontend**: React 19 / TypeScript / Vite / Tailwind v4, deployed to Cloudflare Pages.
+- **Frontend**: React 19 / TypeScript / Vite / Tailwind v4, deployed to Cloudflare Workers (static assets — originally scoped as Cloudflare Pages, see `ARCHITECTURE.md`'s Deployment section for why that changed).
 - **DB**: Neon (Postgres), local dev via a `grid-postgres` Docker container.
 - **Auth**: Google OAuth for the handshake only (see below); a hand-rolled bearer-token layer for everything else.
 
@@ -45,7 +45,9 @@ Spring Security exists for exactly one thing: the Google OAuth2 authorization-co
 
 ## Stats
 
-`PuzzleStatsService` computes everything live, on every request — nothing is cached or precomputed. **UNIQ** score: `900 - Σ(100 - percentChosen)` over correctly-filled cells, where `percentChosen` is a leave-one-out share of other players' picks for that cell. Because it's always live, the same completed puzzle can show a different UNIQ/percentile on a later visit as more people play it — a deliberate choice, not a caching gap.
+`PuzzleStatsService` computes everything live, on every request — nothing is cached or precomputed. **UNIQ** score: `900 - Σ(100 - percentChosen)` over correctly-filled cells, where `percentChosen` is a leave-one-out share of other players' picks for that cell — **lower is better** (0 means you were the only person to complete the puzzle that day). Because it's always live, the same completed puzzle can show a different UNIQ/percentile on a later visit as more people play it — a deliberate choice, not a caching gap.
+
+A signed-in player's per-game **streak** (current/max consecutive Daily days) follows the same principle — computed live in `UserStatsService` from existing `PuzzleAttempt` rows, not a stored counter. A one-time `PuzzleSummaryModal` surfaces it (plus a "Share Your Grid" flow) right after a Daily completes.
 
 ## Frontend structure
 
