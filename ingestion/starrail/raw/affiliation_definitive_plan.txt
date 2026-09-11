@@ -1,0 +1,136 @@
+Honkai: Star Rail — "Affiliation" category — definitive plan
+================================================================
+
+Source of truth: raw/affiliations.txt (hand-curated by the user from wiki
+research, cross-validated against every entity in output/starrail_entities.
+json — 0 typos, 0 unlisted playable characters as of this plan).
+
+Multi-valued attribute, same mechanism as Genshin's passive_talent:
+AttributeContainsCategory + a min-count floor + a per-dimension weight.
+Attribute key: "affiliation" (list[str] on StarRailAttributes).
+
+Trailblazer handling
+---------------------
+affiliations.txt lists a bare "Trailblazer (Path)" once per path. This
+expands to BOTH gender entities at ingestion time:
+  "Trailblazer (Destruction)" -> "Trailblazer – Caelus (Destruction)",
+                                  "Trailblazer – Stelle (Destruction)"
+(em dash "–", matching normalize.py's existing TRAILBLAZER_IDS naming).
+Confirmed with the user: this is intentional, mirrors Genshin's Traveler
+pattern (one raw grouping -> multiple independently-guessable entities).
+
+Min-count floor
+----------------
+AFFILIATION_MIN_COUNT = 3, same value/reasoning as Genshin's
+ASCENSION_MATERIAL_MIN_COUNT/PASSIVE_TALENT_MIN_COUNT — a category with
+1-2 valid answers is a giveaway, not a puzzle constraint, and is a known
+GridGenerator soft-lock-guard hazard (a near-unique answer is often the
+ONLY valid answer for a cell). All 18 groups stay in the ingested data
+regardless (every playable character's real affiliations are preserved) —
+the floor only controls which values are eligible to become a
+CategoryDefinition in StarRailGameModule, exactly like the ascension
+materials/passive_talent precedent.
+
+Multi-affiliation characters (confirmed accurate, pre-Trailblazer-expansion)
+------------------------------------------------------------------------------
+Dan Heng                      -> Astral Express, Xianzhou Alliance
+Dan Heng • Imbibitor Lunae     -> Astral Express, Xianzhou Alliance
+Dan Heng • Permansor Terrae    -> Astral Express, Amphoreus
+Himeko                        -> Astral Express, Planarcardia
+Himeko • Nova                  -> Astral Express, Planarcardia
+March 7th (The Hunt)           -> Astral Express, Xianzhou Alliance
+Evernight                     -> Astral Express, Amphoreus
+Sunday                        -> Astral Express, Penacony
+Trailblazer (Destruction)      -> Astral Express, Herta Space Station
+Trailblazer (Preservation)     -> Astral Express, Jarilo-VI
+Trailblazer (Harmony)          -> Astral Express, Penacony
+Trailblazer (Remembrance)      -> Astral Express, Amphoreus
+Trailblazer (Elation)          -> Astral Express, Planarcardia
+Asta                           -> Herta Space Station, Astropolis
+Sampo                          -> Jarilo-VI, Masked Fools
+Ashveil                        -> Planarcardia, Galaxy Rangers
+Sparxie                        -> Planarcardia, Masked Fools
+
+Chip label / tooltip table (final)
+------------------------------------
+Two source group headers carry a parenthetical clarification meant for
+whoever edits affiliations.txt, not for players — the stored attribute
+value AND chip label use the concise form; the full expansion appears only
+in the tooltip text (AFFILIATION_LABEL_OVERRIDES in normalize.py):
+  "IPC (Interastral Peace Corporation)" -> stored/chip label "IPC"
+  "Another World (Fate Collab)"         -> stored/chip label "Another World"
+Every other group's header is used verbatim as both the stored value and
+the chip label.
+
+Planet wording: per the user, Jarilo-VI/Penacony/Amphoreus/Planarcardia/
+Astropolis are each a single playable world (not a faction or ship), and a
+Trailblazer path unlocked on one of those worlds is itself tied to that
+world — so these five use "This character is from [planet] or is directly
+affiliated with it," not the generic "affiliated with" phrasing. Xianzhou
+Alliance is a fleet of ships (the Xianzhou Luofu is the one playable world
+within it, not the whole Alliance), so it keeps the faction phrasing, not
+the planet one. Herta Space Station is a station, not a planet, and the
+user didn't include it in the planet list, so it also keeps the generic
+phrasing.
+
+>= AFFILIATION_MIN_COUNT (surface as real puzzle categories):
+  Astral Express (20)      "This character is affiliated with the Astral Express."
+  Xianzhou Alliance (24)   "This character is affiliated with the Xianzhou Alliance."
+  Amphoreus (15)           "This character is from Amphoreus or is directly affiliated with it."
+  Jarilo-VI (13)           "This character is from Jarilo-VI or is directly affiliated with it."
+  Stellaron Hunters (6)    "This character is affiliated with the Stellaron Hunters."
+  Herta Space Station (7)  "This character is affiliated with the Herta Space Station."
+  Penacony (7)             "This character is from Penacony or is directly affiliated with it."
+  Planarcardia (7)         "This character is from Planarcardia or is directly affiliated with it."
+  IPC (4)                  "This character is affiliated with the IPC (Interastral Peace Corporation)."
+  Another World (4)        "This character is from Another World or is an exclusive collab character."
+  Galaxy Rangers (3)       "This character is affiliated with the Galaxy Rangers."
+  Masked Fools (3)         "This character is affiliated with the Masked Fools."
+
+Below AFFILIATION_MIN_COUNT (kept in the data, never surfaced as a category —
+still get tooltip text in CategoryChip.tsx in case the floor ever changes):
+  Astropolis (1)            "This character is from Astropolis or is directly affiliated with it."
+  Self-Annihilators (1)     "This character is affiliated with the Self-Annihilators."
+  Knights of Beauty (1)     "This character is affiliated with the Knights of Beauty."
+  Garden of Recollection (1)"This character is affiliated with the Garden of Recollection."
+  Intelligentsia Guild (1)  "This character is affiliated with the Intelligentsia Guild."
+  The Cremators (1)         "This character is affiliated with The Cremators."
+
+Weight
+-------
+AFFILIATION_WEIGHT starts at the engine default (1.0) — to be re-measured
+against real generations and tuned afterward, same process as
+PASSIVE_TALENT_WEIGHT (see GenshinGameModule's own comment on that
+constant and the "Measure Category Frequency, Not Just Reliability"
+lesson from the ascension materials work).
+
+Icons
+------
+No dedicated affiliation icons sourced for this pass — all 18 values
+render as the plain-text fallback pill (same treatment Genshin's model/
+rarity/ascension_stat get when no bespoke icon exists). Can be revisited
+later if in-game faction emblems are worth downloading.
+
+Pipeline wiring (once this plan is confirmed)
+------------------------------------------------
+1. schema.py: add `affiliation: list[str] = Field(default_factory=list)`
+   to StarRailAttributes; reuse existing warn_thin() for a thin-value
+   warning.
+2. normalize.py: parse raw/affiliations.txt at runtime (not a hand-typed
+   dict, unlike Genshin's PASSIVE_TALENT_MAP — affiliations.txt is already
+   the single source of truth the user edits directly), expanding
+   Trailblazer(Path) lines to both genders and applying
+   AFFILIATION_LABEL_OVERRIDES; validate every parsed member name resolves
+   to a real entity display_name (raise on typo); attach
+   attributes["affiliation"].
+3. StarRailGameModule.java: add AFFILIATION_MIN_COUNT/AFFILIATION_WEIGHT
+   constants + a categoriesForListAttribute helper (mirrors
+   GenshinGameModule's exactly), wire into getCategoryDefinitions.
+4. CategoryChip.tsx: add the 18 STARRAIL_DESCRIPTIONS entries above (no
+   icon entries, no formatCategoryLabel suffix needed — every label is
+   already unambiguous on its own, unlike passive_talent's 8 generic-
+   mechanic names).
+5. Regenerate output/starrail_entities.json, copy to
+   backend/src/main/resources/starrail_entities.json, reload local DB,
+   verify via GridGeneratorTest + a live Playwright check, then live-
+   measure category frequency the same way passive_talent was tuned.

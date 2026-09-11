@@ -513,6 +513,129 @@ class GridGeneratorTest {
         return sorted.get(sorted.size() / 2);
     }
 
+    // ── Ad-hoc: Star Rail's new "affiliation" category (see
+    // ingestion/starrail/raw/affiliation_definitive_plan.txt) - the same
+    // live-measurement pass Genshin's ascension materials/passive_talent
+    // categories were tuned against (see GenshinGameModule's own weight
+    // comments and the "Measure Category Frequency, Not Just Reliability"
+    // lesson from that work), just scoped to a single dimension instead of
+    // every dimension in the game. Combines four views in one pass: how
+    // often "affiliation" itself gets picked as a row/col dimension
+    // (reportsDimensionDistributionAcrossManyGenerations' question),
+    // which of its 12 individual values get picked how often
+    // (runDistributionReport's "top individual categories" question, scoped
+    // to this one dimension - the min-count-floor exclusions have no
+    // AttributeContainsCategory at all, so they can never appear here),
+    // and whether affiliation cells run thin relative to the other three
+    // dimensions (perDimensionCellDepthReport's question) alongside the
+    // overall per-grid shape (gridCompositionReport's question). Deliberately
+    // not a regression gate - a report to read before deciding whether
+    // AFFILIATION_WEIGHT needs adjusting off its 1.0 starting point. ──
+    @Test
+    void starRailAffiliationTuningReport() throws Exception {
+        GameModule module = new StarRailGameModule();
+        List<GridItem> entities = loadEntities("starrail_entities.json");
+        List<CategoryDefinition> categories = module.getCategoryDefinitions(entities);
+
+        int sampleSize = 3650;
+        int successCount = 0;
+        int rowsMono = 0, colsMono = 0;
+        Map<String, Integer> dimensionSlotAppearances = new TreeMap<>();
+        Map<String, Integer> affiliationValueGridAppearances = new TreeMap<>();
+        Map<String, List<Integer>> depthsByDimension = new TreeMap<>();
+        int globalThinnestCell = Integer.MAX_VALUE, globalWidestCell = Integer.MIN_VALUE;
+        String globalThinnestCellLabel = null, globalWidestCellLabel = null;
+        List<Integer> totalValidAnswersPerGrid = new ArrayList<>();
+        List<Integer> uniqueCharactersPerGrid = new ArrayList<>();
+        Map<Integer, Integer> cellSizeHistogram = new TreeMap<>();
+
+        for (long seed = 0; seed < sampleSize; seed++) {
+            Optional<GridGenerator.GeneratedPuzzle> result = generator.generate(entities, categories, seed, 1, true);
+            if (result.isEmpty()) continue;
+            successCount++;
+
+            GridGenerator.GeneratedPuzzle puzzle = result.get();
+            Set<String> rowDims = puzzle.rowCategories().stream().map(CategoryDefinition::getDimension).collect(Collectors.toSet());
+            Set<String> colDims = puzzle.colCategories().stream().map(CategoryDefinition::getDimension).collect(Collectors.toSet());
+            if (rowDims.size() == 1) rowsMono++;
+            if (colDims.size() == 1) colsMono++;
+
+            for (CategoryDefinition cat : puzzle.rowCategories()) dimensionSlotAppearances.merge(cat.getDimension(), 1, Integer::sum);
+            for (CategoryDefinition cat : puzzle.colCategories()) dimensionSlotAppearances.merge(cat.getDimension(), 1, Integer::sum);
+
+            Set<String> affiliationValuesThisGrid = new HashSet<>();
+            Stream.concat(puzzle.rowCategories().stream(), puzzle.colCategories().stream())
+                .filter(cat -> cat.getDimension().equals("affiliation"))
+                .forEach(cat -> affiliationValuesThisGrid.add(cat.getLabel()));
+            for (String value : affiliationValuesThisGrid) affiliationValueGridAppearances.merge(value, 1, Integer::sum);
+
+            int totalValidAnswers = 0;
+            Set<String> uniqueCharacters = new HashSet<>();
+            for (var cellEntry : puzzle.cellSolutions().entrySet()) {
+                int depth = cellEntry.getValue().size();
+                totalValidAnswers += depth;
+                uniqueCharacters.addAll(cellEntry.getValue());
+                cellSizeHistogram.merge(depth, 1, Integer::sum);
+
+                CategoryDefinition rowCat = puzzle.rowCategories().get(Integer.parseInt(cellEntry.getKey().split("-")[0]));
+                CategoryDefinition colCat = puzzle.colCategories().get(Integer.parseInt(cellEntry.getKey().split("-")[1]));
+                depthsByDimension.computeIfAbsent(rowCat.getDimension(), d -> new ArrayList<>()).add(depth);
+                depthsByDimension.computeIfAbsent(colCat.getDimension(), d -> new ArrayList<>()).add(depth);
+
+                if (depth < globalThinnestCell) {
+                    globalThinnestCell = depth;
+                    globalThinnestCellLabel = rowCat.getLabel() + " x " + colCat.getLabel();
+                }
+                if (depth > globalWidestCell) {
+                    globalWidestCell = depth;
+                    globalWidestCellLabel = rowCat.getLabel() + " x " + colCat.getLabel();
+                }
+            }
+            totalValidAnswersPerGrid.add(totalValidAnswers);
+            uniqueCharactersPerGrid.add(uniqueCharacters.size());
+        }
+
+        int totalSlots = successCount * 2 * GRID_SIZE;
+        System.out.println();
+        System.out.println("=== Star Rail affiliation tuning report (" + successCount + "/" + sampleSize + " successful) ===");
+        System.out.println();
+        System.out.println("-- Dimension distribution (share of all " + totalSlots + " row+col category slots) --");
+        for (var entry : dimensionSlotAppearances.entrySet()) {
+            System.out.printf("  %-14s %5d  (%.1f%%)%n", entry.getKey(), entry.getValue(), 100.0 * entry.getValue() / totalSlots);
+        }
+        System.out.printf("Rows entirely one dimension: %d/%d (%.1f%%)%n", rowsMono, successCount, 100.0 * rowsMono / successCount);
+        System.out.printf("Cols entirely one dimension: %d/%d (%.1f%%)%n", colsMono, successCount, 100.0 * colsMono / successCount);
+        System.out.println();
+        System.out.println("-- Affiliation values: grid-appearance rate (% of grids where this value appears as a row or col category) --");
+        int finalSuccessCount = successCount;
+        affiliationValueGridAppearances.entrySet().stream()
+            .sorted((a, b) -> b.getValue() - a.getValue())
+            .forEach(entry -> System.out.printf("  %-22s %5d / %5d  (%.1f%%)%n", entry.getKey(), entry.getValue(), finalSuccessCount, 100.0 * entry.getValue() / finalSuccessCount));
+        System.out.println();
+        System.out.println("-- Per-dimension cell depth --");
+        System.out.printf("%-14s %8s %8s %8s %10s%n", "dimension", "cells", "mean", "median", "%depth=1");
+        for (var entry : depthsByDimension.entrySet()) {
+            List<Integer> depths = entry.getValue();
+            long onesCount = depths.stream().filter(d -> d == 1).count();
+            System.out.printf("%-14s %8d %8.2f %8d %9.1f%%%n",
+                entry.getKey(), depths.size(), average(depths), median(depths), 100.0 * onesCount / depths.size());
+        }
+        System.out.println();
+        System.out.println("-- Overall grid shape --");
+        System.out.printf("Global thinnest cell seen: %d valid answers (%s)%n", globalThinnestCell, globalThinnestCellLabel);
+        System.out.printf("Global widest cell seen:   %d valid answers (%s)%n", globalWidestCell, globalWidestCellLabel);
+        System.out.printf("Total valid answers per grid: min=%d, mean=%.1f, median=%d, max=%d%n",
+            Collections.min(totalValidAnswersPerGrid), average(totalValidAnswersPerGrid), median(totalValidAnswersPerGrid), Collections.max(totalValidAnswersPerGrid));
+        System.out.printf("Unique characters per grid: min=%d, mean=%.1f, median=%d, max=%d%n",
+            Collections.min(uniqueCharactersPerGrid), average(uniqueCharactersPerGrid), median(uniqueCharactersPerGrid), Collections.max(uniqueCharactersPerGrid));
+        System.out.println("-- Cell-depth histogram --");
+        for (var entry : cellSizeHistogram.entrySet()) {
+            System.out.printf("  %3d valid answers: %5d cells (%.1f%%)%n", entry.getKey(), entry.getValue(), 100.0 * entry.getValue() / (successCount * 9));
+        }
+
+        assertTrue(successCount > 0); // sanity only — this test is a report, not a gate
+    }
+
     // ── Ad-hoc: benchmark findAllValidGrids (the exhaustive narrow-filter
     // fallback) against the scenarios known from manual analysis to be the
     // hardest cases for the randomized search: a single thin dimension

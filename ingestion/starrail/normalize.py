@@ -19,6 +19,7 @@ from schema import validate_entities
 
 CACHE_DIR = Path(__file__).parent / "cache"
 RAW_ROSTER_PATH = Path(__file__).parent / "raw" / "star_rail_characters_raw.json"
+AFFILIATIONS_PATH = Path(__file__).parent / "raw" / "affiliations.txt"
 OUTPUT_PATH = Path(__file__).parent / "output" / "starrail_entities.json"
 # {slug -> raw CDN-relative icon path (e.g. "SpriteOutput/AvatarIcon/Avatar/
 # 1001.png")} - consumed by download_icons.py. A slug is only known for
@@ -69,6 +70,48 @@ TRAILBLAZER_IDS = {
     8010: ("Stelle", "Elation"),
 }
 
+# A bare "Trailblazer (Path)" line in affiliations.txt means both genders of
+# that path - matches the display_name shape built below
+# ("Trailblazer – Caelus (Destruction)", "Trailblazer – Stelle (Destruction)").
+TRAILBLAZER_PATH_RE = re.compile(r"^Trailblazer \((.+)\)$")
+
+# Two group headers in affiliations.txt carry a parenthetical clarification
+# meant for whoever is editing that file (an acronym expansion, or the
+# wiki's own designation for a collab location) that shouldn't surface
+# verbatim on a puzzle chip - the expansion still reaches players via
+# CategoryChip.tsx's tooltip text, it's just not part of the stored
+# attribute value. See raw/affiliation_definitive_plan.txt.
+AFFILIATION_LABEL_OVERRIDES = {
+    "IPC (Interastral Peace Corporation)": "IPC",
+    "Another World (Fate Collab)": "Another World",
+}
+
+
+def parse_affiliations() -> dict[str, list[str]]:
+    """Parse raw/affiliations.txt (blank-line-separated blocks: a group
+    header line, then one member display_name per line) into
+    {display_name -> [affiliation labels]}. See
+    raw/affiliation_definitive_plan.txt for the full design."""
+    member_to_groups: dict[str, list[str]] = {}
+    current_group: str | None = None
+    for raw_line in AFFILIATIONS_PATH.read_text(encoding="utf-8").splitlines():
+        line = raw_line.strip()
+        if not line:
+            current_group = None
+            continue
+        if current_group is None:
+            current_group = line
+            continue
+        label = AFFILIATION_LABEL_OVERRIDES.get(current_group, current_group)
+        path_match = TRAILBLAZER_PATH_RE.match(line)
+        members = (
+            [f"Trailblazer – Caelus ({path_match.group(1)})", f"Trailblazer – Stelle ({path_match.group(1)})"]
+            if path_match else [line]
+        )
+        for member in members:
+            member_to_groups.setdefault(member, []).append(label)
+    return member_to_groups
+
 
 def main():
     avatars = load_json("data", "AvatarConfig.json")
@@ -86,6 +129,7 @@ def main():
     }
 
     roster_ids = [r["id"] for r in json.loads(RAW_ROSTER_PATH.read_text(encoding="utf-8"))]
+    affiliation_map = parse_affiliations()
 
     # First pass: resolve every field except the final display_name/id/slug,
     # which depend on whether this name collides with another (e.g. March
@@ -142,8 +186,18 @@ def main():
                 "rarity": d["rarity"],
                 "path": d["path_name"],
                 "element": d["element"],
+                "affiliation": affiliation_map.get(display_name, []),
             },
         })
+
+    # Catches a typo/rename in affiliations.txt (a member name that no
+    # longer matches any entity's display_name) as a hard failure rather
+    # than a silently-dropped affiliation - same "verified against the real
+    # roster, 0 typos" bar passive_talent's PASSIVE_TALENT_MAP was held to.
+    known_names = {e["display_name"] for e in entities}
+    unknown_members = sorted(set(affiliation_map) - known_names)
+    if unknown_members:
+        raise ValueError(f"affiliations.txt references unknown characters: {unknown_members}")
 
     validated = validate_entities(entities)
 

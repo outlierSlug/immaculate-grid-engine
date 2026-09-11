@@ -579,6 +579,38 @@ const STARRAIL_DESCRIPTIONS: Record<string, string> = {
   // name/color the way Brawl Stars/Clash Royale have).
   '4-Star': 'This character is a 4-star character.',
   '5-Star': 'This character is a 5-star character.',
+
+  // Affiliation - multi-valued (a character can hold zero, one, or several).
+  // No dedicated icon set exists for these yet, so every value renders as
+  // the plain-text fallback pill. "IPC"/"Another World" are the trimmed
+  // chip labels for two source groups whose full names ("IPC (Interastral
+  // Peace Corporation)", "Another World (Fate Collab)") only appear here in
+  // the tooltip - see ingestion/starrail/raw/affiliation_definitive_plan.txt
+  // for the full design, including the six factions below that are still
+  // real attribute values (data-accurate) but never clear
+  // StarRailGameModule's AFFILIATION_MIN_COUNT floor to become a category.
+  // Jarilo-VI/Penacony/Amphoreus/Planarcardia/Astropolis are each a single
+  // playable world (not a faction or ship) - phrased "from ... or directly
+  // affiliated with it" rather than the generic "affiliated with" the
+  // faction/organization entries use.
+  'Astral Express': 'This character is affiliated with the Astral Express.',
+  'Xianzhou Alliance': 'This character is affiliated with the Xianzhou Alliance.',
+  Amphoreus: 'This character is from Amphoreus or is directly affiliated with it.',
+  'Jarilo-VI': 'This character is from Jarilo-VI or is directly affiliated with it.',
+  'Stellaron Hunters': 'This character is affiliated with the Stellaron Hunters.',
+  'Herta Space Station': 'This character is affiliated with the Herta Space Station.',
+  Penacony: 'This character is from Penacony or is directly affiliated with it.',
+  Planarcardia: 'This character is from Planarcardia or is directly affiliated with it.',
+  IPC: 'This character is affiliated with the IPC (Interastral Peace Corporation).',
+  'Another World': 'This character is from Another World or is an exclusive collab character.',
+  'Galaxy Rangers': 'This character is affiliated with the Galaxy Rangers.',
+  'Masked Fools': 'This character is affiliated with the Masked Fools.',
+  Astropolis: 'This character is from Astropolis or is directly affiliated with it.',
+  'Self-Annihilators': 'This character is affiliated with the Self-Annihilators.',
+  'Knights of Beauty': 'This character is affiliated with the Knights of Beauty.',
+  'Garden of Recollection': 'This character is affiliated with the Garden of Recollection.',
+  'Intelligentsia Guild': 'This character is affiliated with the Intelligentsia Guild.',
+  'The Cremators': 'This character is affiliated with The Cremators.',
 };
 
 // Path icons are white/light line art baked for a dark backdrop - legible
