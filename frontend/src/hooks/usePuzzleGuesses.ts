@@ -329,6 +329,11 @@ export function usePuzzleGuesses(puzzle: PuzzleResponse | null, options: UsePuzz
       const cellAnswers = Object.fromEntries(
         Object.entries(filledCells).map(([cellKey, item]) => [cellKey, item.id])
       );
+      // onGameOver (opens PuzzleSummaryModal, which immediately fetches
+      // /users/me/stats for the Daily Streak display) waits for this to
+      // settle rather than firing alongside it - otherwise the modal's own
+      // stats fetch regularly wins the race and reads the streak before
+      // today's attempt is committed, undercounting by one.
       submitPuzzleAttempt(puzzle.id, {
         sessionId: getSessionId(),
         cellAnswers,
@@ -338,9 +343,10 @@ export function usePuzzleGuesses(puzzle: PuzzleResponse | null, options: UsePuzz
         gaveUp,
         elapsedMs: ts - (startedAt ?? ts),
         playedLive,
-      }).then(() => refreshStats(puzzle.id));
+      }).then(() => refreshStats(puzzle.id)).finally(() => onGameOver?.());
+    } else {
+      onGameOver?.();
     }
-    onGameOver?.();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isGameOver]);
 
