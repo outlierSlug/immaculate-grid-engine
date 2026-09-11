@@ -6,6 +6,29 @@ validated against every entity in output/clashroyale_entities.json —
 0 typos, all 183 entities covered, either with a real value or explicitly
 under the "No targeting" group).
 
+POST-LAUNCH REVISION (after shipping): the 9 "Buildings + <secondary>"
+dual entries below (Battle Ram/Evo, Suspicious Bush, Goblin Giant/Evo,
+Ram Rider, Skeleton Barrel/Evo, Lava Hound) were REVERTED to
+Buildings-only after real play surfaced a bad puzzle cell: "7 Elixir x
+Targets Air & Ground" was solvable ONLY by Lava Hound, which nobody
+would actually answer that way - Lava Hound's identity is "the buildings
+card," and its Air & Ground classification depended on a secondary
+death-mechanic, not its main attack. In-game, Clash Royale's own UI
+lists only "Buildings" as the targeting for every one of these cards -
+matching that established, recognizable convention beats being more
+exhaustively "accurate" to secondary mechanics most players wouldn't
+name as the card's answer. GOBLINSTEIN IS THE ONE EXCEPTION, kept dual
+(Buildings + Air & Ground): it's a genuine two-entity card (the tanky
+Goblinstein and the separate Goblin Doctor are both on the field
+simultaneously, not a primary-card-transitions-to-secondary-mechanic
+case like the other 9), so "Buildings" alone would be incomplete in a
+way none of the reverted 9 actually were. The rest of this doc is left
+as originally written (including the now-superseded per-card mechanic
+reasoning for the 9 reverted cards) for historical context on WHY each
+mechanic exists - just know the "Per-edge-case verdicts" section below
+no longer reflects the shipped data for those 9 entries; see raw/
+targeting.txt itself for the current, authoritative mapping.
+
 Multi-valued attribute, same mechanism as Star Rail's affiliation:
 AttributeContainsCategory, no min-count floor needed here (all three
 values already have 28+ members). Attribute key: "targeting" (list[str]
@@ -67,6 +90,23 @@ Evo Cannon             -> Ground Only only, NOT dual (one-time deploy
                          death-rage - doesn't count, see core rule above)
 Electro Giant          -> Buildings only, NOT dual (shock-back is
                          reactive, not targeting - see core rule above)
+Mother Witch            -> Air & Ground only, NOT dual (raised and
+                         explicitly rejected post-launch). Her Hog Curse
+                         is a real, automatic, ongoing part of her attack
+                         - passes that bar - but the resulting Mini Hog
+                         (Buildings-only) only spawns if a cursed troop
+                         actually dies, which may be killed by something
+                         else entirely and is not guaranteed to happen at
+                         all in a given match. Every other dual case above
+                         is a GUARANTEED, deterministic outcome of playing
+                         the card as intended (Battle Ram's barbarians
+                         WILL end up ground-targeting; Lava Hound's pups
+                         WILL spawn on death) - Mother Witch's Buildings
+                         behavior is conditional/probabilistic instead,
+                         which would mislead players into expecting a
+                         targeting behavior that may never manifest.
+                         Decided to hold the line at "guaranteed on every
+                         play," not just "automatic when it happens."
 Hero Balloon           -> Buildings only, NOT dual (ability-spawned
                          Skeletrooper deliberately not extended dual
                          status, unlike the automatic-spawner cases)
@@ -106,7 +146,10 @@ Confirmed structurally correct, not a gap: no Building or Spell ever
 appears under "Targets Buildings" (a stationary building can't target
 another building, and a spell resolves at its cast location rather than
 moving to attack one - only mobile Troops can hold this value).
-  Troops (150):   Buildings 28 | Air & Ground 64 | Ground Only 58
+Numbers below are POST the dual-category reversal above (9 cards moved
+from a "Buildings + X" pair down to Buildings-only, so Air & Ground/
+Ground Only each lost a few Troop entries versus the original count):
+  Troops (150):   Buildings 28 | Air & Ground 60 | Ground Only 53
   Buildings (18): Buildings  0 | Air & Ground  4 | Ground Only 13 | none 1
   Spells (15):    Buildings  0 | Air & Ground 16 | Ground Only  7 | none 2
 Furnace/Evo Furnace are card_type "Troop" (not "Building") - confirmed

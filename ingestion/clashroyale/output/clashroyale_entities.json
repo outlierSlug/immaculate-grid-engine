@@ -820,8 +820,7 @@
       "elixir_cost": 7,
       "form": "Base",
       "targeting": [
-        "Targets Buildings",
-        "Targets Air & Ground"
+        "Targets Buildings"
       ]
     }
   },
@@ -971,8 +970,7 @@
       "elixir_cost": 4,
       "form": "Base",
       "targeting": [
-        "Targets Buildings",
-        "Targets Ground Only"
+        "Targets Buildings"
       ]
     }
   },
@@ -987,8 +985,7 @@
       "elixir_cost": 4,
       "form": "Evolution",
       "targeting": [
-        "Targets Buildings",
-        "Targets Ground Only"
+        "Targets Buildings"
       ]
     }
   },
@@ -1363,8 +1360,7 @@
       "elixir_cost": 5,
       "form": "Base",
       "targeting": [
-        "Targets Buildings",
-        "Targets Air & Ground"
+        "Targets Buildings"
       ]
     }
   },
@@ -1454,8 +1450,7 @@
       "elixir_cost": 3,
       "form": "Base",
       "targeting": [
-        "Targets Buildings",
-        "Targets Ground Only"
+        "Targets Buildings"
       ]
     }
   },
@@ -1470,8 +1465,7 @@
       "elixir_cost": 3,
       "form": "Evolution",
       "targeting": [
-        "Targets Buildings",
-        "Targets Ground Only"
+        "Targets Buildings"
       ]
     }
   },
@@ -1561,8 +1555,7 @@
       "elixir_cost": 6,
       "form": "Base",
       "targeting": [
-        "Targets Buildings",
-        "Targets Air & Ground"
+        "Targets Buildings"
       ]
     }
   },
@@ -1577,8 +1570,7 @@
       "elixir_cost": 6,
       "form": "Evolution",
       "targeting": [
-        "Targets Buildings",
-        "Targets Air & Ground"
+        "Targets Buildings"
       ]
     }
   },
@@ -1923,8 +1915,7 @@
       "elixir_cost": 2,
       "form": "Base",
       "targeting": [
-        "Targets Buildings",
-        "Targets Ground Only"
+        "Targets Buildings"
       ]
     }
   },

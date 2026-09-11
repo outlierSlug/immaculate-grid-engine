@@ -47,7 +47,6 @@ Evo Executioner
 Evo Firecracker
 Evo Furnace
 Evo Giant Snowball
-Evo Goblin Giant
 Evo Hunter
 Evo Ice Spirit
 Evo Inferno Dragon
@@ -68,7 +67,6 @@ Furnace
 Giant Snowball
 Goblin Curse
 Goblin Gang
-Goblin Giant
 Goblin Hut
 Goblin Machine
 Goblinstein
@@ -83,7 +81,6 @@ Ice Spirit
 Ice Wizard
 Inferno Dragon
 Inferno Tower
-Lava Hound
 Lightning
 Little Prince
 Magic Archer
@@ -97,7 +94,6 @@ Phoenix
 Poison
 Princess
 Rage
-Ram Rider
 Rascals
 Rocket
 Royal Delivery
@@ -120,7 +116,6 @@ Barbarian Barrel
 Barbarian Hut
 Barbarians
 Battle Healer
-Battle Ram
 Berserker
 Bomb Tower
 Bomber
@@ -132,7 +127,6 @@ Dark Prince
 Earthquake
 Elite Barbarians
 Evo Barbarians
-Evo Battle Ram
 Evo Bomber
 Evo Cannon
 Evo Elite Barbarians
@@ -147,7 +141,6 @@ Evo P.E.K.K.A
 Evo Royal Ghost
 Evo Royal Recruits
 Evo Skeleton Army
-Evo Skeleton Barrel
 Evo Skeletons
 Evo Valkyrie
 Fisherman
@@ -183,12 +176,10 @@ Ronin
 Royal Ghost
 Royal Recruits
 Skeleton Army
-Skeleton Barrel
 Skeleton King
 Skeletons
 Sparky
 Spirit Empress (Ground)
-Suspicious Bush
 The Log
 Tombstone
 Valkyrie
