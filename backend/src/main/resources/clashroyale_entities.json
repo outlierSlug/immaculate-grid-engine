@@ -8,7 +8,10 @@
       "rarity": "Common",
       "card_type": "Troop",
       "elixir_cost": 3,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Ground Only"
+      ]
     }
   },
   {
@@ -20,7 +23,10 @@
       "rarity": "Common",
       "card_type": "Troop",
       "elixir_cost": 3,
-      "form": "Evolution"
+      "form": "Evolution",
+      "targeting": [
+        "Targets Ground Only"
+      ]
     }
   },
   {
@@ -32,7 +38,10 @@
       "rarity": "Common",
       "card_type": "Troop",
       "elixir_cost": 3,
-      "form": "Hero"
+      "form": "Hero",
+      "targeting": [
+        "Targets Ground Only"
+      ]
     }
   },
   {
@@ -44,7 +53,10 @@
       "rarity": "Common",
       "card_type": "Troop",
       "elixir_cost": 3,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Air & Ground"
+      ]
     }
   },
   {
@@ -56,7 +68,10 @@
       "rarity": "Common",
       "card_type": "Troop",
       "elixir_cost": 3,
-      "form": "Evolution"
+      "form": "Evolution",
+      "targeting": [
+        "Targets Air & Ground"
+      ]
     }
   },
   {
@@ -68,7 +83,10 @@
       "rarity": "Common",
       "card_type": "Troop",
       "elixir_cost": 2,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Ground Only"
+      ]
     }
   },
   {
@@ -80,7 +98,10 @@
       "rarity": "Common",
       "card_type": "Troop",
       "elixir_cost": 2,
-      "form": "Hero"
+      "form": "Hero",
+      "targeting": [
+        "Targets Ground Only"
+      ]
     }
   },
   {
@@ -92,7 +113,10 @@
       "rarity": "Rare",
       "card_type": "Troop",
       "elixir_cost": 5,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Buildings"
+      ]
     }
   },
   {
@@ -104,7 +128,10 @@
       "rarity": "Rare",
       "card_type": "Troop",
       "elixir_cost": 5,
-      "form": "Hero"
+      "form": "Hero",
+      "targeting": [
+        "Targets Buildings"
+      ]
     }
   },
   {
@@ -116,7 +143,10 @@
       "rarity": "Epic",
       "card_type": "Troop",
       "elixir_cost": 7,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Ground Only"
+      ]
     }
   },
   {
@@ -128,7 +158,10 @@
       "rarity": "Epic",
       "card_type": "Troop",
       "elixir_cost": 7,
-      "form": "Evolution"
+      "form": "Evolution",
+      "targeting": [
+        "Targets Ground Only"
+      ]
     }
   },
   {
@@ -140,7 +173,10 @@
       "rarity": "Common",
       "card_type": "Troop",
       "elixir_cost": 3,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Air & Ground"
+      ]
     }
   },
   {
@@ -152,7 +188,10 @@
       "rarity": "Epic",
       "card_type": "Troop",
       "elixir_cost": 5,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Buildings"
+      ]
     }
   },
   {
@@ -164,7 +203,10 @@
       "rarity": "Epic",
       "card_type": "Troop",
       "elixir_cost": 5,
-      "form": "Hero"
+      "form": "Hero",
+      "targeting": [
+        "Targets Buildings"
+      ]
     }
   },
   {
@@ -176,7 +218,10 @@
       "rarity": "Epic",
       "card_type": "Troop",
       "elixir_cost": 5,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Air & Ground"
+      ]
     }
   },
   {
@@ -188,7 +233,10 @@
       "rarity": "Epic",
       "card_type": "Troop",
       "elixir_cost": 5,
-      "form": "Evolution"
+      "form": "Evolution",
+      "targeting": [
+        "Targets Air & Ground"
+      ]
     }
   },
   {
@@ -200,7 +248,10 @@
       "rarity": "Common",
       "card_type": "Troop",
       "elixir_cost": 5,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Ground Only"
+      ]
     }
   },
   {
@@ -212,7 +263,10 @@
       "rarity": "Common",
       "card_type": "Troop",
       "elixir_cost": 5,
-      "form": "Evolution"
+      "form": "Evolution",
+      "targeting": [
+        "Targets Ground Only"
+      ]
     }
   },
   {
@@ -224,7 +278,10 @@
       "rarity": "Epic",
       "card_type": "Troop",
       "elixir_cost": 8,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Buildings"
+      ]
     }
   },
   {
@@ -236,7 +293,10 @@
       "rarity": "Common",
       "card_type": "Troop",
       "elixir_cost": 1,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Ground Only"
+      ]
     }
   },
   {
@@ -248,7 +308,10 @@
       "rarity": "Common",
       "card_type": "Troop",
       "elixir_cost": 1,
-      "form": "Evolution"
+      "form": "Evolution",
+      "targeting": [
+        "Targets Ground Only"
+      ]
     }
   },
   {
@@ -260,7 +323,10 @@
       "rarity": "Rare",
       "card_type": "Troop",
       "elixir_cost": 4,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Ground Only"
+      ]
     }
   },
   {
@@ -272,7 +338,10 @@
       "rarity": "Rare",
       "card_type": "Troop",
       "elixir_cost": 4,
-      "form": "Evolution"
+      "form": "Evolution",
+      "targeting": [
+        "Targets Ground Only"
+      ]
     }
   },
   {
@@ -284,7 +353,10 @@
       "rarity": "Rare",
       "card_type": "Troop",
       "elixir_cost": 4,
-      "form": "Hero"
+      "form": "Hero",
+      "targeting": [
+        "Targets Ground Only"
+      ]
     }
   },
   {
@@ -296,7 +368,10 @@
       "rarity": "Epic",
       "card_type": "Troop",
       "elixir_cost": 3,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Ground Only"
+      ]
     }
   },
   {
@@ -308,7 +383,10 @@
       "rarity": "Epic",
       "card_type": "Troop",
       "elixir_cost": 3,
-      "form": "Evolution"
+      "form": "Evolution",
+      "targeting": [
+        "Targets Ground Only"
+      ]
     }
   },
   {
@@ -320,7 +398,10 @@
       "rarity": "Common",
       "card_type": "Troop",
       "elixir_cost": 2,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Ground Only"
+      ]
     }
   },
   {
@@ -332,7 +413,10 @@
       "rarity": "Common",
       "card_type": "Troop",
       "elixir_cost": 2,
-      "form": "Evolution"
+      "form": "Evolution",
+      "targeting": [
+        "Targets Ground Only"
+      ]
     }
   },
   {
@@ -344,7 +428,10 @@
       "rarity": "Rare",
       "card_type": "Troop",
       "elixir_cost": 4,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Air & Ground"
+      ]
     }
   },
   {
@@ -356,7 +443,10 @@
       "rarity": "Rare",
       "card_type": "Troop",
       "elixir_cost": 4,
-      "form": "Evolution"
+      "form": "Evolution",
+      "targeting": [
+        "Targets Air & Ground"
+      ]
     }
   },
   {
@@ -368,7 +458,10 @@
       "rarity": "Rare",
       "card_type": "Troop",
       "elixir_cost": 4,
-      "form": "Hero"
+      "form": "Hero",
+      "targeting": [
+        "Targets Air & Ground"
+      ]
     }
   },
   {
@@ -380,7 +473,10 @@
       "rarity": "Epic",
       "card_type": "Troop",
       "elixir_cost": 4,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Air & Ground"
+      ]
     }
   },
   {
@@ -392,7 +488,10 @@
       "rarity": "Epic",
       "card_type": "Troop",
       "elixir_cost": 4,
-      "form": "Evolution"
+      "form": "Evolution",
+      "targeting": [
+        "Targets Air & Ground"
+      ]
     }
   },
   {
@@ -404,7 +503,10 @@
       "rarity": "Epic",
       "card_type": "Troop",
       "elixir_cost": 5,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Ground Only"
+      ]
     }
   },
   {
@@ -416,7 +518,10 @@
       "rarity": "Rare",
       "card_type": "Troop",
       "elixir_cost": 5,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Air & Ground"
+      ]
     }
   },
   {
@@ -428,7 +533,10 @@
       "rarity": "Rare",
       "card_type": "Troop",
       "elixir_cost": 5,
-      "form": "Evolution"
+      "form": "Evolution",
+      "targeting": [
+        "Targets Air & Ground"
+      ]
     }
   },
   {
@@ -440,7 +548,10 @@
       "rarity": "Rare",
       "card_type": "Troop",
       "elixir_cost": 5,
-      "form": "Hero"
+      "form": "Hero",
+      "targeting": [
+        "Targets Air & Ground"
+      ]
     }
   },
   {
@@ -452,7 +563,10 @@
       "rarity": "Rare",
       "card_type": "Troop",
       "elixir_cost": 4,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Ground Only"
+      ]
     }
   },
   {
@@ -464,7 +578,10 @@
       "rarity": "Rare",
       "card_type": "Troop",
       "elixir_cost": 4,
-      "form": "Hero"
+      "form": "Hero",
+      "targeting": [
+        "Targets Ground Only"
+      ]
     }
   },
   {
@@ -476,7 +593,10 @@
       "rarity": "Common",
       "card_type": "Troop",
       "elixir_cost": 2,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Air & Ground"
+      ]
     }
   },
   {
@@ -488,7 +608,10 @@
       "rarity": "Epic",
       "card_type": "Troop",
       "elixir_cost": 6,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Ground Only"
+      ]
     }
   },
   {
@@ -500,7 +623,10 @@
       "rarity": "Rare",
       "card_type": "Troop",
       "elixir_cost": 4,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Buildings"
+      ]
     }
   },
   {
@@ -512,7 +638,10 @@
       "rarity": "Common",
       "card_type": "Troop",
       "elixir_cost": 5,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Air & Ground"
+      ]
     }
   },
   {
@@ -524,7 +653,10 @@
       "rarity": "Common",
       "card_type": "Troop",
       "elixir_cost": 5,
-      "form": "Evolution"
+      "form": "Evolution",
+      "targeting": [
+        "Targets Air & Ground"
+      ]
     }
   },
   {
@@ -536,7 +668,10 @@
       "rarity": "Legendary",
       "card_type": "Troop",
       "elixir_cost": 3,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Air & Ground"
+      ]
     }
   },
   {
@@ -548,7 +683,10 @@
       "rarity": "Legendary",
       "card_type": "Troop",
       "elixir_cost": 3,
-      "form": "Hero"
+      "form": "Hero",
+      "targeting": [
+        "Targets Air & Ground"
+      ]
     }
   },
   {
@@ -560,7 +698,10 @@
       "rarity": "Common",
       "card_type": "Troop",
       "elixir_cost": 6,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Buildings"
+      ]
     }
   },
   {
@@ -572,7 +713,10 @@
       "rarity": "Common",
       "card_type": "Troop",
       "elixir_cost": 6,
-      "form": "Evolution"
+      "form": "Evolution",
+      "targeting": [
+        "Targets Buildings"
+      ]
     }
   },
   {
@@ -584,7 +728,10 @@
       "rarity": "Epic",
       "card_type": "Troop",
       "elixir_cost": 3,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Ground Only"
+      ]
     }
   },
   {
@@ -596,7 +743,10 @@
       "rarity": "Legendary",
       "card_type": "Troop",
       "elixir_cost": 3,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Air & Ground"
+      ]
     }
   },
   {
@@ -608,7 +758,10 @@
       "rarity": "Legendary",
       "card_type": "Troop",
       "elixir_cost": 3,
-      "form": "Evolution"
+      "form": "Evolution",
+      "targeting": [
+        "Targets Air & Ground"
+      ]
     }
   },
   {
@@ -620,7 +773,10 @@
       "rarity": "Epic",
       "card_type": "Troop",
       "elixir_cost": 4,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Ground Only"
+      ]
     }
   },
   {
@@ -632,7 +788,10 @@
       "rarity": "Epic",
       "card_type": "Troop",
       "elixir_cost": 4,
-      "form": "Hero"
+      "form": "Hero",
+      "targeting": [
+        "Targets Ground Only"
+      ]
     }
   },
   {
@@ -644,7 +803,10 @@
       "rarity": "Rare",
       "card_type": "Troop",
       "elixir_cost": 9,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Air & Ground"
+      ]
     }
   },
   {
@@ -656,7 +818,11 @@
       "rarity": "Legendary",
       "card_type": "Troop",
       "elixir_cost": 7,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Buildings",
+        "Targets Air & Ground"
+      ]
     }
   },
   {
@@ -668,7 +834,10 @@
       "rarity": "Common",
       "card_type": "Troop",
       "elixir_cost": 1,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Air & Ground"
+      ]
     }
   },
   {
@@ -680,7 +849,10 @@
       "rarity": "Common",
       "card_type": "Troop",
       "elixir_cost": 1,
-      "form": "Evolution"
+      "form": "Evolution",
+      "targeting": [
+        "Targets Air & Ground"
+      ]
     }
   },
   {
@@ -692,7 +864,10 @@
       "rarity": "Common",
       "card_type": "Troop",
       "elixir_cost": 1,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Air & Ground"
+      ]
     }
   },
   {
@@ -704,7 +879,10 @@
       "rarity": "Legendary",
       "card_type": "Troop",
       "elixir_cost": 3,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Ground Only"
+      ]
     }
   },
   {
@@ -716,7 +894,10 @@
       "rarity": "Legendary",
       "card_type": "Troop",
       "elixir_cost": 6,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Ground Only"
+      ]
     }
   },
   {
@@ -728,7 +909,10 @@
       "rarity": "Epic",
       "card_type": "Troop",
       "elixir_cost": 5,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Ground Only"
+      ]
     }
   },
   {
@@ -740,7 +924,10 @@
       "rarity": "Epic",
       "card_type": "Troop",
       "elixir_cost": 5,
-      "form": "Hero"
+      "form": "Hero",
+      "targeting": [
+        "Targets Ground Only"
+      ]
     }
   },
   {
@@ -752,7 +939,10 @@
       "rarity": "Legendary",
       "card_type": "Troop",
       "elixir_cost": 4,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Ground Only"
+      ]
     }
   },
   {
@@ -764,7 +954,10 @@
       "rarity": "Legendary",
       "card_type": "Troop",
       "elixir_cost": 4,
-      "form": "Evolution"
+      "form": "Evolution",
+      "targeting": [
+        "Targets Ground Only"
+      ]
     }
   },
   {
@@ -776,7 +969,11 @@
       "rarity": "Rare",
       "card_type": "Troop",
       "elixir_cost": 4,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Buildings",
+        "Targets Ground Only"
+      ]
     }
   },
   {
@@ -788,7 +985,11 @@
       "rarity": "Rare",
       "card_type": "Troop",
       "elixir_cost": 4,
-      "form": "Evolution"
+      "form": "Evolution",
+      "targeting": [
+        "Targets Buildings",
+        "Targets Ground Only"
+      ]
     }
   },
   {
@@ -800,7 +1001,10 @@
       "rarity": "Legendary",
       "card_type": "Troop",
       "elixir_cost": 4,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Air & Ground"
+      ]
     }
   },
   {
@@ -812,7 +1016,10 @@
       "rarity": "Legendary",
       "card_type": "Troop",
       "elixir_cost": 4,
-      "form": "Evolution"
+      "form": "Evolution",
+      "targeting": [
+        "Targets Air & Ground"
+      ]
     }
   },
   {
@@ -824,7 +1031,10 @@
       "rarity": "Rare",
       "card_type": "Troop",
       "elixir_cost": 2,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Buildings"
+      ]
     }
   },
   {
@@ -836,7 +1046,10 @@
       "rarity": "Rare",
       "card_type": "Troop",
       "elixir_cost": 2,
-      "form": "Hero"
+      "form": "Hero",
+      "targeting": [
+        "Targets Buildings"
+      ]
     }
   },
   {
@@ -848,7 +1061,10 @@
       "rarity": "Rare",
       "card_type": "Troop",
       "elixir_cost": 3,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Air & Ground"
+      ]
     }
   },
   {
@@ -860,7 +1076,10 @@
       "rarity": "Rare",
       "card_type": "Troop",
       "elixir_cost": 3,
-      "form": "Hero"
+      "form": "Hero",
+      "targeting": [
+        "Targets Air & Ground"
+      ]
     }
   },
   {
@@ -872,7 +1091,10 @@
       "rarity": "Rare",
       "card_type": "Troop",
       "elixir_cost": 3,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Air & Ground"
+      ]
     }
   },
   {
@@ -884,7 +1106,10 @@
       "rarity": "Rare",
       "card_type": "Troop",
       "elixir_cost": 3,
-      "form": "Evolution"
+      "form": "Evolution",
+      "targeting": [
+        "Targets Air & Ground"
+      ]
     }
   },
   {
@@ -896,7 +1121,10 @@
       "rarity": "Common",
       "card_type": "Troop",
       "elixir_cost": 3,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Air & Ground"
+      ]
     }
   },
   {
@@ -908,7 +1136,10 @@
       "rarity": "Legendary",
       "card_type": "Troop",
       "elixir_cost": 4,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Air & Ground"
+      ]
     }
   },
   {
@@ -920,7 +1151,10 @@
       "rarity": "Common",
       "card_type": "Troop",
       "elixir_cost": 6,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Ground Only"
+      ]
     }
   },
   {
@@ -932,7 +1166,10 @@
       "rarity": "Common",
       "card_type": "Troop",
       "elixir_cost": 6,
-      "form": "Evolution"
+      "form": "Evolution",
+      "targeting": [
+        "Targets Ground Only"
+      ]
     }
   },
   {
@@ -944,7 +1181,10 @@
       "rarity": "Epic",
       "card_type": "Troop",
       "elixir_cost": 4,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Air & Ground"
+      ]
     }
   },
   {
@@ -956,7 +1196,10 @@
       "rarity": "Epic",
       "card_type": "Troop",
       "elixir_cost": 4,
-      "form": "Evolution"
+      "form": "Evolution",
+      "targeting": [
+        "Targets Air & Ground"
+      ]
     }
   },
   {
@@ -968,7 +1211,10 @@
       "rarity": "Epic",
       "card_type": "Troop",
       "elixir_cost": 5,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Air & Ground"
+      ]
     }
   },
   {
@@ -980,7 +1226,10 @@
       "rarity": "Epic",
       "card_type": "Troop",
       "elixir_cost": 5,
-      "form": "Evolution"
+      "form": "Evolution",
+      "targeting": [
+        "Targets Air & Ground"
+      ]
     }
   },
   {
@@ -992,7 +1241,10 @@
       "rarity": "Legendary",
       "card_type": "Troop",
       "elixir_cost": 3,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Ground Only"
+      ]
     }
   },
   {
@@ -1004,7 +1256,10 @@
       "rarity": "Common",
       "card_type": "Troop",
       "elixir_cost": 7,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Ground Only"
+      ]
     }
   },
   {
@@ -1016,7 +1271,10 @@
       "rarity": "Common",
       "card_type": "Troop",
       "elixir_cost": 7,
-      "form": "Evolution"
+      "form": "Evolution",
+      "targeting": [
+        "Targets Ground Only"
+      ]
     }
   },
   {
@@ -1028,7 +1286,10 @@
       "rarity": "Legendary",
       "card_type": "Troop",
       "elixir_cost": 4,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Air & Ground"
+      ]
     }
   },
   {
@@ -1040,7 +1301,10 @@
       "rarity": "Common",
       "card_type": "Troop",
       "elixir_cost": 2,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Air & Ground"
+      ]
     }
   },
   {
@@ -1052,7 +1316,10 @@
       "rarity": "Common",
       "card_type": "Troop",
       "elixir_cost": 2,
-      "form": "Evolution"
+      "form": "Evolution",
+      "targeting": [
+        "Targets Air & Ground"
+      ]
     }
   },
   {
@@ -1064,7 +1331,10 @@
       "rarity": "Legendary",
       "card_type": "Troop",
       "elixir_cost": 3,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Ground Only"
+      ]
     }
   },
   {
@@ -1076,7 +1346,10 @@
       "rarity": "Legendary",
       "card_type": "Troop",
       "elixir_cost": 3,
-      "form": "Evolution"
+      "form": "Evolution",
+      "targeting": [
+        "Targets Ground Only"
+      ]
     }
   },
   {
@@ -1088,7 +1361,11 @@
       "rarity": "Legendary",
       "card_type": "Troop",
       "elixir_cost": 5,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Buildings",
+        "Targets Air & Ground"
+      ]
     }
   },
   {
@@ -1100,7 +1377,10 @@
       "rarity": "Rare",
       "card_type": "Troop",
       "elixir_cost": 4,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Air & Ground"
+      ]
     }
   },
   {
@@ -1112,7 +1392,10 @@
       "rarity": "Common",
       "card_type": "Troop",
       "elixir_cost": 5,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Air & Ground"
+      ]
     }
   },
   {
@@ -1124,7 +1407,10 @@
       "rarity": "Epic",
       "card_type": "Troop",
       "elixir_cost": 5,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Ground Only"
+      ]
     }
   },
   {
@@ -1136,7 +1422,10 @@
       "rarity": "Legendary",
       "card_type": "Troop",
       "elixir_cost": 7,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Ground Only"
+      ]
     }
   },
   {
@@ -1148,7 +1437,10 @@
       "rarity": "Legendary",
       "card_type": "Troop",
       "elixir_cost": 7,
-      "form": "Evolution"
+      "form": "Evolution",
+      "targeting": [
+        "Targets Ground Only"
+      ]
     }
   },
   {
@@ -1160,7 +1452,11 @@
       "rarity": "Common",
       "card_type": "Troop",
       "elixir_cost": 3,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Buildings",
+        "Targets Ground Only"
+      ]
     }
   },
   {
@@ -1172,7 +1468,11 @@
       "rarity": "Common",
       "card_type": "Troop",
       "elixir_cost": 3,
-      "form": "Evolution"
+      "form": "Evolution",
+      "targeting": [
+        "Targets Buildings",
+        "Targets Ground Only"
+      ]
     }
   },
   {
@@ -1184,7 +1484,10 @@
       "rarity": "Rare",
       "card_type": "Troop",
       "elixir_cost": 4,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Air & Ground"
+      ]
     }
   },
   {
@@ -1196,7 +1499,10 @@
       "rarity": "Epic",
       "card_type": "Troop",
       "elixir_cost": 2,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Buildings"
+      ]
     }
   },
   {
@@ -1208,7 +1514,10 @@
       "rarity": "Epic",
       "card_type": "Troop",
       "elixir_cost": 2,
-      "form": "Evolution"
+      "form": "Evolution",
+      "targeting": [
+        "Targets Buildings"
+      ]
     }
   },
   {
@@ -1220,7 +1529,10 @@
       "rarity": "Rare",
       "card_type": "Troop",
       "elixir_cost": 5,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Buildings"
+      ]
     }
   },
   {
@@ -1232,7 +1544,10 @@
       "rarity": "Rare",
       "card_type": "Troop",
       "elixir_cost": 5,
-      "form": "Evolution"
+      "form": "Evolution",
+      "targeting": [
+        "Targets Buildings"
+      ]
     }
   },
   {
@@ -1244,7 +1559,11 @@
       "rarity": "Epic",
       "card_type": "Troop",
       "elixir_cost": 6,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Buildings",
+        "Targets Air & Ground"
+      ]
     }
   },
   {
@@ -1256,7 +1575,11 @@
       "rarity": "Epic",
       "card_type": "Troop",
       "elixir_cost": 6,
-      "form": "Evolution"
+      "form": "Evolution",
+      "targeting": [
+        "Targets Buildings",
+        "Targets Air & Ground"
+      ]
     }
   },
   {
@@ -1268,7 +1591,10 @@
       "rarity": "Legendary",
       "card_type": "Troop",
       "elixir_cost": 3,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Ground Only"
+      ]
     }
   },
   {
@@ -1280,7 +1606,10 @@
       "rarity": "Legendary",
       "card_type": "Troop",
       "elixir_cost": 4,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Air & Ground"
+      ]
     }
   },
   {
@@ -1292,7 +1621,10 @@
       "rarity": "Legendary",
       "card_type": "Troop",
       "elixir_cost": 4,
-      "form": "Hero"
+      "form": "Hero",
+      "targeting": [
+        "Targets Air & Ground"
+      ]
     }
   },
   {
@@ -1304,7 +1636,10 @@
       "rarity": "Epic",
       "card_type": "Troop",
       "elixir_cost": 5,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Air & Ground"
+      ]
     }
   },
   {
@@ -1316,7 +1651,10 @@
       "rarity": "Epic",
       "card_type": "Troop",
       "elixir_cost": 5,
-      "form": "Evolution"
+      "form": "Evolution",
+      "targeting": [
+        "Targets Air & Ground"
+      ]
     }
   },
   {
@@ -1328,7 +1666,10 @@
       "rarity": "Common",
       "card_type": "Troop",
       "elixir_cost": 3,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Air & Ground"
+      ]
     }
   },
   {
@@ -1340,7 +1681,10 @@
       "rarity": "Common",
       "card_type": "Troop",
       "elixir_cost": 3,
-      "form": "Evolution"
+      "form": "Evolution",
+      "targeting": [
+        "Targets Air & Ground"
+      ]
     }
   },
   {
@@ -1352,7 +1696,10 @@
       "rarity": "Champion",
       "card_type": "Troop",
       "elixir_cost": 4,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Ground Only"
+      ]
     }
   },
   {
@@ -1364,7 +1711,10 @@
       "rarity": "Rare",
       "card_type": "Troop",
       "elixir_cost": 3,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Buildings"
+      ]
     }
   },
   {
@@ -1376,7 +1726,10 @@
       "rarity": "Rare",
       "card_type": "Troop",
       "elixir_cost": 4,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Ground Only"
+      ]
     }
   },
   {
@@ -1388,7 +1741,10 @@
       "rarity": "Champion",
       "card_type": "Troop",
       "elixir_cost": 4,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Ground Only"
+      ]
     }
   },
   {
@@ -1400,7 +1756,10 @@
       "rarity": "Champion",
       "card_type": "Troop",
       "elixir_cost": 5,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Air & Ground"
+      ]
     }
   },
   {
@@ -1412,7 +1771,10 @@
       "rarity": "Champion",
       "card_type": "Troop",
       "elixir_cost": 4,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Ground Only"
+      ]
     }
   },
   {
@@ -1424,7 +1786,10 @@
       "rarity": "Champion",
       "card_type": "Troop",
       "elixir_cost": 5,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Ground Only"
+      ]
     }
   },
   {
@@ -1436,7 +1801,10 @@
       "rarity": "Common",
       "card_type": "Troop",
       "elixir_cost": 4,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Air & Ground"
+      ]
     }
   },
   {
@@ -1448,7 +1816,10 @@
       "rarity": "Legendary",
       "card_type": "Troop",
       "elixir_cost": 4,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Air & Ground"
+      ]
     }
   },
   {
@@ -1460,7 +1831,10 @@
       "rarity": "Common",
       "card_type": "Troop",
       "elixir_cost": 1,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Air & Ground"
+      ]
     }
   },
   {
@@ -1472,7 +1846,10 @@
       "rarity": "Epic",
       "card_type": "Troop",
       "elixir_cost": 7,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Buildings"
+      ]
     }
   },
   {
@@ -1484,7 +1861,10 @@
       "rarity": "Legendary",
       "card_type": "Troop",
       "elixir_cost": 4,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Air & Ground"
+      ]
     }
   },
   {
@@ -1496,7 +1876,10 @@
       "rarity": "Champion",
       "card_type": "Troop",
       "elixir_cost": 3,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Air & Ground"
+      ]
     }
   },
   {
@@ -1508,7 +1891,10 @@
       "rarity": "Rare",
       "card_type": "Troop",
       "elixir_cost": 4,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Ground Only"
+      ]
     }
   },
   {
@@ -1520,7 +1906,10 @@
       "rarity": "Legendary",
       "card_type": "Troop",
       "elixir_cost": 5,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Air & Ground"
+      ]
     }
   },
   {
@@ -1532,7 +1921,11 @@
       "rarity": "Rare",
       "card_type": "Troop",
       "elixir_cost": 2,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Buildings",
+        "Targets Ground Only"
+      ]
     }
   },
   {
@@ -1544,7 +1937,11 @@
       "rarity": "Champion",
       "card_type": "Troop",
       "elixir_cost": 5,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Buildings",
+        "Targets Air & Ground"
+      ]
     }
   },
   {
@@ -1556,7 +1953,10 @@
       "rarity": "Epic",
       "card_type": "Troop",
       "elixir_cost": 4,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Buildings"
+      ]
     }
   },
   {
@@ -1568,7 +1968,10 @@
       "rarity": "Common",
       "card_type": "Troop",
       "elixir_cost": 2,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Ground Only"
+      ]
     }
   },
   {
@@ -1580,7 +1983,10 @@
       "rarity": "Common",
       "card_type": "Troop",
       "elixir_cost": 2,
-      "form": "Hero"
+      "form": "Hero",
+      "targeting": [
+        "Targets Ground Only"
+      ]
     }
   },
   {
@@ -1592,7 +1998,10 @@
       "rarity": "Champion",
       "card_type": "Troop",
       "elixir_cost": 6,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Ground Only"
+      ]
     }
   },
   {
@@ -1604,7 +2013,10 @@
       "rarity": "Legendary",
       "card_type": "Troop",
       "elixir_cost": 5,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Ground Only"
+      ]
     }
   },
   {
@@ -1616,7 +2028,10 @@
       "rarity": "Rare",
       "card_type": "Troop",
       "elixir_cost": 4,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Buildings"
+      ]
     }
   },
   {
@@ -1628,7 +2043,10 @@
       "rarity": "Common",
       "card_type": "Building",
       "elixir_cost": 3,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Ground Only"
+      ]
     }
   },
   {
@@ -1640,7 +2058,10 @@
       "rarity": "Common",
       "card_type": "Building",
       "elixir_cost": 3,
-      "form": "Evolution"
+      "form": "Evolution",
+      "targeting": [
+        "Targets Ground Only"
+      ]
     }
   },
   {
@@ -1652,7 +2073,10 @@
       "rarity": "Rare",
       "card_type": "Building",
       "elixir_cost": 4,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Air & Ground"
+      ]
     }
   },
   {
@@ -1664,7 +2088,10 @@
       "rarity": "Common",
       "card_type": "Building",
       "elixir_cost": 4,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Ground Only"
+      ]
     }
   },
   {
@@ -1676,7 +2103,10 @@
       "rarity": "Common",
       "card_type": "Building",
       "elixir_cost": 4,
-      "form": "Evolution"
+      "form": "Evolution",
+      "targeting": [
+        "Targets Ground Only"
+      ]
     }
   },
   {
@@ -1688,7 +2118,10 @@
       "rarity": "Rare",
       "card_type": "Building",
       "elixir_cost": 5,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Air & Ground"
+      ]
     }
   },
   {
@@ -1700,7 +2133,10 @@
       "rarity": "Rare",
       "card_type": "Building",
       "elixir_cost": 4,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Ground Only"
+      ]
     }
   },
   {
@@ -1712,7 +2148,10 @@
       "rarity": "Rare",
       "card_type": "Building",
       "elixir_cost": 6,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Ground Only"
+      ]
     }
   },
   {
@@ -1724,7 +2163,10 @@
       "rarity": "Common",
       "card_type": "Building",
       "elixir_cost": 4,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Air & Ground"
+      ]
     }
   },
   {
@@ -1736,7 +2178,10 @@
       "rarity": "Common",
       "card_type": "Building",
       "elixir_cost": 4,
-      "form": "Evolution"
+      "form": "Evolution",
+      "targeting": [
+        "Targets Air & Ground"
+      ]
     }
   },
   {
@@ -1748,7 +2193,8 @@
       "rarity": "Rare",
       "card_type": "Building",
       "elixir_cost": 6,
-      "form": "Base"
+      "form": "Base",
+      "targeting": []
     }
   },
   {
@@ -1760,7 +2206,10 @@
       "rarity": "Epic",
       "card_type": "Building",
       "elixir_cost": 6,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Ground Only"
+      ]
     }
   },
   {
@@ -1772,7 +2221,10 @@
       "rarity": "Rare",
       "card_type": "Building",
       "elixir_cost": 3,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Ground Only"
+      ]
     }
   },
   {
@@ -1784,7 +2236,10 @@
       "rarity": "Rare",
       "card_type": "Building",
       "elixir_cost": 3,
-      "form": "Hero"
+      "form": "Hero",
+      "targeting": [
+        "Targets Ground Only"
+      ]
     }
   },
   {
@@ -1796,7 +2251,10 @@
       "rarity": "Rare",
       "card_type": "Troop",
       "elixir_cost": 4,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Air & Ground"
+      ]
     }
   },
   {
@@ -1808,7 +2266,10 @@
       "rarity": "Rare",
       "card_type": "Troop",
       "elixir_cost": 4,
-      "form": "Evolution"
+      "form": "Evolution",
+      "targeting": [
+        "Targets Air & Ground"
+      ]
     }
   },
   {
@@ -1820,7 +2281,10 @@
       "rarity": "Rare",
       "card_type": "Building",
       "elixir_cost": 4,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Ground Only"
+      ]
     }
   },
   {
@@ -1832,7 +2296,10 @@
       "rarity": "Rare",
       "card_type": "Building",
       "elixir_cost": 4,
-      "form": "Evolution"
+      "form": "Evolution",
+      "targeting": [
+        "Targets Ground Only"
+      ]
     }
   },
   {
@@ -1844,7 +2311,10 @@
       "rarity": "Epic",
       "card_type": "Building",
       "elixir_cost": 4,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Ground Only"
+      ]
     }
   },
   {
@@ -1856,7 +2326,10 @@
       "rarity": "Epic",
       "card_type": "Building",
       "elixir_cost": 4,
-      "form": "Evolution"
+      "form": "Evolution",
+      "targeting": [
+        "Targets Ground Only"
+      ]
     }
   },
   {
@@ -1868,7 +2341,10 @@
       "rarity": "Rare",
       "card_type": "Spell",
       "elixir_cost": 4,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Air & Ground"
+      ]
     }
   },
   {
@@ -1880,7 +2356,10 @@
       "rarity": "Common",
       "card_type": "Spell",
       "elixir_cost": 3,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Air & Ground"
+      ]
     }
   },
   {
@@ -1892,7 +2371,10 @@
       "rarity": "Epic",
       "card_type": "Spell",
       "elixir_cost": 2,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Air & Ground"
+      ]
     }
   },
   {
@@ -1904,7 +2386,10 @@
       "rarity": "Rare",
       "card_type": "Spell",
       "elixir_cost": 6,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Air & Ground"
+      ]
     }
   },
   {
@@ -1916,7 +2401,10 @@
       "rarity": "Epic",
       "card_type": "Spell",
       "elixir_cost": 3,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Ground Only"
+      ]
     }
   },
   {
@@ -1928,7 +2416,10 @@
       "rarity": "Epic",
       "card_type": "Spell",
       "elixir_cost": 3,
-      "form": "Evolution"
+      "form": "Evolution",
+      "targeting": [
+        "Targets Ground Only"
+      ]
     }
   },
   {
@@ -1940,7 +2431,10 @@
       "rarity": "Epic",
       "card_type": "Spell",
       "elixir_cost": 4,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Air & Ground"
+      ]
     }
   },
   {
@@ -1952,7 +2446,8 @@
       "rarity": "Epic",
       "card_type": "Spell",
       "elixir_cost": null,
-      "form": "Base"
+      "form": "Base",
+      "targeting": []
     }
   },
   {
@@ -1964,7 +2459,10 @@
       "rarity": "Epic",
       "card_type": "Spell",
       "elixir_cost": 6,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Air & Ground"
+      ]
     }
   },
   {
@@ -1976,7 +2474,10 @@
       "rarity": "Common",
       "card_type": "Spell",
       "elixir_cost": 2,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Air & Ground"
+      ]
     }
   },
   {
@@ -1988,7 +2489,10 @@
       "rarity": "Common",
       "card_type": "Spell",
       "elixir_cost": 2,
-      "form": "Evolution"
+      "form": "Evolution",
+      "targeting": [
+        "Targets Air & Ground"
+      ]
     }
   },
   {
@@ -2000,7 +2504,10 @@
       "rarity": "Epic",
       "card_type": "Spell",
       "elixir_cost": 4,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Air & Ground"
+      ]
     }
   },
   {
@@ -2012,7 +2519,10 @@
       "rarity": "Legendary",
       "card_type": "Spell",
       "elixir_cost": 5,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Ground Only"
+      ]
     }
   },
   {
@@ -2024,7 +2534,10 @@
       "rarity": "Legendary",
       "card_type": "Spell",
       "elixir_cost": 2,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Ground Only"
+      ]
     }
   },
   {
@@ -2036,7 +2549,10 @@
       "rarity": "Epic",
       "card_type": "Spell",
       "elixir_cost": 3,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Air & Ground"
+      ]
     }
   },
   {
@@ -2048,7 +2564,8 @@
       "rarity": "Epic",
       "card_type": "Spell",
       "elixir_cost": 3,
-      "form": "Base"
+      "form": "Base",
+      "targeting": []
     }
   },
   {
@@ -2060,7 +2577,10 @@
       "rarity": "Rare",
       "card_type": "Spell",
       "elixir_cost": 3,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Ground Only"
+      ]
     }
   },
   {
@@ -2072,7 +2592,10 @@
       "rarity": "Epic",
       "card_type": "Spell",
       "elixir_cost": 2,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Ground Only"
+      ]
     }
   },
   {
@@ -2084,7 +2607,10 @@
       "rarity": "Epic",
       "card_type": "Spell",
       "elixir_cost": 2,
-      "form": "Hero"
+      "form": "Hero",
+      "targeting": [
+        "Targets Ground Only"
+      ]
     }
   },
   {
@@ -2096,7 +2622,10 @@
       "rarity": "Rare",
       "card_type": "Troop",
       "elixir_cost": 1,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Air & Ground"
+      ]
     }
   },
   {
@@ -2108,7 +2637,10 @@
       "rarity": "Common",
       "card_type": "Spell",
       "elixir_cost": 2,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Air & Ground"
+      ]
     }
   },
   {
@@ -2120,7 +2652,10 @@
       "rarity": "Common",
       "card_type": "Spell",
       "elixir_cost": 2,
-      "form": "Evolution"
+      "form": "Evolution",
+      "targeting": [
+        "Targets Air & Ground"
+      ]
     }
   },
   {
@@ -2132,7 +2667,10 @@
       "rarity": "Common",
       "card_type": "Spell",
       "elixir_cost": 3,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Air & Ground"
+      ]
     }
   },
   {
@@ -2144,7 +2682,10 @@
       "rarity": "Epic",
       "card_type": "Spell",
       "elixir_cost": 5,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Air & Ground"
+      ]
     }
   },
   {
@@ -2156,7 +2697,10 @@
       "rarity": "Epic",
       "card_type": "Spell",
       "elixir_cost": 2,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Air & Ground"
+      ]
     }
   },
   {
@@ -2168,7 +2712,10 @@
       "rarity": "Legendary",
       "card_type": "Troop",
       "elixir_cost": 6,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Air & Ground"
+      ]
     }
   },
   {
@@ -2180,7 +2727,10 @@
       "rarity": "Legendary",
       "card_type": "Troop",
       "elixir_cost": 3,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Ground Only"
+      ]
     }
   },
   {
@@ -2192,7 +2742,10 @@
       "rarity": "Epic",
       "card_type": "Spell",
       "elixir_cost": 3,
-      "form": "Base"
+      "form": "Base",
+      "targeting": [
+        "Targets Air & Ground"
+      ]
     }
   }
 ]

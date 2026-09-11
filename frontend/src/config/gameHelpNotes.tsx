@@ -38,8 +38,13 @@ export const GAME_HELP_NOTES: Partial<Record<GameId, ReactNode[]>> = {
   ],
   starrail: [
     <>
-      Only <b>playable characters</b> released up through Version 4.5 are selectable. Trailblazer is selectable as either Caelus/Stelle 
+      Only <b>playable characters</b> released up through Version 4.5 are selectable. Trailblazer is selectable as either Caelus/Stelle
       and any of their playable paths.
+    </>,
+  ],
+  clashroyale: [
+    <>
+      A card's <b>Targeting</b> counts anything it spawns automatically. One-time deploy/death damage instances do not count towards a card's Targeting. 
     </>,
   ],
 };

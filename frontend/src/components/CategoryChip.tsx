@@ -516,6 +516,15 @@ const CLASHROYALE_DESCRIPTIONS: Record<string, string> = {
   Base: "This must be a card's base form, not an Evolution or Hero variant.",
   Evolution: 'This card must be an Evolution.',
   Hero: 'This card must be a Hero form.',
+
+  // Targeting - multi-valued (a card normally holds exactly one, but a
+  // handful of real edge cases hold two - see
+  // ingestion/clashroyale/raw/targeting_definitive_plan.txt). No dedicated
+  // icon set for this pass, same "plain-text fallback pill" treatment as
+  // Star Rail's affiliation.
+  'Targets Buildings': 'This card, when deployed, ignores troops and only targets buildings/towers.',
+  'Targets Air & Ground': 'This card targets both air and ground troops.',
+  'Targets Ground Only': 'This card targets ground troops only.',
 };
 
 // Legendary isn't here - it gets its own gradient-text branch below, same

@@ -3,7 +3,7 @@ Generic Entity schema for the Clash Royale ingestion pipeline.
 """
 from collections import Counter
 
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 
 class ClashRoyaleAttributes(BaseModel):
@@ -15,9 +15,12 @@ class ClashRoyaleAttributes(BaseModel):
     # inventing a fake number.
     elixir_cost: int | None
     form: str  # Base / Evolution / Hero - see normalize.py's map_card for how the split works
-    # targeting (Ground Only / Ground & Air) intentionally not modeled yet -
-    # not present in the raw API response, needs hand-curated backfill before
-    # it can be added as a real category. See ROADMAP.md.
+    # Multi-valued (a card is normally exactly one of Targets Buildings /
+    # Targets Air & Ground / Targets Ground Only, but a handful of real
+    # edge cases hold two - see raw/targeting.txt and raw/
+    # targeting_definitive_plan.txt). Not present in the raw API response -
+    # hand-curated, same as Star Rail's affiliation.
+    targeting: list[str] = Field(default_factory=list)
 
 
 class Entity(BaseModel):
@@ -44,6 +47,7 @@ def validate_entities(raw_entities: list[dict]) -> list[Entity]:
     warn_thin("card_type", Counter(e.attributes.card_type for e in validated))
     warn_thin("elixir_cost", Counter(e.attributes.elixir_cost for e in validated if e.attributes.elixir_cost is not None))
     warn_thin("form", Counter(e.attributes.form for e in validated))
+    warn_thin("targeting", Counter(t for e in validated for t in e.attributes.targeting))
 
     no_elixir_count = sum(1 for e in validated if e.attributes.elixir_cost is None)
     if no_elixir_count:

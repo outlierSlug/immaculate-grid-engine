@@ -1,0 +1,138 @@
+Clash Royale — "Targeting" category — definitive plan
+========================================================
+
+Source of truth: raw/targeting.txt (hand-curated by the user, cross-
+validated against every entity in output/clashroyale_entities.json —
+0 typos, all 183 entities covered, either with a real value or explicitly
+under the "No targeting" group).
+
+Multi-valued attribute, same mechanism as Star Rail's affiliation:
+AttributeContainsCategory, no min-count floor needed here (all three
+values already have 28+ members). Attribute key: "targeting" (list[str]
+on ClashRoyaleAttributes).
+
+Core rule (the user's own words, this is what resolved every edge case)
+--------------------------------------------------------------------------
+"A card must be able to TARGET, not merely be able to hit/affect."
+A card's PRIMARY, ONGOING attack must actively select/pursue a category -
+incidental splash damage within a melee/attack radius doesn't count
+(Lumberjack's on-death rage splash hits air but Lumberjack only targets
+ground; Evo Valkyrie's spin damages air troops caught in her radius but
+she only targets ground). A ONE-TIME kit mechanic unrelated to the card's
+primary/ongoing attack doesn't count either, even if the player can aim
+it (Evo Cannon's one-time deploy splash can hit air, but this is the same
+shape as Lumberjack's death-rage - a one-time event, not the card's
+ongoing targeting behavior - so Evo Cannon stays Ground Only only,
+explicitly NOT dual). A purely REACTIVE punishment effect doesn't count
+either (Electro Giant's shock-back radius only fires when something else
+attacks it - it never seeks out a target itself - so Electro Giant stays
+Buildings only).
+
+Spawner precedent (pre-existing, extended to the new edge cases)
+--------------------------------------------------------------------
+If a card spawns/carries a SEPARATE persistent, ongoing unit (a spawner
+building's spawned troops, or a card that splits/transitions into other
+persistent troops), that unit's own targeting also counts toward the
+parent card - the exact same logic that already classifies Tombstone
+(spawns Skeletons -> Ground Only) and Goblin Hut (spawns Spear Goblins ->
+Air & Ground) as single-value entries, just extended to cards where the
+secondary unit's targeting DIFFERS from the primary unit's, producing a
+dual-value entry instead of a single one.
+
+No "Ground Only" + "Air & Ground" together
+---------------------------------------------
+Decided during the discussion: since "Air & Ground" already implies
+ground coverage, pairing it with "Ground Only" on the same card is
+redundant/contradictory. Where a card's secondary unit adds air coverage
+on top of a ground-only primary attack, the card gets ONLY "Air & Ground"
+(not both) - this is why Night Witch and Goblin Machine are single-value
+"Air & Ground" entries, not dual. The only dual combinations that exist
+in the final data are "Buildings + Ground Only" and "Buildings + Air &
+Ground" (Buildings is a fundamentally different targeting priority -
+ignores troops entirely - so pairing it with either of the other two is
+never redundant).
+
+Per-edge-case verdicts (final)
+----------------------------------
+Goblinstein          -> Buildings + Air & Ground (two concurrent entities:
+                         the tanky Goblinstein targets buildings, the
+                         Goblin Doctor targets air & ground)
+Night Witch           -> Air & Ground only (automatic ongoing Bat spawner
+                         - not dual, per the no-redundancy rule above)
+Goblin Machine        -> Air & Ground only (auto-targeting rocket
+                         launcher is genuine ongoing targeting, not
+                         splash - not dual, per the no-redundancy rule)
+Evo Cannon             -> Ground Only only, NOT dual (one-time deploy
+                         splash is the same shape as Lumberjack's
+                         death-rage - doesn't count, see core rule above)
+Electro Giant          -> Buildings only, NOT dual (shock-back is
+                         reactive, not targeting - see core rule above)
+Hero Balloon           -> Buildings only, NOT dual (ability-spawned
+                         Skeletrooper deliberately not extended dual
+                         status, unlike the automatic-spawner cases)
+Goblin Cage            -> Ground Only only (moved out of the "No
+                         targeting" group into a real single value - the
+                         base cage has no attack of its own, but the
+                         spawned Goblin Brawler's ground-targeting counts
+                         via the spawner precedent, same as Tombstone/
+                         Goblin Hut)
+Evo Goblin Cage        -> Ground Only only, unchanged (has its own real
+                         pull+damage attack, already correctly single-
+                         valued before this discussion)
+Battle Ram/Evo         -> Buildings + Ground Only (barbarians persist as
+                         independent ground troops after the ram phase)
+Suspicious Bush        -> Buildings + Ground Only (spawns Bush Goblins)
+Goblin Giant/Evo       -> Buildings + Air & Ground (spear goblins fire
+                         concurrently, not just after death)
+Ram Rider               -> Buildings + Air & Ground (her own ranged
+                         attack + the ram's separate building-only charge)
+Skeleton Barrel/Evo     -> Buildings + Ground Only (spawns Skeletons)
+Lava Hound               -> Buildings + Air & Ground (splits into Lava
+                         Pups on death)
+Spirit Empress          -> Air & Ground (flying form)
+Spirit Empress (Ground)  -> Ground Only (her separate ground ability form
+                         - already a distinct entity in the data, not a
+                         typo/duplicate)
+
+No-targeting cards (excluded entirely, not a selectable category)
+-----------------------------------------------------------------------
+Clone, Elixir Collector, Mirror - these have no attack of their own at
+all. Get an empty targeting list, same as any card the file doesn't
+mention - NOT modeled as a literal "N/A" category value.
+
+Card-type sanity cross-check (Troop x Building x Spell x Targeting)
+-------------------------------------------------------------------------
+Confirmed structurally correct, not a gap: no Building or Spell ever
+appears under "Targets Buildings" (a stationary building can't target
+another building, and a spell resolves at its cast location rather than
+moving to attack one - only mobile Troops can hold this value).
+  Troops (150):   Buildings 28 | Air & Ground 64 | Ground Only 58
+  Buildings (18): Buildings  0 | Air & Ground  4 | Ground Only 13 | none 1
+  Spells (15):    Buildings  0 | Air & Ground 16 | Ground Only  7 | none 2
+Furnace/Evo Furnace are card_type "Troop" (not "Building") - confirmed
+with the user as an intentional post-launch rework, not a data bug.
+
+Weight
+-------
+No weight tuning done yet in this plan doc - see the live-measurement
+tuning report (mirrors Star Rail's starRailAffiliationTuningReport) run
+before shipping, same process as every other multi-valued category in
+this codebase.
+
+Pipeline wiring
+------------------
+1. schema.py: added `targeting: list[str] = Field(default_factory=list)`
+   to ClashRoyaleAttributes; reused existing warn_thin() for a thin-value
+   warning (none fired - all three values are healthy).
+2. normalize.py: parse_targeting() reads raw/targeting.txt at runtime
+   (not a hand-typed dict - same reasoning as Star Rail's affiliation
+   parser, targeting.txt is the actively-edited source of truth); looked
+   up per-entity by its own display_name (not folded into map_card's
+   shared base_attributes) since a form's targeting isn't guaranteed to
+   match its base card's, even though it happens to today; validates
+   every parsed card name resolves to a real entity (raises on typo).
+3. ClashRoyaleGameModule.java: categoriesForListAttribute mirrors
+   StarRailGameModule's, minus the minCount/weight params that dimension
+   needed and this one doesn't.
+4. CategoryChip.tsx: 3 CLASHROYALE_DESCRIPTIONS entries added, no icons
+   (plain-text fallback pill, same as Star Rail's affiliation).

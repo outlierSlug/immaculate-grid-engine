@@ -9,7 +9,35 @@ from pathlib import Path
 from schema import validate_entities
 
 RAW_PATH = Path(__file__).parent / "raw" / "clashroyale_cards_raw.json"
+TARGETING_PATH = Path(__file__).parent / "raw" / "targeting.txt"
 OUTPUT_PATH = Path(__file__).parent / "output" / "clashroyale_entities.json"
+
+# The trailing group in targeting.txt (Clone/Mirror/Elixir Collector - cards
+# with no attack of their own) isn't a real targeting value - those cards
+# get an empty list, same as any card the file never mentions.
+NO_TARGETING_GROUP = "No targeting (excluded entirely - not a selectable category)"
+
+
+def parse_targeting() -> dict[str, list[str]]:
+    """Parse raw/targeting.txt (blank-line-separated blocks: a group header,
+    then one card display_name per line) into {display_name -> [targeting
+    labels]}. A card can appear under two group headers (a handful of real
+    edge cases hold two targeting values) - see
+    raw/targeting_definitive_plan.txt for the full design."""
+    card_to_groups: dict[str, list[str]] = {}
+    current_group: str | None = None
+    for raw_line in TARGETING_PATH.read_text(encoding="utf-8").splitlines():
+        line = raw_line.strip()
+        if not line:
+            current_group = None
+            continue
+        if current_group is None:
+            current_group = line
+            continue
+        if current_group == NO_TARGETING_GROUP:
+            continue
+        card_to_groups.setdefault(line, []).append(current_group)
+    return card_to_groups
 
 # Supercell's own id numbering is a strong but NOT perfectly reliable
 # convention (not present as an explicit field anywhere in the API
@@ -60,7 +88,7 @@ def card_type(raw: dict) -> str:
     return CARD_TYPE_BY_ID_PREFIX[prefix]
 
 
-def map_card(raw: dict) -> list[dict]:
+def map_card(raw: dict, targeting_map: dict[str, list[str]]) -> list[dict]:
     name = raw["name"]
     slug = slugify(name)
     icon_urls = raw["iconUrls"]
@@ -71,12 +99,19 @@ def map_card(raw: dict) -> list[dict]:
         "elixir_cost": raw.get("elixirCost"),  # None for Mirror - dynamic cost, see schema.py
     }
 
+    # Looked up per-entity by its own display_name (not folded into
+    # base_attributes above) since targeting.txt keys Evolution/Hero/the
+    # Spirit Empress ground form independently and a form's targeting isn't
+    # guaranteed to match its base card's, even though it happens to today.
+    def targeting_for(display_name: str) -> list[str]:
+        return targeting_map.get(display_name, [])
+
     entities = [{
         "id": f"clashroyale:{slug}",
         "game_id": "clashroyale",
         "display_name": name,
         "image_url": get_image_url(slug, "Base"),
-        "attributes": {**base_attributes, "form": "Base"},
+        "attributes": {**base_attributes, "form": "Base", "targeting": targeting_for(name)},
     }]
 
     # Spirit Empress is a single deck card but plays as two functionally
@@ -89,12 +124,13 @@ def map_card(raw: dict) -> list[dict]:
     # URL/flag exists for it, so the icon itself is a manually-provided
     # asset too, not something download_icons.py fetches).
     if name == "Spirit Empress":
+        ground_name = f"{name} (Ground)"
         entities.append({
             "id": f"clashroyale:{slug}-ground",
             "game_id": "clashroyale",
-            "display_name": f"{name} (Ground)",
+            "display_name": ground_name,
             "image_url": f"/clashroyale/icons/{slug}-ground.png",
-            "attributes": {**base_attributes, "elixir_cost": 3, "form": "Base"},
+            "attributes": {**base_attributes, "elixir_cost": 3, "form": "Base", "targeting": targeting_for(ground_name)},
         })
 
     # Evolution/Hero forms play differently enough (an evolved ability, or
@@ -105,21 +141,23 @@ def map_card(raw: dict) -> list[dict]:
     # verified against the full raw fetch that these two flags are exactly
     # what distinguishes the 41 Evolution-having and 16 Hero-having cards.
     if "evolutionMedium" in icon_urls:
+        evo_name = f"Evo {name}"
         entities.append({
             "id": f"clashroyale:{slug}-evo",
             "game_id": "clashroyale",
-            "display_name": f"Evo {name}",
+            "display_name": evo_name,
             "image_url": get_image_url(slug, "Evolution"),
-            "attributes": {**base_attributes, "form": "Evolution"},
+            "attributes": {**base_attributes, "form": "Evolution", "targeting": targeting_for(evo_name)},
         })
 
     if "heroMedium" in icon_urls:
+        hero_name = f"Hero {name}"
         entities.append({
             "id": f"clashroyale:{slug}-hero",
             "game_id": "clashroyale",
-            "display_name": f"Hero {name}",
+            "display_name": hero_name,
             "image_url": get_image_url(slug, "Hero"),
-            "attributes": {**base_attributes, "form": "Hero"},
+            "attributes": {**base_attributes, "form": "Hero", "targeting": targeting_for(hero_name)},
         })
 
     return entities
@@ -127,7 +165,16 @@ def map_card(raw: dict) -> list[dict]:
 
 def main():
     raw_records = json.loads(RAW_PATH.read_text(encoding="utf-8"))
-    mapped = [entity for raw in raw_records for entity in map_card(raw)]
+    targeting_map = parse_targeting()
+    mapped = [entity for raw in raw_records for entity in map_card(raw, targeting_map)]
+
+    # Catches a typo/rename in targeting.txt (a card name that no longer
+    # matches any entity's display_name) as a hard failure - same bar
+    # Star Rail's affiliation parser holds raw/affiliations.txt to.
+    known_names = {e["display_name"] for e in mapped}
+    unknown_cards = sorted(set(targeting_map) - known_names)
+    if unknown_cards:
+        raise ValueError(f"targeting.txt references unknown cards: {unknown_cards}")
 
     validated = validate_entities(mapped)
 

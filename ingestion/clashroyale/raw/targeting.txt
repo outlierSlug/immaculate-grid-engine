@@ -1,0 +1,200 @@
+Targets Buildings
+Balloon
+Battle Ram
+Electro Giant
+Elixir Golem
+Evo Battle Ram
+Evo Goblin Giant
+Evo Royal Giant
+Evo Royal Hogs
+Evo Skeleton Barrel
+Evo Wall Breakers
+Giant
+Goblin Giant
+Goblinstein
+Golem
+Hero Balloon
+Hero Giant
+Hero Ice Golem
+Hog Rider
+Ice Golem
+Lava Hound
+Minion Giant
+Ram Rider
+Royal Giant
+Royal Hogs
+Rune Giant
+Skeleton Barrel
+Suspicious Bush
+Wall Breakers
+
+Targets Air & Ground
+Archer Queen
+Archers
+Arrows
+Baby Dragon
+Bats
+Dart Goblin
+Electro Dragon
+Electro Spirit
+Electro Wizard
+Evo Archers
+Evo Baby Dragon
+Evo Bats
+Evo Dart Goblin
+Evo Electro Dragon
+Evo Executioner
+Evo Firecracker
+Evo Furnace
+Evo Giant Snowball
+Evo Goblin Giant
+Evo Hunter
+Evo Ice Spirit
+Evo Inferno Dragon
+Evo Minion Horde
+Evo Musketeer
+Evo Princess
+Evo Tesla
+Evo Witch
+Evo Wizard
+Evo Zap
+Executioner
+Fire Spirit
+Fireball
+Firecracker
+Flying Machine
+Freeze
+Furnace
+Giant Snowball
+Goblin Curse
+Goblin Gang
+Goblin Giant
+Goblin Hut
+Goblin Machine
+Goblinstein
+Heal Spirit
+Hero Ice Wizard
+Hero Magic Archer
+Hero Mega Minion
+Hero Musketeer
+Hero Wizard
+Hunter
+Ice Spirit
+Ice Wizard
+Inferno Dragon
+Inferno Tower
+Lava Hound
+Lightning
+Little Prince
+Magic Archer
+Mega Minion
+Minion Horde
+Minions
+Mother Witch
+Musketeer
+Night Witch
+Phoenix
+Poison
+Princess
+Rage
+Ram Rider
+Rascals
+Rocket
+Royal Delivery
+Skeleton Dragons
+Spear Goblins
+Spirit Empress
+Tesla
+Three Musketeers
+Tornado
+Vines
+Void
+Witch
+Wizard
+Zap
+Zappies
+
+Targets Ground Only
+Bandit
+Barbarian Barrel
+Barbarian Hut
+Barbarians
+Battle Healer
+Battle Ram
+Berserker
+Bomb Tower
+Bomber
+Boss Bandit
+Bowler
+Cannon
+Cannon Cart
+Dark Prince
+Earthquake
+Elite Barbarians
+Evo Barbarians
+Evo Battle Ram
+Evo Bomber
+Evo Cannon
+Evo Elite Barbarians
+Evo Goblin Barrel
+Evo Goblin Cage
+Evo Goblin Drill
+Evo Knight
+Evo Lumberjack
+Evo Mega Knight
+Evo Mortar
+Evo P.E.K.K.A
+Evo Royal Ghost
+Evo Royal Recruits
+Evo Skeleton Army
+Evo Skeleton Barrel
+Evo Skeletons
+Evo Valkyrie
+Fisherman
+Giant Skeleton
+Goblin Barrel
+Goblin Cage
+Goblin Demolisher
+Goblin Drill
+Goblins
+Golden Knight
+Graveyard
+Guards
+Hero Barbarian Barrel
+Hero Berserker
+Hero Bowler
+Hero Dark Prince
+Hero Goblins
+Hero Knight
+Hero Mini P.E.K.K.A
+Hero Tombstone
+Hero Valkyrie
+Knight
+Lumberjack
+Mega Knight
+Mighty Miner
+Miner
+Mini P.E.K.K.A
+Monk
+Mortar
+P.E.K.K.A
+Prince
+Ronin
+Royal Ghost
+Royal Recruits
+Skeleton Army
+Skeleton Barrel
+Skeleton King
+Skeletons
+Sparky
+Spirit Empress (Ground)
+Suspicious Bush
+The Log
+Tombstone
+Valkyrie
+X-Bow
+
+No targeting (excluded entirely - not a selectable category)
+Clone
+Elixir Collector
+Mirror
