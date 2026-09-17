@@ -313,7 +313,10 @@ likely. Requires at least 2 distinct dimensions to run at all (returns
   existing 285×420 convention) and a tracking comment in
   `download_icons.py` naming exactly which files to delete and re-fetch
   once Supercell's CDN catches up — `download_icon()`'s skip-if-exists
-  behavior means it won't self-heal without that manual nudge.
+  behavior means it won't self-heal without that manual nudge. Resolved
+  2026-09-17: the CDN had caught up, so those two plus the similarly
+  hand-made Evo Elite Barbarians icon were swapped for Supercell's
+  official ones.
 
 ## Data sourcing — Honkai: Star Rail (Phase 8, fourth game)
 
