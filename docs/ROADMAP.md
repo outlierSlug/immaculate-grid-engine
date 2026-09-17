@@ -525,6 +525,31 @@ that the foundation is live and stable.
       prev/current `isGameOver` check misfired on page reload) before it
       shipped.
 
+## Phase 8.5 — Character collection [COMPLETE]
+Pokedoku-style collection with gacha theming — no real randomness, just a
+presentation layer over correct-guess history. See `docs/ARCHITECTURE.md`'s
+"Character collection" section for the full design.
+
+- [x] Backend `GET /api/users/me/collection` — derived live from existing
+      `playedLive` `PuzzleAttempt` rows (no new table, no Neon reload), so
+      it applied retroactively to every existing player; `before=<date>`
+      snapshot for the Daily grid's badges
+- [x] Copies per game: Genshin constellations C0–C6 (Aloy excluded), Star
+      Rail eidolons E0–E6, collected-once for Brawl Stars/Clash Royale;
+      every variant entity (Traveler/Trailblazer forms, Evo/Hero cards) is
+      its own slot
+- [x] Daily grid cell badge (wish icon; green outline when nothing new to
+      gain, tooltip names the unlocked constellation/eidolon)
+- [x] `/:game/collection` page: full roster, grayed-out uncollected tiles,
+      per-game tile styling, filters, info modal, per-item detail modal
+      with first-collected and per-level unlock dates
+- [x] Header Collection pill, profile "Collection x/total" stat +
+      Archive/Collection buttons, summary modal "Collected N new …" line +
+      Archive/Collection buttons, sign-in modal feature line, changelog
+      entry, and help/confirmation copy updated to mention collections
+- [x] Site-wide fix: dragging off a link/image/button could leave Chrome
+      stuck in a native drag (clicks ignored)
+
 ## Phase 9 — Real-time head-to-head (~2-3 weeks)
 Deliberately after a deployed, polished single-player game exists —
 additive feature on a proven foundation, not a prerequisite for having a
@@ -678,9 +703,9 @@ sync here at a glance:
 - Total estimate: ~8-10 weeks part-time, revised upward from the original
   estimate given Phase 3 grew into a full Unlimited-mode build rather than
   a lighter "polish pass."
-- Phases 0-8 complete — GachaGrid is live at gachagrid.com with four
+- Phases 0-8.5 complete — GachaGrid is live at gachagrid.com with four
   games (Genshin Impact, Brawl Stars, Clash Royale, Star Rail), per-game
-  streaks, and a post-Daily summary/share flow. Phase 6's formerly-only
+  streaks, a post-Daily summary/share flow, and a character collection. Phase 6's formerly-only
   unchecked item (deploy backend + frontend + managed Postgres) shipped
   2026-08-24, and everything that followed from actually going live
   (deploy-time infra fixes, a server-side guess-limit security hole

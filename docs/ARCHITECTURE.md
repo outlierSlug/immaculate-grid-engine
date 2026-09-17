@@ -1368,6 +1368,65 @@ implementation of the copypasta, not two that could drift apart, the
 same reasoning already established for the UNIQ formula itself back in
 Phase 6.
 
+## Character collection (Phase 8.5)
+
+A Pokedoku-style collection with gacha theming: correctly guessing an item
+in a **live Daily** adds it to a signed-in player's collection, and each
+later live Daily it's guessed in again adds a copy. No real randomness —
+purely a presentation layer over deterministic correct-guess history.
+
+**Backend — derived live, no new table.** `UserCollectionService` reads
+the same `findBySessionId("user:{id}")` + `isPlayedLive` attempt set
+`UserStatsService` uses and groups `cellAnswers` values (only ever correct
+guesses) by item, keeping the distinct `puzzleDate`s each item was
+collected on. `GET /api/users/me/collection?game=X` returns
+`{itemId, timesCollected, collectedDates}` per item, dates ascending.
+Archive completions (`playedLive=false`) and Unlimited (never records an
+attempt) are excluded for free, and because nothing is stored, every live
+Daily a player completed before the feature existed counted from day one.
+The one consequence: an attempt is only recorded when a Daily *finishes*
+(solved, out of guesses, or given up), so correct guesses in an abandoned
+Daily are never collected. Optional `before=<date>` (exclusive) returns the
+collection as of before that date — the Daily grid's badges request
+`before=<today's puzzleDate>` so they read the same whether or not today's
+own attempt has been submitted yet (no refetch/race after submission).
+
+**Frontend — every game-specific meaning in one file.**
+`config/collection.tsx` holds:
+- `COLLECTION_COPIES`: per-game copy mechanic — Genshin constellations
+  (C0–C6, `genshin:aloy` excluded), Star Rail eidolons (E0–E6), `null` for
+  Brawl Stars/Clash Royale (collected once). Every variant entity is its
+  own slot with its own copies (each Traveler element + gender, each
+  Trailblazer path + gender, Clash Royale Evo/Hero forms), matching how
+  they're guessed.
+- `copiesLevel`/`guessGain`/`collectionGainsMessage`: the shared rules for
+  "what level is this" and "what does this guess add", used by both the
+  grid badge and the summary modal so the two can't disagree.
+- `COLLECTION_TEXT`: every player-facing string for the feature (badge
+  tooltips, collection page labels and info modal, detail modal, summary
+  line, per-game item nouns — characters/brawlers/cards).
+
+**Where it shows up.**
+- *Daily grid* (`PuzzlePage` → `PuzzleGrid`'s new `cornerBadges` slot →
+  `CollectionCellBadge`): top-left wish icon on each correctly-filled cell,
+  full color when the guess gains something (new item, or the next copy —
+  named in the tooltip), green-outlined when there's nothing left to gain.
+  Signed-in live Daily only. The per-game wish icon moved from a
+  `PuzzlePage`-local map to `games.ts`'s `dailyGuessIcon`.
+- *Collection page* (`/:game/collection`, login-gated like Archive; linked
+  from the header, profile game cards, and the summary modal): full roster
+  sorted by rarity, uncollected items grayed out, per-game tile styling
+  (rarity backgrounds + element/class/path corner icons; Clash Royale shows
+  bare card art), one-line names that scroll on hover, and a detail modal
+  per item listing first-collected and per-level unlock dates.
+- *Profile*: a "Collection x/total" stat per game.
+- *PuzzleSummaryModal*: "Collected N new characters and M new
+  constellations" plus Archive/Collection buttons.
+
+**Also shipped alongside:** a site-wide `dragstart` cancel in `main.tsx`
+for links/images/buttons — dragging off a link (e.g. the header's Profile
+menu item) could leave Chrome stuck in a native drag with clicks ignored.
+
 ## Package structure (backend)
  
 ```
@@ -1384,7 +1443,7 @@ com.tonyl.backend
 │                         BrawlStarsGameModule, ClashRoyaleGameModule,
 │                         StarRailGameModule, GameModuleRegistry
 ├── puzzle/             — GridGenerator, PuzzleService, PuzzleClock, PuzzleStatsService,
-│                         UserStatsService
+│                         UserStatsService, UserCollectionService
 └── loader/             — one-time data loaders (CommandLineRunner, profile-gated)
 ```
  
@@ -1582,7 +1641,12 @@ already in that file), not eyeballed, and the pattern for redoing that
 measurement is worth reusing rather than reinventing. `HomePage`, the
 Settings modal's game switcher, and both puzzle routes all read `GAMES`
 generically — nothing else needs a code change, which is the frontend
-half of the backend's own "adding a game costs ~2 files" claim.
+half of the backend's own "adding a game costs ~2 files" claim. For the
+character collection, also add the game to `config/collection.tsx`
+(`COLLECTION_COPIES` and `COLLECTION_TEXT.itemNouns`) and to
+`CollectionPage.tsx`'s per-game tile maps (rarity order/backgrounds,
+corner icons, uncollected style) — TypeScript flags each missing entry,
+since they're all `Record<GameId, …>`.
 
 **Change the site's look.**
 - *Font*: one line, `index.css`'s `--font-sans`, plus the matching Google
