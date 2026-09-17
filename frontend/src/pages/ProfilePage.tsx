@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Navigate, Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../auth/AuthProvider';
-import { fetchUserStats, deleteAccount } from '../api/client';
+import { fetchUserStats, deleteAccount, fetchCollection, fetchItems } from '../api/client';
 import { useAvgUniqueness } from '../hooks/useAvgUniqueness';
 import { GAMES, isValidGameId } from '../config/games';
 import type { UserGameStats } from '../types/puzzle';
@@ -9,6 +9,7 @@ import LoadingSpinner from '../components/LoadingSpinner';
 import ErrorState from '../components/ErrorState';
 import UserAvatar from '../components/UserAvatar';
 import ConfirmModal from '../components/ConfirmModal';
+import { ArchiveIcon, CollectionIcon } from '../components/NavIcons';
 
 interface GameStatsCardProps {
   gameStats: UserGameStats;
@@ -21,6 +22,24 @@ interface GameStatsCardProps {
 // rendering.
 function GameStatsCard({ gameStats }: GameStatsCardProps) {
   const avgUniqueness = useAvgUniqueness(gameStats);
+  const [collectionProgress, setCollectionProgress] = useState<{ collected: number; total: number } | null>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+    Promise.all([fetchItems(gameStats.gameId), fetchCollection(gameStats.gameId)])
+      .then(([roster, entries]) => {
+        if (cancelled) return;
+        const rosterIds = new Set(roster.map((item) => item.id));
+        const collected = entries.filter((entry) => rosterIds.has(entry.itemId)).length;
+        setCollectionProgress({ collected, total: roster.length });
+      })
+      .catch(() => {
+        // Leaves the stat as "—", same as UNIQ Avg while unavailable.
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [gameStats.gameId]);
 
   const game = isValidGameId(gameStats.gameId) ? GAMES[gameStats.gameId] : undefined;
   const windowed = gameStats.puzzles.length > 0 && gameStats.puzzles.length < gameStats.gamesPlayed;
@@ -47,7 +66,7 @@ function GameStatsCard({ gameStats }: GameStatsCardProps) {
         </div>
       </div>
 
-      <div className="w-full grid grid-cols-2 gap-1 text-center pt-3 border-t border-gray-100 dark:border-gray-800">
+      <div className="w-full grid grid-cols-3 gap-1 text-center pt-3 border-t border-gray-100 dark:border-gray-800">
         <div className="flex flex-col items-center">
           <div className="text-xs text-gray-500 dark:text-gray-400">Daily Streak</div>
           <div className="text-xl font-bold tabular-nums flex items-center justify-center gap-1">
@@ -59,6 +78,19 @@ function GameStatsCard({ gameStats }: GameStatsCardProps) {
           <div className="text-xs text-gray-500 dark:text-gray-400">Best Streak</div>
           <div className="text-xl font-bold tabular-nums">{gameStats.maxStreak}</div>
         </div>
+        <div className="flex flex-col items-center">
+          <div className="text-xs text-gray-500 dark:text-gray-400">Collection</div>
+          <div className="text-xl font-bold tabular-nums">
+            {collectionProgress ? (
+              <>
+                {collectionProgress.collected}
+                <span className="text-sm font-semibold text-gray-400 dark:text-gray-500">/{collectionProgress.total}</span>
+              </>
+            ) : (
+              '—'
+            )}
+          </div>
+        </div>
       </div>
 
       {windowed && (
@@ -67,12 +99,23 @@ function GameStatsCard({ gameStats }: GameStatsCardProps) {
         </p>
       )}
 
-      <Link
-        to={`/${gameStats.gameId}/archive`}
-        className="text-sm font-medium text-indigo-600 dark:text-indigo-400 hover:underline"
-      >
-        View {game?.label ?? gameStats.gameId} Archive &rarr;
-      </Link>
+      {/* Same order as the header's nav pills. */}
+      <div className="flex items-center gap-2">
+        <Link
+          to={`/${gameStats.gameId}/archive`}
+          className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border border-gray-300 dark:border-gray-700 text-sm font-semibold text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 hover:border-indigo-400 dark:hover:border-indigo-500 transition"
+        >
+          <ArchiveIcon />
+          Archive
+        </Link>
+        <Link
+          to={`/${gameStats.gameId}/collection`}
+          className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border border-gray-300 dark:border-gray-700 text-sm font-semibold text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 hover:border-indigo-400 dark:hover:border-indigo-500 transition"
+        >
+          <CollectionIcon />
+          Collection
+        </Link>
+      </div>
     </div>
   );
 }
@@ -167,7 +210,7 @@ export default function ProfilePage() {
       {confirmDeleteOpen && (
         <ConfirmModal
           title="Delete your account?"
-          message="This permanently deletes your profile and cannot be undone. All personal profile stats will be lost."
+          message="This permanently deletes your profile and cannot be undone. All personal profile stats and your collection will be lost."
           confirmLabel="Delete Account"
           onConfirm={handleDeleteAccount}
           onCancel={() => setConfirmDeleteOpen(false)}

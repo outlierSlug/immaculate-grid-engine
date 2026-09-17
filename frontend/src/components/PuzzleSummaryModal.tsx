@@ -5,6 +5,8 @@ import { fetchUserStats } from '../api/client';
 import type { UserGameStats } from '../types/puzzle';
 import DiscordPromptBanner from './DiscordPromptBanner';
 import SignInModal from './SignInModal';
+import { ArchiveIcon, CollectionIcon } from './NavIcons';
+import { GAMES, isValidGameId } from '../config/games';
 
 // Always the real production domain, never the request's own origin - same
 // reasoning as ShareResultRow's own SITE_ORIGIN.
@@ -34,6 +36,10 @@ interface PuzzleSummaryModalProps {
   // value PuzzleStatsPanel already shows as "Most Unique") - the share
   // text's "best possible" figure.
   mostUniqueScore: number | null;
+  // "Collected 2 new characters and 1 new constellation" for today's picks
+  // (see collectionGainsMessage) - null when signed out, still loading, or
+  // nothing new was collected.
+  collectionMessage: string | null;
 }
 
 // One-time "you're done" moment for today's Daily, shown automatically on
@@ -57,6 +63,7 @@ export default function PuzzleSummaryModal({
   uniquenessScore,
   uniquenessPercentile,
   mostUniqueScore,
+  collectionMessage,
 }: PuzzleSummaryModalProps) {
   const { user } = useAuth();
   const [gameStats, setGameStats] = useState<UserGameStats | null>(null);
@@ -180,7 +187,7 @@ export default function PuzzleSummaryModal({
               >
                 Login
               </button>{' '}
-              to track games & streak
+              to track games, streaks & your collection
             </p>
           )}
 
@@ -206,6 +213,15 @@ export default function PuzzleSummaryModal({
               </div>
             </div>
           </div>
+
+          {collectionMessage && (
+            <p className="text-center text-balance text-sm font-semibold text-gray-700 dark:text-gray-300">
+              {isValidGameId(gameId) && (
+                <img src={GAMES[gameId].dailyGuessIcon} alt="" className="inline-block w-5 h-5 object-contain mr-1.5 align-text-bottom" />
+              )}
+              {collectionMessage}
+            </p>
+          )}
         </div>
 
         <DiscordPromptBanner />
@@ -268,12 +284,23 @@ export default function PuzzleSummaryModal({
           </button>
 
           {user && (
-            <Link
-              to={`/${gameId}/archive`}
-              className="w-full text-center px-4 py-2.5 rounded-full border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 font-semibold hover:bg-gray-100 dark:hover:bg-gray-800 transition"
-            >
-              View Archive
-            </Link>
+            // Same order as the header's nav pills.
+            <div className="w-full grid grid-cols-2 gap-2">
+              <Link
+                to={`/${gameId}/archive`}
+                className="flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-full border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 font-semibold hover:bg-gray-100 dark:hover:bg-gray-800 transition"
+              >
+                <ArchiveIcon />
+                Archive
+              </Link>
+              <Link
+                to={`/${gameId}/collection`}
+                className="flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-full border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 font-semibold hover:bg-gray-100 dark:hover:bg-gray-800 transition"
+              >
+                <CollectionIcon />
+                Collection
+              </Link>
+            </div>
           )}
         </div>
       </div>

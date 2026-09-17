@@ -6,6 +6,10 @@ import clashRoyaleHero from '../assets/clashroyale/wallpapers/group_champions.pn
 import clashRoyaleLogo from '../assets/clashroyale/Clash_Royale_Logo_cropped.png';
 import starRailHero from '../assets/starrail/wallpapers/Splash_Screen_Second_Closed_Beta_cropped.png';
 import starRailLogo from '../assets/starrail/star_rail_logo.png';
+import intertwinedFateIcon from '../assets/genshin/Item_Intertwined_Fate.webp';
+import starrPinIcon from '../assets/brawlstars/starr_pin.png';
+import luckyDropIcon from '../assets/clashroyale/Item_Lucky_Drop_Common.png';
+import starRailSpecialPassIcon from '../assets/starrail/star_rail_special_pass.webp';
 import type { HeroImage } from '../hooks/useRandomHeroImage';
 
 export const GAMES = {
@@ -60,6 +64,9 @@ export const GAMES = {
     // Plain portrait art with no border of its own - needs this frame for
     // definition against the cell background.
     avatarBorderClass: 'border border-gray-200 dark:border-gray-700',
+    // The game's "wish" currency - Daily's guess counter, and the
+    // collection badge on a newly-collected character's cell.
+    dailyGuessIcon: intertwinedFateIcon,
   },
   starrail: {
     id: 'starrail',
@@ -95,6 +102,7 @@ export const GAMES = {
     avatarAspectClass: 'aspect-square',
     avatarSizeClass: 'h-(--grid-avatar)',
     avatarBorderClass: 'border border-gray-200 dark:border-gray-700',
+    dailyGuessIcon: starRailSpecialPassIcon,
   },
   brawlstars: {
     id: 'brawlstars',
@@ -126,6 +134,7 @@ export const GAMES = {
     // Unlike Clash Royale below, left as-is (not revisited) - not part of
     // this change's scope.
     avatarBorderClass: 'border border-gray-200 dark:border-gray-700',
+    dailyGuessIcon: starrPinIcon,
   },
   clashroyale: {
     id: 'clashroyale',
@@ -179,6 +188,9 @@ export const GAMES = {
     // project's usual thin gray border on top doubled up as a
     // border-within-a-border and visually shrank the art inside it.
     avatarBorderClass: '',
+    // Same icon for Daily and Unlimited - unlike Genshin's premium/standard
+    // wish split, Clash Royale has no obvious two-tier pull currency pair.
+    dailyGuessIcon: luckyDropIcon,
   },
 } as const;
 

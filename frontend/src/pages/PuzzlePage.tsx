@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import { useParams, Navigate, Link } from 'react-router-dom';
-import { fetchTodaysPuzzle, fetchArchivedPuzzle, InvalidArchiveDateError } from '../api/client';
-import type { PuzzleResponse } from '../types/puzzle';
-import { GAMES, isValidGameId, type GameId } from '../config/games';
+import { fetchTodaysPuzzle, fetchArchivedPuzzle, fetchCollection, InvalidArchiveDateError } from '../api/client';
+import type { GridItem, PuzzleResponse } from '../types/puzzle';
+import { GAMES, isValidGameId } from '../config/games';
 import { GAME_HELP_NOTES } from '../config/gameHelpNotes';
 import PuzzleGrid from '../components/PuzzleGrid';
 import GuessInput from '../components/GuessInput';
@@ -11,6 +11,8 @@ import GuessCounter from '../components/GuessCounter';
 import UniquenessScore from '../components/UniquenessScore';
 import PuzzleStatsPanel from '../components/PuzzleStatsPanel';
 import PuzzleSummaryModal from '../components/PuzzleSummaryModal';
+import CollectionCellBadge from '../components/CollectionCellBadge';
+import { collectionGainsMessage } from '../config/collection';
 import ConfirmModal from '../components/ConfirmModal';
 import HelpButton from '../components/HelpButton';
 import HelpModal from '../components/HelpModal';
@@ -19,25 +21,11 @@ import NotFoundPage from './NotFoundPage';
 import { usePuzzleGuesses } from '../hooks/usePuzzleGuesses';
 import { computeLiveUniquenessScore, computeUniquenessPercentile } from '../utils/uniqueness';
 import { useAuth } from '../auth/AuthProvider';
-import intertwinedFateIcon from '../assets/genshin/Item_Intertwined_Fate.webp';
-import starrPinIcon from '../assets/brawlstars/starr_pin.png';
-import luckyDropIcon from '../assets/clashroyale/Item_Lucky_Drop_Common.png';
-import starRailSpecialPassIcon from '../assets/starrail/star_rail_special_pass.webp';
 
 // Daily's guess limit is a fixed genre convention (matches Pokedoku), not a
 // user-facing setting — unlike Unlimited, there is no toggle and no
 // settings surface for it.
 const DAILY_GUESS_LIMIT = 9;
-
-const DAILY_GUESS_ICON: Partial<Record<GameId, string>> = {
-  genshin: intertwinedFateIcon,
-  brawlstars: starrPinIcon,
-  // One icon for both Daily and Unlimited, same as Brawl Stars - unlike
-  // Genshin's premium/standard wish split, Clash Royale doesn't have an
-  // obvious two-tier "pull currency" pair to mirror that with.
-  clashroyale: luckyDropIcon,
-  starrail: starRailSpecialPassIcon,
-};
 
 export default function PuzzlePage() {
   const { game, date } = useParams();
@@ -213,6 +201,48 @@ export default function PuzzlePage() {
     || (guessesRemaining !== null && guessesRemaining < DAILY_GUESS_LIMIT);
   const remoteCompletion = !!user && !hasLocalProgress && !!puzzleStats?.you;
 
+  // itemId -> copies collected before today's puzzle, for the live Daily's
+  // collection badges. Signed-in live Daily only - Archive and anonymous
+  // play never collect anything, so they get no badges at all.
+  // Stored with the key it was fetched for, so a result from a different
+  // game/date/account is simply ignored rather than needing a reset.
+  const [fetchedCollection, setFetchedCollection] = useState<{ key: string; counts: Map<string, number> } | null>(null);
+  const userId = user?.id;
+  const puzzleDate = puzzle?.puzzleDate;
+  const collectionKey = validGame && !isArchive && userId && puzzleDate ? `${validGame}:${puzzleDate}:${userId}` : null;
+  const priorCollection = fetchedCollection && fetchedCollection.key === collectionKey ? fetchedCollection.counts : null;
+  useEffect(() => {
+    if (!collectionKey || !validGame || !puzzleDate) return;
+    let cancelled = false;
+    fetchCollection(validGame, puzzleDate)
+      .then((entries) => {
+        if (!cancelled) {
+          setFetchedCollection({ key: collectionKey, counts: new Map(entries.map((e) => [e.itemId, e.timesCollected])) });
+        }
+      })
+      .catch(() => {
+        // Badges are decoration - a failed fetch just means none are shown.
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [collectionKey, validGame, puzzleDate]);
+
+  function collectionBadges(cells: Record<string, GridItem>, obtained: boolean) {
+    if (!priorCollection || !validGame) return undefined;
+    return Object.fromEntries(
+      Object.entries(cells).map(([cellKey, item]) => [
+        cellKey,
+        <CollectionCellBadge
+          game={validGame}
+          itemId={item.id}
+          priorTimesCollected={priorCollection.get(item.id) ?? 0}
+          obtained={obtained}
+        />,
+      ])
+    );
+  }
+
   function scrollToStats() {
     setSummaryModalOpen(false);
     statsRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -325,7 +355,7 @@ export default function PuzzlePage() {
         <p>
           This puzzle is archived. Your picks still count toward this puzzle's community pick-rate
           data, but if it's not being played on its original day, it won't count toward your personal
-          games-played or average-score stats.
+          games-played or average-score stats, or your collection.
         </p>
       ) : (
         <>
@@ -384,11 +414,12 @@ export default function PuzzlePage() {
           onCellClick={() => {}}
           locked
           cellStats={puzzleStats.perCell}
+          cornerBadges={collectionBadges(remoteFilledCells, true)}
           avatarShapeClass={avatarShapeClass} avatarAspectClass={avatarAspectClass} avatarSizeClass={avatarSizeClass} avatarBorderClass={avatarBorderClass}
           sideColumn={[
             <UniquenessScore key="uniq" score={remoteUniquenessScore} percentile={remoteUniquenessPercentile} youFinished />,
             <Score key="score" correct={puzzleStats.you.score} total={totalCells} />,
-            <GuessCounter key="guesses" remaining={Math.max(DAILY_GUESS_LIMIT - puzzleStats.you.guessesUsed, 0)} iconSrc={DAILY_GUESS_ICON[validGame]} gaveUp={puzzleStats.you.gaveUp} />,
+            <GuessCounter key="guesses" remaining={Math.max(DAILY_GUESS_LIMIT - puzzleStats.you.guessesUsed, 0)} iconSrc={GAMES[validGame].dailyGuessIcon} gaveUp={puzzleStats.you.gaveUp} />,
           ]}
         />
 
@@ -435,11 +466,12 @@ export default function PuzzlePage() {
         locked={isGameOver}
         feedback={feedback}
         cellStats={puzzleStats?.perCell}
+        cornerBadges={collectionBadges(filledCells, isGameOver)}
         avatarShapeClass={avatarShapeClass} avatarAspectClass={avatarAspectClass} avatarSizeClass={avatarSizeClass} avatarBorderClass={avatarBorderClass}
         sideColumn={[
           <UniquenessScore key="uniq" score={liveUniquenessScore} percentile={uniquenessPercentile} youFinished={isGameOver} />,
           <Score key="score" correct={correctCount} total={totalCells} feedback={feedback} />,
-          <GuessCounter key="guesses" remaining={guessesRemaining} iconSrc={DAILY_GUESS_ICON[validGame]} feedback={feedback} gaveUp={gaveUp} />,
+          <GuessCounter key="guesses" remaining={guessesRemaining} iconSrc={GAMES[validGame].dailyGuessIcon} feedback={feedback} gaveUp={gaveUp} />,
         ]}
       />
 
@@ -521,6 +553,11 @@ export default function PuzzlePage() {
           uniquenessScore={liveUniquenessScore}
           uniquenessPercentile={uniquenessPercentile}
           mostUniqueScore={puzzleStats?.mostUniqueScore ?? null}
+          collectionMessage={
+            priorCollection
+              ? collectionGainsMessage(validGame, Object.values(filledCells).map((item) => item.id), priorCollection)
+              : null
+          }
         />
       )}
 

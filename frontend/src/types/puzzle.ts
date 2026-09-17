@@ -182,6 +182,16 @@ export interface CompletedDateInfo {
   score: number;
 }
 
+// One collected character/card - the live Daily puzzles (by date, ascending)
+// it was a correct answer in. See config/collection.ts for what that means
+// per game: collectedDates[0] is when it was first collected (C0/E0),
+// collectedDates[n] when copy level n was reached.
+export interface CollectionEntry {
+  itemId: string;
+  timesCollected: number;
+  collectedDates: string[];
+}
+
 // Organized by game, not combined - see UserGameStats.
 export interface UserStatsResponse {
   games: UserGameStats[];

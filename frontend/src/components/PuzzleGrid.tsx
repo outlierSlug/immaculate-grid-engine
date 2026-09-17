@@ -39,6 +39,9 @@ interface PuzzleGridProps {
   // completely unchanged.
   revealedAnswerCounts?: Record<string, number>;
   onRevealedCellClick?: (row: number, col: number) => void;
+  // Top-left corner content for filled cells, keyed by "row-col" - the
+  // grid just positions it (the live Daily's collection badge today).
+  cornerBadges?: Record<string, ReactNode>;
   // Per-game shape mask for the filled-cell portrait - see the
   // avatarShapeClass comment in config/games.ts for why this varies
   // per game instead of being a fixed rounded-full.
@@ -66,6 +69,7 @@ export default function PuzzleGrid({
   cellStats,
   revealedAnswerCounts,
   onRevealedCellClick,
+  cornerBadges,
   avatarShapeClass,
   avatarAspectClass,
   avatarSizeClass,
@@ -170,6 +174,11 @@ export default function PuzzleGrid({
               >
                 {filled ? (
                   <>
+                    {cornerBadges?.[cellKey] != null && (
+                      <span className="absolute top-1 left-1 inline-flex text-(length:--grid-avatar-label)">
+                        {cornerBadges[cellKey]}
+                      </span>
+                    )}
                     {rarityPercent != null && (
                       <span className="absolute top-1 right-1 inline-flex items-center justify-center px-1.5 py-0.5 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-100 font-semibold text-(length:--grid-avatar-label) leading-tight">
                         {formatPercent(rarityPercent)}

@@ -18,6 +18,7 @@ export interface ChangelogEntry {
 }
 
 export const CHANGELOG: ChangelogEntry[] = [
+  { date: '2026-09-16', text: 'Added Collection feature.' },
   {
     date: '2026-09-05',
     text: 'Created the GachaGrid Discord server.',

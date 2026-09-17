@@ -159,8 +159,8 @@ export default function UnlimitedPage() {
         Generate as many grids as you want with your preferred parameters.
       </p>
       <p>
-        Unlimited is a practice/sandbox mode. Puzzles are <b>not</b> saved or persisted and nothing here ever counts toward your personal stats or
-        community pick-rate data.
+        Unlimited is a practice/sandbox mode. Puzzles are <b>not</b> saved or persisted and nothing here ever counts toward your personal stats,
+        your collection, or community pick-rate data.
       </p>
       {GAME_HELP_NOTES[validGame]?.map((note, i) => <p key={i}>{note}</p>)}
     </HelpModal>

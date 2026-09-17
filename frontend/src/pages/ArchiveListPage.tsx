@@ -216,7 +216,7 @@ export default function ArchiveListPage() {
           <p>
             <span className="font-semibold text-gray-500 dark:text-gray-500">COMPLETED</span> in gray
             means you finished it later via Archive. It still contributes to that puzzle's community
-            pick-rate data, but not to your personal games-played or average-score stats.
+            pick-rate data, but not to your personal games-played or average-score stats, or your collection.
           </p>
           <p>Accessing the Archive requires signing in.</p>
         </HelpModal>

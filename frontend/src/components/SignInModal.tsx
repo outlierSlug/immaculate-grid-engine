@@ -18,6 +18,7 @@ function GoogleLogo() {
 
 const FEATURES = [
   'Track your stats across Daily Puzzles',
+  'Collect characters from every game',
   'Play archived puzzles from the last 30 days',
 ];
 

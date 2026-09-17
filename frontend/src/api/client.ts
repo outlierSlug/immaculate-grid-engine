@@ -11,6 +11,7 @@ import type {
   UserResponse,
   UserStatsResponse,
   CompletedDateInfo,
+  CollectionEntry,
   AdminPuzzleCandidateResponse,
   AdminPuzzleEvaluationResponse,
   AdminPuzzleResponse,
@@ -259,6 +260,18 @@ export async function fetchCompletedDates(game: string): Promise<CompletedDateIn
   const res = await fetch(`${BASE_URL}/users/me/completed-dates?game=${game}`, { headers: authHeaders() });
   if (!res.ok) {
     throw new Error(`Failed to fetch completed dates: ${res.status}`);
+  }
+  return res.json();
+}
+
+// `before` (exclusive, YYYY-MM-DD) returns the collection as it stood before
+// that date - the live Daily grid uses it so its badges don't shift once
+// today's own attempt gets recorded.
+export async function fetchCollection(game: string, before?: string): Promise<CollectionEntry[]> {
+  const beforeParam = before ? `&before=${before}` : '';
+  const res = await fetch(`${BASE_URL}/users/me/collection?game=${game}${beforeParam}`, { headers: authHeaders() });
+  if (!res.ok) {
+    throw new Error(`Failed to fetch your collection: ${res.status}`);
   }
   return res.json();
 }

@@ -24,6 +24,10 @@ export function shortDateLabel(dateIso: string): string {
   return new Date(dateIso + 'T00:00:00').toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
 }
 
+export function longDateLabel(dateIso: string): string {
+  return new Date(dateIso + 'T00:00:00').toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' });
+}
+
 // Daily resets at midnight America/Los_Angeles (see backend PuzzleClock),
 // not the viewer's own local midnight - this computes that instant as a
 // real Date so a countdown works correctly regardless of the viewer's own

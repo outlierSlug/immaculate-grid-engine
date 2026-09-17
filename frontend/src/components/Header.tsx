@@ -6,6 +6,7 @@ import BrandMark from './BrandMark';
 import ConfirmModal from './ConfirmModal';
 import SignInModal from './SignInModal';
 import UserAvatar from './UserAvatar';
+import { ArchiveIcon, CollectionIcon } from './NavIcons';
 import { useAuth } from '../auth/AuthProvider';
 
 export default function Header() {
@@ -16,6 +17,7 @@ export default function Header() {
   const location = useLocation();
   const isUnlimited = location.pathname.endsWith('/unlimited');
   const isArchive = location.pathname.includes('/archive');
+  const isCollection = location.pathname.endsWith('/collection');
   const { user, logout } = useAuth();
   const [userMenuOpen, setUserMenuOpen] = useState(false);
   const [confirmLogoutOpen, setConfirmLogoutOpen] = useState(false);
@@ -68,15 +70,15 @@ export default function Header() {
                   type="button"
                   onClick={() => navigate(`/${activeGame}`)}
                   className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-semibold transition cursor-pointer ${
-                    !isUnlimited && !isArchive
-                      ? 'bg-indigo-100 text-indigo-700 dark:bg-indigo-500/30 dark:text-indigo-200'
+                    !isUnlimited && !isArchive && !isCollection
+                      ?'bg-indigo-100 text-indigo-700 dark:bg-indigo-500/30 dark:text-indigo-200'
                       : 'text-gray-500 hover:bg-gray-50 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-gray-200'
                   }`}
                 >
                   <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2} aria-hidden="true">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
                   </svg>
-                  <span className="hidden sm:inline">Daily</span>
+                  <span className="hidden md:inline">Daily</span>
                 </button>
                 <button
                   type="button"
@@ -90,7 +92,7 @@ export default function Header() {
                   <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2} aria-hidden="true">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
                   </svg>
-                  <span className="hidden sm:inline">Unlimited</span>
+                  <span className="hidden md:inline">Unlimited</span>
                 </button>
                 {/* Archive is account-only - hidden rather than shown as a
                     dead-end that just bounces a logged-out click back here. */}
@@ -104,10 +106,23 @@ export default function Header() {
                         : 'text-gray-500 hover:bg-gray-50 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-gray-200'
                     }`}
                   >
-                    <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2} aria-hidden="true">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z" />
-                    </svg>
-                    <span className="hidden sm:inline">Archive</span>
+                    <ArchiveIcon />
+                    <span className="hidden md:inline">Archive</span>
+                  </button>
+                )}
+                {/* Account-only for the same reason as Archive above. */}
+                {user && (
+                  <button
+                    type="button"
+                    onClick={() => navigate(`/${activeGame}/collection`)}
+                    className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-semibold transition cursor-pointer ${
+                      isCollection
+                        ? 'bg-indigo-100 text-indigo-700 dark:bg-indigo-500/30 dark:text-indigo-200'
+                        : 'text-gray-500 hover:bg-gray-50 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-gray-200'
+                    }`}
+                  >
+                    <CollectionIcon />
+                    <span className="hidden md:inline">Collection</span>
                   </button>
                 )}
               </div>
@@ -203,7 +218,7 @@ export default function Header() {
       {confirmLogoutOpen && (
         <ConfirmModal
           title="Log out?"
-          message="You'll need to sign in again to access your Archive and stats."
+          message="You'll need to sign in again to access your Archive, stats, and collection."
           confirmLabel="Log out"
           onConfirm={() => {
             setConfirmLogoutOpen(false);

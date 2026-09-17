@@ -680,6 +680,12 @@ export function formatCategoryLabel(label: string, game: GameId): string {
   return label;
 }
 
+// Bare icon lookup for a category value, for places that show the icon
+// without the chip itself (the collection page's tiles).
+export function categoryIcon(label: string, game: GameId): string | undefined {
+  return ICONS_BY_GAME[game][label];
+}
+
 export default function CategoryChip({ label, game }: CategoryChipProps) {
   const icon = ICONS_BY_GAME[game][label] ?? (game === 'genshin' ? genshinAscensionIcon(label) : undefined);
   // On a slow connection these (up to 6 per puzzle, all requested at once)
