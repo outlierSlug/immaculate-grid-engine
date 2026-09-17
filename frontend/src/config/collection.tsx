@@ -1,5 +1,29 @@
 import type { ReactNode } from 'react';
 import type { GameId } from './games';
+import type { GridItem } from '../types/puzzle';
+
+import stellaFortuna5Icon from '../assets/genshin/constellations/Item_Stella_Fortuna_5_star.webp';
+import stellaFortuna4Icon from '../assets/genshin/constellations/Item_Stella_Fortuna_4_star.webp';
+import masterlessStellaFortunaIcon from '../assets/genshin/constellations/Item_Masterless_Stella_Fortuna.webp';
+import masterlessStarglitterIcon from '../assets/genshin/constellations/Item_Masterless_Starglitter.webp';
+import primogemIcon from '../assets/genshin/constellations/Item_Primogem.webp';
+import memoryRovingGalesIcon from '../assets/genshin/constellations/Item_Memory_of_Roving_Gales.webp';
+import memoryImmovableCrystalsIcon from '../assets/genshin/constellations/Item_Memory_of_Immovable_Crystals.webp';
+import memoryVioletFlashIcon from '../assets/genshin/constellations/Item_Memory_of_Violet_Flash.webp';
+import memoryFlourishingGreenIcon from '../assets/genshin/constellations/Item_Memory_of_Flourishing_Green.webp';
+import memoryRunningStreamIcon from '../assets/genshin/constellations/Item_Memory_of_Running_Stream.webp';
+import memoryPiercingFrostIcon from '../assets/genshin/constellations/Item_Memory_of_Piercing_Frost.webp';
+import blazingFlintOreIcon from '../assets/genshin/constellations/Item_Blazing_Flint_Ore.webp';
+
+import eidolon5Icon from '../assets/starrail/eidolons/Item_Eidolon_5_star.webp';
+import eidolon4Icon from '../assets/starrail/eidolons/Item_Eidolon_4_star.webp';
+import shadowDestructionIcon from '../assets/starrail/eidolons/Item_Shadow_of_Destruction.webp';
+import shadowPreservationIcon from '../assets/starrail/eidolons/Item_Shadow_of_Preservation.webp';
+import shadowHarmonyIcon from '../assets/starrail/eidolons/Item_Shadow_of_Harmony.webp';
+import shadowRemembranceIcon from '../assets/starrail/eidolons/Item_Shadow_of_Remembrance.webp';
+import shadowElationIcon from '../assets/starrail/eidolons/Item_Shadow_of_Elation.webp';
+import undyingStarlightIcon from '../assets/starrail/eidolons/Item_Undying_Starlight.webp';
+import stellarJadeIcon from '../assets/starrail/eidolons/Item_Stellar_Jade.webp';
 
 // Per-game duplicate-copy mechanic for the character collection. The
 // backend only counts how many live Dailies an item was collected in (see
@@ -16,6 +40,93 @@ export const COLLECTION_COPIES: Record<GameId, CopiesConfig | null> = {
   // Aloy is the one Genshin character with no constellations at all.
   genshin: { label: 'Constellation', prefix: 'C', max: 6, excludedItemIds: new Set(['genshin:aloy']) },
   starrail: { label: 'Eidolon', prefix: 'E', max: 6, excludedItemIds: new Set() },
+  brawlstars: null,
+  clashroyale: null,
+};
+
+// The in-game item that activates a constellation: a character's own Stella
+// Fortuna, except the Traveler, whose constellations take an element-specific
+// Memory (Pyro's is Blazing Flint Ore, not a Memory at all).
+const GENSHIN_MEMORIES: Record<string, CopyItem> = {
+  Anemo: { src: memoryRovingGalesIcon, name: 'Memory of Roving Gales' },
+  Geo: { src: memoryImmovableCrystalsIcon, name: 'Memory of Immovable Crystals' },
+  Electro: { src: memoryVioletFlashIcon, name: 'Memory of Violet Flash' },
+  Dendro: { src: memoryFlourishingGreenIcon, name: 'Memory of Flourishing Green' },
+  Hydro: { src: memoryRunningStreamIcon, name: 'Memory of Running Stream' },
+  Cryo: { src: memoryPiercingFrostIcon, name: 'Memory of Piercing Frost' },
+  // The one element whose Traveler constellations don't take a Memory.
+  Pyro: { src: blazingFlintOreIcon, name: 'Blazing Flint Ore' },
+};
+
+const STELLA_FORTUNA_5: CopyItem = { src: stellaFortuna5Icon, name: 'Stella Fortuna' };
+const STELLA_FORTUNA_4: CopyItem = { src: stellaFortuna4Icon, name: 'Stella Fortuna' };
+const MASTERLESS_STELLA_FORTUNA: CopyItem = { src: masterlessStellaFortunaIcon, name: 'Masterless Stella Fortuna' };
+const MASTERLESS_STARGLITTER: CopyItem = { src: masterlessStarglitterIcon, name: 'Masterless Starglitter' };
+const PRIMOGEM: CopyItem = { src: primogemIcon, name: 'Primogem' };
+
+// Star Rail's equivalents: a rarity-specific Eidolon item for everyone, and
+// a path-specific Shadow for the Trailblazer's own eidolons. March 7th is an
+// ordinary 4-star despite her forms, so she takes the Eidolon item.
+const STARRAIL_SHADOWS: Record<string, CopyItem> = {
+  Destruction: { src: shadowDestructionIcon, name: 'Shadow of Destruction' },
+  Preservation: { src: shadowPreservationIcon, name: 'Shadow of Preservation' },
+  Harmony: { src: shadowHarmonyIcon, name: 'Shadow of Harmony' },
+  Remembrance: { src: shadowRemembranceIcon, name: 'Shadow of Remembrance' },
+  Elation: { src: shadowElationIcon, name: 'Shadow of Elation' },
+};
+
+const EIDOLON_5: CopyItem = { src: eidolon5Icon, name: 'Eidolon' };
+const EIDOLON_4: CopyItem = { src: eidolon4Icon, name: 'Eidolon' };
+const UNDYING_STARLIGHT: CopyItem = { src: undyingStarlightIcon, name: 'Undying Starlight' };
+const STELLAR_JADE: CopyItem = { src: stellarJadeIcon, name: 'Stellar Jade' };
+
+const isGenshinTraveler = (item: GridItem) => item.id.startsWith('genshin:traveler-');
+const isStarRailTrailblazer = (item: GridItem) => item.id.startsWith('starrail:trailblazer-');
+const isFiveStar = (item: GridItem) => String(item.attributes.rarity) === '5';
+
+// The in-game item a duplicate actually hands you, shown on the live Daily's
+// cell badge (and named in the detail modal). `unlock` is the material that
+// activates the next copy level; `surplus` is what a duplicate yields once
+// the item is already maxed. Either may return null, which falls back to the
+// game's wish icon - so a game can configure only the cases it has a real
+// item for.
+export interface CopyItem {
+  src: string;
+  name: string;
+}
+
+export interface CopyItems {
+  unlock: (item: GridItem) => CopyItem | null;
+  surplus: (item: GridItem) => CopyItem | null;
+}
+
+export const COLLECTION_COPY_ITEMS: Record<GameId, CopyItems | null> = {
+  genshin: {
+    unlock: (item) =>
+      isGenshinTraveler(item)
+        ? GENSHIN_MEMORIES[String(item.attributes.element)] ?? null
+        : isFiveStar(item)
+          ? STELLA_FORTUNA_5
+          : STELLA_FORTUNA_4,
+    // Past C6 a 5-star's duplicates become Masterless Stella Fortuna and a
+    // 4-star's Masterless Starglitter. The Traveler can't exceed C6 in-game
+    // at all, so its variants get a Primogem as an easter egg.
+    surplus: (item) =>
+      isGenshinTraveler(item) ? PRIMOGEM : isFiveStar(item) ? MASTERLESS_STELLA_FORTUNA : MASTERLESS_STARGLITTER,
+  },
+  starrail: {
+    unlock: (item) =>
+      isStarRailTrailblazer(item)
+        ? STARRAIL_SHADOWS[String(item.attributes.path)] ?? null
+        : isFiveStar(item)
+          ? EIDOLON_5
+          : EIDOLON_4,
+    // Star Rail has no Masterless tier - past E6 every duplicate just becomes
+    // Undying Starlight, with Stellar Jade for the Trailblazer variants (same
+    // easter egg as Genshin's Primogem, since the Trailblazer can't pass E6).
+    surplus: (item) => (isStarRailTrailblazer(item) ? STELLAR_JADE : UNDYING_STARLIGHT),
+  },
+  // No duplicate mechanic in these games, so no duplicate item either.
   brawlstars: null,
   clashroyale: null,
 };
@@ -96,6 +207,9 @@ export const COLLECTION_TEXT = {
     copiesHeading: (label: string) => `${label}s`,
     copyObtained: (date: string) => `Obtained ${date}`,
     copyLocked: 'Not yet unlocked',
+    // Duplicates collected past max copies, which grant no further level -
+    // listed right under the last one as its own row.
+    extraCopies: (count: number) => `x${count}`,
     noCopies: (label: string) => `No ${label.toLowerCase()}s for this character.`,
   },
 };

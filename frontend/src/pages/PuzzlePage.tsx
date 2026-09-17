@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useParams, Navigate, Link } from 'react-router-dom';
-import { fetchTodaysPuzzle, fetchArchivedPuzzle, fetchCollection, InvalidArchiveDateError } from '../api/client';
+import { fetchTodaysPuzzle, fetchArchivedPuzzle, fetchCollection, fetchItems, InvalidArchiveDateError } from '../api/client';
 import type { GridItem, PuzzleResponse } from '../types/puzzle';
 import { GAMES, isValidGameId } from '../config/games';
 import { GAME_HELP_NOTES } from '../config/gameHelpNotes';
@@ -206,18 +206,30 @@ export default function PuzzlePage() {
   // play never collect anything, so they get no badges at all.
   // Stored with the key it was fetched for, so a result from a different
   // game/date/account is simply ignored rather than needing a reset.
-  const [fetchedCollection, setFetchedCollection] = useState<{ key: string; counts: Map<string, number> } | null>(null);
+  // The roster is fetched alongside it because a filled cell's own GridItem
+  // carries no attributes (a guess response only returns id/name/image, and
+  // a restored remote completion even less) - and the badge needs rarity and
+  // element to pick the right constellation/eidolon material.
+  const [fetchedCollection, setFetchedCollection] = useState<{
+    key: string;
+    counts: Map<string, number>;
+    roster: Map<string, GridItem>;
+  } | null>(null);
   const userId = user?.id;
   const puzzleDate = puzzle?.puzzleDate;
   const collectionKey = validGame && !isArchive && userId && puzzleDate ? `${validGame}:${puzzleDate}:${userId}` : null;
-  const priorCollection = fetchedCollection && fetchedCollection.key === collectionKey ? fetchedCollection.counts : null;
+  const priorCollection = fetchedCollection && fetchedCollection.key === collectionKey ? fetchedCollection : null;
   useEffect(() => {
     if (!collectionKey || !validGame || !puzzleDate) return;
     let cancelled = false;
-    fetchCollection(validGame, puzzleDate)
-      .then((entries) => {
+    Promise.all([fetchCollection(validGame, puzzleDate), fetchItems(validGame)])
+      .then(([entries, items]) => {
         if (!cancelled) {
-          setFetchedCollection({ key: collectionKey, counts: new Map(entries.map((e) => [e.itemId, e.timesCollected])) });
+          setFetchedCollection({
+            key: collectionKey,
+            counts: new Map(entries.map((e) => [e.itemId, e.timesCollected])),
+            roster: new Map(items.map((item) => [item.id, item])),
+          });
         }
       })
       .catch(() => {
@@ -235,8 +247,11 @@ export default function PuzzlePage() {
         cellKey,
         <CollectionCellBadge
           game={validGame}
-          itemId={item.id}
-          priorTimesCollected={priorCollection.get(item.id) ?? 0}
+          // The roster entry, which has the attributes this cell's own copy
+          // lacks; the cell's copy is only a fallback for an item the roster
+          // somehow doesn't list.
+          item={priorCollection.roster.get(item.id) ?? item}
+          priorTimesCollected={priorCollection.counts.get(item.id) ?? 0}
           obtained={obtained}
         />,
       ])
@@ -555,7 +570,7 @@ export default function PuzzlePage() {
           mostUniqueScore={puzzleStats?.mostUniqueScore ?? null}
           collectionMessage={
             priorCollection
-              ? collectionGainsMessage(validGame, Object.values(filledCells).map((item) => item.id), priorCollection)
+              ? collectionGainsMessage(validGame, Object.values(filledCells).map((item) => item.id), priorCollection.counts)
               : null
           }
         />

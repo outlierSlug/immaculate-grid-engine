@@ -2,7 +2,7 @@
 
 A companion to `docs/ARCHITECTURE.md`, which is comprehensive but long. This is the short version: what the system is, how its pieces fit together, and what to know before changing it. Read this first; go to `ARCHITECTURE.md` for the exhaustive version of any section.
 
-**Stats**: ~4,600 lines of backend Java (83 files), ~10,400 lines of frontend TypeScript (72 files, 41 components). Four games live: Genshin Impact, Honkai: Star Rail, Brawl Stars, Clash Royale.
+**Stats**: ~4,600 lines of backend Java (83 files), ~10,600 lines of frontend TypeScript (72 files, 41 components). Four games live: Genshin Impact, Honkai: Star Rail, Brawl Stars, Clash Royale.
 
 ## What it is
 
@@ -49,7 +49,7 @@ Spring Security exists for exactly one thing: the Google OAuth2 authorization-co
 
 A signed-in player's per-game **streak** (current/max consecutive Daily days) follows the same principle — computed live in `UserStatsService` from existing `PuzzleAttempt` rows, not a stored counter. A one-time `PuzzleSummaryModal` surfaces it (plus a "Share Your Grid" flow) right after a Daily completes.
 
-The **character collection** is also derived live, in `UserCollectionService`: every item a signed-in player got right in a live Daily (`cellAnswers` on `playedLive` attempts) is collected, and each additional live Daily it's guessed in adds a copy — Genshin constellations C0–C6 (Aloy excluded), Star Rail eidolons E0–E6, collected-once for Brawl Stars/Clash Royale. No new table, so it applied retroactively to existing players. The backend only returns per-item collection dates (`GET /api/users/me/collection?game=&before=`); what a copy *means* per game, plus every string the feature shows, lives in [`config/collection.tsx`](frontend/src/config/collection.tsx). `before` lets the Daily grid read the collection as it stood before today's puzzle, so its per-cell badges don't shift once today's attempt is recorded.
+The **character collection** is also derived live, in `UserCollectionService`: every item a signed-in player got right in a live Daily (`cellAnswers` on `playedLive` attempts) is collected, and each additional live Daily it's guessed in adds a copy — Genshin constellations C0–C6 (Aloy excluded), Star Rail eidolons E0–E6, collected-once for Brawl Stars/Clash Royale. No new table, so it applied retroactively to existing players. The backend only returns per-item collection dates (`GET /api/users/me/collection?game=&before=`); what a copy *means* per game, plus every string the feature shows, lives in [`config/collection.tsx`](frontend/src/config/collection.tsx). `before` lets the Daily grid read the collection as it stood before today's puzzle, so its per-cell badges don't shift once today's attempt is recorded. The badges lean on the games' own gacha vocabulary: a duplicate shows the item that duplicate would really hand you — the character's Stella Fortuna or Eidolon material, the Traveler's element-specific Memory or the Trailblazer's path Shadow, and Masterless Stella Fortuna or Undying Starlight once already maxed.
 
 ## Frontend structure
 

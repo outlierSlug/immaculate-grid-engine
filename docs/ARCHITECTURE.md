@@ -1405,23 +1405,52 @@ own attempt has been submitted yet (no refetch/race after submission).
 - `copiesLevel`/`guessGain`/`collectionGainsMessage`: the shared rules for
   "what level is this" and "what does this guess add", used by both the
   grid badge and the summary modal so the two can't disagree.
+- `COLLECTION_COPY_ITEMS`: per-game, the in-game item a duplicate guess
+  actually hands you — `unlock(item)` for the material that activates the
+  next level, `surplus(item)` for what a duplicate yields once already at
+  max. Genshin: Stella Fortuna by rarity, the Traveler's element-specific
+  Memory (Pyro's is Blazing Flint Ore), then Masterless Stella Fortuna
+  (5★) / Masterless Starglitter (4★) past C6. Star Rail: an Eidolon item
+  by rarity, the Trailblazer's path-specific Shadow, then Undying
+  Starlight past E6 (Star Rail has no Masterless tier). Both games give
+  their Traveler/Trailblazer variants Primogem/Stellar Jade past max as an
+  easter egg, since neither can exceed C6/E6 in-game. Either resolver may
+  return `null`, which falls back to that game's wish icon — which is how
+  Brawl Stars/Clash Royale (`null` config) keep their old badge.
 - `COLLECTION_TEXT`: every player-facing string for the feature (badge
   tooltips, collection page labels and info modal, detail modal, summary
   line, per-game item nouns — characters/brawlers/cards).
 
 **Where it shows up.**
 - *Daily grid* (`PuzzlePage` → `PuzzleGrid`'s new `cornerBadges` slot →
-  `CollectionCellBadge`): top-left wish icon on each correctly-filled cell,
-  full color when the guess gains something (new item, or the next copy —
-  named in the tooltip), green-outlined when there's nothing left to gain.
-  Signed-in live Daily only. The per-game wish icon moved from a
-  `PuzzlePage`-local map to `games.ts`'s `dailyGuessIcon`.
+  `CollectionCellBadge`): a top-left badge on each correctly-filled cell
+  showing what the guess hands you — the game's wish icon for a new item,
+  or that duplicate's own `COLLECTION_COPY_ITEMS` icon (the tooltip names
+  the copy level either way). The green outline marks "nothing left to
+  gain" only where the icon can't say so itself, i.e. where the game has
+  no distinct surplus item. Signed-in live Daily only. The per-game wish
+  icon moved from a `PuzzlePage`-local map to `games.ts`'s
+  `dailyGuessIcon`.
+  - A filled cell's own `GridItem` carries **no attributes** (a guess
+    response returns only id/name/image; a restored remote completion is
+    rebuilt from `cellAnswers` + `perCell` answers, which have no more
+    than that). Since the badge needs rarity and element to pick the right
+    material, `PuzzlePage` fetches the roster alongside the collection
+    snapshot and passes the badge the roster entry, not the cell's copy.
+    Anything else keyed off a filled cell's attributes needs the same
+    treatment.
 - *Collection page* (`/:game/collection`, login-gated like Archive; linked
   from the header, profile game cards, and the summary modal): full roster
   sorted by rarity, uncollected items grayed out, per-game tile styling
-  (rarity backgrounds + element/class/path corner icons; Clash Royale shows
+  (rarity backgrounds + an element/class corner icon; Clash Royale shows
   bare card art), one-line names that scroll on hover, and a detail modal
-  per item listing first-collected and per-level unlock dates.
+  per item listing first-collected and per-level unlock dates. The
+  copy-level number square is gold only at max (C6/E6) and white-on-black
+  below it, as on both games' own character screens. The detail modal's
+  per-level rows are icon'd with that character's activation material, and
+  duplicates past max are the next row in the same list (e.g. "Masterless
+  Stella Fortuna ×2") — deliberately a row rather than its own section, so
+  a future collection-wide total of each surplus item can sum them.
 - *Profile*: a "Collection x/total" stat per game.
 - *PuzzleSummaryModal*: "Collected N new characters and M new
   constellations" plus Archive/Collection buttons.
@@ -1646,7 +1675,8 @@ Settings modal's game switcher, and both puzzle routes all read `GAMES`
 generically — nothing else needs a code change, which is the frontend
 half of the backend's own "adding a game costs ~2 files" claim. For the
 character collection, also add the game to `config/collection.tsx`
-(`COLLECTION_COPIES` and `COLLECTION_TEXT.itemNouns`) and to
+(`COLLECTION_COPIES`, `COLLECTION_COPY_ITEMS` and
+`COLLECTION_TEXT.itemNouns`) and to
 `CollectionPage.tsx`'s per-game tile maps (rarity order/backgrounds,
 corner icons, uncollected style) — TypeScript flags each missing entry,
 since they're all `Record<GameId, …>`.

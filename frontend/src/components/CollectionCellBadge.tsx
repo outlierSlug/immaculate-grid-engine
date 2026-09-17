@@ -1,9 +1,10 @@
 import { GAMES, type GameId } from '../config/games';
-import { COLLECTION_COPIES, COLLECTION_TEXT, guessGain } from '../config/collection';
+import { COLLECTION_COPIES, COLLECTION_COPY_ITEMS, COLLECTION_TEXT, guessGain } from '../config/collection';
+import type { GridItem } from '../types/puzzle';
 
 interface CollectionCellBadgeProps {
   game: GameId;
-  itemId: string;
+  item: GridItem;
   // Copies collected before today's puzzle - never includes today's, so the
   // badge reads the same before and after this attempt is recorded.
   priorTimesCollected: number;
@@ -16,15 +17,29 @@ interface CollectionCellBadgeProps {
 // follows the image's transparency, unlike a border.
 const OUTLINE_FILTER = ['1px 0', '-1px 0', '0 1px', '0 -1px'].map((o) => `drop-shadow(${o} 0 #22c55e)`).join(' ');
 
-// Top-left corner badge on a correctly-filled live Daily cell - always the
-// game's wish icon. Full color when this guess gains something (a new
-// character, or the next constellation/eidolon - named in the tooltip);
+// Top-left corner badge on a correctly-filled live Daily cell, showing what
+// this guess hands you: the game's wish icon for a new character, and for a
+// duplicate, the item that duplicate yields in-game where the game has one
+// (see COLLECTION_COPY_ICONS) - a Stella Fortuna for the constellation it
+// unlocks, or a Masterless Stella Fortuna once already at C6. It's
 // green-outlined when there's nothing left to gain (already collected in a
 // no-copies game, or already at max copies).
-export default function CollectionCellBadge({ game, itemId, priorTimesCollected, obtained }: CollectionCellBadgeProps) {
+export default function CollectionCellBadge({ game, item, priorTimesCollected, obtained }: CollectionCellBadgeProps) {
   const copies = COLLECTION_COPIES[game];
-  const gain = guessGain(game, itemId, priorTimesCollected);
-  const nothingToGain = gain.kind === 'none';
+  const gain = guessGain(game, item.id, priorTimesCollected);
+  const copyItems = COLLECTION_COPY_ITEMS[game];
+
+  const copyItem =
+    gain.kind === 'copy'
+      ? copyItems?.unlock(item)
+      : gain.kind === 'none' && gain.atMaxCopies
+        ? copyItems?.surplus(item)
+        : null;
+  const iconSrc = copyItem?.src ?? GAMES[game].dailyGuessIcon;
+  // The green outline is what marks "nothing to gain" when the icon alone
+  // can't - it's redundant (and busy) on a game whose surplus item has its
+  // own distinct icon, like Genshin's Masterless Stella Fortuna.
+  const nothingToGain = gain.kind === 'none' && !copyItem;
 
   let title: string;
   if (gain.kind === 'new') {
@@ -41,7 +56,7 @@ export default function CollectionCellBadge({ game, itemId, priorTimesCollected,
   return (
     <span title={title} aria-label={title} className="inline-flex">
       <img
-        src={GAMES[game].dailyGuessIcon}
+        src={iconSrc}
         alt=""
         className={`h-[1.9em] w-[1.9em] object-contain ${nothingToGain ? '' : 'drop-shadow-sm'}`}
         style={nothingToGain ? { filter: OUTLINE_FILTER } : undefined}

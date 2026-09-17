@@ -3,7 +3,7 @@ import { Navigate, useParams } from 'react-router-dom';
 import { useAuth } from '../auth/AuthProvider';
 import { fetchCollection, fetchItems } from '../api/client';
 import { GAMES, isValidGameId, type GameId } from '../config/games';
-import { COLLECTION_COPIES, COLLECTION_TEXT, copiesLevel } from '../config/collection';
+import { COLLECTION_COPIES, COLLECTION_COPY_ITEMS, COLLECTION_TEXT, copiesLevel } from '../config/collection';
 import { longDateLabel } from '../utils/dateIso';
 import { categoryIcon } from '../components/CategoryChip';
 import type { CollectionEntry, GridItem } from '../types/puzzle';
@@ -54,12 +54,13 @@ const RARITY_TILE_CLASS: Record<GameId, Record<string, string>> = {
 // Which attributes' icons sit in a tile's top corners - the element on
 // Genshin/Star Rail cards (as in the in-game Character Archive), the class
 // for Brawl Stars. The element icon is also what tells Genshin's Traveler
-// variants apart (they share art); Star Rail adds the path so the
-// Trailblazer variants read clearly too. Clash Royale's card art stands on
+// variants apart (they share art), and it does the same job for Star Rail's
+// Trailblazer and March 7th forms, since each of their paths comes with its
+// own element - so no path icon is needed. Clash Royale's card art stands on
 // its own, so it gets none.
 const CORNER_ATTRIBUTES: Record<GameId, { left?: string; right?: string }> = {
   genshin: { left: 'element' },
-  starrail: { left: 'element', right: 'path' },
+  starrail: { left: 'element' },
   brawlstars: { left: 'brawler_class' },
   clashroyale: {},
 };
@@ -138,10 +139,18 @@ function TileName({ name, className, scrolling }: { name: string; className: str
   );
 }
 
-// Gold constellation/eidolon number square, as on the in-game character
-// select screen - also used (grayed) for locked levels in the detail modal.
-const COPY_MARKER_CLASS =
-  'rounded-sm bg-[#f0c96b] ring-1 ring-[#a9772a] text-[#5a3a10] font-extrabold leading-none flex items-center justify-center';
+// Constellation/eidolon number square, as on the in-game character select
+// screen: white on black up to C5/E5, and gold only at max (C6/E6), which
+// is what makes a maxed character stand out in-game.
+const COPY_MARKER_BASE = 'rounded-sm ring-1 font-extrabold leading-none flex items-center justify-center';
+const COPY_MARKER_MAX_CLASS = 'bg-[#f0c96b] ring-[#a9772a] text-[#5a3a10]';
+const COPY_MARKER_CLASS = 'bg-[#26262c]/85 ring-black/40 text-white';
+// Locked levels in the detail modal's list.
+const COPY_MARKER_LOCKED_CLASS = `${COPY_MARKER_BASE} bg-gray-100 dark:bg-gray-800 ring-transparent text-gray-400 dark:text-gray-500`;
+
+function copyMarkerClass(level: number, max: number): string {
+  return `${COPY_MARKER_BASE} ${level >= max ? COPY_MARKER_MAX_CLASS : COPY_MARKER_CLASS}`;
+}
 
 interface TileArtProps {
   game: GameId;
@@ -153,6 +162,7 @@ interface TileArtProps {
 // collected), corner attribute icons, and the copy-level marker. Shared by
 // the grid tiles and the detail modal.
 function TileArt({ game, item, entry }: TileArtProps) {
+  const copies = COLLECTION_COPIES[game];
   const level = entry ? copiesLevel(game, item.id, entry.timesCollected) : null;
   const leftIcon = attributeIcon(item, CORNER_ATTRIBUTES[game].left, game);
   const rightIcon = attributeIcon(item, CORNER_ATTRIBUTES[game].right, game);
@@ -172,8 +182,13 @@ function TileArt({ game, item, entry }: TileArtProps) {
       />
       {leftIcon && <img src={leftIcon} alt="" className="absolute top-1 left-1 w-4 h-4 sm:w-5 sm:h-5 object-contain drop-shadow" />}
       {rightIcon && <img src={rightIcon} alt="" className="absolute top-1 right-1 w-4 h-4 sm:w-5 sm:h-5 object-contain drop-shadow" />}
-      {level !== null && level >= 1 && (
-        <span className={`absolute bottom-1 left-1 min-w-4 h-4 sm:min-w-5 sm:h-5 px-0.5 text-[10px] sm:text-xs shadow ${COPY_MARKER_CLASS}`}>
+      {level !== null && level >= 1 && copies && (
+        <span
+          className={`absolute bottom-1 left-1 min-w-4 h-4 sm:min-w-5 sm:h-5 px-0.5 text-[10px] sm:text-xs shadow ${copyMarkerClass(
+            level,
+            copies.max,
+          )}`}
+        >
           {level}
         </span>
       )}
@@ -225,6 +240,13 @@ function CollectionDetailModal({ game, item, entry, onClose }: CollectionDetailM
   const text = COLLECTION_TEXT.detail;
   const copies = COLLECTION_COPIES[game];
   const hasCopies = copies !== null && !copies.excludedItemIds.has(item.id);
+  // The activation material for this character's constellations/eidolons, if
+  // the game has one - shown per level instead of a bare number square.
+  const copyItems = COLLECTION_COPY_ITEMS[game];
+  const unlockItem = hasCopies ? copyItems?.unlock(item) ?? null : null;
+  const surplusItem = hasCopies ? copyItems?.surplus(item) ?? null : null;
+  // Duplicates past max copies - what a "prestige" mechanic would build on.
+  const extraCopies = copies && entry ? Math.max(0, entry.timesCollected - (copies.max + 1)) : 0;
 
   useEffect(() => {
     function handleEscape(e: KeyboardEvent) {
@@ -294,13 +316,20 @@ function CollectionDetailModal({ game, item, entry, onClose }: CollectionDetailM
                 const date = entry?.collectedDates[level];
                 return (
                   <li key={level} className="flex items-center gap-2.5 text-sm">
-                    <span
-                      className={`w-6 h-6 text-xs ${
-                        date ? COPY_MARKER_CLASS : 'rounded-sm bg-gray-100 dark:bg-gray-800 text-gray-400 dark:text-gray-500 font-extrabold leading-none flex items-center justify-center'
-                      }`}
-                    >
-                      {level}
-                    </span>
+                    {unlockItem ? (
+                      <img
+                        src={unlockItem.src}
+                        alt={unlockItem.name}
+                        title={unlockItem.name}
+                        className={`w-6 h-6 object-contain ${date ? '' : 'grayscale opacity-40'}`}
+                      />
+                    ) : (
+                      <span
+                        className={`w-6 h-6 text-xs ${date ? copyMarkerClass(level, copies.max) : COPY_MARKER_LOCKED_CLASS}`}
+                      >
+                        {level}
+                      </span>
+                    )}
                     <span className={date ? 'font-medium' : 'text-gray-400 dark:text-gray-500'}>
                       {copies.prefix}
                       {level}
@@ -311,6 +340,17 @@ function CollectionDetailModal({ game, item, entry, onClose }: CollectionDetailM
                   </li>
                 );
               })}
+
+              {/* Duplicates past the last level, as the next row in the same
+                  list - a per-character tally of the surplus item, which a
+                  collection-wide total could later sum up. */}
+              {extraCopies > 0 && surplusItem && (
+                <li className="flex items-center gap-2.5 text-sm">
+                  <img src={surplusItem.src} alt={surplusItem.name} className="w-6 h-6 object-contain" />
+                  <span className="font-medium">{surplusItem.name}</span>
+                  <span className="ml-auto tabular-nums font-semibold">{text.extraCopies(extraCopies)}</span>
+                </li>
+              )}
             </ul>
           </div>
         )}
