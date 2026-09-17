@@ -119,9 +119,21 @@ export function usePuzzleGuesses(puzzle: PuzzleResponse | null, options: UsePuzz
   // re-requested (see trackStats doc comment above).
   const [puzzleStats, setPuzzleStats] = useState<PuzzleStatsResponse | null>(null);
 
+  // Which puzzle the stats request has come back for, success or failure -
+  // stored as the id rather than a boolean so a new puzzle id makes it stale
+  // on its own, with nothing to reset. `statsSettled` below is what lets a
+  // caller wait for "do I already have a completed attempt?" to be answered
+  // before it commits to rendering a board; a failed fetch still settles, so
+  // nothing can wait forever on it.
+  const [statsFetchedFor, setStatsFetchedFor] = useState<string | null>(null);
+
   async function refreshStats(puzzleId: string) {
-    const stats = await fetchPuzzleStats(puzzleId, getSessionId());
-    setPuzzleStats(stats);
+    try {
+      const stats = await fetchPuzzleStats(puzzleId, getSessionId());
+      setPuzzleStats(stats);
+    } finally {
+      setStatsFetchedFor(puzzleId);
+    }
   }
 
   // Tracks the outgoing puzzle's identity across a puzzle.id change, so the
@@ -495,5 +507,6 @@ export function usePuzzleGuesses(puzzle: PuzzleResponse | null, options: UsePuzz
     startedAt,
     endedAt,
     puzzleStats,
+    statsSettled: !!puzzle && statsFetchedFor === puzzle.id,
   };
 }

@@ -1010,6 +1010,18 @@ interactive render, so the two paths share one definition). The same
 split is why a filled cell's `GridItem` carries no attributes — see the
 collection badge's note in the Phase 8.5 section.
 
+Which of the two renders applies isn't known until the stats request
+lands, since `puzzleStats.you` is the only evidence of a completed
+attempt. So a signed-in player with no local progress waits on the
+hook's `statsSettled` (the puzzle id the stats request came back for,
+success *or* failure — a boolean would need resetting per puzzle, and a
+failed fetch must not hang the page) rather than being shown a board
+that's about to be replaced. Restored localStorage progress wins that
+race on its own, being a read rather than a request, so continuing on
+the device you played on is never held up. Before this, reloading a
+finished Daily on a second device flashed an empty playable grid first
+(fixed 2026-09-17).
+
 **"Keep Playing"**: after a non-solved game-over (out of guesses or gave
 up, with cells still empty — never offered after a full solve), an
 optional button unlocks the board for further exploration. Fills made

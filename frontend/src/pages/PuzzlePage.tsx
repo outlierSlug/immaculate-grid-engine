@@ -157,6 +157,7 @@ export default function PuzzlePage() {
     feedback,
     guessError,
     puzzleStats,
+    statsSettled,
   } = usePuzzleGuesses(puzzle, {
     guessLimit: DAILY_GUESS_LIMIT,
     // Opens the one-time PuzzleSummaryModal - see UsePuzzleGuessesOptions'
@@ -337,6 +338,25 @@ export default function PuzzlePage() {
   }
 
   if (!puzzle) {
+    return (
+      <main className="flex items-center justify-center min-h-[60vh]">
+        <LoadingSpinner label={isArchive ? 'Loading archived puzzle...' : "Loading today's puzzle..."} size="lg" />
+      </main>
+    );
+  }
+
+  // Whether this account already finished this puzzle is only knowable once
+  // the stats request lands (that's where `puzzleStats.you` comes from), so
+  // rendering a board before then means a signed-in player can watch an
+  // empty, playable grid get replaced by their own completed one. It shows
+  // up most on a second device - a phone, when the puzzle was played on a
+  // desktop - since there's no local progress there to restore either.
+  // Restored local progress beats it to the first commit (it's a
+  // localStorage read, not a request), so anyone continuing on the device
+  // they played on isn't held behind this; and the stats request follows
+  // the puzzle request to an already-warm backend, so the wait is one
+  // round-trip. A failed stats fetch still settles, so this can't hang.
+  if (user && !hasLocalProgress && !statsSettled) {
     return (
       <main className="flex items-center justify-center min-h-[60vh]">
         <LoadingSpinner label={isArchive ? 'Loading archived puzzle...' : "Loading today's puzzle..."} size="lg" />
