@@ -263,6 +263,54 @@ export default function PuzzlePage() {
     statsRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
+  // Both the Summary button and the modal it opens are shared by the two
+  // finished-board renders below - the one this device just played, and a
+  // completion it only knows about from the server (same account, another
+  // device). They used to live in the interactive render alone, so opening
+  // a Daily you'd finished elsewhere had no way back to the summary.
+  // Archive plays never get a summary at all.
+  const summaryButton = !isArchive ? (
+    <button
+      type="button"
+      onClick={() => setSummaryModalOpen(true)}
+      className="px-5 py-2.5 rounded-full border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 font-semibold hover:bg-gray-100 dark:hover:bg-gray-800 hover:border-indigo-400 dark:hover:border-indigo-500 transition cursor-pointer"
+    >
+      Summary
+    </button>
+  ) : null;
+
+  // Everything that differs between those two renders is passed in; the rest
+  // comes from the puzzle itself, so the two can't drift apart.
+  function summaryModal(you: {
+    score: number;
+    correctCellKeys: Set<string>;
+    uniquenessScore: number | null;
+    uniquenessPercentile: number | null;
+    collectedItemIds: string[];
+  }) {
+    if (!summaryModalOpen || isArchive || !puzzle || !validGame) return null;
+    return (
+      <PuzzleSummaryModal
+        onClose={() => setSummaryModalOpen(false)}
+        onViewStats={scrollToStats}
+        gameId={validGame}
+        gameLabel={GAMES[validGame].label}
+        puzzleDate={puzzle.puzzleDate}
+        score={you.score}
+        totalCells={totalCells}
+        correctCellKeys={you.correctCellKeys}
+        rowCount={puzzle.rowLabels.length}
+        colCount={puzzle.colLabels.length}
+        uniquenessScore={you.uniquenessScore}
+        uniquenessPercentile={you.uniquenessPercentile}
+        mostUniqueScore={puzzleStats?.mostUniqueScore ?? null}
+        collectionMessage={
+          priorCollection ? collectionGainsMessage(validGame, you.collectedItemIds, priorCollection.counts) : null
+        }
+      />
+    );
+  }
+
   if (!validGame) {
     return <NotFoundPage />;
   }
@@ -438,18 +486,30 @@ export default function PuzzlePage() {
           ]}
         />
 
-        <PuzzleStatsPanel
-          puzzleStats={puzzleStats}
-          rowLabels={puzzle.rowLabels}
-          colLabels={puzzle.colLabels}
-          yourUniquenessScore={remoteUniquenessScore}
-          avatarShapeClass={avatarShapeClass} avatarAspectClass={avatarAspectClass} avatarSizeClass={avatarSizeClass} avatarBorderClass={avatarBorderClass}
-          puzzleDate={puzzle.puzzleDate}
-          gameId={validGame}
-          gameLabel={GAMES[validGame].label}
-          isArchive={isArchive}
-          correctCellKeys={new Set(Object.keys(remoteFilledCells))}
-        />
+        {summaryButton}
+
+        <div ref={statsRef} className="w-full flex flex-col items-center">
+          <PuzzleStatsPanel
+            puzzleStats={puzzleStats}
+            rowLabels={puzzle.rowLabels}
+            colLabels={puzzle.colLabels}
+            yourUniquenessScore={remoteUniquenessScore}
+            avatarShapeClass={avatarShapeClass} avatarAspectClass={avatarAspectClass} avatarSizeClass={avatarSizeClass} avatarBorderClass={avatarBorderClass}
+            puzzleDate={puzzle.puzzleDate}
+            gameId={validGame}
+            gameLabel={GAMES[validGame].label}
+            isArchive={isArchive}
+            correctCellKeys={new Set(Object.keys(remoteFilledCells))}
+          />
+        </div>
+
+        {summaryModal({
+          score: puzzleStats.you.score,
+          correctCellKeys: new Set(Object.keys(remoteFilledCells)),
+          uniquenessScore: remoteUniquenessScore,
+          uniquenessPercentile: remoteUniquenessPercentile,
+          collectedItemIds: Object.values(puzzleStats.you.cellAnswers),
+        })}
         {helpModal}
       </main>
     );

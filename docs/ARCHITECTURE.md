@@ -996,6 +996,20 @@ the date (e.g. `"genshin:2026-08-14"`) — a stale prior-day entry simply
 lives under a different, never-again-matched key, so no manual
 date-comparison/invalidation logic is needed.
 
+**Two finished-board renders.** `PuzzlePage` draws a completed Daily two
+different ways, and the difference is *which device played it*: the
+interactive render (this browser has localStorage progress) and a
+**remote-completion** render (signed in, no local progress, but the
+server already has an attempt — `remoteCompletion`), which rebuilds the
+board from `puzzleStats.you.cellAnswers` and returns early. Anything
+that belongs on a finished board has to be added to **both**, or it
+silently disappears for anyone opening today's puzzle on a second device
+or in a cleared browser. That's exactly how the Summary button and its
+modal went missing there (fixed 2026-09-17 by hoisting both out of the
+interactive render, so the two paths share one definition). The same
+split is why a filled cell's `GridItem` carries no attributes — see the
+collection badge's note in the Phase 8.5 section.
+
 **"Keep Playing"**: after a non-solved game-over (out of guesses or gave
 up, with cells still empty — never offered after a full solve), an
 optional button unlocks the board for further exploration. Fills made
