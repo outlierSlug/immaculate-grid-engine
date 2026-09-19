@@ -18,6 +18,10 @@ export interface ChangelogEntry {
 }
 
 export const CHANGELOG: ChangelogEntry[] = [
+  {
+    date: '2026-09-18',
+    text: 'GachaGrid was unavailable for about six hours from 6:00pm to midnight on 2026-09-18 due to a database outage. Service has since been fully restored.',
+  },
   { date: '2026-09-16', text: 'Added Collection feature.' },
   {
     date: '2026-09-05',
