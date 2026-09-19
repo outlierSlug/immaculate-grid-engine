@@ -579,6 +579,20 @@ Manual setup (not code, done once through each platform's dashboard):
    local machine (kill it once the console logs "Loaded N grid items" for
    both games) - safe to re-run any time, `GridItemRepository.save` upserts
    on id rather than duplicating rows.
+   **Neon bills compute time, not queries**, and only suspends a compute
+   endpoint once *nothing is connected to it*. Hikari's defaults keep
+   `maximum-pool-size` connections open indefinitely, so the endpoint never
+   idles and bills ~24h/day no matter how little traffic there is - that is
+   what exhausted the free-tier allowance on 2026-09-19, taking the site
+   down (every DB-backed endpoint 500'd after exactly 30s, Hikari's default
+   `connection-timeout`, while `/api/health` stayed 200 because it touches
+   no DB - a useful way to tell "database unreachable" from "backend down").
+   `application.properties` now sets `minimum-idle=0` (the one that
+   matters), a short `idle-timeout`, a small pool, and a 10s
+   `connection-timeout`; never add `hikari.keepalive-time`, which pings
+   idle connections and would undo all of it. Anything else that touches
+   the DB on a timer has the same effect - point uptime monitors at
+   `/api/health`, not at a puzzle endpoint.
 2. Render web service from `render.yaml`, real values for every env var it
    declares, custom domain `api.gachagrid.com`.
 3. Cloudflare Workers project connected to the repo (dashboard: Workers &
