@@ -299,7 +299,8 @@ stretch of feature work before Phase 6's sole remaining item
       random anonymous UUID, a sequential user id is guessable — closed
       by having `PuzzleStatsService` reject any `"user:"`-prefixed
       `sessionId` that doesn't match the caller's own resolved identity.
-- [x] Archive mode (`ArchiveListPage`, `/:game/archive/:date`) —
+- [x] Archive mode (`/:game/archive/:date`; the date list began as
+      `ArchiveListPage`, replaced by `ArchiveModal` in 2026-09) —
       signed-in players can replay any of the last 30 days' Daily
       puzzles, reusing `PuzzleService.getOrCreateForDate` (a
       generalization of the existing `getOrCreateTodaysPuzzle`).
@@ -562,6 +563,55 @@ demoable product.
 - [ ] Reconnect handling
 - [ ] Rate limiting + server-side used-answer tracking on /guess (unsafe
       to defer once an opponent is involved, unlike single-player)
+
+## Phase 9.5 — Operations: monitoring & data retention
+Prompted by the 2026-09-19 outage: Neon's free-tier compute allowance was
+exhausted by an idle Hikari pool (fixed in `application.properties` -
+`minimum-idle=0` lets the endpoint suspend), and the site was down ~6
+hours on the evening of 09-18 before anyone noticed. Neither item below
+is urgent - nothing is near a limit now - but both close gaps that
+outage exposed. Bugfix-on-recurrence is an acceptable posture here.
+
+**Alerting** (cause-side first - it prevents rather than detects):
+- [ ] Neon usage alert at ~70% of the compute allowance (dashboard, no
+      code). This alone would have prevented the 09-19 outage.
+- [ ] Render failure/deploy notifications (dashboard, no code).
+- [ ] Readiness endpoint + external uptime service. `/api/health` is
+      deliberately DB-free so Render's frequent polling can't keep Neon
+      awake - which also means it stayed green through a total outage
+      (liveness, not readiness). The fix is *not* to make it query the
+      DB: instead have the app **remember** the outcome of real queries
+      (last success, last failure, consecutive failures) and expose that
+      at `/api/health/db`, so an external poller detects an outage in
+      minutes at zero compute cost. No signal under zero traffic, which
+      is fine - the usage alert covers the cause. ~60 lines: tracker
+      component, failure hook in `ApiExceptionHandler`, success hook in
+      a request filter. Alternative if that feels like too much: poll
+      `/api/puzzle/today` hourly instead - no code, but ~1h/day of
+      compute and hour-scale detection.
+
+**Retention** (nothing in this system ever deletes anything - there are
+no `@Scheduled` tasks at all):
+- [ ] Drop Unlimited puzzles older than ~30 days, plus their
+      `puzzle_guess_counts` rows (Unlimited never records attempts, so
+      there's no personal history to lose). Every generation persists a
+      `puzzles` row with its full `cellSolutions` forever: ~0.9 KB each,
+      5,770 rows / ~5 MB in local dev alone.
+- [ ] Clear expired `login_codes` in the same job (locally all 97 rows
+      are expired and still present); `user_sessions` has a 30-day TTL
+      that nothing enforces by deletion.
+- [ ] **Daily rows must never be touched** - their `cellSolutions` is the
+      permanent answer key behind Archive and every historical stat.
+      There are **no foreign keys on `puzzles`** (verified against
+      `pg_constraint`), so nothing in the schema will stop a bad DELETE -
+      every protection lives in the code. Require two independent
+      signals to agree: `mode = 'UNLIMITED'` **and** `id LIKE
+      '%:unlimited:%'` (Daily ids are `{game}:{date}`, Unlimited are
+      `{game}:unlimited:{uuid}`). That predicate fails safe - an
+      unexpected or NULL mode is skipped, never deleted. Plus: a test
+      asserting Daily rows survive the job, a test asserting a NULL-mode
+      row survives, a per-run delete cap so a logic error can't clear the
+      table in one pass, and a logged count per run.
 
 ## Phase 10 — Scale / advanced features
 - [x] ~~Streaks~~ — shipped in Phase 8 as per-game Daily streaks, ahead of

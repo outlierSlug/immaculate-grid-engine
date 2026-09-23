@@ -427,7 +427,7 @@ export default function CollectionPage() {
     <main className="flex flex-col items-center gap-5 py-8 px-4 motion-safe:animate-[page-in_350ms_ease-out]">
       <div className="text-center">
         <div className="flex items-center justify-center gap-2">
-          {/* Invisible mirror of the HelpButton, same as ArchiveListPage - keeps
+          {/* Invisible mirror of the HelpButton - keeps
               the title centered instead of shifted left by a right-only icon. */}
           <div className="invisible" aria-hidden="true">
             <HelpButton onClick={() => {}} label="" />

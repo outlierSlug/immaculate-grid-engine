@@ -5,7 +5,6 @@ import ScrollToTop from './components/ScrollToTop';
 import HomePage from './pages/HomePage';
 import PuzzlePage from './pages/PuzzlePage';
 import UnlimitedPage from './pages/UnlimitedPage';
-import ArchiveListPage from './pages/ArchiveListPage';
 import CollectionPage from './pages/CollectionPage';
 import ProfilePage from './pages/ProfilePage';
 import AuthCallbackPage from './pages/AuthCallbackPage';
@@ -42,7 +41,9 @@ function App() {
         <Route path="/admin" element={<AdminPage />} />
         <Route path="/:game" element={<PuzzlePage />} />
         <Route path="/:game/unlimited" element={<UnlimitedPage />} />
-        <Route path="/:game/archive" element={<ArchiveListPage />} />
+        {/* Renders the Daily page with the Archive modal already open, so
+            every existing link to this URL keeps working. */}
+        <Route path="/:game/archive" element={<PuzzlePage />} />
         <Route path="/:game/collection" element={<CollectionPage />} />
         {/* Reuses PuzzlePage itself (via the optional :date param) rather
             than a separate component - see PuzzlePage's isArchive branch. */}

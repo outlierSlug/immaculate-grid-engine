@@ -15,6 +15,8 @@ const SITE_ORIGIN = 'https://gachagrid.com';
 interface PuzzleSummaryModalProps {
   onClose: () => void;
   onViewStats: () => void;
+  // Closes this modal and opens the Archive over the same board.
+  onOpenArchive: () => void;
   gameId: string;
   gameLabel: string;
   puzzleDate: string;
@@ -52,6 +54,7 @@ interface PuzzleSummaryModalProps {
 export default function PuzzleSummaryModal({
   onClose,
   onViewStats,
+  onOpenArchive,
   gameId,
   gameLabel,
   puzzleDate,
@@ -286,13 +289,18 @@ export default function PuzzleSummaryModal({
           {user && (
             // Same order as the header's nav pills.
             <div className="w-full grid grid-cols-2 gap-2">
-              <Link
-                to={`/${gameId}/archive`}
-                className="flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-full border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 font-semibold hover:bg-gray-100 dark:hover:bg-gray-800 transition"
+              {/* Opens the Archive over this same finished board instead of
+                  navigating - the Archive is a modal on the puzzle page now,
+                  so routing to /archive would just re-render the page you're
+                  already on. */}
+              <button
+                type="button"
+                onClick={onOpenArchive}
+                className="flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-full border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 font-semibold hover:bg-gray-100 dark:hover:bg-gray-800 transition cursor-pointer"
               >
                 <ArchiveIcon />
                 Archive
-              </Link>
+              </button>
               <Link
                 to={`/${gameId}/collection`}
                 className="flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-full border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 font-semibold hover:bg-gray-100 dark:hover:bg-gray-800 transition"

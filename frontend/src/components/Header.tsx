@@ -6,7 +6,7 @@ import BrandMark from './BrandMark';
 import ConfirmModal from './ConfirmModal';
 import SignInModal from './SignInModal';
 import UserAvatar from './UserAvatar';
-import { ArchiveIcon, CollectionIcon } from './NavIcons';
+import { CollectionIcon } from './NavIcons';
 import { useAuth } from '../auth/AuthProvider';
 
 export default function Header() {
@@ -94,23 +94,14 @@ export default function Header() {
                   </svg>
                   <span className="hidden md:inline">Unlimited</span>
                 </button>
-                {/* Archive is account-only - hidden rather than shown as a
-                    dead-end that just bounces a logged-out click back here. */}
-                {user && (
-                  <button
-                    type="button"
-                    onClick={() => navigate(`/${activeGame}/archive`)}
-                    className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-semibold transition cursor-pointer ${
-                      isArchive
-                        ? 'bg-indigo-100 text-indigo-700 dark:bg-indigo-500/30 dark:text-indigo-200'
-                        : 'text-gray-500 hover:bg-gray-50 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-gray-200'
-                    }`}
-                  >
-                    <ArchiveIcon />
-                    <span className="hidden md:inline">Archive</span>
-                  </button>
-                )}
-                {/* Account-only for the same reason as Archive above. */}
+                {/* Archive deliberately isn't here: these pills are modes
+                    (which game am I playing, and how), while the Archive
+                    picks *which day* of the Daily - a parameter of Daily,
+                    not a sibling of it. It lives as a modal on the puzzle
+                    page itself, which also keeps this row to three items at
+                    mobile widths. */}
+                {/* Account-only - hidden rather than shown as a dead-end
+                    that just bounces a logged-out click back here. */}
                 {user && (
                   <button
                     type="button"

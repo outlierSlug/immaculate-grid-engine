@@ -1,6 +1,6 @@
 // Local calendar date, not toISOString() (always UTC) - the two disagree for
 // hours every day depending on the viewer's time zone and time of day, the
-// same off-by-one class of bug ArchiveListPage's own toLocalDateString
+// same off-by-one class of bug ArchiveModal's own toLocalDateString
 // exists to avoid. Shared here since more than one admin date picker needs
 // the same today/tomorrow/±1-day arithmetic.
 export function toLocalDateString(d: Date): string {

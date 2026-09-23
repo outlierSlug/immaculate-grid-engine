@@ -17,9 +17,9 @@ function GoogleLogo() {
 }
 
 const FEATURES = [
+  'Play archived puzzles from the last 30 days',
   'Track your stats across Daily Puzzles',
   'Collect characters from every game',
-  'Play archived puzzles from the last 30 days',
 ];
 
 export default function SignInModal({ onClose }: SignInModalProps) {

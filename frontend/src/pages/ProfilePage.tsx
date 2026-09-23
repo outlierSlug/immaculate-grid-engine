@@ -3,15 +3,19 @@ import { Navigate, Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../auth/AuthProvider';
 import { fetchUserStats, deleteAccount, fetchCollection, fetchItems } from '../api/client';
 import { useAvgUniqueness } from '../hooks/useAvgUniqueness';
-import { GAMES, isValidGameId } from '../config/games';
+import { GAMES, isValidGameId, type GameId } from '../config/games';
 import type { UserGameStats } from '../types/puzzle';
 import LoadingSpinner from '../components/LoadingSpinner';
 import ErrorState from '../components/ErrorState';
 import UserAvatar from '../components/UserAvatar';
 import ConfirmModal from '../components/ConfirmModal';
 import { ArchiveIcon, CollectionIcon } from '../components/NavIcons';
+import ArchiveModal from '../components/ArchiveModal';
 
 interface GameStatsCardProps {
+  // Set by the card's Archive button; the page owns the modal itself so
+  // only one can ever be open across the four game cards.
+  onOpenArchive: (game: GameId) => void;
   gameStats: UserGameStats;
 }
 
@@ -20,7 +24,7 @@ interface GameStatsCardProps {
 // effect on the page) so each game's fan-out of per-puzzle /stats fetches
 // runs independently and one game's data doesn't block another's from
 // rendering.
-function GameStatsCard({ gameStats }: GameStatsCardProps) {
+function GameStatsCard({ gameStats, onOpenArchive }: GameStatsCardProps) {
   const avgUniqueness = useAvgUniqueness(gameStats);
   const [collectionProgress, setCollectionProgress] = useState<{ collected: number; total: number } | null>(null);
 
@@ -101,13 +105,20 @@ function GameStatsCard({ gameStats }: GameStatsCardProps) {
 
       {/* Same order as the header's nav pills. */}
       <div className="flex items-center gap-2">
-        <Link
-          to={`/${gameStats.gameId}/archive`}
-          className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border border-gray-300 dark:border-gray-700 text-sm font-semibold text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 hover:border-indigo-400 dark:hover:border-indigo-500 transition"
+        {/* Opens the Archive right here rather than routing to
+            /:game/archive first - that navigation rendered the puzzle
+            page's short loading state between two tall pages, so the
+            sticky footer visibly jumped up and back before the board
+            arrived. Picking a date from the modal then goes straight to
+            that date, one navigation instead of two. */}
+        <button
+          type="button"
+          onClick={() => game && onOpenArchive(game.id)}
+          className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border border-gray-300 dark:border-gray-700 text-sm font-semibold text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 hover:border-indigo-400 dark:hover:border-indigo-500 transition cursor-pointer"
         >
           <ArchiveIcon />
           Archive
-        </Link>
+        </button>
         <Link
           to={`/${gameStats.gameId}/collection`}
           className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border border-gray-300 dark:border-gray-700 text-sm font-semibold text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 hover:border-indigo-400 dark:hover:border-indigo-500 transition"
@@ -126,6 +137,7 @@ export default function ProfilePage() {
   const [games, setGames] = useState<UserGameStats[] | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [confirmDeleteOpen, setConfirmDeleteOpen] = useState(false);
+  const [archiveGame, setArchiveGame] = useState<GameId | null>(null);
   const [deleting, setDeleting] = useState(false);
   const [deleteError, setDeleteError] = useState<string | null>(null);
 
@@ -188,7 +200,7 @@ export default function ProfilePage() {
       {!error && games && games.length > 0 && (
         <div className="flex flex-col items-center gap-4 border-t border-gray-200 dark:border-gray-800 pt-6 w-full">
           {games.map((gameStats) => (
-            <GameStatsCard key={gameStats.gameId} gameStats={gameStats} />
+            <GameStatsCard key={gameStats.gameId} gameStats={gameStats} onOpenArchive={setArchiveGame} />
           ))}
         </div>
       )}
@@ -216,6 +228,8 @@ export default function ProfilePage() {
           onCancel={() => setConfirmDeleteOpen(false)}
         />
       )}
+
+      {archiveGame && <ArchiveModal game={archiveGame} onClose={() => setArchiveGame(null)} />}
     </main>
   );
 }

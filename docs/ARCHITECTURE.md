@@ -873,7 +873,7 @@ flow through completely unmodified.
 generalized into `getOrCreateForDate(gameId, date)` — it was already a
 pure, deterministic function of `(gameId, date)`, so "today" is just
 the one caller that happens to pass `PuzzleClock.today()`. `GET
-/api/puzzle/archive?game=...&date=...` (`ArchiveListPage` /
+/api/puzzle/archive?game=...&date=...` (`ArchiveModal`'s date list /
 `PuzzlePage`'s optional `date` route param, which reuses `PuzzlePage`
 itself rather than a separate component) validates `date` falls within
 the last `ARCHIVE_WINDOW_DAYS = 30` days and rejects `date == today`
@@ -951,7 +951,10 @@ line of every controller method, no exceptions.
 Routes (`react-router-dom` v7, `<Routes>`/`<Route>`, not the data-router
 API): `/` (game select) → `/:game` (Daily) → `/:game/unlimited`
 (Unlimited) → `/:game/archive`, `/:game/archive/:date` (signed-in only)
-→ `/profile` → `/auth/callback` → `/legal`. A shared `Layout` renders
+→ `/:game/collection` → `/profile` → `/auth/callback` → `/legal`. Both
+archive routes render `PuzzlePage`: `/:game/archive` has no date of its
+own, it just opens `ArchiveModal` over the Daily board (see the Archive
+section above), so the date list is a modal rather than a page. A shared `Layout` renders
 `Header` + `<Outlet/>` + `Footer`; `Header` reads `useParams()`/
 `useLocation()` to know the active game and mode for its Daily/
 Unlimited toggle and Settings (game-switch) modal, plus the signed-in/

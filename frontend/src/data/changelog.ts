@@ -18,6 +18,10 @@ export interface ChangelogEntry {
 }
 
 export const CHANGELOG: ChangelogEntry[] = [
+  {
+    date: '2026-09-22',
+    text: 'The Archive moved out of the top menu. Open it with the Archive button next to the puzzle title, or from your profile.',
+  },
   { date: '2026-09-22', text: 'Added Vesna and Vodyanitsa to Genshin Impact (Version 7.1).' },
   {
     date: '2026-09-18',
