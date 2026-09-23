@@ -102,7 +102,7 @@ export default function SettingsModal({ activeGame, onClose }: SettingsModalProp
           </button>
         </div>
 
-        <div className="overflow-y-auto flex-1 px-5 py-4 flex flex-col gap-6">
+        <div className="overflow-y-auto scrollbar-slim flex-1 px-5 py-4 flex flex-col gap-6">
           <section>
             <h3 className="text-xs font-semibold uppercase tracking-wide text-gray-400 dark:text-gray-500 mb-2">
               Game

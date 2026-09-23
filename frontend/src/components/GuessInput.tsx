@@ -231,7 +231,7 @@ export default function GuessInput({
         </div>
 
         {/* Search results */}
-        <div className="overflow-y-auto flex-1">
+        <div className="overflow-y-auto scrollbar-slim flex-1">
           {/* Only shown once the user has actually typed something while the
               roster is still loading - on a normal fast connection that
               window is sub-frame, so showing this unconditionally on open

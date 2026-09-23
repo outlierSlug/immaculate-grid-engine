@@ -73,7 +73,7 @@ export default function AdminCategoryPicker({ categories, onSelect, onClose }: A
           </button>
         </div>
 
-        <div className="overflow-y-auto flex-1 px-4 py-3 flex flex-col gap-1">
+        <div className="overflow-y-auto scrollbar-slim flex-1 px-4 py-3 flex flex-col gap-1">
           {categories.dimensions.map((dim) => {
             const isOpen = expanded.has(dim.dimension);
             return (

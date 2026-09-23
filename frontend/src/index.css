@@ -13,6 +13,37 @@ html {
   scrollbar-gutter: stable;
 }
 
+/* Slim, theme-aware scrollbar for panes that scroll *inside* something -
+   a modal's list, a dropdown, a settings panel. The platform default is a
+   wide light-grey bar that reads as a bright stripe down the edge of a
+   dark surface, and its width visibly offsets the content next to it.
+   scrollbar-width/color covers Chrome 121+ and Firefox; the -webkit rules
+   are for Safari, which still only understands the pseudo-elements. Not
+   applied to the page scroll itself, which keeps the platform look. */
+:root {
+  --scrollbar-thumb: rgb(0 0 0 / 0.22);
+}
+.dark {
+  --scrollbar-thumb: rgb(255 255 255 / 0.18);
+}
+
+@utility scrollbar-slim {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) transparent;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--scrollbar-thumb);
+    border-radius: 9999px;
+  }
+}
+
 /* One focus style for every interactive element, site-wide - previously
    only one input had a deliberate focus style at all, so keyboard
    navigation had no reliable indicator anywhere else. :focus-visible (not

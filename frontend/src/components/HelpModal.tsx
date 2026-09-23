@@ -99,7 +99,7 @@ export default function HelpModal({ title, onClose, children }: HelpModalProps) 
             {children}
           </div>
         ) : (
-          <div className="flex flex-col gap-3 text-sm max-h-72 overflow-y-auto">
+          <div className="flex flex-col gap-3 text-sm max-h-72 overflow-y-auto scrollbar-slim">
             {CHANGELOG.map((entry) => (
               <div key={entry.date + entry.text} className="flex gap-3">
                 <span className="shrink-0 w-14 text-xs font-semibold text-gray-400 dark:text-gray-500 pt-px">

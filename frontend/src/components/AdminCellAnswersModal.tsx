@@ -63,7 +63,7 @@ export default function AdminCellAnswersModal({
           </div>
         </div>
 
-        <div className="overflow-y-auto flex-1 px-4 py-3 flex flex-col gap-2">
+        <div className="overflow-y-auto scrollbar-slim flex-1 px-4 py-3 flex flex-col gap-2">
           {answers.map((item) => (
             <div key={item.id} className="flex items-center gap-3 p-2 rounded-lg">
               <img

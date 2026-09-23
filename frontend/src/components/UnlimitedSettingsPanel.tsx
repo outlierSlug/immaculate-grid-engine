@@ -150,7 +150,7 @@ function DimensionOverlay({
           <ToggleSwitch checked={allSelected} onChange={onToggleAll} />
         </div>
 
-        <div className="overflow-y-auto flex-1 px-4 py-3 grid grid-cols-2 gap-x-3 gap-y-2">
+        <div className="overflow-y-auto scrollbar-slim flex-1 px-4 py-3 grid grid-cols-2 gap-x-3 gap-y-2">
           {categories.map((cat) => (
             <label key={cat.id} className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-300">
               <input
@@ -211,7 +211,7 @@ export default function UnlimitedSettingsPanel({
         )}
       </div>
 
-      <div className="overflow-y-auto flex-1">
+      <div className="overflow-y-auto scrollbar-slim flex-1">
         <div className="flex items-center justify-center gap-6 flex-wrap px-5 py-4 border-b border-gray-100 dark:border-gray-800">
           <div className="flex items-center gap-2">
             <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Allow Single Answers</span>

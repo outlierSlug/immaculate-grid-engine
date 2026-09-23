@@ -92,7 +92,7 @@ export default function CommunityAnswersModal({
           </div>
         </div>
 
-        <div className="overflow-y-auto flex-1 px-4 py-3 flex flex-col gap-3">
+        <div className="overflow-y-auto scrollbar-slim flex-1 px-4 py-3 flex flex-col gap-3">
           {answers.length === 0 && (
             <p className="text-sm text-gray-400 dark:text-gray-500 text-center py-4">No one has solved this cell yet.</p>
           )}
