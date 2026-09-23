@@ -1661,6 +1661,18 @@ kept going stale faster than the items themselves resolved.
 
 ## Extending the backend — common changes
 
+**Add a character a game just released.** Live-service games ship new
+characters regularly, and the steps are mostly manual - several of them
+(the body-type attribute, a new material's icon, the "released up through
+Version X" help note) have no script that will flag a gap for you. Genshin
+has an end-to-end runbook in `ingestion/genshin/README.md`, written from
+the 7.1 addition; the other games' pipelines are simpler but follow the
+same shape. Two things generalize to every game: a character addition must
+**never** truncate `puzzles` (those `cellSolutions` snapshots are the
+answer key behind Archive, stats and collections - that instruction only
+ever applied to *attribute changes*), and community data mirrors lag a
+release by a day or more, so wait for the patch to actually ship.
+
 **Add a new attribute/category to an existing game.** Never touches the
 schema - `GridItem.attributes` is a flexible JSONB `Map<String, Object>`
 (see Data model above) and `CategoryDefinition`s are derived from whatever

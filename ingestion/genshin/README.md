@@ -1,5 +1,95 @@
 # Genshin Impact ingestion
 
+## Adding a new character (runbook)
+
+Both pipelines below are involved, plus several steps nothing automates.
+This is the order that worked for 7.1's Vesna and Vodyanitsa
+(2026-09-22); the two pipeline sections after it explain *why* each piece
+exists.
+
+**Wait for the version to actually ship.** Community mirrors lag a
+release: when 7.1 went live, Dimbreath had the data within a day but Enka
+had not published either character's icon. Announced-but-unreleased data
+is also incomplete or wrong, so nothing here should be run off a leak.
+
+1. **Hand-enter the character** in `raw/genshin_characters.json`: `name`,
+   `rarity`, `element`, `weapon`, `region`, `model`, `release_date`,
+   `release_version`. **The file is strictly alphabetical by name** -
+   insert in place, don't append, or the generated entities diff becomes
+   unreadable. Only `model` (body type) is hard to find on the wiki; the
+   datamine carries it as `bodyType` (`BODY_GIRL` = Medium Female,
+   `BODY_BOY` = Medium Male, and so on), which is also a good check on
+   everything else you typed.
+2. **Add the icon code** to `ENKA_ICON_MAP` in `normalize_genshin.py`.
+   It's usually `UI_AvatarIcon_<Name>`, but internal names differ often
+   enough to check (Xianyun is `Liuyun`, Sandrone is `MarionetteNew`).
+   Find it in `AvatarExcelConfigData.json` rather than guessing.
+3. **Add any passive-talent membership** to `PASSIVE_TALENT_MAP` in the
+   same file, or nothing at all if none apply - most characters have
+   none. `raw/passive_talent_definitive_plan.txt` has all 11 categories
+   and their definitions. Verify against the character's actual passives
+   rather than a description of their kit: join their `skillDepotId` to
+   `AvatarSkillDepotExcelConfigData.json`, then the passive group ids to
+   `ProudSkillExcelConfigData.json`, and read the text. That is how
+   Vesna's `Stellar Jubilee` was confirmed - her third passive is named
+   "Stellar Jubilee: Splendid Prelude", which is the category exactly.
+   Watch the direction of a passive too: both 7.1 characters have
+   traversal passives that *increase* Stamina consumption, which is the
+   opposite of the `Stamina Reduction` category.
+4. **`fetch_dimbreath.py` → `build_ascension_materials.py`** derives the
+   4 ascension attributes. It joins on the icon code from step 2, so it
+   has to come after it. Compare the result against the wiki (or against
+   values supplied by a player who has the character) - for 7.1 all eight
+   hand-supplied values matched the datamine exactly.
+5. **`normalize_genshin.py`** → check the entity count went up by the
+   right number and that **no existing entity changed**, then copy
+   `output/genshin_entities.json` to
+   `backend/src/main/resources/genshin_entities.json`.
+6. **`download_icons.py`** for the character portrait. If Enka 404s
+   (likely, right after a release), take it from Project Amber
+   (`https://gi.yatta.moe/assets/UI/<code>.png`) and convert it to RGBA -
+   every other character icon is RGBA, Amber serves palette PNGs. Copy
+   into `frontend/public/genshin/icons/`.
+7. **`download_ascension_icons.py`** - easy to forget, and nothing else
+   flags it. A new character usually brings new *material* values too
+   (Vesna introduced Golden Fern and Vagabond's Cracked Armor), and each
+   needs its own icon. The script prints the per-dimension counts; copy
+   any new files into
+   `frontend/src/assets/genshin/ascension/<dimension>/`. These stay
+   palette PNGs, matching the other 127.
+8. **Do NOT re-run `build_material_sources.py`** - see its own docstring.
+   Against the 7.1 TextMap its regex stops matching for 23 of 66 values,
+   degrading them to vaguer fallbacks and dropping 5 entirely. Add a new
+   boss/common material's source by hand to both
+   `output/genshin_material_sources.json` and
+   `frontend/src/assets/genshin/ascension/material_sources.json` (they
+   are kept byte-identical), and add the same value to the script's
+   `MANUAL_OVERRIDES` so the knowledge isn't only in the artifact. A
+   material with no source entry is a silent no-op - `CategoryChip.tsx`
+   falls back to a generic "(a boss material)" tooltip.
+9. **Update the player-facing text**: the "released up through Version
+   X" note in `frontend/src/config/gameHelpNotes.tsx`, and a
+   `frontend/src/data/changelog.ts` entry (new characters change what
+   counts as a valid answer, which is exactly what that log is for).
+10. **Load the data**: run the backend once with the `load-data` profile
+    locally, confirm `Loaded N grid items for genshin` and that the
+    character is served by `/api/items`, then run the same against prod.
+    It upserts by id, so it is safe to re-run.
+
+**Never truncate `puzzles` for a character addition.** Older notes say to,
+but that was for *attribute changes*, where stale `cellSolutions`
+snapshots would go wrong. Those snapshots are now the permanent answer key
+behind Archive, historical stats and collections. A newly added character
+simply won't be a valid answer on puzzles generated before the reload,
+which is correct.
+
+**What needs no work at all:** `release_era()` already parses any `X.Y`
+version, the collection page's roster total comes from `/api/items`, and
+`GenshinGameModule`'s min-count floor (3) keeps a brand-new
+`release_version` or material out of puzzle generation until enough
+characters share it - so two new characters can't produce a
+single-answer cell.
+
 Two pipelines live in this folder, run in order: the character roster
 pipeline is the source of truth for every non-ascension attribute; the
 ascension-materials pipeline enriches it with 4 more categories. They
@@ -93,18 +183,22 @@ Two independent sources, cross-checked against each other:
   flavor text) is simply left out of the output, not guessed -
   `CategoryChip.tsx` falls back to its older generic "(a boss material)"
   tooltip for those, so a gap here is a silent no-op, never a wrong name
-  shown to a player. Re-run whenever the roster changes and new
-  common/boss material values show up, same as the rest of this pipeline.
+  shown to a player. **Re-running this one is no longer safe** - against
+  the 7.1 TextMap the regex stops matching for 23 of the 66 values and 5
+  drop out entirely, losing exactly the specific boss names that review
+  pass added ("Golden Wolflord" reverts to "the Wolflord"). Add new
+  values by hand instead (runbook step 8), and reconcile the regex and
+  `MANUAL_OVERRIDES` against current flavor text before ever trusting a
+  full re-run.
 
 Run order: `fetch_dimbreath.py` → `build_ascension_materials.py` →
-`parse_wiki_ascension.py` → `download_ascension_icons.py` →
-`build_material_sources.py` → copy `output/icons/ascension/` into
-`frontend/src/assets/genshin/ascension/` and
-`output/genshin_material_sources.json` to
-`frontend/src/assets/genshin/ascension/material_sources.json` (neither
-copy is automated - plain file copies) → back to pipeline 1's
+`parse_wiki_ascension.py` → `download_ascension_icons.py` → copy
+`output/icons/ascension/` into `frontend/src/assets/genshin/ascension/`
+(not automated - a plain file copy) → back to pipeline 1's
 `normalize_genshin.py` to actually wire the new/changed data into
-`genshin_entities.json`.
+`genshin_entities.json`. `build_material_sources.py` is deliberately
+*not* in that run order any more (see its entry above); its output and
+the frontend copy of it are now maintained by hand.
 
 **If an icon is missing** (a new character's material 404s on Yatta too,
 or `download_ascension_icons.py` just wasn't re-run after a roster
