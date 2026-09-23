@@ -15,6 +15,17 @@ from schema import validate_entities
 RAW_PATH = Path(__file__).parent / "raw" / "brawlstars_brawlers_raw.json"
 OUTPUT_PATH = Path(__file__).parent / "output" / "brawlstars_entities.json"
 
+# BrawlAPI's own raw["released"] flips true as soon as a brawler is
+# *announced*, not when they're actually playable - confirmed 2026-09-07 for
+# Cosmo/Vince (API says released, but neither is in the game yet; Brawlify's
+# own icon-asset mirror hasn't been touched in 2 months, consistent with
+# that). raw["released"] alone isn't a reliable signal here the way it is
+# for Clash Royale, so this is a manual override until each name is
+# confirmed actually live - remove the entry (and add real
+# class/traits/release-year backfill data) once it's genuinely in the game,
+# not just announced.
+ANNOUNCED_NOT_YET_PLAYABLE = {"Cosmo", "Vince"}
+
 
 # Filename/URL-safe form of a brawler's name - deliberately separate from
 # the `id` field below, which keeps raw["name"].lower() as-is (spaces and
@@ -39,10 +50,8 @@ def get_image_url(name: str) -> str:
 def map_brawler(raw: dict) -> dict | None:
     if not raw.get("released", False):
         return None  # skip unreleased brawlers entirely - not real puzzle answers yet
-
-    brawler_class = raw["class"]["name"]
-    if brawler_class == "Unknown":
-        brawler_class = KNOWN_CLASSES.get(raw["name"])  # hand-curated, see backfill_brawler_classes.py
+    if raw["name"] in ANNOUNCED_NOT_YET_PLAYABLE:
+        return None
 
     return {
         "id": f"brawlstars:{raw['name'].lower()}",
@@ -51,7 +60,14 @@ def map_brawler(raw: dict) -> dict | None:
         "image_url": get_image_url(raw["name"]),
         "attributes": {
             "rarity": raw["rarity"]["name"],
-            "brawler_class": brawler_class,
+            # No .get() default, same reasoning as release_year below -
+            # BrawlAPI's own raw["class"]["name"] can no longer be trusted
+            # for ANY brawler (see backfill_brawler_classes.py's own comment -
+            # it was repurposed to a per-brawler tagline, not the shared
+            # Tank/Assassin/etc taxonomy, for long-established brawlers too,
+            # not just newly-added ones), so KNOWN_CLASSES is the sole
+            # source of truth now, not just an "Unknown"-only fallback.
+            "brawler_class": KNOWN_CLASSES[raw["name"]],
             "traits": KNOWN_TRAITS.get(raw["name"], []),
             "tags": KNOWN_TAGS.get(raw["name"], []),
             # No .get() default - unlike traits/tags (legitimately empty for

@@ -512,7 +512,7 @@
     "image_url": "/brawlstars/icons/chuck.png",
     "attributes": {
       "rarity": "Mythic",
-      "brawler_class": "Damage Dealer",
+      "brawler_class": "Controller",
       "traits": [
         "Time"
       ],
@@ -1308,7 +1308,7 @@
     "image_url": "/brawlstars/icons/penny.png",
     "attributes": {
       "rarity": "Super Rare",
-      "brawler_class": "Artillery",
+      "brawler_class": "Controller",
       "traits": [],
       "tags": [],
       "release_year": 2018

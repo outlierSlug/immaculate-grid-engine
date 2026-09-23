@@ -1272,8 +1272,19 @@ membership) joins the existing `AttributeEqualsCategory` (scalar
 equality) as a second `CategoryDefinition` implementation, since a
 brawler can have zero, one, or several Traits at once — the Brawl Stars
 API exposes no trait data at all, so all 14 traits are hand-curated
-(`ingestion/brawlstars/backfill_brawler_traits.py`, same pattern as the
-`brawler_class` "Unknown" backfill) for the 39 trait-bearing brawlers.
+(`ingestion/brawlstars/backfill_brawler_traits.py`) for the 39
+trait-bearing brawlers — same as release years and tags, which the API
+also doesn't expose. `brawler_class` is the exception among these: it
+*does* have a source, just not BrawlAPI. That endpoint's `class` field
+used to carry the game's 7-value taxonomy and was repurposed to a
+per-brawler tagline, so the class is now fetched from the Brawl Stars
+wiki's own infobox (`fetch_brawler_classes.py` →
+`raw/brawler_classes_wiki.json`, read by `backfill_brawler_classes.py`).
+It was a hand-curated table for two weeks in between, which is what
+argued for sourcing it: a frozen snapshot silently missed Supercell
+reclassifying Chuck and Penny (both → Controller, corrected
+2026-09-23), since a reclassification is invisible to a table nothing
+re-checks.
 
 **`ClickTooltip`** (`components/ClickTooltip.tsx`) is a generic,
 reusable `{heading, description, children}` component — extracted from
