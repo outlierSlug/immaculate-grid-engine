@@ -2608,6 +2608,50 @@
     }
   },
   {
+    "id": "genshin:vesna",
+    "game_id": "genshin",
+    "display_name": "Vesna",
+    "image_url": "/genshin/icons/vesna.png",
+    "attributes": {
+      "element": "Anemo",
+      "weapon": "Sword",
+      "rarity": 5,
+      "region": "Snezhnaya",
+      "model": "Medium Female",
+      "release_date": "2026-09-23",
+      "release_version": "7.1",
+      "release_era": "Version 7 (7.x)",
+      "local_specialty": "Golden Fern",
+      "common_material": "Ethereal Crystalscale Stone",
+      "boss_material": "Vagabond's Cracked Armor",
+      "ascension_stat": "CRIT Rate%",
+      "passive_talent": [
+        "Stellar Jubilee"
+      ]
+    }
+  },
+  {
+    "id": "genshin:vodyanitsa",
+    "game_id": "genshin",
+    "display_name": "Vodyanitsa",
+    "image_url": "/genshin/icons/vodyanitsa.png",
+    "attributes": {
+      "element": "Hydro",
+      "weapon": "Catalyst",
+      "rarity": 5,
+      "region": "Snezhnaya",
+      "model": "Medium Female",
+      "release_date": "2026-09-23",
+      "release_version": "7.1",
+      "release_era": "Version 7 (7.x)",
+      "local_specialty": "Frostfairy Flower",
+      "common_material": "Prime Chimeric Nexus",
+      "boss_material": "Unscorched Blossom Branch",
+      "ascension_stat": "HP%",
+      "passive_talent": []
+    }
+  },
+  {
     "id": "genshin:wanderer",
     "game_id": "genshin",
     "display_name": "Wanderer",

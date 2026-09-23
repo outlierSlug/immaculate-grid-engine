@@ -18,6 +18,16 @@ Run after build_ascension_materials.py (reads its output). Writes
 output/genshin_material_sources.json - copy this to
 frontend/src/assets/genshin/ascension/material_sources.json same as the
 icons, see README.md.
+
+CAUTION - re-running this is NOT currently safe. Against the 7.1 TextMap
+(2026-09-22) the regex stops matching for 23 of the 66 values it used to
+resolve, so they fall through to the vaguer MANUAL_OVERRIDES below or drop
+out entirely: "Rhodeia of Loch" becomes "an oceanid", "Golden Wolflord"
+becomes "the Wolflord", "Setekh Wenut" becomes "Wenut", and 5 entries
+disappear. The committed output/asset predate that and are better, so they
+were kept and 7.1's one new value was added by hand instead. Reconcile the
+regex and the overrides against the current flavor text before trusting a
+full re-run, and diff its output against the committed copy either way.
 """
 import json
 import re
@@ -46,6 +56,11 @@ MANUAL_OVERRIDES = {
         "Cleansing Heart": "an oceanid",
         "Light Guiding Tetrahedron": "a mysterious ruin machine",
         "Perpetual Caliber": "a ruin machine",
+        # 7.1's new boss material. Named by the project owner from the live
+        # game, not the flavor text - the regex leaves it unresolved, which
+        # would silently fall back to the generic "(a boss material)"
+        # tooltip.
+        "Vagabond's Cracked Armor": "Guardian Blade of Drifting Snow",
     },
     "common_material": {
         # inferred: well-established community knowledge, not spelled out

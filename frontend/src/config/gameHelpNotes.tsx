@@ -14,7 +14,7 @@ import type { GameId } from './games';
 export const GAME_HELP_NOTES: Partial<Record<GameId, ReactNode[]>> = {
   genshin: [
     <>
-      Only <b>playable characters</b> released up through Version 7.0 are selectable. The Manekin/Manekina is not a
+      Only <b>playable characters</b> released up through Version 7.1 are selectable. The Manekin/Manekina is not a
       selectable character.
     </>,
     <>

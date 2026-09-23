@@ -1533,6 +1533,32 @@
       "common_material": "Frost-Etched Warrant",
       "ascension_stat_prop": "FIGHT_PROP_CRITICAL_HURT",
       "ascension_stat_label": "CRIT DMG%"
+    },
+    {
+      "name": "Vesna",
+      "boss_material": "Vagabond's Cracked Armor",
+      "local_specialty": "Golden Fern",
+      "common_material_tiers": [
+        "Ethereal Glimmershard",
+        "Ethereal Crystal",
+        "Ethereal Crystalscale Stone"
+      ],
+      "common_material": "Ethereal Crystalscale Stone",
+      "ascension_stat_prop": "FIGHT_PROP_CRITICAL",
+      "ascension_stat_label": "CRIT Rate%"
+    },
+    {
+      "name": "Vodyanitsa",
+      "boss_material": "Unscorched Blossom Branch",
+      "local_specialty": "Frostfairy Flower",
+      "common_material_tiers": [
+        "Chimeric Core",
+        "Symbiotic Chimeric Nucleus",
+        "Prime Chimeric Nexus"
+      ],
+      "common_material": "Prime Chimeric Nexus",
+      "ascension_stat_prop": "FIGHT_PROP_HP_PERCENT",
+      "ascension_stat_label": "HP%"
     }
   ],
   "traveler": {

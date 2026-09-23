@@ -10,6 +10,17 @@ Saved under output/icons/, filed by the same slug normalize_genshin uses
 for a character's GridItem id, so a downloaded file's name already matches
 what the eventual self-hosted image_url will need to reference - no
 separate id-mapping step when this gets wired into get_image_url() later.
+
+Enka can lag a version release by a few days: when 7.1 shipped (2026-09-22)
+Dimbreath already had Vesna and Vodyanitsa but enka.network/ui 404'd for
+both icon codes. Their icons came from Project Amber instead
+(https://gi.yatta.moe/assets/UI/UI_AvatarIcon_<code>.png), which publishes
+the same 256x256 transparent art - converted from palette to RGBA on save
+so they match every Enka-sourced file. download_icon() below skips files
+that already exist, so a later re-run will NOT overwrite them with Enka's
+copy once it appears; both are the game's own icon, so there is nothing to
+re-fetch. Same fallback applies to any future character Enka hasn't
+published yet.
 """
 import time
 from pathlib import Path
