@@ -13,17 +13,20 @@ interface CollectionCellBadgeProps {
   obtained: boolean;
 }
 
-// A 1px green outline traced around the icon's own shape - drop-shadow
-// follows the image's transparency, unlike a border.
+// A green outline traced around the icon's own shape - drop-shadow follows
+// the image's transparency, unlike a border. The four shadows chain (each
+// filters the previous one's output, not the original), which spreads the
+// green and lets it into an icon's antialiased edges - fine for the flat,
+// hard-edged icons this is used on, not for soft art. See `outlined`.
 const OUTLINE_FILTER = ['1px 0', '-1px 0', '0 1px', '0 -1px'].map((o) => `drop-shadow(${o} 0 #22c55e)`).join(' ');
 
 // Top-left corner badge on a correctly-filled live Daily cell, showing what
 // this guess hands you: the game's wish icon for a new character, and for a
 // duplicate, the item that duplicate yields in-game where the game has one
-// (see COLLECTION_COPY_ICONS) - a Stella Fortuna for the constellation it
-// unlocks, or a Masterless Stella Fortuna once already at C6. It's
-// green-outlined when there's nothing left to gain (already collected in a
-// no-copies game, or already at max copies).
+// (see COLLECTION_COPY_ITEMS) - a Stella Fortuna for the constellation it
+// unlocks, or a Masterless Stella Fortuna once already at C6.
+//
+// The green outline marks a *first-time* collection, in every game.
 export default function CollectionCellBadge({ game, item, priorTimesCollected, obtained }: CollectionCellBadgeProps) {
   const copies = COLLECTION_COPIES[game];
   const gain = guessGain(game, item.id, priorTimesCollected);
@@ -36,10 +39,16 @@ export default function CollectionCellBadge({ game, item, priorTimesCollected, o
         ? copyItems?.surplus(item)
         : null;
   const iconSrc = copyItem?.src ?? GAMES[game].dailyGuessIcon;
-  // The green outline is what marks "nothing to gain" when the icon alone
-  // can't - it's redundant (and busy) on a game whose surplus item has its
-  // own distinct icon, like Genshin's Masterless Stella Fortuna.
-  const nothingToGain = gain.kind === 'none' && !copyItem;
+  // The outline marks a first-time collection, in the two games whose wish
+  // icon has to carry every state by itself. Brawl Stars' Starr Pin and
+  // Clash Royale's Lucky Drop are flat and hard-edged, so a traced outline
+  // sits cleanly around them. Genshin's Intertwined Fate and Star Rail's
+  // Special Pass are soft, glowing art - the green bleeds into their
+  // semi-transparent edges and muddies the icon - and they don't need it
+  // anyway, since a duplicate there swaps in a constellation/eidolon
+  // material instead. Aloy, the one Genshin character with no
+  // constellations, just shows the same wish icon either way.
+  const outlined = gain.kind === 'new' && copyItems === null;
 
   let title: string;
   if (gain.kind === 'new') {
@@ -58,8 +67,8 @@ export default function CollectionCellBadge({ game, item, priorTimesCollected, o
       <img
         src={iconSrc}
         alt=""
-        className={`h-[1.9em] w-[1.9em] object-contain ${nothingToGain ? '' : 'drop-shadow-sm'}`}
-        style={nothingToGain ? { filter: OUTLINE_FILTER } : undefined}
+        className={`h-[1.9em] w-[1.9em] object-contain ${outlined ? '' : 'drop-shadow-sm'}`}
+        style={outlined ? { filter: OUTLINE_FILTER } : undefined}
       />
     </span>
   );

@@ -1,6 +1,15 @@
 import { Fragment, type ReactNode } from 'react';
 import CategoryChip from './CategoryChip';
 import { HEADER_ROW_SIZE } from '../utils/gridSizing';
+
+// Where a display name stops fitting a phone-width cell at the normal
+// label size, and where even the reduced size needs another step down.
+// Measured against the longest real names rather than picked round:
+// "Traveler - Aether (Dendro)" (26) needs the first step, "Trailblazer -
+// Stelle (Remembrance)" (34) still overflowed a 320px cell by 1px at that
+// size and needs the second.
+const LONG_NAME_CHARS = 16;
+const VERY_LONG_NAME_CHARS = 28;
 import { formatPercent } from '../utils/formatPercent';
 import type { CellStats, GridItem } from '../types/puzzle';
 import type { GameId } from '../config/games';
@@ -114,7 +123,14 @@ export default function PuzzleGrid({
           // any phone) — caps out at the original fixed values on desktop, so
           // nothing changes above ~610px wide.
           gridTemplateColumns: `var(--col-label) repeat(${colLabels.length}, var(--col-cell)) var(--col-stats)`,
-          gridTemplateRows: `${HEADER_ROW_SIZE} repeat(${rowLabels.length}, var(--col-cell))`,
+          // minmax, not a fixed track: a category chip that wraps to three
+          // lines (Clash Royale's "Targets Air & Ground" at phone widths)
+          // is taller than --grid-header, and a fixed row can't grow to
+          // fit it - the chip ate its own pb-3 breathing room and ended up
+          // sitting flush against the grid's top border. Rows still never
+          // shrink below --grid-header, so nothing moves at widths where
+          // the chips already fit.
+          gridTemplateRows: `minmax(${HEADER_ROW_SIZE}, auto) repeat(${rowLabels.length}, var(--col-cell))`,
         }}
       >
       <div />
@@ -170,7 +186,7 @@ export default function PuzzleGrid({
                 key={cellKey}
                 onClick={() => (isRevealed ? onRevealedCellClick?.(rowIndex, colIndex) : onCellClick(rowIndex, colIndex))}
                 disabled={isRevealed ? false : !!filled || locked}
-                className={`relative border ${borderColorClass} focus-ring-inset transition-colors duration-200 bg-white dark:bg-gray-900 flex flex-col items-center justify-center gap-1.5 hover:bg-gray-50 dark:hover:bg-gray-800 disabled:hover:bg-white dark:disabled:hover:bg-gray-900 cursor-pointer disabled:cursor-not-allowed`}
+                className={`relative border ${borderColorClass} focus-ring-inset transition-colors duration-200 bg-white dark:bg-gray-900 flex flex-col items-center justify-center gap-1 sm:gap-1.5 overflow-hidden hover:bg-gray-50 dark:hover:bg-gray-800 disabled:hover:bg-white dark:disabled:hover:bg-gray-900 cursor-pointer disabled:cursor-not-allowed`}
               >
                 {filled ? (
                   <>
@@ -189,7 +205,25 @@ export default function PuzzleGrid({
                       alt={filled.displayName}
                       className={`${avatarSizeClass} ${avatarAspectClass} ${avatarShapeClass} object-cover ${avatarBorderClass} shadow-sm`}
                     />
-                    <span className="inline-flex items-center justify-center text-center px-1.5 sm:px-2 py-0.5 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-100 font-semibold text-(length:--grid-avatar-label) leading-tight max-w-[92%] wrap-break-word">
+                    {/* A long name (every Traveler/Trailblazer variant,
+                        "Yumemizuki Mizuki") wraps to a third line at phone
+                        widths, and avatar + gap + three lines is taller
+                        than the cell - the name spilled over the bottom
+                        border. Dropping to a smaller size below sm pulls
+                        those names back into two lines, which fits, and
+                        keeps the whole name rather than truncating: the
+                        parenthetical is the only thing telling two
+                        Traveler variants apart. Above sm there's room for
+                        the normal size either way. */}
+                    <span
+                      className={`inline-flex items-center justify-center text-center px-1 sm:px-2 py-0.5 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-100 font-semibold leading-tight max-w-[97%] sm:max-w-[92%] wrap-break-word ${
+                        filled.displayName.length > VERY_LONG_NAME_CHARS
+                          ? 'text-[calc(var(--grid-avatar-label)*0.72)] sm:text-(length:--grid-avatar-label)'
+                          : filled.displayName.length > LONG_NAME_CHARS
+                            ? 'text-[calc(var(--grid-avatar-label)*0.82)] sm:text-(length:--grid-avatar-label)'
+                            : 'text-(length:--grid-avatar-label)'
+                      }`}
+                    >
                       {filled.displayName}
                     </span>
                   </>

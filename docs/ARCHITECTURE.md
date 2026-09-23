@@ -1480,11 +1480,18 @@ own attempt has been submitted yet (no refetch/race after submission).
   `CollectionCellBadge`): a top-left badge on each correctly-filled cell
   showing what the guess hands you — the game's wish icon for a new item,
   or that duplicate's own `COLLECTION_COPY_ITEMS` icon (the tooltip names
-  the copy level either way). The green outline marks "nothing left to
-  gain" only where the icon can't say so itself, i.e. where the game has
-  no distinct surplus item. Signed-in live Daily only. The per-game wish
-  icon moved from a `PuzzlePage`-local map to `games.ts`'s
-  `dailyGuessIcon`.
+  the copy level either way). The green outline marks a **first-time**
+  collection, in Brawl Stars and Clash Royale only — their one wish icon
+  carries every state, and the Starr Pin/Lucky Drop are flat and
+  hard-edged enough to take a traced outline cleanly. Genshin/Star Rail
+  deliberately skip it: a duplicate there already swaps in a
+  constellation/eidolon material, and the green bleeds into the soft,
+  glowing edges of the Intertwined Fate and Special Pass art. Aloy (no
+  constellations, so the wish icon every time) shows the same badge new or
+  repeat. (The outline originally marked the opposite — "nothing left to
+  gain" — which read backwards: green is the reward, not the null result.
+  Flipped 2026-09-23.) Signed-in live Daily only. The per-game wish icon
+  moved from a `PuzzlePage`-local map to `games.ts`'s `dailyGuessIcon`.
   - A filled cell's own `GridItem` carries **no attributes** (a guess
     response returns only id/name/image; a restored remote completion is
     rebuilt from `cellAnswers` + `perCell` answers, which have no more
