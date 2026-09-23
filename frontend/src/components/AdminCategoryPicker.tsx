@@ -13,8 +13,11 @@ interface AdminCategoryPickerProps {
 // so a plain click-to-select-and-close list is the right interaction, not
 // a filter form.
 export default function AdminCategoryPicker({ categories, onSelect, onClose }: AdminCategoryPickerProps) {
-  // Starts with every dimension expanded.
-  const [expanded, setExpanded] = useState<Set<string>>(new Set(categories.dimensions.map((d) => d.dimension)));
+  // Starts with every dimension collapsed: Genshin has 12 dimensions and
+  // 121 categories, so an all-expanded list opens as a wall of options you
+  // have to scroll past to find the dimension you actually want. The
+  // "Expand all" shortcut below is one click away for the rare case.
+  const [expanded, setExpanded] = useState<Set<string>>(new Set());
 
   useEffect(() => {
     function handleEscape(e: KeyboardEvent) {
