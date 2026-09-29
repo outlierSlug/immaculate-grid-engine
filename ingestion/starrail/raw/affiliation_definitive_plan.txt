@@ -36,8 +36,8 @@ Multi-affiliation characters (confirmed accurate, pre-Trailblazer-expansion)
 Dan Heng                      -> Astral Express, Xianzhou Alliance
 Dan Heng • Imbibitor Lunae     -> Astral Express, Xianzhou Alliance
 Dan Heng • Permansor Terrae    -> Astral Express, Amphoreus
-Himeko                        -> Astral Express, Planarcardia
-Himeko • Nova                  -> Astral Express, Planarcardia
+Himeko                        -> Astral Express, Planarcadia
+Himeko • Nova                  -> Astral Express, Planarcadia
 March 7th (The Hunt)           -> Astral Express, Xianzhou Alliance
 Evernight                     -> Astral Express, Amphoreus
 Sunday                        -> Astral Express, Penacony
@@ -45,11 +45,12 @@ Trailblazer (Destruction)      -> Astral Express, Herta Space Station
 Trailblazer (Preservation)     -> Astral Express, Jarilo-VI
 Trailblazer (Harmony)          -> Astral Express, Penacony
 Trailblazer (Remembrance)      -> Astral Express, Amphoreus
-Trailblazer (Elation)          -> Astral Express, Planarcardia
+Trailblazer (Elation)          -> Astral Express, Planarcadia
 Asta                           -> Herta Space Station, Astropolis
 Sampo                          -> Jarilo-VI, Masked Fools
-Ashveil                        -> Planarcardia, Galaxy Rangers
-Sparxie                        -> Planarcardia, Masked Fools
+Ashveil                        -> Planarcadia, Galaxy Rangers
+Pearl                          -> Planarcadia, IPC   (added 2026-09-28, v4.6)
+Sparxie                        -> Planarcadia, Masked Fools
 
 Chip label / tooltip table (final)
 ------------------------------------
@@ -62,7 +63,7 @@ in the tooltip text (AFFILIATION_LABEL_OVERRIDES in normalize.py):
 Every other group's header is used verbatim as both the stored value and
 the chip label.
 
-Planet wording: per the user, Jarilo-VI/Penacony/Amphoreus/Planarcardia/
+Planet wording: per the user, Jarilo-VI/Penacony/Amphoreus/Planarcadia/
 Astropolis are each a single playable world (not a faction or ship), and a
 Trailblazer path unlocked on one of those worlds is itself tied to that
 world — so these five use "This character is from [planet] or is directly
@@ -81,7 +82,7 @@ phrasing.
   Stellaron Hunters (6)    "This character is affiliated with the Stellaron Hunters."
   Herta Space Station (7)  "This character is affiliated with the Herta Space Station."
   Penacony (7)             "This character is from Penacony or is directly affiliated with it."
-  Planarcardia (7)         "This character is from Planarcardia or is directly affiliated with it."
+  Planarcadia (7)         "This character is from Planarcadia or is directly affiliated with it."
   IPC (4)                  "This character is affiliated with the IPC (Interastral Peace Corporation)."
   Another World (4)        "This character is from Another World or is an exclusive collab character."
   Galaxy Rangers (3)       "This character is affiliated with the Galaxy Rangers."

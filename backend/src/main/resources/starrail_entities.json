@@ -39,7 +39,7 @@
       "element": "Fire",
       "affiliation": [
         "Astral Express",
-        "Planarcardia"
+        "Planarcadia"
       ]
     }
   },
@@ -1082,7 +1082,7 @@
       "path": "Elation",
       "element": "Fire",
       "affiliation": [
-        "Planarcardia",
+        "Planarcadia",
         "Masked Fools"
       ]
     }
@@ -1102,6 +1102,21 @@
     }
   },
   {
+    "id": "starrail:pearl",
+    "game_id": "starrail",
+    "display_name": "Pearl",
+    "image_url": "/starrail/icons/pearl.png",
+    "attributes": {
+      "rarity": 5,
+      "path": "Elation",
+      "element": "Ice",
+      "affiliation": [
+        "Planarcadia",
+        "IPC"
+      ]
+    }
+  },
+  {
     "id": "starrail:ashveil",
     "game_id": "starrail",
     "display_name": "Ashveil",
@@ -1111,7 +1126,7 @@
       "path": "The Hunt",
       "element": "Lightning",
       "affiliation": [
-        "Planarcardia",
+        "Planarcadia",
         "Galaxy Rangers"
       ]
     }
@@ -1126,7 +1141,7 @@
       "path": "Elation",
       "element": "Physical",
       "affiliation": [
-        "Planarcardia"
+        "Planarcadia"
       ]
     }
   },
@@ -1197,7 +1212,7 @@
       "element": "Fire",
       "affiliation": [
         "Astral Express",
-        "Planarcardia"
+        "Planarcadia"
       ]
     }
   },
@@ -1360,7 +1375,7 @@
       "element": "Lightning",
       "affiliation": [
         "Astral Express",
-        "Planarcardia"
+        "Planarcadia"
       ]
     }
   },
@@ -1375,7 +1390,7 @@
       "element": "Lightning",
       "affiliation": [
         "Astral Express",
-        "Planarcardia"
+        "Planarcadia"
       ]
     }
   }

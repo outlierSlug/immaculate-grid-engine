@@ -598,7 +598,7 @@ const STARRAIL_DESCRIPTIONS: Record<string, string> = {
   // for the full design, including the six factions below that are still
   // real attribute values (data-accurate) but never clear
   // StarRailGameModule's AFFILIATION_MIN_COUNT floor to become a category.
-  // Jarilo-VI/Penacony/Amphoreus/Planarcardia/Astropolis are each a single
+  // Jarilo-VI/Penacony/Amphoreus/Planarcadia/Astropolis are each a single
   // playable world (not a faction or ship) - phrased "from ... or directly
   // affiliated with it" rather than the generic "affiliated with" the
   // faction/organization entries use.
@@ -609,7 +609,13 @@ const STARRAIL_DESCRIPTIONS: Record<string, string> = {
   'Stellaron Hunters': 'This character is affiliated with the Stellaron Hunters.',
   'Herta Space Station': 'This character is affiliated with the Herta Space Station.',
   Penacony: 'This character is from Penacony or is directly affiliated with it.',
-  Planarcardia: 'This character is from Planarcardia or is directly affiliated with it.',
+  Planarcadia: 'This character is from Planarcadia or is directly affiliated with it.',
+  // The category shipped misspelled as "Planarcardia" until 2026-09-28, and
+  // a puzzle stores its category labels as generated, so archived puzzles
+  // from before then still show the old spelling. Keeps their tooltip.
+  // Safe to delete after 2026-10-28, once they've aged out of the 30-day
+  // Archive window.
+  Planarcardia: 'This character is from Planarcadia or is directly affiliated with it.',
   IPC: 'This character is affiliated with the IPC (Interastral Peace Corporation).',
   'Another World': 'This character is from Another World or is an exclusive collab character.',
   'Galaxy Rangers': 'This character is affiliated with the Galaxy Rangers.',

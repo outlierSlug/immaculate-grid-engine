@@ -37,6 +37,9 @@ ICON_BASE_URL = "https://raw.githubusercontent.com/FortOfFans/HSR/main/"
 WIKI_FALLBACK_URLS = {
     "robin-summeretto": "https://static.wikia.nocookie.net/houkai-star-rail/images/1/18/Character_Robin_%E2%80%A2_Summeretto_Icon.png/",
     "aventurine-waveflair": "https://static.wikia.nocookie.net/houkai-star-rail/images/f/fc/Character_Aventurine_%E2%80%A2_Waveflair_Icon.png/",
+    # 4.6 (2026-09-28). FortOfFans 404'd on release day; the wiki's copy is
+    # the same 160x160 art every other icon here uses.
+    "pearl": "https://static.wikia.nocookie.net/houkai-star-rail/images/3/3e/Character_Pearl_Icon.png/",
 }
 
 REQUEST_DELAY_SECONDS = 0.2

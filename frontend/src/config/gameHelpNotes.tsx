@@ -38,7 +38,7 @@ export const GAME_HELP_NOTES: Partial<Record<GameId, ReactNode[]>> = {
   ],
   starrail: [
     <>
-      Only <b>playable characters</b> released up through Version 4.5 are selectable. Trailblazer is selectable as either Caelus/Stelle
+      Only <b>playable characters</b> released up through Version 4.6 are selectable. Trailblazer is selectable as either Caelus/Stelle
       and any of their playable paths.
     </>,
   ],

@@ -95,11 +95,12 @@ Phainon
 Tribbie
 Trailblazer (Remembrance)
 
-Planarcardia
+Planarcadia
 Ashveil
 Evanescia
 Himeko
 Himeko • Nova
+Pearl
 Sparxie
 Trailblazer (Elation)
 
@@ -107,6 +108,7 @@ IPC (Interastral Peace Corporation)
 Aventurine
 Aventurine • Waveflair
 Jade
+Pearl
 Topaz & Numby
 
 Astropolis
