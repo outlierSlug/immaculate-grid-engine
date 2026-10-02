@@ -17,14 +17,18 @@ OUTPUT_PATH = Path(__file__).parent / "output" / "brawlstars_entities.json"
 
 # BrawlAPI's own raw["released"] flips true as soon as a brawler is
 # *announced*, not when they're actually playable - confirmed 2026-09-07 for
-# Cosmo/Vince (API says released, but neither is in the game yet; Brawlify's
-# own icon-asset mirror hasn't been touched in 2 months, consistent with
+# Cosmo/Vince (API says released, but neither was in the game yet; Brawlify's
+# own icon-asset mirror hadn't been touched in 2 months, consistent with
 # that). raw["released"] alone isn't a reliable signal here the way it is
 # for Clash Royale, so this is a manual override until each name is
 # confirmed actually live - remove the entry (and add real
 # class/traits/release-year backfill data) once it's genuinely in the game,
-# not just announced.
-ANNOUNCED_NOT_YET_PLAYABLE = {"Cosmo", "Vince"}
+# not just announced. "Live" follows the same rule as release_year (see
+# backfill_brawler_release_years.py): obtainable for free, not just paid
+# early access - Cosmo came off this list 2026-10-01, the day he reached the
+# Brawler Blast, not 2026-09-10 when his paid packs went on sale. Vince's
+# dates are 2026-10-08 (early access) and 2026-11-05 (Brawler Blast).
+ANNOUNCED_NOT_YET_PLAYABLE = {"Vince"}
 
 
 # Filename/URL-safe form of a brawler's name - deliberately separate from

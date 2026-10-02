@@ -1,5 +1,18 @@
 [
   {
+    "id": "brawlstars:cosmo",
+    "game_id": "brawlstars",
+    "display_name": "Cosmo",
+    "image_url": "/brawlstars/icons/cosmo.png",
+    "attributes": {
+      "rarity": "Mythic",
+      "brawler_class": "Controller",
+      "traits": [],
+      "tags": [],
+      "release_year": 2026
+    }
+  },
+  {
     "id": "brawlstars:wendy",
     "game_id": "brawlstars",
     "display_name": "Wendy",
@@ -70,7 +83,9 @@
       "traits": [
         "Damage"
       ],
-      "tags": [],
+      "tags": [
+        "Has Legendary Skin"
+      ],
       "release_year": 2026
     }
   },
@@ -643,7 +658,8 @@
       "brawler_class": "Marksman",
       "traits": [],
       "tags": [
-        "Former Chromatic"
+        "Former Chromatic",
+        "Has Legendary Skin"
       ],
       "release_year": 2023
     }

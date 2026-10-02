@@ -29,7 +29,7 @@ export const GAME_HELP_NOTES: Partial<Record<GameId, ReactNode[]>> = {
   ],
   brawlstars: [
     <>
-      Only <b>playable brawlers</b> released up through August 2026 are selectable. Buzz Lightyear is not a selectable character.
+      Only <b>playable brawlers</b> released up through October 2026 are selectable. Buzz Lightyear is not a selectable character.
     </>,
     <>
       A brawler's <b>Release Year</b> is considered the year in which the brawler was first available to <b>all</b> players, including

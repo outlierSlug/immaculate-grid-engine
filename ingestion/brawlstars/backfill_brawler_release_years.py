@@ -138,4 +138,5 @@ KNOWN_RELEASE_YEARS: dict[str, int] = {
     "Bolt": 2026,
     "Nori": 2026,
     "Wendy": 2026,
+    "Cosmo": 2026,
 }
