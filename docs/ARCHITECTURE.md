@@ -579,6 +579,14 @@ Manual setup (not code, done once through each platform's dashboard):
    local machine (kill it once the console logs "Loaded N grid items" for
    both games) - safe to re-run any time, `GridItemRepository.save` upserts
    on id rather than duplicating rows.
+   On Windows, `backend/load-prod-data.ps1` does this in one step and is
+   the preferred way to reload a roster after adding a character. It asks
+   for the three DB values once and saves them encrypted (Windows DPAPI)
+   under `%USERPROFILE%\.gachagrid\`, outside the repo; passes them only to
+   the backend process it starts, so they never sit in the terminal's
+   environment (a hand-set `$env:DB_URL` would otherwise point the next
+   local `mvnw spring-boot:run` in that window at production); and stops
+   the backend itself once every game has loaded.
    **Neon bills compute time, not queries**, and only suspends a compute
    endpoint once *nothing is connected to it*. Hikari's defaults keep
    `maximum-pool-size` connections open indefinitely, so the endpoint never
