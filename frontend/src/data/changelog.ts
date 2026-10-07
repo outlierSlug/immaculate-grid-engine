@@ -18,6 +18,7 @@ export interface ChangelogEntry {
 }
 
 export const CHANGELOG: ChangelogEntry[] = [
+  { date: '2026-10-06', text: 'Added Evo Electro Giant and Hero Electro Wizard to Clash Royale.' },
   { date: '2026-10-01', text: 'Added Cosmo to Brawl Stars.' },
   { date: '2026-09-28', text: 'Added Pearl to Honkai: Star Rail (Version 4.6).' },
   {

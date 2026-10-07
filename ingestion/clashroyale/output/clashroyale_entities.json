@@ -1140,6 +1140,21 @@
     }
   },
   {
+    "id": "clashroyale:electro-wizard-hero",
+    "game_id": "clashroyale",
+    "display_name": "Hero Electro Wizard",
+    "image_url": "/clashroyale/icons/electro-wizard-hero.png",
+    "attributes": {
+      "rarity": "Legendary",
+      "card_type": "Troop",
+      "elixir_cost": 4,
+      "form": "Hero",
+      "targeting": [
+        "Targets Air & Ground"
+      ]
+    }
+  },
+  {
     "id": "clashroyale:elite-barbarians",
     "game_id": "clashroyale",
     "display_name": "Elite Barbarians",
@@ -1839,6 +1854,21 @@
       "card_type": "Troop",
       "elixir_cost": 7,
       "form": "Base",
+      "targeting": [
+        "Targets Buildings"
+      ]
+    }
+  },
+  {
+    "id": "clashroyale:electro-giant-evo",
+    "game_id": "clashroyale",
+    "display_name": "Evo Electro Giant",
+    "image_url": "/clashroyale/icons/electro-giant-evo.png",
+    "attributes": {
+      "rarity": "Epic",
+      "card_type": "Troop",
+      "elixir_cost": 7,
+      "form": "Evolution",
       "targeting": [
         "Targets Buildings"
       ]

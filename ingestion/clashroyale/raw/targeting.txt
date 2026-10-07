@@ -4,6 +4,7 @@ Battle Ram
 Electro Giant
 Elixir Golem
 Evo Battle Ram
+Evo Electro Giant
 Evo Goblin Giant
 Evo Royal Giant
 Evo Royal Hogs
@@ -71,6 +72,7 @@ Goblin Hut
 Goblin Machine
 Goblinstein
 Heal Spirit
+Hero Electro Wizard
 Hero Ice Wizard
 Hero Magic Archer
 Hero Mega Minion

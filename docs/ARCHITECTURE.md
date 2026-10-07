@@ -316,7 +316,9 @@ likely. Requires at least 2 distinct dimensions to run at all (returns
   behavior means it won't self-heal without that manual nudge. Resolved
   2026-09-17: the CDN had caught up, so those two plus the similarly
   hand-made Evo Elite Barbarians icon were swapped for Supercell's
-  official ones.
+  official ones. It happened again on 2026-10-06 with Evo Electro Giant
+  and Hero Electro Wizard, this time with stand-ins from Supercell's fan
+  kit; `download_icons.py` lists them until they are swapped.
 
 ## Data sourcing — Honkai: Star Rail (Phase 8, fourth game)
 
