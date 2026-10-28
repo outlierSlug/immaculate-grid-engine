@@ -551,6 +551,66 @@ presentation layer over correct-guess history. See `docs/ARCHITECTURE.md`'s
 - [x] Site-wide fix: dragging off a link/image/button could leave Chrome
       stuck in a native drag (clicks ignored)
 
+## Live content tracker (ongoing)
+What each game's roster is current through, and what is waiting to be
+added or swapped. Update this on every roster pass. Last full pass:
+2026-10-27.
+
+Every addition ships the same way: run that game's pipeline, push, then run
+`backend/load-prod-data.ps1` to upsert the roster into Neon. Never truncate
+`puzzles`: each Daily's `cellSolutions` is the permanent answer key behind
+Archive, stats and collections.
+
+**Genshin Impact** (134 entities, current through Version 7.1)
+- [ ] Version 7.2, expected around early November 2026. Steps are in
+      `ingestion/genshin/README.md`. Enka and Dimbreath only carry a
+      character once released; the wiki's 256px icon is the pre-launch
+      fallback (it serves WebP, so convert).
+- [ ] `build_material_sources.py` must not be re-run as is: it would
+      regress 23 tooltips. Reconcile it first.
+
+**Honkai: Star Rail** (98 entities, current through Version 4.6)
+- [ ] Version 4.7, expected around early to mid November 2026.
+- [ ] Swap three wiki-fallback icons (Pearl, Robin • Summeretto,
+      Aventurine • Waveflair) once the FortOfFans mirror has them. Still
+      missing on 2026-10-27, although the mirror updated on 2026-09-29.
+      Remove each from `WIKI_FALLBACK_URLS` in `download_icons.py`, delete
+      its file, and re-run the script.
+- [ ] Delete the old "Planarcardia" tooltip alias in `CategoryChip.tsx`
+      after 2026-10-28, once puzzles with the misspelled label have left
+      the 30-day Archive.
+
+**Brawl Stars** (107 brawlers, current through Cosmo)
+- [ ] Add Vince on 2026-11-05, the day he is free in the Brawler Blast
+      (paid early access began 2026-10-19, which does not count). Mythic,
+      Damage Dealer, release year 2026, and a new "Caterpillar" trait.
+      Remove him from `ANNOUNCED_NOT_YET_PLAYABLE` in `normalize.py`. If
+      Brawlify still has no icon, add `Vince1-pfp.png` from the wiki to
+      `WIKI_FALLBACK_URLS`; it already exists.
+- [ ] Swap Cosmo's wiki-fallback icon once Brawlify has him (still missing
+      on 2026-10-27).
+- [ ] Re-check skin tags against the wiki's skin galleries each pass:
+      new skins appear between brawler releases. Last checked 2026-10-27
+      (37 with a Legendary skin after adding Kit, 9 with a Hypercharge
+      skin).
+
+**Clash Royale** (185 entities from 123 cards)
+- [ ] Evo Mirror and Evo Giant, not yet in the official API on 2026-10-27.
+      A re-fetch creates them once the API lists them; then add each to
+      `raw/targeting.txt`. Mirror sits in the "No targeting" group and
+      Giant in "Targets Buildings", so the evolutions likely follow, but
+      confirm in game. Evo Mirror inherits Mirror's lack of a fixed elixir
+      cost.
+- [x] Evo Electro Giant and Hero Electro Wizard added 2026-10-06 with
+      stand-in icons, swapped for Supercell's own on 2026-10-27. No
+      stand-ins remain.
+
+**All games**
+- [ ] The credits on the Fan Content & Privacy page (`LegalPage.tsx`) no
+      longer match the real icon sources: Star Rail's come from the
+      FortOfFans mirror and the wiki, not Enka; some Genshin, Brawl Stars
+      and Star Rail icons come from the wikis.
+
 ## Phase 9 — Real-time head-to-head (~2-3 weeks)
 Deliberately after a deployed, polished single-player game exists —
 additive feature on a proven foundation, not a prerequisite for having a
