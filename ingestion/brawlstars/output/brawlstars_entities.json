@@ -485,7 +485,9 @@
       "traits": [
         "Time"
       ],
-      "tags": [],
+      "tags": [
+        "Has Legendary Skin"
+      ],
       "release_year": 2024
     }
   },

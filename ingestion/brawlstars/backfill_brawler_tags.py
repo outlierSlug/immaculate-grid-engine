@@ -48,6 +48,7 @@ KNOWN_TAGS: dict[str, list[str]] = {
     "Jessie": ["Has Legendary Skin"],
     "Kaze": ["Has Legendary Skin"],
     "Kenji": ["Has Hypercharge Skin", "Has Legendary Skin"],
+    "Kit": ["Has Legendary Skin"],
     "Larry & Lawrie": ["Has Legendary Skin"],
     "Leon": ["Has Legendary Skin"],
     "Lola": ["Former Chromatic"],

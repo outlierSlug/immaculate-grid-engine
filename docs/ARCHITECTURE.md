@@ -318,7 +318,7 @@ likely. Requires at least 2 distinct dimensions to run at all (returns
   hand-made Evo Elite Barbarians icon were swapped for Supercell's
   official ones. It happened again on 2026-10-06 with Evo Electro Giant
   and Hero Electro Wizard, this time with stand-ins from Supercell's fan
-  kit; `download_icons.py` lists them until they are swapped.
+  kit, swapped for Supercell's own on 2026-10-27 once the CDN had them.
 
 ## Data sourcing — Honkai: Star Rail (Phase 8, fourth game)
 
