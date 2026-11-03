@@ -610,12 +610,6 @@ const STARRAIL_DESCRIPTIONS: Record<string, string> = {
   'Herta Space Station': 'This character is affiliated with the Herta Space Station.',
   Penacony: 'This character is from Penacony or is directly affiliated with it.',
   Planarcadia: 'This character is from Planarcadia or is directly affiliated with it.',
-  // The category shipped misspelled as "Planarcardia" until 2026-09-28, and
-  // a puzzle stores its category labels as generated, so archived puzzles
-  // from before then still show the old spelling. Keeps their tooltip.
-  // Safe to delete after 2026-10-28, once they've aged out of the 30-day
-  // Archive window.
-  Planarcardia: 'This character is from Planarcadia or is directly affiliated with it.',
   IPC: 'This character is affiliated with the IPC (Interastral Peace Corporation).',
   'Another World': 'This character is from Another World or is an exclusive collab character.',
   'Galaxy Rangers': 'This character is affiliated with the Galaxy Rangers.',
