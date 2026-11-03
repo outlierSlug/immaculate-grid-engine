@@ -43,4 +43,5 @@ KNOWN_TRAITS: dict[str, list[str]] = {
     "Kenji": ["Lifesteal"],
     "Max": ["Movement"],
     "Bolt": ["Movement", "Speed"],
+    "Vince": ["Caterpillar"],
 }

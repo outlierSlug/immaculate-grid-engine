@@ -26,9 +26,9 @@ OUTPUT_PATH = Path(__file__).parent / "output" / "brawlstars_entities.json"
 # not just announced. "Live" follows the same rule as release_year (see
 # backfill_brawler_release_years.py): obtainable for free, not just paid
 # early access - Cosmo came off this list 2026-10-01, the day he reached the
-# Brawler Blast, not 2026-09-10 when his paid packs went on sale. Vince's
-# dates are 2026-10-08 (early access) and 2026-11-05 (Brawler Blast).
-ANNOUNCED_NOT_YET_PLAYABLE = {"Vince"}
+# Brawler Blast, not 2026-09-10 when his paid packs went on sale. Vince came
+# off it 2026-11-03. Empty until the next brawler is announced.
+ANNOUNCED_NOT_YET_PLAYABLE: set[str] = set()
 
 
 # Filename/URL-safe form of a brawler's name - deliberately separate from

@@ -1,5 +1,20 @@
 [
   {
+    "id": "brawlstars:vince",
+    "game_id": "brawlstars",
+    "display_name": "Vince",
+    "image_url": "/brawlstars/icons/vince.png",
+    "attributes": {
+      "rarity": "Mythic",
+      "brawler_class": "Damage Dealer",
+      "traits": [
+        "Caterpillar"
+      ],
+      "tags": [],
+      "release_year": 2026
+    }
+  },
+  {
     "id": "brawlstars:cosmo",
     "game_id": "brawlstars",
     "display_name": "Cosmo",

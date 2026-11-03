@@ -50,6 +50,9 @@ import traitDodgeIcon from '../assets/brawlstars/traits/icon_trait_dodge.png';
 import traitSpeedIcon from '../assets/brawlstars/traits/icon_trait_speed.png';
 import traitMovementIcon from '../assets/brawlstars/traits/icon_trait_move.png';
 import traitLifestealIcon from '../assets/brawlstars/traits/icon_trait_lifesteal.png';
+// From the wiki's Trait-Caterpillar.png: its trait icons are the game's own
+// files (its Trait-Dodge.png is byte-for-byte our icon_trait_dodge.png).
+import traitCaterpillarIcon from '../assets/brawlstars/traits/icon_trait_caterpillar.png';
 
 import hyperchargeSkinIcon from '../assets/brawlstars/hypercharge_skin.png';
 import legendarySkinIcon from '../assets/brawlstars/legendary_skin.png';
@@ -366,6 +369,7 @@ const BRAWLSTARS_ICONS: Record<string, string> = {
   Speed: traitSpeedIcon,
   Movement: traitMovementIcon,
   Lifesteal: traitLifestealIcon,
+  Caterpillar: traitCaterpillarIcon,
 
   // Tags (see BRAWLSTARS_DESCRIPTIONS below) - unlike traits/classes above,
   // these are full-color self-contained badges (own built-in shadow), not
@@ -385,6 +389,7 @@ const INVERT_IN_DARK = new Set([
   'Artillery', 'Assassin', 'Controller', 'Damage Dealer', 'Marksman', 'Support', 'Tank',
   'Damage', 'Time', 'Hover', 'Proximity', 'Random', 'Increased Damage', 'Power Token',
   'Super Healing', 'Enraged', 'Shield', 'Dodge', 'Speed', 'Movement', 'Lifesteal',
+  'Caterpillar',
 ]);
 
 // In-game explanation of what each trait actually does, shown in a
@@ -406,6 +411,7 @@ const BRAWLSTARS_DESCRIPTIONS: Record<string, string> = {
   Speed: 'This brawler moves faster the longer it keeps moving.',
   Movement: 'This brawler charges its super by moving.',
   Lifesteal: 'This brawler heals for a portion of the damage it deals.',
+  Caterpillar: 'This brawler collects caterpillars that spawn nearby to power up its super.',
 
   // Classes - same reasoning as region above: states the puzzle rule the
   // icon represents (Brawl Stars' own in-game class label) rather than trivia.
@@ -460,6 +466,7 @@ function releaseYearDescription(label: string): string | undefined {
 const TRAIT_LABELS = new Set([
   'Damage', 'Time', 'Hover', 'Proximity', 'Random', 'Increased Damage', 'Power Token',
   'Super Healing', 'Enraged', 'Shield', 'Dodge', 'Speed', 'Movement', 'Lifesteal',
+  'Caterpillar',
 ]);
 
 // ── Clash Royale ─────────────────────────────────────────────────────────

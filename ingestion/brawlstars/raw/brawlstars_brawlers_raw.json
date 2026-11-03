@@ -13,8 +13,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000110.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000110.png",
     "class": {
-      "id": 107,
-      "name": "Collect Caterpillars To Become More Powerful"
+      "id": 1,
+      "name": "Damage Dealer"
     },
     "rarity": {
       "id": 5,
@@ -22,7 +22,7 @@
       "color": "#fe5e72"
     },
     "unlock": null,
-    "description": "Vince tends to both the espresso machine and his many-legged friends, much to his customers' dismay.  He walks slowly around his Creepy Caf\u00e9, careful not to step on any of his beloved bugs. His companions, Mocha and Doppio, follow him everywhere.",
+    "description": "Vince tends to both the espresso machine and his many-legged friends, much to his customers' dismay. He walks slowly around his Creepy Caf\u00e9, careful not to step on any of his beloved bugs. His companions, Mocha and Doppio, follow him everywhere.",
     "descriptionHtml": "Vince tends to both the espresso machine and his many-legged friends, much to his customers' dismay.<br><br>He walks slowly around his Creepy Caf\u00e9, careful not to step on any of his beloved bugs. His companions, Mocha and Doppio, follow him everywhere.",
     "starPowers": [
       {
@@ -40,8 +40,8 @@
         "name": "Bug Bandage",
         "path": "Bug-Bandage",
         "version": 1,
-        "description": "Turning a caterpillar into a moth heals Vince for <!card.value1.scaleStatToLevel>.",
-        "descriptionHtml": "Turning a caterpillar into a moth heals Vince for <span style=\"color:#00cc00;\"><!card.value1.scaleStatToLevel></span>.",
+        "description": "Turning a caterpillar into a moth heals Vince for x.",
+        "descriptionHtml": "Turning a caterpillar into a moth heals Vince for <span style=\"color:#00cc00;\">x</span>.",
         "imageUrl": "https://cdn.brawlify.com/star-powers/borderless/23001451.png",
         "released": true
       }
@@ -84,8 +84,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000109.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000109.png",
     "class": {
-      "id": 106,
-      "name": "Use Gravity To Target Enemies"
+      "id": 5,
+      "name": "Controller"
     },
     "rarity": {
       "id": 5,
@@ -101,8 +101,8 @@
         "name": "Precession",
         "path": "Precession",
         "version": 1,
-        "description": "Increases the orbit speed of Cosmo's main attack by <!card.character.component[0].trait[0].value>%.",
-        "descriptionHtml": "Increases the orbit speed of Cosmo's main attack by <span style=\"color:#00cc00;\"><!card.character.component[0].trait[0].value>%</span>.",
+        "description": "Increases the orbit speed of Cosmo's main attack by x%.",
+        "descriptionHtml": "Increases the orbit speed of Cosmo's main attack by <span style=\"color:#00cc00;\">x%</span>.",
         "imageUrl": "https://cdn.brawlify.com/star-powers/borderless/23001442.png",
         "released": true
       },
@@ -111,8 +111,8 @@
         "name": "Ammo Attractor",
         "path": "Ammo-Attractor",
         "version": 1,
-        "description": "Hitting an enemy with Cosmo's Super reloads <!card.value1> ammo.",
-        "descriptionHtml": "Hitting an enemy with Cosmo's Super reloads <span style=\"color:#00cc00;\"><!card.value1></span> ammo.",
+        "description": "Hitting an enemy with Cosmo's Super reloads 2 ammo.",
+        "descriptionHtml": "Hitting an enemy with Cosmo's Super reloads <span style=\"color:#00cc00;\">2</span> ammo.",
         "imageUrl": "https://cdn.brawlify.com/star-powers/borderless/23001443.png",
         "released": true
       }
@@ -133,8 +133,8 @@
         "name": "Telescope Trap",
         "path": "Telescope-Trap",
         "version": 1,
-        "description": "Cosmo uses his telescope to reveal an area for <!card.accessory.skill.projectile.spawnareaeffectobject.timems.msasseconds>s sec, including invisible enemies. Enemy Brawlers inside this area cannot use movement abilities (dashes, jumps, teleports, etc.).",
-        "descriptionHtml": "Cosmo uses his telescope to reveal an area for <span style=\"color:#00cc00;\"><!card.accessory.skill.projectile.spawnareaeffectobject.timems.msasseconds>s</span> sec, including invisible enemies. Enemy Brawlers inside this area cannot use movement abilities (dashes, jumps, teleports, etc.).",
+        "description": "Cosmo uses his telescope to reveal an area for xs sec, including invisible enemies. Enemy Brawlers inside this area cannot use movement abilities (dashes, jumps, teleports, etc.).",
+        "descriptionHtml": "Cosmo uses his telescope to reveal an area for <span style=\"color:#00cc00;\">xs</span> sec, including invisible enemies. Enemy Brawlers inside this area cannot use movement abilities (dashes, jumps, teleports, etc.).",
         "imageUrl": "https://cdn.brawlify.com/gadgets/borderless/23001445.png",
         "released": true
       }
@@ -155,8 +155,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000108.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000108.png",
     "class": {
-      "id": 105,
-      "name": "Shield Teammates And Hold Ground."
+      "id": 7,
+      "name": "Support"
     },
     "rarity": {
       "id": 5,
@@ -182,8 +182,8 @@
         "name": "Solar Shield",
         "path": "Solar-Shield",
         "version": 1,
-        "description": "Wendy's shield generator gains an additional <!card.value.scaleToLevel> health.",
-        "descriptionHtml": "Wendy's shield generator gains an additional <span style=\"color:#00cc00;\"><!card.value.scaleToLevel></span> health.",
+        "description": "Wendy's shield generator gains an additional x health.",
+        "descriptionHtml": "Wendy's shield generator gains an additional <span style=\"color:#00cc00;\">x</span> health.",
         "imageUrl": "https://cdn.brawlify.com/star-powers/borderless/23001319.png",
         "released": true
       }
@@ -226,13 +226,13 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000107.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000107.png",
     "class": {
-      "id": 104,
-      "name": "Jump Around The Map And Cause Chaos"
+      "id": 6,
+      "name": "Assassin"
     },
     "rarity": {
       "id": 6,
       "name": "Legendary",
-      "color": "#fff11ev"
+      "color": "#fff11e"
     },
     "unlock": null,
     "description": "As the child of Kenji and Kaze, Nori was always destined for great things. Being the first Brawler ever born in Starr Park has also given him extraordinary powers! He's not too bad at cooking either.",
@@ -243,8 +243,8 @@
         "name": "Big Haul",
         "path": "Big-Haul",
         "version": 1,
-        "description": "Nori catches <!card.value1> fish when his Super hits enemy Brawlers.",
-        "descriptionHtml": "Nori catches <span style=\"color:#00cc00;\"><!card.value1></span> fish when his Super hits enemy Brawlers.",
+        "description": "Nori catches 3 fish when his Super hits enemy Brawlers.",
+        "descriptionHtml": "Nori catches <span style=\"color:#00cc00;\">3</span> fish when his Super hits enemy Brawlers.",
         "imageUrl": "https://cdn.brawlify.com/star-powers/borderless/23001295.png",
         "released": true
       },
@@ -253,8 +253,8 @@
         "name": "His Mothers Son",
         "path": "His-Mothers-Son",
         "version": 1,
-        "description": "Nori gains +<!card.statuseffect.baseSpeedIncreasePercent>% speed for <!card.statuseffect.duration.ticksasseconds> sec whenever he hits an enemy with his Main Attack.",
-        "descriptionHtml": "Nori gains <span style=\"color:#00cc00;\">+<!card.statuseffect.baseSpeedIncreasePercent>%</span> speed for <span style=\"color:#00cc00;\"><!card.statuseffect.duration.ticksasseconds></span> sec whenever he hits an enemy with his Main Attack.",
+        "description": "Nori gains +20% speed for 1 sec whenever he hits an enemy with his Main Attack.",
+        "descriptionHtml": "Nori gains <span style=\"color:#00cc00;\">+20%</span> speed for <span style=\"color:#00cc00;\">1</span> sec whenever he hits an enemy with his Main Attack.",
         "imageUrl": "https://cdn.brawlify.com/star-powers/borderless/23001296.png",
         "released": true
       }
@@ -265,8 +265,8 @@
         "name": "Sushi Snack",
         "path": "Sushi-Snack",
         "version": 1,
-        "description": "Nori eats up to <!card.accessory.value2> fish to heal himself for <!card.accessory.value1> per fish.",
-        "descriptionHtml": "Nori eats up to <span style=\"color:#00cc00;\"><!card.accessory.value2></span> fish to heal himself for <span style=\"color:#00cc00;\"><!card.accessory.value1></span> per fish.",
+        "description": "Nori eats up to x fish to heal himself for x per fish.",
+        "descriptionHtml": "Nori eats up to <span style=\"color:#00cc00;\">x</span> fish to heal himself for <span style=\"color:#00cc00;\">x</span> per fish.",
         "imageUrl": "https://cdn.brawlify.com/gadgets/borderless/23001297.png",
         "released": true
       },
@@ -275,8 +275,8 @@
         "name": "Gonna Need A Bigger Net",
         "path": "Gonna-Need-A-Bigger-Net",
         "version": 1,
-        "description": "Aim a fishing net that roots the first Brawler hit for <!card.character.component[0].statuseffect[0].duration.ticksasseconds> sec and deals <!card.accessory.skill.damage.scaleToLevel> damage.",
-        "descriptionHtml": "Aim a fishing net that roots the first Brawler hit for <span style=\"color:#00cc00;\"><!card.character.component[0].statuseffect[0].duration.ticksasseconds></span> sec and deals <span style=\"color:#00cc00;\"><!card.accessory.skill.damage.scaleToLevel></span> damage.",
+        "description": "Aim a fishing net that roots the first Brawler hit for x sec and deals x damage.",
+        "descriptionHtml": "Aim a fishing net that roots the first Brawler hit for <span style=\"color:#00cc00;\">x</span> sec and deals <span style=\"color:#00cc00;\">x</span> damage.",
         "imageUrl": "https://cdn.brawlify.com/gadgets/borderless/23001298.png",
         "released": true
       }
@@ -297,8 +297,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000106.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000106.png",
     "class": {
-      "id": 103,
-      "name": "Avoid Walls And Sharp Turns For Speed"
+      "id": 2,
+      "name": "Tank"
     },
     "rarity": {
       "id": 4,
@@ -324,33 +324,13 @@
         "name": "Unstoppaball",
         "path": "Unstoppaball",
         "version": 1,
-        "description": "Bolt is immune to crowd control for <!card.statusEffect.duration.ticksAsSeconds> seconds after activating his Super.",
-        "descriptionHtml": "Bolt is immune to crowd control for <span style=\"color:#00cc00;\"><!card.statusEffect.duration.ticksAsSeconds></span> seconds after activating his Super.",
+        "description": "Bolt is immune to crowd control for 1 seconds after activating his Super.",
+        "descriptionHtml": "Bolt is immune to crowd control for <span style=\"color:#00cc00;\">1</span> seconds after activating his Super.",
         "imageUrl": "https://cdn.brawlify.com/star-powers/borderless/23001280.png",
         "released": true
       }
     ],
     "gadgets": [
-      {
-        "id": 23000245,
-        "name": "Rocket Laces",
-        "path": "Rocket-Laces",
-        "version": 1,
-        "description": "Brock jumps to targeted area, knocking back nearby enemies on takeoff and landing and dealing minor damage.",
-        "descriptionHtml": "Brock jumps to targeted area, knocking back nearby enemies on takeoff and landing and dealing minor damage.",
-        "imageUrl": "https://cdn.brawlify.com/gadgets/borderless/23000245.png",
-        "released": true
-      },
-      {
-        "id": 23000316,
-        "name": "Rocket Fuel",
-        "path": "Rocket-Fuel",
-        "version": 1,
-        "description": "Brock fires a large rocket that destroys terrain and deals damage",
-        "descriptionHtml": "Brock fires a large rocket that destroys terrain and deals damage",
-        "imageUrl": "https://cdn.brawlify.com/gadgets/borderless/23000316.png",
-        "released": true
-      },
       {
         "id": 23001281,
         "name": "Oil Change",
@@ -388,8 +368,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000105.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000105.png",
     "class": {
-      "id": 102,
-      "name": "Poke Then Transform And Strike"
+      "id": 6,
+      "name": "Assassin"
     },
     "rarity": {
       "id": 5,
@@ -405,8 +385,8 @@
         "name": "Power Level Maximum",
         "path": "Power-Level-Maximum",
         "version": 1,
-        "description": "Hitting an enemy Brawler while transformed increases your damage by <!card.statuseffect.damageboostpercent>% to a maximum of <!card.statuseffect.damageboostpercent.scalecardvalue2>%.",
-        "descriptionHtml": "Hitting an enemy Brawler while transformed increases your damage by <span style=\"color:#00cc00;\"><!card.statuseffect.damageboostpercent>%</span> to a maximum of <span style=\"color:#00cc00;\"><!card.statuseffect.damageboostpercent.scalecardvalue2>%</span>.",
+        "description": "Hitting an enemy Brawler while transformed increases your damage by 4% to a maximum of x%.",
+        "descriptionHtml": "Hitting an enemy Brawler while transformed increases your damage by <span style=\"color:#00cc00;\">4%</span> to a maximum of <span style=\"color:#00cc00;\">x%</span>.",
         "imageUrl": "https://cdn.brawlify.com/star-powers/borderless/23001253.png",
         "released": true
       },
@@ -415,8 +395,8 @@
         "name": "Mystical Starr Technique",
         "path": "Mystical-Starr-Technique",
         "version": 1,
-        "description": "Starr Nova's main attack also heals teammates for <!card.character.weaponSkill.damage.scaleStatToLevel.scaleByCardProjectileHealOwnPercent>, charging her Super based on healing.",
-        "descriptionHtml": "Starr Nova's main attack also heals teammates for <span style=\"color:#00cc00;\"><!card.character.weaponSkill.damage.scaleStatToLevel.scaleByCardProjectileHealOwnPercent></span>, charging her Super based on healing.",
+        "description": "Starr Nova's main attack also heals teammates for x, charging her Super based on healing.",
+        "descriptionHtml": "Starr Nova's main attack also heals teammates for <span style=\"color:#00cc00;\">x</span>, charging her Super based on healing.",
         "imageUrl": "https://cdn.brawlify.com/star-powers/borderless/23001254.png",
         "released": true
       }
@@ -437,8 +417,8 @@
         "name": "Shining Starr Of Friendship And Justice",
         "path": "Shining-Starr-Of-Friendship-And-Justice",
         "version": 1,
-        "description": "Starr Nova fires an energy ball that damages enemies and heals teammates for <!card.accessory.skill.damage.scaleStatToLevel>. This energy ball can also be teleported to before it hits a target!",
-        "descriptionHtml": "Starr Nova fires an energy ball that damages enemies and heals teammates for <span style=\"color:#00cc00;\"><!card.accessory.skill.damage.scaleStatToLevel></span>. This energy ball can also be teleported to before it hits a target!",
+        "description": "Starr Nova fires an energy ball that damages enemies and heals teammates for x. This energy ball can also be teleported to before it hits a target!",
+        "descriptionHtml": "Starr Nova fires an energy ball that damages enemies and heals teammates for <span style=\"color:#00cc00;\">x</span>. This energy ball can also be teleported to before it hits a target!",
         "imageUrl": "https://cdn.brawlify.com/gadgets/borderless/23001256.png",
         "released": true
       }
@@ -459,8 +439,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000104.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000104.png",
     "class": {
-      "id": 101,
-      "name": "Jump In To Unleash Chaos"
+      "id": 2,
+      "name": "Tank"
     },
     "rarity": {
       "id": 5,
@@ -476,8 +456,8 @@
         "name": "Crowdkill",
         "path": "Crowdkill",
         "version": 1,
-        "description": "Knocking a target into a wall stuns them for <!card.value1.ticksasseconds> sec.",
-        "descriptionHtml": "Knocking a target into a wall stuns them for <span style=\"color:#00cc00;\"><!card.value1.ticksasseconds></span> sec.",
+        "description": "Knocking a target into a wall stuns them for 0.5 sec.",
+        "descriptionHtml": "Knocking a target into a wall stuns them for <span style=\"color:#00cc00;\">0.5</span> sec.",
         "imageUrl": "https://cdn.brawlify.com/star-powers/borderless/23001245.png",
         "released": true
       },
@@ -498,8 +478,8 @@
         "name": "Spiritual Healing",
         "path": "Spiritual-Healing",
         "version": 1,
-        "description": "Damian throws his microphone to a target location. The first teammate to pick it up is healed for <!card.accessory.skill.spawneditem.statuseffectally.healing.scaletolevel> health.",
-        "descriptionHtml": "Damian throws his microphone to a target location. The first teammate to pick it up is healed for <span style=\"color:#00cc00;\"><!card.accessory.skill.spawneditem.statuseffectally.healing.scaletolevel></span> health.",
+        "description": "Damian throws his microphone to a target location. The first teammate to pick it up is healed for x health.",
+        "descriptionHtml": "Damian throws his microphone to a target location. The first teammate to pick it up is healed for <span style=\"color:#00cc00;\">x</span> health.",
         "imageUrl": "https://cdn.brawlify.com/gadgets/borderless/23001247.png",
         "released": true
       },
@@ -530,8 +510,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000103.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000103.png",
     "class": {
-      "id": 100,
-      "name": "Massive Range With Added Poison"
+      "id": 1,
+      "name": "Damage Dealer"
     },
     "rarity": {
       "id": 5,
@@ -557,8 +537,8 @@
         "name": "Venomous",
         "path": "Venomous",
         "version": 1,
-        "description": "Poison damage scales with the target Brawler's current percent health, dealing up to an extra <!card.character.component.trait[1].statusEffect.damage.scaleToLevel> damage when a target is at 100% health.",
-        "descriptionHtml": "Poison damage scales with the target Brawler's current percent health, dealing up to an extra <span style=\"color:#00cc00;\"><!card.character.component.trait[1].statusEffect.damage.scaleToLevel></span> damage when a target is at 100% health.",
+        "description": "Poison damage scales with the target Brawler's current percent health, dealing up to an extra x damage when a target is at 100% health.",
+        "descriptionHtml": "Poison damage scales with the target Brawler's current percent health, dealing up to an extra <span style=\"color:#00cc00;\">x</span> damage when a target is at 100% health.",
         "imageUrl": "https://cdn.brawlify.com/star-powers/borderless/23001217.png",
         "released": true
       }
@@ -569,8 +549,8 @@
         "name": "Poison Puddles",
         "path": "Poison-Puddles",
         "version": 1,
-        "description": "All enemies currently poisoned by Najia will create poisonous puddles for the next <!card.character.component.statusEffect[3].duration.ticksAsSeconds> sec.",
-        "descriptionHtml": "All enemies currently poisoned by Najia will create poisonous puddles for the next <span style=\"color:#00cc00;\"><!card.character.component.statusEffect[3].duration.ticksAsSeconds></span> sec.",
+        "description": "All enemies currently poisoned by Najia will create poisonous puddles for the next x sec.",
+        "descriptionHtml": "All enemies currently poisoned by Najia will create poisonous puddles for the next <span style=\"color:#00cc00;\">x</span> sec.",
         "imageUrl": "https://cdn.brawlify.com/gadgets/borderless/23001218.png",
         "released": true
       },
@@ -601,8 +581,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000102.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000102.png",
     "class": {
-      "id": 99,
-      "name": "Use Shadows To Control The Map."
+      "id": 5,
+      "name": "Controller"
     },
     "rarity": {
       "id": 7,
@@ -618,8 +598,8 @@
         "name": "Dusk Runners",
         "path": "Dusk-Runners",
         "version": 1,
-        "description": "Shadows have +<!card.statusEffect.baseSpeedIncreasePercent>% movement speed.",
-        "descriptionHtml": "Shadows have <span style=\"color:#00cc00;\">+<!card.statusEffect.baseSpeedIncreasePercent>%</span> movement speed.",
+        "description": "Shadows have +15% movement speed.",
+        "descriptionHtml": "Shadows have <span style=\"color:#00cc00;\">+15%</span> movement speed.",
         "imageUrl": "https://cdn.brawlify.com/star-powers/borderless/23001189.png",
         "released": true
       },
@@ -640,8 +620,8 @@
         "name": "A Starr Is Born",
         "path": "A-Starr-Is-Born",
         "version": 1,
-        "description": "Sirius fires a projectile that summons a Shadow on hit, also slowing the hit target by <!card.accessory.skill.projectile.statusEffectEnemy.speedReducePercent>% for <!card.accessory.skill.projectile.statusEffectEnemy.duration.ticksAsSeconds> sec.",
-        "descriptionHtml": "Sirius fires a projectile that summons a Shadow on hit, also slowing the hit target by <span style=\"color:#00cc00;\"><!card.accessory.skill.projectile.statusEffectEnemy.speedReducePercent>%</span> for <span style=\"color:#00cc00;\"><!card.accessory.skill.projectile.statusEffectEnemy.duration.ticksAsSeconds></span> sec.",
+        "description": "Sirius fires a projectile that summons a Shadow on hit, also slowing the hit target by x% for x sec.",
+        "descriptionHtml": "Sirius fires a projectile that summons a Shadow on hit, also slowing the hit target by <span style=\"color:#00cc00;\">x%</span> for <span style=\"color:#00cc00;\">x</span> sec.",
         "imageUrl": "https://cdn.brawlify.com/gadgets/borderless/23001191.png",
         "released": true
       },
@@ -650,8 +630,8 @@
         "name": "Master Of Shadows",
         "path": "Master-Of-Shadows",
         "version": 1,
-        "description": "Summoned Shadows return to Sirius, who heals them for <!card.accessory.customValue1>% of their health.",
-        "descriptionHtml": "Summoned Shadows return to Sirius, who heals them for <span style=\"color:#00cc00;\"><!card.accessory.customValue1>%</span> of their health.",
+        "description": "Summoned Shadows return to Sirius, who heals them for 25% of their health.",
+        "descriptionHtml": "Summoned Shadows return to Sirius, who heals them for <span style=\"color:#00cc00;\">25%</span> of their health.",
         "imageUrl": "https://cdn.brawlify.com/gadgets/borderless/23001192.png",
         "released": true
       }
@@ -672,8 +652,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000101.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000101.png",
     "class": {
-      "id": 98,
-      "name": "Heal Teammates And Fear Enemies."
+      "id": 7,
+      "name": "Support"
     },
     "rarity": {
       "id": 5,
@@ -711,8 +691,8 @@
         "name": "Slippery Savior",
         "path": "Slippery-Savior",
         "version": 1,
-        "description": "Glowy dashes in a target direction, healing himself and teammates for <!card.accessory.skill.areaEffectObject2.statusEffect.healingTotal.scaleToLevel>\u00a0on arrival.",
-        "descriptionHtml": "Glowy dashes in a target direction, healing himself and teammates for <span style=\"color:#00cc00;\"><!card.accessory.skill.areaEffectObject2.statusEffect.healingTotal.scaleToLevel></span>\u00a0on arrival.",
+        "description": "Glowy dashes in a target direction, healing himself and teammates for x\u00a0on arrival.",
+        "descriptionHtml": "Glowy dashes in a target direction, healing himself and teammates for <span style=\"color:#00cc00;\">x</span>\u00a0on arrival.",
         "imageUrl": "https://cdn.brawlify.com/gadgets/borderless/23001183.png",
         "released": true
       },
@@ -743,8 +723,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000100.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000100.png",
     "class": {
-      "id": 97,
-      "name": "Dodge Enemies Then Jump In To Finish Them."
+      "id": 6,
+      "name": "Assassin"
     },
     "rarity": {
       "id": 5,
@@ -814,13 +794,13 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000099.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000099.png",
     "class": {
-      "id": 96,
-      "name": "The Last Shot Is Key For Damage."
+      "id": 3,
+      "name": "Marksman"
     },
     "rarity": {
       "id": 6,
       "name": "Legendary",
-      "color": "#fff11ev"
+      "color": "#fff11e"
     },
     "unlock": null,
     "description": "You know pool lifeguards? Pierce is one of those. Except he shoots people instead of saving them. OK maybe he isn't like a lifeguard at all. When Buzz decides there has been too much pee in the pool, he calls in Pierce to 'clean up'.",
@@ -841,8 +821,8 @@
         "name": "Slip N Snipe",
         "path": "Slip-N-Snipe",
         "version": 1,
-        "description": "When collecting a shell, Pierce gains a short burst (<!card.statusEffect.baseSpeedIncreasePercent>%) of movement speed.",
-        "descriptionHtml": "When collecting a shell, Pierce gains a short burst (<span style=\"color:#00cc00;\"><!card.statusEffect.baseSpeedIncreasePercent>%</span>) of movement speed.",
+        "description": "When collecting a shell, Pierce gains a short burst (15%) of movement speed.",
+        "descriptionHtml": "When collecting a shell, Pierce gains a short burst (<span style=\"color:#00cc00;\">15%</span>) of movement speed.",
         "imageUrl": "https://cdn.brawlify.com/star-powers/borderless/23001061.png",
         "released": true
       }
@@ -885,8 +865,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000098.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000098.png",
     "class": {
-      "id": 95,
-      "name": "Call Lightning To Control Space."
+      "id": 5,
+      "name": "Controller"
     },
     "rarity": {
       "id": 5,
@@ -956,8 +936,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000097.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000097.png",
     "class": {
-      "id": 94,
-      "name": "Combo Your Super With Main Attacks."
+      "id": 1,
+      "name": "Damage Dealer"
     },
     "rarity": {
       "id": 5,
@@ -1027,8 +1007,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000096.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000096.png",
     "class": {
-      "id": 93,
-      "name": "Use Ants For Speed And Charge In"
+      "id": 2,
+      "name": "Tank"
     },
     "rarity": {
       "id": 4,
@@ -1098,8 +1078,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000095.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000095.png",
     "class": {
-      "id": 92,
-      "name": "Ambush From Bushes And Water"
+      "id": 6,
+      "name": "Assassin"
     },
     "rarity": {
       "id": 5,
@@ -1169,8 +1149,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000094.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000094.png",
     "class": {
-      "id": 91,
-      "name": "Zone As Geisha Strike As Ninja."
+      "id": 6,
+      "name": "Assassin"
     },
     "rarity": {
       "id": 7,
@@ -1240,8 +1220,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000093.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000093.png",
     "class": {
-      "id": 90,
-      "name": "Use Speed For Aggression And Heal For Safety."
+      "id": 7,
+      "name": "Support"
     },
     "rarity": {
       "id": 5,
@@ -1257,8 +1237,8 @@
         "name": "The Crowd Goes Mild",
         "path": "The-Crowd-Goes-Mild",
         "version": 1,
-        "description": "Being near teammates gives Jae-yong a <!card.statuseffect.baseSpeedIncreasePercent>% speed boost per teammate in range.",
-        "descriptionHtml": "Being near teammates gives Jae-yong a <span style=\"color:#00cc00;\"><!card.statuseffect.baseSpeedIncreasePercent>%</span> speed boost per teammate in range.",
+        "description": "Being near teammates gives Jae-yong a 15% speed boost per teammate in range.",
+        "descriptionHtml": "Being near teammates gives Jae-yong a <span style=\"color:#00cc00;\">15%</span> speed boost per teammate in range.",
         "imageUrl": "https://cdn.brawlify.com/star-powers/borderless/23000929.png",
         "released": true
       },
@@ -1311,8 +1291,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000092.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000092.png",
     "class": {
-      "id": 89,
-      "name": "Slow Enemy Projectiles To Take Space."
+      "id": 5,
+      "name": "Controller"
     },
     "rarity": {
       "id": 5,
@@ -1328,8 +1308,8 @@
         "name": "Hieroglyph Halt",
         "path": "Hieroglyph-Halt",
         "version": 1,
-        "description": "Finx reduces the reload speed of any enemy Brawlers hit by his main attack by <!card.value1>% for <!card.value2.ticksasseconds> seconds.",
-        "descriptionHtml": "Finx reduces the reload speed of any enemy Brawlers hit by his main attack by <span style=\"color:#00cc00;\"><!card.value1>%</span> for <span style=\"color:#00cc00;\"><!card.value2.ticksasseconds></span> seconds.",
+        "description": "Finx reduces the reload speed of any enemy Brawlers hit by his main attack by 25% for 3 seconds.",
+        "descriptionHtml": "Finx reduces the reload speed of any enemy Brawlers hit by his main attack by <span style=\"color:#00cc00;\">25%</span> for <span style=\"color:#00cc00;\">3</span> seconds.",
         "imageUrl": "https://cdn.brawlify.com/star-powers/borderless/23000915.png",
         "released": true
       },
@@ -1382,8 +1362,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000091.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000091.png",
     "class": {
-      "id": 88,
-      "name": "Recall Weapons To Create New Angles Of Attack."
+      "id": 1,
+      "name": "Damage Dealer"
     },
     "rarity": {
       "id": 5,
@@ -1453,8 +1433,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000090.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000090.png",
     "class": {
-      "id": 87,
-      "name": "Soak Up Damage Then Hypnotize."
+      "id": 2,
+      "name": "Tank"
     },
     "rarity": {
       "id": 5,
@@ -1470,8 +1450,8 @@
         "name": "Kick Push",
         "path": "Kick-Push",
         "version": 1,
-        "description": "While near walls, Ollie kicks off his hoverboard and gains <!card.statuseffect.baseSpeedIncreasePercent>% extra movement speed.",
-        "descriptionHtml": "While near walls, Ollie kicks off his hoverboard and gains <span style=\"color:#00cc00;\"><!card.statuseffect.baseSpeedIncreasePercent>%</span> extra movement speed.",
+        "description": "While near walls, Ollie kicks off his hoverboard and gains 20% extra movement speed.",
+        "descriptionHtml": "While near walls, Ollie kicks off his hoverboard and gains <span style=\"color:#00cc00;\">20%</span> extra movement speed.",
         "imageUrl": "https://cdn.brawlify.com/star-powers/borderless/23000883.png",
         "released": true
       },
@@ -1480,8 +1460,8 @@
         "name": "Renegade",
         "path": "Renegade",
         "version": 1,
-        "description": "After dashing forward with his Super, Ollie gains a <!card.value1> decaying shield over <!card.value2.ticksasseconds> seconds.",
-        "descriptionHtml": "After dashing forward with his Super, Ollie gains a <span style=\"color:#00cc00;\"><!card.value1></span> decaying shield over <span style=\"color:#00cc00;\"><!card.value2.ticksasseconds></span> seconds.",
+        "description": "After dashing forward with his Super, Ollie gains a 3000 decaying shield over 4 seconds.",
+        "descriptionHtml": "After dashing forward with his Super, Ollie gains a <span style=\"color:#00cc00;\">3000</span> decaying shield over <span style=\"color:#00cc00;\">4</span> seconds.",
         "imageUrl": "https://cdn.brawlify.com/star-powers/borderless/23000884.png",
         "released": true
       }
@@ -1524,8 +1504,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000089.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000089.png",
     "class": {
-      "id": 86,
-      "name": "Shoot Through Walls And Control The Map"
+      "id": 5,
+      "name": "Controller"
     },
     "rarity": {
       "id": 4,
@@ -1551,8 +1531,8 @@
         "name": "Rule Bending",
         "path": "Rule-Bending",
         "version": 1,
-        "description": "Critical success also increases allies reload speed within the area by <VALUE>%.",
-        "descriptionHtml": "Critical success also increases allies reload speed within the area by <span style=\"color:#00cc00;\"><VALUE>%</span>.",
+        "description": "Critical success also increases allies reload speed within the area by x%.",
+        "descriptionHtml": "Critical success also increases allies reload speed within the area by <span style=\"color:#00cc00;\">x%</span>.",
         "imageUrl": "https://cdn.brawlify.com/star-powers/borderless/23000876.png",
         "released": true
       }
@@ -1595,13 +1575,13 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000088.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000088.png",
     "class": {
-      "id": 0,
-      "name": "Unknown"
+      "id": 1,
+      "name": "Damage Dealer"
     },
     "rarity": {
       "id": 6,
       "name": "Legendary",
-      "color": "#fff11ev"
+      "color": "#fff11e"
     },
     "unlock": null,
     "description": "Buzz Lightyear has arrived in Starr Park! Starting his journey with an accidental delivery to the Gift Shop, Buzz has since been impressing Brawlers with his three different Brawling modes!",
@@ -1666,8 +1646,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000087.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000087.png",
     "class": {
-      "id": 85,
-      "name": "Use Terrain Unleash Gris-Gris"
+      "id": 4,
+      "name": "Artillery"
     },
     "rarity": {
       "id": 5,
@@ -1693,8 +1673,8 @@
         "name": "Numbing Needles",
         "path": "Numbing-Needles",
         "version": 1,
-        "description": "Gris-Gris' attack now also slows the enemy for <!card.projectile.statuseffectenemy.duration.ticksasseconds> sec",
-        "descriptionHtml": "Gris-Gris' attack now also slows the enemy for <span style=\"color:#00cc00;\"><!card.projectile.statuseffectenemy.duration.ticksasseconds></span> sec",
+        "description": "Gris-Gris' attack now also slows the enemy for x sec",
+        "descriptionHtml": "Gris-Gris' attack now also slows the enemy for <span style=\"color:#00cc00;\">x</span> sec",
         "imageUrl": "https://cdn.brawlify.com/star-powers/borderless/23000849.png",
         "released": true
       }
@@ -1737,8 +1717,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000086.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000086.png",
     "class": {
-      "id": 84,
-      "name": "Use Walls To Avoid Damage And Get Close."
+      "id": 6,
+      "name": "Assassin"
     },
     "rarity": {
       "id": 4,
@@ -1764,8 +1744,8 @@
         "name": "Hardened Hoodie",
         "path": "Hardened-Hoodie",
         "version": 1,
-        "description": "Shade gets <!card.statuseffect.shieldpercent>% damage reduction while in its Incorporeal Form.",
-        "descriptionHtml": "Shade gets <span style=\"color:#00cc00;\"><!card.statuseffect.shieldpercent>%</span> damage reduction while in its Incorporeal Form.",
+        "description": "Shade gets 30% damage reduction while in its Incorporeal Form.",
+        "descriptionHtml": "Shade gets <span style=\"color:#00cc00;\">30%</span> damage reduction while in its Incorporeal Form.",
         "imageUrl": "https://cdn.brawlify.com/star-powers/borderless/23000833.png",
         "released": true
       }
@@ -1776,8 +1756,8 @@
         "name": "Longarms",
         "path": "Longarms",
         "version": 1,
-        "description": "The next main attack has <!card.accessory.customValue1>% longer range.",
-        "descriptionHtml": "The next main attack has <span style=\"color:#00cc00;\"><!card.accessory.customValue1>%</span> longer range.",
+        "description": "The next main attack has 50% longer range.",
+        "descriptionHtml": "The next main attack has <span style=\"color:#00cc00;\">50%</span> longer range.",
         "imageUrl": "https://cdn.brawlify.com/gadgets/borderless/23000834.png",
         "released": true
       },
@@ -1786,8 +1766,8 @@
         "name": "Jump Scare",
         "path": "Jump-Scare",
         "version": 1,
-        "description": "Shade jumps a short distance, fearing enemies for <!card.accessory.skill.areaEffectObject2.statusEffectEnemy.duration.ticksAsSeconds> sec when landing.",
-        "descriptionHtml": "Shade jumps a short distance, fearing enemies for <span style=\"color:#00cc00;\"><!card.accessory.skill.areaEffectObject2.statusEffectEnemy.duration.ticksAsSeconds></span> sec when landing.",
+        "description": "Shade jumps a short distance, fearing enemies for x sec when landing.",
+        "descriptionHtml": "Shade jumps a short distance, fearing enemies for <span style=\"color:#00cc00;\">x</span> sec when landing.",
         "imageUrl": "https://cdn.brawlify.com/gadgets/borderless/23000835.png",
         "released": true
       }
@@ -1808,13 +1788,13 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000085.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000085.png",
     "class": {
-      "id": 83,
-      "name": "Stay Aggressive And Heal With Attacks."
+      "id": 6,
+      "name": "Assassin"
     },
     "rarity": {
       "id": 6,
       "name": "Legendary",
-      "color": "#fff11ev"
+      "color": "#fff11e"
     },
     "unlock": null,
     "description": "This highly skilled sushi chef has a wholesome life running his restaurant in Starr Park, but it feels like he's trying to hide something about his past... though his sushi tastes so good, nobody cares!",
@@ -1867,7 +1847,7 @@
   },
   {
     "id": 16000084,
-    "avatarId": 28000663,
+    "avatarId": 28000613,
     "name": "Moe",
     "hash": "Moe",
     "path": "Moe",
@@ -1879,8 +1859,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000084.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000084.png",
     "class": {
-      "id": 82,
-      "name": "Chase Down Enemies With The Drill."
+      "id": 1,
+      "name": "Damage Dealer"
     },
     "rarity": {
       "id": 5,
@@ -1906,8 +1886,8 @@
         "name": "Speeding Ticket",
         "path": "Speeding-Ticket",
         "version": 1,
-        "description": "Moe's Driller has <!card.statuseffect.basespeedincreasepercent>% increased travel speed.",
-        "descriptionHtml": "Moe's Driller has <span style=\"color:#00cc00;\"><!card.statuseffect.basespeedincreasepercent>%</span> increased travel speed.",
+        "description": "Moe's Driller has 25% increased travel speed.",
+        "descriptionHtml": "Moe's Driller has <span style=\"color:#00cc00;\">25%</span> increased travel speed.",
         "imageUrl": "https://cdn.brawlify.com/star-powers/borderless/23000805.png",
         "released": true
       }
@@ -1950,8 +1930,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000083.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000083.png",
     "class": {
-      "id": 81,
-      "name": "Poke To Level Up And Take Over"
+      "id": 1,
+      "name": "Damage Dealer"
     },
     "rarity": {
       "id": 5,
@@ -2021,8 +2001,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000082.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000082.png",
     "class": {
-      "id": 80,
-      "name": "Control Space And Heal Teammates."
+      "id": 7,
+      "name": "Support"
     },
     "rarity": {
       "id": 4,
@@ -2092,8 +2072,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000081.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000081.png",
     "class": {
-      "id": 79,
-      "name": "Use Bushes And A Super To Get Close."
+      "id": 6,
+      "name": "Assassin"
     },
     "rarity": {
       "id": 5,
@@ -2119,8 +2099,8 @@
         "name": "Vigilance",
         "path": "Vigilance",
         "version": 1,
-        "description": "Gain <!card.statuseffect.baseSpeedIncreasePercent>% movement speed while an enemy is in her Super charge radius.",
-        "descriptionHtml": "Gain <span style=\"color:#00cc00;\"><!card.statuseffect.baseSpeedIncreasePercent>%</span> movement speed while an enemy is in her Super charge radius.",
+        "description": "Gain 15% movement speed while an enemy is in her Super charge radius.",
+        "descriptionHtml": "Gain <span style=\"color:#00cc00;\">15%</span> movement speed while an enemy is in her Super charge radius.",
         "imageUrl": "https://cdn.brawlify.com/star-powers/borderless/23000753.png",
         "released": true
       }
@@ -2163,13 +2143,13 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000080.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000080.png",
     "class": {
-      "id": 78,
-      "name": "Poke Transform Then Dominate"
+      "id": 2,
+      "name": "Tank"
     },
     "rarity": {
       "id": 6,
       "name": "Legendary",
-      "color": "#fff11ev"
+      "color": "#fff11e"
     },
     "unlock": null,
     "description": "Riding his inflatable dragon and setting off fireworks, Draco promises a show-stopping finale every night. With his electric guitar blaring and his flame-spewing ride rocking the crowd, he turns the fantasy up to eleven!",
@@ -2234,8 +2214,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000079.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000079.png",
     "class": {
-      "id": 77,
-      "name": "Use Charged Attacks To Snipe"
+      "id": 3,
+      "name": "Marksman"
     },
     "rarity": {
       "id": 4,
@@ -2261,8 +2241,8 @@
         "name": "Flow",
         "path": "Flow",
         "version": 1,
-        "description": "Angelo gains <!card.statuseffect.baseSpeedIncreasePercent>% increased movement speed after entering water.",
-        "descriptionHtml": "Angelo gains <span style=\"color:#00cc00;\"><!card.statuseffect.baseSpeedIncreasePercent>%</span> increased movement speed after entering water.",
+        "description": "Angelo gains 25% increased movement speed after entering water.",
+        "descriptionHtml": "Angelo gains <span style=\"color:#00cc00;\">25%</span> increased movement speed after entering water.",
         "imageUrl": "https://cdn.brawlify.com/star-powers/borderless/23000676.png",
         "released": true
       }
@@ -2305,8 +2285,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000078.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000078.png",
     "class": {
-      "id": 76,
-      "name": "Build Up Notes Then Dive In"
+      "id": 6,
+      "name": "Assassin"
     },
     "rarity": {
       "id": 5,
@@ -2322,8 +2302,8 @@
         "name": "Fast Beats",
         "path": "Fast-Beats",
         "version": 1,
-        "description": "Melodie gains <!card.statuseffect.baseSpeedIncreasePercent>% increased movement speed from each note orbiting her.",
-        "descriptionHtml": "Melodie gains <span style=\"color:#00cc00;\"><!card.statuseffect.baseSpeedIncreasePercent>%</span> increased movement speed from each note orbiting her.",
+        "description": "Melodie gains 6% increased movement speed from each note orbiting her.",
+        "descriptionHtml": "Melodie gains <span style=\"color:#00cc00;\">6%</span> increased movement speed from each note orbiting her.",
         "imageUrl": "https://cdn.brawlify.com/star-powers/borderless/23000667.png",
         "released": true
       },
@@ -2376,8 +2356,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000077.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000077.png",
     "class": {
-      "id": 75,
-      "name": "Overwhelm With Teamwork"
+      "id": 4,
+      "name": "Artillery"
     },
     "rarity": {
       "id": 4,
@@ -2447,13 +2427,13 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000076.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000076.png",
     "class": {
-      "id": 74,
-      "name": "Heal Teammates Or Assassinate Enemies"
+      "id": 7,
+      "name": "Support"
     },
     "rarity": {
       "id": 6,
       "name": "Legendary",
-      "color": "#fff11ev"
+      "color": "#fff11e"
     },
     "unlock": null,
     "description": "Stuck giving autographs to his rabid fans at Starr Toon Studios, cartoony superstar Kit often daydreams of becoming relevant in the industry again, respected for his acting chops rather than his looks.",
@@ -2518,8 +2498,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000075.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000075.png",
     "class": {
-      "id": 73,
-      "name": "Leap Over Walls And Enemy Attacks"
+      "id": 6,
+      "name": "Assassin"
     },
     "rarity": {
       "id": 5,
@@ -2557,8 +2537,8 @@
         "name": "Clipping Scream",
         "path": "Clipping-Scream",
         "version": 1,
-        "description": "Mico lets out a deafening scream towards the nearest enemy, dealing <!card.character.weaponskill.damage.scaletolevel.scaleaccessoryvalue2> damage and slowing down enemies for <!card.accessory.customobjectprojectile.statuseffectenemy.duration.ticksasseconds> seconds on hit.",
-        "descriptionHtml": "Mico lets out a deafening scream towards the nearest enemy, dealing <span style=\"color:#00cc00;\"><!card.character.weaponskill.damage.scaletolevel.scaleaccessoryvalue2></span> damage and slowing down enemies for <span style=\"color:#00cc00;\"><!card.accessory.customobjectprojectile.statuseffectenemy.duration.ticksasseconds></span> seconds on hit.",
+        "description": "Mico lets out a deafening scream towards the nearest enemy, dealing x damage and slowing down enemies for x seconds on hit.",
+        "descriptionHtml": "Mico lets out a deafening scream towards the nearest enemy, dealing <span style=\"color:#00cc00;\">x</span> damage and slowing down enemies for <span style=\"color:#00cc00;\">x</span> seconds on hit.",
         "imageUrl": "https://cdn.brawlify.com/gadgets/borderless/23000639.png",
         "released": true
       },
@@ -2589,8 +2569,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000074.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000074.png",
     "class": {
-      "id": 72,
-      "name": "Cocoon Enemies To Remove Them From Play"
+      "id": 5,
+      "name": "Controller"
     },
     "rarity": {
       "id": 5,
@@ -2660,8 +2640,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000073.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000073.png",
     "class": {
-      "id": 71,
-      "name": "Lay Down Tracks For Offense And Retreats."
+      "id": 5,
+      "name": "Controller"
     },
     "rarity": {
       "id": 5,
@@ -2677,8 +2657,8 @@
         "name": "Pit Stop",
         "path": "Pit-Stop",
         "version": 1,
-        "description": "Placing a Pole slows <!card.trait.action.statusEffect.speedReducePercent>% any hit enemy for <!card.trait.action.statusEffect.durationTicks.ticksAsSeconds> sec.",
-        "descriptionHtml": "Placing a Pole slows <span style=\"color:#00cc00;\"><!card.trait.action.statusEffect.speedReducePercent>%</span> any hit enemy for <span style=\"color:#00cc00;\"><!card.trait.action.statusEffect.durationTicks.ticksAsSeconds></span> sec.",
+        "description": "Placing a Pole slows x% any hit enemy for x sec.",
+        "descriptionHtml": "Placing a Pole slows <span style=\"color:#00cc00;\">x%</span> any hit enemy for <span style=\"color:#00cc00;\">x</span> sec.",
         "imageUrl": "https://cdn.brawlify.com/star-powers/borderless/23000609.png",
         "released": true
       },
@@ -2687,8 +2667,8 @@
         "name": "Tickets Please",
         "path": "Tickets-Please",
         "version": 1,
-        "description": "Dashing through enemies with his Super will also steal <!card.trait.value>% of their ammo.",
-        "descriptionHtml": "Dashing through enemies with his Super will also steal <span style=\"color:#00cc00;\"><!card.trait.value>%</span> of their ammo.",
+        "description": "Dashing through enemies with his Super will also steal x% of their ammo.",
+        "descriptionHtml": "Dashing through enemies with his Super will also steal <span style=\"color:#00cc00;\">x%</span> of their ammo.",
         "imageUrl": "https://cdn.brawlify.com/star-powers/borderless/23000610.png",
         "released": true
       }
@@ -2699,8 +2679,8 @@
         "name": "Rerouting",
         "path": "Rerouting",
         "version": 1,
-        "description": "Chuck removes the nearest Post and charges <!card.accessory.customValue1>% of his Super.",
-        "descriptionHtml": "Chuck removes the nearest Post and charges <span style=\"color:#00cc00;\"><!card.accessory.customValue1>%</span> of his Super.",
+        "description": "Chuck removes the nearest Post and charges 50% of his Super.",
+        "descriptionHtml": "Chuck removes the nearest Post and charges <span style=\"color:#00cc00;\">50%</span> of his Super.",
         "imageUrl": "https://cdn.brawlify.com/gadgets/borderless/23000611.png",
         "released": true
       },
@@ -2709,8 +2689,8 @@
         "name": "Ghost Train",
         "path": "Ghost-Train",
         "version": 1,
-        "description": "Chuck's Supers can go through walls for <!card.accessory.activeTicks.ticksAsSeconds> seconds!",
-        "descriptionHtml": "Chuck's Supers can go through walls for <span style=\"color:#00cc00;\"><!card.accessory.activeTicks.ticksAsSeconds></span> seconds!",
+        "description": "Chuck's Supers can go through walls for 8 seconds!",
+        "descriptionHtml": "Chuck's Supers can go through walls for <span style=\"color:#00cc00;\">8</span> seconds!",
         "imageUrl": "https://cdn.brawlify.com/gadgets/borderless/23000612.png",
         "released": true
       }
@@ -2731,8 +2711,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000072.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000072.png",
     "class": {
-      "id": 70,
-      "name": "Build Up Heat For Burst Damage"
+      "id": 1,
+      "name": "Damage Dealer"
     },
     "rarity": {
       "id": 4,
@@ -2802,8 +2782,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000071.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000071.png",
     "class": {
-      "id": 69,
-      "name": "Big Close Range Damage And Self-Revival"
+      "id": 7,
+      "name": "Support"
     },
     "rarity": {
       "id": 5,
@@ -2873,13 +2853,13 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000070.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000070.png",
     "class": {
-      "id": 68,
-      "name": "Use The Shadow Realm To Isolate Targets"
+      "id": 6,
+      "name": "Assassin"
     },
     "rarity": {
       "id": 6,
       "name": "Legendary",
-      "color": "#fff11ev"
+      "color": "#fff11e"
     },
     "unlock": null,
     "description": "Gardener and caretaker of the Enchanted Forest. Obsesses over mushrooms and is hostile towards strangers.",
@@ -2944,8 +2924,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000069.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000069.png",
     "class": {
-      "id": 67,
-      "name": "Charge Up Your Attack Then Engage."
+      "id": 2,
+      "name": "Tank"
     },
     "rarity": {
       "id": 4,
@@ -2961,8 +2941,8 @@
         "name": "Its Gonna Blow",
         "path": "Its-Gonna-Blow",
         "version": 1,
-        "description": "When Balloon Blast is charged over <!card.value1>%, Hank gains <!card.statuseffect.baseSpeedIncreasePercent>% extra movement speed.",
-        "descriptionHtml": "When Balloon Blast is charged over <span style=\"color:#00cc00;\"><!card.value1>%</span>, Hank gains <span style=\"color:#00cc00;\"><!card.statuseffect.baseSpeedIncreasePercent>%</span> extra movement speed.",
+        "description": "When Balloon Blast is charged over 80%, Hank gains 10% extra movement speed.",
+        "descriptionHtml": "When Balloon Blast is charged over <span style=\"color:#00cc00;\">80%</span>, Hank gains <span style=\"color:#00cc00;\">10%</span> extra movement speed.",
         "imageUrl": "https://cdn.brawlify.com/star-powers/borderless/23000577.png",
         "released": true
       },
@@ -3015,8 +2995,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000068.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000068.png",
     "class": {
-      "id": 66,
-      "name": "Punish Advancing Enemies."
+      "id": 3,
+      "name": "Marksman"
     },
     "rarity": {
       "id": 4,
@@ -3086,8 +3066,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000067.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000067.png",
     "class": {
-      "id": 65,
-      "name": "Turn Enemies Against Themselves"
+      "id": 5,
+      "name": "Controller"
     },
     "rarity": {
       "id": 5,
@@ -3103,8 +3083,8 @@
         "name": "Love Is Blind",
         "path": "Love-Is-Blind",
         "version": 1,
-        "description": "Lantern's Curse also reduces reload speed of affected Brawlers by <!card.value>% for <!card.value2.ticksAsSeconds> seconds.",
-        "descriptionHtml": "Lantern's Curse also reduces reload speed of affected Brawlers by <span style=\"color:#00cc00;\"><!card.value>%</span> for <span style=\"color:#00cc00;\"><!card.value2.ticksAsSeconds></span> seconds.",
+        "description": "Lantern's Curse also reduces reload speed of affected Brawlers by 30% for 3 seconds.",
+        "descriptionHtml": "Lantern's Curse also reduces reload speed of affected Brawlers by <span style=\"color:#00cc00;\">30%</span> for <span style=\"color:#00cc00;\">3</span> seconds.",
         "imageUrl": "https://cdn.brawlify.com/star-powers/borderless/23000561.png",
         "released": true
       },
@@ -3113,8 +3093,8 @@
         "name": "Obsession",
         "path": "Obsession",
         "version": 1,
-        "description": "Hexed enemies gain <!card.statuseffect.baseSpeedIncreasePercent>% movement speed while mind controlled.",
-        "descriptionHtml": "Hexed enemies gain <span style=\"color:#00cc00;\"><!card.statuseffect.baseSpeedIncreasePercent>%</span> movement speed while mind controlled.",
+        "description": "Hexed enemies gain 33% movement speed while mind controlled.",
+        "descriptionHtml": "Hexed enemies gain <span style=\"color:#00cc00;\">33%</span> movement speed while mind controlled.",
         "imageUrl": "https://cdn.brawlify.com/star-powers/borderless/23000562.png",
         "released": true
       }
@@ -3157,8 +3137,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000066.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000066.png",
     "class": {
-      "id": 64,
-      "name": "Mark Targets Then Deal Burst Damage"
+      "id": 1,
+      "name": "Damage Dealer"
     },
     "rarity": {
       "id": 5,
@@ -3228,8 +3208,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000065.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000065.png",
     "class": {
-      "id": 63,
-      "name": "Hold Your Ground For Huge Range."
+      "id": 3,
+      "name": "Marksman"
     },
     "rarity": {
       "id": 4,
@@ -3267,8 +3247,8 @@
         "name": "Caramelize",
         "path": "Caramelize",
         "version": 1,
-        "description": "Mandy's next candy from her Candy Dispenser slows down enemies on hit for <!card.accessory.statuseffectenemy.duration.ticksasseconds> seconds.",
-        "descriptionHtml": "Mandy's next candy from her Candy Dispenser slows down enemies on hit for <span style=\"color:#00cc00;\"><!card.accessory.statuseffectenemy.duration.ticksasseconds></span> seconds.",
+        "description": "Mandy's next candy from her Candy Dispenser slows down enemies on hit for 2.5 seconds.",
+        "descriptionHtml": "Mandy's next candy from her Candy Dispenser slows down enemies on hit for <span style=\"color:#00cc00;\">2.5</span> seconds.",
         "imageUrl": "https://cdn.brawlify.com/gadgets/borderless/23000545.png",
         "released": true
       },
@@ -3299,8 +3279,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000064.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000064.png",
     "class": {
-      "id": 62,
-      "name": "Get Your Team Into The Action With Portals"
+      "id": 7,
+      "name": "Support"
     },
     "rarity": {
       "id": 5,
@@ -3316,8 +3296,8 @@
         "name": "Fake Injury",
         "path": "Fake-Injury",
         "version": 1,
-        "description": "When Gray has full health, the next damage taken is reduced by <VALUE>%.",
-        "descriptionHtml": "When Gray has full health, the next damage taken is reduced by <span style=\"color:#00cc00;\"><VALUE>%</span>.",
+        "description": "When Gray has full health, the next damage taken is reduced by x%.",
+        "descriptionHtml": "When Gray has full health, the next damage taken is reduced by <span style=\"color:#00cc00;\">x%</span>.",
         "imageUrl": "https://cdn.brawlify.com/star-powers/borderless/23000535.png",
         "released": true
       },
@@ -3326,8 +3306,8 @@
         "name": "New Perspective",
         "path": "New-Perspective",
         "version": 1,
-        "description": "When Gray or his Allies use Doors, they recover <VALUE>% of their max hit points.",
-        "descriptionHtml": "When Gray or his Allies use Doors, they recover <span style=\"color:#00cc00;\"><VALUE>%</span> of their max hit points.",
+        "description": "When Gray or his Allies use Doors, they recover x% of their max hit points.",
+        "descriptionHtml": "When Gray or his Allies use Doors, they recover <span style=\"color:#00cc00;\">x%</span> of their max hit points.",
         "imageUrl": "https://cdn.brawlify.com/star-powers/borderless/23000536.png",
         "released": true
       }
@@ -3370,13 +3350,13 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000063.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000063.png",
     "class": {
-      "id": 61,
-      "name": "Master Randomness To Control The Map."
+      "id": 1,
+      "name": "Damage Dealer"
     },
     "rarity": {
       "id": 6,
       "name": "Legendary",
-      "color": "#fff11ev"
+      "color": "#fff11e"
     },
     "unlock": null,
     "description": "Chester makes vicious fun of anyone in sight, trying to get under their skin. The more hate he gets, the better... especially if that hater is Mandy!",
@@ -3441,8 +3421,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000062.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000062.png",
     "class": {
-      "id": 60,
-      "name": "Reflect Enemy Projectiles For Big Damage."
+      "id": 2,
+      "name": "Tank"
     },
     "rarity": {
       "id": 5,
@@ -3512,8 +3492,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000061.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000061.png",
     "class": {
-      "id": 59,
-      "name": "Buff Teammates And Snipe Enemies."
+      "id": 7,
+      "name": "Support"
     },
     "rarity": {
       "id": 3,
@@ -3539,8 +3519,8 @@
         "name": "Spirit Animal",
         "path": "Spirit-Animal",
         "version": 1,
-        "description": "Spooky increases the damage of a teammate by <!card.trait.statuseffect.damageboostpercent>% for <!card.trait.statuseffect.duration.ticksasseconds> seconds.",
-        "descriptionHtml": "Spooky increases the damage of a teammate by <span style=\"color:#00cc00;\"><!card.trait.statuseffect.damageboostpercent>%</span> for <span style=\"color:#00cc00;\"><!card.trait.statuseffect.duration.ticksasseconds></span> seconds.",
+        "description": "Spooky increases the damage of a teammate by x% for x seconds.",
+        "descriptionHtml": "Spooky increases the damage of a teammate by <span style=\"color:#00cc00;\">x%</span> for <span style=\"color:#00cc00;\">x</span> seconds.",
         "imageUrl": "https://cdn.brawlify.com/star-powers/borderless/23000512.png",
         "released": true
       }
@@ -3561,8 +3541,8 @@
         "name": "Knockback Spirit",
         "path": "Knockback-Spirit",
         "version": 1,
-        "description": "Gus throws a spirit, knocking back enemies and dealing <!card.accessory.skill.damage.scaleToLevel> damage.",
-        "descriptionHtml": "Gus throws a spirit, knocking back enemies and dealing <span style=\"color:#00cc00;\"><!card.accessory.skill.damage.scaleToLevel></span> damage.",
+        "description": "Gus throws a spirit, knocking back enemies and dealing x damage.",
+        "descriptionHtml": "Gus throws a spirit, knocking back enemies and dealing <span style=\"color:#00cc00;\">x</span> damage.",
         "imageUrl": "https://cdn.brawlify.com/gadgets/borderless/23000514.png",
         "released": true
       }
@@ -3583,8 +3563,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000060.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000060.png",
     "class": {
-      "id": 58,
-      "name": "Throw Fists Reclaim Repeat."
+      "id": 6,
+      "name": "Assassin"
     },
     "rarity": {
       "id": 4,
@@ -3654,8 +3634,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000059.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000059.png",
     "class": {
-      "id": 57,
-      "name": "Burst Tanks And Silence Threats."
+      "id": 5,
+      "name": "Controller"
     },
     "rarity": {
       "id": 5,
@@ -3725,8 +3705,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000058.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000058.png",
     "class": {
-      "id": 56,
-      "name": "Snipe Then Jump In For Big Damage."
+      "id": 3,
+      "name": "Marksman"
     },
     "rarity": {
       "id": 4,
@@ -3764,8 +3744,8 @@
         "name": "Sugar Rush",
         "path": "Sugar-Rush",
         "version": 1,
-        "description": "Clyde's movement and reload speed are increased by <!card.accessory.statuseffectself.speedboostpercent>% for <!card.accessory.statuseffectself.duration.ticksasseconds> seconds.",
-        "descriptionHtml": "Clyde's movement and reload speed are increased by <span style=\"color:#00cc00;\"><!card.accessory.statuseffectself.speedboostpercent>%</span> for <span style=\"color:#00cc00;\"><!card.accessory.statuseffectself.duration.ticksasseconds></span> seconds.",
+        "description": "Clyde's movement and reload speed are increased by 30% for 5 seconds.",
+        "descriptionHtml": "Clyde's movement and reload speed are increased by <span style=\"color:#00cc00;\">30%</span> for <span style=\"color:#00cc00;\">5</span> seconds.",
         "imageUrl": "https://cdn.brawlify.com/gadgets/borderless/23000480.png",
         "released": true
       },
@@ -3796,8 +3776,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000057.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000057.png",
     "class": {
-      "id": 55,
-      "name": "Super To Drop Bombs Safely From Above"
+      "id": 3,
+      "name": "Marksman"
     },
     "rarity": {
       "id": 5,
@@ -3867,8 +3847,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000056.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000056.png",
     "class": {
-      "id": 54,
-      "name": "Walk Over Water And Spawn Hatchlings"
+      "id": 1,
+      "name": "Damage Dealer"
     },
     "rarity": {
       "id": 5,
@@ -3938,8 +3918,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000054.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000054.png",
     "class": {
-      "id": 53,
-      "name": "Poke With Range Then Jump In To Finish."
+      "id": 6,
+      "name": "Assassin"
     },
     "rarity": {
       "id": 5,
@@ -4009,8 +3989,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000053.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000053.png",
     "class": {
-      "id": 52,
-      "name": "Control Multiple Lanes With Ego"
+      "id": 1,
+      "name": "Damage Dealer"
     },
     "rarity": {
       "id": 4,
@@ -4080,13 +4060,13 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000052.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000052.png",
     "class": {
-      "id": 51,
-      "name": "Use The Mecha For Space Then Run"
+      "id": 2,
+      "name": "Tank"
     },
     "rarity": {
       "id": 6,
       "name": "Legendary",
-      "color": "#fff11ev"
+      "color": "#fff11e"
     },
     "unlock": null,
     "description": "Content to work behind the scenes with her trusty mecha suit, Meg takes care of real problems, while Max and Surge are out entertaining the crowds.",
@@ -4107,8 +4087,8 @@
         "name": "Heavy Metal",
         "path": "Heavy-Metal",
         "version": 1,
-        "description": "The Mecha recovers <!card.value1.scaleStatToLevel> health for each enemy hit with Feel the Steel (Super in Mech).",
-        "descriptionHtml": "The Mecha recovers <span style=\"color:#00cc00;\"><!card.value1.scaleStatToLevel></span> health for each enemy hit with Feel the Steel (Super in Mech).",
+        "description": "The Mecha recovers x health for each enemy hit with Feel the Steel (Super in Mech).",
+        "descriptionHtml": "The Mecha recovers <span style=\"color:#00cc00;\">x</span> health for each enemy hit with Feel the Steel (Super in Mech).",
         "imageUrl": "https://cdn.brawlify.com/star-powers/borderless/23000422.png",
         "released": true
       }
@@ -4129,8 +4109,8 @@
         "name": "Repurpose",
         "path": "Repurpose",
         "version": 1,
-        "description": "Meg ejects from the Mecha, launching it forward, dealing <!card.accessory.skill.damage.scaleStatToLevel> damage on the way. Charges Super after during the next <!card.character.component[0].values[1].ticksasseconds>  seconds.",
-        "descriptionHtml": "Meg ejects from the Mecha, launching it forward, dealing <span style=\"color:#00cc00;\"><!card.accessory.skill.damage.scaleStatToLevel></span> damage on the way. Charges Super after during the next <span style=\"color:#00cc00;\"><!card.character.component[0].values[1].ticksasseconds></span>  seconds.",
+        "description": "Meg ejects from the Mecha, launching it forward, dealing x damage on the way. Charges Super after during the next x seconds.",
+        "descriptionHtml": "Meg ejects from the Mecha, launching it forward, dealing <span style=\"color:#00cc00;\">x</span> damage on the way. Charges Super after during the next <span style=\"color:#00cc00;\">x</span> seconds.",
         "imageUrl": "https://cdn.brawlify.com/gadgets/borderless/23000489.png",
         "released": true
       }
@@ -4151,8 +4131,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000051.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000051.png",
     "class": {
-      "id": 50,
-      "name": "Unleash An Army Of Rats"
+      "id": 2,
+      "name": "Tank"
     },
     "rarity": {
       "id": 4,
@@ -4200,8 +4180,8 @@
         "name": "Rotten Banana",
         "path": "Rotten-Banana",
         "version": 1,
-        "description": "Ash loses <ccc0000>x% health and instantly gains x% rage.",
-        "descriptionHtml": "Ash loses <ccc0000>x%</span> health and instantly gains <span style=\"color:#00cc00;\">x%</span> rage.",
+        "description": "Ash loses x% health and instantly gains x% rage.",
+        "descriptionHtml": "Ash loses <span style=\"color:#cc0000;\">x%</span> health and instantly gains <span style=\"color:#00cc00;\">x%</span> rage.",
         "imageUrl": "https://cdn.brawlify.com/gadgets/borderless/23000465.png",
         "released": true
       }
@@ -4222,8 +4202,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000050.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000050.png",
     "class": {
-      "id": 49,
-      "name": "Burst Down Enemies From Mid-Range."
+      "id": 5,
+      "name": "Controller"
     },
     "rarity": {
       "id": 4,
@@ -4249,8 +4229,8 @@
         "name": "Business Resilience",
         "path": "Business-Resilience",
         "version": 1,
-        "description": "Every <!card.value2.ticksasseconds> seconds, Griff regains up to <!card.value1>% of his missing health.",
-        "descriptionHtml": "Every <span style=\"color:#00cc00;\"><!card.value2.ticksasseconds></span> seconds, Griff regains up to <span style=\"color:#00cc00;\"><!card.value1>%</span> of his missing health.",
+        "description": "Every 2 seconds, Griff regains up to 15% of his missing health.",
+        "descriptionHtml": "Every <span style=\"color:#00cc00;\">2</span> seconds, Griff regains up to <span style=\"color:#00cc00;\">15%</span> of his missing health.",
         "imageUrl": "https://cdn.brawlify.com/star-powers/borderless/23000398.png",
         "released": true
       }
@@ -4261,8 +4241,8 @@
         "name": "Piggy Bank",
         "path": "Piggy-Bank",
         "version": 1,
-        "description": "Griff throws a firecracker-filled piggy bank that explodes after a short delay, destroying obstacles and dealing <!card.accessory.skill.damage.scaletolevel> damage to opponents within range.",
-        "descriptionHtml": "Griff throws a firecracker-filled piggy bank that explodes after a short delay, destroying obstacles and dealing <span style=\"color:#00cc00;\"><!card.accessory.skill.damage.scaletolevel></span> damage to opponents within range.",
+        "description": "Griff throws a firecracker-filled piggy bank that explodes after a short delay, destroying obstacles and dealing x damage to opponents within range.",
+        "descriptionHtml": "Griff throws a firecracker-filled piggy bank that explodes after a short delay, destroying obstacles and dealing <span style=\"color:#00cc00;\">x</span> damage to opponents within range.",
         "imageUrl": "https://cdn.brawlify.com/gadgets/borderless/23000399.png",
         "released": true
       },
@@ -4271,8 +4251,8 @@
         "name": "Coin Shower",
         "path": "Coin-Shower",
         "version": 1,
-        "description": "Griff throws a shower of coins at target area, dealing <!card.accessory.skill.damage.scaletolevel> damage per sec to opponents inside.",
-        "descriptionHtml": "Griff throws a shower of coins at target area, dealing <span style=\"color:#00cc00;\"><!card.accessory.skill.damage.scaletolevel></span> damage per sec to opponents inside.",
+        "description": "Griff throws a shower of coins at target area, dealing x damage per sec to opponents inside.",
+        "descriptionHtml": "Griff throws a shower of coins at target area, dealing <span style=\"color:#00cc00;\">x</span> damage per sec to opponents inside.",
         "imageUrl": "https://cdn.brawlify.com/gadgets/borderless/23000487.png",
         "released": true
       }
@@ -4293,8 +4273,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000049.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000049.png",
     "class": {
-      "id": 48,
-      "name": "Travel Around The Map And Stun Enemies."
+      "id": 6,
+      "name": "Assassin"
     },
     "rarity": {
       "id": 5,
@@ -4364,8 +4344,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000048.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000048.png",
     "class": {
-      "id": 10,
-      "name": "Bombard Safely From Behind Walls."
+      "id": 4,
+      "name": "Artillery"
     },
     "rarity": {
       "id": 4,
@@ -4381,8 +4361,8 @@
         "name": "Foot Patrol",
         "path": "Foot-Patrol",
         "version": 1,
-        "description": "When Grom's Super is fully charged, he gains +<!card.statuseffect.baseSpeedIncreasePercent>% faster movement speed!",
-        "descriptionHtml": "When Grom's Super is fully charged, he gains <span style=\"color:#00cc00;\">+<!card.statuseffect.baseSpeedIncreasePercent>%</span> faster movement speed!",
+        "description": "When Grom's Super is fully charged, he gains +15% faster movement speed!",
+        "descriptionHtml": "When Grom's Super is fully charged, he gains <span style=\"color:#00cc00;\">+15%</span> faster movement speed!",
         "imageUrl": "https://cdn.brawlify.com/star-powers/borderless/23000383.png",
         "released": true
       },
@@ -4435,8 +4415,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000047.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000047.png",
     "class": {
-      "id": 47,
-      "name": "Hit Enemies Through Walls With Explosions"
+      "id": 5,
+      "name": "Controller"
     },
     "rarity": {
       "id": 5,
@@ -4506,8 +4486,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000046.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000046.png",
     "class": {
-      "id": 46,
-      "name": "Snipe With Bouncing Bullets."
+      "id": 3,
+      "name": "Marksman"
     },
     "rarity": {
       "id": 4,
@@ -4545,8 +4525,8 @@
         "name": "Nest Egg",
         "path": "Nest-Egg",
         "version": 1,
-        "description": "Belle places a trap on the ground that will explode when triggered by an opponent. The trap deals <!card.character.weaponskill.damage.scaletolevel.scaleaccessoryvalue1> damage, and slows down anyone within its blast radius for <!card.accessory.customobjectitem.triggerareaeffect.statuseffectenemy.duration.ticksAsSeconds> seconds.",
-        "descriptionHtml": "Belle places a trap on the ground that will explode when triggered by an opponent. The trap deals <span style=\"color:#00cc00;\"><!card.character.weaponskill.damage.scaletolevel.scaleaccessoryvalue1></span> damage, and slows down anyone within its blast radius for <span style=\"color:#00cc00;\"><!card.accessory.customobjectitem.triggerareaeffect.statuseffectenemy.duration.ticksAsSeconds></span> seconds.",
+        "description": "Belle places a trap on the ground that will explode when triggered by an opponent. The trap deals x damage, and slows down anyone within its blast radius for x seconds.",
+        "descriptionHtml": "Belle places a trap on the ground that will explode when triggered by an opponent. The trap deals <span style=\"color:#00cc00;\">x</span> damage, and slows down anyone within its blast radius for <span style=\"color:#00cc00;\">x</span> seconds.",
         "imageUrl": "https://cdn.brawlify.com/gadgets/borderless/23000371.png",
         "released": true
       },
@@ -4577,8 +4557,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000045.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000045.png",
     "class": {
-      "id": 45,
-      "name": "Use Your Dash To Get Close Or Dodge."
+      "id": 6,
+      "name": "Assassin"
     },
     "rarity": {
       "id": 4,
@@ -4648,8 +4628,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000044.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000044.png",
     "class": {
-      "id": 44,
-      "name": "Buff Teammates And Poke Enemies."
+      "id": 7,
+      "name": "Support"
     },
     "rarity": {
       "id": 5,
@@ -4719,8 +4699,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000043.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000043.png",
     "class": {
-      "id": 43,
-      "name": "Jump To Take Out Isolated Enemies."
+      "id": 6,
+      "name": "Assassin"
     },
     "rarity": {
       "id": 4,
@@ -4736,8 +4716,8 @@
         "name": "Hard Landing",
         "path": "Hard-Landing",
         "version": 1,
-        "description": "Edgar's Super and Let's Fly Gadget will also deal <!card.areaeffect.damage.scaleweapondamagelevel.scaletolevel> damage to nearby enemies upon landing, or <!card.areaeffect.innerradiusdamage.scaleweapondamagelevel.scaletolevel> damage on a direct hit.",
-        "descriptionHtml": "Edgar's Super and Let's Fly Gadget will also deal <span style=\"color:#00cc00;\"><!card.areaeffect.damage.scaleweapondamagelevel.scaletolevel></span> damage to nearby enemies upon landing, or <span style=\"color:#00cc00;\"><!card.areaeffect.innerradiusdamage.scaleweapondamagelevel.scaletolevel></span> damage on a direct hit.",
+        "description": "Edgar's Super and Let's Fly Gadget will also deal x damage to nearby enemies upon landing, or x damage on a direct hit.",
+        "descriptionHtml": "Edgar's Super and Let's Fly Gadget will also deal <span style=\"color:#00cc00;\">x</span> damage to nearby enemies upon landing, or <span style=\"color:#00cc00;\">x</span> damage on a direct hit.",
         "imageUrl": "https://cdn.brawlify.com/star-powers/borderless/23000338.png",
         "released": true
       },
@@ -4746,8 +4726,8 @@
         "name": "Fisticuffs",
         "path": "Fisticuffs",
         "version": 1,
-        "description": "Edgar receives <!card.value1>% more healing from damage he deals.",
-        "descriptionHtml": "Edgar receives <span style=\"color:#00cc00;\"><!card.value1>%</span> more healing from damage he deals.",
+        "description": "Edgar receives 30% more healing from damage he deals.",
+        "descriptionHtml": "Edgar receives <span style=\"color:#00cc00;\">30%</span> more healing from damage he deals.",
         "imageUrl": "https://cdn.brawlify.com/star-powers/borderless/23000339.png",
         "released": true
       }
@@ -4768,8 +4748,8 @@
         "name": "Hardcore",
         "path": "Hardcore",
         "version": 1,
-        "description": "Edgar gets a shield that protects him from the next <!card.character.maxhealth.scaletolevel.scaleaccessoryvalue1> damage. The shield gets weaker over time.",
-        "descriptionHtml": "Edgar gets a shield that protects him from the next <span style=\"color:#00cc00;\"><!card.character.maxhealth.scaletolevel.scaleaccessoryvalue1></span> damage. The shield gets weaker over time.",
+        "description": "Edgar gets a shield that protects him from the next x damage. The shield gets weaker over time.",
+        "descriptionHtml": "Edgar gets a shield that protects him from the next <span style=\"color:#00cc00;\">x</span> damage. The shield gets weaker over time.",
         "imageUrl": "https://cdn.brawlify.com/gadgets/borderless/23000403.png",
         "released": true
       }
@@ -4790,8 +4770,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000042.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000042.png",
     "class": {
-      "id": 42,
-      "name": "Heal Teammates Or Snipe With Poison."
+      "id": 7,
+      "name": "Support"
     },
     "rarity": {
       "id": 5,
@@ -4839,8 +4819,8 @@
         "name": "Booster Shots",
         "path": "Booster-Shots",
         "version": 1,
-        "description": "Byron's next attack shoots x darts instead of one, each dealing <ccc0000>x% less damage and <ccc0000>x% less healing.",
-        "descriptionHtml": "Byron's next attack shoots <span style=\"color:#00cc00;\">x</span> darts instead of one, each dealing <ccc0000>x%</span> less damage and <ccc0000>x%</span> less healing.",
+        "description": "Byron's next attack shoots x darts instead of one, each dealing x% less damage and x% less healing.",
+        "descriptionHtml": "Byron's next attack shoots <span style=\"color:#00cc00;\">x</span> darts instead of one, each dealing <span style=\"color:#cc0000;\">x%</span> less damage and <span style=\"color:#cc0000;\">x%</span> less healing.",
         "imageUrl": "https://cdn.brawlify.com/gadgets/borderless/23000461.png",
         "released": true
       }
@@ -4861,8 +4841,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000041.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000041.png",
     "class": {
-      "id": 41,
-      "name": "Control The Map With A Huge Freeze."
+      "id": 5,
+      "name": "Controller"
     },
     "rarity": {
       "id": 5,
@@ -4932,13 +4912,13 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000040.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000040.png",
     "class": {
-      "id": 40,
-      "name": "Destroy Bushes And Control Space With Fire."
+      "id": 5,
+      "name": "Controller"
     },
     "rarity": {
       "id": 6,
       "name": "Legendary",
-      "color": "#fff11ev"
+      "color": "#fff11e"
     },
     "unlock": null,
     "description": "Amber brings the heat, literally! She's overconfident about her fire abilities despite being a bit of a klutz. With her, it's spectacle first, and safety last.",
@@ -4959,8 +4939,8 @@
         "name": "Scorchin Siphon",
         "path": "Scorchin-Siphon",
         "version": 1,
-        "description": "Amber reloads <!card.component.values[0].asAmmoReloadPercent>% of her fire-breathing when an enemy takes fire damage.",
-        "descriptionHtml": "Amber reloads <span style=\"color:#00cc00;\"><!card.component.values[0].asAmmoReloadPercent>%</span> of her fire-breathing when an enemy takes fire damage.",
+        "description": "Amber reloads x% of her fire-breathing when an enemy takes fire damage.",
+        "descriptionHtml": "Amber reloads <span style=\"color:#00cc00;\">x%</span> of her fire-breathing when an enemy takes fire damage.",
         "imageUrl": "https://cdn.brawlify.com/star-powers/borderless/23000308.png",
         "released": true
       }
@@ -4971,8 +4951,8 @@
         "name": "Fire Starters",
         "path": "Fire-Starters",
         "version": 1,
-        "description": "Amber summons an Oil barrel with <!card.accessory.skill.summonedcharacter.maxhealth.scaleStatToLevel> health, spilling oil when destroyed.",
-        "descriptionHtml": "Amber summons an Oil barrel with <span style=\"color:#00cc00;\"><!card.accessory.skill.summonedcharacter.maxhealth.scaleStatToLevel></span> health, spilling oil when destroyed.",
+        "description": "Amber summons an Oil barrel with x health, spilling oil when destroyed.",
+        "descriptionHtml": "Amber summons an Oil barrel with <span style=\"color:#00cc00;\">x</span> health, spilling oil when destroyed.",
         "imageUrl": "https://cdn.brawlify.com/gadgets/borderless/23000309.png",
         "released": true
       },
@@ -4981,8 +4961,8 @@
         "name": "Dancing Flames",
         "path": "Dancing-Flames",
         "version": 1,
-        "description": "Amber creates <!card.accessory.value3> orbiting flames around her for <!card.accessory.customObjectProjectile.steerLifeTime.ticksAsSeconds> seconds, dealing <!card.accessory.value2.scaleStatToLevel> damage on hit.",
-        "descriptionHtml": "Amber creates <span style=\"color:#00cc00;\"><!card.accessory.value3></span> orbiting flames around her for <span style=\"color:#00cc00;\"><!card.accessory.customObjectProjectile.steerLifeTime.ticksAsSeconds></span> seconds, dealing <span style=\"color:#00cc00;\"><!card.accessory.value2.scaleStatToLevel></span> damage on hit.",
+        "description": "Amber creates x orbiting flames around her for x seconds, dealing x damage on hit.",
+        "descriptionHtml": "Amber creates <span style=\"color:#00cc00;\">x</span> orbiting flames around her for <span style=\"color:#00cc00;\">x</span> seconds, dealing <span style=\"color:#00cc00;\">x</span> damage on hit.",
         "imageUrl": "https://cdn.brawlify.com/gadgets/borderless/23000488.png",
         "released": true
       }
@@ -5003,8 +4983,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000039.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000039.png",
     "class": {
-      "id": 39,
-      "name": "Shred High-Health Enemies And Objectives."
+      "id": 1,
+      "name": "Damage Dealer"
     },
     "rarity": {
       "id": 4,
@@ -5020,8 +5000,8 @@
         "name": "Push It",
         "path": "Push-It",
         "version": 1,
-        "description": "All enemy Brawlers hit by Colette's charge are carried to the farthest point of the attack! At max distance, they are stunned for <!card.value2.ticksAsSeconds> sec.",
-        "descriptionHtml": "All enemy Brawlers hit by Colette's charge are carried to the farthest point of the attack! At max distance, they are stunned for <span style=\"color:#00cc00;\"><!card.value2.ticksAsSeconds> sec</span>.",
+        "description": "All enemy Brawlers hit by Colette's charge are carried to the farthest point of the attack! At max distance, they are stunned for 0.2 sec.",
+        "descriptionHtml": "All enemy Brawlers hit by Colette's charge are carried to the farthest point of the attack! At max distance, they are stunned for <span style=\"color:#00cc00;\">0.2 sec</span>.",
         "imageUrl": "https://cdn.brawlify.com/star-powers/borderless/23000300.png",
         "released": true
       },
@@ -5030,8 +5010,8 @@
         "name": "Mass Tax",
         "path": "Mass-Tax",
         "version": 1,
-        "description": "Colette takes <!card.trait.statuseffect.shieldpercent>% less damage during her Super and gains 30% shield for 3 sec if she hits a Brawler.",
-        "descriptionHtml": "Colette takes <span style=\"color:#00cc00;\"><!card.trait.statuseffect.shieldpercent>%</span> less damage during her Super and gains <span style=\"color:#00cc00;\">30%</span> shield for <span style=\"color:#00cc00;\">3 sec</span> if she hits a Brawler.",
+        "description": "Colette takes x% less damage during her Super and gains 30% shield for 3 sec if she hits a Brawler.",
+        "descriptionHtml": "Colette takes <span style=\"color:#00cc00;\">x%</span> less damage during her Super and gains <span style=\"color:#00cc00;\">30%</span> shield for <span style=\"color:#00cc00;\">3 sec</span> if she hits a Brawler.",
         "imageUrl": "https://cdn.brawlify.com/star-powers/borderless/23000301.png",
         "released": true
       }
@@ -5042,8 +5022,8 @@
         "name": "Na-Ah",
         "path": "Na-Ah",
         "version": 1,
-        "description": "Colette fires a projectile that charms a Brawler for <!card.accessory.skill.projectile.statuseffectenemy.duration.ticksasseconds> sec. Uses ammo.",
-        "descriptionHtml": "Colette fires a projectile that charms a Brawler for <span style=\"color:#00cc00;\"><!card.accessory.skill.projectile.statuseffectenemy.duration.ticksasseconds></span> sec. Uses ammo.",
+        "description": "Colette fires a projectile that charms a Brawler for x sec. Uses ammo.",
+        "descriptionHtml": "Colette fires a projectile that charms a Brawler for <span style=\"color:#00cc00;\">x</span> sec. Uses ammo.",
         "imageUrl": "https://cdn.brawlify.com/gadgets/borderless/23000302.png",
         "released": true
       },
@@ -5052,8 +5032,8 @@
         "name": "Gotcha",
         "path": "Gotcha",
         "version": 1,
-        "description": "Colette fires a projectile that heals for  <!card.accessory.skill.projectile.lifestealpercent>% of damage dealt. Uses ammo and can be fired 3 times before cooldown.",
-        "descriptionHtml": "Colette fires a projectile that heals for  <span style=\"color:#00cc00;\"><!card.accessory.skill.projectile.lifestealpercent>%</span> of damage dealt. Uses ammo and can be fired 3 times before cooldown.",
+        "description": "Colette fires a projectile that heals for x% of damage dealt. Uses ammo and can be fired 3 times before cooldown.",
+        "descriptionHtml": "Colette fires a projectile that heals for <span style=\"color:#00cc00;\">x%</span> of damage dealt. Uses ammo and can be fired 3 times before cooldown.",
         "imageUrl": "https://cdn.brawlify.com/gadgets/borderless/23000457.png",
         "released": true
       }
@@ -5074,13 +5054,13 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000038.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000038.png",
     "class": {
-      "id": 38,
-      "name": "Use Supers To Level Up Or Dive In"
+      "id": 1,
+      "name": "Damage Dealer"
     },
     "rarity": {
       "id": 6,
       "name": "Legendary",
-      "color": "#fff11ev"
+      "color": "#fff11e"
     },
     "unlock": null,
     "description": "Surge is a souped-up soda fountain, always ready to get the party started! He's got the beats, the moves, and an endless supply of energy drinks.",
@@ -5113,8 +5093,8 @@
         "name": "Power Surge",
         "path": "Power-Surge",
         "version": 1,
-        "description": "Surge's power surges! Increase Super charge rate by <!card.accessory.statusEffectAlly.ultiChargeBoostPercent>% for <!card.accessory.statusEffectAlly.duration.ticksAsSeconds> sec.",
-        "descriptionHtml": "Surge's power surges! Increase Super charge rate by <span style=\"color:#00cc00;\"><!card.accessory.statusEffectAlly.ultiChargeBoostPercent>%</span> for <span style=\"color:#00cc00;\"><!card.accessory.statusEffectAlly.duration.ticksAsSeconds></span> sec.",
+        "description": "Surge's power surges! Increase Super charge rate by 30% for 5 sec.",
+        "descriptionHtml": "Surge's power surges! Increase Super charge rate by <span style=\"color:#00cc00;\">30%</span> for <span style=\"color:#00cc00;\">5</span> sec.",
         "imageUrl": "https://cdn.brawlify.com/gadgets/borderless/23000285.png",
         "released": true
       },
@@ -5123,8 +5103,8 @@
         "name": "Power Shield",
         "path": "Power-Shield",
         "version": 1,
-        "description": "Within the next <!card.accessory.statusEffectAlly.duration.ticksAsSeconds> seconds, Surge consumes <!card.accessory.statusEffectAlly.shieldPercent>% of the damage of the next incoming hit and uses the energy to reload <!card.accessory.statusEffectAlly.actionsOnCancelOnDamage.values> ammo.",
-        "descriptionHtml": "Within the next <span style=\"color:#00cc00;\"><!card.accessory.statusEffectAlly.duration.ticksAsSeconds></span> seconds, Surge consumes <span style=\"color:#00cc00;\"><!card.accessory.statusEffectAlly.shieldPercent>%</span> of the damage of the next incoming hit and uses the energy to reload <span style=\"color:#00cc00;\"><!card.accessory.statusEffectAlly.actionsOnCancelOnDamage.values></span> ammo.",
+        "description": "Within the next 2 seconds, Surge consumes 50% of the damage of the next incoming hit and uses the energy to reload x ammo.",
+        "descriptionHtml": "Within the next <span style=\"color:#00cc00;\">2</span> seconds, Surge consumes <span style=\"color:#00cc00;\">50%</span> of the damage of the next incoming hit and uses the energy to reload <span style=\"color:#00cc00;\">x</span> ammo.",
         "imageUrl": "https://cdn.brawlify.com/gadgets/borderless/23000485.png",
         "released": true
       }
@@ -5145,8 +5125,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000037.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000037.png",
     "class": {
-      "id": 37,
-      "name": "Make Walls And Bounce Projectiles Off Of Them."
+      "id": 4,
+      "name": "Artillery"
     },
     "rarity": {
       "id": 5,
@@ -5216,8 +5196,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000036.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000036.png",
     "class": {
-      "id": 36,
-      "name": "Poke With Outside Shots Or Burst With All"
+      "id": 3,
+      "name": "Marksman"
     },
     "rarity": {
       "id": 4,
@@ -5287,8 +5267,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000035.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000035.png",
     "class": {
-      "id": 35,
-      "name": "Push Enemies Away To Control The Map."
+      "id": 5,
+      "name": "Controller"
     },
     "rarity": {
       "id": 4,
@@ -5314,8 +5294,8 @@
         "name": "Freezing Snow",
         "path": "Freezing-Snow",
         "version": 1,
-        "description": "Gale's snow balls now also slow down opponents for <!card.statuseffect.duration.ticksasseconds> seconds.",
-        "descriptionHtml": "Gale's snow balls now also slow down opponents for <span style=\"color:#00cc00;\"><!card.statuseffect.duration.ticksasseconds></span> seconds.",
+        "description": "Gale's snow balls now also slow down opponents for 0.5 seconds.",
+        "descriptionHtml": "Gale's snow balls now also slow down opponents for <span style=\"color:#00cc00;\">0.5</span> seconds.",
         "imageUrl": "https://cdn.brawlify.com/star-powers/borderless/23000229.png",
         "released": true
       }
@@ -5358,8 +5338,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000034.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000034.png",
     "class": {
-      "id": 34,
-      "name": "Get Close To Deal Large Area Damage."
+      "id": 2,
+      "name": "Tank"
     },
     "rarity": {
       "id": 3,
@@ -5397,8 +5377,8 @@
         "name": "Pneumatic Booster",
         "path": "Pneumatic-Booster",
         "version": 1,
-        "description": "Jacky gets a burst of energy and moves <!card.accessory.statuseffectself.speedboostpercent>% faster for <!card.accessory.statuseffectself.duration.ticksasseconds> seconds.",
-        "descriptionHtml": "Jacky gets a burst of energy and moves <span style=\"color:#00cc00;\"><!card.accessory.statuseffectself.speedboostpercent></span>% faster for <span style=\"color:#00cc00;\"><!card.accessory.statuseffectself.duration.ticksasseconds></span> seconds.",
+        "description": "Jacky gets a burst of energy and moves 25% faster for 4 seconds.",
+        "descriptionHtml": "Jacky gets a burst of energy and moves <span style=\"color:#00cc00;\">25</span>% faster for <span style=\"color:#00cc00;\">4</span> seconds.",
         "imageUrl": "https://cdn.brawlify.com/gadgets/borderless/23000256.png",
         "released": true
       },
@@ -5429,8 +5409,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000032.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000032.png",
     "class": {
-      "id": 33,
-      "name": "Buff Your Team With Tons Of Speed"
+      "id": 7,
+      "name": "Support"
     },
     "rarity": {
       "id": 5,
@@ -5446,8 +5426,8 @@
         "name": "Super Charged",
         "path": "Super-Charged",
         "version": 1,
-        "description": "Hitting an enemy with Max's Main Attack extends the duration of her Super by <!card.component.value.ticksAsSeconds> sec.",
-        "descriptionHtml": "Hitting an enemy with Max's Main Attack extends the duration of her Super by <span style=\"color:#00cc00;\"><!card.component.value.ticksAsSeconds></span> sec.",
+        "description": "Hitting an enemy with Max's Main Attack extends the duration of her Super by x sec.",
+        "descriptionHtml": "Hitting an enemy with Max's Main Attack extends the duration of her Super by <span style=\"color:#00cc00;\">x</span> sec.",
         "imageUrl": "https://cdn.brawlify.com/star-powers/borderless/23000210.png",
         "released": true
       },
@@ -5478,8 +5458,8 @@
         "name": "Sneaky Sneakers",
         "path": "Sneaky-Sneakers",
         "version": 1,
-        "description": "Max throws a lightning bolt. If she reactivates the Gadget, or after <!card.accessory.skill.projectile.spawnAreaEffectObject.timems.msasseconds> seconds, she blinks back to the lightning bolt and heals any damage taken since.",
-        "descriptionHtml": "Max throws a lightning bolt. If she reactivates the Gadget, or after <span style=\"color:#00cc00;\"><!card.accessory.skill.projectile.spawnAreaEffectObject.timems.msasseconds></span> seconds, she blinks back to the lightning bolt and heals any damage taken since.",
+        "description": "Max throws a lightning bolt. If she reactivates the Gadget, or after x seconds, she blinks back to the lightning bolt and heals any damage taken since.",
+        "descriptionHtml": "Max throws a lightning bolt. If she reactivates the Gadget, or after <span style=\"color:#00cc00;\">x</span> seconds, she blinks back to the lightning bolt and heals any damage taken since.",
         "imageUrl": "https://cdn.brawlify.com/gadgets/borderless/23000311.png",
         "released": true
       }
@@ -5500,8 +5480,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000031.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000031.png",
     "class": {
-      "id": 32,
-      "name": "Use Porters To Control The Map."
+      "id": 5,
+      "name": "Controller"
     },
     "rarity": {
       "id": 5,
@@ -5571,8 +5551,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000030.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000030.png",
     "class": {
-      "id": 31,
-      "name": "Control The Map With Large Attacks."
+      "id": 5,
+      "name": "Controller"
     },
     "rarity": {
       "id": 4,
@@ -5610,8 +5590,8 @@
         "name": "Friendzoner",
         "path": "Friendzoner",
         "version": 1,
-        "description": "Emz fires off some hairspray that pushes enemies back. Deals <!card.accessory.skill.damage.scaleToLevel>\u00a0damage.",
-        "descriptionHtml": "Emz fires off some hairspray that pushes enemies back. Deals <span style=\"color:#00cc00;\"><!card.accessory.skill.damage.scaleToLevel></span>\u00a0damage.",
+        "description": "Emz fires off some hairspray that pushes enemies back. Deals x\u00a0damage.",
+        "descriptionHtml": "Emz fires off some hairspray that pushes enemies back. Deals <span style=\"color:#00cc00;\">x</span>\u00a0damage.",
         "imageUrl": "https://cdn.brawlify.com/gadgets/borderless/23000274.png",
         "released": true
       },
@@ -5620,8 +5600,8 @@
         "name": "Acid Spray",
         "path": "Acid-Spray",
         "version": 1,
-        "description": "Emz squirts out hairspray that goes through walls! Deals <!card.accessory.skill.damage.scaleToLevel>\u00a0damage.",
-        "descriptionHtml": "Emz squirts out hairspray that goes through walls! Deals <span style=\"color:#00cc00;\"><!card.accessory.skill.damage.scaleToLevel></span>\u00a0damage.",
+        "description": "Emz squirts out hairspray that goes through walls! Deals x\u00a0damage.",
+        "descriptionHtml": "Emz squirts out hairspray that goes through walls! Deals <span style=\"color:#00cc00;\">x</span>\u00a0damage.",
         "imageUrl": "https://cdn.brawlify.com/gadgets/borderless/23000459.png",
         "released": true
       }
@@ -5642,8 +5622,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000029.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000029.png",
     "class": {
-      "id": 30,
-      "name": "Land Hits Then Punish"
+      "id": 3,
+      "name": "Marksman"
     },
     "rarity": {
       "id": 4,
@@ -5713,13 +5693,13 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000028.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000028.png",
     "class": {
-      "id": 29,
-      "name": "Use Sandstorm To Control Objectives"
+      "id": 5,
+      "name": "Controller"
     },
     "rarity": {
       "id": 6,
       "name": "Legendary",
-      "color": "#fff11ev"
+      "color": "#fff11e"
     },
     "unlock": null,
     "description": "On the rare occasions Sandy wakes from his slumber, he tries to help his big sister Tara around their store. But it's never long before he falls asleep again.",
@@ -5784,8 +5764,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000027.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000027.png",
     "class": {
-      "id": 28,
-      "name": "Hold Ground And Boost Your Team"
+      "id": 1,
+      "name": "Damage Dealer"
     },
     "rarity": {
       "id": 3,
@@ -5801,8 +5781,8 @@
         "name": "Boosted Booster",
         "path": "Boosted-Booster",
         "version": 1,
-        "description": "Increases the Damage Booster's range by <!arcade.largerAreaUlti.rangePercent>% and boosts damage by an additional <!arcade.largerAreaUlti.damageDelta>%.",
-        "descriptionHtml": "Increases the Damage Booster's range by <span style=\"color:#00cc00;\"><!arcade.largerAreaUlti.rangePercent>%</span> and boosts damage by an additional <span style=\"color:#00cc00;\"><!arcade.largerAreaUlti.damageDelta>%</span>.",
+        "description": "Increases the Damage Booster's range by x% and boosts damage by an additional x%.",
+        "descriptionHtml": "Increases the Damage Booster's range by <span style=\"color:#00cc00;\">x%</span> and boosts damage by an additional <span style=\"color:#00cc00;\">x%</span>.",
         "imageUrl": "https://cdn.brawlify.com/star-powers/borderless/23000168.png",
         "released": true
       },
@@ -5811,8 +5791,8 @@
         "name": "Plugged In",
         "path": "Plugged-In",
         "version": 1,
-        "description": "While near the Damage Booster 8-Bit gains +<!card.projectile.statusEffectAlly.speedBoostPercent>% Movement Speed.",
-        "descriptionHtml": "While near the Damage Booster 8-Bit gains <span style=\"color:#00cc00;\">+<!card.projectile.statusEffectAlly.speedBoostPercent>%</span> Movement Speed.",
+        "description": "While near the Damage Booster 8-Bit gains +x% Movement Speed.",
+        "descriptionHtml": "While near the Damage Booster 8-Bit gains <span style=\"color:#00cc00;\">+x%</span> Movement Speed.",
         "imageUrl": "https://cdn.brawlify.com/star-powers/borderless/23000181.png",
         "released": true
       }
@@ -5833,8 +5813,8 @@
         "name": "Extra Credits",
         "path": "Extra-Credits",
         "version": 1,
-        "description": "8-Bit fires <!card.accessory.skill.areaEffect.bulletExplosionTriggerCount> projectiles. Consumes ammo.",
-        "descriptionHtml": "8-Bit fires <span style=\"color:#00cc00;\"><!card.accessory.skill.areaEffect.bulletExplosionTriggerCount></span> projectiles. Consumes ammo.",
+        "description": "8-Bit fires x projectiles. Consumes ammo.",
+        "descriptionHtml": "8-Bit fires <span style=\"color:#00cc00;\">x</span> projectiles. Consumes ammo.",
         "imageUrl": "https://cdn.brawlify.com/gadgets/borderless/23000318.png",
         "released": true
       }
@@ -5855,8 +5835,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000026.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000026.png",
     "class": {
-      "id": 27,
-      "name": "Charge In And Knock Em Back"
+      "id": 2,
+      "name": "Tank"
     },
     "rarity": {
       "id": 4,
@@ -5872,8 +5852,8 @@
         "name": "Home Run",
         "path": "Home-Run",
         "version": 1,
-        "description": "Bibi's movement speed is increased by <!card.statuseffect.baseSpeedIncreasePercent>% when her Home Run bar is fully charged.",
-        "descriptionHtml": "Bibi's movement speed is increased by <span style=\"color:#00cc00;\"><!card.statuseffect.baseSpeedIncreasePercent>%</span> when her Home Run bar is fully charged.",
+        "description": "Bibi's movement speed is increased by 12% when her Home Run bar is fully charged.",
+        "descriptionHtml": "Bibi's movement speed is increased by <span style=\"color:#00cc00;\">12%</span> when her Home Run bar is fully charged.",
         "imageUrl": "https://cdn.brawlify.com/star-powers/borderless/23000134.png",
         "released": true
       },
@@ -5894,8 +5874,8 @@
         "name": "Vitamin Booster",
         "path": "Vitamin-Booster",
         "version": 1,
-        "description": "Bibi heals <!card.value1> health per second for <!card.value2> seconds.",
-        "descriptionHtml": "Bibi heals <span style=\"color:#00cc00;\"><!card.value1></span> health per second for <span style=\"color:#00cc00;\"><!card.value2></span> seconds.",
+        "description": "Bibi heals 1000 health per second for 4 seconds.",
+        "descriptionHtml": "Bibi heals <span style=\"color:#00cc00;\">1000</span> health per second for <span style=\"color:#00cc00;\">4</span> seconds.",
         "imageUrl": "https://cdn.brawlify.com/gadgets/borderless/23000275.png",
         "released": true
       },
@@ -5904,8 +5884,8 @@
         "name": "Extra Sticky",
         "path": "Extra-Sticky",
         "version": 1,
-        "description": "Bibi throws bubble gum that slows all enemies in it by <!card.accessory.skill.projectile.spawnareaeffectobject.statuseffectenemy.speedreducepercent>%",
-        "descriptionHtml": "Bibi throws bubble gum that slows all enemies in it by <span style=\"color:#00cc00;\"><!card.accessory.skill.projectile.spawnareaeffectobject.statuseffectenemy.speedreducepercent>%</span>",
+        "description": "Bibi throws bubble gum that slows all enemies in it by x%",
+        "descriptionHtml": "Bibi throws bubble gum that slows all enemies in it by <span style=\"color:#00cc00;\">x%</span>",
         "imageUrl": "https://cdn.brawlify.com/gadgets/borderless/23000458.png",
         "released": true
       }
@@ -5926,8 +5906,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000025.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000025.png",
     "class": {
-      "id": 26,
-      "name": "Boomerang Your Pickaxe For More Damage"
+      "id": 1,
+      "name": "Damage Dealer"
     },
     "rarity": {
       "id": 3,
@@ -5997,8 +5977,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000024.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000024.png",
     "class": {
-      "id": 25,
-      "name": "Use Bushes Whenever Possible"
+      "id": 2,
+      "name": "Tank"
     },
     "rarity": {
       "id": 2,
@@ -6046,8 +6026,8 @@
         "name": "Unfriendly Bushes",
         "path": "Unfriendly-Bushes",
         "version": 1,
-        "description": "All opponents hiding in bushes take <!card.character.weaponskill.damage.scaleaccessoryvalue3.scaletolevel> damage and get slowed down for <!card.accessory.statuseffectenemy.duration.ticksasseconds> seconds.",
-        "descriptionHtml": "All opponents hiding in bushes take <span style=\"color:#00cc00;\"><!card.character.weaponskill.damage.scaleaccessoryvalue3.scaletolevel></span> damage and get slowed down for <span style=\"color:#00cc00;\"><!card.accessory.statuseffectenemy.duration.ticksasseconds></span> seconds.",
+        "description": "All opponents hiding in bushes take x damage and get slowed down for 3 seconds.",
+        "descriptionHtml": "All opponents hiding in bushes take <span style=\"color:#00cc00;\">x</span> damage and get slowed down for <span style=\"color:#00cc00;\">3</span> seconds.",
         "imageUrl": "https://cdn.brawlify.com/gadgets/borderless/23000348.png",
         "released": true
       }
@@ -6068,13 +6048,13 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000023.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000023.png",
     "class": {
-      "id": 24,
-      "name": "Sneak In And Assassinate."
+      "id": 6,
+      "name": "Assassin"
     },
     "rarity": {
       "id": 6,
       "name": "Legendary",
-      "color": "#fff11ev"
+      "color": "#fff11e"
     },
     "unlock": null,
     "description": "Since Leon doesn't like hanging with other people much, his ability to become invisible comes in handy. Only his little sister, Nita, seems to get through to him.",
@@ -6085,8 +6065,8 @@
         "name": "Smoke Trails",
         "path": "Smoke-Trails",
         "version": 1,
-        "description": "When Leon is not visible, he gains a <!card.statuseffect.speedboostpercent>% movement speed for the duration of his invisibility.",
-        "descriptionHtml": "When Leon is not visible, he gains a <span style=\"color:#00cc00;\"><!card.statuseffect.speedboostpercent>%</span> movement speed for the duration of his invisibility.",
+        "description": "When Leon is not visible, he gains a 30% movement speed for the duration of his invisibility.",
+        "descriptionHtml": "When Leon is not visible, he gains a <span style=\"color:#00cc00;\">30%</span> movement speed for the duration of his invisibility.",
         "imageUrl": "https://cdn.brawlify.com/star-powers/borderless/23000119.png",
         "released": true
       },
@@ -6095,8 +6075,8 @@
         "name": "Invisiheal",
         "path": "Invisiheal",
         "version": 1,
-        "description": "Leon recovers <!card.character.maxHealth.scaleToLevel.scaleCardValue1> health per second while his Super is active.",
-        "descriptionHtml": "Leon recovers <span style=\"color:#00cc00;\"><!card.character.maxHealth.scaleToLevel.scaleCardValue1></span> health per second while his Super is active.",
+        "description": "Leon recovers x health per second while his Super is active.",
+        "descriptionHtml": "Leon recovers <span style=\"color:#00cc00;\">x</span> health per second while his Super is active.",
         "imageUrl": "https://cdn.brawlify.com/star-powers/borderless/23000141.png",
         "released": true
       }
@@ -6139,8 +6119,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000022.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000022.png",
     "class": {
-      "id": 23,
-      "name": "Control Space From Safety."
+      "id": 4,
+      "name": "Artillery"
     },
     "rarity": {
       "id": 3,
@@ -6210,8 +6190,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000021.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000021.png",
     "class": {
-      "id": 22,
-      "name": "Single Out Enemies With Long Range Pulls"
+      "id": 5,
+      "name": "Controller"
     },
     "rarity": {
       "id": 5,
@@ -6281,8 +6261,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000020.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000020.png",
     "class": {
-      "id": 21,
-      "name": "Control Space With Stuns And High Health."
+      "id": 2,
+      "name": "Tank"
     },
     "rarity": {
       "id": 4,
@@ -6320,8 +6300,8 @@
         "name": "Active Noise Canceling",
         "path": "Active-Noise-Canceling",
         "version": 1,
-        "description": "Fires a soundwave in a target direction, dealing <!card.accessory.skill.damage.scaleToLevel> damage to Brawlers. Frank becomes immune to Crowd Control for <!card.accessory.skill.activationSelfStatusEffect.duration.ticksAsSeconds> secs.",
-        "descriptionHtml": "Fires a soundwave in a target direction, dealing <span style=\"color:#00cc00;\"><!card.accessory.skill.damage.scaleToLevel></span> damage to Brawlers. Frank becomes immune to Crowd Control for <span style=\"color:#00cc00;\"><!card.accessory.skill.activationSelfStatusEffect.duration.ticksAsSeconds></span> secs.",
+        "description": "Fires a soundwave in a target direction, dealing x damage to Brawlers. Frank becomes immune to Crowd Control for x secs.",
+        "descriptionHtml": "Fires a soundwave in a target direction, dealing <span style=\"color:#00cc00;\">x</span> damage to Brawlers. Frank becomes immune to Crowd Control for <span style=\"color:#00cc00;\">x</span> secs.",
         "imageUrl": "https://cdn.brawlify.com/gadgets/borderless/23000261.png",
         "released": true
       },
@@ -6330,8 +6310,8 @@
         "name": "Irresistible Attraction",
         "path": "Irresistible-Attraction",
         "version": 1,
-        "description": "Frank aims a long-range attack that pulls enemies towards him. Consumes ammo. Does <!card.accessory.skill.damage.scaleToLevel>\u00a0damage.",
-        "descriptionHtml": "Frank aims a long-range attack that pulls enemies towards him. Consumes ammo. Does <span style=\"color:#00cc00;\"><!card.accessory.skill.damage.scaleToLevel></span>\u00a0damage.",
+        "description": "Frank aims a long-range attack that pulls enemies towards him. Consumes ammo. Does x\u00a0damage.",
+        "descriptionHtml": "Frank aims a long-range attack that pulls enemies towards him. Consumes ammo. Does <span style=\"color:#00cc00;\">x</span>\u00a0damage.",
         "imageUrl": "https://cdn.brawlify.com/gadgets/borderless/23000351.png",
         "released": true
       }
@@ -6352,8 +6332,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000019.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000019.png",
     "class": {
-      "id": 20,
-      "name": "Use Your Cannon To Take Over The Map"
+      "id": 5,
+      "name": "Controller"
     },
     "rarity": {
       "id": 3,
@@ -6423,8 +6403,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000018.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000018.png",
     "class": {
-      "id": 19,
-      "name": "Roll In And Burst Damage Targets."
+      "id": 2,
+      "name": "Tank"
     },
     "rarity": {
       "id": 3,
@@ -6494,8 +6474,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000017.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000017.png",
     "class": {
-      "id": 18,
-      "name": "Punish Grouped Enemies."
+      "id": 1,
+      "name": "Damage Dealer"
     },
     "rarity": {
       "id": 5,
@@ -6565,8 +6545,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000016.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000016.png",
     "class": {
-      "id": 17,
-      "name": "Hold Ground And Heal Teammates."
+      "id": 7,
+      "name": "Support"
     },
     "rarity": {
       "id": 4,
@@ -6636,8 +6616,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000015.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000015.png",
     "class": {
-      "id": 16,
-      "name": "Poke From Range And Escape With A Super"
+      "id": 3,
+      "name": "Marksman"
     },
     "rarity": {
       "id": 4,
@@ -6707,8 +6687,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000014.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000014.png",
     "class": {
-      "id": 15,
-      "name": "Control Space With Hidden Traps."
+      "id": 5,
+      "name": "Controller"
     },
     "rarity": {
       "id": 4,
@@ -6746,8 +6726,8 @@
         "name": "Super Totem",
         "path": "Super-Totem",
         "version": 1,
-        "description": "Bo places a totem that increases allies' Super charging rate by <!card.accessory.skill.summonedCharacter.areaEffect.customValue1>%. The totem slowly loses its health over time.",
-        "descriptionHtml": "Bo places a totem that increases allies' Super charging rate by <span style=\"color:#00cc00;\"><!card.accessory.skill.summonedCharacter.areaEffect.customValue1>%</span>. The totem slowly loses its health over time.",
+        "description": "Bo places a totem that increases allies' Super charging rate by x%. The totem slowly loses its health over time.",
+        "descriptionHtml": "Bo places a totem that increases allies' Super charging rate by <span style=\"color:#00cc00;\">x%</span>. The totem slowly loses its health over time.",
         "imageUrl": "https://cdn.brawlify.com/gadgets/borderless/23000263.png",
         "released": true
       },
@@ -6778,8 +6758,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000013.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000013.png",
     "class": {
-      "id": 14,
-      "name": "Instant Heals Keep Your Team Fighting"
+      "id": 7,
+      "name": "Support"
     },
     "rarity": {
       "id": 2,
@@ -6805,8 +6785,8 @@
         "name": "Screeching Solo",
         "path": "Screeching-Solo",
         "version": 1,
-        "description": "Poco's Super now also hits enemies, dealing <!card.value1.scaleWeaponDamageLevel.scaleStatToLevel> damage.",
-        "descriptionHtml": "Poco's Super now also hits enemies, dealing <span style=\"color:#00cc00;\"><!card.value1.scaleWeaponDamageLevel.scaleStatToLevel></span> damage.",
+        "description": "Poco's Super now also hits enemies, dealing x damage.",
+        "descriptionHtml": "Poco's Super now also hits enemies, dealing <span style=\"color:#00cc00;\">x</span> damage.",
         "imageUrl": "https://cdn.brawlify.com/star-powers/borderless/23000144.png",
         "released": true
       }
@@ -6817,8 +6797,8 @@
         "name": "Tuning Fork",
         "path": "Tuning-Fork",
         "version": 1,
-        "description": "Poco and all nearby allies heal for <!card.accessory.areaeffect.damage.scaleStatToLevel.negate> health <!card.accessory.repeatAreaEffectiveCount> times.",
-        "descriptionHtml": "Poco and all nearby allies heal for <span style=\"color:#00cc00;\"><!card.accessory.areaeffect.damage.scaleStatToLevel.negate></span> health <span style=\"color:#00cc00;\"><!card.accessory.repeatAreaEffectiveCount></span> times.",
+        "description": "Poco and all nearby allies heal for x health x times.",
+        "descriptionHtml": "Poco and all nearby allies heal for <span style=\"color:#00cc00;\">x</span> health <span style=\"color:#00cc00;\">x</span> times.",
         "imageUrl": "https://cdn.brawlify.com/gadgets/borderless/23000267.png",
         "released": true
       },
@@ -6827,8 +6807,8 @@
         "name": "Protective Tunes",
         "path": "Protective-Tunes",
         "version": 1,
-        "description": "Poco creates a large AoE lasting <!card.accessory.skill.projectile.spawnAreaEffectObject.timeMs.msAsSeconds> seconds that removes all adverse effects and grants them immunity while inside.",
-        "descriptionHtml": "Poco creates a large AoE lasting <span style=\"color:#00cc00;\"><!card.accessory.skill.projectile.spawnAreaEffectObject.timeMs.msAsSeconds></span> seconds that removes all adverse effects and grants them immunity while inside.",
+        "description": "Poco creates a large AoE lasting x seconds that removes all adverse effects and grants them immunity while inside.",
+        "descriptionHtml": "Poco creates a large AoE lasting <span style=\"color:#00cc00;\">x</span> seconds that removes all adverse effects and grants them immunity while inside.",
         "imageUrl": "https://cdn.brawlify.com/gadgets/borderless/23000350.png",
         "released": true
       }
@@ -6849,13 +6829,13 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000012.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000012.png",
     "class": {
-      "id": 13,
-      "name": "Poison Enemies From A Distance."
+      "id": 6,
+      "name": "Assassin"
     },
     "rarity": {
       "id": 6,
       "name": "Legendary",
-      "color": "#fff11ev"
+      "color": "#fff11e"
     },
     "unlock": null,
     "description": "Crow trusts no one and keeps to himself. The most anyone knows about him is that he's often found at the diner, hanging out with Bull and Bibi.",
@@ -6888,8 +6868,8 @@
         "name": "Instapoison",
         "path": "Instapoison",
         "version": 1,
-        "description": "Crow instantly deals remaining poison damage to all Crow-poisoned enemies and gains a shield for <!card.accessory.customValue2>% of the value.",
-        "descriptionHtml": "Crow instantly deals remaining poison damage to all Crow-poisoned enemies and gains a shield for <span style=\"color:#00cc00;\"><!card.accessory.customValue2>%</span> of the value.",
+        "description": "Crow instantly deals remaining poison damage to all Crow-poisoned enemies and gains a shield for 150% of the value.",
+        "descriptionHtml": "Crow instantly deals remaining poison damage to all Crow-poisoned enemies and gains a shield for <span style=\"color:#00cc00;\">150%</span> of the value.",
         "imageUrl": "https://cdn.brawlify.com/gadgets/borderless/23000243.png",
         "released": true
       },
@@ -6898,8 +6878,8 @@
         "name": "Slowing Toxin",
         "path": "Slowing-Toxin",
         "version": 1,
-        "description": "Throw a kunai that damages, slows and poisons the first enemy hit for <!card.accessory.skill.projectile.statusEffectEnemy.duration.ticksAsSeconds> sec.",
-        "descriptionHtml": "Throw a kunai that damages, slows and poisons the first enemy hit for <span style=\"color:#00cc00;\"><!card.accessory.skill.projectile.statusEffectEnemy.duration.ticksAsSeconds> sec</span>.",
+        "description": "Throw a kunai that damages, slows and poisons the first enemy hit for x sec.",
+        "descriptionHtml": "Throw a kunai that damages, slows and poisons the first enemy hit for <span style=\"color:#00cc00;\">x sec</span>.",
         "imageUrl": "https://cdn.brawlify.com/gadgets/borderless/23000286.png",
         "released": true
       }
@@ -6920,8 +6900,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000011.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000011.png",
     "class": {
-      "id": 12,
-      "name": "Jump In On Weak Or Isolated Enemies."
+      "id": 6,
+      "name": "Assassin"
     },
     "rarity": {
       "id": 5,
@@ -6959,8 +6939,8 @@
         "name": "Combo Spinner",
         "path": "Combo-Spinner",
         "version": 1,
-        "description": "Mortis spins his shovel dealing <!card.accessory.skill.damage.scaleToLevel> damage. Can also be aimed for a short-distance bat attack.",
-        "descriptionHtml": "Mortis spins his shovel dealing <span style=\"color:#00cc00;\"><!card.accessory.skill.damage.scaleToLevel></span> damage. Can also be aimed for a short-distance bat attack.",
+        "description": "Mortis spins his shovel dealing x damage. Can also be aimed for a short-distance bat attack.",
+        "descriptionHtml": "Mortis spins his shovel dealing <span style=\"color:#00cc00;\">x</span> damage. Can also be aimed for a short-distance bat attack.",
         "imageUrl": "https://cdn.brawlify.com/gadgets/borderless/23000265.png",
         "released": true
       },
@@ -6991,8 +6971,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000010.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000010.png",
     "class": {
-      "id": 11,
-      "name": "Jump In But Stay Away From Crowds."
+      "id": 2,
+      "name": "Tank"
     },
     "rarity": {
       "id": 2,
@@ -7018,8 +6998,8 @@
         "name": "Meteor Rush",
         "path": "Meteor-Rush",
         "version": 1,
-        "description": "El Primo gains a <!card.statuseffect.baseSpeedIncreasePercent>% speed boost for <!card.statuseffect.duration.ticksasseconds> seconds after using his Super.",
-        "descriptionHtml": "El Primo gains a <span style=\"color:#00cc00;\"><!card.statuseffect.baseSpeedIncreasePercent>%</span> speed boost for <span style=\"color:#00cc00;\"><!card.statuseffect.duration.ticksasseconds></span> seconds after using his Super.",
+        "description": "El Primo gains a 25% speed boost for 3 seconds after using his Super.",
+        "descriptionHtml": "El Primo gains a <span style=\"color:#00cc00;\">25%</span> speed boost for <span style=\"color:#00cc00;\">3</span> seconds after using his Super.",
         "imageUrl": "https://cdn.brawlify.com/star-powers/borderless/23000140.png",
         "released": true
       }
@@ -7040,8 +7020,8 @@
         "name": "Asteroid Belt",
         "path": "Asteroid-Belt",
         "version": 1,
-        "description": "El primo flexes his pecs and destroys any incoming projectiles for <!card.accessory.areaeffect.timems.msasseconds> sec.",
-        "descriptionHtml": "El primo flexes his pecs and destroys any incoming projectiles for <span style=\"color:#00cc00;\"><!card.accessory.areaeffect.timems.msasseconds></span> sec.",
+        "description": "El primo flexes his pecs and destroys any incoming projectiles for x sec.",
+        "descriptionHtml": "El primo flexes his pecs and destroys any incoming projectiles for <span style=\"color:#00cc00;\">x</span> sec.",
         "imageUrl": "https://cdn.brawlify.com/gadgets/borderless/23000292.png",
         "released": true
       }
@@ -7062,8 +7042,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000009.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000009.png",
     "class": {
-      "id": 10,
-      "name": "Bombard Safely From Behind Walls."
+      "id": 4,
+      "name": "Artillery"
     },
     "rarity": {
       "id": 3,
@@ -7101,8 +7081,8 @@
         "name": "Fidget Spinner",
         "path": "Fidget-Spinner",
         "version": 1,
-        "description": "Dynamike spins furiously with <!card.accessory.statuseffectself.speedboostpercent>% increased movement speed and throws multiple sticks of dynamite around himself. Each dynamite deals <!card.character.weaponskill.damage.scaletolevel.scaleaccessoryvalue3> damage to enemies.",
-        "descriptionHtml": "Dynamike spins furiously with <span style=\"color:#00cc00;\"><!card.accessory.statuseffectself.speedboostpercent>%</span> increased movement speed and throws multiple sticks of dynamite around himself. Each dynamite deals <span style=\"color:#00cc00;\"><!card.character.weaponskill.damage.scaletolevel.scaleaccessoryvalue3></span> damage to enemies.",
+        "description": "Dynamike spins furiously with 20% increased movement speed and throws multiple sticks of dynamite around himself. Each dynamite deals x damage to enemies.",
+        "descriptionHtml": "Dynamike spins furiously with <span style=\"color:#00cc00;\">20%</span> increased movement speed and throws multiple sticks of dynamite around himself. Each dynamite deals <span style=\"color:#00cc00;\">x</span> damage to enemies.",
         "imageUrl": "https://cdn.brawlify.com/gadgets/borderless/23000258.png",
         "released": true
       },
@@ -7133,8 +7113,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000008.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000008.png",
     "class": {
-      "id": 9,
-      "name": "Pressure With Bruce The Bear"
+      "id": 1,
+      "name": "Damage Dealer"
     },
     "rarity": {
       "id": 2,
@@ -7182,8 +7162,8 @@
         "name": "Faux Fur",
         "path": "Faux-Fur",
         "version": 1,
-        "description": "For the next <!card.accessory.activeTime.ticksAsSeconds> seconds, Nita's bear gets a <!card.accessory.value1>% shield against damage.",
-        "descriptionHtml": "For the next <span style=\"color:#00cc00;\"><!card.accessory.activeTime.ticksAsSeconds></span> seconds, Nita's bear gets a <span style=\"color:#00cc00;\"><!card.accessory.value1>%</span> shield against damage.",
+        "description": "For the next x seconds, Nita's bear gets a x% shield against damage.",
+        "descriptionHtml": "For the next <span style=\"color:#00cc00;\">x</span> seconds, Nita's bear gets a <span style=\"color:#00cc00;\">x%</span> shield against damage.",
         "imageUrl": "https://cdn.brawlify.com/gadgets/borderless/23000314.png",
         "released": true
       }
@@ -7204,8 +7184,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000007.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000007.png",
     "class": {
-      "id": 8,
-      "name": "Place Your Turret To Dominate The Map"
+      "id": 5,
+      "name": "Controller"
     },
     "rarity": {
       "id": 3,
@@ -7275,8 +7255,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000006.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000006.png",
     "class": {
-      "id": 7,
-      "name": "Deny Space By Throwing Fiery Bottles."
+      "id": 4,
+      "name": "Artillery"
     },
     "rarity": {
       "id": 2,
@@ -7346,13 +7326,13 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000005.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000005.png",
     "class": {
-      "id": 6,
-      "name": "Zone Enemies With A Super And Spikes."
+      "id": 1,
+      "name": "Damage Dealer"
     },
     "rarity": {
       "id": 6,
       "name": "Legendary",
-      "color": "#fff11ev"
+      "color": "#fff11e"
     },
     "unlock": null,
     "description": "Most people think Spike is Colt and Shelly's cute sidekick at the Ranger Ranch. Nobody could begin to guess the depths of his trauma",
@@ -7385,8 +7365,8 @@
         "name": "Popping Pincushion",
         "path": "Popping-Pincushion",
         "version": 1,
-        "description": "Spike aims and fires a wave of needles that deal <!card.accessory.skill.damage.scaleToLevel> damage.",
-        "descriptionHtml": "Spike aims and fires a wave of needles that deal <span style=\"color:#00cc00;\"><!card.accessory.skill.damage.scaleToLevel></span> damage.",
+        "description": "Spike aims and fires a wave of needles that deal x damage.",
+        "descriptionHtml": "Spike aims and fires a wave of needles that deal <span style=\"color:#00cc00;\">x</span> damage.",
         "imageUrl": "https://cdn.brawlify.com/gadgets/borderless/23000247.png",
         "released": true
       },
@@ -7395,8 +7375,8 @@
         "name": "Life Plant",
         "path": "Life-Plant",
         "version": 1,
-        "description": "Spike throws a large cactus with <!card.accessory.skill.summonedCharacter.maxHealth.scaleToLevel> health to give cover to teammates. If destroyed, the cactus bursts, and all nearby teammates recover <!card.accessory.skill.cactusMinionHealing.scaleToLevel> health.",
-        "descriptionHtml": "Spike throws a large cactus with <span style=\"color:#00cc00;\"><!card.accessory.skill.summonedCharacter.maxHealth.scaleToLevel></span> health to give cover to teammates. If destroyed, the cactus bursts, and all nearby teammates recover <span style=\"color:#00cc00;\"><!card.accessory.skill.cactusMinionHealing.scaleToLevel></span> health.",
+        "description": "Spike throws a large cactus with x health to give cover to teammates. If destroyed, the cactus bursts, and all nearby teammates recover x health.",
+        "descriptionHtml": "Spike throws a large cactus with <span style=\"color:#00cc00;\">x</span> health to give cover to teammates. If destroyed, the cactus bursts, and all nearby teammates recover <span style=\"color:#00cc00;\">x</span> health.",
         "imageUrl": "https://cdn.brawlify.com/gadgets/borderless/23000406.png",
         "released": true
       }
@@ -7417,8 +7397,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000004.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000004.png",
     "class": {
-      "id": 5,
-      "name": "Bounce Shots For Extra Range"
+      "id": 1,
+      "name": "Damage Dealer"
     },
     "rarity": {
       "id": 3,
@@ -7444,8 +7424,8 @@
         "name": "Robo Retreat",
         "path": "Robo-Retreat",
         "version": 1,
-        "description": "Rico runs <!card.component[0].values[2]>% faster when his health falls below <!card.component[0].values[0]>%.",
-        "descriptionHtml": "Rico runs <span style=\"color:#00cc00;\"><!card.component[0].values[2]>%</span> faster when his health falls below <span style=\"color:#00cc00;\"><!card.component[0].values[0]>%</span>.",
+        "description": "Rico runs x% faster when his health falls below x%.",
+        "descriptionHtml": "Rico runs <span style=\"color:#00cc00;\">x%</span> faster when his health falls below <span style=\"color:#00cc00;\">x%</span>.",
         "imageUrl": "https://cdn.brawlify.com/star-powers/borderless/23000156.png",
         "released": true
       }
@@ -7456,8 +7436,8 @@
         "name": "Multiball Launcher",
         "path": "Multiball-Launcher",
         "version": 1,
-        "description": "Rico Deploys a vending machine that has <!card.accessory.skill.summonedcharacter.maxhealth.scaleStatToLevel> health - when destroyed fires bouncing projectiles in all directions.",
-        "descriptionHtml": "Rico Deploys a vending machine that has <span style=\"color:#00cc00;\"><!card.accessory.skill.summonedcharacter.maxhealth.scaleStatToLevel></span> health - when destroyed fires bouncing projectiles in all directions.",
+        "description": "Rico Deploys a vending machine that has x health - when destroyed fires bouncing projectiles in all directions.",
+        "descriptionHtml": "Rico Deploys a vending machine that has <span style=\"color:#00cc00;\">x</span> health - when destroyed fires bouncing projectiles in all directions.",
         "imageUrl": "https://cdn.brawlify.com/gadgets/borderless/23000246.png",
         "released": true
       },
@@ -7466,8 +7446,8 @@
         "name": "Multiball",
         "path": "Multiball",
         "version": 1,
-        "description": "Rico fires a big bullet that, on hitting a wall or Brawler, splits into <!card.accessory.skill.projectile.chainbullets> smaller bullets.",
-        "descriptionHtml": "Rico fires a big bullet that, on hitting a wall or Brawler, splits into <span style=\"color:#00cc00;\"><!card.accessory.skill.projectile.chainbullets></span> smaller bullets.",
+        "description": "Rico fires a big bullet that, on hitting a wall or Brawler, splits into x smaller bullets.",
+        "descriptionHtml": "Rico fires a big bullet that, on hitting a wall or Brawler, splits into <span style=\"color:#00cc00;\">x</span> smaller bullets.",
         "imageUrl": "https://cdn.brawlify.com/gadgets/borderless/23000409.png",
         "released": true
       }
@@ -7488,8 +7468,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000003.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000003.png",
     "class": {
-      "id": 4,
-      "name": "Explode Brawlers And Walls"
+      "id": 3,
+      "name": "Marksman"
     },
     "rarity": {
       "id": 2,
@@ -7559,8 +7539,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000002.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000002.png",
     "class": {
-      "id": 3,
-      "name": "Super To Break Walls And Close The Distance"
+      "id": 2,
+      "name": "Tank"
     },
     "rarity": {
       "id": 2,
@@ -7598,8 +7578,8 @@
         "name": "T-Bone Missile",
         "path": "T-Bone-Missile",
         "version": 1,
-        "description": "Bull throws a projectile at the target Brawler, dealing <!card.accessory.skill.damage.scaleToLevel> damage and healing for <!card.accessory.skill.projectile.statusEffectSelfOnHit.healing> if he hits.",
-        "descriptionHtml": "Bull throws a projectile at the target Brawler, dealing <span style=\"color:#00cc00;\"><!card.accessory.skill.damage.scaleToLevel></span> damage and healing for <span style=\"color:#00cc00;\"><!card.accessory.skill.projectile.statusEffectSelfOnHit.healing></span> if he hits.",
+        "description": "Bull throws a projectile at the target Brawler, dealing x damage and healing for x if he hits.",
+        "descriptionHtml": "Bull throws a projectile at the target Brawler, dealing <span style=\"color:#00cc00;\">x</span> damage and healing for <span style=\"color:#00cc00;\">x</span> if he hits.",
         "imageUrl": "https://cdn.brawlify.com/gadgets/borderless/23000272.png",
         "released": true
       },
@@ -7630,8 +7610,8 @@
     "imageUrl2": "https://cdn.brawlify.com/brawlers/borderless/16000001.png",
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000001.png",
     "class": {
-      "id": 2,
-      "name": "Long Range Consistent Damage."
+      "id": 1,
+      "name": "Damage Dealer"
     },
     "rarity": {
       "id": 2,
@@ -7647,8 +7627,8 @@
         "name": "Slick Boots",
         "path": "Slick-Boots",
         "version": 1,
-        "description": "Colt's movement speed is increased by <!card.trait.statuseffect.basespeedincreasepercent>%.",
-        "descriptionHtml": "Colt's movement speed is increased by <span style=\"color:#00cc00;\"><!card.trait.statuseffect.basespeedincreasepercent>%</span>.",
+        "description": "Colt's movement speed is increased by x%.",
+        "descriptionHtml": "Colt's movement speed is increased by <span style=\"color:#00cc00;\">x%</span>.",
         "imageUrl": "https://cdn.brawlify.com/star-powers/borderless/23000077.png",
         "released": true
       },
@@ -7669,8 +7649,8 @@
         "name": "Speedloader",
         "path": "Speedloader",
         "version": 1,
-        "description": "Colt fires two quick shots that slow targets. Deals <!card.accessory.skill.damage.scaleToLevel>\u00a0damage.",
-        "descriptionHtml": "Colt fires two quick shots that slow targets. Deals <span style=\"color:#00cc00;\"><!card.accessory.skill.damage.scaleToLevel></span>\u00a0damage.",
+        "description": "Colt fires two quick shots that slow targets. Deals x\u00a0damage.",
+        "descriptionHtml": "Colt fires two quick shots that slow targets. Deals <span style=\"color:#00cc00;\">x</span>\u00a0damage.",
         "imageUrl": "https://cdn.brawlify.com/gadgets/borderless/23000273.png",
         "released": true
       },
@@ -7679,8 +7659,8 @@
         "name": "Silver Bullet",
         "path": "Silver-Bullet",
         "version": 1,
-        "description": "Colt fires a bullet that destroys the environment and pierces Brawlers. Deals <!card.accessory.skill.damage.scaleToLevel>\u00a0damage. Consumes ammo.",
-        "descriptionHtml": "Colt fires a bullet that destroys the environment and pierces Brawlers. Deals <span style=\"color:#00cc00;\"><!card.accessory.skill.damage.scaleToLevel></span>\u00a0damage. Consumes ammo.",
+        "description": "Colt fires a bullet that destroys the environment and pierces Brawlers. Deals x\u00a0damage. Consumes ammo.",
+        "descriptionHtml": "Colt fires a bullet that destroys the environment and pierces Brawlers. Deals <span style=\"color:#00cc00;\">x</span>\u00a0damage. Consumes ammo.",
         "imageUrl": "https://cdn.brawlify.com/gadgets/borderless/23000319.png",
         "released": true
       }
@@ -7702,7 +7682,7 @@
     "imageUrl3": "https://cdn.brawlify.com/brawlers/emoji/16000000.png",
     "class": {
       "id": 1,
-      "name": "Counter Tanks And Assassins With Burst Damage."
+      "name": "Damage Dealer"
     },
     "rarity": {
       "id": 1,
@@ -7718,8 +7698,8 @@
         "name": "Shell Shock",
         "path": "Shell-Shock",
         "version": 1,
-        "description": "Shelly's Super shells slow down enemies for <!card.value1.ticksasseconds> sec!",
-        "descriptionHtml": "Shelly's Super shells slow down enemies for <span style=\"color:#00cc00;\"><!card.value1.ticksasseconds></span> sec!",
+        "description": "Shelly's Super shells slow down enemies for 2 sec!",
+        "descriptionHtml": "Shelly's Super shells slow down enemies for <span style=\"color:#00cc00;\">2</span> sec!",
         "imageUrl": "https://cdn.brawlify.com/star-powers/borderless/23000076.png",
         "released": true
       },
@@ -7750,8 +7730,8 @@
         "name": "Clay Pigeons",
         "path": "Clay-Pigeons",
         "version": 1,
-        "description": "Shelly focuses her fire to a smaller area with an increased range. Can be used <!card.accessory.skill.maxAmmo>\u00a0times per activation.",
-        "descriptionHtml": "Shelly focuses her fire to a smaller area with an increased range. Can be used <!card.accessory.skill.maxAmmo>\u00a0times per activation.",
+        "description": "Shelly focuses her fire to a smaller area with an increased range. Can be used x\u00a0times per activation.",
+        "descriptionHtml": "Shelly focuses her fire to a smaller area with an increased range. Can be used x\u00a0times per activation.",
         "imageUrl": "https://cdn.brawlify.com/gadgets/borderless/23000288.png",
         "released": true
       }
