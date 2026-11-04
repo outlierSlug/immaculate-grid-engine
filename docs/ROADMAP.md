@@ -554,48 +554,50 @@ presentation layer over correct-guess history. See `docs/ARCHITECTURE.md`'s
 ## Live content tracker (ongoing)
 What each game's roster is current through, and what is waiting to be
 added or swapped. Update this on every roster pass. Last full pass:
-2026-10-27.
+2026-11-02.
 
 Every addition ships the same way: run that game's pipeline, push, then run
 `backend/load-prod-data.ps1` to upsert the roster into Neon. Never truncate
 `puzzles`: each Daily's `cellSolutions` is the permanent answer key behind
 Archive, stats and collections.
 
-**Genshin Impact** (134 entities, current through Version 7.1)
-- [ ] Version 7.2, expected around early November 2026. Steps are in
-      `ingestion/genshin/README.md`. Enka and Dimbreath only carry a
-      character once released; the wiki's 256px icon is the pre-launch
-      fallback (it serves WebP, so convert).
+**Genshin Impact** (136 entities, current through Version 7.2)
+- [x] Version 7.2: Mitya (5-star Electro catalyst) and Valeriy (4-star
+      Electro sword), both Snezhnaya. Prepared 2026-11-02 from the
+      release client, re-checked against the launch build and shipped
+      2026-11-03.
 - [ ] `build_material_sources.py` must not be re-run as is: it would
       regress 23 tooltips. Reconcile it first.
 
 **Honkai: Star Rail** (98 entities, current through Version 4.6)
-- [ ] Version 4.7, expected around early to mid November 2026.
+- [ ] Version 4.7 launches 2026-11-11 with one new character, Aeon ★ Aha
+      (5-star Elation Quantum). The wiki lists faction Furbobo Weekly and
+      world Planarcadia; which affiliation(s) to give it is still to be
+      decided, since `raw/affiliations.txt` is hand-kept.
 - [ ] Swap three wiki-fallback icons (Pearl, Robin • Summeretto,
       Aventurine • Waveflair) once the FortOfFans mirror has them. Still
       missing on 2026-10-27, although the mirror updated on 2026-09-29.
       Remove each from `WIKI_FALLBACK_URLS` in `download_icons.py`, delete
       its file, and re-run the script.
-- [ ] Delete the old "Planarcardia" tooltip alias in `CategoryChip.tsx`
-      after 2026-10-28, once puzzles with the misspelled label have left
-      the 30-day Archive.
+- [x] Deleted the old "Planarcardia" tooltip alias in `CategoryChip.tsx`
+      on 2026-11-02, after puzzles with the misspelled label left the
+      30-day Archive.
 
-**Brawl Stars** (107 brawlers, current through Cosmo)
-- [ ] Add Vince on 2026-11-05, the day he is free in the Brawler Blast
-      (paid early access began 2026-10-19, which does not count). Mythic,
-      Damage Dealer, release year 2026, and a new "Caterpillar" trait.
-      Remove him from `ANNOUNCED_NOT_YET_PLAYABLE` in `normalize.py`. If
-      Brawlify still has no icon, add `Vince1-pfp.png` from the wiki to
-      `WIKI_FALLBACK_URLS`; it already exists.
-- [ ] Swap Cosmo's wiki-fallback icon once Brawlify has him (still missing
-      on 2026-10-27).
+**Brawl Stars** (108 brawlers, current through Vince)
+- [x] Add Vince: shipped 2026-11-03, the day he became free. Mythic,
+      Damage Dealer, release year 2026, new "Caterpillar" trait. Brawlify
+      already had his icon, so no wiki fallback was needed.
+- [ ] Swap Cosmo's wiki-fallback icon: Brawlify has his bordered icon as
+      of 2026-11-03. Delete `output/icons/cosmo.png`, re-run
+      `download_icons.py`, drop his `WIKI_FALLBACK_URLS` entry, and copy
+      the icon to the frontend.
 - [ ] Re-check skin tags against the wiki's skin galleries each pass:
       new skins appear between brawler releases. Last checked 2026-10-27
       (37 with a Legendary skin after adding Kit, 9 with a Hypercharge
       skin).
 
 **Clash Royale** (185 entities from 123 cards)
-- [ ] Evo Mirror and Evo Giant, not yet in the official API on 2026-10-27.
+- [ ] Evo Mirror and Evo Giant, still not in the official API on 2026-11-02.
       A re-fetch creates them once the API lists them; then add each to
       `raw/targeting.txt`. Mirror sits in the "No targeting" group and
       Giant in "Targets Buildings", so the evolutions likely follow, but

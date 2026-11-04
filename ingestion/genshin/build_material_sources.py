@@ -61,6 +61,10 @@ MANUAL_OVERRIDES = {
         # would silently fall back to the generic "(a boss material)"
         # tooltip.
         "Vagabond's Cracked Armor": "Guardian Blade of Drifting Snow",
+        # 7.2's new boss material (Mitya). Source from the wiki's item page
+        # ("Dropped by Lv. 30+ Wavebinder"), since the flavor text never
+        # names the boss.
+        "Shattered Stability Anchor": "Wavebinder",
     },
     "common_material": {
         # inferred: well-established community knowledge, not spelled out

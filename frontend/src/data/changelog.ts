@@ -18,6 +18,7 @@ export interface ChangelogEntry {
 }
 
 export const CHANGELOG: ChangelogEntry[] = [
+  { date: '2026-11-04', text: 'Added Mitya and Valeriy to Genshin Impact (Version 7.2).' },
   { date: '2026-11-03', text: 'Added Vince to Brawl Stars.' },
   { date: '2026-10-06', text: 'Added Evo Electro Giant and Hero Electro Wizard to Clash Royale.' },
   { date: '2026-10-01', text: 'Added Cosmo to Brawl Stars.' },

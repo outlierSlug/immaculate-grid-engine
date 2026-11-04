@@ -1576,6 +1576,29 @@
     }
   },
   {
+    "id": "genshin:mitya",
+    "game_id": "genshin",
+    "display_name": "Mitya",
+    "image_url": "/genshin/icons/mitya.png",
+    "attributes": {
+      "element": "Electro",
+      "weapon": "Catalyst",
+      "rarity": 5,
+      "region": "Snezhnaya",
+      "model": "Medium Male",
+      "release_date": "2026-11-04",
+      "release_version": "7.2",
+      "release_era": "Version 7 (7.x)",
+      "local_specialty": "Kristallfold",
+      "common_material": "Prime Chimeric Nexus",
+      "boss_material": "Shattered Stability Anchor",
+      "ascension_stat": "CRIT DMG%",
+      "passive_talent": [
+        "Stellar Jubilee"
+      ]
+    }
+  },
+  {
     "id": "genshin:mona",
     "game_id": "genshin",
     "display_name": "Mona",
@@ -2534,6 +2557,29 @@
       "ascension_stat": "ATK%",
       "passive_talent": [
         "Stellar Jubilee"
+      ]
+    }
+  },
+  {
+    "id": "genshin:valeriy",
+    "game_id": "genshin",
+    "display_name": "Valeriy",
+    "image_url": "/genshin/icons/valeriy.png",
+    "attributes": {
+      "element": "Electro",
+      "weapon": "Sword",
+      "rarity": 4,
+      "region": "Snezhnaya",
+      "model": "Tall Male",
+      "release_date": "2026-11-04",
+      "release_version": "7.2",
+      "release_era": "Version 7 (7.x)",
+      "local_specialty": "Fairy Wormwood",
+      "common_material": "Ethereal Crystalscale Stone",
+      "boss_material": "Severed Tail of the Sky-Roamer",
+      "ascension_stat": "ATK%",
+      "passive_talent": [
+        "Expedition"
       ]
     }
   },

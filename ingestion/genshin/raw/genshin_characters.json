@@ -690,6 +690,16 @@
     "release_version": "3.5"
   },
   {
+    "name": "Mitya",
+    "rarity": 5,
+    "element": "Electro",
+    "weapon": "Catalyst",
+    "region": "Snezhnaya",
+    "model": "Medium Male",
+    "release_date": "2026-11-04",
+    "release_version": "7.2"
+  },
+  {
     "name": "Mona",
     "rarity": 5,
     "element": "Hydro",
@@ -988,6 +998,16 @@
     "model": "Aether: Medium Male / Lumine: Medium Female",
     "release_date": "2020-09-28",
     "release_version": "1.0"
+  },
+  {
+    "name": "Valeriy",
+    "rarity": 4,
+    "element": "Electro",
+    "weapon": "Sword",
+    "region": "Snezhnaya",
+    "model": "Tall Male",
+    "release_date": "2026-11-04",
+    "release_version": "7.2"
   },
   {
     "name": "Varesa",

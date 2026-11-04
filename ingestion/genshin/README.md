@@ -7,10 +7,20 @@ This is the order that worked for 7.1's Vesna and Vodyanitsa
 (2026-09-22); the two pipeline sections after it explain *why* each piece
 exists.
 
-**Wait for the version to actually ship.** Community mirrors lag a
-release: when 7.1 went live, Dimbreath had the data within a day but Enka
-had not published either character's icon. Announced-but-unreleased data
-is also incomplete or wrong, so nothing here should be run off a leak.
+**Ship only once the version is live.** Community mirrors lag a release:
+when 7.1 went live, Dimbreath had the data within a day but Enka had not
+published either character's icon. Announced-but-unreleased data is also
+incomplete or wrong, so nothing here should be run off a leak.
+
+You *can* prepare ahead from the release client, though. For 7.2,
+Dimbreath published the official 7.2 client data two days before launch
+(commit "CNRELWin7.2.0..."), and Enka and Yatta already served both
+characters' icons and all three new material icons, so every step below
+ran cleanly on 2026-11-02 and was left uncommitted until launch. On
+launch day, re-run `fetch_dimbreath.py` against the launch build and
+confirm the rebuilt output hasn't changed. Trust the game's own text over
+the wiki for names: the wiki spelled Mitya's local specialty
+"Crystalfold" before launch, but the game's "Kristallfold" is correct.
 
 1. **Hand-enter the character** in `raw/genshin_characters.json`: `name`,
    `rarity`, `element`, `weapon`, `region`, `model`, `release_date`,
