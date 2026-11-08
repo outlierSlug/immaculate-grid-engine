@@ -120,6 +120,21 @@
     }
   },
   {
+    "id": "clashroyale:giant-evo",
+    "game_id": "clashroyale",
+    "display_name": "Evo Giant",
+    "image_url": "/clashroyale/icons/giant-evo.png",
+    "attributes": {
+      "rarity": "Rare",
+      "card_type": "Troop",
+      "elixir_cost": 5,
+      "form": "Evolution",
+      "targeting": [
+        "Targets Buildings"
+      ]
+    }
+  },
+  {
     "id": "clashroyale:giant-hero",
     "game_id": "clashroyale",
     "display_name": "Hero Giant",

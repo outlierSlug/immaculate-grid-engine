@@ -5,6 +5,7 @@ Electro Giant
 Elixir Golem
 Evo Battle Ram
 Evo Electro Giant
+Evo Giant
 Evo Goblin Giant
 Evo Royal Giant
 Evo Royal Hogs

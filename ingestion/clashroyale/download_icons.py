@@ -34,10 +34,15 @@ REQUEST_DELAY_SECONDS = 0.2
 # replaced by a re-run, since download_icon() below skips files that already
 # exist - once the CDN URL in raw/clashroyale_cards_raw.json returns 200,
 # delete the stand-in from output/icons/, re-run this script, and copy the
-# result to frontend/public/clashroyale/icons/. As of 2026-10-27 every icon
-# here is Supercell's own; no stand-ins remain (the last two, Evo Electro
-# Giant and Hero Electro Wizard, were fan-kit art in hand-assembled frames
-# from 2026-10-06 until the CDN caught up).
+# result to frontend/public/clashroyale/icons/.
+#
+# Current stand-ins: giant-evo.png (Evo Giant, since 2026-11-07). Fan-kit
+# card art (identical to the wiki's GiantCardEvolution.png) placed in a real
+# rare-evo frame: the banner, border and gem are the pixels shared by 7
+# official rare evo icons, and the art's scale and offset were fitted
+# against those same cards' wiki art, then overscanned 10% to hide the
+# in-game card's pink glow. Earlier stand-ins (Evo Electro Giant and Hero
+# Electro Wizard, 2026-10-06 to 10-27) were made the same way.
 
 # (icon_urls key, filename suffix) - mirrors normalize.py's map_card() form
 # detection exactly (evolutionMedium -> Evolution entity, heroMedium -> Hero
