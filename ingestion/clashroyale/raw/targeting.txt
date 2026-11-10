@@ -191,4 +191,5 @@ X-Bow
 No targeting (excluded entirely - not a selectable category)
 Clone
 Elixir Collector
+Evo Mirror
 Mirror

@@ -2487,6 +2487,19 @@
     }
   },
   {
+    "id": "clashroyale:mirror-evo",
+    "game_id": "clashroyale",
+    "display_name": "Evo Mirror",
+    "image_url": "/clashroyale/icons/mirror-evo.png",
+    "attributes": {
+      "rarity": "Epic",
+      "card_type": "Spell",
+      "elixir_cost": null,
+      "form": "Evolution",
+      "targeting": []
+    }
+  },
+  {
     "id": "clashroyale:lightning",
     "game_id": "clashroyale",
     "display_name": "Lightning",

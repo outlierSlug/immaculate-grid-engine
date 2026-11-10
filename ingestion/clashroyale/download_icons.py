@@ -36,13 +36,15 @@ REQUEST_DELAY_SECONDS = 0.2
 # delete the stand-in from output/icons/, re-run this script, and copy the
 # result to frontend/public/clashroyale/icons/.
 #
-# Current stand-ins: giant-evo.png (Evo Giant, since 2026-11-07). Fan-kit
-# card art (identical to the wiki's GiantCardEvolution.png) placed in a real
-# rare-evo frame: the banner, border and gem are the pixels shared by 7
-# official rare evo icons, and the art's scale and offset were fitted
-# against those same cards' wiki art, then overscanned 10% to hide the
-# in-game card's pink glow. Earlier stand-ins (Evo Electro Giant and Hero
-# Electro Wizard, 2026-10-06 to 10-27) were made the same way.
+# Current stand-ins: giant-evo.png (Evo Giant, since 2026-11-07) and
+# mirror-evo.png (Evo Mirror, since 2026-11-10). Each is the card's in-game
+# art (the wiki's <Card>CardEvolution.png; the fan kit's copy of Giant's is
+# identical) placed in a real same-rarity evo frame: the banner, border and
+# gem are the pixels shared by that rarity's official evo icons (7 rare
+# for Giant, 11 epic for Mirror), and the art's scale and offset were
+# fitted against those cards' own wiki art, then overscanned 10% to hide
+# the in-game card's pink glow. Earlier stand-ins (Evo Electro Giant and
+# Hero Electro Wizard, 2026-10-06 to 10-27) were made the same way.
 
 # (icon_urls key, filename suffix) - mirrors normalize.py's map_card() form
 # detection exactly (evolutionMedium -> Evolution entity, heroMedium -> Hero

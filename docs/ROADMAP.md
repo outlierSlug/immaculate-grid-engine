@@ -596,18 +596,16 @@ Archive, stats and collections.
       (37 with a Legendary skin after adding Kit, 9 with a Hypercharge
       skin).
 
-**Clash Royale** (186 entities from 123 cards)
+**Clash Royale** (187 entities from 123 cards)
 - [x] Evo Giant added 2026-11-07 (Targets Buildings, confirmed in game),
       with a stand-in icon: the fan kit's card art in a real rare-evo
       frame.
-- [ ] Swap Evo Giant's stand-in once Supercell's CDN serves its
-      `evolutionMedium` icon (still 404 on 2026-11-07). Steps are in
-      `download_icons.py`.
-- [ ] Evo Mirror, not in the game or the official API yet (2026-11-07).
-      A re-fetch creates it once the API lists it; then add it to
-      `raw/targeting.txt` (Mirror itself is in "No targeting", but
-      confirm in game). It inherits Mirror's lack of a fixed elixir cost.
-      The fan kit already has its card art (`Assets 2026-11-07.zip`).
+- [x] Evo Mirror added 2026-11-10 (no targeting and no fixed elixir cost,
+      like Mirror), with a stand-in icon: the wiki's card art in a real
+      epic-evo frame.
+- [ ] Swap the Evo Giant and Evo Mirror stand-ins once Supercell's CDN
+      serves their `evolutionMedium` icons (both still 404 on
+      2026-11-10). Steps are in `download_icons.py`.
 - [x] Evo Electro Giant and Hero Electro Wizard added 2026-10-06 with
       stand-in icons, swapped for Supercell's own on 2026-10-27. No
       stand-ins remain.

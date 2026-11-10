@@ -319,8 +319,9 @@ likely. Requires at least 2 distinct dimensions to run at all (returns
   official ones. It happened again on 2026-10-06 with Evo Electro Giant
   and Hero Electro Wizard, this time with stand-ins from Supercell's fan
   kit, swapped for Supercell's own on 2026-10-27 once the CDN had them.
-  Evo Giant (2026-11-07) is the third time; its stand-in is listed in
-  `download_icons.py` until the CDN serves it.
+  Evo Giant (2026-11-07) and Evo Mirror (2026-11-10) are the third and
+  fourth times; their stand-ins are listed in `download_icons.py` until
+  the CDN serves them.
 
 ## Data sourcing — Honkai: Star Rail (Phase 8, fourth game)
 
