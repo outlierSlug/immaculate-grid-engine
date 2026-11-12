@@ -1217,6 +1217,21 @@
     }
   },
   {
+    "id": "starrail:aeon-aha",
+    "game_id": "starrail",
+    "display_name": "Aeon ★ Aha",
+    "image_url": "/starrail/icons/aeon-aha.png",
+    "attributes": {
+      "rarity": 5,
+      "path": "Elation",
+      "element": "Quantum",
+      "affiliation": [
+        "Planarcadia",
+        "Masked Fools"
+      ]
+    }
+  },
+  {
     "id": "starrail:robin-summeretto",
     "game_id": "starrail",
     "display_name": "Robin • Summeretto",

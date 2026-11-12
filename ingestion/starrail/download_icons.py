@@ -40,6 +40,8 @@ WIKI_FALLBACK_URLS = {
     # 4.6 (2026-09-28). FortOfFans 404'd on release day; the wiki's copy is
     # the same 160x160 art every other icon here uses.
     "pearl": "https://static.wikia.nocookie.net/houkai-star-rail/images/3/3e/Character_Pearl_Icon.png/",
+    # 4.7 (2026-11-11), same reason as Pearl.
+    "aeon-aha": "https://static.wikia.nocookie.net/houkai-star-rail/images/0/09/Character_Aeon_%E2%98%85_Aha_Icon.png/",
 }
 
 REQUEST_DELAY_SECONDS = 0.2

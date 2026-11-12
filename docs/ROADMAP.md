@@ -569,14 +569,12 @@ Archive, stats and collections.
 - [ ] `build_material_sources.py` must not be re-run as is: it would
       regress 23 tooltips. Reconcile it first.
 
-**Honkai: Star Rail** (98 entities, current through Version 4.6)
-- [ ] Version 4.7 launches 2026-11-11 with one new character, Aeon ★ Aha
-      (5-star Elation Quantum). The wiki lists faction Furbobo Weekly and
-      world Planarcadia; which affiliation(s) to give it is still to be
-      decided, since `raw/affiliations.txt` is hand-kept.
-- [ ] Swap three wiki-fallback icons (Pearl, Robin • Summeretto,
-      Aventurine • Waveflair) once the FortOfFans mirror has them. Still
-      missing on 2026-10-27, although the mirror updated on 2026-09-29.
+**Honkai: Star Rail** (99 entities, current through Version 4.7)
+- [x] Version 4.7: Aeon ★ Aha (5-star Elation Quantum), shipped
+      2026-11-11 with affiliations Planarcadia and Masked Fools.
+- [ ] Swap four wiki-fallback icons (Pearl, Robin • Summeretto,
+      Aventurine • Waveflair, Aeon ★ Aha) once the FortOfFans mirror has
+      them. Still missing on 2026-11-11.
       Remove each from `WIKI_FALLBACK_URLS` in `download_icons.py`, delete
       its file, and re-run the script.
 - [x] Deleted the old "Planarcardia" tooltip alias in `CategoryChip.tsx`

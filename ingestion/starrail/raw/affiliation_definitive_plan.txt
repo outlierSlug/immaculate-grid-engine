@@ -51,6 +51,7 @@ Sampo                          -> Jarilo-VI, Masked Fools
 Ashveil                        -> Planarcadia, Galaxy Rangers
 Pearl                          -> Planarcadia, IPC   (added 2026-09-28, v4.6)
 Sparxie                        -> Planarcadia, Masked Fools
+Aeon ★ Aha                     -> Planarcadia, Masked Fools   (added 2026-11-11, v4.7)
 
 Chip label / tooltip table (final)
 ------------------------------------
@@ -82,11 +83,11 @@ phrasing.
   Stellaron Hunters (6)    "This character is affiliated with the Stellaron Hunters."
   Herta Space Station (7)  "This character is affiliated with the Herta Space Station."
   Penacony (7)             "This character is from Penacony or is directly affiliated with it."
-  Planarcadia (7)         "This character is from Planarcadia or is directly affiliated with it."
+  Planarcadia (8)          "This character is from Planarcadia or is directly affiliated with it."
   IPC (4)                  "This character is affiliated with the IPC (Interastral Peace Corporation)."
   Another World (4)        "This character is from Another World or is an exclusive collab character."
   Galaxy Rangers (3)       "This character is affiliated with the Galaxy Rangers."
-  Masked Fools (3)         "This character is affiliated with the Masked Fools."
+  Masked Fools (4)         "This character is affiliated with the Masked Fools."
 
 Below AFFILIATION_MIN_COUNT (kept in the data, never surfaced as a category —
 still get tooltip text in CategoryChip.tsx in case the floor ever changes):

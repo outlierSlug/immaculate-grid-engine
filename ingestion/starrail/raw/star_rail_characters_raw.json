@@ -4644,6 +4644,60 @@
     ]
   },
   {
+    "id": 1511,
+    "enhancedId": 0,
+    "name": "Aeon ★ Aha",
+    "path": {
+      "id": "Elation"
+    },
+    "combatType": {
+      "id": "Quantum"
+    },
+    "stars": 5,
+    "maxEnergy": 8,
+    "icon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avataricon/avatar/1511.png",
+      "path": "SpriteOutput/AvatarIcon/Avatar/1511.png"
+    },
+    "miniIcon": {
+      "url": "https://raw.githubusercontent.com/FortOfFans/HSR/main/spriteoutput/avatarminiicon/1511.png",
+      "path": "SpriteOutput/AvatarMiniIcon/1511.png"
+    },
+    "sideIcon": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarRoundIcon/Avatar/1511.png",
+      "path": "SpriteOutput/AvatarRoundIcon/Avatar/1511.png"
+    },
+    "splashImage": {
+      "url": "https://enka.network/ui/hsr/SpriteOutput/AvatarDrawCard/1511.png",
+      "path": "SpriteOutput/AvatarDrawCard/1511.png"
+    },
+    "_ownKeys": [
+      "id",
+      "enhancedId",
+      "client",
+      "_data",
+      "_itemData",
+      "name",
+      "description",
+      "stars",
+      "maxEnergy",
+      "combatType",
+      "path",
+      "skills",
+      "skillTreeNodes",
+      "eidolons",
+      "icon",
+      "sideIcon",
+      "miniIcon",
+      "teamActionIcon",
+      "teamWaitingIcon",
+      "splashImage",
+      "splashCutInFigureImage",
+      "splashCutInBackgroundImage",
+      "shopItemIcon"
+    ]
+  },
+  {
     "id": 1512,
     "enhancedId": 0,
     "name": "Robin • Summeretto",

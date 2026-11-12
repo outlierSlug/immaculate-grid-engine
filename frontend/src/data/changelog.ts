@@ -18,6 +18,7 @@ export interface ChangelogEntry {
 }
 
 export const CHANGELOG: ChangelogEntry[] = [
+  { date: '2026-11-11', text: 'Added Aeon ★ Aha to Honkai: Star Rail (Version 4.7).' },
   { date: '2026-11-10', text: 'Added Evo Mirror to Clash Royale.' },
   { date: '2026-11-07', text: 'Added Evo Giant to Clash Royale.' },
   { date: '2026-11-04', text: 'Added Mitya and Valeriy to Genshin Impact (Version 7.2).' },
